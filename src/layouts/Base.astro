@@ -1,0 +1,62 @@
+---
+import SITE from "@data/site";
+import "../styles/global.css";
+
+export type BaseProps = {
+  description?: string;
+  title?: string;
+};
+
+type Props = BaseProps;
+
+const { title, description } = Astro.props;
+const { pathname } = Astro.url;
+
+const isHome = pathname === "/";
+
+const titleWithSiteTitle = title
+  ? title + (isHome ? "" : ` | ${SITE.title}`)
+  : SITE.title;
+
+const pageDescription = description ?? SITE.description;
+---
+
+<!doctype html>
+<html lang={SITE.language}>
+  <head>
+    <!-- Base -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>{titleWithSiteTitle}</title>
+    <meta name="title" content={titleWithSiteTitle} />
+    <meta name="description" content={pageDescription} />
+    <meta name="author" content={SITE.author.name} />
+    <link rel="canonical" href={Astro.url.href} />
+    <link rel="sitemap" href="/sitemap.xml" />
+
+    <!-- Favicon & Manifest -->
+    <link rel="shortcut icon" href="/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta
+      name="theme-color"
+      content={SITE.color.light}
+      media=" (prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content={SITE.color.dark}
+      media=" (prefers-color-scheme: dark)"
+    />
+    <meta name="msapplication-TileColor" content={SITE.color.light} />
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+  </head>
+
+  <body>
+    <slot />
+  </body>
+</html>
