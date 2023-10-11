@@ -1,0 +1,14 @@
+{
+  "files.exclude": {
+    "**/dist/": true,
+    "**/.astro/": true,
+    "**/node_modules/": true,
+    "**/npm-debug.log*": true,
+    "**/yarn-debug.log*": true,
+    "**/yarn-error.log*": true,
+    "**/pnpm-debug.log*": true,
+    "**/.env": true,
+    "**/.env.production": true,
+    "**/.DS_Store": true
+  }
+}
