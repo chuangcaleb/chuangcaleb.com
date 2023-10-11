@@ -1,0 +1,19 @@
+---
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import Base, { type BaseProps } from "./Base.astro";
+
+type Props = BaseProps;
+
+const { description, title } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <Header />
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <Footer />
+</Base>
