@@ -15,7 +15,8 @@
   "devDependencies": {
     "open-props": "^1.6.5",
     "postcss-jit-props": "^1.0.13",
-    "prettier-plugin-astro": "^0.12.0",
-    "prettier": "^3.0.3"
+    "postcss-preset-env": "^9.2.0",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0"
   }
 }
