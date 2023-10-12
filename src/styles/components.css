@@ -1,0 +1,6 @@
+/* Dark Mode: Make code bg to be darker than default surface */
+@media (prefers-color-scheme: dark) {
+  :not(pre) > code {
+    background-color: var(--surface-0);
+  }
+}
