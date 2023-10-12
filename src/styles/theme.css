@@ -12,13 +12,13 @@ html {
 
   /* dark */
   --brand-dark: var(--orange-3);
-  --text-1-dark: var(--gray-3);
-  --text-2-dark: var(--gray-5);
-  --surface-1-dark: var(--gray-12);
-  --surface-2-dark: var(--gray-11);
-  --surface-3-dark: var(--gray-10);
-  --surface-4-dark: var(--gray-9);
-  --surface-shadow-dark: var(--gray-12-hsl);
+  --text-1-dark: var(--stone-3);
+  --text-2-dark: var(--stone-5);
+  --surface-1-dark: var(--night-21);
+  --surface-2-dark: var(--indigo-11);
+  --surface-3-dark: var(--indigo-10);
+  --surface-4-dark: var(--indigo-9);
+  --surface-shadow-dark: var(--night-h), var(--night-s) 21%;
   --shadow-strength-dark: 80%;
 }
 

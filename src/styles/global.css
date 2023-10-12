@@ -1,5 +1,6 @@
-@import "open-props/postcss/normalize";
+@import "open-props/postcss/normalize" layer(reset);
 
-@import "theme.css";
+@import "colors.css" layer(base);
+@import "theme.css" layer(base);
 
-@import "utilities.css";
+@import "utilities.css" layer(utilities);
