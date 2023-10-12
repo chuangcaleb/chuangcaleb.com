@@ -1,15 +1,16 @@
 import sitemap from "@astrojs/sitemap";
 import compressor from "astro-compressor";
-// import purgecss from "astro-purgecss";
+import purgecss from "astro-purgecss";
 import { defineConfig } from "astro/config";
 
 const prodIntegrations = [
   sitemap(),
   compressor(),
-  // purgecss({
-  //   keyframes: true,
-  //   variables: false,
-  // }),
+  purgecss({
+    keyframes: true,
+    variables: false,
+    safelist: { standard: [/^\:[-a-z]+$/] },
+  }),
 ];
 
 const integrations = [...(import.meta.env.PROD ? prodIntegrations : [])];
