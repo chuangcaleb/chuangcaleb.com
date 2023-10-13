@@ -12,7 +12,7 @@ html {
   --shadow-strength-light: 2%;
 
   /* dark */
-  --brand-dark: var(--orange-3);
+  --brand-dark: var(--pink-5);
   --text-1-dark: var(--stone-3);
   --text-2-dark: var(--stone-5);
   --surface-0-dark: var(--night-15);

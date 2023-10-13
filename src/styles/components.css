@@ -4,3 +4,14 @@
     background-color: var(--surface-0);
   }
 }
+
+section {
+  --_padding-v: var(--size-fluid-3);
+  --_padding-h: var(--size-fluid-2);
+  --_max-w: var(--size-lg);
+
+  padding-block: var(--_padding-v);
+  padding-inline: var(--_padding-h);
+  max-width: var(--_max-w);
+  margin: auto;
+}

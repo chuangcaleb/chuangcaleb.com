@@ -3,11 +3,74 @@ import Main from "@layouts/Main.astro";
 ---
 
 <Main>
-  <h1>Chuang Caleb</h1>
-  <p>
-    <strong>Software Dev</strong>—specializing in <strong
-      class="whitespace-nowrap">Front-End Web</strong
-    >.
-  </p>
-  <code>sometimes("writing code"); always("crafting experiences");</code>
+  <section>
+    <header>
+      <h1>Chuang Caleb</h1>
+      <h2>
+        <!-- <span class="gradient">Software Dev</span>
+        <span class="deemph"> </span> -->
+
+        <span class="deemph">The</span> Frontend Web Dev <span class="deemph"
+          >with a</span
+        >
+        <span class="gradient"> different story.</span>
+      </h2>
+      <p>
+        <code>sometimes("writing-code"); always("story-writing");</code>
+      </p>
+      <div>
+        <button>Connect with me!</button>
+      </div>
+    </header>
+    <img
+      src="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900"
+      srcset="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=300 300w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=600 600w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900 900w"
+      alt="Head profile of Chuang Caleb"
+      height="350"
+      width="350"
+    />
+  </section>
 </Main>
+
+<style>
+  section {
+    --_max-w: calc(var(--size-lg) * 1.3);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: var(--size-2);
+  }
+  h1 {
+    font-size: var(--font-size-fluid-1);
+    font-weight: var(--font-weight-4);
+    text-transform: uppercase;
+    letter-spacing: var(--font-letterspacing-4);
+    max-width: initial;
+  }
+
+  h2 {
+    font-size: var(--font-size-fluid-3);
+    font-weight: var(--font-weight-8);
+    line-height: var(--font-lineheight-0);
+    max-width: var(--size-header-1);
+  }
+
+  .gradient {
+    background: linear-gradient(to bottom right, var(--text-1), var(--brand));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .deemph {
+    font-weight: initial;
+  }
+
+  header {
+    display: grid;
+    gap: var(--size-5);
+    align-self: stretch;
+    padding-block: var(--size-7);
+  }
+  img {
+    border-radius: var(--radius-3);
+  }
+</style>
