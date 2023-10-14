@@ -1,4 +1,10 @@
-@import "open-props/postcss/style";
+/* @import "open-props/postcss/style"; */
+@import "open-props/aspects";
+@import "open-props/colors";
+@import "open-props/borders";
+@import "open-props/fonts";
+@import "open-props/sizes";
+@import "open-props/media";
 
 @import "open-props/normalize";
 @import "normalize.css";

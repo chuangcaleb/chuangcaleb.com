@@ -4,55 +4,89 @@ import Main from "@layouts/Main.astro";
 
 <Main>
   <section>
-    <header>
-      <h1>Chuang Caleb</h1>
-      <h2>
-        <!-- <span class="gradient">Software Dev</span>
-        <span class="deemph"> </span> -->
-
-        <span class="deemph">The</span> Frontend Web Dev <span class="deemph"
-          >with a</span
-        >
-        <span class="gradient"> different story.</span>
-      </h2>
+    <div>
+      <header>
+        <h1>Chuang Caleb</h1>
+        <h2>
+          <span class="deemph">The</span> Frontend Web Dev <span class="deemph"
+            >with a</span
+          >
+          <span class="gradient"> different story.</span>
+        </h2>
+      </header>
       <p>
-        <code>sometimes("writing-code"); always("story-writing");</code>
+        <code>
+          <span class="nowrap">sometimes("writing-code");</span>{" "}
+          <span class="nowrap">always("story-writing");</span>
+        </code>
       </p>
-      <div>
-        <button>Connect with me!</button>
-      </div>
-    </header>
+      <ul class="norm buttons">
+        <li><button>Connect with me!</button></li>
+        <li><button>Git</button></li>
+        <li><button>Link</button></li>
+        <li><button>CV</button></li>
+      </ul>
+    </div>
+
     <img
       src="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900"
       srcset="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=300 300w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=600 600w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900 900w"
       alt="Head profile of Chuang Caleb"
-      height="350"
-      width="350"
+      height="400"
+      width="400"
     />
   </section>
 </Main>
 
 <style>
   section {
-    --max-w: calc(var(--size-lg) * 5 / 4);
+    --max-w: calc(var(--size-lg) * 1.1);
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    column-gap: var(--size-2);
+    gap: var(--size-6);
   }
+  header {
+    display: grid;
+    gap: var(--size-fluid-1);
+  }
+  section > div {
+    display: grid;
+    gap: var(--size-3);
+  }
+
   h1 {
     font-size: var(--font-size-fluid-1);
     font-weight: var(--font-weight-4);
     text-transform: uppercase;
     letter-spacing: var(--font-letterspacing-4);
-    max-width: initial;
   }
 
   h2 {
     font-size: var(--font-size-fluid-3);
     font-weight: var(--font-weight-8);
     line-height: var(--font-lineheight-0);
-    max-width: var(--size-header-1);
+    /* max-width: var(--size-header-1); */
+    max-width: 16ch;
+  }
+  img {
+    --_size: min(35vh, 70vw);
+    border-radius: var(--radius-3);
+    max-height: var(--_size);
+    max-width: var(--_size);
+  }
+
+  ul.buttons {
+    display: flex;
+    gap: var(--size-2);
+    li {
+      display: inline-block;
+    }
+  }
+  code {
+    font-size: var(--font-size-1);
+    /* display: block; */
   }
 
   .gradient {
@@ -62,15 +96,5 @@ import Main from "@layouts/Main.astro";
   }
   .deemph {
     font-weight: initial;
-  }
-
-  header {
-    display: grid;
-    gap: var(--size-fluid-2);
-    align-self: stretch;
-    padding-block: var(--size-fluid-3);
-  }
-  img {
-    border-radius: var(--radius-3);
   }
 </style>

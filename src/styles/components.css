@@ -2,6 +2,7 @@
 @media (prefers-color-scheme: dark) {
   :not(pre) > code {
     background-color: var(--surface-0);
+    box-decoration-break: clone;
   }
 }
 
