@@ -6,12 +6,15 @@
 }
 
 section {
-  --_padding-v: var(--size-fluid-3);
-  --_padding-h: var(--size-fluid-2);
-  --_max-w: var(--size-lg);
+  --section-px: var(--size-fluid-3);
+  --section_py: var(--size-fluid-2);
+  --max-w: var(--size-lg);
 
-  padding-block: var(--_padding-v);
-  padding-inline: var(--_padding-h);
-  max-width: var(--_max-w);
-  margin: auto;
+  padding-block: var(--section-px);
+  padding-inline: var(--section_py);
+  max-width: var(--max-w);
+  /* padding-block: var(--section-px, var(--size-fluid-3));
+  padding-inline: var(--section_py, var(--size-fluid-2));
+  max-width: var(--max-w, var(--size-lg)); */
+  margin-inline: auto;
 }

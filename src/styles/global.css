@@ -1,4 +1,6 @@
-@import "open-props/postcss/normalize";
+@import "open-props/postcss/style";
+
+@import "open-props/normalize";
 @import "normalize.css";
 
 @import "colors.css";

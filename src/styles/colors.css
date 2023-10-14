@@ -16,4 +16,5 @@ html {
   --night-12: hsl(var(--night-h), var(--night-s), calc(100% / 15 * 2)); */
   --night-15: hsl(var(--night-h), var(--night-s), 15%);
   --night-21: hsl(var(--night-h), var(--night-s), 21%);
+  --night-85: hsl(var(--night-h), var(--night-s), 85%);
 }

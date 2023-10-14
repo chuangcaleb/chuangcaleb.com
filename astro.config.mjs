@@ -8,7 +8,7 @@ const prodIntegrations = [
   compressor(),
   purgecss({
     keyframes: true,
-    variables: false,
+    variables: true,
     safelist: { standard: [/^\:[-a-z]+$/] },
   }),
 ];
