@@ -5,9 +5,9 @@ import postcssPresetEnv from "postcss-preset-env";
 const config = {
   plugins: [
     // postcssJitProps(OpenProps),
-    // postcssPresetEnv({ stage: 3 }),
     postcssCustomMedia(),
     postcssPresetEnv(),
+    // postcssPresetEnv({ stage: 3 }),
   ],
 };
 

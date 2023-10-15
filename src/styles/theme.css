@@ -17,7 +17,7 @@ html {
   --text-2-dark: var(--stone-5);
   --surface-0-dark: var(--night-15);
   --surface-1-dark: var(--night-21);
-  --surface-2-dark: var(--night-30);
+  --surface-2-dark: var(--night-50);
   --surface-3-dark: var(--indigo-10);
   --surface-4-dark: var(--indigo-9);
   --surface-shadow-dark: var(--night-h), var(--night-s) 21%;

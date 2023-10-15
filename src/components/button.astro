@@ -1,0 +1,27 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { composeClasses } from "@utils/ui";
+
+export interface ButtonProps extends HTMLAttributes<"button"> {
+  theme?: "brand";
+}
+
+type Props = ButtonProps;
+
+let { class: className, theme, ...props } = Astro.props;
+
+className = composeClasses(className, theme);
+---
+
+<button class={className} {...props}>
+  <slot />
+</button>
+
+<style>
+  button {
+    background-color: var(--_bg, var(--surface-0));
+  }
+  button.brand {
+    --_bg: var(--brand);
+  }
+</style>
