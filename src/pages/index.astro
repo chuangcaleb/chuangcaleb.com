@@ -1,6 +1,7 @@
 ---
-import Button from "@components/button.astro";
 import Main from "@layouts/Main.astro";
+import Button from "@components/button.astro";
+import { Icon } from "astro-iconify";
 ---
 
 <Main>
@@ -22,10 +23,23 @@ import Main from "@layouts/Main.astro";
         </code>
       </p>
       <ul class="norm buttons">
-        <li><Button class="brand">Connect now!</Button></li>
-        <li><Button theme="brand">Git</Button></li>
-        <li><Button>Link</Button></li>
-        <li><button>CV</button></li>
+        <li>
+          <Button class="brand">
+            <Icon name="mdi:connection" />
+            <span>Connect now!</span>
+          </Button>
+        </li>
+        <li>
+          <Button>
+            <Icon name="mdi:github" />
+          </Button>
+        </li>
+        <li>
+          <Button>
+            <Icon name="mdi:linkedin" />
+          </Button>
+        </li>
+        <li><Button><Icon name="academicons:cv" /></Button></li>
       </ul>
     </div>
 
@@ -61,6 +75,7 @@ import Main from "@layouts/Main.astro";
   h1 {
     font-size: var(--font-size-fluid-1);
     font-weight: var(--font-weight-4);
+    color: var(--brand);
     text-transform: uppercase;
     letter-spacing: var(--font-letterspacing-4);
   }
@@ -81,22 +96,17 @@ import Main from "@layouts/Main.astro";
 
   ul.buttons {
     display: flex;
-    gap: var(--size-2);
+    gap: var(--size-3);
     li {
       display: inline-block;
     }
   }
   code {
     font-size: var(--font-size-1);
-    /* display: block; */
   }
 
   .gradient {
-    background: linear-gradient(
-      to bottom right,
-      hsl(var(--night-hs) 80%),
-      var(--brand)
-    );
+    background: linear-gradient(to bottom right, var(--text-1), var(--brand));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

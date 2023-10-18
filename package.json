@@ -15,6 +15,7 @@
   "devDependencies": {
     "@astrojs/sitemap": "^3.0.1",
     "astro-compressor": "^0.4.1",
+    "astro-iconify": "^1.2.0",
     "astro-purgecss": "^3.2.1",
     "open-props": "^1.6.5",
     "postcss-custom-media": "^10.0.2",
