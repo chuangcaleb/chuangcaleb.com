@@ -19,9 +19,14 @@ className = composeClasses(className, theme);
 
 <style>
   button {
-    background-color: var(--_bg, var(--surface-0));
+    background-color: var(--_bg, var(--surface-1b));
+    color: var(--_text, var(--text-1));
+    font-weight: var(--font-weight-7);
+    padding: var(--size-2) var(--size-3);
+    border-radius: var(--radius-2);
   }
   button.brand {
     --_bg: var(--brand);
+    --_text: var(--text-on-brand);
   }
 </style>

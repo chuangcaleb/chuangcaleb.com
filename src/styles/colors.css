@@ -1,6 +1,11 @@
 html {
-  --night-h: 228.57deg;
-  --night-s: 17%;
+  --night-h: 234;
+  --night-s: 21%;
+  --night-hs: var(--night-h) var(--night-s);
+
+  --day-h: 13;
+  --day-s: 70%;
+  --day-hs: var(--day-h) var(--day-s);
 
   /* --night-1: hsl(var(--night-h), var(--night-s), calc(100% / 15 * 13));
   --night-2: hsl(var(--night-h), var(--night-s), calc(100% / 15 * 12));
@@ -14,8 +19,4 @@ html {
   --night-10: hsl(var(--night-h), var(--night-s), calc(100% / 15 * 4));
   --night-11: hsl(var(--night-h), var(--night-s), calc(100% / 15 * 3));
   --night-12: hsl(var(--night-h), var(--night-s), calc(100% / 15 * 2)); */
-  --night-15: hsl(var(--night-h), var(--night-s), 15%);
-  --night-21: hsl(var(--night-h), var(--night-s), 21%);
-  --night-35: hsl(var(--night-h), var(--night-s), 35%);
-  --night-50: hsl(var(--night-h), var(--night-s), 50%);
 }

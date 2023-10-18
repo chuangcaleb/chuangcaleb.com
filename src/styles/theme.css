@@ -1,10 +1,13 @@
 html {
   /* light */
-  --brand-light: var(--orange-6);
+  --brand-light: hsl(var(--day-hs) 60%);
+  --surface-1a-light: var(--gray-1);
+  --surface-1b-light: var(--gray-0);
   --text-1-light: var(--gray-8);
+  --text-on-brand-light: hsl(var(--night-hs) 15%);
+  --text-on-brand-light: var(--gray-1);
+
   --text-2-light: var(--gray-7);
-  --surface-0-light: var(--gray-0);
-  --surface-1-light: var(--gray-1);
   --surface-2-light: var(--gray-2);
   --surface-3-light: var(--gray-3);
   --surface-4-light: var(--gray-4);
@@ -12,15 +15,17 @@ html {
   --shadow-strength-light: 2%;
 
   /* dark */
-  --brand-dark: var(--pink-5);
+  --brand-dark: hsl(var(--day-hs) 60%);
+  --surface-1a-dark: hsl(var(--night-hs) 18%);
+  --surface-1b-dark: hsl(var(--night-hs) 14%);
   --text-1-dark: var(--stone-3);
+  --text-on-brand-dark: hsl(var(--night-hs) 14%);
+
   --text-2-dark: var(--stone-5);
-  --surface-0-dark: var(--night-15);
-  --surface-1-dark: var(--night-21);
-  --surface-2-dark: var(--night-50);
-  --surface-3-dark: var(--indigo-10);
+  --surface-2-dark: hsl(var(--night-hs) 30%);
+  --surface-3-dark:;
   --surface-4-dark: var(--indigo-9);
-  --surface-shadow-dark: var(--night-h), var(--night-s) 21%;
+  --surface-shadow-dark: var(--gray-12-hsl);
   --shadow-strength-dark: 80%;
 }
 
@@ -29,10 +34,12 @@ html {
 
   /* set defaults */
   --brand: var(--brand-light);
+  --surface-1a: var(--surface-1a-light);
+  --surface-1b: var(--surface-1b-light);
   --text-1: var(--text-1-light);
+  --text-on-brand: var(--text-on-brand-light);
+
   --text-2: var(--text-2-light);
-  --surface-0: var(--surface-0-light);
-  --surface-1: var(--surface-1-light);
   --surface-2: var(--surface-2-light);
   --surface-3: var(--surface-3-light);
   --surface-4: var(--surface-4-light);
@@ -43,10 +50,12 @@ html {
     color-scheme: dark;
 
     --brand: var(--brand-dark);
+    --surface-1a: var(--surface-1a-dark);
+    --surface-1b: var(--surface-1b-dark);
     --text-1: var(--text-1-dark);
+    --text-on-brand: var(--text-on-brand-dark);
+
     --text-2: var(--text-2-dark);
-    --surface-0: var(--surface-0-dark);
-    --surface-1: var(--surface-1-dark);
     --surface-2: var(--surface-2-dark);
     --surface-3: var(--surface-3-dark);
     --surface-4: var(--surface-4-dark);

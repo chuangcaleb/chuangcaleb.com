@@ -1,19 +1,22 @@
+html {
+  background: var(--surface-1a);
+}
+
 /* Dark Mode: Make code bg to be darker than default surface */
 @media (prefers-color-scheme: dark) {
   :not(pre) > code {
-    background-color: var(--surface-0);
+    background-color: var(--surface-1b);
     box-decoration-break: clone;
   }
 }
 
 section {
-  --section-px: var(--size-fluid-3);
+  /* --section-px: var(--size-fluid-3);
   --section_py: var(--size-fluid-2);
-  --max-w: var(--size-lg);
-
-  padding-block: var(--section-px);
-  padding-inline: var(--section_py);
-  max-width: var(--max-w);
+  --max-w: var(--size-lg); */
+  padding-block: var(--size-fluid-3);
+  padding-inline: var(--size-fluid-2);
+  max-width: var(--size-lg);
   /* padding-block: var(--section-px, var(--size-fluid-3));
   padding-inline: var(--section_py, var(--size-fluid-2));
   max-width: var(--max-w, var(--size-lg)); */

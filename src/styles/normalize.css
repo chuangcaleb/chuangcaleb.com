@@ -1,7 +1,7 @@
 /*
 :where(html) {
   accent-color: var(--brand, var(--link));
-  background-color: var(--surface-1);
+  background-color: var(--surface-1a);
   height: 100%;
   caret-color: var(--brand, var(--link));
   color: var(--text-1);

@@ -22,7 +22,7 @@ import Main from "@layouts/Main.astro";
         </code>
       </p>
       <ul class="norm buttons">
-        <li><Button class="brand">Connect with me!</Button></li>
+        <li><Button class="brand">Connect now!</Button></li>
         <li><Button theme="brand">Git</Button></li>
         <li><Button>Link</Button></li>
         <li><button>CV</button></li>
@@ -41,12 +41,13 @@ import Main from "@layouts/Main.astro";
 
 <style>
   section {
-    --max-w: calc(var(--size-lg) * 1.1);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: var(--size-6);
+    max-width: calc(var(--size-lg) * 1.1);
+    container-type: inline-size;
   }
   header {
     display: grid;
@@ -91,7 +92,11 @@ import Main from "@layouts/Main.astro";
   }
 
   .gradient {
-    background: linear-gradient(to bottom right, var(--text-1), var(--brand));
+    background: linear-gradient(
+      to bottom right,
+      hsl(var(--night-hs) 80%),
+      var(--brand)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
