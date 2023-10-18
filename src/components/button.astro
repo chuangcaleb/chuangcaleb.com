@@ -1,6 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { composeClasses } from "@utils/ui";
+import { cn } from "@utils/ui";
 
 export interface ButtonProps extends HTMLAttributes<"button"> {
   theme?: "brand";
@@ -11,7 +11,7 @@ type Props = ButtonProps;
 
 let { class: className, theme, size, ...props } = Astro.props;
 
-className = composeClasses(className, theme, size);
+className = cn(className, theme, size);
 ---
 
 <button class={className} {...props}>
