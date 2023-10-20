@@ -10,6 +10,6 @@ export default {
   },
   color: {
     light: "#EDF0F3",
-    dark: "#1B1C2A",
+    dark: "#252739",
   },
 } as const;
