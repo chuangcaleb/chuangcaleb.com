@@ -11,7 +11,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
 ---
 
 <Main>
-  <section>
+  <section class="hero-section">
     <div>
       <header>
         <h1>Chuang Caleb</h1>
@@ -30,25 +30,26 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
           >
         </code>
       </p>
-      <ul class="norm buttons">
-        <li>
-          <Button class="brand">
-            <Icon name="mdi:connection" />
-            <span>Get connected!</span>
-          </Button>
-        </li>
-        {
-          heroLinks.map((l) => (
-            <li>
-              <Button asChild>
-                <a aria-label={l.ariaLabel} href={l.href}>
-                  <Icon name={l.icon} />
-                </a>
-              </Button>
-            </li>
-          ))
-        }
-      </ul>
+
+      <div>
+        <Button class="brand">
+          <Icon name="mdi:connection" />
+          <span>Get connected!</span>
+        </Button>
+        <ul class="norm buttons">
+          {
+            heroLinks.map((l) => (
+              <li>
+                <Button asChild>
+                  <a aria-label={l.ariaLabel} href={l.href}>
+                    <Icon name={l.icon} />
+                  </a>
+                </Button>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
     <img
       src="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900"
@@ -60,8 +61,8 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
   </section>
 </Main>
 
-<style>
-  section {
+<style is:global>
+  .hero-section {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -69,54 +70,64 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
     gap: var(--size-6);
     max-width: calc(var(--size-lg));
     container-type: inline-size;
-  }
-  header {
-    display: grid;
-    gap: var(--size-fluid-1);
-  }
-  section > div {
-    display: grid;
-    gap: var(--size-3);
-  }
 
-  h1 {
-    font-size: var(--font-size-fluid-1);
-    font-weight: var(--font-weight-4);
-    color: var(--brand);
-    text-transform: uppercase;
-    letter-spacing: var(--font-letterspacing-4);
-  }
+    header {
+      display: grid;
+      gap: var(--size-fluid-1);
+    }
+    & > div {
+      display: grid;
+      gap: var(--size-3);
+    }
 
-  h2 {
-    font-size: var(--font-size-fluid-3);
-    font-weight: var(--font-weight-8);
-    line-height: var(--font-lineheight-0);
-    /* max-width: var(--size-header-1); */
-    max-width: 15ch;
-  }
-  img {
-    --_size: min(35vh, 70vw);
-    border-radius: var(--radius-2);
-    max-height: var(--_size);
-    max-width: var(--_size);
-  }
+    h1 {
+      font-size: var(--font-size-fluid-1);
+      font-weight: var(--font-weight-4);
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: var(--font-letterspacing-4);
+    }
 
-  ul.buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--size-3);
-  }
-  code {
-    display: block;
-    font-size: var(--font-size-fluid-0);
-  }
+    h2 {
+      font-size: var(--font-size-fluid-3);
+      font-weight: var(--font-weight-8);
+      line-height: var(--font-lineheight-0);
+      /* max-width: var(--size-header-1); */
+      max-width: 15ch;
+    }
+    img {
+      --_size: min(35vh, 70svw);
+      border-radius: var(--radius-2);
+      max-height: var(--_size);
+      max-width: var(--_size);
+    }
 
-  .gradient {
-    background: linear-gradient(to bottom right, var(--text-1), var(--brand));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .deemph {
-    font-weight: initial;
+    ul.buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--size-3);
+      /* position: absolute; */
+    }
+
+    div:has(> .buttons) {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: var(--size-5);
+      row-gap: var(--size-2);
+      align-items: start;
+    }
+    code {
+      display: block;
+      font-size: var(--font-size-fluid-0);
+    }
+
+    .gradient {
+      background: linear-gradient(to bottom right, var(--text-1), var(--brand));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .deemph {
+      font-weight: initial;
+    }
   }
 </style>

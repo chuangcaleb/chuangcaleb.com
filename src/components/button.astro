@@ -70,15 +70,13 @@ let html = asChild && hs(await Astro.slots.render("default"), className);
     }
 
     @media (prefers-color-scheme: dark) {
-      & {
-        --_bg-hover: var(--text-1);
-      }
       &:hover {
+        --_bg-hover: var(--text-1);
         --_border: transparent;
       }
     }
     @media (prefers-color-scheme: light) {
-      &.brand {
+      &:hover {
         --_bg-hover: var(--surface-1a);
         --_border: var(--brand);
       }
