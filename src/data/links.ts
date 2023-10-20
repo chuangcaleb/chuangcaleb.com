@@ -10,13 +10,13 @@ const LINKS: { [s: string]: Link } = {
     label: "LinkedIn",
     href: "https://linkedin.com/in/chuangcaleb/",
     ariaLabel: "LinkedIn profile of Chuang Caleb",
-    icon: "lucide:linkedin",
+    icon: "mdi:linkedin",
   },
   GITHUB: {
     label: "GitHub",
     href: "https://github.com/chuangcaleb",
     ariaLabel: "GitHub profile of Chuang Caleb",
-    icon: "lucide:github",
+    icon: "mdi:github",
   },
   CV: {
     label: "CV / Résumé",

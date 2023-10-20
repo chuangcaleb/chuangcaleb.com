@@ -42,27 +42,12 @@ let html = asChild && hs(await Astro.slots.render("default"), className);
     border-style: solid;
     border-radius: var(--radius-2);
 
-    &:hover {
-      background-color: var(--_bg-hover, var(--text-1));
-      color: var(--_text-hover, var(--brand));
-      box-shadow:
-        var(--tw-ring-offset-shadow, 0 0 var(--brand)),
-        var(--tw-ring-shadow, 0 0 var(--brand)),
-        /* 0 0 0 0.15em var(--brand), */ 0 0 var(--size-8) 0 var(--brand);
-    }
-    /* @media (prefers-color-scheme: dark) {
-      &:hover {
-        background-color: var(--_bg-hover, var(--text-1));
-        color: var(--_text-hover, var(--brand));
-      }
-    } */
-
     &.brand {
       --_bg: var(--brand);
       --_text: var(--text-on-brand);
       --_border: transparent;
-      /* --_bg-hover: var(--text-1);
-      --_text-hover: var(--brand); */
+      --_bg-hover: var(--text-1);
+      --_text-hover: var(--brand);
     }
 
     &.icon,
@@ -74,6 +59,22 @@ let html = asChild && hs(await Astro.slots.render("default"), className);
     }
     &:is(a) {
       margin: 0;
+    }
+
+    &:hover {
+      --_bg: var(--_bg-hover);
+      --_text: var(--_text-hover, var(--brand));
+      box-shadow:
+        var(--tw-ring-offset-shadow, 0 0 var(--brand)),
+        var(--tw-ring-shadow, 0 0 var(--brand)),
+        /* 0 0 0 0.15em var(--brand), */ 0 0 var(--size-8) 0 var(--brand);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      & {
+        --_bg-hover: var(--text-1);
+        /* --_text-hover: var(--brand); */
+      }
     }
   }
 </style>
