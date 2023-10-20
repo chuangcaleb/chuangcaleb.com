@@ -37,10 +37,24 @@ const pageDescription = description ?? SITE.description;
     <link rel="sitemap" href="/sitemap.xml" />
 
     <!-- Favicon & Manifest -->
-    <link rel="shortcut icon" href="/favicons/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
     <link rel="manifest" href="/site.webmanifest" />
     <meta
       name="theme-color"
@@ -53,7 +67,7 @@ const pageDescription = description ?? SITE.description;
       media=" (prefers-color-scheme: dark)"
     />
     <meta name="msapplication-TileColor" content={SITE.color.light} />
-    <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+    <!-- <meta name="msapplication-config" content="/favicon/browserconfig.xml" /> -->
   </head>
 
   <body>

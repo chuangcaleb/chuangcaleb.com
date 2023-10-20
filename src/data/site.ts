@@ -9,7 +9,7 @@ export default {
     url: "https://chuangcaleb.com",
   },
   color: {
-    light: "#ffffff",
-    dark: "#2b2f40",
+    light: "#EDF0F3",
+    dark: "#1B1C2A",
   },
 } as const;
