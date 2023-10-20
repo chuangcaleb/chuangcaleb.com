@@ -3,8 +3,8 @@ html {
   --night-s: 21%;
   --night-hs: var(--night-h) var(--night-s);
 
-  --day-h: 13;
-  --day-s: 70%;
+  --day-h: 7;
+  --day-s: 60%;
   --day-hs: var(--day-h) var(--day-s);
 
   /* --night-1: hsl(var(--night-h), var(--night-s), calc(100% / 15 * 13));

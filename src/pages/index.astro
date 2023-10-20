@@ -2,6 +2,12 @@
 import Main from "@layouts/Main.astro";
 import Button from "@components/button.astro";
 import { Icon } from "astro-iconify";
+import LINKS from "@data/links";
+
+const { LINKEDIN, GITHUB, CV } = LINKS;
+import type { HTMLAttributes } from "astro/types";
+
+const heroLinks = [GITHUB, LINKEDIN, CV];
 ---
 
 <Main>
@@ -29,27 +35,27 @@ import { Icon } from "astro-iconify";
             <span>Connect now!</span>
           </Button>
         </li>
-        <li>
-          <Button>
-            <Icon name="mdi:github" />
-          </Button>
-        </li>
-        <li>
-          <Button>
-            <Icon name="mdi:linkedin" />
-          </Button>
-        </li>
-        <li><Button><Icon name="academicons:cv" /></Button></li>
+        {
+          heroLinks.map((l) => (
+            <li>
+              <Button asChild>
+                <a aria-label={l.ariaLabel} href={l.href}>
+                  <Icon name={l.icon} />
+                </a>
+              </Button>
+            </li>
+          ))
+        }
       </ul>
-    </div>
 
-    <img
-      src="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900"
-      srcset="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=300 300w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=600 600w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900 900w"
-      alt="Head profile of Chuang Caleb"
-      height="400"
-      width="400"
-    />
+      <img
+        src="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900"
+        srcset="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=300 300w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=600 600w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900 900w"
+        alt="Head profile of Chuang Caleb"
+        height="400"
+        width="400"
+      />
+    </div>
   </section>
 </Main>
 
@@ -97,9 +103,6 @@ import { Icon } from "astro-iconify";
   ul.buttons {
     display: flex;
     gap: var(--size-3);
-    li {
-      display: inline-block;
-    }
   }
   code {
     font-size: var(--font-size-1);

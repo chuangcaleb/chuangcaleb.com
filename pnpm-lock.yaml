@@ -22,6 +22,9 @@ devDependencies:
   astro-purgecss:
     specifier: ^3.2.1
     version: 3.2.1(astro@3.2.4)(purgecss@5.0.0)
+  node-html-parser:
+    specifier: ^6.1.10
+    version: 6.1.10
   open-props:
     specifier: ^1.6.5
     version: 1.6.5
@@ -2243,6 +2246,11 @@ packages:
       property-information: 6.3.0
       space-separated-tokens: 2.0.2
 
+  /he@1.2.0:
+    resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
+    hasBin: true
+    dev: true
+
   /html-escaper@3.0.3:
     resolution: {integrity: sha512-RuMffC89BOWQoY0WKGpIhn5gX3iI54O6nRA0yC124NYVtzjmFWBIiFd8M0x+ZdX0P9R4lADg1mgP8C7PxGOWuQ==}
 
@@ -2982,6 +2990,13 @@ packages:
       data-uri-to-buffer: 4.0.1
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
+    dev: true
+
+  /node-html-parser@6.1.10:
+    resolution: {integrity: sha512-6/uWdWxjQWQ7tMcFK2wWlrflsQUzh1HsEzlIf2j5+TtzfhT2yUvg3DwZYAmjEHeR3uX74ko7exjHW69J0tOzIg==}
+    dependencies:
+      css-select: 5.1.0
+      he: 1.2.0
     dev: true
 
   /node-releases@2.0.13:

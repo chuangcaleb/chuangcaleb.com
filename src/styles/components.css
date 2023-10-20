@@ -20,7 +20,7 @@ section {
   margin-inline: auto;
 }
 
-button svg {
+.cc-btn svg {
   height: 2em;
   width: 2em;
 }
