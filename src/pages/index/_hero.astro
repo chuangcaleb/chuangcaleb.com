@@ -119,7 +119,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
         margin-inline: auto;
       }
     }
-    @media screen and (500px < width < 870px) {
+    @media screen and (500px <= width < 870px) {
       & {
         grid-template: "header header" "img subheader";
         grid-template-columns: min-content 1fr;
@@ -132,7 +132,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
         max-width: var(--size-content-2);
       }
     }
-    @media screen and (width > 870px) {
+    @media screen and (width >= 870px) {
       & {
         grid-template: "header img" "subheader img";
         grid-template-columns: 1fr min-content;
