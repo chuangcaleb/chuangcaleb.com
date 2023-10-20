@@ -111,15 +111,15 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       flex-wrap: wrap;
       column-gap: var(--size-fluid-2);
       row-gap: var(--size-fluid-2);
-      align-items: start;
+      align-items: flex-start;
     }
 
-    @media screen and (max-width: 400px) {
+    @media screen and (width < 400px) {
       img {
         margin-inline: auto;
       }
     }
-    @media screen and (min-width: 500px) {
+    @media screen and (500px < width < 870px) {
       & {
         grid-template: "header header" "img subheader";
         grid-template-columns: min-content 1fr;
@@ -129,9 +129,10 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       }
       .subheader {
         margin-bottom: 0;
+        max-width: var(--size-content-2);
       }
     }
-    @media screen and (min-width: 870px) {
+    @media screen and (width > 870px) {
       & {
         grid-template: "header img" "subheader img";
         grid-template-columns: 1fr min-content;
