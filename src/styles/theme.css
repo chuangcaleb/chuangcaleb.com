@@ -1,17 +1,17 @@
 html {
   /* light */
   --brand-light: hsl(var(--day-hs) 60%);
-  --surface-1a-light: var(--gray-1);
-  --surface-1b-light: var(--gray-2);
-  --text-1-light: var(--gray-8);
-  --text-on-brand-light: var(--gray-1);
-  --border-light: var(--gray-5);
+  --surface-1a-light: var(--stone-1);
+  --surface-1b-light: var(--stone-2);
+  --text-1-light: var(--stone-8);
+  --text-on-brand-light: var(--stone-1);
+  --border-light: var(--stone-4);
 
-  --text-2-light: var(--gray-7);
-  --surface-2-light: var(--gray-2);
-  --surface-3-light: var(--gray-1);
-  --surface-4-light: var(--gray-4);
-  --surface-shadow-light: var(--gray-8-hsl);
+  --text-2-light: var(--stone-7);
+  --surface-2-light: var(--stone-2);
+  --surface-3-light: var(--stone-1);
+  --surface-4-light: var(--stone-4);
+  --surface-shadow-light: var(--stone-8-hsl);
   --shadow-strength-light: 2%;
 
   /* dark */
@@ -26,7 +26,7 @@ html {
   --surface-2-dark: hsl(var(--night-hs) 30%);
   --surface-3-dark:;
   --surface-4-dark: var(--indigo-9);
-  --surface-shadow-dark: var(--gray-12-hsl);
+  --surface-shadow-dark: var(--stone-12-hsl);
   --shadow-strength-dark: 80%;
 }
 
