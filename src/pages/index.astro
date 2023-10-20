@@ -32,7 +32,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
         <li>
           <Button class="brand">
             <Icon name="mdi:connection" />
-            <span>Connect now!</span>
+            <span>Get connected!</span>
           </Button>
         </li>
         {
@@ -47,15 +47,14 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
           ))
         }
       </ul>
-
-      <img
-        src="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900"
-        srcset="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=300 300w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=600 600w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900 900w"
-        alt="Head profile of Chuang Caleb"
-        height="400"
-        width="400"
-      />
     </div>
+    <img
+      src="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900"
+      srcset="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=300 300w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=600 600w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900 900w"
+      alt="Head profile of Chuang Caleb"
+      height="400"
+      width="400"
+    />
   </section>
 </Main>
 
@@ -95,13 +94,14 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
   }
   img {
     --_size: min(35vh, 70vw);
-    border-radius: var(--radius-3);
+    border-radius: var(--radius-2);
     max-height: var(--_size);
     max-width: var(--_size);
   }
 
   ul.buttons {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--size-3);
   }
   code {

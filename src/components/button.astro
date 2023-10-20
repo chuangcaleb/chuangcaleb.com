@@ -31,12 +31,15 @@ let html = asChild && hs(await Astro.slots.render("default"), className);
   .cc-btn {
     background-color: var(--_bg, var(--surface-1b));
     color: var(--_text, var(--text-1));
+    border-color: var(--_border, var(--border));
+    border-width: var(--_border-width, 1px);
 
     display: inline-flex;
     gap: var(--size-1);
     align-items: center;
     padding: var(--size-2) var(--size-3);
     font-weight: var(--font-weight-7);
+    border-style: solid;
     border-radius: var(--radius-2);
 
     &:hover {
@@ -47,10 +50,17 @@ let html = asChild && hs(await Astro.slots.render("default"), className);
         var(--tw-ring-shadow, 0 0 var(--brand)),
         /* 0 0 0 0.15em var(--brand), */ 0 0 var(--size-8) 0 var(--brand);
     }
+    /* @media (prefers-color-scheme: dark) {
+      &:hover {
+        background-color: var(--_bg-hover, var(--text-1));
+        color: var(--_text-hover, var(--brand));
+      }
+    } */
 
     &.brand {
       --_bg: var(--brand);
       --_text: var(--text-on-brand);
+      --_border: transparent;
       /* --_bg-hover: var(--text-1);
       --_text-hover: var(--brand); */
     }
