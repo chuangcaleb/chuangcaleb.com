@@ -12,14 +12,14 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
 
 <Main>
   <section class="hero-section">
-    <div>
-      <header>
-        <h1>Chuang Caleb</h1>
-        <h2>
-          Frontend Web Dev <span class="deemph">with a</span>
-          <span class="gradient"> different story.</span>
-        </h2>
-      </header>
+    <header>
+      <h1>Chuang Caleb</h1>
+      <h2>
+        Frontend Web Dev <span class="deemph">with a</span>
+        <span class="gradient"> different story.</span>
+      </h2>
+    </header>
+    <div class="subheader">
       <p>
         <code>
           <span class="nowrap"
@@ -30,7 +30,6 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
           >
         </code>
       </p>
-
       <div>
         <Button class="brand">
           <Icon name="mdi:connection" />
@@ -63,21 +62,24 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
 
 <style is:global>
   .hero-section {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: var(--size-6);
+    display: grid;
+    column-gap: var(--size-fluid-3);
     max-width: calc(var(--size-lg));
-    container-type: inline-size;
+    grid-template: "header" "subheader" "img";
+    align-items: center;
 
     header {
       display: grid;
       gap: var(--size-fluid-1);
+      grid-area: header;
+      margin-bottom: var(--size-fluid-2);
     }
-    & > div {
+
+    .subheader {
       display: grid;
-      gap: var(--size-3);
+      gap: var(--size-fluid-2);
+      grid-area: subheader;
+      margin-bottom: var(--size-fluid-3);
     }
 
     h1 {
@@ -96,26 +98,54 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       max-width: 15ch;
     }
     img {
-      --_size: min(35vh, 70svw);
+      --_size: min(250px, 55vw);
       border-radius: var(--radius-2);
       max-height: var(--_size);
       max-width: var(--_size);
+      grid-area: img;
     }
 
     ul.buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--size-3);
-      /* position: absolute; */
+      gap: var(--size-fluid-1);
     }
 
     div:has(> .buttons) {
       display: flex;
       flex-wrap: wrap;
-      column-gap: var(--size-5);
-      row-gap: var(--size-2);
+      column-gap: var(--size-fluid-2);
+      row-gap: var(--size-fluid-2);
       align-items: start;
     }
+
+    @media screen and (max-width: 400px) {
+      img {
+        margin-inline: auto;
+      }
+    }
+    @media screen and (min-width: 500px) {
+      & {
+        grid-template: "header header" "img subheader";
+        grid-template-columns: min-content 1fr;
+      }
+      img {
+        --_size: max(180px, 25vw);
+      }
+      .subheader {
+        margin-bottom: 0;
+      }
+    }
+    @media screen and (min-width: 870px) {
+      & {
+        grid-template: "header img" "subheader img";
+        grid-template-columns: 1fr min-content;
+      }
+      img {
+        --_size: min(300px, 30vw);
+      }
+    }
+
     code {
       display: block;
       font-size: var(--font-size-fluid-0);
