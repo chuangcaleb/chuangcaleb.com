@@ -42,6 +42,11 @@ let html = asChild && hs(await Astro.slots.render("default"), className);
     border-style: solid;
     border-radius: var(--radius-2);
 
+    svg {
+      height: 2rem;
+      width: 2rem;
+    }
+
     &.brand {
       --_bg: var(--brand);
       --_text: var(--text-on-brand);

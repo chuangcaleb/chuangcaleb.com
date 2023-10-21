@@ -1,0 +1,57 @@
+---
+import HighlightCard from "@components/HighlightCard.astro";
+import { getCollection } from "astro:content";
+
+const highlights = (await getCollection("highlight")).sort(
+  (a, b) => a.data.sequence.valueOf() - b.data.sequence.valueOf(),
+);
+---
+
+<section class="highlights-section">
+  <h2 class="">now</h2>
+  <div class="highlights">
+    {highlights.map((h) => <HighlightCard highlight={h} />)}
+  </div>
+</section>
+
+<style>
+  .highlights-section {
+    display: grid;
+    /* max-width: 100%; */
+
+    /* https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/ */
+
+    --_layout-gap: var(--size-fluid-4);
+    --_column-count: 4;
+    --_item--min-width: calc(var(--size-content-2) / 3);
+
+    --_gap-count: calc(var(--_column-count) - 1);
+    --_total-gap-width: calc(var(--_gap-count) * var(--_layout-gap));
+    --_item--max-width: calc(
+      (100% - var(--_total-gap-width)) / var(--_column-count)
+    );
+
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(max(var(--_item--min-width), var(--_item--max-width)), 1fr)
+    );
+
+    column-gap: var(--_layout-gap);
+    row-gap: var(--size-5);
+
+    .highlights {
+      grid-column: span 3 / span 3;
+      display: grid;
+      gap: var(--size-3);
+    }
+    h2 {
+      display: grid;
+      /* place-items: center;
+      align-self: stretch; */
+      color: var(--brand);
+      /* border-right-color: var(--brand);
+      border-right-width: 1px;
+      border-right-style: solid; */
+    }
+  }
+</style>

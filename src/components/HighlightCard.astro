@@ -1,0 +1,13 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  highlight: CollectionEntry<"highlight">;
+}
+
+const { highlight } = Astro.props;
+
+const { Content } = await highlight.render();
+---
+
+<Content />
