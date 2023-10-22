@@ -4,8 +4,16 @@ sequence: 1
 ---
 
 import { Icon } from "astro-iconify";
+import { getYearsSince } from "@utils/date";
+import { format, parseISO } from "date-fns";
 
-### <Icon name="lucide:briefcase" /> Airasia SuperApp
+export const { date } = frontmatter;
 
-- **Software Engineer I** (Frontend Web Dev)
-- since {frontmatter.date}
+### <Icon name="lucide:briefcase" /> working as
+
+#### Software Engineer I
+
+- <Icon name="lucide:map-pin" /> [Airasia SuperApp](https://www.airasia.com/aa/appdownload/)
+  / [their LinkedIn](https://www.linkedin.com/company/)
+- <Icon name="lucide:calendar" /> since {format(parseISO(date), "MMM yyyy")}
+  *({getYearsSince(date)} ago)*

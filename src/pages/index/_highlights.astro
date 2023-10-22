@@ -14,7 +14,7 @@ const highlights = (await getCollection("highlight")).sort(
   </div>
 </section>
 
-<style>
+<style is:global>
   .highlights-section {
     display: grid;
     /* max-width: 100%; */
@@ -39,19 +39,22 @@ const highlights = (await getCollection("highlight")).sort(
     column-gap: var(--_layout-gap);
     row-gap: var(--size-5);
 
+    /* border-color: var(--border);
+    padding: var(--size-fluid-1) var(--size-fluid-2);
+    border-radius: var(--radius-2);
+    border-width: 1px;
+    border-style: solid; */
     .highlights {
       grid-column: span 3 / span 3;
       display: grid;
-      gap: var(--size-3);
+      gap: var(--size-fluid-4);
     }
     h2 {
       display: grid;
       /* place-items: center;
       align-self: stretch; */
+      /* background-color: var(--surface-1b); */
       color: var(--brand);
-      /* border-right-color: var(--brand);
-      border-right-width: 1px;
-      border-right-style: solid; */
     }
   }
 </style>

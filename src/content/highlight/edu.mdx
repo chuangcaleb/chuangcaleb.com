@@ -4,9 +4,16 @@ sequence: 2
 ---
 
 import { Icon } from "astro-iconify";
+import { getYearsSince } from "@utils/date";
+import { format, parseISO } from "date-fns";
 
-### <Icon name="lucide:graduation-cap" /> Uni of Nottingham
+export const { date } = frontmatter;
 
-- BSc Computer Science w/ Artificial Intelligence
-- First Class (Honours)
-- graduated {frontmatter.date}
+### <Icon name="lucide:graduation-cap" /> graduated with
+
+#### BSc Computer Science w/ AI
+
+- <Icon name="lucide:map-pin" /> [Uni of Nottingham](https://www.nottingham.ac.uk/)
+- <Icon name="lucide:trophy" /> First Class Honours
+- <Icon name="lucide:calendar" /> graduated {format(parseISO(date), "MMM yyyy")}
+  *({getYearsSince(date)} ago)*
