@@ -1,4 +1,5 @@
 ---
+import HeadingCaps from "@components/HeadingCaps.astro";
 import Button from "@components/button.astro";
 import LINKS from "@data/links";
 import { Icon } from "astro-iconify";
@@ -9,7 +10,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
 
 <section class="hero-section">
   <header>
-    <h1>Chuang Caleb</h1>
+    <HeadingCaps as="h1">Chuang Caleb</HeadingCaps>
     <h2>
       Frontend Web Dev <span class="deemph">with a</span>
       <span class="gradient"> different story.</span>
@@ -27,7 +28,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       </code>
     </p>
     <div>
-      <Button class="brand">
+      <Button theme="brand">
         <Icon name="mdi:connection" />
         <span>Get connected!</span>
       </Button>
@@ -35,10 +36,8 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
         {
           heroLinks.map((l) => (
             <li>
-              <Button asChild>
-                <a aria-label={l.ariaLabel} href={l.href}>
-                  <Icon name={l.icon} />
-                </a>
+              <Button as="a" aria-label={l.ariaLabel} href={l.href}>
+                <Icon name={l.icon} />
               </Button>
             </li>
           ))
@@ -79,10 +78,6 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
 
     h1 {
       font-size: var(--font-size-fluid-1);
-      font-weight: var(--font-weight-4);
-      color: var(--brand);
-      text-transform: uppercase;
-      letter-spacing: var(--font-letterspacing-4);
     }
 
     h2 {

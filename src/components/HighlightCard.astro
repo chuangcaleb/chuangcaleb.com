@@ -1,6 +1,6 @@
 ---
-import type { AstroBuiltinProps } from "astro";
 import type { CollectionEntry } from "astro:content";
+import HeadingCaps from "./HeadingCaps.astro";
 
 interface Props {
   highlight: CollectionEntry<"highlight">;
@@ -9,7 +9,7 @@ interface Props {
 const { highlight } = Astro.props;
 
 const components = {};
-
+// const components = { h3: HeadingCaps({ as: "h3" }) };
 const { Content } = await highlight.render();
 ---
 
@@ -24,15 +24,21 @@ const { Content } = await highlight.render();
     }
     h3 {
       margin-bottom: var(--size-1);
-
       font-size: var(--font-size-fluid-0);
-      font-weight: var(--font-weight-4);
-      color: var(--brand);
-      text-transform: uppercase;
-      letter-spacing: var(--font-letterspacing-4);
+
+      svg {
+        font-size: var(--font-size-fluid-1);
+      }
     }
     em {
       color: var(--text-muted);
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      & > li {
+        padding-left: 0;
+      }
     }
   }
 </style>

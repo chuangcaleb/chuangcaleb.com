@@ -1,31 +1,16 @@
 ---
-import { cn, hs } from "@utils/ui";
-import type { HTMLAttributes } from "astro/types";
+import { type HTMLTag, type Polymorphic } from "astro/types";
 
-export interface ButtonProps extends HTMLAttributes<"button"> {
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
   theme?: "brand";
-  size?: "icon";
-  asChild?: boolean;
-}
+};
 
-type Props = ButtonProps;
-
-let { class: className, theme, size, asChild = false, ...props } = Astro.props;
-
-className = cn("cc-btn", className, theme, size);
-
-let html = asChild && hs(await Astro.slots.render("default"), className);
+const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
 ---
 
-{
-  asChild ? (
-    <Fragment set:html={html} />
-  ) : (
-    <button class={className} {...props}>
-      <slot />
-    </button>
-  )
-}
+<Comp class:list={["cc-btn", theme, className]} {...props}>
+  <slot />
+</Comp>
 
 <style is:global>
   .cc-btn {
@@ -54,7 +39,6 @@ let html = asChild && hs(await Astro.slots.render("default"), className);
       --_text-hover: var(--brand);
     }
 
-    &.icon,
     &:has(svg:first-child:last-child) {
       padding: var(--size-1);
     }

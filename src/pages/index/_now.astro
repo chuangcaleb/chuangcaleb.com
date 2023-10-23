@@ -8,7 +8,7 @@ const highlights = (await getCollection("highlight")).sort(
 ---
 
 <section class="highlights-section">
-  <h2 class="">now</h2>
+  <h2>now</h2>
   <div class="highlights">
     {highlights.map((h) => <HighlightCard highlight={h} />)}
   </div>
@@ -54,7 +54,7 @@ const highlights = (await getCollection("highlight")).sort(
       /* place-items: center;
       align-self: stretch; */
       /* background-color: var(--surface-1b); */
-      color: var(--brand);
+      /* color: var(--brand); */
     }
   }
 </style>
