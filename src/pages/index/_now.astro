@@ -1,5 +1,6 @@
 ---
 import HighlightCard from "@components/HighlightCard/HighlightCard.astro";
+import Icon from "astro-iconify";
 import { getCollection } from "astro:content";
 
 const highlights = (await getCollection("highlight")).sort(
@@ -8,7 +9,7 @@ const highlights = (await getCollection("highlight")).sort(
 ---
 
 <section class="highlights-section">
-  <h2>now</h2>
+  <h2><Icon name="lucide:chevron-up-circle" /> now</h2>
   <div class="highlights">
     {highlights.map((h) => <HighlightCard highlight={h} />)}
   </div>
@@ -21,7 +22,7 @@ const highlights = (await getCollection("highlight")).sort(
 
     /* https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/ */
 
-    --_layout-gap: var(--size-fluid-4);
+    --_layout-gap: 0px;
     --_column-count: 4;
     --_item--min-width: calc(var(--size-content-2) / 3);
 
@@ -50,7 +51,12 @@ const highlights = (await getCollection("highlight")).sort(
       gap: var(--size-fluid-4);
     }
     h2 {
-      display: grid;
+      display: inline;
+      white-space: nowrap;
+      width: 100%;
+      svg {
+        color: var(--brand);
+      }
       /* place-items: center;
       align-self: stretch; */
       /* background-color: var(--surface-1b); */
