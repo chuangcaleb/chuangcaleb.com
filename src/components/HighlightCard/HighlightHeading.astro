@@ -1,0 +1,6 @@
+---
+import HeadingCaps from "@components/HeadingCaps.astro";
+const props = Astro.props;
+---
+
+<HeadingCaps {...props} as="h3"><slot /></HeadingCaps>

@@ -1,5 +1,5 @@
 ---
-import HighlightCard from "@components/HighlightCard.astro";
+import HighlightCard from "@components/HighlightCard/HighlightCard.astro";
 import { getCollection } from "astro:content";
 
 const highlights = (await getCollection("highlight")).sort(

@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import HeadingCaps from "./HeadingCaps.astro";
+import Heading from "./HighlightHeading.astro";
 
 interface Props {
   highlight: CollectionEntry<"highlight">;
@@ -8,8 +8,7 @@ interface Props {
 
 const { highlight } = Astro.props;
 
-const components = {};
-// const components = { h3: HeadingCaps({ as: "h3" }) };
+const components = { h1: Heading, h2: "h4" };
 const { Content } = await highlight.render();
 ---
 
@@ -27,7 +26,7 @@ const { Content } = await highlight.render();
       font-size: var(--font-size-fluid-0);
 
       svg {
-        font-size: var(--font-size-fluid-1);
+        font-size: var(--font-size-fluid-0);
       }
     }
     em {
