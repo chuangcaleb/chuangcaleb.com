@@ -26,28 +26,33 @@ section {
   box-decoration-break: clone;
   text-decoration-line: underline;
   color: var(--brand);
-  text-decoration-color: hsla(var(--brand-hsl), 0.5);
+  text-decoration-color: hsla(var(--brand-hsl) / 0.5);
   text-decoration-thickness: 0.1em;
   text-underline-offset: 0.2em;
   text-decoration-skip-ink: none;
+  margin: calc(var(--size-1) * -1);
+  padding: var(--size-1);
 }
 
-:where(a[href]) {
-  &:hover,
-  &:focus,
-  &:active {
-    border-radius: var(--radius-2);
-    background-color: var(--brand);
-    color: var(--text-on-brand);
-    box-shadow:
-      var(--tw-ring-offset-shadow, 0 0 var(--brand)),
-      var(--tw-ring-shadow, 0 0 var(--brand)),
-      /* 0 0 0 0.15em var(--brand), */ 0 0 var(--size-8) 0 var(--brand);
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-  }
+:where(a[href]):is(:hover, :focus, :active) {
+  border-radius: var(--radius-2);
+  background-color: var(--brand);
+  color: var(--text-on-brand);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  text-decoration-line: none;
 }
 
 .text-muted {
   color: var(--text-muted);
+}
+
+:where(a[href], button, .hover-glow):is(:hover, :focus, :active),
+.glow {
+  --glow: var(--brand);
+  --size: var(--size-8);
+  box-shadow:
+    0 0 var(--glow),
+    0 0 var(--glow),
+    0 0 var(--size) 0 var(--glow);
 }

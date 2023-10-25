@@ -70,6 +70,14 @@
   cursor: pointer;
 }
 
+:where(input, button, textarea, select)
+/* :where(input[type="file"])::-webkit-file-upload-button  */ {
+  color: inherit;
+  font: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+
 /* ---------------------------------- text ---------------------------------- */
 
 :where(h1, h2, h3, h4, h5, h6) {
@@ -102,11 +110,6 @@
 }
 :where(a, u, ins, abbr) {
   text-underline-offset: 1px;
-}
-
-:where(a) {
-  margin: calc(var(--size-1) * -1);
-  padding: var(--size-1);
 }
 
 :where(code, kbd, samp, pre) {

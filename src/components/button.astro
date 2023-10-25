@@ -50,23 +50,19 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
       margin: 0;
     }
 
-    &:hover {
+    &:is(:hover, :focus, :active) {
       --_bg: var(--_bg-hover);
       --_text: var(--_text-hover, var(--brand));
-      box-shadow:
-        var(--tw-ring-offset-shadow, 0 0 var(--brand)),
-        var(--tw-ring-shadow, 0 0 var(--brand)),
-        /* 0 0 0 0.15em var(--brand), */ 0 0 var(--size-8) 0 var(--brand);
     }
 
     @media (prefers-color-scheme: dark) {
-      &:hover {
+      &:is(:hover, :focus, :active) {
         --_bg-hover: var(--text-1);
         --_border: transparent;
       }
     }
     @media (prefers-color-scheme: light) {
-      &:hover {
+      &:is(:hover, :focus, :active) {
         --_bg-hover: var(--surface-1a);
         --_border: var(--brand);
       }
