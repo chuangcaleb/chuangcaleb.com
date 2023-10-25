@@ -11,7 +11,10 @@ const projects = (await getCollection("project")).sort(
 ---
 
 <section class="projects-section">
-  <HeadingWIcon as="h2"><Icon name="lucide:atom" /> / projects</HeadingWIcon>
+  <HeadingWIcon as="h2">
+    <Icon name="lucide:atom" />
+    {" "}<span class="text-muted">/</span> projects
+  </HeadingWIcon>
   <div class="projects">
     {projects.map((p) => <ProjectCard project={p} />)}
   </div>

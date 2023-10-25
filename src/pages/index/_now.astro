@@ -11,7 +11,8 @@ const highlights = (await getCollection("highlight")).sort(
 
 <section class="highlights-section">
   <HeadingWIcon as="h2">
-    <Icon name="lucide:chevron-up-circle" /> / now
+    <Icon name="lucide:chevron-up-circle" />
+    {" "}<span class="text-muted">/</span> now
   </HeadingWIcon>
   <div class="highlights">
     {highlights.map((h) => <HighlightCard highlight={h} />)}
