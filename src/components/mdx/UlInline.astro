@@ -1,0 +1,20 @@
+---
+import { type HTMLAttributes } from "astro/types";
+
+export interface Props extends HTMLAttributes<"ul"> {}
+
+const { class: className, ...props } = Astro.props;
+---
+
+<ul class:list={["norm cc-ul-flat", className]} {...props}>
+  <slot />
+</ul>
+
+<style is:global>
+  .cc-ul-flat {
+    display: inline-block;
+    & > li {
+      display: inline-block;
+    }
+  }
+</style>

@@ -1,7 +1,8 @@
 ---
-import NormUl from "@components/mdx/UlNorm.astro";
+import Caps from "@components/Caps.astro";
+import StyleH3 from "@components/mdx/StyleH3.astro";
+import UlFlat from "@components/mdx/UlInline.astro";
 import type { CollectionEntry } from "astro:content";
-import Heading from "../mdx/HeadingCapsH3.astro";
 
 interface Props {
   project: CollectionEntry<"project">;
@@ -9,13 +10,13 @@ interface Props {
 
 const { project } = Astro.props;
 
-const components = { h1: "h3", blockquote: "h4", ul: NormUl };
+const components = { h1: "h3", h2: Caps, ul: UlFlat };
 const { Content } = await project.render();
 ---
 
-<div class="project">
+<article class="project">
   <Content components={components} />
-</div>
+</article>
 
 <style is:global>
   .project {
@@ -24,14 +25,8 @@ const { Content } = await project.render();
       margin-bottom: var(--size-3);
     }
     h3 {
-      /* font-size: var(--font-size-fluid-1); */
-    }
-    h4 {
       order: -1;
       margin-bottom: var(--size-1);
-    }
-    em {
-      color: var(--text-muted);
     }
 
     li > svg {

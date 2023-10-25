@@ -27,8 +27,6 @@ section {
   text-decoration-line: underline;
   color: var(--brand);
   text-decoration-color: hsla(var(--brand-hsl) / 0.5);
-  text-decoration-thickness: 0.1em;
-  text-underline-offset: 0.2em;
   text-decoration-skip-ink: none;
   margin: calc(var(--size-1) * -1);
   padding: var(--size-1);

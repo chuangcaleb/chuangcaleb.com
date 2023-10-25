@@ -3,18 +3,24 @@ import { type HTMLTag, type Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>;
 
-const { as: Tag = "h1", class: className, ...props } = Astro.props;
+const { as: Tag = "p", class: className, ...props } = Astro.props;
 ---
 
-<Tag class:list={["cc-heading-caps", className]} {...props}>
+<Tag class:list={["cc-caps", className]} {...props}>
   <slot />
 </Tag>
 
 <style is:global>
-  .cc-heading-caps {
+  .cc-caps {
     font-weight: var(--font-weight-4);
     color: var(--brand);
     text-transform: uppercase;
     letter-spacing: var(--font-letterspacing-4);
+    & > h3 {
+      font-weight: revert;
+      color: revert;
+      text-transform: revert;
+      letter-spacing: revert;
+    }
   }
 </style>

@@ -1,5 +1,6 @@
 ---
-import Heading from "@components/mdx/HeadingCapsH3.astro";
+import HeadingCapsAsH3 from "@components/mdx/HeadingCapsAsH3.astro";
+import StyleH3 from "@components/mdx/StyleH3.astro";
 import NormUl from "@components/mdx/UlNorm.astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -9,13 +10,18 @@ interface Props {
 
 const { highlight } = Astro.props;
 
-const components = { h1: Heading, h2: "h4", ul: NormUl };
+const components = {
+  blockquote: "header",
+  h1: HeadingCapsAsH3,
+  h2: StyleH3,
+  ul: NormUl,
+};
 const { Content } = await highlight.render();
 ---
 
-<div class="highlight">
+<article class="highlight">
   <Content components={components} />
-</div>
+</article>
 
 <style is:global>
   .highlight {
