@@ -1,9 +1,8 @@
-/*
 :where(html) {
-  accent-color: var(--brand, var(--link));
+  accent-color: var(--brand);
   background-color: var(--surface-1a);
   height: 100%;
-  caret-color: var(--brand, var(--link));
+  caret-color: var(--brand);
   color: var(--text-1);
   color-scheme: dark;
   font-family: var(--font-sans);
@@ -12,7 +11,7 @@
 }
 
 :focus-visible {
-  outline-color: var(--brand, var(--link));
+  outline-color: var(--brand);
 }
 *,
 :after,
@@ -25,7 +24,7 @@
 
 :where(h1, h2, h3, h4, h5, h6) {
   text-wrap: balance;
-  font-weight: var(--font-weight-9);
+  font-weight: var(--font-weight-8);
   line-height: var(--font-lineheight-1);
 }
 :where(h1) {
@@ -53,7 +52,7 @@
 }
 :where(a, u, ins, abbr) {
   text-underline-offset: 1px;
-} */
+}
 
 :not(pre) > code {
   white-space: initial;
@@ -75,8 +74,4 @@ ul.norm {
   li {
     padding: unset;
   }
-}
-
-h3 {
-  font-weight: var(--font-weight-8);
 }

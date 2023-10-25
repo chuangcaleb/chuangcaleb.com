@@ -39,10 +39,6 @@ section {
     border-radius: var(--radius-2);
     background-color: var(--brand);
     color: var(--text-on-brand);
-    --tw-text-opacity: 1;
-    --tw-shadow: 0 0 0 0.15em var(--brand), 0 0 3em 0 var(--brand);
-    --tw-shadow-colored: 0 0 0 0.15em var(--tw-shadow-color),
-      0 0 3em 0 var(--tw-shadow-color);
     box-shadow:
       var(--tw-ring-offset-shadow, 0 0 var(--brand)),
       var(--tw-ring-shadow, 0 0 var(--brand)),
@@ -54,11 +50,4 @@ section {
 
 .text-muted {
   color: var(--text-muted);
-}
-
-.heading-caps {
-  font-weight: var(--font-weight-4);
-  color: var(--brand);
-  text-transform: uppercase;
-  letter-spacing: var(--font-letterspacing-4);
 }

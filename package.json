@@ -19,7 +19,6 @@
     "astro-compressor": "^0.4.1",
     "astro-iconify": "^1.2.0",
     "astro-purgecss": "^3.2.1",
-    "node-html-parser": "^6.1.10",
     "open-props": "^1.6.8",
     "postcss-custom-media": "^10.0.2",
     "postcss-preset-env": "^9.2.0",

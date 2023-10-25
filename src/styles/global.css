@@ -6,7 +6,7 @@
 @import "open-props/sizes";
 @import "open-props/media";
 
-@import "open-props/normalize";
+/* @import "open-props/normalize"; */
 @import "normalize.css";
 
 @import "colors.css";
