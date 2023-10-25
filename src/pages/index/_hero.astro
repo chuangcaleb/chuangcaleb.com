@@ -28,7 +28,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       </code>
     </p>
     <div>
-      <Button theme="brand">
+      <Button theme="brand" class="cta-1">
         <Icon name="mdi:connection" />
          Get connected!
       </Button>
@@ -99,20 +99,24 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       gap: var(--size-fluid-1);
     }
 
+    .cta-1 {
+      flex-grow: 1;
+      max-width: var(--size-content-1);
+    }
+
     div:has(> .buttons) {
       display: flex;
       flex-wrap: wrap;
       column-gap: var(--size-fluid-2);
       row-gap: var(--size-fluid-2);
-      align-items: flex-start;
     }
 
-    @media screen and (width < 400px) {
+    @media screen and (width < 500px) {
       img {
         margin-inline: auto;
       }
     }
-    @media screen and (500px <= width < 870px) {
+    @media screen and (500px <= width < 896px) {
       & {
         grid-template: "header header" "img subheader";
         grid-template-columns: min-content 1fr;
@@ -125,7 +129,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
         max-width: var(--size-content-2);
       }
     }
-    @media screen and (width >= 870px) {
+    @media screen and (width >= 896px) {
       & {
         grid-template: "header img" "subheader img";
         grid-template-columns: 1fr min-content;
