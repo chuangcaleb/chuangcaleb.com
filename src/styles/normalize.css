@@ -104,6 +104,11 @@
   text-underline-offset: 1px;
 }
 
+:where(a) {
+  margin: calc(var(--size-1) * -1);
+  padding: var(--size-1);
+}
+
 :where(code, kbd, samp, pre) {
   font-family: var(--font-mono);
 }

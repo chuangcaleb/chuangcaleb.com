@@ -11,7 +11,7 @@ const projects = (await getCollection("project")).sort(
 ---
 
 <section class="projects-section">
-  <HeadingWIcon as="h2"><Icon name="lucide:atom" /> projects</HeadingWIcon>
+  <HeadingWIcon as="h2"><Icon name="lucide:atom" /> / projects</HeadingWIcon>
   <div class="projects">
     {projects.map((p) => <ProjectCard project={p} />)}
   </div>
@@ -19,5 +19,7 @@ const projects = (await getCollection("project")).sort(
 
 <style is:global>
   .projects-section {
+    display: grid;
+    grid-gap: var(--size-fluid-4);
   }
 </style>

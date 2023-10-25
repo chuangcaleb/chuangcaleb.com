@@ -11,7 +11,7 @@ const highlights = (await getCollection("highlight")).sort(
 
 <section class="highlights-section">
   <HeadingWIcon as="h2">
-    <Icon name="lucide:chevron-up-circle" /> now
+    <Icon name="lucide:chevron-up-circle" /> / now
   </HeadingWIcon>
   <div class="highlights">
     {highlights.map((h) => <HighlightCard highlight={h} />)}
@@ -25,7 +25,7 @@ const highlights = (await getCollection("highlight")).sort(
 
     /* https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/ */
 
-    --_layout-gap: 0px;
+    --_layout-gap: var(--size-4);
     --_column-count: 4;
     --_item--min-width: calc(var(--size-content-2) / 3);
 
