@@ -4,8 +4,7 @@ sequence: 2
 ---
 
 import { Icon } from "astro-iconify";
-import { getYearsSince } from "@utils/date";
-import { format, parseISO } from "date-fns";
+import { getMonthsSince, formatISO } from "@utils/date";
 
 export const { date } = frontmatter;
 
@@ -15,5 +14,5 @@ export const { date } = frontmatter;
 
 - <Icon name="lucide:map-pin" /> Uni of Nottingham ([UNM](https://www.nottingham.edu.my)+[UNUK](https://www.nottingham.ac.uk/))
 - <Icon name="lucide:trophy" /> First Class Honours
-- <Icon name="lucide:calendar" /> graduated {format(parseISO(date), "MMM yyyy")}
-  *({getYearsSince(date)} ago)*
+- <Icon name="lucide:calendar" /> graduated {formatISO(date, "MMM yyyy")}
+  *({getMonthsSince(date)} ago)*

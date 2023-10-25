@@ -1,10 +1,28 @@
 ---
 import Main from "@layouts/Main.astro";
-import Hero from "./index/_hero.astro";
-import Highlights from "./index/_now.astro";
+import Hero from "./index/_Hero.astro";
+import Highlights from "./index/_Now.astro";
+import Projects from "./index/_Projects.astro";
 ---
 
-<Main>
+<Main class="main-index">
   <Hero />
   <Highlights />
+  <Projects />
 </Main>
+
+<style is:global>
+  .main-index {
+    section:not(:first-child) h2 {
+      display: inline;
+      white-space: nowrap;
+      svg {
+        color: var(--brand);
+      }
+      /* place-items: center;
+      align-self: stretch; */
+      /* background-color: var(--surface-1b); */
+      /* color: var(--brand); */
+    }
+  }
+</style>
