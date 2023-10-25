@@ -1,4 +1,5 @@
 ---
+import HeadingWIcon from "@components/HeadingWIcon.astro";
 import HighlightCard from "@components/HighlightCard/HighlightCard.astro";
 import Icon from "astro-iconify";
 import { getCollection } from "astro:content";
@@ -9,7 +10,9 @@ const highlights = (await getCollection("highlight")).sort(
 ---
 
 <section class="highlights-section">
-  <h2><Icon name="lucide:chevron-up-circle" /> now</h2>
+  <HeadingWIcon as="h2">
+    <Icon name="lucide:chevron-up-circle" /> now
+  </HeadingWIcon>
   <div class="highlights">
     {highlights.map((h) => <HighlightCard highlight={h} />)}
   </div>
