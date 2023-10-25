@@ -1,3 +1,5 @@
+/* --------------------------------- layout --------------------------------- */
+
 :where(html) {
   accent-color: var(--brand);
   background-color: var(--surface-1a);
@@ -21,6 +23,54 @@
 :where(:not(dialog)) {
   margin: 0;
 }
+
+:where(:not(:is(fieldset, progress, meter))) {
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 0;
+}
+
+/* ------------------------------ interactables ----------------------------- */
+
+:where(input, button, textarea, select),
+/* :where(input[type="file"])::-webkit-file-upload-button */ {
+  color: inherit;
+  font: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+
+:where(
+    a[href],
+    /* area, */
+    button,
+    /* input,
+    label[for],
+    select,
+    summary,
+    textarea,
+    [tabindex]:not([tabindex*="-"]) */
+  ) {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+:where(
+    a[href],
+    /* area, */
+    button,
+    /* input:not([type="text"]):not([type="email"]):not([type="number"]):not(
+        [type="password"]
+      ):not([type=""]):not([type="tel"]):not([type="url"]),
+    label[for],
+    select,
+    summary, */
+    [tabindex]:not([tabindex*="-"])
+  ) {
+  cursor: pointer;
+}
+
+/* ---------------------------------- text ---------------------------------- */
 
 :where(h1, h2, h3, h4, h5, h6) {
   text-wrap: balance;
@@ -54,8 +104,21 @@
   text-underline-offset: 1px;
 }
 
+:where(code, kbd, samp, pre) {
+  font-family: var(--font-mono);
+}
+
 :not(pre) > code {
   white-space: initial;
+}
+
+:where(:not(pre) > code) {
+  background: var(--surface-2);
+  border-radius: 5px;
+  border-radius: var(--radius-2);
+  padding: 0.25rem 0.5rem;
+  padding: var(--size-1) var(--size-2);
+  writing-mode: lr;
 }
 
 :where(ol, ul) {
@@ -67,6 +130,8 @@
   display: inline-block;
   width: 1em;
 }
+
+/* ------------------------------ custom resets ----------------------------- */
 
 ul.norm {
   list-style-type: none;
