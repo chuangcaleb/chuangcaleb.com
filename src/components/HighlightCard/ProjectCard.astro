@@ -10,7 +10,7 @@ interface Props {
 
 const { project } = Astro.props;
 
-const components = { h1: "h3", h2: Caps, ul: UlFlat };
+const components = { blockquote: "header", h1: "h3", h2: Caps, ul: UlFlat };
 const { Content } = await project.render();
 ---
 
