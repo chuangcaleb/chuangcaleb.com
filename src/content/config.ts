@@ -9,7 +9,6 @@ const highlightCollection = defineCollection({
 const projectCollection = defineCollection({
   type: "content",
   schema: z.object({
-    date: z.date(),
     sequence: z.number(),
   }),
 });

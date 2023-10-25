@@ -13,8 +13,11 @@ const { class: className, ...props } = Astro.props;
 <style is:global>
   .cc-ul-flat {
     display: inline-block;
-    & > li {
+    padding-left: unset;
+    /* apply padding for second-level lists */
+    .cc-ul-flat > li {
       display: inline-block;
+      padding-inline-start: var(--size-2);
     }
   }
 </style>
