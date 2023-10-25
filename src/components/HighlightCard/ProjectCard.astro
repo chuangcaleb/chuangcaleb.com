@@ -3,21 +3,21 @@ import type { CollectionEntry } from "astro:content";
 import Heading from "../HeadingCapsH3.astro";
 
 interface Props {
-  highlight: CollectionEntry<"highlight">;
+  project: CollectionEntry<"project">;
 }
 
-const { highlight } = Astro.props;
+const { project } = Astro.props;
 
 const components = { h1: Heading, h2: "h4" };
-const { Content } = await highlight.render();
+const { Content } = await project.render();
 ---
 
-<div class="highlight">
+<div class="project">
   <Content components={components} />
 </div>
 
 <style is:global>
-  .highlight {
+  .project {
     & > *:where(:not(:last-child)) {
       margin-bottom: var(--size-3);
     }

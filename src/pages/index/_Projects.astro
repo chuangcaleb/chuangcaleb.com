@@ -1,6 +1,7 @@
 ---
 import HeadingWIcon from "@components/HeadingWIcon.astro";
 import HighlightCard from "@components/HighlightCard/HighlightCard.astro";
+import ProjectCard from "@components/HighlightCard/ProjectCard.astro";
 import Icon from "astro-iconify";
 import { getCollection } from "astro:content";
 
@@ -12,7 +13,7 @@ const projects = (await getCollection("project")).sort(
 <section class="projects-section">
   <HeadingWIcon as="h2"><Icon name="lucide:atom" /> projects</HeadingWIcon>
   <div class="projects">
-    {projects.map((h) => h)}
+    {projects.map((p) => <ProjectCard project={p} />)}
   </div>
 </section>
 
