@@ -1,6 +1,5 @@
 ---
 import Caps from "@components/Caps.astro";
-import StyleH3 from "@components/mdx/StyleH3.astro";
 import UlFlat from "@components/mdx/UlInline.astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -21,6 +20,7 @@ const { Content } = await project.render();
 <style is:global>
   .project {
     display: grid;
+    max-width: var(--size-content-3);
     & > *:where(:not(:last-child)) {
       margin-bottom: var(--size-3);
     }

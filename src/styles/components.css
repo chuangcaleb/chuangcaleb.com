@@ -11,11 +11,10 @@ section {
   /* --section-px: var(--size-fluid-3);
   --section_py: var(--size-fluid-2);
   --max-w: var(--size-lg); */
-  --section-w: var(--size-lg);
 
   padding-block: var(--size-fluid-4);
   padding-inline: var(--size-fluid-2);
-  max-width: var(--section-w);
+  max-width: var(--size-lg);
   /* padding-block: var(--section-px, var(--size-fluid-3));
   padding-inline: var(--section_py, var(--size-fluid-2));
   max-width: var(--max-w, var(--size-lg)); */

@@ -15,4 +15,5 @@ const projectCollection = defineCollection({
 
 export const collections = {
   highlight: highlightCollection,
+  project: projectCollection,
 };

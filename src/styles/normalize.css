@@ -143,6 +143,10 @@
   width: 1em;
 }
 
+:where(li, dd, figcaption) {
+  max-width: var(--size-content-2);
+}
+
 /* ------------------------------ custom resets ----------------------------- */
 
 ul.norm {
