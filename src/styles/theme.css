@@ -1,9 +1,9 @@
 html {
   /* light */
-  --brand-light-hsl: var(--day-hs), 60%;
-  --surface-1a-light: hsl(var(--day-hs), 90%);
-  --surface-1b-light: hsl(var(--day-hs), 95%);
-  --text-1-light: hsl(var(--day-hs), 10%);
+  --brand-light-hsl: var(--day-hs) 60%;
+  --surface-1a-light: hsl(var(--day-hs) 90%);
+  --surface-1b-light: hsl(var(--day-hs) 95%);
+  --text-1-light: hsl(var(--day-hs) 10%);
   --text-muted-light: var(--stone-5);
   --text-on-brand-light: var(--stone-1);
   --border-light: var(--stone-4);
@@ -16,12 +16,12 @@ html {
   --shadow-strength-light: 2%;
 
   /* dark */
-  --brand-dark-hsl: var(--day-hs), 65%;
-  --surface-1a-dark: hsl(var(--night-hs), 18%);
-  --surface-1b-dark: hsl(var(--night-hs), 12%);
+  --brand-dark-hsl: var(--day-hs) 65%;
+  --surface-1a-dark: hsl(var(--night-hs) 18%);
+  --surface-1b-dark: hsl(var(--night-hs) 12%);
   --text-1-dark: var(--stone-3);
   --text-muted-dark: var(--stone-6);
-  --text-on-brand-dark: hsl(var(--night-hs), 12%);
+  --text-on-brand-dark: hsl(var(--night-hs) 12%);
   --border-dark: hsl(var(--night-hs) 40%);
 
   --text-2-dark: var(--stone-5);
