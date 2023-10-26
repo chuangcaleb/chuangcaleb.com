@@ -21,8 +21,9 @@ const projects = (await getCollection("project")).sort(
 
 <style is:global>
   .projects-section {
-    display: grid;
-    grid-gap: var(--size-fluid-5);
+    h2 {
+      margin-bottom: var(--size-fluid-4);
+    }
   }
   .projects {
     display: grid;

@@ -14,45 +14,18 @@ const highlights = (await getCollection("highlight")).sort(
     <Icon name="lucide:chevron-up-circle" />
     {" "}<span class="text-muted">/</span> now
   </HeadingWIcon>
-  <div class="highlights">
-    {highlights.map((h) => <HighlightCard highlight={h} />)}
-  </div>
+  {highlights.map((h) => <HighlightCard highlight={h} />)}
 </section>
 
 <style is:global>
   .highlights-section {
+    max-width: var(--size-lg);
     display: grid;
-    /* max-width: 100%; */
-
-    /* https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/ */
-
-    --_layout-gap: var(--size-4);
-    --_column-count: 4;
-    --_item--min-width: calc(var(--size-content-2) / 3);
-
-    --_gap-count: calc(var(--_column-count) - 1);
-    --_total-gap-width: calc(var(--_gap-count) * var(--_layout-gap));
-    --_item--max-width: calc(
-      (100% - var(--_total-gap-width)) / var(--_column-count)
-    );
-
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(max(var(--_item--min-width), var(--_item--max-width)), 1fr)
-    );
-
-    column-gap: var(--_layout-gap);
-    row-gap: var(--size-5);
-
-    /* border-color: var(--border);
-    padding: var(--size-fluid-1) var(--size-fluid-2);
-    border-radius: var(--radius-2);
-    border-width: 1px;
-    border-style: solid; */
-    .highlights {
-      grid-column: span 3 / span 3;
-      display: grid;
-      gap: var(--size-fluid-4);
+    grid-template-columns: repeat(auto-fit, minmax(var(--size-content-2), 1fr));
+    column-gap: var(--size-fluid-3);
+    row-gap: var(--size-fluid-4);
+    h2 {
+      /* place-self: center; */
     }
   }
 </style>
