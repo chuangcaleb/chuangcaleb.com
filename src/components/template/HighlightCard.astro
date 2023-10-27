@@ -1,5 +1,5 @@
 ---
-import HeadingCapsAsH3 from "@components/styled/monom/HeadingCapsAsH3.astro";
+import CapsAsH3 from "@components/styled/monom/CapsAsH3.astro";
 import NormUl from "@components/styled/monom/UlNorm.astro";
 import StyleH3 from "@components/styled/polym/StyleH3.astro";
 import type { CollectionEntry } from "astro:content";
@@ -12,10 +12,11 @@ const { highlight } = Astro.props;
 
 const components = {
   blockquote: "header",
-  h1: HeadingCapsAsH3,
+  h1: CapsAsH3,
   h2: StyleH3,
   ul: NormUl,
 };
+
 const { Content } = await highlight.render();
 ---
 
