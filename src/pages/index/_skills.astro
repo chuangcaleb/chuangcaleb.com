@@ -1,0 +1,34 @@
+---
+import HeadingWIcon from "@components/styled/polym/HeadingWIcon.astro";
+import Icon from "astro-iconify";
+import SKILLS from "@data/skills";
+import SkillGroupCard from "@components/template/SkillGroupCard.astro";
+
+const skillGroups = Object.entries(SKILLS);
+---
+
+<section class="skills-section">
+  <HeadingWIcon as="h2">
+    <Icon name="lucide:book-plus" />
+    {" "}<span class="text-muted">/</span> skills
+  </HeadingWIcon>
+  <div class="skills">
+    {
+      skillGroups.map(([group, skills]) => (
+        <SkillGroupCard group={group} skills={skills} />
+      ))
+    }
+  </div>
+</section>
+
+<style is:global>
+  .skills-section {
+    h2 {
+      margin-bottom: var(--size-fluid-4);
+    }
+  }
+  .skills {
+    display: grid;
+    gap: var(--size-fluid-5);
+  }
+</style>

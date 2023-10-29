@@ -1,0 +1,22 @@
+---
+import UlInline from "@components/styled/monom/UlInline.astro";
+import type { Skills } from "@data/skills";
+interface Props {
+  group: string;
+  skills: Skills;
+}
+
+const { group, skills } = Astro.props;
+---
+
+<div class="skill-group-card">
+  <h3>{group}</h3>
+  <UlInline>{skills.map((s) => <li>{s.name}</li>)}</UlInline>
+</div>
+
+<style is:global>
+  .skill-group-card {
+     {
+    }
+  }
+</style>

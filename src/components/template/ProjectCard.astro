@@ -1,5 +1,5 @@
 ---
-import UlFlat from "@components/styled/monom/UlInline.astro";
+import UINestednline from "@components/styled/monom/UINestednline.astro";
 import Caps from "@components/styled/polym/Caps.astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -9,7 +9,12 @@ interface Props {
 
 const { project } = Astro.props;
 
-const components = { blockquote: "header", h1: "h3", h2: Caps, ul: UlFlat };
+const components = {
+  blockquote: "header",
+  h1: "h3",
+  h2: Caps,
+  ul: UINestednline,
+};
 const { Content } = await project.render();
 ---
 
