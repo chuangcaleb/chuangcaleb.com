@@ -11,12 +11,38 @@ const { group, skills } = Astro.props;
 
 <div class="skill-group-card">
   <h3>{group}</h3>
-  <UlInline>{skills.map((s) => <li>{s.name}</li>)}</UlInline>
+  <UlInline>
+    {
+      skills.map((s) => (
+        <li>
+          <span class="style-code">{s.name}</span>
+        </li>
+      ))
+    }
+  </UlInline>
 </div>
 
 <style is:global>
   .skill-group-card {
-     {
+    background-color: var(--surface-1b);
+
+    padding: var(--size-relative-5);
+    max-width: var(--size-content-2);
+
+    border-radius: var(--radius-2);
+    border-color: var(--border);
+    border-width: 1px;
+    & > * + * {
+      margin-top: var(--size-relative-4);
+    }
+    h3 {
+      max-width: fit-content;
+    }
+    ul {
+      font-size: var(--font-size-fluid-0);
+    }
+    li > span {
+      background-color: var(--surface-1a);
     }
   }
 </style>

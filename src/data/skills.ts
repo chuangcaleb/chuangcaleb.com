@@ -42,20 +42,20 @@ const SKILLS: SkillGroups = {
   Development: [
     { name: "bundling", icon: "" },
     { name: "version-control", icon: "" },
-    { name: "ci-cd-automation", icon: "" },
     { name: "domain-mgmt", icon: "" },
+    { name: "ci-cd-automation", icon: "" },
     { name: "infrastructure", icon: "" },
-  ],
-
-  Text: [
-    { name: "markdown", icon: "" },
-    { name: "regex", icon: "" },
   ],
 
   Code: [
     { name: "reusable-modules", icon: "" },
     { name: "coding-conventions", icon: "" },
     { name: "directory-mgmt", icon: "" },
+  ],
+
+  Text: [
+    { name: "markdown", icon: "" },
+    { name: "regex", icon: "" },
   ],
 
   "Non-Technical": [

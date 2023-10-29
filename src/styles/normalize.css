@@ -122,14 +122,17 @@
   text-underline-offset: 0.2em;
 }
 
+.style-code,
 :where(code, kbd, samp, pre) {
   font-family: var(--font-mono);
 }
 
+.style-code,
 :not(pre) > code {
   white-space: initial;
 }
 
+.style-code,
 :where(:not(pre) > code) {
   background: var(--surface-2);
   border-radius: 5px;

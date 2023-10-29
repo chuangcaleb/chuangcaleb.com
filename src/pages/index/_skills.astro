@@ -23,12 +23,20 @@ const skillGroups = Object.entries(SKILLS);
 
 <style is:global>
   .skills-section {
+    max-width: 100%;
     h2 {
       margin-bottom: var(--size-fluid-4);
+      /* text-align: center; */
+      max-width: 100%;
+      text-align: center;
+      /* margin-inline: auto; */
+      display: block;
     }
   }
   .skills {
-    display: grid;
-    gap: var(--size-fluid-5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--size-fluid-2);
   }
 </style>
