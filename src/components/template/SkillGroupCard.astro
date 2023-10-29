@@ -1,21 +1,23 @@
 ---
 import UlInline from "@components/styled/monom/UlInline.astro";
-import type { Skills } from "@data/skills";
+import type { SkillGroup } from "@data/skills";
+import Icon from "astro-iconify";
 interface Props {
-  group: string;
-  skills: Skills;
+  name: string;
+  group: SkillGroup;
 }
 
-const { group, skills } = Astro.props;
+const { name, group } = Astro.props;
+const { icon, skills } = group;
 ---
 
 <div class="skill-group-card">
-  <h3>{group}</h3>
+  <h3>{icon && <Icon name={icon} />}{name}</h3>
   <UlInline>
     {
       skills.map((s) => (
         <li>
-          <span class="style-code">{s.name}</span>
+          <span class="style-code">{s}</span>
         </li>
       ))
     }
@@ -37,6 +39,8 @@ const { group, skills } = Astro.props;
     }
     h3 {
       max-width: fit-content;
+      display: inline-flex;
+      gap: var(--size-relative-2);
     }
     ul {
       font-size: var(--font-size-fluid-0);

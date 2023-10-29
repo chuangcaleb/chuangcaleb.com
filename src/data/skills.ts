@@ -1,69 +1,67 @@
-export type Skills = {
-  name: string;
+export interface SkillGroup {
   icon: string;
-}[];
+  skills: string[];
+}
 
 interface SkillGroups {
-  [group: string]: Skills;
+  [group: string]: SkillGroup;
 }
 
 const SKILLS: SkillGroups = {
-  Web: [
-    { name: "semantic-html", icon: "" },
-    { name: "a11y", icon: "" },
-    { name: "seo", icon: "" },
-    { name: "browser-compat", icon: "" },
-  ],
+  Web: {
+    icon: "lucide:globe",
+    skills: ["semantic-html", "a11y", "seo", "browser-compat"],
+  },
 
-  "UI & Styles": [
-    { name: "gestalt", icon: "" },
-    { name: "design-system", icon: "" },
-    { name: "component-lib", icon: "" },
-    { name: "responsive-design", icon: "" },
-    { name: "css-preprocess", icon: "" },
-  ],
+  "UI & Styles": {
+    icon: "lucide:palette",
+    skills: [
+      "gestalt",
+      "design-system",
+      "component-lib",
+      "responsive-design",
+      "css-preprocess",
+    ],
+  },
 
-  Network: [
-    { name: "rest-ful", icon: "" },
-    { name: "async-program", icon: "" },
-    { name: "caching", icon: "" },
-    { name: "rendering-strats", icon: "" },
-  ],
+  Network: {
+    icon: "lucide:arrow-down-up",
+    skills: ["rest-ful", "async-program", "caching", "rendering-strats"],
+  },
 
-  Optimization: [
-    { name: "prpl", icon: "" },
-    { name: "perf-tools", icon: "" },
-    { name: "minification", icon: "" },
-    { name: "code-splitting", icon: "" },
-    { name: "image-optim", icon: "" },
-    { name: "bundling", icon: "" },
-  ],
+  Optimization: {
+    icon: "lucide:zap",
+    skills: [
+      "prpl",
+      "perf-tools",
+      "minification",
+      "code-splitting",
+      "image-optim",
+    ],
+  },
 
-  Development: [
-    { name: "bundling", icon: "" },
-    { name: "version-control", icon: "" },
-    { name: "domain-mgmt", icon: "" },
-    { name: "ci-cd-automation", icon: "" },
-    { name: "infrastructure", icon: "" },
-  ],
+  Code: {
+    icon: "lucide:code",
+    skills: ["reusable-modules", "coding-conventions", "directory-mgmt"],
+  },
 
-  Code: [
-    { name: "reusable-modules", icon: "" },
-    { name: "coding-conventions", icon: "" },
-    { name: "directory-mgmt", icon: "" },
-  ],
+  Development: {
+    icon: "lucide:boxes",
+    skills: [
+      "bundling",
+      "version-control",
+      "domain-mgmt",
+      "ci-cd-automation",
+      "infrastructure",
+    ],
+  },
 
-  Text: [
-    { name: "markdown", icon: "" },
-    { name: "regex", icon: "" },
-  ],
+  Text: { icon: "lucide:pilcrow", skills: ["markdown", "regex"] },
 
-  "Non-Technical": [
-    { name: "english-proficient", icon: "" },
-    { name: "storytelling", icon: "" },
-    { name: "game-design", icon: "" },
-    { name: "game-dev", icon: "" },
-  ],
+  "Non-Technical": {
+    icon: "lucide:badge-plus",
+    skills: ["english-proficient", "storytelling", "game-design", "game-dev"],
+  },
 };
 
 export default SKILLS;

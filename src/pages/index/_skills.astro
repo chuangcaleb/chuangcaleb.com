@@ -14,8 +14,8 @@ const skillGroups = Object.entries(SKILLS);
   </HeadingWIcon>
   <div class="skills">
     {
-      skillGroups.map(([group, skills]) => (
-        <SkillGroupCard group={group} skills={skills} />
+      skillGroups.map(([name, groupData]) => (
+        <SkillGroupCard name={name} group={groupData} />
       ))
     }
   </div>
