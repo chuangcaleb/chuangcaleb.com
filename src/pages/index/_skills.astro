@@ -23,7 +23,6 @@ const skillGroups = Object.entries(SKILLS);
 
 <style is:global>
   .skills-section {
-    max-width: 100%;
     h2 {
       margin-bottom: var(--size-fluid-4);
       /* text-align: center; */
@@ -34,9 +33,15 @@ const skillGroups = Object.entries(SKILLS);
     }
   }
   .skills {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, max(var(--size-content-2), 1px));
     justify-content: center;
     gap: var(--size-fluid-2);
+    @media screen and (width < 982px) {
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(var(--size-content-1), 1fr)
+      );
+    }
   }
 </style>
