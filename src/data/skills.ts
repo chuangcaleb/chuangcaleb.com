@@ -10,7 +10,7 @@ interface SkillGroups {
 const SKILLS: SkillGroups = {
   Web: {
     icon: "lucide:globe",
-    skills: ["semantic-html", "a11y", "seo", "browser-compat"],
+    skills: ["semantic-html", "a11y", "seo", "browser-compat", "domain-mgmt"],
   },
 
   "UI & Styles": {
@@ -50,13 +50,12 @@ const SKILLS: SkillGroups = {
     skills: [
       "bundling",
       "version-control",
-      "domain-mgmt",
       "ci-cd-automation",
       "infrastructure",
     ],
   },
 
-  Text: { icon: "lucide:pilcrow", skills: ["markdown", "regex"] },
+  Text: { icon: "lucide:pilcrow", skills: ["markdown", "regex", "nlp"] },
 
   "Non-Technical": {
     icon: "lucide:badge-plus",
