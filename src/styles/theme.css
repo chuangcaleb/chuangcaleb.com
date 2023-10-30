@@ -1,12 +1,12 @@
 html {
   /* light */
   --brand-light-hsl: var(--day-hs) 60%;
-  --surface-1a-light: hsl(var(--day-hs) 90%);
-  --surface-1b-light: hsl(var(--day-hs) 95%);
+  --surface-1a-light: hsl(var(--day-hs) 96%);
+  --surface-1b-light: hsl(var(--day-hs) 99%);
   --text-1-light: hsl(var(--day-hs) 10%);
-  --text-muted-light: var(--stone-5);
+  --text-muted-light: var(--stone-7);
   --text-on-brand-light: var(--stone-1);
-  --border-light: var(--stone-4);
+  --border-light: hsl(var(--day-hs) 80%);
 
   --text-2-light: var(--stone-7);
   --surface-2-light: var(--stone-2);
