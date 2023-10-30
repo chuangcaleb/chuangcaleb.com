@@ -23,25 +23,22 @@ const skillGroups = Object.entries(SKILLS);
 
 <style is:global>
   .skills-section {
-    h2 {
-      margin-bottom: var(--size-fluid-4);
-      /* text-align: center; */
-      max-width: 100%;
-      text-align: center;
-      /* margin-inline: auto; */
-      display: block;
+    & > * + * {
+      margin-top: var(--size-relative-10);
     }
-  }
-  .skills {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, max(var(--size-content-2), 1px));
-    justify-content: center;
-    gap: var(--size-fluid-2);
-    @media screen and (width < 982px) {
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(var(--size-content-1), 1fr)
-      );
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      justify-content: center;
+      gap: var(--size-fluid-2);
+      @media screen and (width < 982px) {
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(var(--size-content-1), 1fr)
+        );
+      }
     }
   }
 </style>

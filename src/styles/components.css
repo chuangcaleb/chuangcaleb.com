@@ -41,16 +41,9 @@ section {
   text-decoration-line: none;
 }
 
-.text-muted {
-  color: var(--text-muted);
-}
-
 :where(a[href], button, .hover-glow):is(:hover, :focus, :active),
 .glow {
   --glow: var(--brand);
   --size: var(--size-8);
-  box-shadow:
-    0 0 var(--glow),
-    0 0 var(--glow),
-    0 0 var(--size) 0 var(--glow);
+  box-shadow: 0 0 var(--size) 0 var(--glow);
 }
