@@ -10,17 +10,25 @@ interface SkillGroups {
 const SKILLS: SkillGroups = {
   Web: {
     icon: "lucide:globe",
-    skills: ["semantic-html", "a11y", "seo", "browser-compat", "domain-mgmt"],
+    skills: [
+      "semantic-html",
+      "a11y",
+      "seo",
+      "browser-compat",
+      "web-perf",
+      "domain-mgmt",
+    ],
   },
 
   "UI & Styles": {
     icon: "lucide:palette",
     skills: [
-      "gestalt",
+      "raw-css",
       "design-system",
-      "component-lib",
-      "responsive-design",
-      "css-preprocess",
+      "responsive-ui",
+      "preprocessing",
+      "color-theory",
+      "ux",
     ],
   },
 
@@ -33,7 +41,7 @@ const SKILLS: SkillGroups = {
     icon: "lucide:zap",
     skills: [
       "prpl",
-      "perf-tools",
+      "perf-metrics",
       "minification",
       "code-splitting",
       "image-optim",
@@ -42,7 +50,7 @@ const SKILLS: SkillGroups = {
 
   Code: {
     icon: "lucide:code",
-    skills: ["reusable-modules", "coding-conventions", "directory-mgmt"],
+    skills: ["reusable-modules", "code-conventions", "prog-principles"],
   },
 
   Development: {
@@ -50,12 +58,17 @@ const SKILLS: SkillGroups = {
     skills: [
       "bundling",
       "version-control",
-      "ci-cd-automation",
       "infrastructure",
+      "ci-cd-automation",
+      "releasing",
+      "oss-mgmt",
     ],
   },
 
-  Text: { icon: "lucide:pilcrow", skills: ["markdown", "regex", "nlp"] },
+  Text: {
+    icon: "lucide:pilcrow",
+    skills: ["markdown", "md-flavors", "mdx", "regex", "nlp"],
+  },
 
   "Non-Technical": {
     icon: "lucide:badge-plus",
