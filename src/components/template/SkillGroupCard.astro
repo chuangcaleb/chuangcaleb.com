@@ -17,13 +17,7 @@ const { icon, skills } = group;
     {icon && <Icon name={icon} />}{name}
   </HeadingWIcon>
   <UlInline>
-    {
-      skills.map((s) => (
-        <li>
-          <span class="style-code">{s}</span>
-        </li>
-      ))
-    }
+    {skills.map((s) => <li>{s}</li>)}
   </UlInline>
 </article>
 
@@ -49,7 +43,6 @@ const { icon, skills } = group;
     }
     li > span {
       background-color: var(--surface-1a);
-      white-space: nowrap;
     }
   }
 </style>
