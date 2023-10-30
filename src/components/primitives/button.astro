@@ -63,7 +63,7 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     }
     @media (prefers-color-scheme: light) {
       &:is(:hover, :focus, :active) {
-        --_bg-hover: var(--surface-1a);
+        --_bg-hover: var(--text-on-brand);
         --_border: var(--brand);
       }
     }
