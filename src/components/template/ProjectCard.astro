@@ -26,8 +26,14 @@ const { Content } = await project.render();
   .project {
     display: grid;
     max-width: var(--size-content-3);
-    & > *:where(:not(:last-child)) {
-      margin-bottom: var(--size-3);
+    & > * + * {
+      margin-top: var(--size-relative-6);
+    }
+    header {
+      display: grid;
+      :not(h3) {
+        order: -1;
+      }
     }
     em,
     li > svg {

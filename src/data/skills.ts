@@ -50,7 +50,12 @@ const SKILLS: SkillGroups = {
 
   Code: {
     icon: "lucide:code",
-    skills: ["reusable-modules", "code-conventions", "prog-principles"],
+    skills: [
+      "reusable-modules",
+      "code-conventions",
+      "prog-principles",
+      "experimental-features",
+    ],
   },
 
   Development: {
