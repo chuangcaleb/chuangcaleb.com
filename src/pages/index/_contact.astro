@@ -1,0 +1,27 @@
+---
+import UlIcon from "@components/styled/monom/UlIcon.astro";
+import HeadingWIcon from "@components/styled/polym/HeadingWIcon.astro";
+import LINKS from "@data/links";
+import Icon from "astro-iconify";
+---
+
+<section class="contact-section">
+  <HeadingWIcon as="h2">
+    <Icon name="mdi:connection" />
+    {" "}<span class="text-muted">#</span> contact
+  </HeadingWIcon>
+  <UlIcon class="contacts norm">
+    {Object.values(LINKS).map((l) => <li>{l.label}</li>)}
+  </UlIcon>
+</section>
+
+<style is:global>
+  .contact-section {
+    & > * + * {
+      margin-top: var(--size-relative-8);
+    }
+  }
+  /* :not(h2, ul, li) > * + * {
+    margin-top: var(--size-relative-8);
+  } */
+</style>

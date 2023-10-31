@@ -1,6 +1,6 @@
 ---
 import CapsAsH3 from "@components/styled/monom/CapsAsH3.astro";
-import NormUl from "@components/styled/monom/UlNorm.astro";
+import UlIcon from "@components/styled/monom/UlIcon.astro";
 import StyleH3 from "@components/styled/polym/StyleH3.astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -14,7 +14,7 @@ const components = {
   blockquote: "header",
   h1: CapsAsH3,
   h2: StyleH3,
-  ul: NormUl,
+  ul: UlIcon,
 };
 
 const { Content } = await highlight.render();
@@ -30,18 +30,15 @@ const { Content } = await highlight.render();
       margin-bottom: var(--size-2);
     }
     h3 {
-      margin-bottom: var(--size-1);
-      font-size: var(--font-size-2);
-      /* font-size: var(--font-size-fluid-0); */
+      margin-bottom: var(--size-relative-1);
+      /* font-size: var(--font-size-2); */
+      font-size: var(--font-size-fluid-0);
 
       svg {
         font-size: var(--font-size-fluid-1);
       }
     }
     em {
-      color: var(--text-muted);
-    }
-    li > svg {
       color: var(--text-muted);
     }
   }

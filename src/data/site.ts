@@ -5,7 +5,7 @@ export default {
   language: "en",
   author: {
     name: "Chuang Caleb",
-    email: "balechuang@gmail.com",
+    email: "hello[at]chuangcaleb.com",
     url: "https://chuangcaleb.com",
   },
   color: {

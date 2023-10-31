@@ -1,0 +1,28 @@
+---
+import { type HTMLAttributes } from "astro/types";
+
+export interface Props extends HTMLAttributes<"ul"> {}
+
+const { class: className, ...props } = Astro.props;
+---
+
+<ul class:list={["norm cc-ul-icon", className]} {...props}>
+  <slot />
+</ul>
+
+<style is:global>
+  .cc-ul-icon {
+    li {
+      display: inline-flex;
+      gap: var(--size-relative-1);
+
+      & > svg {
+        flex-shrink: 0;
+        margin-right: var(--size-relative-2);
+        margin-bottom: auto;
+        margin-top: 0.3em;
+        color: var(--text-muted);
+      }
+    }
+  }
+</style>
