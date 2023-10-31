@@ -3,16 +3,21 @@ import Contact from "@components/blocks/Contact.astro";
 ---
 
 <footer>
-  <Contact <p>&copy; {new Date().getFullYear()} Chuang Caleb</Contact>
+  <Contact />
+  <p class="fine-print">&copy; {new Date().getFullYear()} Chuang Caleb</p>
 </footer>
 
 <style>
-  * {
-    color: var(--text-muted);
-    font-size: var(--font-size-0);
-  }
   footer {
-    display: flex;
-    justify-content: center;
+    background-color: var(--surface-1b);
+    border-top-color: var(--border);
+    border-top-width: 1px;
+
+    .fine-print {
+      color: var(--text-muted);
+      font-size: var(--font-size-0);
+      display: flex;
+      justify-content: center;
+    }
   }
 </style>

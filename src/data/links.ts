@@ -1,7 +1,8 @@
 interface Link {
   label: string;
   ariaLabel: string;
-  href: string;
+  href: string | null;
+  appId?: string;
   icon?: string;
 }
 
@@ -10,12 +11,14 @@ const LINKS: { [s: string]: Link } = {
     label: "LinkedIn",
     href: "https://linkedin.com/in/chuangcaleb/",
     ariaLabel: "LinkedIn profile of Chuang Caleb",
+    appId: 'chuangcaleb',
     icon: "mdi:linkedin",
   },
   GITHUB: {
     label: "GitHub",
     href: "https://github.com/chuangcaleb",
     ariaLabel: "GitHub profile of Chuang Caleb",
+    appId: 'chuangcaleb',
     icon: "mdi:github",
   },
   CV: {
@@ -26,7 +29,8 @@ const LINKS: { [s: string]: Link } = {
   },
   EMAIL: {
     label: "Email",
-    href: "hello[at]chuangcaleb.com",
+    href: null,
+    appId: 'hello[at]chuangcaleb.com',
     ariaLabel: "Email address of Chuang Caleb",
     icon: "mdi:email-outline",
   },

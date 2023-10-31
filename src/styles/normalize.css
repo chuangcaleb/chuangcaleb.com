@@ -159,6 +159,9 @@
   display: inline-block;
   width: 1em;
 }
+:where(a >svg) {
+  margin-right: var(--size-relative-2);
+}
 
 :where(li, dd, figcaption) {
   max-width: var(--size-content-2);

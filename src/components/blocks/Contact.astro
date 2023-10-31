@@ -5,23 +5,37 @@ import LINKS from "@data/links";
 import Icon from "astro-iconify";
 ---
 
-<section class="contact-section">
+<section class="contact-section" id="contact">
   <HeadingWIcon as="h2">
     <Icon name="mdi:connection" />
     {" "}<span class="text-muted">#</span> contact
   </HeadingWIcon>
-  <UlIcon class="contacts norm">
-    {Object.values(LINKS).map((l) => <li>{l.label}</li>)}
+  <p>You made it to the end! ...Or is it just the beginning?</p>
+  <UlIcon>
+    {
+      Object.values(LINKS).map((l) => (
+        <li>
+          <a href={l.href} aria-label={l.ariaLabel}>
+            <Icon name={l.icon} /> {l.appId ?? l.label}
+          </a>
+        </li>
+      ))
+    }
   </UlIcon>
 </section>
 
 <style is:global>
   .contact-section {
-    background-color: var(--surface-1b);
-    border-top-color: var(--border);
-    border-top-width: 1px;
     & > * + * {
       margin-top: var(--size-relative-8);
+    }
+    ul {
+      display: grid;
+
+      gap: var(--size-relative-3);
+    }
+    li {
+      width: fit-content;
     }
   }
   /* :not(h2, ul, li) > * + * {
