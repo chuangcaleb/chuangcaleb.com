@@ -15,11 +15,13 @@
 :focus-visible {
   outline-color: var(--brand);
 }
+
 *,
 :after,
 :before {
   box-sizing: border-box;
 }
+
 :where(:not(dialog)) {
   margin: 0;
 }
@@ -33,45 +35,43 @@
 
 /* ------------------------------ interactables ----------------------------- */
 
-:where(input, button, textarea, select),
-/* :where(input[type="file"])::-webkit-file-upload-button */ {
+/* :where(input[type="file"])::-webkit-file-upload-button */
+:where(input, button, textarea, select) {
   color: inherit;
   font: inherit;
   font-size: inherit;
   letter-spacing: inherit;
 }
 
-:where(
-    a[href],
-    /* area, */
-    button,
-    /* input,
+:where(a[href],
+  /* area, */
+  button,
+  /* input,
     label[for],
     select,
     summary,
     textarea,
     [tabindex]:not([tabindex*="-"]) */
-  ) {
+) {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
-:where(
-    a[href],
-    /* area, */
-    button,
-    /* input:not([type="text"]):not([type="email"]):not([type="number"]):not(
+
+:where(a[href],
+  /* area, */
+  button,
+  /* input:not([type="text"]):not([type="email"]):not([type="number"]):not(
         [type="password"]
       ):not([type=""]):not([type="tel"]):not([type="url"]),
     label[for],
     select,
     summary, */
-    [tabindex]:not([tabindex*="-"])
-  ) {
+  [tabindex]:not([tabindex*="-"])) {
   cursor: pointer;
 }
 
-:where(input, button, textarea, select)
-/* :where(input[type="file"])::-webkit-file-upload-button  */ {
+/* :where(input[type="file"])::-webkit-file-upload-button  */
+:where(input, button, textarea, select) {
   color: inherit;
   font: inherit;
   font-size: inherit;
@@ -85,17 +85,21 @@
   text-wrap: balance;
   line-height: var(--font-lineheight-1);
 }
+
 :where(h1, h2) {
   font-weight: var(--font-weight-8);
 }
+
 .style-h3,
 :where(h3, h4, h5, h6) {
   font-weight: var(--font-weight-7);
 }
+
 :where(h1) {
   font-size: var(--font-size-8);
   max-width: var(--size-header-1);
 }
+
 :where(h2) {
   font-size: var(--font-size-6);
   max-width: var(--size-header-2);
@@ -105,15 +109,19 @@
 :where(h3) {
   font-size: var(--font-size-5);
 }
+
 :where(h4) {
   font-size: var(--font-size-4);
 }
+
 :where(h5) {
   font-size: var(--font-size-3);
 }
+
 :where(h3, h4, h5, h6, dt) {
   max-width: var(--size-header-3);
 }
+
 :where(p, ul, ol, dl, h6) {
   font-size: var(--font-size-2);
 }
@@ -121,6 +129,7 @@
 :where(a, u, ins, abbr) {
   text-underline-offset: 1px;
 }
+
 @supports (-moz-appearance: none) {
   :where(a, u, ins, abbr) {
     text-underline-offset: 2px;
@@ -138,7 +147,7 @@
 }
 
 .style-code,
-:not(pre) > code {
+:not(pre)>code {
   white-space: initial;
 }
 
@@ -159,7 +168,8 @@
   display: inline-block;
   width: 1em;
 }
-:where(a >svg) {
+
+:where(a > svg) {
   margin-right: var(--size-relative-2);
 }
 
@@ -172,6 +182,7 @@
 ul.norm {
   list-style-type: none;
   padding: unset;
+
   li {
     padding: unset;
   }
