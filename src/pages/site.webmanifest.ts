@@ -6,12 +6,12 @@ import site from "@data/site";
 
 const icons = [
   {
-    src: android_chrome_192x192,
+    src: android_chrome_192x192.src,
     sizes: "192x192",
     type: "image/png",
   },
   {
-    src: android_chrome_512x512,
+    src: android_chrome_512x512.src,
     sizes: "512x512",
     type: "image/png",
   },
