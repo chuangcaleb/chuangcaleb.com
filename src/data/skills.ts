@@ -15,8 +15,8 @@ const SKILLS: SkillGroups = {
       "a11y",
       "seo",
       "browser-compat",
-      "web-perf",
       "domain-mgmt",
+      'core-web-vitals'
     ],
   },
 
@@ -41,10 +41,11 @@ const SKILLS: SkillGroups = {
     icon: "lucide:zap",
     skills: [
       "prpl",
-      "perf-metrics",
+      "big-o",
       "minification",
       "code-splitting",
       "image-optim",
+      'progress-hydrate'
     ],
   },
 
@@ -52,9 +53,10 @@ const SKILLS: SkillGroups = {
     icon: "lucide:code",
     skills: [
       "reusable-modules",
+      "modern-syntax",
+      "code-smell",
+      'design-pattern',
       "code-conventions",
-      "prog-principles",
-      "experimental-features",
     ],
   },
 
