@@ -13,10 +13,10 @@ const SKILLS: SkillGroups = {
     skills: [
       "semantic-html",
       "a11y",
-      "seo",
       "browser-compat",
+      'core-web-vitals',
       "domain-mgmt",
-      'core-web-vitals'
+      "seo",
     ],
   },
 
@@ -42,7 +42,7 @@ const SKILLS: SkillGroups = {
     skills: [
       "prpl",
       "big-o",
-      "minification",
+      "compress",
       "code-splitting",
       "image-optim",
       'progress-hydrate'
