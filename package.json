@@ -10,8 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^3.3.2",
-    "date-fns": "^2.30.0"
+    "astro": "^3.3.2"
   },
   "devDependencies": {
     "@astrojs/mdx": "^1.1.2",
@@ -19,10 +18,13 @@
     "astro-compressor": "^0.4.1",
     "astro-iconify": "^1.2.0",
     "astro-purgecss": "^3.2.1",
+    "astro-robots-txt": "^1.0.0",
+    "date-fns": "^2.30.0",
     "open-props": "^1.6.8",
     "postcss-custom-media": "^10.0.2",
     "postcss-preset-env": "^9.2.0",
     "prettier": "^3.0.3",
-    "prettier-plugin-astro": "^0.12.0"
+    "prettier-plugin-astro": "^0.12.0",
+    "sharp": "^0.32.6"
   }
 }
