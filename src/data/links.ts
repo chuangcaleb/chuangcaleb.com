@@ -10,21 +10,21 @@ const LINKS: { [s: string]: Link } = {
   LINKEDIN: {
     label: "LinkedIn",
     href: "https://linkedin.com/in/chuangcaleb/",
-    ariaLabel: "LinkedIn profile of Chuang Caleb",
+    ariaLabel: "My LinkedIn profile, at the user ID of chuangcaleb",
     appId: 'chuangcaleb',
     icon: "mdi:linkedin",
   },
   GITHUB: {
     label: "GitHub",
     href: "https://github.com/chuangcaleb",
-    ariaLabel: "GitHub profile of Chuang Caleb",
+    ariaLabel: "My GitHub profile, at the user ID of chuangcaleb",
     appId: 'chuangcaleb',
     icon: "mdi:github",
   },
   CV: {
     label: "CV / Résumé",
     href: "https://docs.google.com/document/d/1qohsYe0w-Mq5yqIdNaHPuOHvs2lYvnGySULgR2Baqwk/edit?usp=sharing",
-    ariaLabel: "CV/Résumé of Chuang Caleb",
+    ariaLabel: "CV / Résumé of Chuang Caleb",
     icon: "academicons:cv",
   },
   EMAIL: {
