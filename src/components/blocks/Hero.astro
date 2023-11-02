@@ -1,8 +1,10 @@
 ---
-import HeadingCaps from "@components/styled/polym/Caps.astro";
+import heroImg from "@assets/hero.jpeg";
 import Button from "@components/primitives/button.astro";
+import HeadingCaps from "@components/styled/polym/Caps.astro";
 import LINKS from "@data/links";
 import { Icon } from "astro-iconify";
+import { Image } from "astro:assets";
 
 const { LINKEDIN, GITHUB, CV } = LINKS;
 const heroLinks = [GITHUB, LINKEDIN, CV];
@@ -45,12 +47,12 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       </ul>
     </div>
   </div>
-  <img
-    src="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900"
-    srcset="https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=300 300w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=600 600w, https://www.gravatar.com/avatar/29d863c08e05a20bab30479ecae823eb?s=900 900w"
+  <Image
+    src={heroImg}
     alt="Head profile of Chuang Caleb"
-    height="400"
-    width="400"
+    width={heroImg.width / 4}
+    densities={[1, 2, 3, 4]}
+    loading="eager"
   />
 </section>
 
@@ -85,12 +87,13 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       line-height: var(--font-lineheight-0);
       max-width: 15ch;
     }
+
     img {
       --_size: min(250px, 55vw);
-      border-radius: var(--radius-2);
-      max-height: var(--_size);
-      max-width: var(--_size);
+      height: var(--_size);
+      width: var(--_size);
       grid-area: img;
+      border-radius: var(--radius-2);
     }
 
     ul.buttons {
