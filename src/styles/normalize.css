@@ -81,9 +81,12 @@
 
 /* ---------------------------------- text ---------------------------------- */
 
-.style-h3,
-:where(h1, h2, h3, h4, h5, h6) {
+:where(h1, h2, h3, .style-h3, h4, h5, h6, button) {
   color: var(--text-1-strong);
+}
+
+/* Headings */
+:where(h1, h2, h3, .style-h3, h4, h5, h6) {
   text-wrap: balance;
   line-height: var(--font-lineheight-1);
 }
@@ -92,8 +95,7 @@
   font-weight: var(--font-weight-8);
 }
 
-.style-h3,
-:where(h3, h4, h5, h6) {
+:where(h3, .style-h3, h4, h5, h6) {
   font-weight: var(--font-weight-7);
 }
 
@@ -107,8 +109,7 @@
   max-width: var(--size-header-2);
 }
 
-.style-h3,
-:where(h3) {
+:where(h3, .style-h3) {
   font-size: var(--font-size-5);
 }
 
@@ -128,6 +129,8 @@
   font-size: var(--font-size-2);
 }
 
+/* underline */
+
 :where(a, u, ins, abbr) {
   text-underline-offset: 1px;
 }
@@ -143,27 +146,34 @@
   text-underline-offset: 0.2em;
 }
 
-.style-code,
-:where(code, kbd, samp, pre) {
+/* Code */
+
+:where(code, .style-code, kbd, samp, pre) {
   font-family: var(--font-mono);
 }
 
-.style-code,
-:not(pre)>code {
+:not(pre)>:is(code, .style-code) {
   white-space: initial;
 }
 
-.style-code,
-:where(:not(pre) > code) {
+:where(:not(pre) > :is(code, .style-code)) {
   background: var(--surface-2);
   border-radius: var(--radius-2);
   padding: var(--size-1) var(--size-2);
   writing-mode: lr;
 }
 
+/* lists */
+
 :where(ol, ul) {
   padding-left: var(--size-3);
 }
+
+:where(li, dd, figcaption) {
+  max-width: var(--size-content-2);
+}
+
+/* misc */
 
 :where(svg:not([width])) {
   vertical-align: middle;
@@ -173,10 +183,6 @@
 
 :where(a > svg) {
   margin-right: var(--size-relative-2);
-}
-
-:where(li, dd, figcaption) {
-  max-width: var(--size-content-2);
 }
 
 /* ------------------------------ custom resets ----------------------------- */
