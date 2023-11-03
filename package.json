@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@astrojs/mdx": "^1.1.2",
-    "@astrojs/sitemap": "^3.0.2",
+    "@astrojs/sitemap": "^3.0.3",
     "astro-compressor": "^0.4.1",
     "astro-iconify": "^1.2.0",
     "astro-purgecss": "^3.2.1",
