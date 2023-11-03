@@ -15,7 +15,7 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
 <style is:global>
   .cc-btn {
     background-color: var(--_bg, var(--surface-1b));
-    color: var(--_text, var(--text-1));
+    color: var(--_text, var(--text-1-strong));
     border-color: var(--_border, var(--border));
     border-width: var(--_border-width, 1px);
 
@@ -58,7 +58,7 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
 
     @media (prefers-color-scheme: dark) {
       &:is(:hover, :focus, :active) {
-        --_bg-hover: var(--text-1);
+        --_bg-hover: var(--text-1-strong);
         --_border: transparent;
       }
     }
