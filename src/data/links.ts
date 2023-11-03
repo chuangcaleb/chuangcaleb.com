@@ -29,8 +29,8 @@ const LINKS: { [s: string]: Link } = {
   },
   EMAIL: {
     label: "Email",
-    href: null,
-    appId: 'hello[at]chuangcaleb.com',
+    href: 'mailto:chuang_caleb@hotmail.com',
+    appId: 'chuang_caleb@hotmail.com',
     ariaLabel: "Email address of Chuang Caleb",
     icon: "mdi:email-outline",
   },
