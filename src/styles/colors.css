@@ -4,6 +4,6 @@ html {
   --night-hs: var(--night-h) var(--night-s);
 
   --day-h: 7;
-  --day-s: 60%;
+  --day-s: 80%;
   --day-hs: var(--day-h) var(--day-s);
 }

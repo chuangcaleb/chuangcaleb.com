@@ -17,7 +17,7 @@ html {
   --shadow-strength-light: 2%;
 
   /* dark */
-  --brand-dark-hsl: var(--day-hs) 65%;
+  --brand-dark-hsl: var(--day-hs) 70%;
   --surface-1a-dark: hsl(var(--night-hs) 18%);
   --surface-1b-dark: hsl(var(--night-hs) 12%);
   --text-1-dark: var(--stone-4);
