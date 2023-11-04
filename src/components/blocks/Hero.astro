@@ -38,8 +38,8 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
         {
           heroLinks.map((l) => (
             <li>
-              <Button as="a" href={l.href}>
-                <Icon name={l.icon} />
+              <Button as="a" href={l.href} aria-label={l.ariaLabel}>
+                <Icon name={l.icon} aria-hidden="true" />
               </Button>
             </li>
           ))
