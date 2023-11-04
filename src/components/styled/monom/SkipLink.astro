@@ -1,0 +1,29 @@
+---
+import Button from "@components/primitives/button.astro";
+import type { HTMLAttributes } from "astro/types";
+
+interface SkipLinkProps extends HTMLAttributes<"a"> {}
+type Props = SkipLinkProps;
+
+const props = Astro.props;
+---
+
+<Button as="a" {...props} class="sr-only-unfocused skip-link">
+  <slot />
+</Button>
+
+<style is:global>
+  .skip-link {
+    position: fixed;
+    font-size: var(--font-size-fluid-2);
+    padding: var(--size-3);
+    transition: transform 0.3s;
+    transform: translateY(-100%);
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .skip-link:focus-within {
+    transform: translateY(0%);
+  }
+</style>

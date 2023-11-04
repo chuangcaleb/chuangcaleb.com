@@ -1,3 +1,4 @@
+.sr-only-unfocused:not(:focus, :focus-within),
 .sr-only {
   position: absolute;
   width: 1px;
