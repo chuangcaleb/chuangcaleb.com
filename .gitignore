@@ -21,3 +21,6 @@ pnpm-debug.log*
 .DS_Store
 
 .vscode/settings.json
+
+# cloudinary resource details
+lib/cloudinary/*.json

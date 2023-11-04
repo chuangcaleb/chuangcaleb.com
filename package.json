@@ -10,21 +10,26 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^3.4.3"
+    "astro": "^3.4.3",
+    "cloudinary": "^1.41.0",
+    "fs-extra": "^11.1.1"
   },
   "devDependencies": {
     "@astrojs/mdx": "^1.1.2",
     "@astrojs/sitemap": "^3.0.3",
+    "@types/fs-extra": "^11.0.3",
     "astro-compressor": "^0.4.1",
     "astro-iconify": "^1.2.0",
     "astro-purgecss": "^3.2.1",
     "astro-robots-txt": "^1.0.0",
     "date-fns": "^2.30.0",
+    "dotenv": "^16.3.1",
     "open-props": "^1.6.8",
     "postcss-custom-media": "^10.0.2",
     "postcss-preset-env": "^9.3.0",
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.1",
-    "sharp": "^0.32.6"
+    "sharp": "^0.32.6",
+    "tsx": "^3.14.0"
   }
 }
