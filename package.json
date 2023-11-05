@@ -3,11 +3,14 @@
   "type": "module",
   "version": "2.0.0",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
+    "astro": "astro",
+    "build": "pnpm cloudinary:cache && astro build",
+    "cloudinary:cache": "tsx ./scripts/cache-cloudinary",
+    "format:check": "pnpm prettier -- --list-different .",
+    "format:fix": "pnpm prettier --write .",
+    "dev": "pnpm cloudinary:cache && astro dev",
     "preview": "astro preview",
-    "astro": "astro"
+    "start": "astro dev"
   },
   "dependencies": {
     "astro": "^3.4.3",
