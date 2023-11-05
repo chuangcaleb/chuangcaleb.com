@@ -56,6 +56,8 @@
 ) {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  letter-spacing: var(--font-letterspacing-1);
+
 }
 
 :where(a[href],

@@ -9,16 +9,16 @@ interface Link {
 const LINKS: { [s: string]: Link } = {
   LINKEDIN: {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/chuangcaleb/",
+    href: "https://linkedin.com/in/chuangcaleb",
     ariaLabel: "LinkedIn profile of Chuang Caleb",
-    appId: "chuangcaleb",
+    appId: "linkedin.com/in/chuangcaleb",
     icon: "mdi:linkedin",
   },
   GITHUB: {
     label: "GitHub",
     href: "https://github.com/chuangcaleb",
     ariaLabel: "GitHub profile of Chuang Caleb",
-    appId: "chuangcaleb",
+    appId: "github.com/chuangcaleb",
     icon: "mdi:github",
   },
   CV: {
