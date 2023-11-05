@@ -15,7 +15,7 @@ const { class: className, ...props } = Astro.props;
     padding-left: unset;
     li {
       display: inline-flex;
-      align-items: center;
+      align-items: start;
     }
     /* apply padding for (n>1)-level lists */
     &:has(.ul-inline-nested) > li {
@@ -25,6 +25,7 @@ const { class: className, ...props } = Astro.props;
     .ul-inline-nested {
       & > li {
         padding-inline-start: var(--size-relative-3);
+        margin-bottom: var(--size-relative-2);
       }
     }
   }
