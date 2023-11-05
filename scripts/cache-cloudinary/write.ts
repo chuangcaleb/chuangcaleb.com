@@ -1,28 +1,20 @@
 import fs from 'fs';
 import type { CloudinaryResource } from 'lib/cloudinary/types';
 import { composeErrorStr } from 'lib/utils/log';
+import { JSON_FILE } from 'lib/cloudinary/consts';
 
-function composeJsonFileName(folderName: string): string {
-  return `./lib/cloudinary/${folderName}.json`;
-}
-
-export async function write(
-  folderName: string,
-  resources: CloudinaryResource[],
-): Promise<void> {
+export async function write(resources: CloudinaryResource[]): Promise<void> {
   const contents = {
     date: new Date(),
     root: resources,
   };
 
-  const jsonFileName = composeJsonFileName(folderName);
-
   try {
-    fs.writeFileSync(jsonFileName, JSON.stringify(contents, null, 2));
-    console.info(`📝 Updated ${jsonFileName}`);
+    fs.writeFileSync(JSON_FILE, JSON.stringify(contents, null, 2));
+    console.info(`📝 Updated ${JSON_FILE}`);
   } catch (error: unknown) {
     console.error(
-      `🚨 Error updating ${jsonFileName}:\n\n${composeErrorStr(error)}`,
+      `🚨 Error updating ${JSON_FILE}:\n\n${composeErrorStr(error)}`,
     );
   }
 }
