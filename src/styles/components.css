@@ -25,10 +25,12 @@ section {
 :where(a[href]) {
   display: inline-flex;
   align-items: center;
+  vertical-align: middle;
   gap: var(--size-relative-2);
 
   box-decoration-break: clone;
   text-decoration-line: underline;
+  font-weight: var(--font-weight-5);
   color: var(--brand);
   text-decoration-color: hsla(var(--brand-hsl) / 0.5);
   text-decoration-skip-ink: none;
@@ -43,7 +45,6 @@ section {
   outline: 2px solid transparent;
   outline-offset: 2px;
   text-decoration-line: none;
-  vertical-align: middle;
 }
 
 :where(a[href], button, .hover-glow):is(:hover, :focus, :active),
