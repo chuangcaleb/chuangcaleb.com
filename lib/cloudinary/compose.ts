@@ -27,11 +27,11 @@ export function composeSrc(publicId: string, width: number) {
   });
 }
 
-export function composeSrcset(publicId: string) {
-  return widths
-    .reduce(function (prev, curr) {
-      prev.push(`${composeSrc(publicId, curr)} ${curr}w`);
-      return prev;
-    }, [] as string[])
-    .join(", ");
+export function composeSrcset(publicId: string, maxWidth: number) {
+  let set = [];
+  for (const width of widths) {
+    if (width > maxWidth) break;
+    set.push(`${composeSrc(publicId, width)} ${width}w`);
+  }
+  return set.join(", ");
 }

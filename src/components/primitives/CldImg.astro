@@ -13,7 +13,7 @@ interface Props {
 const { resource: r, hasBorder, sizes } = Astro.props;
 
 const src = r ? composeSrc(r.public_id, r.width) : null;
-const srcset = r ? composeSrcset(r.public_id) : null;
+const srcset = r ? composeSrcset(r.public_id, r.width) : null;
 ---
 
 {
