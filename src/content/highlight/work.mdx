@@ -3,8 +3,8 @@ date: 2022-10-17
 sequence: 1
 ---
 
-import { Icon } from "astro-iconify";
-import { getMonthsSince, formatISO } from "~/utils/date";
+import { Icon } from 'astro-iconify';
+import { getMonthsSince, formatISO } from '~/utils/date';
 
 export const { date } = frontmatter;
 
@@ -15,5 +15,5 @@ export const { date } = frontmatter;
 - <Icon name="lucide:map-pin" /> [Airasia SuperApp](https://www.airasia.com/aa/appdownload/)
   *@* [LinkedIn](https://www.linkedin.com/company/airasia-super-app/mycompany/)
 - <Icon name="lucide:search" /> UI / UX & network logic in web dashboards
-- <Icon name="lucide:calendar" /> since {formatISO(date, "MMM yyyy")}
+- <Icon name="lucide:calendar" /> since {formatISO(date, 'MMM yyyy')}
   *({getMonthsSince(date)} ago)*

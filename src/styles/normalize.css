@@ -158,7 +158,7 @@
 }
 
 .style-code,
-:not(pre)>code {
+:not(pre) > code {
   white-space: initial;
 }
 

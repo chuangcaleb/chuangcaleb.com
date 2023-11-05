@@ -1,17 +1,17 @@
 /* @import "open-props/postcss/style"; */
-@import "open-props/aspects";
-@import "open-props/colors";
-@import "open-props/borders";
-@import "open-props/fonts";
-@import "open-props/sizes";
-@import "open-props/media";
+@import 'open-props/aspects';
+@import 'open-props/colors';
+@import 'open-props/borders';
+@import 'open-props/fonts';
+@import 'open-props/sizes';
+@import 'open-props/media';
 
 /* @import "open-props/normalize"; */
-@import "normalize.css";
+@import 'normalize.css';
 
-@import "colors.css";
-@import "theme.css";
+@import 'colors.css';
+@import 'theme.css';
 
-@import "components.css";
+@import 'components.css';
 
-@import "utilities.css";
+@import 'utilities.css';

@@ -1,6 +1,6 @@
-import fs from "fs";
-import type { CloudinaryResource } from "lib/cloudinary/types";
-import { composeErrorStr } from "lib/utils/log";
+import fs from 'fs';
+import type { CloudinaryResource } from 'lib/cloudinary/types';
+import { composeErrorStr } from 'lib/utils/log';
 
 function composeJsonFileName(folderName: string): string {
   return `./lib/cloudinary/${folderName}.json`;
