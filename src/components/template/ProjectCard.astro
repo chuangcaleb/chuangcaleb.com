@@ -27,7 +27,13 @@ const i = getCldImgData("projects/" + project.slug);
   <div class="project-body">
     <Content components={components} />
   </div>
-  {i ? <CldImg resource={i} hasBorder /> : <div />}
+  {
+    i ? (
+      <CldImg resource={i} hasBorder sizes="(max-width: 815px) 95vw, 40vw" />
+    ) : (
+      <div />
+    )
+  }
 </article>
 
 <style is:global>

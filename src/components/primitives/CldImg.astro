@@ -8,8 +8,9 @@ import type { CloudinaryResource } from "lib/cloudinary/types";
 interface Props {
   resource?: CloudinaryResource;
   hasBorder?: boolean;
+  sizes?: string;
 }
-const { resource: r, hasBorder } = Astro.props;
+const { resource: r, hasBorder, sizes } = Astro.props;
 
 const src = r ? composeSrc(r.public_id, r.width) : null;
 const srcset = r ? composeSrcset(r.public_id) : null;
@@ -22,6 +23,7 @@ const srcset = r ? composeSrcset(r.public_id) : null;
       height={r.height}
       width={r.width}
       srcset={srcset}
+      sizes={sizes}
       alt=""
       class={hasBorder ? "img-border" : null}
     />
