@@ -1,5 +1,5 @@
-import type { CloudinaryResource } from 'lib/cloudinary/types';
-import cloudinary from 'lib/cloudinary';
+import type { CloudinaryResource } from "lib/cloudinary/types";
+import cloudinary from "lib/cloudinary";
 
 async function fetchNextPage(
   folderName: string,
@@ -11,7 +11,7 @@ async function fetchNextPage(
       // context: true,
       // tags: true,
       prefix: folderName,
-      type: 'upload',
+      type: "upload",
       max_results: 500,
       next_cursor: nextCursor,
     })
