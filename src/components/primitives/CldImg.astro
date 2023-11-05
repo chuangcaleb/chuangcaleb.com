@@ -1,35 +1,26 @@
 ---
 import { Image } from "astro:assets";
-import cloudinary from "lib/cloudinary";
-import { composeSrcset } from "lib/cloudinary/compose";
+import { composeSrc, composeSrcset } from "lib/cloudinary/compose";
 import type { CloudinaryResource } from "lib/cloudinary/types";
+
 // Adapted from: https://github.com/ooloth/michaeluloth.com/blob/main/lib/rehype/cloudinary-image-attributes.ts
 
 interface Props {
   resource?: CloudinaryResource;
   hasBorder?: boolean;
 }
-const { resource, hasBorder } = Astro.props;
+const { resource: r, hasBorder } = Astro.props;
 
-const src =
-  (resource &&
-    cloudinary.url(resource.public_id, {
-      crop: "scale",
-      fetch_format: "auto",
-      quality: "auto",
-      width: resource.width,
-    })) ??
-  "";
-
-const srcset = resource && composeSrcset(resource.public_id);
+const src = r ? composeSrc(r.public_id, r.width) : null;
+const srcset = r ? composeSrcset(r.public_id) : null;
 ---
 
 {
-  resource && (
+  r && src && (
     <Image
       src={src}
-      height={resource.height}
-      width={resource.width}
+      height={r.height}
+      width={r.width}
       srcset={srcset}
       alt=""
       class={hasBorder ? "img-border" : null}

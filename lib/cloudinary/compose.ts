@@ -14,19 +14,19 @@ const widths = [
   2160,
 ];
 
-export function composeSrc(publicId: string) {}
+export function composeSrc(publicId: string, width: number) {
+  return cloudinary.url(publicId, {
+    crop: "scale",
+    fetch_format: "auto",
+    quality: "auto",
+    width: width,
+  });
+}
 
 export function composeSrcset(publicId: string) {
   return widths
     .reduce(function (prev, curr) {
-      prev.push(
-        `${cloudinary.url(publicId, {
-          crop: "scale",
-          fetch_format: "auto",
-          quality: "auto",
-          width: curr,
-        })} ${curr}w`,
-      );
+      prev.push(`${composeSrc(publicId, curr)} ${curr}w`);
       return prev;
     }, [] as string[])
     .join(", ");
