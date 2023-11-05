@@ -27,7 +27,7 @@ const i = getCldImgData("projects/" + project.slug);
   <div class="project-body">
     <Content components={components} />
   </div>
-  <CldImg resource={i} hasBorder />
+  {i ? <CldImg resource={i} hasBorder /> : <div />}
 </article>
 
 <style is:global>

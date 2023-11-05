@@ -29,8 +29,7 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     border-radius: var(--radius-2);
 
     svg {
-      height: 2rem;
-      width: 2rem;
+      width: 2em;
       margin: 0;
     }
 
@@ -39,6 +38,11 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
       --_text: var(--text-on-brand);
       --_border: transparent;
       --_text-hover: var(--brand);
+    }
+    &.inline {
+      svg {
+        width: 1em;
+      }
     }
 
     &:has(svg:first-child:last-child) {
