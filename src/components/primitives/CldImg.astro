@@ -22,6 +22,7 @@ const { resource, hasBorder } = Astro.props as Props;
 
 <style>
   .img-border {
-    border-width: 1px;
+    border-width: var(--size-relative-2);
+    border-radius: var(--radius-2);
   }
 </style>
