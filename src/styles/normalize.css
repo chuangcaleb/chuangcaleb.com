@@ -200,10 +200,6 @@
   width: 1em;
 }
 
-:where(a > svg) {
-  margin-right: var(--size-relative-2);
-}
-
 /* ------------------------------ custom resets ----------------------------- */
 
 ul.norm {

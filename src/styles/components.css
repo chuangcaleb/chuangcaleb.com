@@ -3,7 +3,7 @@ html {
 }
 
 .style-code,
-:not(pre) > code {
+:not(pre)>code {
   background-color: var(--surface-1b);
   /* box-decoration-break: clone; */
 }
@@ -23,6 +23,10 @@ section {
 }
 
 :where(a[href]) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-relative-2);
+
   box-decoration-break: clone;
   text-decoration-line: underline;
   color: var(--brand);
@@ -39,6 +43,7 @@ section {
   outline: 2px solid transparent;
   outline-offset: 2px;
   text-decoration-line: none;
+  vertical-align: middle;
 }
 
 :where(a[href], button, .hover-glow):is(:hover, :focus, :active),

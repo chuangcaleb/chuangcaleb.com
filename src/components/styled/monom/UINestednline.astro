@@ -16,11 +16,9 @@ const { class: className, ...props } = Astro.props;
     padding-left: unset;
     /* apply padding for (n>1)-level lists */
     .cc-ul-inline-nested > li {
-      display: inline-block;
+      display: inline-flex;
       padding-inline-start: var(--size-2);
-    }
-    li {
-      line-height: var(--font-lineheight-5);
+      margin-bottom: var(--size-relative-3);
     }
   }
 </style>
