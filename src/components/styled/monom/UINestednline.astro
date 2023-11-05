@@ -6,19 +6,26 @@ export interface Props extends HTMLAttributes<"ul"> {}
 const { class: className, ...props } = Astro.props;
 ---
 
-<ul class:list={["norm cc-ul-inline-nested", className]} {...props}>
+<ul class:list={["norm ul-inline-nested", className]} {...props}>
   <slot />
 </ul>
 
 <style is:global>
-  .cc-ul-inline-nested {
-    display: inline-block;
+  .ul-inline-nested {
     padding-left: unset;
-    /* apply padding for (n>1)-level lists */
-    .cc-ul-inline-nested > li {
+    li {
       display: inline-flex;
-      padding-inline-start: var(--size-2);
+      align-items: center;
+    }
+    /* apply padding for (n>1)-level lists */
+    &:has(.ul-inline-nested) > li {
       margin-bottom: var(--size-relative-3);
+      gap: var(--size-relative-2);
+    }
+    .ul-inline-nested {
+      & > li {
+        padding-inline-start: var(--size-relative-3);
+      }
     }
   }
 </style>
