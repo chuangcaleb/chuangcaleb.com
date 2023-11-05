@@ -1,7 +1,6 @@
+import { ROOT_DIR } from "lib/cloudinary/consts";
 import fetchFolderRecursive from "./fetch";
 import { write } from "./write";
-
-const ROOT_DIR = "chuangcaleb/upload";
 
 // Save all Cloudinary image details with a single Admin API call each time the build begins
 async function cache(folderName: string): Promise<void> {

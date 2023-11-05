@@ -1,29 +1,31 @@
 ---
-import UINestednline from '~/components/styled/monom/UINestednline.astro';
-import Caps from '~/components/styled/polym/Caps.astro';
-import type { CollectionEntry } from 'astro:content';
-import getCache from 'lib/cloudinary/reader';
+import type { CollectionEntry } from "astro:content";
+import { getCldImgData } from "lib/cloudinary/get";
+import UINestednline from "~/components/styled/monom/UINestednline.astro";
+import Caps from "~/components/styled/polym/Caps.astro";
+import CldImg from "../primitives/CldImg.astro";
 
 interface Props {
-  project: CollectionEntry<'project'>;
+  project: CollectionEntry<"project">;
 }
 
 const { project } = Astro.props;
 
 const components = {
-  blockquote: 'header',
-  h1: 'h3',
+  blockquote: "header",
+  h1: "h3",
   h2: Caps,
   ul: UINestednline,
 };
 
 const { Content } = await project.render();
 
-// const cache = getCache();
+const i = getCldImgData("projects/" + project.slug);
 ---
 
 <article class="project">
   <Content components={components} />
+  <CldImg resource={i} hasBorder />
 </article>
 
 <style is:global>

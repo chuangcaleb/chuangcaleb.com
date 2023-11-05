@@ -34,6 +34,15 @@
   border-width: 0;
 }
 
+:where(img, svg, video, canvas, audio, iframe, embed, object) {
+  display: block;
+}
+
+:where(img, svg, video) {
+  height: auto;
+  max-width: 100%;
+}
+
 /* ------------------------------ interactables ----------------------------- */
 
 /* :where(input[type="file"])::-webkit-file-upload-button */
@@ -160,7 +169,7 @@
 }
 
 .style-code,
-:not(pre) > code {
+:not(pre)>code {
   white-space: initial;
 }
 

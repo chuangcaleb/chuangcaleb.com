@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import type { CloudinaryResource } from "lib/cloudinary/types";
+interface Props {
+  resource?: CloudinaryResource;
+  hasBorder?: boolean;
+}
+const { resource, hasBorder } = Astro.props as Props;
+---
+
+{
+  resource && (
+    <Image
+      src={resource.secure_url}
+      height={resource.height}
+      width={resource.width}
+      alt=""
+      class={hasBorder ? "img-border" : null}
+    />
+  )
+}
+
+<style>
+  .img-border {
+    border-width: 1px;
+  }
+</style>
