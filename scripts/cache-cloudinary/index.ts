@@ -1,4 +1,4 @@
-import fetchFolderRecursive from './fetchFolderRecursive';
+import fetchFolderRecursive from './fetch';
 import { write } from './write';
 
 const ROOT_DIR = 'chuangcaleb/upload';
