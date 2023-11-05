@@ -21,11 +21,17 @@ const { class: className, ...props } = Astro.props;
     &:has(.ul-inline-nested) > li {
       margin-bottom: var(--size-relative-3);
       gap: var(--size-relative-2);
+      &:only-of-type {
+        align-items: first baseline;
+      }
+      &:not(:first-child) a {
+        font-weight: var(--font-weight-3);
+      }
     }
     .ul-inline-nested {
       & > li {
         padding-inline-start: var(--size-relative-3);
-        margin-bottom: var(--size-relative-2);
+        /* margin-bottom: var(--size-relative-2); */
       }
     }
   }

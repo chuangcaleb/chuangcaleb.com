@@ -35,6 +35,7 @@ section {
   text-decoration-color: hsla(var(--brand-hsl) / 0.5);
   text-decoration-skip-ink: none;
   margin: calc(var(--size-1) * -1);
+  margin-bottom: 0;
   padding: var(--size-1);
 }
 
