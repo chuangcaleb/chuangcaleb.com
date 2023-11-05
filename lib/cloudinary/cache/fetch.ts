@@ -1,5 +1,5 @@
-import type { CloudinaryResource } from "lib/cloudinary/types";
-import cloudinary from "lib/cloudinary";
+import cloudinary from "..";
+import type { CloudinaryResource } from "../types";
 
 async function fetchNextPage(
   folderName: string,
@@ -22,6 +22,7 @@ async function fetchNextPage(
         )}\n`,
       );
     });
+  console.info(`📊 Rate limit remaining: ${response.rate_limit_remaining}`);
 
   return response.resources;
 }

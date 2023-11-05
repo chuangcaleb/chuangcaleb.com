@@ -1,7 +1,7 @@
 import fsExtra from "fs-extra/esm";
-import { JSON_FILE } from "lib/cloudinary/consts";
 import { composeErrorStr } from "lib/utils/log";
-import type { CloudinaryResource } from "./types";
+import { JSON_FILE } from "../consts";
+import type { CloudinaryResource } from "../types";
 
 let resources: CloudinaryResource[];
 

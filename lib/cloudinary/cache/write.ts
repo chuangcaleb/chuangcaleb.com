@@ -1,7 +1,7 @@
 import fs from "fs";
-import type { CloudinaryResource } from "lib/cloudinary/types";
 import { composeErrorStr } from "lib/utils/log";
-import { JSON_FILE } from "lib/cloudinary/consts";
+import { JSON_FILE } from "../consts";
+import type { CloudinaryResource } from "../types";
 
 export async function write(resources: CloudinaryResource[]): Promise<void> {
   const contents = {

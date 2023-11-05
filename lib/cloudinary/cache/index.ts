@@ -1,4 +1,4 @@
-import { ROOT_DIR } from "lib/cloudinary/consts";
+import { ROOT_DIR } from "../consts";
 import fetchFolderRecursive from "./fetch";
 import { write } from "./write";
 

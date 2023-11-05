@@ -1,5 +1,5 @@
 import { ROOT_DIR } from "./consts";
-import getCache from "./reader";
+import getCache from "./cache/reader";
 
 const cache = await getCache();
 
