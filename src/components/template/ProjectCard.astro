@@ -24,12 +24,25 @@ const i = getCldImgData("projects/" + project.slug);
 ---
 
 <article class="project">
-  <Content components={components} />
+  <div class="project-body">
+    <Content components={components} />
+  </div>
   <CldImg resource={i} hasBorder />
 </article>
 
 <style is:global>
   .project {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(var(--size-header-3), 1fr));
+    column-gap: var(--size-fluid-5);
+    row-gap: var(--size-fluid-2);
+
+    img {
+      width: min(100%, var(--size-content-3));
+    }
+  }
+  .project-body {
     display: grid;
     max-width: var(--size-content-3);
     & > * + * {
