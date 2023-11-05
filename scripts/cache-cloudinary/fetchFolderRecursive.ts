@@ -1,5 +1,5 @@
 import type { CloudinaryResource } from 'lib/cloudinary/types';
-import cloudinary from './cloudinaryClient';
+import cloudinary from 'lib/cloudinary';
 
 async function fetchNextPage(
   folderName: string,
