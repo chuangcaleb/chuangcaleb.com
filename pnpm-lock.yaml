@@ -44,8 +44,8 @@ devDependencies:
     specifier: ^16.3.1
     version: 16.3.1
   open-props:
-    specifier: ^1.6.8
-    version: 1.6.8
+    specifier: ^1.6.10
+    version: 1.6.10
   postcss-custom-media:
     specifier: ^10.0.2
     version: 10.0.2(postcss@8.4.31)
@@ -3578,8 +3578,8 @@ packages:
     dependencies:
       mimic-fn: 4.0.0
 
-  /open-props@1.6.8:
-    resolution: {integrity: sha512-pC/xUO5xyou8yTRQ7G8gx7ut0ieSmabtzjeWCQX+u0RhnRCWXYzW80TNnH8VQvI/WqMLKrFQOlYc3fIgh+lg5w==}
+  /open-props@1.6.10:
+    resolution: {integrity: sha512-smBq1Bi33FS+ENti4xDtYOr7IaklmXF6Op62PnQi//PuJF4zq7VziMIkHn8+PkVX4tDhrk1SGYZKrPAiiCD+Bw==}
     dev: true
 
   /ora@7.0.1:
