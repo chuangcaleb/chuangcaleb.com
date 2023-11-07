@@ -4,19 +4,28 @@ import Contact from "~/components/blocks/Contact.astro";
 
 <footer id="footer">
   <Contact />
-  <p class="fine-print">&copy; {new Date().getFullYear()} Chuang Caleb</p>
+  <p class="fine-print">
+    &copy; {new Date().getFullYear()} Chuang Caleb
+    <a href="https://github.com/chuangcaleb/chuangcaleb.com">source code</a>
+    <a href="/sitemap-index.xml">sitemap</a>
+  </p>
 </footer>
-
 <style>
   footer {
     background-color: var(--surface-1b);
     border-top-width: 1px;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     .fine-print {
       color: var(--text-muted);
       font-size: var(--font-size-0);
       display: flex;
       justify-content: center;
+      gap: var(--size-relative-4);
+      justify-self: flex-end;
     }
   }
 </style>
