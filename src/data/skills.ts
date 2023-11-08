@@ -37,7 +37,7 @@ const SKILLS: SkillGroups = {
     skills: ["rest-ful", "async-program", "caching", "rendering-strats"],
   },
 
-  Optimization: {
+  Performance: {
     icon: "lucide:zap",
     skills: [
       "prpl",
