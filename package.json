@@ -20,7 +20,7 @@
   "devDependencies": {
     "@astrojs/mdx": "^1.1.3",
     "@astrojs/sitemap": "^3.0.3",
-    "@types/fs-extra": "^11.0.3",
+    "@types/fs-extra": "^11.0.4",
     "astro-compressor": "^0.4.1",
     "astro-iconify": "^1.2.0",
     "astro-purgecss": "^3.2.1",
