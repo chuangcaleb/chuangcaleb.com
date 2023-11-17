@@ -67,7 +67,6 @@
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   letter-spacing: var(--font-letterspacing-1);
-
 }
 
 :where(a[href],
@@ -170,7 +169,7 @@
 }
 
 .style-code,
-:not(pre)>code {
+:not(pre) > code {
   white-space: initial;
 }
 
