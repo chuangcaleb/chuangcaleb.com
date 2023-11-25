@@ -39,14 +39,7 @@ const SKILLS: SkillGroups = {
 
   Performance: {
     icon: "lucide:zap",
-    skills: [
-      "prpl",
-      "big-o",
-      "compress",
-      "code-splitting",
-      "image-optim",
-      "progress-hydrate",
-    ],
+    skills: ["prpl", "big-o", "compress", "image-optim", "hydration-strats"],
   },
 
   Code: {
@@ -68,7 +61,6 @@ const SKILLS: SkillGroups = {
       "infrastructure",
       "ci-cd-automation",
       "releasing",
-      "oss-mgmt",
     ],
   },
 
