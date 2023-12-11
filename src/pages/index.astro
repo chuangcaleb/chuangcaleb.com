@@ -7,8 +7,18 @@ import Skills from "~/components/blocks/Skills.astro";
 ---
 
 <Main class="main-index">
-  <Hero />
-  <Highlights />
+  <div class="max">
+    <Hero />
+    <Highlights />
+  </div>
   <Projects />
   <Skills />
 </Main>
+
+<style>
+  div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+</style>
