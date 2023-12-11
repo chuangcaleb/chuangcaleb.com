@@ -8,13 +8,13 @@ interface MainProps extends HTMLAttributes<"main"> {}
 
 type Props = MainProps & BaseProps;
 
-const { description, title, class: className, ...props } = Astro.props;
+const { description, title, ...props } = Astro.props;
 ---
 
 <Base title={title} description={description}>
   <Header />
 
-  <main id="main" class={className} {...props}>
+  <main id="main" class="content-grid" {...props}>
     <slot />
   </main>
 
@@ -23,6 +23,8 @@ const { description, title, class: className, ...props } = Astro.props;
 
 <style is:global>
   main {
+    display: flex;
+    flex-direction: column;
     flex: 1;
   }
 </style>
