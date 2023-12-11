@@ -24,7 +24,7 @@ const i = getCldImgData("projects/" + project.slug, true);
 ---
 
 <article class="project">
-  <div class="project-body">
+  <div class="project-body flow">
     <Content components={components} />
   </div>
   {
@@ -51,9 +51,8 @@ const i = getCldImgData("projects/" + project.slug, true);
   .project-body {
     display: grid;
     max-width: var(--size-content-3);
-    & > * + * {
-      margin-top: var(--size-relative-6);
-    }
+    --flow-gap: var(--size-relative-6);
+
     header {
       display: grid;
       :not(h3) {

@@ -22,3 +22,7 @@
 .text-muted {
   color: var(--text-muted);
 }
+
+.flow > * + * {
+  margin-top: var(--flow-gap);
+}

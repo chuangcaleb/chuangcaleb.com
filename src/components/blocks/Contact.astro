@@ -5,7 +5,7 @@ import LINKS from "~/data/links";
 import Icon from "astro-iconify";
 ---
 
-<section class="contact-section content-grid" id="contact">
+<section class="contact-section content-grid flow" id="contact">
   <HeadingWIcon as="h2">
     <Icon name="mdi:connection" />
     {" "}<span class="text-muted">#</span> contact
@@ -30,9 +30,7 @@ import Icon from "astro-iconify";
     & > * {
       grid-column: feature;
     }
-    & > * + * {
-      margin-top: var(--size-relative-8);
-    }
+
     ul {
       display: grid;
 
