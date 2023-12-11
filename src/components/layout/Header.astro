@@ -1,8 +1,30 @@
 ---
-import SkipLink from "~/components/styled/monom/SkipLink.astro";
+
 ---
 
 <header>
-  <SkipLink href="#main">Skip to content →</SkipLink>
-  <SkipLink href="#footer">Skip to footer →</SkipLink>
+  <div class="sr-only-unfocused skip-container">
+    <a href="#main">Skip to content →</a>
+    <a href="#footer">Skip to footer →</a>
+  </div>
 </header>
+
+<style is:global>
+  .skip-container {
+    position: fixed;
+    padding: var(--size-3);
+    transition: transform 0.3s;
+    transform: translateY(-100%);
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    background-color: var(--surface-1b);
+    line-height: var(--font-lineheight-4);
+    border-bottom-right-radius: var(--radius-2);
+    &:focus-within {
+      transform: translateY(0%);
+    }
+    a {
+      display: block;
+    }
+  }
+</style>
