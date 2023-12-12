@@ -3,8 +3,8 @@ html {
 }
 
 /* https://ryanmulligan.dev/blog/layout-breakouts/ */
-.content-grid {
-  --gutter: clamp(1rem, 6vw, 3rem);
+[class*="content-grid"] {
+  --gutter: clamp(1rem, 3vw, 3rem);
   --popout-g: minmax(0, 2rem);
   --feature-g: minmax(0, 5rem);
   --content-w: min(65ch, 100% - var(--gutter) * 2);
@@ -24,6 +24,10 @@ html {
 
 .content-grid > * {
   grid-column: content;
+}
+
+.content-grid-max > * {
+  grid-column: max;
 }
 
 .full {

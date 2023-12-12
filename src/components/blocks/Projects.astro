@@ -9,7 +9,7 @@ const projects = (await getCollection("project")).sort(
 );
 ---
 
-<section class="projects-section flow feature">
+<section class="projects-section flow">
   <HeadingWIcon as="h2">
     <Icon name="lucide:atom" />
     {" "}<span class="text-muted">/</span> projects
@@ -21,8 +21,8 @@ const projects = (await getCollection("project")).sort(
 
 <style is:global>
   .projects-section {
-    /* min-width: var(--size-lg); */
-    /* grid-column: subgrid; */
+    max-width: var(--size-lg);
+    /* grid-column-end: feature-end; */
     .projects {
       display: grid;
       gap: var(--size-fluid-5);
