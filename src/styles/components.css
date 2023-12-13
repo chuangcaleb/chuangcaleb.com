@@ -7,17 +7,20 @@ html {
   --gutter: clamp(1rem, 3vw, 3rem);
   --popout-g: minmax(0, 2rem);
   --feature-g: minmax(0, 3rem);
+  --wide-g: minmax(0, 10ch);
   --content-w: min(65ch, 100% - var(--gutter) * 2);
 
   display: grid;
   grid-template-columns:
     [full-start] var(--gutter)
     [max-start] auto
+    [wide-start] var(--wide-g)
     [feature-start] var(--feature-g)
     [popout-start] var(--popout-g)
     [content-start] var(--content-w) [content-end]
     var(--popout-g) [popout-end]
     var(--feature-g) [feature-end]
+    var(--wide-g) [wide-end]
     auto [max-end]
     var(--gutter) [full-end];
 }
@@ -39,6 +42,10 @@ html {
 
 .max {
   grid-column: max;
+}
+
+.wide {
+  grid-column: wide;
 }
 
 .popout {

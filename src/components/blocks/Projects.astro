@@ -18,9 +18,3 @@ const projects = (await getCollection("project")).sort(
     {projects.map((p) => <ProjectCard project={p} />)}
   </div>
 </section>
-
-<style is:global>
-  .project {
-    max-width: var(--size-lg);
-  }
-</style>

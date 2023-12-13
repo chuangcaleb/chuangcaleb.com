@@ -21,11 +21,17 @@ import Skills from "~/components/blocks/Skills.astro";
     .wrapper {
       padding-block: var(--size-relative-8);
     }
+    .projects-section {
+      grid-column: wide;
+      /* margin-inline: auto;
+      width: min(100%, var(--size-lg)); */
+      /* max-width: var(--size-lg); */
+    }
     @media screen and (width > 1024px) {
       .wrapper {
         display: grid;
         grid-template-columns: 1fr 2fr 2fr;
-        gap: var(--size-relative-10);
+        gap: var(--size-relative-12);
       }
 
       .hero-section {
@@ -34,9 +40,6 @@ import Skills from "~/components/blocks/Skills.astro";
       .highlights-section {
         grid-column: span 1 / span 1;
       }
-    }
-    .projects-section {
-      margin-inline: auto;
     }
   }
 </style>
