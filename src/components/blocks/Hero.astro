@@ -10,7 +10,7 @@ const { LINKEDIN, GITHUB, CV } = LINKS;
 const heroLinks = [GITHUB, LINKEDIN, CV];
 ---
 
-<section class="hero-section flow-lg">
+<section class="hero-section flow-xl">
   <header>
     <HeadingCaps as="h1">Chuang Caleb</HeadingCaps>
     <h2>
@@ -18,7 +18,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       <span class="gradient"> different story.</span>
     </h2>
   </header>
-  <div class="subheader">
+  <div class="subheader flow">
     <p>
       <b>Ahoy! 🌊 This is Caleb speaking.</b> I'm a <b>Malaysian</b> dude who
       found
@@ -58,21 +58,15 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
 <style is:global>
   .hero-section {
     display: grid;
-    column-gap: var(--size-fluid-3);
-    grid-template: "header" "subheader" "img";
-    align-content: center;
+    align-content: start;
     /* padding-top: var(--size-fluid-2); */
 
     header {
-      display: grid;
       gap: var(--size-fluid-1);
-      grid-area: header;
     }
 
     .subheader {
-      display: grid;
       gap: var(--size-fluid-2);
-      grid-area: subheader;
 
       p {
         max-width: var(--size-content-3);
@@ -93,7 +87,6 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
     img {
       /* --_min-w: 55vw;
       min-width: min(var(--_min-w)); */
-      grid-area: img;
       border-radius: var(--radius-2);
     }
 

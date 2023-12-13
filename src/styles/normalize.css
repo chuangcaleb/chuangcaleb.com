@@ -185,6 +185,11 @@
   writing-mode: lr;
 }
 
+b,
+strong {
+  color: var(--text-1-strong);
+}
+
 /* lists */
 
 :where(ol, ul) {
