@@ -12,7 +12,7 @@ const { name, group } = Astro.props;
 const { icon, skills } = group;
 ---
 
-<article class="skill-group-card flow">
+<article class="skill-group-card flow-sm">
   <HeadingWIcon as="h3">
     {icon && <Icon name={icon} />}{name}
   </HeadingWIcon>
@@ -29,7 +29,6 @@ const { icon, skills } = group;
 
 <style is:global>
   .skill-group-card {
-    --flow-gap: var(--size-relative-4);
     background-color: var(--surface-1b);
     padding: var(--size-relative-5);
 

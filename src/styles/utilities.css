@@ -23,6 +23,15 @@
   color: var(--text-muted);
 }
 
+.flow-sm > * + * {
+  margin-top: var(--size-relative-4);
+}
 .flow > * + * {
-  margin-top: var(--flow-gap);
+  margin-top: var(--size-relative-6);
+}
+.flow-g > * + * {
+  margin-top: var(--size-relative-8);
+}
+.flow-xl > * + * {
+  margin-top: var(--size-relative-12);
 }

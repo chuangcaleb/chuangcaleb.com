@@ -18,7 +18,7 @@ import Skills from "~/components/blocks/Skills.astro";
 <style is:global>
   .main-index {
     .wrapper {
-      /* padding-block: var(--size-relative-8); */
+      padding-block: var(--size-relative-8);
     }
     @media screen and (width > 1024px) {
       .wrapper {
@@ -33,6 +33,9 @@ import Skills from "~/components/blocks/Skills.astro";
       .highlights-section {
         grid-column: span 1 / span 1;
       }
+    }
+    .projects-section {
+      margin-inline: auto;
     }
   }
 </style>
