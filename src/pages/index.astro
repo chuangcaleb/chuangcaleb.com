@@ -6,7 +6,7 @@ import Projects from "~/components/blocks/Projects.astro";
 import Skills from "~/components/blocks/Skills.astro";
 ---
 
-<Main class="main-index content-grid-max flow-2xl">
+<Main class="main-index content-grid-wide flow-2xl">
   <div class="wrapper">
     <Hero />
     <Highlights />
@@ -17,16 +17,15 @@ import Skills from "~/components/blocks/Skills.astro";
 
 <style is:global>
   .main-index {
-    padding-bottom: var(--size-relative-12);
+    padding-top: var(--size-fluid-3);
+    padding-bottom: var(--size-fluid-6);
     .wrapper {
-      padding-block: var(--size-relative-8);
+      display: grid;
+      grid-column: max;
       max-width: var(--size-xl);
       margin-inline: auto;
     }
-    .skills-section,
-    .projects-section {
-      grid-column: wide;
-    }
+
     @media screen and (width < 1024px) {
       .wrapper > * + * {
         margin-top: var(--size-relative-12);
@@ -34,13 +33,8 @@ import Skills from "~/components/blocks/Skills.astro";
     }
     @media screen and (width >= 1024px) {
       .wrapper {
-        display: grid;
         grid-template-columns: 5fr 3fr;
-        gap: var(--size-relative-10);
-      }
-
-      .highlights-section {
-        padding-block: var(--size-relative-8);
+        column-gap: var(--size-relative-10);
       }
     }
   }
