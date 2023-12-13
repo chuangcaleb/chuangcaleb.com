@@ -6,7 +6,7 @@ html {
 [class*="content-grid"] {
   --gutter: clamp(1rem, 3vw, 3rem);
   --popout-g: minmax(0, 2rem);
-  --feature-g: minmax(0, 5rem);
+  --feature-g: minmax(0, 3rem);
   --content-w: min(65ch, 100% - var(--gutter) * 2);
 
   display: grid;
@@ -28,6 +28,9 @@ html {
 
 .content-grid-max > * {
   grid-column: max;
+}
+.content-grid-feature > * {
+  grid-column: feature;
 }
 
 .full {

@@ -104,13 +104,17 @@
   line-height: var(--font-lineheight-1);
 }
 
-:where(h1, h2) {
+:where(h1) {
   font-weight: var(--font-weight-8);
+}
+
+:where(h2) {
+  font-weight: var(--font-weight-7);
 }
 
 .style-h3,
 :where(h3, h4, h5, h6) {
-  font-weight: var(--font-weight-7);
+  font-weight: var(--font-weight-6);
 }
 
 :where(h1) {
@@ -125,15 +129,15 @@
 
 .style-h3,
 :where(h3) {
-  font-size: var(--font-size-5);
-}
-
-:where(h4) {
   font-size: var(--font-size-4);
 }
 
-:where(h5) {
+:where(h4) {
   font-size: var(--font-size-3);
+}
+
+:where(h5) {
+  font-size: var(--font-size-2);
 }
 
 :where(h3, h4, h5, h6, dt) {

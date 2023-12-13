@@ -14,18 +14,13 @@ const projects = (await getCollection("project")).sort(
     <Icon name="lucide:atom" />
     {" "}<span class="text-muted">/</span> projects
   </HeadingWIcon>
-  <div class="projects">
+  <div class="projects flow">
     {projects.map((p) => <ProjectCard project={p} />)}
   </div>
 </section>
 
 <style is:global>
-  .projects-section {
+  .project {
     max-width: var(--size-lg);
-    /* grid-column-end: feature-end; */
-    .projects {
-      display: grid;
-      gap: var(--size-fluid-5);
-    }
   }
 </style>

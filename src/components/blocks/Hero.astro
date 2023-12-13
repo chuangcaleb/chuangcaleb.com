@@ -29,7 +29,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
         >
       </code>
     </p>
-    <div>
+    <div class="buttons-cont">
       <Button as="a" theme="brand" class="cta-1" href="#contact">
         <Icon name="mdi:connection" />
          Get connected!
@@ -62,7 +62,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
     column-gap: var(--size-fluid-3);
     grid-template: "header" "subheader" "img";
     align-items: center;
-    padding-top: var(--size-fluid-2);
+    /* padding-top: var(--size-fluid-2); */
 
     header {
       display: grid;
@@ -86,11 +86,12 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       font-size: var(--font-size-fluid-3);
       line-height: var(--font-lineheight-0);
       max-width: 15ch;
+      font-weight: var(--font-weight-8);
     }
 
     img {
-      --_min-w: 55vw;
-      min-width: min(var(--_min-w));
+      /* --_min-w: 55vw;
+      min-width: min(var(--_min-w)); */
       grid-area: img;
       border-radius: var(--radius-2);
     }
@@ -106,14 +107,14 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       max-width: var(--size-content-1);
     }
 
-    div:has(> .buttons) {
+    .buttons-cont {
       display: flex;
       flex-wrap: wrap;
       column-gap: var(--size-fluid-2);
       row-gap: var(--size-fluid-2);
     }
 
-    @media screen and (width < 500px) {
+    /* ost{
       img {
         margin-inline: auto;
       }
@@ -137,7 +138,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       img {
         --_min-w: 100%;
       }
-    }
+    } */
 
     code {
       display: block;
