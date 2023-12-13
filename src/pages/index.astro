@@ -6,7 +6,7 @@ import Projects from "~/components/blocks/Projects.astro";
 import Skills from "~/components/blocks/Skills.astro";
 ---
 
-<Main class="main-index content-grid-max flow">
+<Main class="main-index content-grid-max flow-2xl">
   <div class="wrapper flow">
     <Hero />
     <Highlights />
@@ -17,6 +17,7 @@ import Skills from "~/components/blocks/Skills.astro";
 
 <style is:global>
   .main-index {
+    padding-bottom: var(--size-relative-12);
     .wrapper {
       padding-block: var(--size-relative-8);
     }

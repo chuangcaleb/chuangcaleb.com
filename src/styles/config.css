@@ -6,6 +6,4 @@ html {
   --day-h: 7;
   --day-s: 80%;
   --day-hs: var(--day-h) var(--day-s);
-
-  --flow-gap: var(--size-relative-8);
 }
