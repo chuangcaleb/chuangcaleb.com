@@ -32,8 +32,9 @@ html {
 .content-grid-max > * {
   grid-column: max;
 }
-.content-grid-feature > * {
-  grid-column: feature;
+
+.content-grid-wide > * {
+  grid-column: wide;
 }
 
 .full {

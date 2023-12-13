@@ -5,7 +5,7 @@ import LINKS from "~/data/links";
 import Icon from "astro-iconify";
 ---
 
-<section class="contact-section content-grid flow" id="contact">
+<section class="contact-section content-grid-wide flow-lg" id="contact">
   <HeadingWIcon as="h2">
     <Icon name="mdi:connection" />
     {" "}<span class="text-muted">#</span> contact
@@ -27,9 +27,7 @@ import Icon from "astro-iconify";
 <style is:global>
   .contact-section {
     margin-block: auto;
-    & > * {
-      grid-column: feature;
-    }
+    padding-block: var(--size-fluid-5);
 
     ul {
       display: grid;
