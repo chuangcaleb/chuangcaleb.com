@@ -18,20 +18,25 @@ const widths = [
   2160,
 ];
 
-export function composeSrc(publicId: string, width: number) {
+export function composeSrc(publicId: string, version: number, width: number) {
   return cloudinary.url(publicId, {
     crop: "scale",
     fetch_format: "auto",
     quality: "auto",
-    width: width,
+    width,
+    version,
   });
 }
 
-export function composeSrcset(publicId: string, maxWidth: number) {
+export function composeSrcset(
+  publicId: string,
+  version: number,
+  maxWidth: number,
+) {
   let set = [];
   for (const width of widths) {
     if (width > maxWidth) break;
-    set.push(`${composeSrc(publicId, width)} ${width}w`);
+    set.push(`${composeSrc(publicId, version, width)} ${width}w`);
   }
   return set.join(", ");
 }
