@@ -20,21 +20,17 @@ const components = {
 const { Content } = await highlight.render();
 ---
 
-<article class="highlight">
+<article class="highlight flow-sm">
   <Content components={components} />
 </article>
 
 <style is:global>
   .highlight {
-    & > *:where(:not(:last-child)) {
-      margin-bottom: var(--size-2);
-    }
     h3 {
       margin-bottom: 0;
-      font-size: var(--font-size-2);
-
+      font-size: var(--font-size-1);
       svg {
-        width: var(--size-fluid-3);
+        width: var(--size-fluid-2);
       }
     }
     em {

@@ -10,7 +10,7 @@ const { LINKEDIN, GITHUB, CV } = LINKS;
 const heroLinks = [GITHUB, LINKEDIN, CV];
 ---
 
-<section class="hero-section">
+<section class="hero-section flow-lg">
   <header>
     <HeadingCaps as="h1">Chuang Caleb</HeadingCaps>
     <h2>
@@ -18,21 +18,19 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       <span class="gradient"> different story.</span>
     </h2>
   </header>
-  <div class="subheader">
+  <div class="subheader flow">
     <p>
-      <code>
-        <span class="nowrap"
-          >sometimes(<span class="text-brand">"writing-code"</span>);</span
-        >{" "}
-        <span class="nowrap"
-          >always(<span class="text-brand">"story-writing"</span>);</span
-        >
-      </code>
+      <strong>Ahoy! 🌊 This is Caleb speaking.</strong> I'm a <strong
+        >Malaysian</strong
+      > guy who professionally tinkers with <strong>UI Design</strong> & <strong
+        >dynamic web apps</strong
+      > — and unprofessionally with <strong>storytelling</strong>. You'll find
+      out about me on this site. Wanna work together?
     </p>
-    <div>
+    <div class="buttons-cont">
       <Button as="a" theme="brand" class="cta-1" href="#contact">
         <Icon name="mdi:connection" />
-         Get connected!
+         Contact me!
       </Button>
       <ul class="norm buttons">
         {
@@ -50,8 +48,8 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
   <Image
     src={heroImg}
     alt="Head profile of Chuang Caleb"
-    width={heroImg.width / 4}
-    densities={[1, 2, 3, 4]}
+    width={heroImg.width / 3}
+    densities={[1, 2, 3]}
     loading="eager"
   />
 </section>
@@ -59,23 +57,18 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
 <style is:global>
   .hero-section {
     display: grid;
-    column-gap: var(--size-fluid-3);
-    grid-template: "header" "subheader" "img";
-    align-items: center;
-    padding-top: var(--size-fluid-2);
+    align-content: start;
 
     header {
-      display: grid;
       gap: var(--size-fluid-1);
-      grid-area: header;
-      margin-bottom: var(--size-fluid-2);
     }
 
     .subheader {
-      display: grid;
       gap: var(--size-fluid-2);
-      grid-area: subheader;
-      margin-bottom: var(--size-fluid-3);
+
+      p {
+        max-width: var(--size-content-3);
+      }
     }
 
     h1 {
@@ -86,12 +79,12 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       font-size: var(--font-size-fluid-3);
       line-height: var(--font-lineheight-0);
       max-width: 15ch;
+      font-weight: var(--font-weight-8);
     }
 
     img {
-      --_min-w: 55vw;
-      min-width: min(var(--_min-w));
-      grid-area: img;
+      /* --_min-w: 55vw;
+      min-width: min(var(--_min-w)); */
       border-radius: var(--radius-2);
     }
 
@@ -106,14 +99,14 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       max-width: var(--size-content-1);
     }
 
-    div:has(> .buttons) {
+    .buttons-cont {
       display: flex;
       flex-wrap: wrap;
       column-gap: var(--size-fluid-2);
       row-gap: var(--size-fluid-2);
     }
 
-    @media screen and (width < 500px) {
+    /* ost{
       img {
         margin-inline: auto;
       }
@@ -137,12 +130,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       img {
         --_min-w: 100%;
       }
-    }
-
-    code {
-      display: block;
-      font-size: var(--font-size-fluid-0);
-    }
+    } */
 
     .gradient {
       background: linear-gradient(to bottom right, var(--text-1), var(--brand));

@@ -9,28 +9,10 @@ const highlights = (await getCollection("highlight")).sort(
 );
 ---
 
-<section class="highlights-section">
+<section class="highlights-section flow-xl">
   <HeadingWIcon as="h2">
     <Icon name="lucide:chevron-up-circle" />
     {" "}<span class="text-muted">/</span> now
   </HeadingWIcon>
   {highlights.map((h) => <HighlightCard highlight={h} />)}
 </section>
-
-<style is:global>
-  .highlights-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, min(100%, var(--size-content-2)));
-    column-gap: var(--size-fluid-3);
-    row-gap: var(--size-fluid-4);
-    grid-auto-flow: dense;
-    & > article {
-      grid-row: span 3 / span 3;
-      &:nth-child(2) {
-        grid-column-start: 1;
-        grid-row: span 4 / span 4;
-        align-self: center;
-      }
-    }
-  }
-</style>

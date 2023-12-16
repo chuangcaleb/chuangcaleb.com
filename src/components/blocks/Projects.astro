@@ -9,25 +9,12 @@ const projects = (await getCollection("project")).sort(
 );
 ---
 
-<section class="projects-section">
+<section class="projects-section flow-lg">
   <HeadingWIcon as="h2">
     <Icon name="lucide:atom" />
     {" "}<span class="text-muted">/</span> projects
   </HeadingWIcon>
-  <div class="projects">
+  <div class="projects flow-xl">
     {projects.map((p) => <ProjectCard project={p} />)}
   </div>
 </section>
-
-<style is:global>
-  .projects-section {
-    /* max-width: var(--size-xl); */
-    & > * + * {
-      margin-top: var(--size-relative-10);
-    }
-    .projects {
-      display: grid;
-      gap: var(--size-fluid-5);
-    }
-  }
-</style>

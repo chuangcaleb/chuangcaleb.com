@@ -22,3 +22,19 @@
 .text-muted {
   color: var(--text-muted);
 }
+
+.flow-sm > * + * {
+  margin-top: var(--size-relative-4);
+}
+.flow > * + * {
+  margin-top: var(--size-relative-6);
+}
+.flow-lg > * + * {
+  margin-top: var(--size-relative-8);
+}
+.flow-xl > * + * {
+  margin-top: var(--size-relative-10);
+}
+.flow-2xl > * + * {
+  margin-top: var(--size-relative-12);
+}

@@ -1,26 +1,70 @@
 html {
-  background: var(--surface-1a);
+  background-color: var(--surface-1a);
+}
+
+/* https://ryanmulligan.dev/blog/layout-breakouts/ */
+[class*="content-grid"] {
+  --gutter: clamp(1rem, 3vw, 3rem);
+  --popout-g: minmax(0, 2rem);
+  --feature-g: minmax(0, 3rem);
+  --wide-g: minmax(0, 10ch);
+  --content-w: min(65ch, 100% - var(--gutter) * 2);
+
+  display: grid;
+  grid-template-columns:
+    [full-start] var(--gutter)
+    [max-start] auto
+    [wide-start] var(--wide-g)
+    [feature-start] var(--feature-g)
+    [popout-start] var(--popout-g)
+    [content-start] var(--content-w) [content-end]
+    var(--popout-g) [popout-end]
+    var(--feature-g) [feature-end]
+    var(--wide-g) [wide-end]
+    auto [max-end]
+    var(--gutter) [full-end];
+}
+
+.content-grid > * {
+  grid-column: content;
+}
+
+.content-grid-max > * {
+  grid-column: max;
+}
+
+.content-grid-wide > * {
+  grid-column: wide;
+}
+
+.full {
+  grid-column: full;
+}
+
+.max {
+  grid-column: max;
+}
+
+.wide {
+  grid-column: wide;
+}
+
+.popout {
+  grid-column: popout;
+}
+
+.feature {
+  grid-column: feature;
+}
+
+.content {
+  grid-column: content;
 }
 
 .style-code,
 :not(pre) > code {
   background-color: var(--surface-1b);
   /* box-decoration-break: clone; */
-}
-
-section {
-  /* --section-px: var(--size-fluid-3);
-  --section_py: var(--size-fluid-2);
-  --max-w: var(--size-lg); */
-
-  padding-block: var(--size-fluid-4);
-  padding-inline: var(--size-fluid-2);
-  max-width: var(--size-lg);
-  width: 100%;
-  /* padding-block: var(--section-px, var(--size-fluid-3));
-  padding-inline: var(--section_py, var(--size-fluid-2));
-  max-width: var(--max-w, var(--size-lg)); */
-  margin-inline: auto;
 }
 
 :where(a[href]) {

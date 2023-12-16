@@ -11,8 +11,6 @@ html {
 
   --text-2-light: var(--stone-7);
   --surface-2-light: var(--stone-2);
-  --surface-3-light: var(--stone-1);
-  --surface-4-light: var(--stone-4);
   --surface-shadow-light: var(--stone-8-hsl);
   --shadow-strength-light: 2%;
 
@@ -28,8 +26,6 @@ html {
 
   --text-2-dark: var(--stone-5);
   --surface-2-dark: hsl(var(--night-hs) 30%);
-  --surface-3-dark:;
-  --surface-4-dark: var(--indigo-9);
   --surface-shadow-dark: var(--stone-12-hsl);
   --shadow-strength-dark: 80%;
 }

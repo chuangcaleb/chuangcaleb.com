@@ -23,8 +23,8 @@ const { Content } = await project.render();
 const i = getCldImgData("projects/" + project.slug, true);
 ---
 
-<article class="project">
-  <div class="project-body">
+<article class="project flow">
+  <div class="project-body flow">
     <Content components={components} />
   </div>
   {
@@ -42,18 +42,14 @@ const i = getCldImgData("projects/" + project.slug, true);
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(var(--size-header-3), 1fr));
     column-gap: var(--size-fluid-5);
-    row-gap: var(--size-fluid-2);
 
     img {
       width: min(100%, var(--size-content-3));
     }
   }
   .project-body {
-    display: grid;
     max-width: var(--size-content-3);
-    & > * + * {
-      margin-top: var(--size-relative-6);
-    }
+
     header {
       display: grid;
       :not(h3) {

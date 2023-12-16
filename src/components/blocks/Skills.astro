@@ -7,7 +7,7 @@ import SkillGroupCard from "~/components/templates/SkillGroupCard.astro";
 const skillGroups = Object.entries(SKILLS);
 ---
 
-<section class="skills-section">
+<section class="skills-section flow-lg">
   <HeadingWIcon as="h2">
     <Icon name="lucide:book-plus" />
     {" "}<span class="text-muted">/</span> skills
@@ -23,10 +23,6 @@ const skillGroups = Object.entries(SKILLS);
 
 <style is:global>
   .skills-section {
-    & > * + * {
-      margin-top: var(--size-relative-10);
-    }
-
     .skills {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));

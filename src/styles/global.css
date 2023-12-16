@@ -9,7 +9,7 @@
 /* @import "open-props/normalize"; */
 @import "normalize.css";
 
-@import "colors.css";
+@import "config.css";
 @import "theme.css";
 
 @import "components.css";
