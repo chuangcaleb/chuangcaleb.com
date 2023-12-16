@@ -12,6 +12,11 @@ import Skills from "~/components/blocks/Skills.astro";
     <div class="hr"></div>
     <Highlights />
   </div>
+  <code
+    >writing("<span class="text-brand">code</span>"); “<span class="text-brand"
+      >story</span
+    >-writing”</code
+  >
   <Projects />
   <Skills />
 </Main>
@@ -27,6 +32,12 @@ import Skills from "~/components/blocks/Skills.astro";
       margin-inline: auto;
     }
 
+    code {
+      padding-block: var(--size-fluid-3);
+      text-align: center;
+      grid-column: max;
+    }
+
     @media screen and (width < 1024px) {
       .wrapper > * + * {
         margin-top: var(--size-relative-12);
@@ -40,12 +51,18 @@ import Skills from "~/components/blocks/Skills.astro";
         padding: var(--gutter);
         grid-template-columns: 7fr auto 4fr;
       }
+
       .hr {
         border-width: 1px;
         height: 100%;
         margin-inline: var(--size-fluid-3);
       }
-      .highlights-section {
+
+      code {
+        margin-top: var(--size-fluid-2);
+      }
+
+      highlights-section {
         padding-block: var(--size-fluid-1);
       }
     }
