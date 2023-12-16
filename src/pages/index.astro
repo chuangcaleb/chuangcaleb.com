@@ -37,12 +37,13 @@ import Skills from "~/components/blocks/Skills.astro";
     }
     @media screen and (width >= 1024px) {
       .wrapper {
+        padding: var(--gutter);
         grid-template-columns: 7fr auto 4fr;
       }
       .hr {
         border-width: 1px;
         height: 100%;
-        margin-inline: var(--size-relative-6);
+        margin-inline: var(--size-fluid-3);
       }
       .highlights-section {
         padding-block: var(--size-fluid-1);
