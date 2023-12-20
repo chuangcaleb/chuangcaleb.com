@@ -16,8 +16,7 @@ import Icon from "astro-iconify";
       Object.values(LINKS).map((l) => (
         <li>
           <a href={l.href}>
-            <Icon name={l.icon} aria-hidden="true" />
-            {l.appId ?? l.label}
+            <Icon name={l.icon} aria-hidden="true" />{}{l.appId ?? l.label}
           </a>
         </li>
       ))

@@ -51,4 +51,6 @@ a:not([class]) {
   outline-offset: var(--size-relative-1);
   outline-color: var(--brand);
   outline-style: dashed;
+  outline-width: 2px;
+  transition-duration: 200ms;
 }

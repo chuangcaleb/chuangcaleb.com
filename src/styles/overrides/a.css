@@ -43,6 +43,10 @@
   text-decoration-skip-ink: none;
 }
 
-:where(a[href]):is(:hover, :focus, :active) {
+:where(a[href]:is(:hover, :focus, :active)) {
   text-decoration-color: hsl(var(--brand-hsl));
+}
+
+:where(a[href]:focus) {
+  text-decoration: none;
 }

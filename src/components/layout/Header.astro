@@ -3,7 +3,7 @@
 ---
 
 <header>
-  <div class="sr-only-unfocused skip-container">
+  <div class="skip-container | sr-only-unfocused flow-sm">
     <a href="#main">Skip to content →</a>
     <a href="#footer">Skip to footer →</a>
   </div>
@@ -13,13 +13,16 @@
   .skip-container {
     position: fixed;
     padding: var(--size-3);
+
     transition: transform 0.3s;
     transform: translateY(-100%);
+
     border-right-width: 1px;
     border-bottom-width: 1px;
+    border-bottom-right-radius: var(--radius-2);
+
     background-color: var(--surface-1b);
     line-height: var(--font-lineheight-4);
-    border-bottom-right-radius: var(--radius-2);
     &:focus-within {
       transform: translateY(0%);
     }

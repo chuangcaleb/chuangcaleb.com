@@ -56,6 +56,9 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
       --_bg: var(--_bg-hover);
       --_text: var(--_text-hover, var(--brand));
     }
+    &:active {
+      transform: scale(0.95);
+    }
 
     @media (prefers-color-scheme: dark) {
       &:is(:hover, :focus, :active) {
