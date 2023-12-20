@@ -8,7 +8,7 @@ type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
 const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
 ---
 
-<Comp class:list={["cc-btn", theme, className]} {...props}>
+<Comp class:list={["cc-btn", "|", theme, className]} {...props}>
   <slot />
 </Comp>
 

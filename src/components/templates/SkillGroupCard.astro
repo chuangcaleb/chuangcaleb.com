@@ -12,7 +12,7 @@ const { name, group } = Astro.props;
 const { icon, skills } = group;
 ---
 
-<article class="skill-group-card flow-sm">
+<article class="skill-group-card | flow-sm">
   <HeadingWIcon as="h3">
     {icon && <Icon name={icon} />}{name}
   </HeadingWIcon>
