@@ -1,0 +1,26 @@
+[class*="flow"] > * + * {
+  --flow-space: var(--size-relative-6);
+  margin-block-start: var(--flow-space, var(--size-relative-6));
+}
+
+/* .flow-0 > * + * {
+  --flow-space: 0;
+} */
+
+.flow-sm > * + * {
+  --flow-space: var(--size-relative-4);
+}
+
+.flow-lg > * + * {
+  --flow-space: var(--size-relative-8);
+}
+.flow-xl > * + * {
+  --flow-space: var(--size-relative-10);
+}
+.flow-2xl > * + * {
+  --flow-space: var(--size-relative-12);
+}
+
+.region {
+  padding-block: var(--size-relative-10);
+}

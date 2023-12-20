@@ -1,0 +1,7 @@
+.text-brand {
+  color: var(--brand);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}

@@ -7,11 +7,22 @@
 @import "open-props/media";
 
 /* @import "open-props/normalize"; */
-@import "normalize.css";
+@import "normalize/layout.css";
+@import "normalize/interactables.css";
+@import "normalize/prose.css";
+@import "normalize/misc.css";
 
 @import "config.css";
 @import "theme.css";
 
-@import "overrides.css";
+/* -------------------------------- overrides ------------------------------- */
 
-@import "utilities.css";
+@import "overrides/code.css";
+@import "overrides/a.css";
+
+/* -------------------------------- utilities ------------------------------- */
+
+@import "utilities/sr.css";
+@import "utilities/text.css";
+@import "utilities/flow.css";
+@import "utilities/grid.css";

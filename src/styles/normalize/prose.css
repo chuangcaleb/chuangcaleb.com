@@ -1,0 +1,109 @@
+/* ---------------------------------- text ---------------------------------- */
+
+.style-h3,
+:where(h1, h2, h3, h4, h5, h6) {
+  color: var(--text-1-strong);
+}
+
+/* Headings */
+.style-h3,
+:where(h1, h2, h3, h4, h5, h6) {
+  text-wrap: balance;
+  line-height: var(--font-lineheight-1);
+}
+
+:where(h1) {
+  font-weight: var(--font-weight-8);
+}
+
+:where(h2) {
+  font-weight: var(--font-weight-7);
+}
+
+.style-h3,
+:where(h3, h4, h5, h6) {
+  font-weight: var(--font-weight-6);
+}
+
+:where(h1) {
+  font-size: var(--font-size-8);
+  max-width: var(--size-header-1);
+}
+
+:where(h2) {
+  font-size: var(--font-size-6);
+  max-width: var(--size-header-2);
+}
+
+.style-h3,
+:where(h3) {
+  font-size: var(--font-size-4);
+}
+
+:where(h4) {
+  font-size: var(--font-size-3);
+}
+
+:where(h5) {
+  font-size: var(--font-size-2);
+}
+
+:where(h3, h4, h5, h6, dt) {
+  max-width: var(--size-header-3);
+}
+
+:where(p, ul, ol, dl, h6) {
+  font-size: var(--font-size-1);
+}
+
+/* underline */
+
+:where(a, u, ins, abbr) {
+  text-underline-offset: 1px;
+}
+
+@supports (-moz-appearance: none) {
+  :where(a, u, ins, abbr) {
+    text-underline-offset: 2px;
+  }
+}
+
+:where(a, u, ins, abbr) {
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.2em;
+}
+
+/* Code */
+
+.style-code,
+:where(code, kbd, samp, pre) {
+  font-family: var(--font-mono);
+}
+
+.style-code,
+:not(pre) > code {
+  white-space: initial;
+}
+
+.style-code,
+:where(:not(pre) > code) {
+  background-color: var(--surface-2);
+  border-radius: var(--radius-2);
+  padding: var(--size-1) var(--size-2);
+  writing-mode: lr;
+}
+
+b,
+strong {
+  color: var(--text-1-strong);
+}
+
+/* lists */
+
+:where(ol, ul) {
+  padding-left: var(--size-3);
+}
+
+:where(li, dd, figcaption) {
+  max-width: var(--size-content-2);
+}

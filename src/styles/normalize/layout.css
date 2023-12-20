@@ -1,0 +1,43 @@
+:where(html) {
+  accent-color: var(--brand);
+  background-color: var(--surface-1a);
+  height: 100%;
+  caret-color: var(--brand);
+  color: var(--text-1);
+  color-scheme: dark;
+  font-family: var(--font-sans);
+  line-height: var(--font-lineheight-3);
+  scrollbar-color: var(--scrollthumb-color) transparent;
+  scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline-color: var(--brand);
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+:where(:not(dialog)) {
+  margin: 0;
+}
+
+:where(:not(:is(fieldset, progress, meter))) {
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-color: var(--border);
+  border-width: 0;
+}
+
+:where(img, svg, video, canvas, audio, iframe, embed, object) {
+  display: block;
+}
+
+:where(img, svg, video) {
+  height: auto;
+  max-width: 100%;
+}

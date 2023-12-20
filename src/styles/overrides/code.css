@@ -1,0 +1,5 @@
+.style-code,
+:not(pre) > code {
+  background-color: var(--surface-1b);
+  /* box-decoration-break: clone; */
+}

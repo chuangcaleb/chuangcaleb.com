@@ -1,9 +1,3 @@
-.style-code,
-:not(pre) > code {
-  background-color: var(--surface-1b);
-  /* box-decoration-break: clone; */
-}
-
 :where(a[href]) {
   display: inline-flex;
   align-items: center;

@@ -1,0 +1,16 @@
+:where(svg:not([width])) {
+  vertical-align: middle;
+  display: inline-block;
+  width: 1em;
+}
+
+/* ------------------------------ custom resets ----------------------------- */
+
+ul.norm {
+  list-style-type: none;
+  padding: unset;
+
+  li {
+    padding: unset;
+  }
+}
