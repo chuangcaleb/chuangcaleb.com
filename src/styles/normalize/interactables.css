@@ -46,3 +46,9 @@ a:not([class]) {
   font-size: inherit;
   letter-spacing: inherit;
 }
+
+:focus-visible {
+  outline-offset: var(--size-relative-1);
+  outline-color: var(--brand);
+  outline-style: dashed;
+}

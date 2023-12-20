@@ -7,6 +7,10 @@
   --flow-space: 0;
 } */
 
+.flow-xs > * + * {
+  --flow-space: var(--size-relative-2);
+}
+
 .flow-sm > * + * {
   --flow-space: var(--size-relative-4);
 }

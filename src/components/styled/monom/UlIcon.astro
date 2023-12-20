@@ -6,22 +6,16 @@ export interface Props extends HTMLAttributes<"ul"> {}
 const { class: className, ...props } = Astro.props;
 ---
 
-<ul class:list={["norm cc-ul-icon", className]} {...props}>
+<ul class:list={["norm flow-xs cc-ul-icon", className]} {...props}>
   <slot />
 </ul>
 
 <style is:global>
   .cc-ul-icon {
     li {
-      display: inline-flex;
-      gap: var(--size-relative-2);
-      width: 100%;
-
       & > svg {
-        flex-shrink: 0;
         margin-right: var(--size-relative-1);
-        margin-bottom: auto;
-        margin-top: 0.3em;
+        margin-bottom: 0.25em;
         color: var(--text-muted);
       }
     }

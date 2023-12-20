@@ -8,7 +8,7 @@ type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
 const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
 ---
 
-<Comp class:list={["cc-btn", "|", theme, className]} {...props}>
+<Comp class:list={["cc-btn", theme, className]} {...props}>
   <slot />
 </Comp>
 
@@ -24,9 +24,11 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     align-items: center;
     justify-content: center;
     padding: var(--size-relative-2) var(--size-relative-3);
-    font-weight: var(--font-weight-7);
     border-style: solid;
     border-radius: var(--radius-2);
+
+    font-weight: var(--font-weight-7);
+    text-decoration-line: none;
 
     svg {
       width: 2em;
@@ -38,11 +40,6 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
       --_text: var(--text-on-brand);
       --_border: transparent;
       --_text-hover: var(--brand);
-    }
-    &.inline {
-      svg {
-        width: 1em;
-      }
     }
 
     &:has(svg:first-child:last-child) {

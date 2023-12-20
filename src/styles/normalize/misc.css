@@ -1,5 +1,15 @@
+:where(img, svg, video, canvas, audio, iframe, embed, object) {
+  display: block;
+}
+
+:where(img, svg, video) {
+  height: auto;
+  max-width: 100%;
+}
+
 :where(svg:not([width])) {
   vertical-align: middle;
   display: inline-block;
   width: 1em;
+  /* height: 1em; */
 }

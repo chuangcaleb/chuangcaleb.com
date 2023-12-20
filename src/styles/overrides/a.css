@@ -1,3 +1,4 @@
+/*
 :where(a[href]) {
   display: inline-flex;
   align-items: center;
@@ -10,7 +11,8 @@
   color: var(--brand);
   text-decoration-color: hsla(var(--brand-hsl) / 0.5);
   text-decoration-skip-ink: none;
-  margin: calc(var(--size-1) * -1);
+  margin-inline: calc(var(--size-1) * -1);
+  margin-block: calc(var(--size-1) * -2);
   margin-bottom: 0;
   padding: var(--size-1);
 }
@@ -29,4 +31,18 @@
   --glow: var(--brand);
   --size: var(--size-8);
   box-shadow: 0 0 var(--size) 0 var(--glow);
+}
+*/
+
+:where(a[href]) {
+  box-decoration-break: clone;
+  text-decoration-line: underline;
+  font-weight: var(--font-weight-5);
+  color: var(--brand);
+  text-decoration-color: hsla(var(--brand-hsl) / 0.5);
+  text-decoration-skip-ink: none;
+}
+
+:where(a[href]):is(:hover, :focus, :active) {
+  text-decoration-color: hsl(var(--brand-hsl));
 }
