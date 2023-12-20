@@ -6,64 +6,62 @@ import Projects from "~/components/blocks/Projects.astro";
 import Skills from "~/components/blocks/Skills.astro";
 ---
 
-<Main class="main-index | content-grid-wide flow-2xl">
-  <div class="index-wrapper">
+<Main class="main-index | content-grid-wide">
+  <div class="index-wrapper | region">
     <Hero />
     <div class="hr"></div>
     <Highlights />
   </div>
-  <code
-    >writing("<span class="text-brand">code</span>"); “<span class="text-brand"
-      >story</span
-    >-writing”</code
-  >
+  <section class="code-banner | region">
+    <code
+      >writing("<span class="text-brand">code</span>"); “<span
+        class="text-brand">story</span
+      >-writing”</code
+    >
+  </section>
   <Projects />
   <Skills />
 </Main>
 
 <style is:global>
   .main-index {
-    padding-top: var(--size-fluid-3);
-    padding-bottom: var(--size-fluid-6);
     .index-wrapper {
       display: grid;
       grid-column: max;
       max-width: var(--size-xl);
       margin-inline: auto;
+      row-gap: var(--size-fluid-6);
+    }
+    .code-banner {
+      display: grid;
+      grid-column: full;
+      grid-template-columns: subgrid;
     }
 
     code {
+      grid-column: max;
       padding-block: var(--size-fluid-3);
       text-align: center;
-      grid-column: max;
     }
 
-    @media screen and (width < 1024px) {
-      .index-wrapper > * + * {
-        margin-top: var(--size-relative-12);
-      }
-      .hr {
-        display: none;
-      }
+    .hr {
+      display: none;
+      border-width: 1px;
+      height: 100%;
+      margin-inline: var(--size-fluid-3);
     }
     @media screen and (width >= 1024px) {
       .index-wrapper {
-        padding: var(--gutter);
+        padding-inline: var(--gutter);
         grid-template-columns: 7fr auto 4fr;
       }
 
       .hr {
-        border-width: 1px;
-        height: 100%;
-        margin-inline: var(--size-fluid-3);
+        display: block;
       }
 
-      code {
-        margin-top: var(--size-fluid-2);
-      }
-
-      highlights-section {
-        padding-block: var(--size-fluid-1);
+      .highlights-section {
+        padding-block: var(--size-fluid-3);
       }
     }
   }

@@ -25,20 +25,31 @@
 
 /* ---------------------------------- flow ---------------------------------- */
 
+[class*="flow"] > * + * {
+  --flow-space: var(--size-relative-6);
+  margin-block-start: var(--flow-space, var(--size-relative-6));
+}
+
+/* .flow-0 > * + * {
+  --flow-space: 0;
+} */
+
 .flow-sm > * + * {
-  margin-top: var(--size-relative-4);
+  --flow-space: var(--size-relative-4);
 }
-.flow > * + * {
-  margin-top: var(--size-relative-6);
-}
+
 .flow-lg > * + * {
-  margin-top: var(--size-relative-8);
+  --flow-space: var(--size-relative-8);
 }
 .flow-xl > * + * {
-  margin-top: var(--size-relative-10);
+  --flow-space: var(--size-relative-10);
 }
 .flow-2xl > * + * {
-  margin-top: var(--size-relative-12);
+  --flow-space: var(--size-relative-12);
+}
+
+.region {
+  padding-block: var(--size-relative-10);
 }
 
 /* ---------------------------------- grid ---------------------------------- */
