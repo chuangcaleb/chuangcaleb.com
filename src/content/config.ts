@@ -10,6 +10,7 @@ const projectCollection = defineCollection({
   type: "content",
   schema: z.object({
     sequence: z.number(),
+    hidden: z.boolean().optional(),
   }),
 });
 

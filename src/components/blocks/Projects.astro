@@ -4,9 +4,9 @@ import ProjectCard from "~/components/templates/ProjectCard.astro";
 import Icon from "astro-iconify";
 import { getCollection } from "astro:content";
 
-const projects = (await getCollection("project")).sort(
-  (a, b) => a.data.sequence.valueOf() - b.data.sequence.valueOf(),
-);
+const projects = (await getCollection("project"))
+  .sort((a, b) => a.data.sequence.valueOf() - b.data.sequence.valueOf())
+  .filter((p) => !p.data.hidden);
 ---
 
 <section class="projects-section | region flow-xl">
