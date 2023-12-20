@@ -34,6 +34,11 @@
   cursor: pointer;
 }
 
+/* `a` elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
 /* :where(input[type="file"])::-webkit-file-upload-button  */
 :where(input, button, textarea, select) {
   color: inherit;

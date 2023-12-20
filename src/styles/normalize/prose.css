@@ -104,6 +104,13 @@ strong {
   padding-left: var(--size-3);
 }
 
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style-type: none;
+  padding: unset;
+}
+
 :where(li, dd, figcaption) {
   max-width: var(--size-content-2);
 }
