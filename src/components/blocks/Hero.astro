@@ -84,8 +84,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
     }
 
     img {
-      /* --_min-w: 55vw;
-      min-width: min(var(--_min-w)); */
+      --flow-space: var(--size-fluid-4);
       border-radius: var(--radius-2);
     }
 
@@ -106,32 +105,6 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       column-gap: var(--size-fluid-2);
       row-gap: var(--size-fluid-2);
     }
-
-    /* ost{
-      img {
-        margin-inline: auto;
-      }
-    }
-    @media screen and (500px <= width < 860px) {
-      & {
-        grid-template: "header header" "img subheader";
-        grid-template-columns: min-content 1fr;
-      }
-      img {
-        --_min-w: min(35vw, 180px);
-      }
-      .subheader {
-        margin-bottom: 0;
-      }
-    }
-    @media screen and (width >= 860px) {
-      & {
-        grid-template: "header img" "subheader img";
-      }
-      img {
-        --_min-w: 100%;
-      }
-    } */
 
     .gradient {
       background: linear-gradient(to bottom right, var(--text-1), var(--brand));

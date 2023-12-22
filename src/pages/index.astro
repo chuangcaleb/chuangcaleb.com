@@ -28,9 +28,9 @@ import Skills from "~/components/blocks/Skills.astro";
       grid-column: max;
       display: flex;
       flex-wrap: wrap;
-      column-gap: var(--size-fluid-4);
+      column-gap: var(--size-fluid-5);
+      justify-content: space-evenly;
       row-gap: var(--size-fluid-6);
-      max-width: var(--size-xl);
       margin-inline: auto;
       overflow: hidden;
     }
@@ -38,13 +38,14 @@ import Skills from "~/components/blocks/Skills.astro";
     .hero-section {
       flex-basis: 0;
       flex-grow: 999;
-      min-inline-size: 55%;
+      min-inline-size: 53%;
     }
 
     .highlights-section {
       flex-grow: 1;
       flex-basis: var(--size-content-2);
       position: relative;
+
       &::before {
         content: "";
         position: absolute;
@@ -52,7 +53,8 @@ import Skills from "~/components/blocks/Skills.astro";
         border-color: var(--border);
         border-style: solid;
         left: calc(var(--size-fluid-3) * -1);
-        height: 100%;
+        top: -50px;
+        height: calc(100% + 50px);
       }
     }
 
