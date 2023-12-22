@@ -30,5 +30,6 @@
 
 @import "utilities/sr.css";
 @import "utilities/text.css";
+@import "utilities/border.css";
 @import "utilities/flow.css";
 @import "utilities/grid.css";

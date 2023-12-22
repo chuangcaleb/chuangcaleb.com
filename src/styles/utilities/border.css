@@ -1,0 +1,4 @@
+.border {
+  border-width: var(--size-relative-1);
+  border-radius: var(--radius-2);
+}

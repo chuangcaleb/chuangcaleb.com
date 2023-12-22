@@ -25,14 +25,7 @@ const srcset = r ? composeSrcset(r.public_id, r.version, r.width) : null;
       srcset={srcset}
       sizes={sizes}
       alt=""
-      class={hasBorder ? "img-border" : null}
+      class={hasBorder ? "border" : null}
     />
   )
 }
-
-<style>
-  .img-border {
-    border-width: var(--size-relative-1);
-    border-radius: var(--radius-2);
-  }
-</style>
