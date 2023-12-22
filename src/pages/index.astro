@@ -9,7 +9,6 @@ import Skills from "~/components/blocks/Skills.astro";
 <Main class="main-index | content-grid-wide">
   <div class="index-wrapper | region">
     <Hero />
-    <div class="hr"></div>
     <Highlights />
   </div>
   <section class="code-banner | region">
@@ -26,11 +25,37 @@ import Skills from "~/components/blocks/Skills.astro";
 <style is:global>
   .main-index {
     .index-wrapper {
-      display: grid;
       grid-column: max;
-      max-width: var(--size-xl);
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: var(--size-fluid-4);
       row-gap: var(--size-fluid-6);
+      max-width: var(--size-xl);
+      margin-inline: auto;
+      overflow: hidden;
     }
+
+    .hero-section {
+      flex-basis: 0;
+      flex-grow: 999;
+      min-inline-size: 55%;
+    }
+
+    .highlights-section {
+      flex-grow: 1;
+      flex-basis: var(--size-content-2);
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        border-width: 1px;
+        border-color: var(--border);
+        border-style: solid;
+        left: calc(var(--size-fluid-3) * -1);
+        height: 100%;
+      }
+    }
+
     .code-banner {
       display: grid;
       grid-column: full;
@@ -41,27 +66,6 @@ import Skills from "~/components/blocks/Skills.astro";
       grid-column: max;
       padding-block: var(--size-fluid-3);
       text-align: center;
-    }
-
-    .hr {
-      display: none;
-      border-width: 1px;
-      height: 100%;
-      margin-inline: var(--size-fluid-3);
-    }
-    @media screen and (width >= 1024px) {
-      .index-wrapper {
-        padding-inline: var(--gutter);
-        grid-template-columns: 7fr auto 4fr;
-      }
-
-      .hr {
-        display: block;
-      }
-
-      .highlights-section {
-        padding-block: var(--size-fluid-3);
-      }
     }
   }
 </style>
