@@ -1,4 +1,8 @@
 html {
+  --font-heading: system-ui, sans-serif;
+  --font-sans: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
+    sans-serif;
+
   /* light */
   --brand-light-hsl: var(--day-hs) 40%;
   --surface-1a-light: hsl(var(--day-hs) 96%);

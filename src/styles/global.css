@@ -8,6 +8,11 @@
 @import "open-props/sizes";
 @import "open-props/media";
 
+/* --------------------------------- config --------------------------------- */
+
+@import "config.css";
+@import "theme.css";
+
 /* -------------------------------- normalize ------------------------------- */
 
 /* @import "open-props/normalize"; */
@@ -15,11 +20,6 @@
 @import "normalize/interactables.css";
 @import "normalize/prose.css";
 @import "normalize/misc.css";
-
-/* --------------------------------- config --------------------------------- */
-
-@import "config.css";
-@import "theme.css";
 
 /* -------------------------------- overrides ------------------------------- */
 
