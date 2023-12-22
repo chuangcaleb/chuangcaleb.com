@@ -11,12 +11,7 @@ interface Props {
 
 const { project } = Astro.props;
 
-const components = {
-  blockquote: "header",
-  h1: "h3",
-  h2: Caps,
-  ul: UINestednline,
-};
+const components = { ul: UINestednline };
 
 const { Content } = await project.render();
 
@@ -25,6 +20,10 @@ const i = getCldImgData("projects/" + project.slug, true);
 
 <article class="project">
   <div class="project-body | flow">
+    <header>
+      <h3>{project.data.title}</h3>
+      <Caps>{project.data.kind}</Caps>
+    </header>
     <Content components={components} />
   </div>
   {

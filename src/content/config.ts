@@ -11,6 +11,8 @@ const projectCollection = defineCollection({
   schema: z.object({
     sequence: z.number(),
     hidden: z.boolean().optional(),
+    title: z.string(),
+    kind: z.string(),
   }),
 });
 
