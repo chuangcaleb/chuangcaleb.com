@@ -13,19 +13,19 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "astro": "^4.0.4",
-    "cloudinary": "^1.41.0",
-    "sharp": "^0.33.0"
+    "astro": "^4.0.7",
+    "cloudinary": "^1.41.1",
+    "sharp": "^0.33.1"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.0.1",
+    "@astrojs/mdx": "^2.0.2",
     "@astrojs/sitemap": "^3.0.3",
     "@types/fs-extra": "^11.0.4",
     "astro-compressor": "^0.4.1",
     "astro-iconify": "^1.2.0",
-    "astro-purgecss": "^3.2.1",
+    "astro-purgecss": "^4.0.0",
     "astro-robots-txt": "^1.0.0",
-    "date-fns": "^2.30.0",
+    "date-fns": "^3.0.6",
     "dotenv": "^16.3.1",
     "open-props": "^1.6.16",
     "fs-extra": "^11.2.0",
@@ -33,6 +33,6 @@
     "postcss-preset-env": "^9.3.0",
     "prettier": "^3.1.1",
     "prettier-plugin-astro": "^0.12.2",
-    "tsx": "^4.6.2"
+    "tsx": "^4.7.0"
   }
 }
