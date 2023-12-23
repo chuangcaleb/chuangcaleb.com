@@ -16,7 +16,14 @@ const projectCollection = defineCollection({
   }),
 });
 
+const obsidianNoteCollection = defineCollection({
+  type: "content",
+  schema: null,
+});
+// tags: z.array(z.string()).optional(),
+
 export const collections = {
   highlight: highlightCollection,
   project: projectCollection,
+  "obsidian-note": obsidianNoteCollection,
 };

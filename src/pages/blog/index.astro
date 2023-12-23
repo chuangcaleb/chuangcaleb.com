@@ -1,5 +1,18 @@
 ---
 import Main from "~/components/layout/Main.astro";
+import { getParsedPath, getPublicNotes } from "~/utils/post";
+
+const publicNotes = await getPublicNotes();
 ---
 
-<Main class="cgrid"><div>Hello</div></Main>
+<Main class="cgrid">
+  <ul>
+    {
+      publicNotes?.map((n) => (
+        <li>
+          <a href={`/blog/${n.slug}`}>{getParsedPath(n.id).name}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Main>
