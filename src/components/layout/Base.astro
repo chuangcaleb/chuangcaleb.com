@@ -33,7 +33,7 @@ const pageDescription = description ?? SITE.description;
     <meta name="title" content={titleWithSiteTitle} />
     <meta name="description" content={pageDescription} />
     <meta name="author" content={SITE.author.name} />
-    <link rel="canonical" href={Astro.url.href} />
+    <link rel="canonical" href={SITE.url} />
     <link rel="sitemap" href="/sitemap.xml" />
 
     <!-- Favicon & Manifest -->

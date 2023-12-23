@@ -4,9 +4,13 @@ import Hero from "~/components/blocks/Hero.astro";
 import Highlights from "~/components/blocks/Now.astro";
 import Projects from "~/components/blocks/Projects.astro";
 import Skills from "~/components/blocks/Skills.astro";
+import SITE from "~/data/site";
 ---
 
-<Main class="main-index | content-grid-wide">
+<Main
+  class="main-index | content-grid-wide"
+  title={`${SITE.title} - ${SITE.subtitle}`}
+>
   <div class="index-wrapper | region">
     <Hero />
     <Highlights />
