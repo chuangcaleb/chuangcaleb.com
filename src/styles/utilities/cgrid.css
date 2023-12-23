@@ -1,10 +1,10 @@
 /* https://ryanmulligan.dev/blog/layout-breakouts/ */
-[class*="content-grid"] {
+[class*="cgrid"] {
   --gutter: clamp(1rem, 3vw, 3rem);
   --popout-g: minmax(0, 2rem);
   --feature-g: minmax(0, 3rem);
   --wide-g: minmax(0, 10ch);
-  --content-w: min(65ch, 100% - var(--gutter) * 2);
+  --content-w: min(70ch, 100% - var(--gutter) * 2);
 
   display: grid;
   grid-template-columns:
@@ -19,17 +19,18 @@
     var(--wide-g) [wide-end]
     auto [max-end]
     var(--gutter) [full-end];
+  align-content: start;
 }
 
-.content-grid > * {
+.cgrid > * {
   grid-column: content;
 }
 
-.content-grid-max > * {
+.cgrid-max > * {
   grid-column: max;
 }
 
-.content-grid-wide > * {
+.cgrid-wide > * {
   grid-column: wide;
 }
 
