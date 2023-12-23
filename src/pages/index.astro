@@ -22,6 +22,7 @@ import SITE from "~/data/site";
       >-writing”</code
     >
   </section>
+
   <Projects />
   <Skills />
 </Main>
@@ -36,7 +37,6 @@ import SITE from "~/data/site";
       justify-content: space-evenly;
       row-gap: var(--size-fluid-6);
       margin-inline: auto;
-      overflow: hidden;
     }
 
     .hero-section {
@@ -49,14 +49,13 @@ import SITE from "~/data/site";
       flex-grow: 1;
       flex-basis: var(--size-content-2);
       position: relative;
-
       &::before {
         content: "";
         position: absolute;
         border-width: 1px;
         border-color: var(--border);
         border-style: solid;
-        left: calc(var(--size-fluid-3) * -1);
+        left: calc(var(--gutter) * -1 - 2px);
         top: -50px;
         height: calc(100% + 50px);
       }
