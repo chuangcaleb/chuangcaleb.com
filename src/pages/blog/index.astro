@@ -6,13 +6,16 @@ const publicNotes = await getPublicNotes();
 ---
 
 <Main class="cgrid">
-  <ul>
-    {
-      publicNotes?.map((n) => (
-        <li>
-          <a href={`/blog/${n.slug}`}>{getParsedPath(n.id).name}</a>
-        </li>
-      ))
-    }
-  </ul>
+  <section class="region flow-lg">
+    <h1>All Posts</h1>
+    <ul>
+      {
+        publicNotes?.map((n) => (
+          <li>
+            <a href={`/blog/${n.slug}`}>{getParsedPath(n.id).name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </Main>

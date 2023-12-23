@@ -7,6 +7,8 @@
   font-family: var(--font-heading);
   line-height: var(--font-lineheight-1);
   text-wrap: balance;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 :where(h1) {
@@ -77,6 +79,10 @@
   font-family: var(--font-mono);
 }
 
+:where(pre) {
+  padding-block: var(--size-relative-6);
+}
+
 .style-code,
 :not(pre) > code {
   white-space: initial;
@@ -93,6 +99,10 @@
 b,
 strong {
   color: var(--text-1-strong);
+}
+
+:where(hr) {
+  border-width: 1px;
 }
 
 /* lists */

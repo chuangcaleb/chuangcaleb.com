@@ -2,7 +2,12 @@ html {
   --font-heading: system-ui, sans-serif;
   --font-sans: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
     sans-serif;
-  --size-popout: var(--size-3);
+
+  --size-blockquote-strip: var(--size-relative-3);
+  --size-blockquote-indent: var(--size-relative-7);
+  --size-popout: calc(
+    var(--size-blockquote-strip) + var(--size-blockquote-indent)
+  );
 
   /* light */
   --brand-light-hsl: var(--day-hs) 40%;
