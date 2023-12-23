@@ -9,7 +9,7 @@ interface Link {
 const LINKS: { [s: string]: Link } = {
   LINKEDIN: {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/chuangcaleb",
+    href: "https://linkedin.com/in/chuangcaleb/",
     ariaLabel: "LinkedIn profile of Chuang Caleb",
     appId: "linkedin.com/in/chuangcaleb",
     icon: "mdi:linkedin",
