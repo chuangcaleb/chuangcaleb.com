@@ -98,7 +98,7 @@ strong {
 /* lists */
 
 :where(ol, ul) {
-  padding-left: var(--size-3);
+  padding-left: var(--size-popout);
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */

@@ -2,6 +2,7 @@ html {
   --font-heading: system-ui, sans-serif;
   --font-sans: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
     sans-serif;
+  --size-popout: var(--size-3);
 
   /* light */
   --brand-light-hsl: var(--day-hs) 40%;
@@ -23,7 +24,7 @@ html {
   --surface-1a-dark: hsl(var(--night-hs) 18%);
   --surface-1b-dark: hsl(var(--night-hs) 12%);
   --text-1-dark: var(--stone-4);
-  --text-1-strong-dark: var(--stone-2);
+  --text-1-strong-dark: var(--stone-3);
   --text-muted-dark: var(--stone-6);
   --text-on-brand-dark: hsl(var(--night-hs) 12%);
   --border-dark: hsl(var(--night-hs) 40%);

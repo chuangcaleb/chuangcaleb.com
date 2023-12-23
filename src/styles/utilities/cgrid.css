@@ -1,7 +1,7 @@
 /* https://ryanmulligan.dev/blog/layout-breakouts/ */
 [class*="cgrid"] {
   --gutter: clamp(1rem, 3vw, 3rem);
-  --popout-g: minmax(0, 2rem);
+  --popout-g: minmax(0, var(--size-popout));
   --feature-g: minmax(0, 3rem);
   --wide-g: minmax(0, 10ch);
   --content-w: min(70ch, 100% - var(--gutter) * 2);

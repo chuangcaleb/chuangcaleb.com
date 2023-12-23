@@ -14,7 +14,53 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Main class="cgrid flow">
-  <h1>{entry.data.title}</h1>
-  <Content />
+<Main class="blog-post">
+  <article class="cgrid flow">
+    <header class="region">
+      <h1>{entry.data.title}</h1>
+    </header>
+    <Content />
+  </article>
 </Main>
+
+<style>
+  header {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: full;
+    h1 {
+      grid-column: feature;
+    }
+  }
+</style>
+<style is:global>
+  .blog-post {
+    ul {
+      grid-column: popout;
+    }
+  }
+</style>
+
+<!-- <style>
+  header {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: full;
+    background-color: var(--surface-1b);
+    border-bottom-width: 1px;
+    h1 {
+      grid-column: feature;
+    }
+  }
+  article {
+    padding-bottom: var(--size-fluid-5);
+  }
+</style>
+
+<style is:global>
+  .blog-post {
+    header + * {
+      --flow-space: var(--size-fluid-4);
+    }
+  }
+</style> -->
