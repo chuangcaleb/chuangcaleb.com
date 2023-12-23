@@ -108,6 +108,6 @@ ol[class] {
   padding: unset;
 }
 
-:where(li, dd, figcaption) {
+/* :where(dd, figcaption) {
   max-width: var(--size-content-2);
-}
+} */
