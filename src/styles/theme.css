@@ -10,9 +10,9 @@ html {
   );
 
   /* light */
-  --brand-light-hsl: var(--day-hs) 40%;
-  --surface-1a-light: hsl(var(--day-hs) 96%);
-  --surface-1b-light: hsl(var(--day-hs) 99%);
+  --brand-light-hsl: var(--day-hS) 45%;
+  --surface-1a-light: hsl(var(--day-hs) 98%);
+  --surface-1b-light: hsl(var(--day-hs) 93%);
   --text-1-light: var(--gray-9);
   --text-1-strong-light: var(--gray-11);
   --text-muted-light: var(--gray-7);
@@ -25,7 +25,7 @@ html {
   --shadow-strength-light: 2%;
 
   /* dark */
-  --brand-dark-hsl: var(--day-hs) 70%;
+  --brand-dark-hsl: var(--day-hS) 70%;
   --surface-1a-dark: hsl(var(--night-hs) 18%);
   --surface-1b-dark: hsl(var(--night-hs) 12%);
   --text-1-dark: var(--stone-4);
