@@ -22,6 +22,8 @@
   align-content: start;
 }
 
+/* utilities: parent */
+
 .cgrid > * {
   grid-column: content;
 }
@@ -33,6 +35,12 @@
 .cgrid-wide > * {
   grid-column: wide;
 }
+
+.cgrid-feature > * {
+  grid-column: feature;
+}
+
+/* utilities: children */
 
 .full {
   grid-column: full;
