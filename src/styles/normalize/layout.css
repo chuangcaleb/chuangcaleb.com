@@ -34,10 +34,10 @@
   width: var(--size-1);
 }
 ::-webkit-scrollbar-track {
-  background-color: var(--surface-1b);
+  background-color: var(--text-muted);
 }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--text-muted);
+  background-color: var(--text-faded);
   border-radius: var(--size-8);
 }
 ::-webkit-scrollbar-thumb:hover {

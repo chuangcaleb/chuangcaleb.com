@@ -12,7 +12,7 @@ const projects = (await getCollection("project"))
 <section class="projects-section | region flow-xl">
   <HeadingWIcon as="h2">
     <Icon name="lucide:atom" />
-    {" "}<span class="text-muted">/</span> projects
+    {" "}<span class="text-faded">/</span> projects
   </HeadingWIcon>
   <div class="projects flow-xl">
     {projects.map((p) => <ProjectCard project={p} />)}

@@ -10,19 +10,20 @@ html {
   );
 
   /* light */
-  --brand-light-hsl: var(--day-hS) 35%;
+  --brand-light-hsl: var(--day-hS) 30%;
   --surface-1a-light: hsl(var(--day-hs) 92%);
   --surface-1b-light: hsl(var(--day-hs) 89%);
-  --text-1-light: var(--gray-9);
-  --text-1-strong-light: var(--gray-11);
-  --text-muted-light: var(--gray-7);
+  --text-1-light: var(--stone-9);
+  --text-1-strong-light: var(--stone-11);
+  --text-faded-light: var(--stone-7);
+  --text-muted-light: hsl(var(--day-hs) 85%);
   --text-on-brand-light: var(--stone-1);
   --border-light: hsl(var(--day-hs) 80%);
 
-  --text-2-light: var(--stone-7);
+  /* --text-2-light: var(--stone-7);
   --surface-2-light: var(--stone-2);
   --surface-shadow-light: var(--stone-8-hsl);
-  --shadow-strength-light: 2%;
+  --shadow-strength-light: 2%; */
 
   /* dark */
   --brand-dark-hsl: var(--day-hS) 70%;
@@ -30,14 +31,15 @@ html {
   --surface-1b-dark: hsl(var(--night-hs) 12%);
   --text-1-dark: var(--stone-4);
   --text-1-strong-dark: var(--stone-3);
-  --text-muted-dark: var(--stone-6);
+  --text-faded-dark: var(--stone-6);
+  --text-muted-dark: hsl(var(--night-hs) 28%);
   --text-on-brand-dark: hsl(var(--night-hs) 12%);
   --border-dark: hsl(var(--night-hs) 40%);
 
-  --text-2-dark: var(--stone-5);
+  /* --text-2-dark: var(--stone-5);
   --surface-2-dark: hsl(var(--night-hs) 30%);
   --surface-shadow-dark: var(--stone-12-hsl);
-  --shadow-strength-dark: 80%;
+  --shadow-strength-dark: 80%; */
 }
 
 :root {
@@ -49,16 +51,17 @@ html {
   --surface-1b: var(--surface-1b-dark);
   --text-1: var(--text-1-dark);
   --text-1-strong: var(--text-1-strong-dark);
+  --text-faded: var(--text-faded-dark);
   --text-muted: var(--text-muted-dark);
   --text-on-brand: var(--text-on-brand-dark);
   --border: var(--border-dark);
 
-  --text-2: var(--text-2-dark);
+  /* --text-2: var(--text-2-dark);
   --surface-2: var(--surface-2-dark);
   --surface-3: var(--surface-3-dark);
   --surface-4: var(--surface-4-dark);
   --surface-shadow: var(--surface-shadow-dark);
-  --shadow-strength: var(--shadow-strength-dark);
+  --shadow-strength: var(--shadow-strength-dark); */
 
   @media (prefers-color-scheme: light) {
     color-scheme: light;
@@ -70,15 +73,16 @@ html {
     --surface-1b: var(--surface-1b-light);
     --text-1: var(--text-1-light);
     --text-1-strong: var(--text-1-strong-light);
+    --text-faded: var(--text-faded-light);
     --text-muted: var(--text-muted-light);
     --text-on-brand: var(--text-on-brand-light);
     --border: var(--border-light);
 
-    --text-2: var(--text-2-light);
+    /* --text-2: var(--text-2-light);
     --surface-2: var(--surface-2-light);
     --surface-3: var(--surface-3-light);
     --surface-4: var(--surface-4-light);
     --surface-shadow: var(--surface-shadow-light);
-    --shadow-strength: var(--shadow-strength-light);
+    --shadow-strength: var(--shadow-strength-light); */
   }
 }
