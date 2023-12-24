@@ -44,8 +44,8 @@ html {
 
 :root {
   color-scheme: dark;
+  --brand: hsl(var(--brand-hsl));
 
-  --brand: hsl(var(--brand-dark-hsl));
   --brand-hsl: var(--brand-dark-hsl);
   --surface-1a: var(--surface-1a-dark);
   --surface-1b: var(--surface-1b-dark);
@@ -67,7 +67,6 @@ html {
     color-scheme: light;
 
     /* set defaults */
-    --brand: hsl(var(--brand-light-hsl));
     --brand-hsl: var(--brand-light-hsl);
     --surface-1a: var(--surface-1a-light);
     --surface-1b: var(--surface-1b-light);
