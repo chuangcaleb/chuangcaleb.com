@@ -10,9 +10,9 @@ html {
   );
 
   /* light */
-  --brand-light-hsl: var(--day-hS) 45%;
-  --surface-1a-light: hsl(var(--day-hs) 98%);
-  --surface-1b-light: hsl(var(--day-hs) 93%);
+  --brand-light-hsl: var(--day-hS) 35%;
+  --surface-1a-light: hsl(var(--day-hs) 92%);
+  --surface-1b-light: hsl(var(--day-hs) 89%);
   --text-1-light: var(--gray-9);
   --text-1-strong-light: var(--gray-11);
   --text-muted-light: var(--gray-7);
