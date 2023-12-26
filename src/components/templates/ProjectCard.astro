@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-iconify";
 import type { CollectionEntry } from "astro:content";
 import { getCldImgData } from "lib/cloudinary/get";
 import UINestednline from "~/components/styled/monom/UINestednline.astro";
@@ -25,6 +26,16 @@ const i = getCldImgData("projects/" + project.slug, true);
       <Caps>{project.data.kind}</Caps>
     </header>
     <Content components={components} />
+    <div class="links">
+      <Icon name="lucide:link" />
+      {
+        project.data.links?.map((link) => (
+          <a href={link.href}>
+            <Icon name={link.icon} />{}{link.label}
+          </a>
+        ))
+      }
+    </div>
   </div>
   {
     i ? (
@@ -45,6 +56,12 @@ const i = getCldImgData("projects/" + project.slug, true);
 
     img {
       width: min(100%, var(--size-content-3));
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: var(--size-relative-6);
     }
   }
   .project-body {
