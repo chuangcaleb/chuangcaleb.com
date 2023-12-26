@@ -95,7 +95,6 @@
 .style-code,
 :where(:not(pre) > code) {
   background-color: var(--surface-2);
-  border-width: 1px;
   border-radius: var(--radius-2);
   padding: var(--size-1) var(--size-2);
   writing-mode: lr;

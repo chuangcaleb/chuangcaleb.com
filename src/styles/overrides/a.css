@@ -39,7 +39,7 @@
   text-decoration-line: underline;
   font-weight: var(--font-weight-5);
   color: var(--brand);
-  text-decoration-color: hsla(var(--brand-hsl) / 0.5);
+  text-decoration-color: hsla(var(--brand-hsl) / 0.25);
   text-decoration-skip-ink: none;
 }
 

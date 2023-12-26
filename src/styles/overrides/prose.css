@@ -51,7 +51,6 @@
     }
   }
   ul {
-    /* grid-column: popout; */
     li + li {
       margin-block-start: var(--size-relative-5);
     }
@@ -73,7 +72,7 @@
   }
 
   pre {
-    grid-column: popout;
+    grid-column: feature;
     display: grid;
     grid-template-columns: subgrid;
     * {
