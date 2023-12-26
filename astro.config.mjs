@@ -23,4 +23,5 @@ export default defineConfig({
   site: "https://www.chuangcaleb.com",
   trailingSlash: "never",
   integrations,
+  markdown: { shikiConfig: { theme: "css-variables" } },
 });

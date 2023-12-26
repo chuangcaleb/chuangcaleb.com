@@ -26,6 +26,7 @@
 @import "overrides/code.css";
 @import "overrides/a.css";
 @import "overrides/prose.css";
+@import "overrides/shiki.css";
 
 /* -------------------------------- utilities ------------------------------- */
 

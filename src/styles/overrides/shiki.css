@@ -1,0 +1,13 @@
+:root {
+  --astro-code-color-text: var(--text-1);
+  --astro-code-color-background: var(--surface-1b);
+  /* --astro-code-token-constant: plum;
+  --astro-code-token-string: orchid;
+  --astro-code-token-comment: salmon;
+  --astro-code-token-keyword: powderblue;
+  --astro-code-token-parameter: seashell;
+  --astro-code-token-function: dodgerblue;
+  --astro-code-token-string-expression: burlywood;
+  --astro-code-token-punctuation: linen;
+  --astro-code-token-link: honeydew; */
+}
