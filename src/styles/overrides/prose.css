@@ -50,17 +50,19 @@
       }
     }
   }
-  ul {
+  ul,
+  ol {
     li + li {
       margin-block-start: var(--size-relative-5);
     }
-    ul {
+    ul,
+    ol {
       position: relative;
       &::before {
         content: "";
         position: absolute;
         border-width: 1px;
-        border-color: var(--border);
+        border-color: var(--text-muted);
         border-style: dashed;
         height: 100%;
         left: calc(var(--size-popout) * -0.45);

@@ -136,5 +136,5 @@ ol[class] {
 
 ::selection {
   color: var(--text-on-brand);
-  background: var(--text-1);
+  background: var(--brand);
 }
