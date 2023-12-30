@@ -1,4 +1,0 @@
-[submodule "src/content/obsidian-note"]
-	path = src/content/obsidian-note
-	url = https://github.com/chuangcaleb/obsidian-caleb
-	branch = main
