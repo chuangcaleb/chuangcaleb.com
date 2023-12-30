@@ -19,11 +19,12 @@ function stripRootDir(string: string, rootDir: string) {
 
 export async function getPublicNotes() {
   const notes = await getCollection("obsidian-note");
-  return notes
-    .filter((n) => isPublic(n))
-    .map((n) => ({
-      ...n,
-      id: stripRootDir(n.id, DIR),
-      slug: stripRootDir(n.slug, SLUG_DIR),
-    }));
+  return notes;
+  // return notes
+  //   .filter((n) => isPublic(n))
+  //   .map((n) => ({
+  //     ...n,
+  //     id: stripRootDir(n.id, DIR),
+  //     slug: stripRootDir(n.slug, SLUG_DIR),
+  //   }));
 }
