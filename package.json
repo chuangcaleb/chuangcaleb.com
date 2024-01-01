@@ -15,7 +15,7 @@
   "dependencies": {
     "astro": "^4.0.4",
     "cloudinary": "^1.41.0",
-    "sharp": "^0.33.0"
+    "sharp": "^0.33.1"
   },
   "devDependencies": {
     "@astrojs/mdx": "^2.0.1",
