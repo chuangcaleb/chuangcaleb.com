@@ -12,7 +12,7 @@
   h3,
   h4,
   h5 {
-    grid-column: feature;
+    grid-column: popout;
     & + * {
       --flow-space: var(--size-relative-8);
     }
