@@ -13,7 +13,7 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "astro": "^4.0.4",
+    "astro": "^4.0.8",
     "cloudinary": "^1.41.0",
     "sharp": "^0.33.0"
   },
