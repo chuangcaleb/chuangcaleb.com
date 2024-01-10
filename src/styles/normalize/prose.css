@@ -139,3 +139,6 @@ ol[class] {
   color: var(--text-on-brand);
   background: var(--brand);
 }
+img::selection {
+  background: hsla(var(--brand-hsl) / 0.7);
+}
