@@ -111,6 +111,7 @@
 b,
 strong {
   color: var(--text-1-strong);
+  font-weight: var(--font-weight-8);
 }
 
 :where(hr) {

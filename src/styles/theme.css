@@ -13,8 +13,8 @@ html {
   --brand-light-hsl: var(--day-hS) 30%;
   --surface-1a-light: hsl(var(--day-hs) 92%);
   --surface-1b-light: hsl(var(--day-hs) 89%);
-  --text-1-light: var(--stone-9);
-  --text-1-strong-light: var(--stone-11);
+  --text-1-light: var(--stone-10);
+  --text-1-strong-light: var(--stone-12);
   --text-faded-light: var(--stone-7);
   --text-muted-light: hsl(var(--day-hs) 85%);
   --text-on-brand-light: var(--stone-1);
@@ -30,7 +30,7 @@ html {
   --surface-1a-dark: hsl(var(--night-hs) 18%);
   --surface-1b-dark: hsl(var(--night-hs) 12%);
   --text-1-dark: var(--stone-4);
-  --text-1-strong-dark: var(--stone-3);
+  --text-1-strong-dark: var(--stone-2);
   --text-faded-dark: var(--stone-6);
   --text-muted-dark: hsl(var(--night-hs) 28%);
   --text-on-brand-dark: hsl(var(--night-hs) 12%);
