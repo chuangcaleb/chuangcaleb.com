@@ -4,6 +4,7 @@ import compressor from "astro-compressor";
 import purgecss from "astro-purgecss";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
 
 const prodIntegrations = [
   robotsTxt(),
@@ -16,7 +17,11 @@ const prodIntegrations = [
   }),
 ];
 
-const integrations = [mdx(), ...(import.meta.env.PROD ? prodIntegrations : [])];
+const integrations = [
+  mdx(),
+  react(),
+  ...(import.meta.env.PROD ? prodIntegrations : []),
+];
 
 // https://astro.build/config
 export default defineConfig({
