@@ -69,7 +69,10 @@ export const ThemeDropdown = () => {
         {currentTheme?.icon}
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className={styles.menuContent}>
+        <DropdownMenu.Content
+          className={styles.menuContent}
+          onCloseAutoFocus={(event) => event.preventDefault()}
+        >
           <DropdownMenu.RadioGroup
             value={themeLabel}
             onValueChange={setThemeLabel}
