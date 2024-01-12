@@ -2,7 +2,7 @@
 
 /* @import "open-props/postcss/style"; */
 @import "open-props/aspects";
-@import "open-props/colors";
+@import "open-props/stone";
 @import "open-props/borders";
 @import "open-props/fonts";
 @import "open-props/sizes";

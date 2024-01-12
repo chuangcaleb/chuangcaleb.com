@@ -11,7 +11,7 @@ const prodIntegrations = [
   compressor(),
   purgecss({
     keyframes: true,
-    variables: true,
+    // variables: true,
     safelist: { standard: [/^\:[-a-z]+$/] },
   }),
 ];
