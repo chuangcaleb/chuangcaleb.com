@@ -4,13 +4,16 @@
   "version": "2.0.0",
   "scripts": {
     "astro": "astro",
+    "build:nocache": "astro build",
     "build": "pnpm cloudinary:cache && astro build",
     "cloudinary:cache": "tsx ./lib/cloudinary/cache",
     "format:check": "pnpm prettier -- --list-different .",
     "format:fix": "pnpm prettier --write .",
+    "dev:nocache": "astro dev",
     "dev": "pnpm cloudinary:cache && astro dev",
-    "preview": "astro preview",
-    "start": "astro dev"
+    "preview:nobuild": "astro preview",
+    "preview:nocache": "pnpm build:nocache && astro preview",
+    "preview": "astro build && astro preview"
   },
   "dependencies": {
     "astro": "^4.0.9",
