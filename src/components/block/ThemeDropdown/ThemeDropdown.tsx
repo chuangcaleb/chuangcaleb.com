@@ -3,6 +3,7 @@ import IconLight from "~icons/lucide/sun";
 import IconDark from "~icons/lucide/moon";
 import IconSystem from "~icons/lucide/database";
 import React from "react";
+import styles from "./styles.module.css";
 
 type Theme = {
   label: string;
@@ -19,16 +20,22 @@ type ThemeLabel = (typeof THEMES)[number]["label"];
 
 const ThemeOption = ({
   theme,
-  onSelect,
+  disabled,
 }: {
   theme: Theme;
-  onSelect: (value: ThemeLabel) => void;
+  disabled: boolean;
 }) => {
   return (
-    <DropdownMenu.Item onSelect={() => onSelect(theme.label)}>
-      {theme.icon}
-      {theme.label}
-    </DropdownMenu.Item>
+    <>
+      <DropdownMenu.RadioItem
+        className={styles.menuItem}
+        disabled={disabled}
+        value={theme.label}
+      >
+        {theme.icon}
+        {theme.label}
+      </DropdownMenu.RadioItem>
+    </>
   );
 };
 
@@ -62,10 +69,19 @@ export const ThemeDropdown = () => {
         {currentTheme?.icon}
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content>
-          {THEMES.map((theme, i) => (
-            <ThemeOption key={i} theme={theme} onSelect={setThemeLabel} />
-          ))}
+        <DropdownMenu.Content className={styles.menuContent}>
+          <DropdownMenu.RadioGroup
+            value={themeLabel}
+            onValueChange={setThemeLabel}
+          >
+            {THEMES.map((theme, i) => (
+              <ThemeOption
+                key={i}
+                theme={theme}
+                disabled={themeLabel === theme.label}
+              />
+            ))}
+          </DropdownMenu.RadioGroup>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
