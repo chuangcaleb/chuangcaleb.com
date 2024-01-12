@@ -6,6 +6,7 @@
     "astro": "astro",
     "build:nocache": "astro build",
     "build": "pnpm cloudinary:cache && astro build",
+    "build:nocache": "astro build",
     "cloudinary:cache": "tsx ./lib/cloudinary/cache",
     "format:check": "pnpm prettier -- --list-different .",
     "format:fix": "pnpm prettier --write .",
@@ -16,9 +17,12 @@
     "preview": "astro build && astro preview"
   },
   "dependencies": {
-    "astro": "^4.0.9",
-    "cloudinary": "^1.41.1",
-    "sharp": "^0.33.1"
+    "@astrojs/solid-js": "^4.0.1",
+    "@kobalte/core": "^0.11.2",
+    "astro": "^4.1.1",
+    "cloudinary": "^1.41.2",
+    "sharp": "^0.33.1",
+    "solid-js": "^1.8.10"
   },
   "devDependencies": {
     "@astrojs/mdx": "^2.0.3",
@@ -28,14 +32,15 @@
     "astro-iconify": "^1.2.0",
     "astro-purgecss": "^4.0.0",
     "astro-robots-txt": "^1.0.0",
-    "date-fns": "^3.0.6",
+    "date-fns": "^3.2.0",
     "dotenv": "^16.3.1",
     "fs-extra": "^11.2.0",
-    "open-props": "^1.6.16",
+    "open-props": "^1.6.17",
     "postcss-custom-media": "^10.0.2",
     "postcss-preset-env": "^9.3.0",
     "prettier": "^3.1.1",
     "prettier-plugin-astro": "^0.12.3",
-    "tsx": "^4.7.0"
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
   }
 }

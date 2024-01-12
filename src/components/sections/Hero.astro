@@ -5,6 +5,7 @@ import HeadingCaps from "~/components/styled/polym/Caps.astro";
 import LINKS from "~/data/links";
 import { Icon } from "astro-iconify";
 import { Image } from "astro:assets";
+import ThemeToggle from "~/components/blocks/ThemeToggle";
 
 const { LINKEDIN, GITHUB, CV } = LINKS;
 const heroLinks = [GITHUB, LINKEDIN, CV];
@@ -18,12 +19,11 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
       <span class="gradient"> different story.</span>
     </h2>
   </header>
-  <div class="subheader | flow">
+  <div class="subheader | flow-lg">
     <p>
       <strong>Ahoy! 🌊 This is Caleb speaking.</strong> I'm a <strong
         >Malaysian</strong
       > guy who professionally tinkers with <strong>UI design systems</strong> &
-
 
       <strong>dynamic web apps</strong> — and unprofessionally with <strong
         >storytelling</strong
@@ -32,7 +32,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
     <div class="buttons-cont">
       <Button as="a" theme="brand" class="cta-1" href="#contact">
         <Icon name="mdi:connection" />
-         Contact me!
+        Contact me!
       </Button>
       <ul class="norm buttons">
         {
@@ -55,6 +55,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
     loading="eager"
     class="border"
   />
+  <ThemeToggle client:only />
 </section>
 
 <style is:global>

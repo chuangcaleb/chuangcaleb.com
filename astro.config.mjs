@@ -1,5 +1,6 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import solid from "@astrojs/solid-js";
 import compressor from "astro-compressor";
 import purgecss from "astro-purgecss";
 import robotsTxt from "astro-robots-txt";
@@ -16,7 +17,11 @@ const prodIntegrations = [
   }),
 ];
 
-const integrations = [mdx(), ...(import.meta.env.PROD ? prodIntegrations : [])];
+const integrations = [
+  mdx(),
+  solid(),
+  ...(import.meta.env.PROD ? prodIntegrations : []),
+];
 
 // https://astro.build/config
 export default defineConfig({

@@ -82,3 +82,18 @@ const pageDescription = description ?? SITE.description;
     min-height: 100vh;
   }
 </style>
+
+<script is:inline>
+  const root = document.documentElement;
+  const theme = (() => {
+    const localTheme =
+      typeof localStorage !== "undefined" && localStorage.getItem("theme");
+    if (localTheme) return localTheme;
+    if (window.matchMedia("(prefers-color-scheme: light)").matches)
+      return "light";
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches)
+      return "dark";
+    return "system";
+  })();
+  if (theme !== "system") root.setAttribute("data-theme", theme);
+</script>
