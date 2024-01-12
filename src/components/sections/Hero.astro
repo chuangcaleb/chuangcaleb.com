@@ -1,11 +1,10 @@
 ---
 import heroImg from "~/assets/hero.jpeg";
-import Button from "~/components/primitives/Button.astro";
+import Button from "~/components/primitives/Buttono.astro";
 import HeadingCaps from "~/components/styled/polym/Caps.astro";
 import LINKS from "~/data/links";
 import { Icon } from "astro-iconify";
 import { Image } from "astro:assets";
-import ThemeToggle from "~/components/blocks/ThemeToggle";
 
 const { LINKEDIN, GITHUB, CV } = LINKS;
 const heroLinks = [GITHUB, LINKEDIN, CV];
@@ -55,7 +54,6 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
     loading="eager"
     class="border"
   />
-  <ThemeToggle client:only />
 </section>
 
 <style is:global>

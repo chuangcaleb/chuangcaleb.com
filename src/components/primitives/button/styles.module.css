@@ -1,0 +1,60 @@
+.cc-btn {
+  background-color: var(--_bg, var(--surface-1b));
+  color: var(--_text, var(--text-1-strong));
+  border-color: var(--_border, var(--border));
+  border-width: var(--_border-width, 1px);
+
+  display: inline-flex;
+  gap: var(--size-relative-2);
+  align-items: center;
+  justify-content: center;
+  padding: var(--size-relative-2) var(--size-relative-3);
+  border-style: solid;
+  border-radius: var(--radius-2);
+
+  font-weight: var(--font-weight-9);
+  text-decoration-line: none;
+
+  svg {
+    width: 2em;
+    margin: 0;
+  }
+
+  &.brand {
+    --_bg: var(--brand);
+    --_text: var(--text-on-brand);
+    --_border: transparent;
+    --_text-hover: var(--brand);
+  }
+
+  &:has(svg:first-child:last-child) {
+    padding: var(--size-1);
+  }
+  &:has(svg:not(:first-child:last-child)) {
+    padding: var(--size-1) var(--size-2);
+  }
+  &:is(a) {
+    margin: 0;
+  }
+
+  &:is(:hover, :focus, :active) {
+    --_bg: var(--_bg-hover);
+    --_text: var(--_text-hover, var(--brand));
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &:is(:hover, :focus, :active) {
+      --_bg-hover: var(--text-1-strong);
+      --_border: transparent;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    &:is(:hover, :focus, :active) {
+      --_bg-hover: var(--text-on-brand);
+      --_border: var(--brand);
+    }
+  }
+}

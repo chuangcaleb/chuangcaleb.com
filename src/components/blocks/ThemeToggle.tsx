@@ -1,5 +1,7 @@
-import { DropdownMenu } from "@kobalte/core";
+import { As, DropdownMenu } from "@kobalte/core";
 import { createEffect, createSignal } from "solid-js";
+import Button from "../primitives/button";
+import Buttono from "../primitives/Buttono.astro";
 
 export function ThemeToggle() {
   const root = document.documentElement;
@@ -18,8 +20,10 @@ export function ThemeToggle() {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
-        <DropdownMenu.Icon />
+      <DropdownMenu.Trigger asChild>
+        <As component={Button} class="lala">
+          o
+        </As>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content>
