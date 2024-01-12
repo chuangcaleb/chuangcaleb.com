@@ -1,6 +1,6 @@
 ---
 import heroImg from "~/assets/hero.jpeg";
-import Button from "~/components/primitives/Button.astro";
+import Button from "~/components/primitive/Button.astro";
 import HeadingCaps from "~/components/styled/polym/Caps.astro";
 import LINKS from "~/data/links";
 import { Icon } from "astro-iconify";
@@ -24,7 +24,6 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
         >Malaysian</strong
       > guy who professionally tinkers with <strong>UI design systems</strong> &
 
-
       <strong>dynamic web apps</strong> — and unprofessionally with <strong
         >storytelling</strong
       >. You'll find out about me on this site. Wanna work together?
@@ -32,7 +31,7 @@ const heroLinks = [GITHUB, LINKEDIN, CV];
     <div class="buttons-cont">
       <Button as="a" theme="brand" class="cta-1" href="#contact">
         <Icon name="mdi:connection" />
-         Contact me!
+        Contact me!
       </Button>
       <ul class="norm buttons">
         {
