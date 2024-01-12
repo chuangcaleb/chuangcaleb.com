@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "jsx": "preserve",
     "jsxImportSource": "react",
+    "types": ["unplugin-icons/types/react"],
     "paths": {
       "~/*": ["src/*"]
     }

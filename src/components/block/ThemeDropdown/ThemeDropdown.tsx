@@ -1,52 +1,70 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import IconLight from "~icons/lucide/sun";
+import IconDark from "~icons/lucide/moon";
+import IconSystem from "~icons/lucide/database";
 import React from "react";
 
-const THEMES = ["light", "dark", "system"] as const;
-type Theme = (typeof THEMES)[number];
+type Theme = {
+  label: string;
+  icon: React.ReactNode;
+};
+
+const THEMES: Theme[] = [
+  { label: "light", icon: <IconLight /> },
+  { label: "dark", icon: <IconDark /> },
+  { label: "system", icon: <IconSystem /> },
+] as const;
+
+type ThemeLabel = (typeof THEMES)[number]["label"];
 
 const ThemeOption = ({
   theme,
   onSelect,
 }: {
   theme: Theme;
-  onSelect: (value: Theme) => void;
+  onSelect: (value: ThemeLabel) => void;
 }) => {
   return (
-    <DropdownMenu.Item onSelect={() => onSelect(theme)}>
-      {theme}
+    <DropdownMenu.Item onSelect={() => onSelect(theme.label)}>
+      {theme.icon}
+      {theme.label}
     </DropdownMenu.Item>
   );
 };
 
 function initTheme() {
   const localTheme =
-    typeof localStorage !== "undefined" &&
-    (localStorage.getItem("theme") as Theme);
-  return localTheme || "system";
+    (typeof localStorage !== "undefined" && localStorage.getItem("theme")) ||
+    "system";
+  return localTheme;
 }
 
 export const ThemeDropdown = () => {
   const root = document.documentElement;
-  const [theme, setTheme] = React.useState<Theme>(initTheme());
+  const [themeLabel, setThemeLabel] = React.useState<ThemeLabel>(initTheme());
 
   React.useEffect(() => {
-    localStorage.setItem("theme", theme);
-    if (theme !== "system") {
-      root.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", themeLabel);
+    if (themeLabel !== "system") {
+      root.setAttribute("data-theme", themeLabel);
     } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
       root.setAttribute("data-theme", "light");
     } else {
       root.setAttribute("data-theme", "dark");
     }
-  }, [theme]);
+  }, [themeLabel]);
+
+  const currentTheme = THEMES.find((t) => t.label === themeLabel);
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger className="cc-btn">{theme}</DropdownMenu.Trigger>
+      <DropdownMenu.Trigger className="cc-btn">
+        {currentTheme?.icon}
+      </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content>
-          {THEMES.map((t, i) => (
-            <ThemeOption key={i} theme={t} onSelect={setTheme} />
+          {THEMES.map((theme, i) => (
+            <ThemeOption key={i} theme={theme} onSelect={setThemeLabel} />
           ))}
         </DropdownMenu.Content>
       </DropdownMenu.Portal>

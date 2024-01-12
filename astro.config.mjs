@@ -5,6 +5,7 @@ import purgecss from "astro-purgecss";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
+import icons from "unplugin-icons/vite";
 
 const prodIntegrations = [
   robotsTxt(),
@@ -29,4 +30,7 @@ export default defineConfig({
   trailingSlash: "never",
   integrations,
   markdown: { shikiConfig: { theme: "css-variables" } },
+  vite: {
+    plugins: [icons({ compiler: "jsx", jsx: "react" })],
+  },
 });
