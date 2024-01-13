@@ -1,4 +1,5 @@
 ---
+import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Main from "~/components/layout/Main.astro";
 import { getParsedPath, getPublicNotes } from "~/utils/post";
 
@@ -6,6 +7,7 @@ const publicNotes = await getPublicNotes();
 ---
 
 <Main>
+  <WIPDisclaimer />
   <section class="cgrid-feature prose region flow-lg">
     <h1>All Posts</h1>
     <ul>

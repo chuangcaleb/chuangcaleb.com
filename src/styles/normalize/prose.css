@@ -6,7 +6,7 @@
   color: var(--text-1-strong);
   font-family: var(--font-heading);
   line-height: var(--font-lineheight-1);
-  text-wrap: balance;
+  text-wrap: pretty;
   word-wrap: break-word;
   hyphens: auto;
 }

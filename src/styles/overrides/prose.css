@@ -5,7 +5,7 @@
   }
 
   h1 {
-    grid-column: wide;
+    grid-column: feature;
     max-width: var(--size-header-2);
   }
   h2,
