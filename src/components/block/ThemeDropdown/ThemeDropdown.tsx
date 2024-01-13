@@ -65,7 +65,10 @@ export const ThemeDropdown = () => {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger className="cc-btn">
+      <DropdownMenu.Trigger
+        className="cc-btn"
+        aria-label="Dropdown menu for visual themes"
+      >
         {currentTheme?.icon}
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
