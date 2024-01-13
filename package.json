@@ -27,7 +27,7 @@
     "sharp": "^0.33.1"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.0.3",
+    "@astrojs/mdx": "^2.0.4",
     "@astrojs/sitemap": "^3.0.4",
     "@iconify-json/lucide": "^1.1.154",
     "@svgr/core": "^8.1.0",
