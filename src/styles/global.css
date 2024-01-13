@@ -2,7 +2,7 @@
 
 /* @import "open-props/postcss/style"; */
 @import "open-props/aspects";
-@import "open-props/colors";
+@import "open-props/stone";
 @import "open-props/borders";
 @import "open-props/fonts";
 @import "open-props/sizes";
@@ -25,6 +25,8 @@
 
 @import "overrides/code.css";
 @import "overrides/a.css";
+@import "overrides/prose.css";
+@import "overrides/shiki.css";
 
 /* -------------------------------- utilities ------------------------------- */
 
@@ -32,4 +34,4 @@
 @import "utilities/text.css";
 @import "utilities/border.css";
 @import "utilities/flow.css";
-@import "utilities/grid.css";
+@import "utilities/cgrid.css";

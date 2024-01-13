@@ -1,0 +1,25 @@
+.menuContent {
+  background-color: var(--surface-1b);
+  border-radius: var(--radius-2);
+  border-width: 2px;
+}
+.menuItem {
+  display: flex;
+  gap: var(--size-relative-4);
+  padding: var(--size-relative-2) var(--size-relative-3);
+  user-select: none;
+
+  &:not(:last-child) {
+    border-bottom-color: var(--text-muted);
+    border-bottom-width: 1px;
+  }
+
+  &:is(:hover, :active):not([aria-selected="true"]) {
+    background-color: var(--surface-1a);
+  }
+
+  &[data-state="checked"] {
+    color: var(--brand);
+    /* background-color: var(--surface-1a); */
+  }
+}

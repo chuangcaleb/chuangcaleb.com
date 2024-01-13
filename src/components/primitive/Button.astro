@@ -27,7 +27,7 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     border-style: solid;
     border-radius: var(--radius-2);
 
-    font-weight: var(--font-weight-7);
+    font-weight: var(--font-weight-9);
     text-decoration-line: none;
 
     svg {
@@ -52,22 +52,18 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
       margin: 0;
     }
 
-    &:is(:hover, :focus, :active) {
-      --_bg: var(--_bg-hover);
-      --_text: var(--_text-hover, var(--brand));
-    }
-    &:active {
+    &:is(:focus, :active) {
       transform: scale(0.95);
     }
 
-    @media (prefers-color-scheme: dark) {
-      &:is(:hover, :focus, :active) {
+    &:is(:hover, :focus, :active) {
+      --_bg: var(--_bg-hover);
+      --_text: var(--_text-hover, var(--brand));
+      html[data-theme="dark"] & {
         --_bg-hover: var(--text-1-strong);
         --_border: transparent;
       }
-    }
-    @media (prefers-color-scheme: light) {
-      &:is(:hover, :focus, :active) {
+      html[data-theme="light"] & {
         --_bg-hover: var(--text-on-brand);
         --_border: var(--brand);
       }

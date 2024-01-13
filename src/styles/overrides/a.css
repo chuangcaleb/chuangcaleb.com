@@ -39,8 +39,9 @@
   text-decoration-line: underline;
   font-weight: var(--font-weight-5);
   color: var(--brand);
-  text-decoration-color: hsla(var(--brand-hsl) / 0.5);
+  text-decoration-color: hsla(var(--brand-hsl) / 0.35);
   text-decoration-skip-ink: none;
+  border-radius: var(--size-relative-1);
 }
 
 :where(a[href]:is(:hover, :focus, :active)) {

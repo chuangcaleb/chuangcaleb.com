@@ -5,10 +5,10 @@ import LINKS from "~/data/links";
 import Icon from "astro-iconify";
 ---
 
-<section class="contact-section | content-grid-wide flow-lg" id="contact">
+<section class="contact-section | cgrid-wide flow-lg" id="contact">
   <HeadingWIcon as="h2">
     <Icon name="mdi:connection" />
-    {" "}<span class="text-muted">#</span> contact
+    {" "}<span class="text-faded">#</span> contact
   </HeadingWIcon>
   <p>You made it to the end! ...Or is it just the beginning?</p>
   <UlIcon>
@@ -27,11 +27,10 @@ import Icon from "astro-iconify";
 <style is:global>
   .contact-section {
     margin-block: auto;
-    padding-block: var(--size-fluid-5);
+    padding-block: var(--size-fluid-4);
 
     ul {
       display: grid;
-
       gap: var(--size-relative-3);
     }
     li {

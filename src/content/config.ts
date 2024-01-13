@@ -13,10 +13,26 @@ const projectCollection = defineCollection({
     hidden: z.boolean().optional(),
     title: z.string(),
     kind: z.string(),
+    links: z
+      .array(
+        z.object({
+          icon: z.string(),
+          href: z.string(),
+          label: z.string(),
+        }),
+      )
+      .optional(),
   }),
 });
+
+const obsidianNoteCollection = defineCollection({
+  type: "content",
+  schema: null,
+});
+// tags: z.array(z.string()).optional(),
 
 export const collections = {
   highlight: highlightCollection,
   project: projectCollection,
+  "obsidian-note": obsidianNoteCollection,
 };

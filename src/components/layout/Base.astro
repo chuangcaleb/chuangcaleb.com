@@ -22,7 +22,7 @@ const pageDescription = description ?? SITE.description;
 ---
 
 <!doctype html>
-<html lang={SITE.language}>
+<html lang={SITE.language} data-theme="dark">
   <head>
     <!-- Base -->
     <meta charset="utf-8" />
@@ -68,6 +68,18 @@ const pageDescription = description ?? SITE.description;
     />
     <meta name="msapplication-TileColor" content={SITE.color.light} />
     <!-- <meta name="msapplication-config" content="/favicon/browserconfig.xml" /> -->
+    <script is:inline>
+      const root = document.documentElement;
+      const theme = (() => {
+        const localTheme =
+          typeof localStorage !== "undefined" && localStorage.getItem("theme");
+        if (localTheme && localTheme !== "system") return localTheme;
+        if (window.matchMedia("(prefers-color-scheme: light)").matches)
+          return "light";
+        return "dark";
+      })();
+      root.setAttribute("data-theme", theme);
+    </script>
   </head>
 
   <body>
@@ -77,6 +89,8 @@ const pageDescription = description ?? SITE.description;
 
 <style is:global>
   body {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
   }
 </style>

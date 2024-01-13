@@ -6,7 +6,9 @@
   color: var(--text-1-strong);
   font-family: var(--font-heading);
   line-height: var(--font-lineheight-1);
-  text-wrap: balance;
+  text-wrap: pretty;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 :where(h1) {
@@ -53,6 +55,10 @@
   font-size: var(--font-size-1);
 }
 
+:where(p) {
+  text-wrap: pretty;
+}
+
 /* underline */
 
 :where(a, u, ins, abbr) {
@@ -77,6 +83,10 @@
   font-family: var(--font-mono);
 }
 
+:where(pre) {
+  padding-block: var(--size-relative-6);
+}
+
 .style-code,
 :not(pre) > code {
   white-space: initial;
@@ -90,15 +100,28 @@
   writing-mode: lr;
 }
 
+/* :where(pre) {
+  white-space: pre;
+  min-inline-size: 0;
+  max-inline-size: max-content;
+  writing-mode: lr;
+  direction: ltr;
+} */
+
 b,
 strong {
   color: var(--text-1-strong);
+  font-weight: var(--font-weight-8);
+}
+
+:where(hr) {
+  border-width: 1px;
 }
 
 /* lists */
 
 :where(ol, ul) {
-  padding-left: var(--size-3);
+  padding-left: var(--size-popout);
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -108,6 +131,14 @@ ol[class] {
   padding: unset;
 }
 
-:where(li, dd, figcaption) {
+/* :where(dd, figcaption) {
   max-width: var(--size-content-2);
+} */
+
+::selection {
+  color: var(--text-on-brand);
+  background: var(--brand);
+}
+img::selection {
+  background: hsla(var(--brand-hsl) / 0.7);
 }

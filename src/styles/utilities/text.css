@@ -2,6 +2,6 @@
   color: var(--brand);
 }
 
-.text-muted {
-  color: var(--text-muted);
+.text-faded {
+  color: var(--text-faded);
 }

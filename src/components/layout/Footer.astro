@@ -1,5 +1,5 @@
 ---
-import Contact from "~/components/blocks/Contact.astro";
+import Contact from "~/components/section/Contact.astro";
 ---
 
 <footer id="footer">
@@ -10,8 +10,10 @@ import Contact from "~/components/blocks/Contact.astro";
     <a href="/sitemap-index.xml">sitemap</a>
   </p>
 </footer>
+
 <style>
   footer {
+    margin-top: auto;
     background-color: var(--surface-1b);
     border-top-width: 1px;
     display: flex;
@@ -19,7 +21,7 @@ import Contact from "~/components/blocks/Contact.astro";
     justify-content: space-between;
 
     .fine-print {
-      color: var(--text-muted);
+      color: var(--text-faded);
       font-size: var(--font-size-0);
       display: flex;
       justify-content: center;

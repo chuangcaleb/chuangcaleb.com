@@ -1,6 +1,6 @@
 ---
 import HeadingWIcon from "~/components/styled/polym/HeadingWIcon.astro";
-import HighlightCard from "~/components/templates/HighlightCard.astro";
+import HighlightCard from "~/components/template/HighlightCard.astro";
 import Icon from "astro-iconify";
 import { getCollection } from "astro:content";
 
@@ -12,7 +12,7 @@ const highlights = (await getCollection("highlight")).sort(
 <section class="highlights-section | flow-xl">
   <HeadingWIcon as="h2">
     <Icon name="lucide:chevron-up-circle" />
-    {" "}<span class="text-muted">/</span> now
+    {" "}<span class="text-faded">/</span> now
   </HeadingWIcon>
   {highlights.map((h) => <HighlightCard highlight={h} />)}
 </section>

@@ -1,0 +1,116 @@
+.prose {
+  --hr-space: var(--size-fluid-5);
+  p {
+    line-height: var(--font-lineheight-4);
+  }
+
+  h1 {
+    grid-column: feature;
+    max-width: var(--size-header-2);
+  }
+  h2,
+  h3,
+  h4,
+  h5 {
+    grid-column: popout;
+    & + * {
+      --flow-space: var(--size-relative-8);
+    }
+  }
+
+  hr {
+    grid-column-start: feature;
+    grid-column-end: popout;
+    border-style: dashed;
+    --flow-space: var(--hr-space);
+    & + * {
+      --flow-space: var(--hr-space);
+    }
+  }
+
+  blockquote {
+    grid-column-start: popout;
+    border-width: 1px;
+    border-inline-start-width: var(--size-blockquote-strip);
+    border-inline-start-color: var(--border);
+    padding-inline-start: var(--size-blockquote-indent);
+    padding-inline-end: var(--size-relative-4);
+    padding-block: var(--size-relative-6);
+    &,
+    * {
+      font-size: var(--font-size-2);
+    }
+    @media (width > 100ch) {
+      & {
+        display: grid;
+        grid-template-columns: subgrid;
+      }
+      > * {
+        grid-column: content;
+      }
+    }
+  }
+  ul,
+  ol {
+    li + li {
+      margin-block-start: var(--size-relative-5);
+    }
+    ul,
+    ol {
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        border-width: 1px;
+        border-color: var(--text-muted);
+        border-style: dashed;
+        height: 100%;
+        left: calc(var(--size-popout) * -0.45);
+      }
+      & > li {
+        margin-block-start: var(--size-relative-3);
+      }
+    }
+  }
+
+  pre {
+    grid-column: feature;
+    display: grid;
+    grid-template-columns: subgrid;
+    * {
+      grid-column: content;
+    }
+  }
+
+  @media (width > 140ch) {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      display: list-item;
+    }
+
+    h1::marker,
+    h2::marker,
+    h3::marker,
+    h4::marker,
+    h5::marker {
+      color: var(--text-muted);
+      font-size: 0.8em;
+      font-weight: initial;
+    }
+    h1::marker {
+      content: "H1  ";
+    }
+    h2::marker {
+      content: "H2  ";
+    }
+    h3::marker {
+      content: "H3  ";
+    }
+    h4::marker {
+      content: "H4  ";
+    }
+  }
+}

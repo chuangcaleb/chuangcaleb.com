@@ -2,7 +2,7 @@
 import HeadingWIcon from "~/components/styled/polym/HeadingWIcon.astro";
 import Icon from "astro-iconify";
 import SKILLS from "~/data/skills";
-import SkillGroupCard from "~/components/templates/SkillGroupCard.astro";
+import SkillGroupCard from "~/components/template/SkillGroupCard.astro";
 
 const skillGroups = Object.entries(SKILLS);
 ---
@@ -10,7 +10,7 @@ const skillGroups = Object.entries(SKILLS);
 <section class="skills-section | region flow-lg">
   <HeadingWIcon as="h2">
     <Icon name="lucide:book-plus" />
-    {" "}<span class="text-muted">/</span> skills
+    {" "}<span class="text-faded">/</span> skills
   </HeadingWIcon>
   <div class="skills">
     {
@@ -24,16 +24,12 @@ const skillGroups = Object.entries(SKILLS);
 <style is:global>
   .skills-section {
     .skills {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-auto-rows: 1fr;
-      justify-content: center;
-      gap: var(--size-fluid-2);
-      @media screen and (width < 982px) {
-        grid-template-columns: repeat(
-          auto-fit,
-          minmax(var(--size-content-1), 1fr)
-        );
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--size-relative-6);
+      > * {
+        flex-basis: var(--size-header-2);
+        flex-grow: 1;
       }
     }
   }
