@@ -5,5 +5,6 @@
 }
 
 pre {
-  border-radius: var(--size-relative-1);
+  border-radius: var(--radius-2);
+  background-color: var(--surface-1b);
 }

@@ -78,13 +78,14 @@
 
 /* Code */
 
+.font-mono,
 .style-code,
 :where(code, kbd, samp, pre) {
   font-family: var(--font-mono);
 }
 
 :where(pre) {
-  padding-block: var(--size-relative-6);
+  padding-block: var(--size-fluid-2);
 }
 
 .style-code,

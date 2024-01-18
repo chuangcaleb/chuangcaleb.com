@@ -1,10 +1,10 @@
 import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import compressor from "astro-compressor";
 import purgecss from "astro-purgecss";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
 import icons from "unplugin-icons/vite";
 
 const prodIntegrations = [

@@ -74,11 +74,12 @@
   }
 
   pre {
-    grid-column: feature;
+    grid-column: popout;
     display: grid;
     grid-template-columns: subgrid;
-    * {
+    > * {
       grid-column: content;
+      overflow-x: auto;
     }
   }
 
@@ -112,5 +113,11 @@
     h4::marker {
       content: "H4  ";
     }
+  }
+
+  .cgrid & {
+    display: grid;
+    grid-column: full;
+    grid-template-columns: subgrid;
   }
 }

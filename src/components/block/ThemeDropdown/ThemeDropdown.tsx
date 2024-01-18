@@ -1,8 +1,8 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import IconLight from "~icons/lucide/sun";
-import IconDark from "~icons/lucide/moon";
-import IconSystem from "~icons/lucide/database";
 import React from "react";
+import IconSystem from "~icons/lucide/database";
+import IconDark from "~icons/lucide/moon";
+import IconLight from "~icons/lucide/sun";
 import styles from "./styles.module.css";
 
 type Theme = {

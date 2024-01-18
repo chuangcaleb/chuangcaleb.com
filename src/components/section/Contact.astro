@@ -11,7 +11,7 @@ import Icon from "astro-iconify";
     {" "}<span class="text-faded">#</span> contact
   </HeadingWIcon>
   <p>You made it to the end! ...Or is it just the beginning?</p>
-  <UlIcon>
+  <UlIcon class="flow-sm">
     {
       Object.values(LINKS).map((l) => (
         <li>
@@ -30,9 +30,9 @@ import Icon from "astro-iconify";
     padding-block: var(--size-fluid-4);
 
     ul {
-      display: grid;
-      gap: var(--size-relative-3);
+
     }
+
     li {
       width: fit-content;
     }

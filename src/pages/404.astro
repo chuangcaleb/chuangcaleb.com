@@ -1,0 +1,34 @@
+---
+import Main from "~/components/layout/Main.astro";
+import Button from "~/components/primitive/Button.astro";
+
+// const route = Astro.url.pathname;
+// const routeSegments = route.split("/").splice(1);
+// const text = [Astro.url.host, ...routeSegments];
+---
+
+<Main>
+  <section class="region flow-lg cgrid">
+    <header>
+      <div>
+        <h1 class="font-mono">404</h1>
+        <p>Page not found</p>
+      </div>
+      <div><Button theme="brand" as="a" href="/">Return home →</Button></div>
+    </header>
+    <div class="prose">
+      <pre><code>Your path:<br />{Astro.url.pathname}</code></pre>
+    </div>
+  </section>
+</Main>
+
+<style>
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  code {
+    text-wrap: wrap;
+  }
+</style>
