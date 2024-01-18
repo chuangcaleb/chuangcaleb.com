@@ -11,6 +11,7 @@ html {
 
   /* light */
   --brand-light-hsl: var(--day-hS) 30%;
+  --secon-light-hsl: var(--night-hs) 35%;
   --surface-1a-light: hsl(var(--day-hs) 92%);
   --surface-1b-light: hsl(var(--day-hs) 89%);
   --text-1-light: var(--stone-10);
@@ -27,6 +28,7 @@ html {
 
   /* dark */
   --brand-dark-hsl: var(--day-hS) 70%;
+  --secon-dark-hsl: var(--day-hs) 80%;
   --surface-1a-dark: hsl(var(--night-hs) 18%);
   --surface-1b-dark: hsl(var(--night-hs) 12%);
   --text-1-dark: var(--stone-4);
@@ -44,9 +46,12 @@ html {
 
 :root {
   color-scheme: dark;
-  --brand: hsl(var(--brand-hsl));
-
   --brand-hsl: var(--brand-dark-hsl);
+  --secon-hsl: var(--secon-dark-hsl);
+
+  --brand: hsl(var(--brand-hsl));
+  --secon: hsl(var(--secon-hsl));
+
   --surface-1a: var(--surface-1a-dark);
   --surface-1b: var(--surface-1b-dark);
   --text-1: var(--text-1-dark);
@@ -66,8 +71,8 @@ html {
   @media (prefers-color-scheme: light) {
     color-scheme: light;
 
-    /* set defaults */
     --brand-hsl: var(--brand-light-hsl);
+    --secon-hsl: var(--secon-light-hsl);
     --surface-1a: var(--surface-1a-light);
     --surface-1b: var(--surface-1b-light);
     --text-1: var(--text-1-light);
@@ -87,9 +92,9 @@ html {
 }
 [data-theme="dark"] {
   color-scheme: dark;
-  --brand: hsl(var(--brand-hsl));
 
   --brand-hsl: var(--brand-dark-hsl);
+  --secon-hsl: var(--secon-dark-hsl);
   --surface-1a: var(--surface-1a-dark);
   --surface-1b: var(--surface-1b-dark);
   --text-1: var(--text-1-dark);
@@ -102,8 +107,8 @@ html {
 [data-theme="light"] {
   color-scheme: light;
 
-  /* set defaults */
   --brand-hsl: var(--brand-light-hsl);
+  --secon-hsl: var(--secon-light-hsl);
   --surface-1a: var(--surface-1a-light);
   --surface-1b: var(--surface-1b-light);
   --text-1: var(--text-1-light);

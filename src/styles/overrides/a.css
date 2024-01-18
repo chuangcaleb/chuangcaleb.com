@@ -38,14 +38,14 @@
   box-decoration-break: clone;
   text-decoration-line: underline;
   font-weight: var(--font-weight-5);
-  color: var(--brand);
-  text-decoration-color: hsla(var(--brand-hsl) / 0.35);
+  color: var(--secon);
+  text-decoration-color: hsla(var(--secon-hsl) / 0.35);
   text-decoration-skip-ink: none;
   border-radius: var(--radius-1);
 }
 
 :where(a[href]:is(:hover, :focus, :active)) {
-  text-decoration-color: hsl(var(--brand-hsl));
+  text-decoration-color: hsl(var(--secon-hsl));
 }
 
 :where(a[href]:focus) {
