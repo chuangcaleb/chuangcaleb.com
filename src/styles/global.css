@@ -1,37 +1,11 @@
-/* ------------------------------- open-props ------------------------------- */
-
 /* @import "open-props/postcss/style"; */
 @import "open-props/aspects";
 @import "open-props/stone";
 @import "open-props/borders";
 @import "open-props/fonts";
 @import "open-props/sizes";
-@import "open-props/media";
 
-/* --------------------------------- config --------------------------------- */
-
-@import "config.css";
-@import "theme.css";
-
-/* -------------------------------- normalize ------------------------------- */
-
-/* @import "open-props/normalize"; */
-@import "normalize/layout.css";
-@import "normalize/interactables.css";
-@import "normalize/prose.css";
-@import "normalize/misc.css";
-
-/* -------------------------------- overrides ------------------------------- */
-
-@import "overrides/code.css";
-@import "overrides/a.css";
-@import "overrides/prose.css";
-@import "overrides/shiki.css";
-
-/* -------------------------------- utilities ------------------------------- */
-
-@import "utilities/sr.css";
-@import "utilities/text.css";
-@import "utilities/border.css";
-@import "utilities/flow.css";
-@import "utilities/cgrid.css";
+@import "normalize";
+@import "overrides";
+@import "utilities";
+@import "config";
