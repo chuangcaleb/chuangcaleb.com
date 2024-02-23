@@ -23,13 +23,13 @@
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
-    "@types/react-dom": "^18.2.19",
     "@types/react": "^18.2.58",
+    "@types/react-dom": "^18.2.19",
+    "astro": "^4.4.3",
     "astro-compressor": "^0.4.1",
     "astro-iconify": "^1.2.0",
     "astro-purgecss": "^4.1.0",
     "astro-robots-txt": "^1.0.0",
-    "astro": "^4.4.3",
     "cloudinary": "^1.41.3",
     "date-fns": "^3.3.1",
     "dotenv": "^16.4.5",
@@ -37,16 +37,17 @@
     "open-props": "^1.6.19",
     "postcss-custom-media": "^10.0.3",
     "postcss-preset-env": "^9.4.0",
-    "react-dom": "^18.2.0",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "sass": "^1.71.1",
     "sharp": "^0.33.2",
-    "unplugin-icons": "^0.18.5"
+    "unplugin-icons": "^0.18.5",
+    "utopia-core-scss": "^1.0.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
-    "prettier-plugin-astro": "^0.12.3",
     "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.12.3",
     "tsx": "^4.7.1"
   }
 }

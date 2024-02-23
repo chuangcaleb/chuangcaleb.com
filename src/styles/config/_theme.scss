@@ -1,4 +1,5 @@
 @use "misc";
+@use "fluid";
 
 @mixin generate_theme($variables, $suffix) {
   @each $property, $value in $variables {
@@ -39,6 +40,8 @@ $dark-theme: (
 :root {
   @include misc.config-fonts;
   @include misc.config-cgrid;
+  // @include fluid.type;
+  // @include fluid.space;
 
   @include generate_theme($light-theme, light);
   @include generate_theme($dark-theme, dark);
