@@ -14,13 +14,15 @@ const props = Astro.props;
 
 <section class="max region" {...props}>
   <div class="container">
-    <Image
-      src={heroImg}
-      alt="Head profile of Chuang Caleb"
-      width={heroImg.width / 3}
-      densities={[1, 2, 3]}
-      loading="eager"
-    />
+    <div class="img-cont">
+      <Image
+        src={heroImg}
+        alt="Head profile of Chuang Caleb"
+        width={heroImg.width / 3}
+        densities={[1, 2, 3]}
+        loading="eager"
+      />
+    </div>
     <div class="text-cont | flow-lg">
       <p class="suptitle">chuang caleb</p>
       <h1>
@@ -55,14 +57,14 @@ const props = Astro.props;
   .container {
     display: grid;
     grid-column: 2 / 2;
-    grid-template-columns: 7fr 2fr 3.5fr;
+    grid-template-columns: 7fr 5.5fr;
     grid-template-rows: repeat(7, 1fr);
     position: relative;
   }
 
   .text-cont {
     display: grid;
-    grid-column: 1 / -2;
+    grid-column: 1 / -1;
     grid-row: 3 / 8;
     grid-template-columns: subgrid;
     grid-template-rows: auto;
@@ -90,15 +92,34 @@ const props = Astro.props;
       text-wrap: balance;
       padding-inline-end: var(--space-m);
       font-size: var(--step-1);
+      @media (width < 600px) {
+        grid-column: 1 / -1;
+      }
     }
   }
-  img {
-    grid-column: -3 / -1;
+
+  .img-cont {
+    grid-column: -2 / -1;
     grid-row: 1 / 6;
-    width: 100%;
     justify-self: end;
     filter: saturate(0.6);
     z-index: -1;
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    img {
+      width: 100%;
+    }
+    @media (width < 700px) {
+      &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        inset: 0;
+        box-shadow: inset 0 calc(var(--space-l) * -1) var(--space-xl) -10px var(--surface-1a);
+      }
+    }
   }
   mark {
     -webkit-animation: 1.5s highlight 0.2s 1 normal forwards;
@@ -117,6 +138,12 @@ const props = Astro.props;
   @keyframes highlight {
     to {
       background-position: 0 0;
+    }
+  }
+
+  @media (width < 450px) {
+    br {
+      display: none;
     }
   }
 </style>
