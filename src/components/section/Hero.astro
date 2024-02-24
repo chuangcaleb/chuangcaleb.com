@@ -56,14 +56,14 @@ const props = Astro.props;
     display: grid;
     grid-column: 2 / 2;
     grid-template-columns: 7fr 2fr 3.5fr;
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(7, 1fr);
     position: relative;
   }
 
   .text-cont {
     display: grid;
     grid-column: 1 / -2;
-    grid-row: 3 / 7;
+    grid-row: 3 / 8;
     grid-template-columns: subgrid;
     grid-template-rows: auto;
     align-content: start;
@@ -94,7 +94,7 @@ const props = Astro.props;
   }
   img {
     grid-column: -3 / -1;
-    grid-row: 1 / 5;
+    grid-row: 1 / 6;
     width: 100%;
     justify-self: end;
     filter: saturate(0.6);
