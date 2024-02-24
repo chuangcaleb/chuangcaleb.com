@@ -20,7 +20,6 @@ const props = Astro.props;
       width={heroImg.width / 3}
       densities={[1, 2, 3]}
       loading="eager"
-      class="border"
     />
     <div class="text-cont | flow-lg">
       <h1>
@@ -41,45 +40,53 @@ const props = Astro.props;
 </section>
 
 <style lang="scss">
-  $grid-item-w: 130px;
-
   section {
-    max-width: 1300px;
+    $width-max: 1400px;
+    $gutter-max: 8rem;
+
+    $gutter: minmax(0, $gutter-max);
+    $col-center-w: min($width-max - $gutter-max * 2, 100%);
+
+    max-width: $width-max;
     margin-inline: auto;
+    min-height: min(90vh, 120ch);
+    display: grid;
+    grid-template-columns: $gutter $col-center-w $gutter;
   }
 
-  $gutter: minmax(0, $grid-item-w / 1.5);
   .container {
     display: grid;
-    grid-template-columns: $gutter repeat(8, minmax($grid-item-w, 1fr)) $gutter;
-    grid-template-rows: repeat(7, 1fr);
+    grid-column: 2 / 2;
+    grid-template-columns: 7fr 2.5fr 3.5fr;
+    grid-template-rows: repeat(6, 1fr);
     position: relative;
   }
 
   .text-cont {
-    grid-column: 2 / 8;
-    grid-row: 3 / -1;
-
     display: grid;
+    grid-column: 1 / -2;
+    grid-row: 3 / 7;
     grid-template-columns: subgrid;
-    grid-template-rows: max-content;
+    grid-template-rows: auto;
+    align-content: start;
 
     h1 {
       grid-column: 1 / -1;
-      hyphens: none;
+      // hyphens: none;
       line-height: var(--step-7);
     }
     p {
-      text-wrap: balance;
       grid-column: 1 / -2;
+      text-wrap: balance;
       padding-inline-end: var(--space-m);
       font-size: var(--step-1);
     }
   }
   img {
-    grid-column: -5 / -1;
-    grid-row: 1 / 6;
+    grid-column: -3 / -1;
+    grid-row: 1 / 5;
     width: 100%;
+    justify-self: end;
     filter: saturate(0.6);
     z-index: -1;
   }
