@@ -6,15 +6,12 @@ import LINKS from "~/data/links";
 import { Icon } from "astro-iconify";
 import { Image } from "astro:assets";
 
-const { LINKEDIN, GITHUB, CV } = LINKS;
-const heroLinks = [GITHUB, LINKEDIN, CV];
-
 const props = Astro.props;
 ---
 
 <section class="max region" {...props}>
   <div class="container">
-    <div class="img-cont">
+    <div class="cont-img">
       <Image
         src={heroImg}
         alt="Head profile of Chuang Caleb"
@@ -23,9 +20,9 @@ const props = Astro.props;
         loading="eager"
       />
     </div>
-    <div class="text-cont | flow-lg">
+    <div class="cont-text | flow-lg">
       <p class="suptitle">chuang caleb</p>
-      <h1 class="flower-2xs">
+      <h1 class="flom-2xs">
         software dev <br />
         with a different <mark>story.</mark>
       </h1>
@@ -37,6 +34,22 @@ const props = Astro.props;
         >.
       </p>
       <p>You'll find out about me on this site. Wanna work together?</p>
+      <div>
+        <Button theme="brand">contact me</Button>
+      </div>
+    </div>
+    <div class="cont-socials region">
+      <ul class="socials-ul flow-md">
+        {
+          Object.values(LINKS).map((link) => (
+            <li>
+              <a href={link.href}>
+                <Icon name={link.icon} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </div>
 </section>
@@ -58,11 +71,12 @@ const props = Astro.props;
     display: grid;
     grid-column: 2 / 2;
     grid-template-columns: 7fr 5.5fr;
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    column-gap: var(--space-m);
     position: relative;
   }
 
-  .text-cont {
+  .cont-text {
     display: grid;
     grid-column: 1 / -1;
     grid-row: 3 / 8;
@@ -71,7 +85,7 @@ const props = Astro.props;
     align-content: start;
 
     .suptitle {
-      font-size: var(--step-2);
+      font-size: var(--step-3);
       font-weight: var(--font-weight-4);
       font-family: var(--font-heading);
       letter-spacing: var(--font-letterspacing-1);
@@ -82,23 +96,28 @@ const props = Astro.props;
       text-underline-offset: 0.5em;
     }
 
+    * {
+      grid-column: 1 / -2;
+      @media (width < 600px) {
+        grid-column: 1 / -1;
+      }
+    }
     h1 {
       grid-column: 1 / -1;
       // hyphens: none;
       line-height: var(--step-7);
     }
     p {
-      grid-column: 1 / -2;
       text-wrap: balance;
-      padding-inline-end: var(--space-m);
       font-size: var(--step-1);
-      @media (width < 600px) {
-        grid-column: 1 / -1;
-      }
+    }
+
+    .cc-btn {
+      font-size: var(--step-2);
     }
   }
 
-  .img-cont {
+  .cont-img {
     grid-column: -2 / -1;
     grid-row: 1 / 6;
     justify-self: end;
@@ -127,6 +146,41 @@ const props = Astro.props;
       }
     }
   }
+
+  .cont-socials {
+    grid-column: -2 / -1;
+    grid-row: 6 / 8;
+    text-align: end;
+    display: grid;
+    align-items: end;
+
+    @media (width < 600px) {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+    ul {
+      // font-size: var(--step-1);
+      text-transform: lowercase;
+      span {
+        color: hsla(var(--brand-hsl) / 0.5);
+        &:is(:hover, :focus, :active) {
+          color: var(--brand);
+        }
+      }
+      svg {
+        width: var(--step-5);
+      }
+      @media (width < 600px) {
+        display: flex;
+        justify-content: center;
+        column-gap: var(--space-m);
+        * {
+          --flow-space: 0;
+        }
+      }
+    }
+  }
+
   mark {
     -webkit-animation: 1.5s highlight 0.2s 1 normal forwards;
     animation: 1.5s highlight 0.2s 1 normal forwards;
@@ -134,6 +188,7 @@ const props = Astro.props;
     background: linear-gradient(45deg, var(--brand) 50%, transparent 50%);
     background-size: 205% 100%;
     background-position: 100% 0;
+    color: var(--text-on-brand);
   }
   @-webkit-keyframes highlight {
     to {

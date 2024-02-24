@@ -17,6 +17,7 @@
 
 :where(h2) {
   font-weight: var(--font-weight-7);
+  letter-spacing: var(--font-letterspacing-1);
 }
 
 .style-h3,

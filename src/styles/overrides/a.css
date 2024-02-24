@@ -45,7 +45,7 @@
 }
 
 :where(a[href]:is(:hover, :focus, :active)) {
-  text-decoration-color: hsl(var(--brand-hsl));
+  text-decoration-color: var(--brand);
 }
 
 :where(a[href]:focus) {
