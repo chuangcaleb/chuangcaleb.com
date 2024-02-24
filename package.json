@@ -16,36 +16,38 @@
     "preview": "astro build && astro preview"
   },
   "dependencies": {
+    "@astrojs/mdx": "^2.1.1",
     "@astrojs/react": "^3.0.10",
+    "@astrojs/sitemap": "^3.1.1",
+    "@iconify-json/lucide": "^1.1.168",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
     "@types/react": "^18.2.58",
     "@types/react-dom": "^18.2.19",
     "astro": "^4.4.3",
-    "cloudinary": "^2.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sharp": "^0.33.2"
-  },
-  "devDependencies": {
-    "@astrojs/mdx": "^2.1.1",
-    "@astrojs/sitemap": "^3.1.1",
-    "@iconify-json/lucide": "^1.1.168",
-    "@svgr/core": "^8.1.0",
-    "@svgr/plugin-jsx": "^8.1.0",
-    "@types/fs-extra": "^11.0.4",
     "astro-compressor": "^0.4.1",
     "astro-iconify": "^1.2.0",
     "astro-purgecss": "^4.1.0",
     "astro-robots-txt": "^1.0.0",
+    "cloudinary": "^1.41.3",
     "date-fns": "^3.3.1",
     "dotenv": "^16.4.5",
     "fs-extra": "^11.2.0",
     "open-props": "^1.6.19",
     "postcss-custom-media": "^10.0.3",
     "postcss-preset-env": "^9.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.71.1",
+    "sharp": "^0.33.2",
+    "unplugin-icons": "^0.18.5",
+    "utopia-core-scss": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.12.3",
-    "tsx": "^4.7.1",
-    "unplugin-icons": "^0.18.5"
+    "tsx": "^4.7.1"
   }
 }

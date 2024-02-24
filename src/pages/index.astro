@@ -12,17 +12,15 @@ import SITE from "~/data/site";
   class="main-index | cgrid-wide"
   title={`${SITE.title} - ${SITE.subtitle}`}
 >
-  <div class="index-wrapper | region">
-    <Hero />
-    <Highlights />
-  </div>
-  <section class="code-banner | region">
+  <Hero class="wide" />
+  <Highlights />
+  <!-- <section class="code-banner | region">
     <code
       >writing("<span class="text-brand">code</span>"); “<span
         class="text-brand">story</span
       >-writing”</code
     >
-  </section>
+  </section> -->
   <section class="utils-section">
     <ThemeDropdown client:only />
   </section>
@@ -30,40 +28,8 @@ import SITE from "~/data/site";
   <Skills />
 </Main>
 
-<style is:global>
-  .main-index {
-    .index-wrapper {
-      grid-column: max;
-      display: flex;
-      flex-wrap: wrap;
-      column-gap: var(--size-fluid-5);
-      justify-content: space-evenly;
-      row-gap: var(--size-fluid-6);
-      margin-inline: auto;
-    }
-
-    .hero-section {
-      flex-basis: 0;
-      flex-grow: 999;
-      min-inline-size: 53%;
-    }
-
-    .highlights-section {
-      flex-grow: 1;
-      flex-basis: var(--size-content-2);
-      position: relative;
-      &::before {
-        content: "";
-        position: absolute;
-        border-width: 1px;
-        border-color: var(--border);
-        border-style: solid;
-        left: calc(var(--gutter) * -1 - 2px);
-        top: -50px;
-        height: calc(100% + 50px);
-      }
-    }
-
+<style>
+  /* .main-index {
     .code-banner {
       display: grid;
       grid-column: full;
@@ -75,9 +41,11 @@ import SITE from "~/data/site";
       padding-block: var(--size-fluid-3);
       text-align: center;
     }
+  } */
 
-    .utils-section {
-      text-align: center;
-    }
+  .utils-section {
+    text-align: center;
+    padding-block: var(--space-m);
+    font-size: var(--step-1);
   }
 </style>

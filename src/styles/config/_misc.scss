@@ -1,0 +1,13 @@
+@mixin config-fonts {
+  --font-heading: "American Typewriter", system-ui, sans-serif;
+  --font-sans: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
+    sans-serif;
+}
+
+@mixin config-cgrid {
+  --size-blockquote-strip: var(--size-relative-3);
+  --size-blockquote-indent: var(--size-relative-7);
+  --size-popout: calc(
+    var(--size-blockquote-strip) + var(--size-blockquote-indent)
+  );
+}

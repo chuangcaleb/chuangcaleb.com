@@ -16,7 +16,7 @@ import Icon from "astro-iconify";
       Object.values(LINKS).map((l) => (
         <li>
           <a href={l.href}>
-            <Icon name={l.icon} aria-hidden="true" />{}{l.appId ?? l.label}
+            <Icon name={l.icon} aria-hidden="true" />{}{l.userId ?? l.label}
           </a>
         </li>
       ))
@@ -39,11 +39,8 @@ import Icon from "astro-iconify";
     a {
       letter-spacing: var(--font-letterspacing-2);
       svg {
-        width: var(--size-6);
+        width: var(--step-3);
       }
     }
   }
-  /* :not(h2, ul, li) > * + * {
-    margin-top: var(--size-relative-8);
-  } */
 </style>

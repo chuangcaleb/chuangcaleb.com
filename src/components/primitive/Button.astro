@@ -20,10 +20,10 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     border-width: var(--_border-width, 1px);
 
     display: inline-flex;
-    gap: var(--size-relative-2);
+    gap: var(--size-relative-3);
     align-items: center;
     justify-content: center;
-    padding: var(--size-relative-2) var(--size-relative-3);
+    padding: var(--size-relative-2) var(--size-relative-4);
     border-style: solid;
     border-radius: var(--radius-2);
 
@@ -31,7 +31,7 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     text-decoration-line: none;
 
     svg {
-      width: 2em;
+      width: 1.5em;
       margin: 0;
     }
 
@@ -42,12 +42,12 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
       --_text-hover: var(--brand);
     }
 
-    &:has(svg:first-child:last-child) {
+    /* &:has(svg:first-child:last-child) {
       padding: var(--size-1);
     }
     &:has(svg:not(:first-child:last-child)) {
       padding: var(--size-1) var(--size-2);
-    }
+    } */
     &:is(a) {
       margin: 0;
     }

@@ -1,0 +1,69 @@
+@use "misc";
+@use "fluid";
+
+@mixin generate_theme($variables, $suffix) {
+  @each $property, $value in $variables {
+    --#{$property}-#{$suffix}: #{$value};
+  }
+}
+
+@mixin apply_theme($suffix) {
+  @each $property, $value in $light-theme {
+    --#{$property}: var(--#{$property}-#{$suffix});
+  }
+}
+
+$light-theme: (
+  brand-hsl: var(--day-hS) 30%,
+  surface-1a-hsl: var(--day-hs) 92%,
+  surface-1b: hsl(var(--day-hs) 89%),
+  text-1: var(--stone-10),
+  text-1-strong: var(--stone-12),
+  text-faded: var(--stone-7),
+  text-muted: hsl(var(--day-hs) 85%),
+  text-on-brand: var(--stone-1),
+  border: hsl(var(--day-hs) 80%),
+);
+
+$dark-theme: (
+  brand-hsl: var(--day-hS) 70%,
+  surface-1a-hsl: var(--night-hs) 18%,
+  surface-1b: hsl(var(--night-hs) 12%),
+  text-1: var(--stone-4),
+  text-1-strong: var(--stone-2),
+  text-faded: var(--stone-7),
+  text-muted: hsl(var(--night-hs) 28%),
+  text-on-brand: hsl(var(--night-hs) 12%),
+  border: hsl(var(--night-hs) 40%),
+);
+
+:root {
+  @include misc.config-fonts;
+  @include misc.config-cgrid;
+  @include fluid.type;
+  @include fluid.space;
+
+  @include generate_theme($light-theme, light);
+  @include generate_theme($dark-theme, dark);
+
+  /* -------------------------------------------------------------------------- */
+
+  color-scheme: dark;
+  --brand: hsl(var(--brand-hsl));
+  --surface-1a: hsl(var(--surface-1a-hsl));
+
+  @include apply_theme(dark);
+
+  @media (prefers-color-scheme: light) {
+    color-scheme: light;
+    @include apply_theme(light);
+  }
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+  @include apply_theme(dark);
+}
+[data-theme="light"] {
+  color-scheme: light;
+  @include apply_theme(light);
+}

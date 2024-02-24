@@ -3,10 +3,6 @@
   margin-block-start: var(--flow-space, var(--size-relative-6));
 }
 
-/* .flow-0 > * + * {
-  --flow-space: 0;
-} */
-
 .flow-xs > * + * {
   --flow-space: var(--size-relative-2);
 }
@@ -25,6 +21,34 @@
   --flow-space: var(--size-relative-12);
 }
 
+.flom-0 {
+  --flow-space: 0;
+}
+
+.flom-2xs {
+  --flow-space: var(--size-relative-1);
+}
+
+.flom-xs {
+  --flow-space: var(--size-relative-2);
+}
+
+.flom-sm {
+  --flow-space: var(--size-relative-4);
+}
+
+.flom-lg {
+  --flow-space: var(--size-relative-8);
+}
+.flom-xl {
+  --flow-space: var(--size-relative-10);
+}
+.flom-2xl {
+  --flow-space: var(--size-relative-12);
+}
+
+/* -------------------------------------------------------------------------- */
+
 .region {
-  padding-block: var(--size-relative-10);
+  padding-block: var(--space-xl);
 }

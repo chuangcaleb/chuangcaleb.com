@@ -6,118 +6,227 @@ import LINKS from "~/data/links";
 import { Icon } from "astro-iconify";
 import { Image } from "astro:assets";
 
-const { LINKEDIN, GITHUB, CV } = LINKS;
-const heroLinks = [GITHUB, LINKEDIN, CV];
+const props = Astro.props;
 ---
 
-<section class="hero-section | flow-lg">
-  <header>
-    <HeadingCaps as="h1">Chuang Caleb</HeadingCaps>
-    <h2>
-      Web Developer <span class="deemph">with a</span>
-      <span class="gradient"> different story.</span>
-    </h2>
-  </header>
-  <div class="subheader | flow">
-    <p>
-      <strong>Ahoy! 🌊 This is Caleb speaking.</strong> I'm a <strong
-        >Malaysian</strong
-      > guy who professionally tinkers with <strong>UI design systems</strong> &
-
-      <strong>dynamic web apps</strong> — and unprofessionally with <strong
-        >storytelling</strong
-      >. You'll find out about me on this site. Wanna work together?
-    </p>
-    <div class="buttons-cont">
-      <Button as="a" theme="brand" class="cta-1" href="#contact">
-        <Icon name="mdi:connection" />
-        Contact me!
-      </Button>
-      <ul class="norm buttons">
+<section class="max region" {...props}>
+  <div class="container">
+    <div class="cont-img">
+      <Image
+        src={heroImg}
+        alt="Head profile of Chuang Caleb"
+        width={heroImg.width / 3}
+        densities={[1, 2, 3]}
+        loading="eager"
+        class='border'
+      />
+    </div>
+    <div class="cont-text | flow-lg">
+      <p class="suptitle">chuang caleb</p>
+      <h1 class="flom-2xs">
+        software dev <br />
+        with a different <mark>story.</mark>
+      </h1>
+      <p>
+        Ahoy! 🌊 This is Caleb speaking. I professionally tinker with <b>
+          UI design systems
+        </b> & <b>dynamic web apps</b> — and unprofessionally with <b>
+          narrative storytelling</b
+        >.
+      </p>
+      <p>You'll find out about me on this site. Wanna work together?</p>
+      <div class="cont-cta flom-xl">
+        <Button as="a" theme="brand" href={LINKS['EMAIL'].href}>
+          <Icon name={LINKS['EMAIL'].icon} />{}email me
+        </Button>
+        <Button as="a" href="#projects">
+          <Icon name="lucide:atom"  />{}see projects
+        </Button>
+      </div>
+    </div>
+    <div class="cont-socials region">
+      <ul class="socials-ul flow-md">
         {
-          heroLinks.map((l) => (
+          Object.values(LINKS).map((link) => (
             <li>
-              <Button as="a" href={l.href} aria-label={l.ariaLabel}>
-                <Icon name={l.icon} aria-hidden="true" />
-              </Button>
+              <a href={link.href}>
+                <span>{link?.userId ?? link.label}</span>{}<Icon name={link.icon} />
+              </a>
             </li>
           ))
         }
       </ul>
     </div>
   </div>
-  <Image
-    src={heroImg}
-    alt="Head profile of Chuang Caleb"
-    width={heroImg.width / 3}
-    densities={[1, 2, 3]}
-    loading="eager"
-    class="border"
-  />
 </section>
 
-<style is:global>
-  .hero-section {
+
+<style lang="scss">
+  $width-max: 1280px;
+  $gutter-max: 7rem;
+
+  $gutter: minmax(0, $gutter-max);
+  $col-center-w: min($width-max - $gutter-max * 2, 100%);
+  section {
+    margin-inline: auto;
     display: grid;
+    grid-template-columns: $gutter $col-center-w $gutter;
+    justify-content: center;
+  }
+
+  .container {
+    display: grid;
+    grid-column: 2 / 2;
+    grid-template-columns: 7fr 5.5fr;
+    grid-template-rows: repeat(auto, 1fr);
+    column-gap: var(--space-m);
+    position: relative;
+  }
+
+  .cont-text {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 3 / 8;
+    grid-template-columns: subgrid;
+    grid-template-rows: auto;
     align-content: start;
 
-    header {
-      gap: var(--size-fluid-1);
+    .suptitle {
+      font-size: var(--step-3);
+      font-weight: var(--font-weight-4);
+      font-family: var(--font-heading);
+      letter-spacing: var(--font-letterspacing-1);
+      color: var(--text-faded);
+      text-decoration: underline;
+      text-decoration-color: var(--brand);
+      // text-underline-offset: 0.25em;
+      text-underline-offset: 0.5em;
     }
 
-    .subheader {
-      gap: var(--size-fluid-2);
-
-      p {
-        max-width: var(--size-content-3);
+    * {
+      grid-column: 1 / -2;
+      @media (width < 600px) {
+        grid-column: 1 / -1;
       }
     }
-
     h1 {
-      font-size: var(--font-size-fluid-1);
+      grid-column: 1 / -1;
+      text-wrap: balance;
+      hyphens: none;
+      line-height: var(--step-7);
+    }
+    p {
+      text-wrap: balance;
+      font-size: var(--step-1);
     }
 
-    h2 {
-      font-size: var(--font-size-fluid-3);
-      line-height: var(--font-lineheight-0);
-      max-width: 15ch;
-      font-weight: var(--font-weight-8);
+    .cc-btn {
+      font-size: var(--step-2);
     }
+  }
+
+  .cont-img {
+    grid-column: -2 / -1;
+    grid-row: 1 / 6;
+    justify-self: end;
+    filter: brightness(1.2) saturate(0.8);
+    z-index: -1;
+    position: relative;
+    width: 100%;
+    height: fit-content;
 
     img {
-      --flow-space: var(--size-fluid-4);
-      border-radius: var(--radius-2);
+      position: inherit;
+      width: 100%;
+      z-index: -2;
     }
-
-    ul.buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--size-fluid-1);
+    &::after {
+      background-color: hsla(var(--surface-1a-hsl) / 0.5);
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      inset: 0;
     }
-
-    .cta-1 {
-      flex-grow: 1;
-      max-width: var(--size-content-1);
-    }
-
-    .buttons-cont {
-      display: flex;
-      flex-wrap: wrap;
-      column-gap: var(--size-fluid-2);
-      row-gap: var(--size-fluid-2);
-    }
-
-    .gradient {
-      background: linear-gradient(to bottom right, var(--text-1), var(--brand));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      &::selection {
-        -webkit-background-clip: initial;
-        -webkit-text-fill-color: initial;
+    @media (width < 700px) {
+      &::after {
+        box-shadow: inset 0 calc(var(--space-l) * -1) var(--space-xl) -10px var(--surface-1a);
       }
     }
-    .deemph {
-      font-weight: initial;
+  }
+
+  .cont-socials {
+    grid-column: -2 / -1;
+    grid-row: 6 / 8;
+    text-align: end;
+    display: grid;
+    align-items: end;
+
+    @media (width < 600px) {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+    ul {
+      font-size: var(--step-1);
+      text-transform: lowercase;
+      a {
+        gap: var(--size-relative-3);
+        &:is(:not(:hover, :focus, :active)) span {
+          color: hsla(var(--brand-hsl) / 0.85);
+        }
+      }
+      svg {
+        width: var(--step-5);
+      }
+      @media (width < 600px) {
+        display: flex;
+        // flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: var(--space-m);
+        row-gap: var(--space-2xs);
+        * {
+          --flow-space: 0;
+        }
+        a {
+          flex-direction: row-reverse;
+        }
+      }
+    }
+  }
+
+  .cont-cta {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--space-m);
+    row-gap: var(--space-xs);
+  }
+
+  mark {
+    -webkit-animation: 1.5s highlight 0.2s 1 normal forwards;
+    animation: 1.5s highlight 0.2s 1 normal forwards;
+    background-color: none;
+    background: linear-gradient(45deg, var(--brand) 50%, transparent 50%);
+    background-size: 205% 100%;
+    background-position: 100% 0;
+    color: var(--text-on-brand);
+    padding-inline: var(--space-3xs);
+  }
+  @-webkit-keyframes highlight {
+    to {
+      background-position: 0 0;
+    }
+  }
+
+  @keyframes highlight {
+    to {
+      background-position: 0 0;
+    }
+  }
+
+  @media (width < 500px) {
+    br {
+      display: none;
     }
   }
 </style>

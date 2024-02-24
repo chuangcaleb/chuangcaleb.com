@@ -42,10 +42,17 @@
   text-decoration-color: hsla(var(--brand-hsl) / 0.35);
   text-decoration-skip-ink: none;
   border-radius: var(--size-relative-1);
+
+  &:has(*) {
+    display: inline-flex;
+    gap: var(--size-relative-2);
+    align-items: center;
+  }
 }
 
 :where(a[href]:is(:hover, :focus, :active)) {
-  text-decoration-color: hsl(var(--brand-hsl));
+  text-decoration-color: var(--brand);
+  color: var(--text-1-strong);
 }
 
 :where(a[href]:focus) {
