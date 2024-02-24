@@ -14,13 +14,13 @@ import SITE from "~/data/site";
 >
   <Hero class="wide" />
   <Highlights />
-  <section class="code-banner | region">
+  <!-- <section class="code-banner | region">
     <code
       >writing("<span class="text-brand">code</span>"); “<span
         class="text-brand">story</span
       >-writing”</code
     >
-  </section>
+  </section> -->
   <section class="utils-section">
     <ThemeDropdown client:only />
   </section>
@@ -29,23 +29,7 @@ import SITE from "~/data/site";
 </Main>
 
 <style>
-  .main-index {
-    /* .highlights-section {
-      flex-grow: 1;
-      flex-basis: var(--size-content-2);
-      position: relative;
-      &::before {
-        content: "";
-        position: absolute;
-        border-width: 1px;
-        border-color: var(--border);
-        border-style: solid;
-        left: calc(var(--gutter) * -1 - 2px);
-        top: -50px;
-        height: calc(100% + 50px);
-      }
-    } */
-
+  /* .main-index {
     .code-banner {
       display: grid;
       grid-column: full;
@@ -57,9 +41,10 @@ import SITE from "~/data/site";
       padding-block: var(--size-fluid-3);
       text-align: center;
     }
+  } */
 
-    .utils-section {
-      text-align: center;
-    }
+  .utils-section {
+    text-align: center;
+    padding-block: var(--space-m);
   }
 </style>
