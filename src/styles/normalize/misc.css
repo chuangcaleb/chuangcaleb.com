@@ -13,7 +13,3 @@
   width: 1em;
   /* height: 1em; */
 }
-
-:where(a > svg:first-child) {
-  margin-inline-end: var(--svg-g, var(--size-relative-2));
-}

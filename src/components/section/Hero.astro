@@ -34,7 +34,7 @@ const props = Astro.props;
         >.
       </p>
       <p>You'll find out about me on this site. Wanna work together?</p>
-      <div>
+      <div class="flom-xl">
         <Button theme="brand">contact me</Button>
       </div>
     </div>
@@ -44,7 +44,7 @@ const props = Astro.props;
           Object.values(LINKS).map((link) => (
             <li>
               <a href={link.href}>
-                <Icon name={link.icon} />
+                {link?.userId ?? link.label}{}<Icon name={link.icon} />
               </a>
             </li>
           ))
@@ -159,7 +159,7 @@ const props = Astro.props;
       grid-row: auto;
     }
     ul {
-      // font-size: var(--step-1);
+      font-size: var(--step-1);
       text-transform: lowercase;
       span {
         color: hsla(var(--brand-hsl) / 0.5);
@@ -172,6 +172,7 @@ const props = Astro.props;
       }
       @media (width < 600px) {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         column-gap: var(--space-m);
         * {
@@ -189,6 +190,7 @@ const props = Astro.props;
     background-size: 205% 100%;
     background-position: 100% 0;
     color: var(--text-on-brand);
+    padding-inline: var(--space-3xs);
   }
   @-webkit-keyframes highlight {
     to {
