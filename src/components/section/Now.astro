@@ -25,5 +25,8 @@ const highlights = (await getCollection("highlight")).sort(
     display: grid;
     grid-template-columns: subgrid;
     border-radius: var(--radius-3);
+    :global(ul) {
+      font-size: var(--step-1);
+    }
   }
 </style>

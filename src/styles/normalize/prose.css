@@ -31,21 +31,21 @@
 }
 
 :where(h2) {
-  font-size: var(--font-size-6);
+  font-size: var(--step-5);
   max-width: var(--size-header-2);
 }
 
 .style-h3,
 :where(h3) {
-  font-size: var(--font-size-4);
+  font-size: var(--step-3);
 }
 
 :where(h4) {
-  font-size: var(--font-size-3);
+  font-size: var(--step-3);
 }
 
 :where(h5) {
-  font-size: var(--font-size-2);
+  font-size: var(--step-2);
 }
 
 :where(h3, h4, h5, h6, dt) {
