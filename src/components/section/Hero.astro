@@ -44,7 +44,7 @@ const props = Astro.props;
           Object.values(LINKS).map((link) => (
             <li>
               <a href={link.href}>
-                {link?.userId ?? link.label}{}<Icon name={link.icon} />
+                <span>{link?.userId ?? link.label}</span>{}<Icon name={link.icon} />
               </a>
             </li>
           ))
@@ -161,10 +161,10 @@ const props = Astro.props;
     ul {
       font-size: var(--step-1);
       text-transform: lowercase;
-      span {
-        color: hsla(var(--brand-hsl) / 0.5);
-        &:is(:hover, :focus, :active) {
-          color: var(--brand);
+      a {
+        gap: var(--size-relative-3);
+        &:is(:not(:hover, :focus, :active)) span {
+          color: hsla(var(--brand-hsl) / 0.6);
         }
       }
       svg {
