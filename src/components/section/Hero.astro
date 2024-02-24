@@ -102,21 +102,27 @@ const props = Astro.props;
     grid-column: -2 / -1;
     grid-row: 1 / 6;
     justify-self: end;
-    filter: saturate(0.6);
+    filter: brightness(1.2) saturate(0.8);
     z-index: -1;
     position: relative;
     width: 100%;
     height: fit-content;
+
     img {
+      position: inherit;
       width: 100%;
+      z-index: -2;
+    }
+    &::after {
+      background-color: hsla(var(--surface-1a-hsl) / 0.5);
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      inset: 0;
     }
     @media (width < 700px) {
       &::after {
-        content: "";
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        inset: 0;
         box-shadow: inset 0 calc(var(--space-l) * -1) var(--space-xl) -10px var(--surface-1a);
       }
     }
