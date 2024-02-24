@@ -13,7 +13,7 @@ import SITE from "~/data/site";
   title={`${SITE.title} - ${SITE.subtitle}`}
 >
   <Hero class="wide" />
-  <!-- <Highlights /> -->
+  <Highlights />
   <section class="code-banner | region">
     <code
       >writing("<span class="text-brand">code</span>"); “<span
@@ -30,23 +30,7 @@ import SITE from "~/data/site";
 
 <style>
   .main-index {
-    .index-wrapper {
-      grid-column: max;
-      display: flex;
-      flex-wrap: wrap;
-      column-gap: var(--size-fluid-5);
-      justify-content: space-evenly;
-      row-gap: var(--size-fluid-6);
-      margin-inline: auto;
-    }
-
-    .hero-section {
-      flex-basis: 0;
-      flex-grow: 999;
-      min-inline-size: 53%;
-    }
-
-    .highlights-section {
+    /* .highlights-section {
       flex-grow: 1;
       flex-basis: var(--size-content-2);
       position: relative;
@@ -60,7 +44,7 @@ import SITE from "~/data/site";
         top: -50px;
         height: calc(100% + 50px);
       }
-    }
+    } */
 
     .code-banner {
       display: grid;
