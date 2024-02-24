@@ -1,4 +1,4 @@
-[class*="flow"] > * + * {
+[class*="flow-"] > * + * {
   --flow-space: var(--size-relative-6);
   margin-block-start: var(--flow-space, var(--size-relative-6));
 }
@@ -24,6 +24,34 @@
 .flow-2xl > * + * {
   --flow-space: var(--size-relative-12);
 }
+
+.flower-0 {
+  --flow-space: 0;
+}
+
+.flower-2xs {
+  --flow-space: var(--size-relative-1);
+}
+
+.flower-xs {
+  --flow-space: var(--size-relative-2);
+}
+
+.flower-sm {
+  --flow-space: var(--size-relative-4);
+}
+
+.flower-lg {
+  --flow-space: var(--size-relative-8);
+}
+.flower-xl {
+  --flow-space: var(--size-relative-10);
+}
+.flower-2xl {
+  --flow-space: var(--size-relative-12);
+}
+
+/* -------------------------------------------------------------------------- */
 
 .region {
   padding-block: var(--size-relative-10);
