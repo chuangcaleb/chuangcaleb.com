@@ -8,116 +8,92 @@ import { Image } from "astro:assets";
 
 const { LINKEDIN, GITHUB, CV } = LINKS;
 const heroLinks = [GITHUB, LINKEDIN, CV];
+
+const props = Astro.props;
 ---
 
-<section class="hero-section | flow-lg">
-  <header>
-    <HeadingCaps as="h1">Chuang Caleb</HeadingCaps>
-    <h2>
-      Web Developer <span class="deemph">with a</span>
-      <span class="gradient"> different story.</span>
-    </h2>
-  </header>
-  <div class="subheader | flow">
-    <p>
-      <strong>Ahoy! 🌊 This is Caleb speaking.</strong> I'm a <strong
-        >Malaysian</strong
-      > guy who professionally tinkers with <strong>UI design systems</strong> &
-
-      <strong>dynamic web apps</strong> — and unprofessionally with <strong
-        >storytelling</strong
-      >. You'll find out about me on this site. Wanna work together?
-    </p>
-    <div class="buttons-cont">
-      <Button as="a" theme="brand" class="cta-1" href="#contact">
-        <Icon name="mdi:connection" />
-        Contact me!
-      </Button>
-      <ul class="norm buttons">
-        {
-          heroLinks.map((l) => (
-            <li>
-              <Button as="a" href={l.href} aria-label={l.ariaLabel}>
-                <Icon name={l.icon} aria-hidden="true" />
-              </Button>
-            </li>
-          ))
-        }
-      </ul>
+<section class="max region" {...props}>
+  <div class="container">
+    <Image
+      src={heroImg}
+      alt="Head profile of Chuang Caleb"
+      width={heroImg.width / 3}
+      densities={[1, 2, 3]}
+      loading="eager"
+      class="border"
+    />
+    <div class="text-cont | flow-lg">
+      <h1>
+        software dev <br />
+        <span class="deemph">with a</span>
+        <span class="gradient"> different story.</span>
+      </h1>
+      <p>
+        Ahoy! 🌊 This is Caleb speaking. I professionally tinker with <b>
+          UI design systems
+        </b> & <b>dynamic web apps</b> — and unprofessionally with <b>
+          narrative storytelling</b
+        >.
+      </p>
+      <p>You'll find out about me on this site. Wanna work together?</p>
     </div>
   </div>
-  <Image
-    src={heroImg}
-    alt="Head profile of Chuang Caleb"
-    width={heroImg.width / 3}
-    densities={[1, 2, 3]}
-    loading="eager"
-    class="border"
-  />
 </section>
 
-<style is:global>
-  .hero-section {
+<style lang="scss">
+  $grid-item-w: 130px;
+
+  section {
+    max-width: 1300px;
+    margin-inline: auto;
+  }
+
+  $gutter: minmax(0, $grid-item-w / 1.5);
+  .container {
     display: grid;
-    align-content: start;
+    grid-template-columns: $gutter repeat(8, minmax($grid-item-w, 1fr)) $gutter;
+    grid-template-rows: repeat(7, 1fr);
+    position: relative;
+  }
 
-    header {
-      gap: var(--size-fluid-1);
-    }
+  .text-cont {
+    grid-column: 2 / 8;
+    grid-row: 3 / -1;
 
-    .subheader {
-      gap: var(--size-fluid-2);
-
-      p {
-        max-width: var(--size-content-3);
-      }
-    }
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: max-content;
 
     h1 {
-      font-size: var(--font-size-fluid-1);
+      grid-column: 1 / -1;
+      hyphens: none;
+      line-height: var(--step-7);
     }
-
-    h2 {
-      font-size: var(--font-size-fluid-3);
-      line-height: var(--font-lineheight-0);
-      max-width: 15ch;
-      font-weight: var(--font-weight-8);
-    }
-
-    img {
-      --flow-space: var(--size-fluid-4);
-      border-radius: var(--radius-2);
-    }
-
-    ul.buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--size-fluid-1);
-    }
-
-    .cta-1 {
-      flex-grow: 1;
-      max-width: var(--size-content-1);
-    }
-
-    .buttons-cont {
-      display: flex;
-      flex-wrap: wrap;
-      column-gap: var(--size-fluid-2);
-      row-gap: var(--size-fluid-2);
-    }
-
-    .gradient {
-      background: linear-gradient(to bottom right, var(--text-1), var(--brand));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      &::selection {
-        -webkit-background-clip: initial;
-        -webkit-text-fill-color: initial;
-      }
-    }
-    .deemph {
-      font-weight: initial;
+    p {
+      text-wrap: balance;
+      grid-column: 1 / -2;
+      padding-inline-end: var(--space-m);
+      font-size: var(--step-1);
     }
   }
+  img {
+    grid-column: -5 / -1;
+    grid-row: 1 / 6;
+    width: 100%;
+    filter: saturate(0.6);
+    z-index: -1;
+  }
+
+  /* .gradient {
+    background: linear-gradient(to bottom right, var(--text-1), var(--brand));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    &::selection {
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+    }
+  }
+  .deemph {
+    font-weight: initial;
+  } */
 </style>

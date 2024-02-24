@@ -12,10 +12,8 @@ import SITE from "~/data/site";
   class="main-index | cgrid-wide"
   title={`${SITE.title} - ${SITE.subtitle}`}
 >
-  <div class="index-wrapper | region">
-    <Hero />
-    <Highlights />
-  </div>
+  <Hero class="wide" />
+  <!-- <Highlights /> -->
   <section class="code-banner | region">
     <code
       >writing("<span class="text-brand">code</span>"); “<span
@@ -30,7 +28,7 @@ import SITE from "~/data/site";
   <Skills />
 </Main>
 
-<style is:global>
+<style>
   .main-index {
     .index-wrapper {
       grid-column: max;

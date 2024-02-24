@@ -25,7 +25,7 @@
 }
 
 :where(h1) {
-  font-size: var(--font-size-8);
+  font-size: var(--step-7);
   max-width: var(--size-header-1);
 }
 
@@ -52,7 +52,7 @@
 }
 
 :where(p, ul, ol, dl, h6) {
-  font-size: var(--font-size-1);
+  font-size: var(--step-0);
 }
 
 :where(p) {
