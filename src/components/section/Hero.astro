@@ -24,8 +24,7 @@ const props = Astro.props;
     <div class="text-cont | flow-lg">
       <h1>
         software dev <br />
-        <span class="deemph">with a</span>
-        <span class="gradient"> different story.</span>
+        with a different <mark>story.</mark>
       </h1>
       <p>
         Ahoy! 🌊 This is Caleb speaking. I professionally tinker with <b>
@@ -90,17 +89,23 @@ const props = Astro.props;
     filter: saturate(0.6);
     z-index: -1;
   }
-
-  /* .gradient {
-    background: linear-gradient(to bottom right, var(--text-1), var(--brand));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    &::selection {
-      -webkit-background-clip: initial;
-      -webkit-text-fill-color: initial;
+  mark {
+    -webkit-animation: 1.5s highlight 0.2s 1 normal forwards;
+    animation: 1.5s highlight 0.2s 1 normal forwards;
+    background-color: none;
+    background: linear-gradient(90deg, var(--brand) 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+  }
+  @-webkit-keyframes highlight {
+    to {
+      background-position: 0 0;
     }
   }
-  .deemph {
-    font-weight: initial;
-  } */
+
+  @keyframes highlight {
+    to {
+      background-position: 0 0;
+    }
+  }
 </style>
