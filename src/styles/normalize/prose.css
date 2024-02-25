@@ -82,10 +82,14 @@
 .style-code,
 :where(code, kbd, samp, pre) {
   font-family: var(--font-mono);
+  font-size: var(--step--1);
 }
 
 :where(pre) {
   padding-block: var(--size-relative-6);
+  code {
+    padding-inline: var(--size-relative-4);
+  }
 }
 
 .style-code,

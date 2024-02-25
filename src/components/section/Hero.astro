@@ -11,14 +11,13 @@ const props = Astro.props;
 
 <section class="max region" {...props}>
   <div class="container">
-    <div class="cont-img">
+    <div class="cont-img border">
       <Image
         src={heroImg}
         alt="Head profile of Chuang Caleb"
         width={heroImg.width / 3}
         densities={[1, 2, 3]}
         loading="eager"
-        class='border'
       />
     </div>
     <div class="cont-text | flow-lg">
@@ -141,7 +140,7 @@ const props = Astro.props;
       z-index: -2;
     }
     &::after {
-      background-color: hsla(var(--surface-1a-hsl) / 0.5);
+      background-color: hsla(var(--surface-1a-hsl) / 0.35);
       content: "";
       position: absolute;
       height: 100%;
@@ -167,7 +166,7 @@ const props = Astro.props;
       grid-row: auto;
     }
     ul {
-      font-size: var(--step-1);
+      // font-size: var(--step-1);
       text-transform: lowercase;
       a {
         gap: var(--size-relative-3);
