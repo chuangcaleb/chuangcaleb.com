@@ -2,12 +2,14 @@
 import Contact from "~/components/section/Contact.astro";
 ---
 
-<footer id="footer">
+<footer id="footer" class="flow-xs">
   <Contact />
   <p class="fine-print">
-    designed by Chuang Caleb and published in {new Date().getFullYear()} —
     <a href="https://github.com/chuangcaleb/chuangcaleb.com">source code</a>
     <a href="/sitemap-index.xml">sitemap</a>
+  </p>
+  <p class="fine-print">
+    designed by Chuang Caleb and published in {new Date().getFullYear()}
   </p>
 </footer>
 
@@ -22,10 +24,12 @@ import Contact from "~/components/section/Contact.astro";
 
     .fine-print {
       color: var(--text-faded);
-      font-size: var(--font-size-0);
+      font-size: var(--step--2);
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: var(--size-relative-4);
+      text-align: center;
+      column-gap: var(--space-xs);
       justify-self: flex-end;
     }
   }
