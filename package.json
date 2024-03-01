@@ -19,7 +19,7 @@
     "@astrojs/mdx": "^2.1.1",
     "@astrojs/react": "^3.0.10",
     "@astrojs/sitemap": "^3.1.1",
-    "@iconify-json/lucide": "^1.1.168",
+    "@iconify-json/lucide": "^1.1.170",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
