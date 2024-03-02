@@ -127,6 +127,9 @@ strong {
 
 :where(ol, ul) {
   padding-left: var(--size-popout);
+  ::marker {
+    color: var(--text-faded);
+  }
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
