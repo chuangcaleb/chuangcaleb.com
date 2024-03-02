@@ -21,16 +21,14 @@ const skillGroups = Object.entries(SKILLS);
   </div>
 </section>
 
-<style is:global>
-  .skills-section {
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--size-relative-6);
-      > * {
-        flex-basis: var(--size-header-2);
-        flex-grow: 1;
-      }
+<style>
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    > :global(*) {
+      flex-basis: var(--size-header-2);
+      flex-grow: 1;
     }
   }
 </style>

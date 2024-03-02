@@ -2,7 +2,6 @@
 import { Icon } from "astro-iconify";
 import type { CollectionEntry } from "astro:content";
 import { getCldImgData } from "lib/cloudinary/get";
-import UINestednline from "~/components/styled/monom/UINestednline.astro";
 import Caps from "~/components/styled/polym/Caps.astro";
 import CldImg from "../primitive/CldImg.astro";
 
@@ -11,8 +10,6 @@ interface Props {
 }
 
 const { project } = Astro.props;
-
-const components = { ul: UINestednline };
 
 const { Content } = await project.render();
 
@@ -25,7 +22,7 @@ const i = getCldImgData("projects/" + project.slug, true);
       <h3>{project.data.title}</h3>
       <Caps>{project.data.kind}</Caps>
     </header>
-    <Content components={components} />
+    <Content  />
     <div class="links">
       <Icon name="lucide:link" />
       {
@@ -46,46 +43,33 @@ const i = getCldImgData("projects/" + project.slug, true);
   }
 </article>
 
-<style is:global>
+<style>
   .project {
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(var(--size-header-3), 1fr));
-    column-gap: var(--size-fluid-5);
-    row-gap: var(--size-fluid-2);
+    column-gap: var(--space-m);
+    row-gap: var(--space-m);
 
-    img {
-      width: min(100%, var(--size-content-3));
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      column-gap: var(--size-relative-6);
-    }
   }
-  .project-body {
-    max-width: var(--size-content-3);
+  img {
+    width: min(100%, var(--size-content-3));
+  }
 
-    header {
-      display: grid;
-      :not(h3) {
-        order: -1;
-      }
-    }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--size-relative-6);
 
-    em {
-      font-family: var(--font-mono);
-      display: inline-flex;
-      gap: var(--size-relative-2);
-    }
-    em,
-    li > svg {
-      color: var(--text-faded);
-    }
+    & > svg:first-child {
+    color: var(--text-faded);
+  }
+  }
 
-    /* p, a, ul {
-      font-size: var(--step-1);
-    } */
+  header {
+    display: grid;
+    :not(h3) {
+      order: -1;
+    }
   }
 </style>

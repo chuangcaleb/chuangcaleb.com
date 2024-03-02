@@ -30,11 +30,6 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     font-weight: var(--font-weight-7);
     text-decoration-line: none;
 
-    svg {
-      width: 1.5em;
-      margin: 0;
-    }
-
     &.brand {
       --_bg: var(--brand);
       --_text: var(--text-on-brand);
@@ -67,6 +62,10 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
         --_bg-hover: var(--text-on-brand);
         --_border: var(--brand);
       }
+    }
+
+    svg {
+      width: 1.5em;
     }
   }
 </style>

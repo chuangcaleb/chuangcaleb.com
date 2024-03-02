@@ -1,8 +1,7 @@
 ---
-import UlIcon from "~/components/styled/monom/UlIcon.astro";
+import Icon from "astro-iconify";
 import HeadingWIcon from "~/components/styled/polym/HeadingWIcon.astro";
 import LINKS from "~/data/links";
-import Icon from "astro-iconify";
 ---
 
 <section class="contact-section | cgrid-wide flow-lg" id="contact">
@@ -11,7 +10,7 @@ import Icon from "astro-iconify";
     {" "}<span class="text-faded">#</span> contact
   </HeadingWIcon>
   <p>You made it to the end! ...Or is it just the beginning?</p>
-  <UlIcon>
+  <ul class="norm flow-xs">
     {
       Object.values(LINKS).map((l) => (
         <li>
@@ -21,7 +20,7 @@ import Icon from "astro-iconify";
         </li>
       ))
     }
-  </UlIcon>
+  </ul>
 </section>
 
 <style is:global>

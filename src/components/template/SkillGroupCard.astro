@@ -27,21 +27,21 @@ const { icon, skills } = group;
   </UlInline>
 </article>
 
-<style is:global>
-  .skill-group-card {
+<style>
+  article {
     background-color: var(--surface-1b);
     padding: var(--size-relative-5);
 
     border-radius: var(--radius-2);
     border-width: 1px;
 
-    h3 {
-      font-size: var(--font-size-4);
+    :global(h3) {
+      font-size: var(--step-2);
     }
-    ul {
-      font-size: var(--font-size-0);
+    :global(ul) {
+      font-size: var(--step-00);
     }
-    li > span {
+    :global(li > span) {
       background-color: var(--surface-1a);
     }
   }
