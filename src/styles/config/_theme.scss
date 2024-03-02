@@ -15,13 +15,13 @@
 
 $light-theme: (
   brand-hsl: var(--day-hS) 30%,
-  surface-1a-hsl: var(--day-hs) 92%,
-  surface-1b: hsl(var(--day-hs) 89%),
-  text-1: var(--stone-10),
-  text-1-strong: var(--stone-12),
-  text-faded: var(--stone-8),
+  surface-1a-hsl: var(--day-hs) 94%,
+  surface-1b: hsl(var(--day-hs) 91%),
+  text-1: hsl(var(--day-hs) 20%),
+  text-1-strong: hsl(var(--day-hs) 7%),
+  text-faded: hsl(var(--day-hs) 43%),
   text-muted: hsl(var(--day-hs) 85%),
-  text-on-brand: var(--stone-1),
+  text-on-brand: hsl(var(--day-hs) 94%),
   border: hsl(var(--day-hs) 80%),
 );
 
@@ -29,10 +29,10 @@ $dark-theme: (
   brand-hsl: var(--day-hS) 70%,
   surface-1a-hsl: var(--night-hs) 18%,
   surface-1b: hsl(var(--night-hs) 12%),
-  text-1: var(--stone-4),
-  text-1-strong: var(--stone-2),
-  text-faded: var(--stone-7),
-  text-muted: hsl(var(--night-hs) 28%),
+  text-1: hsl(var(--night-hs) 85%),
+  text-1-strong: hsl(var(--night-hs) 95%),
+  text-faded: hsl(var(--night-hs) 65%),
+  text-muted: hsl(var(--night-hs) 30%),
   text-on-brand: hsl(var(--night-hs) 12%),
   border: hsl(var(--night-hs) 40%),
 );
