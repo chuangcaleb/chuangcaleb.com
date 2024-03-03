@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Aleo";
+  src: url("/assets/fonts/Aleo-ExtraBold.ttf") format("truetype");
+  font-weight: var(--font-weight-8);
+}
+
+/* @font-face {
+  font-family: "Aleo";
+  src: url("/assets/fonts/Aleo-SemiBold.ttf") format("truetype");
+  font-weight: var(--font-weight-6);
+} */
+
+@font-face {
+  font-family: "Aleo";
+  src: url("/assets/fonts/Aleo-Bold.ttf") format("truetype");
+  font-weight: var(--font-weight-6);
+}
+
+/* medium */
+
+@font-face {
+  font-family: "Aleo";
+  src: url("/assets/fonts/Aleo-Regular.ttf") format("truetype");
+  font-weight: var(--font-weight-4);
+}

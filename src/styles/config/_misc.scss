@@ -1,5 +1,8 @@
 @mixin config-fonts {
-  --font-heading: "American Typewriter", system-ui, sans-serif;
+  // --font-heading: "American Typewriter", system-ui, sans-serif;
+  --font-heading: "American Typewriter", "Aleo", system-ui, sans-serif;
+  // --font-heading: "Aleo", system-ui, sans-serif;
+
   --font-sans: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
     sans-serif;
 }
