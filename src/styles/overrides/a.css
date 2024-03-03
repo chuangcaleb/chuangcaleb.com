@@ -35,10 +35,12 @@
 */
 
 :where(a[href]) {
+  --color: var(--text-1);
+
   box-decoration-break: clone;
   text-decoration-line: underline;
   font-weight: initial;
-  color: var(--text-1);
+  color: var(--color);
   text-decoration-color: hsla(var(--brand-hsl) / 0.4);
   text-decoration-skip-ink: none;
   border-radius: var(--size-relative-1);
