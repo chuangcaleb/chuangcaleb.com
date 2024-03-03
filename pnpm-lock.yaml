@@ -48,8 +48,8 @@ dependencies:
     specifier: ^1.0.0
     version: 1.0.0
   cloudinary:
-    specifier: ^1.41.3
-    version: 1.41.3
+    specifier: ^2.0.2
+    version: 2.0.2
   date-fns:
     specifier: ^3.3.1
     version: 3.3.1
@@ -2263,7 +2263,7 @@ packages:
   /@types/sax@1.2.7:
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 20.11.24
     dev: false
 
   /@types/scheduler@0.16.8:
@@ -2819,20 +2819,10 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /cloudinary-core@2.13.0(lodash@4.17.21):
-    resolution: {integrity: sha512-Nt0Q5I2FtenmJghtC4YZ3MZZbGg1wLm84SsxcuVwZ83OyJqG9CNIGp86CiI6iDv3QobaqBUpOT7vg+HqY5HxEA==}
-    peerDependencies:
-      lodash: '>=4.0'
+  /cloudinary@2.0.2:
+    resolution: {integrity: sha512-PQOaoM5W0jSrI1EIcnKAHenT3IMCCTbLkSWlXkXzQlkLBxsJIerinZVWebQqqpwz4etdhvlkfaXmsE9yhYc0Qw==}
+    engines: {node: '>=9'}
     dependencies:
-      lodash: 4.17.21
-    dev: false
-
-  /cloudinary@1.41.3:
-    resolution: {integrity: sha512-4o84y+E7dbif3lMns+p3UW6w6hLHEifbX/7zBJvaih1E9QNMZITENQ14GPYJC4JmhygYXsuuBb9bRA3xWEoOfg==}
-    engines: {node: '>=0.6'}
-    dependencies:
-      cloudinary-core: 2.13.0(lodash@4.17.21)
-      core-js: 3.36.0
       lodash: 4.17.21
       q: 1.5.1
     dev: false
@@ -2918,11 +2908,6 @@ packages:
   /cookie@0.6.0:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
-    dev: false
-
-  /core-js@3.36.0:
-    resolution: {integrity: sha512-mt7+TUBbTFg5+GngsAxeKBTl5/VS0guFeJacYge9OmHb+m058UwwIm41SE9T4Den7ClatV57B6TYTuJ0CX1MAw==}
-    requiresBuild: true
     dev: false
 
   /cosmiconfig@8.3.6:
