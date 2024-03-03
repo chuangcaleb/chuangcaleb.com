@@ -13,12 +13,12 @@
     label[for],
     select,
     summary,
-    textarea,
-    [tabindex]:not([tabindex*="-"]) */
+    textarea,*/
+    [tabindex]:not([tabindex*="-"])
 ) {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  letter-spacing: var(--font-letterspacing-1);
+  /* letter-spacing: var(--font-letterspacing-1); */
 }
 
 :where(a[href],
