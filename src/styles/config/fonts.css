@@ -2,7 +2,7 @@
   font-family: "Aleo";
   src: url("/assets/fonts/Aleo-ExtraBold.ttf") format("truetype");
   font-weight: var(--font-weight-8);
-  font-display: fallback;
+  font-display: swap;
 }
 
 /* @font-face {
@@ -15,7 +15,7 @@
   font-family: "Aleo";
   src: url("/assets/fonts/Aleo-Bold.ttf") format("truetype");
   font-weight: var(--font-weight-6);
-  font-display: fallback;
+  font-display: swap;
 }
 
 /* medium */
@@ -24,5 +24,5 @@
   font-family: "Aleo";
   src: url("/assets/fonts/Aleo-Regular.ttf") format("truetype");
   font-weight: var(--font-weight-4);
-  font-display: fallback;
+  font-display: swap;
 }
