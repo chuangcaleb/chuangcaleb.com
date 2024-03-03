@@ -28,6 +28,7 @@ const integrations = [
 export default defineConfig({
   site: "https://www.chuangcaleb.com",
   trailingSlash: "never",
+  prefetch: true,
   integrations,
   markdown: { shikiConfig: { theme: "css-variables" } },
   vite: {
