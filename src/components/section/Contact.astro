@@ -2,6 +2,7 @@
 import Icon from "astro-iconify";
 import HeadingWIcon from "~/components/styled/polym/HeadingWIcon.astro";
 import LINKS from "~/data/links";
+import BrandA from "../styled/monom/BrandA.astro";
 ---
 
 <section class="contact-section | cgrid-wide flow-lg" id="contact">
@@ -14,9 +15,9 @@ import LINKS from "~/data/links";
     {
       Object.values(LINKS).map((l) => (
         <li>
-          <a href={l.href}>
+          <BrandA href={l.href}>
             <Icon name={l.icon} aria-hidden="true" />{}{l.userId ?? l.label}
-          </a>
+          </BrandA>
         </li>
       ))
     }

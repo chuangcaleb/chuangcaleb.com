@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import { getCldImgData } from "lib/cloudinary/get";
 import Caps from "~/components/styled/polym/Caps.astro";
 import CldImg from "../primitive/CldImg.astro";
+import BrandA from "../styled/monom/BrandA.astro";
 
 interface Props {
   project: CollectionEntry<"project">;
@@ -27,9 +28,9 @@ const i = getCldImgData("projects/" + project.slug, true);
       <Icon name="lucide:link" />
       {
         project.data.links?.map((link) => (
-          <a href={link.href}>
+          <BrandA href={link.href}>
             <Icon name={link.icon} />{}{link.label}
-          </a>
+          </BrandA>
         ))
       }
     </div>

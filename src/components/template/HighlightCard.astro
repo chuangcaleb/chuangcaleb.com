@@ -3,6 +3,7 @@ import CapsAsH3 from "~/components/styled/monom/CapsAsH3.astro";
 import UlIcon from "~/components/styled/monom/UlIcon.astro";
 import StyleH3 from "~/components/styled/polym/StyleH3.astro";
 import type { CollectionEntry } from "astro:content";
+import BrandA from "../styled/monom/BrandA.astro";
 
 interface Props {
   highlight: CollectionEntry<"highlight">;
@@ -15,6 +16,7 @@ const components = {
   h1: CapsAsH3,
   h2: StyleH3,
   ul: UlIcon,
+  a: BrandA,
 };
 
 const { Content } = await highlight.render();

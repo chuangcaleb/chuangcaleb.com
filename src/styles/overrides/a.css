@@ -37,8 +37,8 @@
 :where(a[href]) {
   box-decoration-break: clone;
   text-decoration-line: underline;
-  font-weight: var(--font-weight-5);
-  color: var(--brand);
+  font-weight: initial;
+  color: var(--text-1);
   text-decoration-color: hsla(var(--brand-hsl) / 0.4);
   text-decoration-skip-ink: none;
   border-radius: var(--size-relative-1);
@@ -47,11 +47,6 @@
     display: inline-flex;
     gap: var(--size-relative-2);
     align-items: center;
-  }
-
-  .prose & {
-    font-weight: initial;
-    color: var(--text-1);
   }
 }
 
