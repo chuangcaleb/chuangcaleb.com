@@ -4,7 +4,7 @@
 @import "open-props/fonts";
 @import "open-props/sizes";
 
+@import "config";
 @import "normalize";
 @import "overrides";
 @import "utilities";
-@import "config";
