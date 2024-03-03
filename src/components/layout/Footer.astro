@@ -21,16 +21,18 @@ import Contact from "~/components/section/Contact.astro";
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    .fine-print {
-      color: var(--text-faded);
-      font-size: var(--step--2);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      text-align: center;
-      column-gap: var(--space-xs);
-      justify-self: flex-end;
+  }
+  .fine-print {
+    color: var(--text-faded);
+    font-size: var(--step--2);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    column-gap: var(--space-xs);
+    justify-self: flex-end;
+    a {
+      --color: var(--text-faded);
     }
   }
 </style>
