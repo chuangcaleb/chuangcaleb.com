@@ -1,13 +1,12 @@
 // postcss.config.js
-import postcssCustomMedia from "postcss-custom-media";
+// import postcssCustomMedia from "postcss-custom-media";
 import postcssPresetEnv from "postcss-preset-env";
 
 const config = {
   plugins: [
     // postcssJitProps(OpenProps),
-    postcssCustomMedia(),
-    postcssPresetEnv(),
-    // postcssPresetEnv({ stage: 3 }),
+    // postcssCustomMedia(),
+    postcssPresetEnv({ stage: 3, minimumVendorImplementations: 2 }),
   ],
 };
 
