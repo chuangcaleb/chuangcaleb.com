@@ -41,7 +41,7 @@
   text-decoration-line: underline;
   font-weight: initial;
   color: var(--color);
-  text-decoration-color: hsla(var(--brand-hsl) / 0.4);
+  text-decoration-color: hsla(var(--brand-hsl) / 0.5);
   text-decoration-skip-ink: none;
   border-radius: var(--size-relative-1);
 
