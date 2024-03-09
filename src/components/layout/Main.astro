@@ -13,11 +13,9 @@ const { description, title, ...props } = Astro.props;
 
 <Base title={title} description={description}>
   <Header />
-
   <main id="main" {...props}>
     <slot />
   </main>
-
   <Footer />
 </Base>
 

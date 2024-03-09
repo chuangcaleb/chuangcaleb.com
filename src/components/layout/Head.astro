@@ -1,0 +1,83 @@
+---
+import SITE from "~/data/site";
+
+export type HeadProps = {
+  description?: string;
+  title?: string;
+};
+
+const { title, description } = Astro.props;
+
+const { pathname } = Astro.url;
+const isHome = pathname === "/";
+
+const titleWithSiteTitle = title
+  ? title + (isHome ? "" : ` | ${SITE.title}`)
+  : SITE.title;
+
+const pageDescription = description ?? SITE.description;
+---
+
+<head>
+  {/* Base */}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+
+  {/* SEO */}
+  <title>{titleWithSiteTitle}</title>
+  <meta name="title" content={titleWithSiteTitle} />
+  <meta name="description" content={pageDescription} />
+  <meta name="author" content={SITE.author.name} />
+  <link rel="canonical" href={SITE.url} />
+  <link rel="sitemap" href="/sitemap.xml" />
+
+  {/* Favicon & Manifest */}
+  <link rel="shortcut icon" href="/assets/favicon/assets/favicon.ico" />
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/assets/favicon/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/assets/favicon/assets/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="/assets/favicon/assets/favicon-16x16.png"
+  />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta
+    name="theme-color"
+    content={SITE.color.light}
+    media=" (prefers-color-scheme: light)"
+  />
+  <meta
+    name="theme-color"
+    content={SITE.color.dark}
+    media=" (prefers-color-scheme: dark)"
+  />
+  <meta name="msapplication-TileColor" content={SITE.color.light} />
+  {
+    /*
+    <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml" />
+     */
+  }
+  <script is:inline>
+    const root = document.documentElement;
+    const theme = (() => {
+      const localTheme =
+        typeof localStorage !== "undefined" && localStorage.getItem("theme");
+      if (localTheme && localTheme !== "system") return localTheme;
+      if (window.matchMedia("(prefers-color-scheme: light)").matches)
+        return "light";
+      return "dark";
+    })();
+    root.setAttribute("data-theme", theme);
+  </script>
+</head>
