@@ -5,7 +5,6 @@ import Footer from "./Footer.astro";
 import Header from "./Header.astro";
 
 interface MainProps extends HTMLAttributes<"main"> {}
-
 type Props = MainProps & BaseProps;
 
 const { description, title, ...props } = Astro.props;
