@@ -12,9 +12,7 @@ interface Props {
 const { highlight } = Astro.props;
 
 const components = {
-  blockquote: "header",
-  h1: CapsAsH3,
-  h2: StyleH3,
+  h1: "h3",
   ul: UlIcon,
   a: BrandA,
 };
@@ -29,7 +27,11 @@ const { Content } = await highlight.render();
 <style is:global>
   .highlight {
     h3 {
-      font-size: var(--step-0);
+      display: grid;
+      gap: var(--space-3xs);
+      span {
+        font-size: var(--step-0);
+      }
       svg {
         width: var(--size-relative-7);
       }

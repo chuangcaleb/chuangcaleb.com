@@ -4,13 +4,12 @@ sequence: 2
 ---
 
 import { Icon } from "astro-iconify";
+import Caps from "~/components/styled/polym/Caps.astro";
 import { getLongDurationSince, formatISO } from "~/utils/time";
 
 export const { date } = frontmatter;
 
-> # <Icon name="lucide:graduation-cap" />graduated with
->
-> ## BSc Computer Science w Artificial Intelligence
+# <Caps><Icon name="lucide:graduation-cap" />graduated with</Caps> BSc Computer Science w Artificial Intelligence
 
 - <Icon name="lucide:map-pin" /> Uni of Nottingham ( [UNM](https://www.nottingham.edu.my) { " → " }[UNUK](https://www.nottingham.ac.uk/) )
 - <Icon name="lucide:trophy" /> First Class Honours
