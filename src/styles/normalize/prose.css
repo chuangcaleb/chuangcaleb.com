@@ -78,7 +78,6 @@
 .style-code,
 :where(code, kbd, samp, pre) {
   font-family: var(--font-mono);
-  font-size: var(--step--1);
 }
 
 :where(pre) {
@@ -95,19 +94,19 @@
 
 .style-code,
 :where(:not(pre) > code) {
-  background-color: var(--surface-2);
+  background-color: var(--surface-1b);
   border-radius: var(--radius-2);
-  padding: var(--size-1) var(--size-2);
+  padding: var(--size-relative-2) var(--size-relative-3);
   writing-mode: lr;
 }
 
-/* :where(pre) {
+:where(pre) {
   white-space: pre;
   min-inline-size: 0;
   max-inline-size: max-content;
   writing-mode: lr;
   direction: ltr;
-} */
+}
 
 b,
 strong {

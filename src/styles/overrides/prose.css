@@ -77,8 +77,14 @@
     grid-column: feature;
     display: grid;
     grid-template-columns: subgrid;
+    border-radius: var(--border-size-3);
     * {
       grid-column: content;
+      text-wrap: wrap;
+    }
+    /* consecutive pre's get joined */
+    & + pre {
+      --flow-space: 0;
     }
   }
 
