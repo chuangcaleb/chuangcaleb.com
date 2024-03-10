@@ -5,8 +5,8 @@ import compressor from "astro-compressor";
 import purgecss from "astro-purgecss";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
-import { remarkModifiedTime } from "./lib/remark/time-modified.mjs";
 import icons from "unplugin-icons/vite";
+import { remarkModifiedTime } from "./lib/remark/time-modified.mjs";
 
 const prodIntegrations = [
   robotsTxt(),

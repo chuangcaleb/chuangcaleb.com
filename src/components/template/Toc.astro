@@ -1,0 +1,38 @@
+---
+export type Props = {
+  headings: Array<{ depth: number; text: string; slug: string }>;
+};
+
+const { headings } = Astro.props;
+---
+
+<aside>
+  <ul class="flow-xs">
+    {
+      headings.map((h) => {
+        return (
+          <li style={{ "--depth": h.depth - 1 }}>
+            {" "}
+            <a href={`#${h.slug}`}>{h.text}</a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</aside>
+
+<style>
+  aside {
+    position: fixed;
+    top: 0;
+    right: 1rem;
+    max-width: 30ch;
+  }
+  li {
+    margin-inline-start: calc(var(--space-2xs) * var(--depth));
+    overflow-x: hidden;
+    /* font-size: var(--step--1); */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>
