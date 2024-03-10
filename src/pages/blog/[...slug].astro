@@ -2,6 +2,7 @@
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Main from "~/components/layout/Main.astro";
 import { getPublicNotes } from "~/utils/post";
+import Toc from "~/components/template/Toc.astro";
 
 export async function getStaticPaths() {
   const publicNotes = await getPublicNotes();
@@ -12,12 +13,13 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content, remarkPluginFrontmatter } = await entry.render();
+const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 const { lastModified } = remarkPluginFrontmatter;
 ---
 
 <Main>
   <WIPDisclaimer />
+  <Toc headings={headings} />
   <article class="prose region cgrid flow-lg">
     <Content />
   </article>
