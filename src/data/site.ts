@@ -3,7 +3,6 @@ export default {
   subtitle: "Software Dev with a Different Story",
   description:
     "I professionally tinker with UI Design & dynamic web apps — and unprofessionally withstorytelling. You'll find out about me on this site. Wanna work together?",
-  url: "https://chuangcaleb.com",
   language: "en",
   author: {
     name: "Chuang Caleb",

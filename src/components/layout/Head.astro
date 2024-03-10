@@ -11,6 +11,8 @@ const { title, description } = Astro.props;
 const { pathname } = Astro.url;
 const isHome = pathname === "/";
 
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+
 const titleWithSiteTitle = title
   ? title + (isHome ? "" : ` | ${SITE.title}`)
   : SITE.title;
@@ -29,7 +31,7 @@ const pageDescription = description ?? SITE.description;
   <meta name="title" content={titleWithSiteTitle} />
   <meta name="description" content={pageDescription} />
   <meta name="author" content={SITE.author.name} />
-  <link rel="canonical" href={SITE.url} />
+  <link rel="canonical" href={canonicalUrl.href} />
   <link rel="sitemap" href="/sitemap.xml" />
 
   {/* Favicon & Manifest */}
