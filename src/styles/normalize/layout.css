@@ -38,7 +38,7 @@
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--text-faded);
-  border-radius: var(--size-8);
+  border-radius: var(--radius-2);
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--text-1);

@@ -43,7 +43,7 @@
   color: var(--color);
   text-decoration-color: hsla(var(--brand-hsl) / 0.5);
   text-decoration-skip-ink: none;
-  border-radius: var(--size-relative-1);
+  border-radius: var(--radius-1);
 
   &:has(*) {
     display: inline-flex;

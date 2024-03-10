@@ -77,7 +77,7 @@
     grid-column: feature;
     display: grid;
     grid-template-columns: subgrid;
-    border-radius: var(--border-size-3);
+    border-radius: var(--radius-2);
     * {
       grid-column: content;
       text-wrap: wrap;
