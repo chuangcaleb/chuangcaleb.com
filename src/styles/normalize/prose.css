@@ -1,7 +1,6 @@
 /* ---------------------------------- text ---------------------------------- */
 
 /* Headings */
-.style-h3,
 :where(h1, h2, h3, h4, h5, h6) {
   color: var(--text-1-strong);
   font-family: var(--font-heading);
@@ -19,7 +18,6 @@
   font-weight: var(--font-weight-7);
 }
 
-.style-h3,
 :where(h3, h4, h5, h6) {
   font-weight: var(--font-weight-6);
 }
@@ -34,7 +32,6 @@
   max-width: var(--size-header-2);
 }
 
-.style-h3,
 :where(h3) {
   font-size: var(--step-3);
 }
