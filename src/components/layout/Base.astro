@@ -5,10 +5,13 @@ import Head, { type HeadProps } from "./Head.astro";
 
 export type BaseProps = HeadProps;
 type Props = BaseProps;
+const props = Astro.props;
 ---
 
 <html lang={SITE.language} data-theme="dark">
-  <Head />
+  <head>
+    <Head {...props} />
+  </head>
   <body>
     <slot />
     <style is:global>

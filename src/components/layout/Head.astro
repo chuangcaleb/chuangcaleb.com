@@ -6,80 +6,88 @@ export type HeadProps = {
   title?: string;
 };
 
-const { title, description } = Astro.props;
+const { title: titleProps, description: descriptionProps } = Astro.props;
 
 const { pathname } = Astro.url;
 const isHome = pathname === "/";
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
-const titleWithSiteTitle = title
-  ? title + (isHome ? "" : ` | ${SITE.title}`)
+const title = titleProps
+  ? titleProps + (isHome ? "" : ` | ${SITE.title}`)
   : SITE.title;
 
-const pageDescription = description ?? SITE.description;
+const description = descriptionProps ?? SITE.description;
 ---
 
-<head>
-  {/* Base */}
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="generator" content={Astro.generator} />
+{/* Base */}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
 
-  {/* SEO */}
-  <title>{titleWithSiteTitle}</title>
-  <meta name="title" content={titleWithSiteTitle} />
-  <meta name="description" content={pageDescription} />
-  <meta name="author" content={SITE.author.name} />
-  <link rel="canonical" href={canonicalUrl.href} />
-  <link rel="sitemap" href="/sitemap.xml" />
+{/* SEO */}
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="author" content={SITE.author.name} />
+<link rel="canonical" href={canonicalUrl.href} />
+<link rel="sitemap" href="/sitemap.xml" />
 
-  {/* Favicon & Manifest */}
-  <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/assets/favicon/apple-touch-icon.png"
-  />
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="32x32"
-    href="/assets/favicon/favicon-32x32.png"
-  />
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="16x16"
-    href="/assets/favicon/favicon-16x16.png"
-  />
-  <link rel="manifest" href="/site.webmanifest" />
-  <meta
-    name="theme-color"
-    content={SITE.color.light}
-    media=" (prefers-color-scheme: light)"
-  />
-  <meta
-    name="theme-color"
-    content={SITE.color.dark}
-    media=" (prefers-color-scheme: dark)"
-  />
-  <meta name="msapplication-TileColor" content={SITE.color.light} />
-  {
-    /*
+{/* Open Graph / Facebook */}
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+{description && <meta property="og:description" content={description} />}
+
+{/* Twitter */}
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:title" content={title} />
+{description && <meta property="twitter:description" content={description} />}
+
+{/* Favicon & Manifest */}
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/assets/favicon/apple-touch-icon.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/assets/favicon/favicon-32x32.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/assets/favicon/favicon-16x16.png"
+/>
+<link rel="manifest" href="/site.webmanifest" />
+<meta
+  name="theme-color"
+  content={SITE.color.light}
+  media=" (prefers-color-scheme: light)"
+/>
+<meta
+  name="theme-color"
+  content={SITE.color.dark}
+  media=" (prefers-color-scheme: dark)"
+/>
+<meta name="msapplication-TileColor" content={SITE.color.light} />
+{
+  /*
     <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml" />
      */
-  }
-  <script is:inline>
-    const root = document.documentElement;
-    const theme = (() => {
-      const localTheme =
-        typeof localStorage !== "undefined" && localStorage.getItem("theme");
-      if (localTheme && localTheme !== "system") return localTheme;
-      if (window.matchMedia("(prefers-color-scheme: light)").matches)
-        return "light";
-      return "dark";
-    })();
-    root.setAttribute("data-theme", theme);
-  </script>
-</head>
+}
+<script is:inline>
+  const root = document.documentElement;
+  const theme = (() => {
+    const localTheme =
+      typeof localStorage !== "undefined" && localStorage.getItem("theme");
+    if (localTheme && localTheme !== "system") return localTheme;
+    if (window.matchMedia("(prefers-color-scheme: light)").matches)
+      return "light";
+    return "dark";
+  })();
+  root.setAttribute("data-theme", theme);
+</script>

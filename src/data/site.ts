@@ -1,6 +1,6 @@
 export default {
   title: "Chuang Caleb",
-  subtitle: "Software Dev with a Different Story",
+  subtitle: "software dev with a different story",
   description:
     "I professionally tinker with UI Design & dynamic web apps — and unprofessionally withstorytelling. You'll find out about me on this site. Wanna work together?",
   language: "en",
