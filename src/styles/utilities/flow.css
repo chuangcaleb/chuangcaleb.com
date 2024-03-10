@@ -46,9 +46,3 @@
 .flom-2xl {
   --flow-space: var(--size-relative-12);
 }
-
-/* -------------------------------------------------------------------------- */
-
-.region {
-  padding-block: var(--space-xl);
-}

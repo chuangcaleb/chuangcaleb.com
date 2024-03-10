@@ -1,5 +1,5 @@
 ---
-import HeadingWIcon from "~/components/styled/polym/HeadingWIcon.astro";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import HighlightCard from "~/components/template/HighlightCard.astro";
 import Icon from "astro-iconify";
 import { getCollection } from "astro:content";
@@ -9,22 +9,21 @@ const highlights = (await getCollection("highlight")).sort(
 );
 ---
 
-<section class="max region">
+<section class="max region surface-alt">
   <div class="wide flow-xl">
-    <HeadingWIcon as="h2">
+    <TagWIcon as="h2">
       <Icon name="lucide:chevron-up-circle" />
       {" "}<span class="text-faded">/</span> now
-    </HeadingWIcon>
+    </TagWIcon>
     {highlights.map((h) => <HighlightCard highlight={h} />)}
   </div>
 </section>
 
 <style>
   section {
-    background-color: var(--surface-1b);
     display: grid;
     grid-template-columns: subgrid;
-    border-radius: var(--radius-3);
+
     @media (width < 100ch) {
       grid-column: full;
       border-radius: 0;

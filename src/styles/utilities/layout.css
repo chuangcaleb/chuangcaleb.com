@@ -1,0 +1,13 @@
+.border {
+  border-width: var(--border-size-2);
+  border-radius: var(--radius-2);
+}
+
+.region {
+  padding-block: var(--space-xl);
+}
+
+.surface-alt {
+  background-color: var(--surface-1b);
+  border-radius: var(--radius-3);
+}

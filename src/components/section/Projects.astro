@@ -1,20 +1,48 @@
 ---
-import HeadingWIcon from "~/components/styled/polym/HeadingWIcon.astro";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import ProjectCard from "~/components/template/ProjectCard.astro";
 import Icon from "astro-iconify";
 import { getCollection } from "astro:content";
+import Button from "../primitive/Button.astro";
 
 const projects = (await getCollection("project"))
   .sort((a, b) => a.data.sequence.valueOf() - b.data.sequence.valueOf())
   .filter((p) => !p.data.hidden);
 ---
 
-<section class="projects-section | region flow-xl" id="projects">
-  <HeadingWIcon as="h2">
+<section class="region flow-xl" id="projects">
+  <TagWIcon as="h2">
     <Icon name="lucide:atom" />
     {" "}<span class="text-faded">/</span> projects
-  </HeadingWIcon>
+  </TagWIcon>
   <div class="projects flow-xl">
     {projects.map((p) => <ProjectCard project={p} />)}
   </div>
+  <div class="cont-buttons | surface-alt flow-sm">
+    <TagWIcon as="p">
+      <Icon name="lucide:atom" />
+      <b>Wanna see my other projects?</b>
+    </TagWIcon>
+    <div>
+      <Button as="a" href="https://github.com/chuangcaleb" theme="brand">
+        <Icon name="mdi:github" />GitHub profile
+      </Button>
+      <Button as="a" href="https://github.com/chuangcaleb?tab=repositories">
+        <Icon name="mdi:github" />all my repositories
+      </Button>
+    </div>
+  </div>
 </section>
+
+<style>
+  .cont-buttons {
+    padding: var(--space-m);
+
+    div {
+      display: flex;
+      column-gap: var(--space-s);
+      row-gap: var(--space-xs);
+      flex-wrap: wrap;
+    }
+  }
+</style>

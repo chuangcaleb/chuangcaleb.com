@@ -1,5 +1,5 @@
 ---
-import HeadingWIcon from "~/components/styled/polym/HeadingWIcon.astro";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import Icon from "astro-iconify";
 import SKILLS from "~/data/skills";
 import SkillGroupCard from "~/components/template/SkillGroupCard.astro";
@@ -8,10 +8,10 @@ const skillGroups = Object.entries(SKILLS);
 ---
 
 <section class="skills-section | region flow-lg">
-  <HeadingWIcon as="h2">
+  <TagWIcon as="h2">
     <Icon name="lucide:book-plus" />
     <span class="text-faded">/</span> skills
-  </HeadingWIcon>
+  </TagWIcon>
   <div class="skills">
     {
       skillGroups.map(([name, groupData]) => (

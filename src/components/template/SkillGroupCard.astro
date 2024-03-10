@@ -1,6 +1,6 @@
 ---
 import UlInline from "~/components/styled/monom/UlInline.astro";
-import HeadingWIcon from "~/components/styled/polym/HeadingWIcon.astro";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import type { SkillGroup } from "~/data/skills";
 import Icon from "astro-iconify";
 interface Props {
@@ -13,9 +13,9 @@ const { icon, skills } = group;
 ---
 
 <article class="skill-group-card | flow-sm">
-  <HeadingWIcon as="h3">
+  <TagWIcon as="h3">
     {icon && <Icon name={icon} />}{name}
-  </HeadingWIcon>
+  </TagWIcon>
   <UlInline>
     {
       skills.map((s) => (

@@ -3,15 +3,15 @@ import { type HTMLTag, type Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>;
 
-const { as: Tag = "h1", class: className, ...props } = Astro.props;
+const { as: Tag = "h1", ...props } = Astro.props;
 ---
 
-<Tag class:list={["cc-heading-w-icon", className]} {...props}>
+<Tag {...props}>
   <slot />
 </Tag>
 
-<style is:global>
-  .cc-heading-w-icon {
+<style>
+  * {
     display: inline-flex;
     gap: var(--size-relative-2);
     svg {
