@@ -5,6 +5,7 @@
   color: var(--text-1-strong);
   font-family: var(--font-heading);
   line-height: var(--font-lineheight-0);
+  max-width: var(--size-header-1);
   text-wrap: pretty;
   word-wrap: break-word;
   hyphens: auto;
@@ -12,36 +13,29 @@
 
 :where(h1) {
   font-weight: var(--font-weight-8);
-}
-
-:where(h2) {
-  font-weight: var(--font-weight-7);
-}
-
-:where(h3, h4, h5, h6) {
-  font-weight: var(--font-weight-6);
-}
-
-:where(h1) {
   font-size: var(--step-7);
-  max-width: var(--size-header-1);
 }
 
 :where(h2) {
-  font-size: var(--step-5);
-  max-width: var(--size-header-2);
+  font-size: var(--step-4);
+  font-weight: var(--font-weight-7);
 }
 
 :where(h3) {
   font-size: var(--step-3);
+  font-weight: var(--font-weight-6);
+}
+
+:where(h4, h5, h6) {
+  font-weight: var(--font-weight-5);
 }
 
 :where(h4) {
-  font-size: var(--step-3);
+  font-size: var(--step-2);
 }
 
 :where(h5) {
-  font-size: var(--step-2);
+  font-size: var(--step-1);
 }
 
 :where(h3, h4, h5, h6, dt) {
