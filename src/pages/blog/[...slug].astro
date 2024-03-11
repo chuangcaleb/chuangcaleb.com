@@ -14,13 +14,18 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await entry.render();
-const { lastModified } = remarkPluginFrontmatter;
+const { lastModified, title } = remarkPluginFrontmatter;
 ---
 
 <Main>
   <WIPDisclaimer />
-  <Toc headings={headings} />
-  <article class="prose region cgrid flow-lg">
-    <Content />
-  </article>
+  <div class="article">
+    <header>
+      <h1>{title}</h1>
+    </header>
+    <!-- <Toc headings={headings} /> -->
+    <article class="prose cgrid flow-lg">
+      <Content />
+    </article>
+  </div>
 </Main>
