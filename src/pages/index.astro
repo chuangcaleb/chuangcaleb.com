@@ -1,5 +1,6 @@
 ---
 import { ThemeDropdown } from "~/components/block/ThemeDropdown";
+import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
 import Hero from "~/components/section/Hero.astro";
 import Highlights from "~/components/section/Now.astro";
@@ -8,18 +9,17 @@ import Skills from "~/components/section/Skills.astro";
 import SITE from "~/data/site";
 ---
 
-<Main
-  class="main-index | cgrid-wide"
-  title={`${SITE.title} - ${SITE.subtitle}`}
->
-  <Hero class="wide" />
-  <Highlights />
-  <section class="utils-section">
-    <ThemeDropdown client:only />
-  </section>
-  <Projects />
-  <Skills />
-</Main>
+<Base title={`${SITE.title} - ${SITE.subtitle}`}>
+  <Main class="main-index | cgrid-wide">
+    <Hero class="wide" />
+    <Highlights />
+    <section class="utils-section">
+      <ThemeDropdown client:only />
+    </section>
+    <Projects />
+    <Skills />
+  </Main>
+</Base>
 
 <style>
   .utils-section {
