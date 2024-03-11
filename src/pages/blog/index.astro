@@ -1,5 +1,6 @@
 ---
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
+import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
 import BrandA from "~/components/styled/monom/BrandA.astro";
 import { getParsedPath, getPublicNotes } from "~/utils/post";
@@ -7,18 +8,22 @@ import { getParsedPath, getPublicNotes } from "~/utils/post";
 const publicNotes = await getPublicNotes();
 ---
 
-<Main>
-  <WIPDisclaimer />
-  <section class="cgrid-feature prose region flow-lg">
-    <h1>All Posts</h1>
-    <ul>
-      {
-        publicNotes?.map((n) => (
-          <li>
-            <BrandA href={`/blog/${n.slug}`}>{getParsedPath(n.id).name}</BrandA>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-</Main>
+<Base>
+  <Main>
+    <WIPDisclaimer />
+    <section class="cgrid-feature prose region flow-lg">
+      <h1>All Posts</h1>
+      <ul>
+        {
+          publicNotes?.map((n) => (
+            <li>
+              <BrandA href={`/blog/${n.slug}`}>
+                {getParsedPath(n.id).name}
+              </BrandA>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </Main>
+</Base>

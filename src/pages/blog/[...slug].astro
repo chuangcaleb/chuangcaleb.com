@@ -1,8 +1,8 @@
 ---
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
+import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
 import { getPublicNotes } from "~/utils/post";
-import Toc from "~/components/template/Toc.astro";
 
 export async function getStaticPaths() {
   const publicNotes = await getPublicNotes();
@@ -17,15 +17,17 @@ const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 const { lastModified, title } = remarkPluginFrontmatter;
 ---
 
-<Main>
-  <WIPDisclaimer />
-  <div class="article">
-    <header>
-      <h1>{title}</h1>
-    </header>
-    <!-- <Toc headings={headings} /> -->
-    <article class="prose cgrid flow-lg">
-      <Content />
-    </article>
-  </div>
-</Main>
+<Base title={title}>
+  <Main>
+    <WIPDisclaimer />
+    <div class="article">
+      <header>
+        <h1>{title}</h1>
+      </header>
+      <!-- <Toc headings={headings} /> -->
+      <article class="prose cgrid flow-lg">
+        <Content />
+      </article>
+    </div>
+  </Main>
+</Base>
