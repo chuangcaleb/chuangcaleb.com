@@ -3,9 +3,12 @@ import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
 import BrandA from "~/components/styled/monom/BrandA.astro";
-import { getNoteTitle, getPublicNotes } from "~/utils/post";
+import { getPublicNotes } from "~/utils/post";
 
 const publicNotes = await getPublicNotes();
+const publicNotesFrontmatter = await Promise.all(
+  publicNotes.map(async (n) => (await n.render()).remarkPluginFrontmatter),
+);
 ---
 
 <Base>
@@ -15,9 +18,11 @@ const publicNotes = await getPublicNotes();
       <h1>All Posts</h1>
       <ul>
         {
-          publicNotes?.map((n) => (
+          publicNotes?.map(async (n, idx) => (
             <li>
-              <BrandA href={`/blog/${n.slug}`}>{getNoteTitle(n)}</BrandA>
+              <BrandA href={`/blog/${n.slug}`}>
+                {publicNotesFrontmatter[idx].title}
+              </BrandA>
             </li>
           ))
         }
