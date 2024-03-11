@@ -2,7 +2,7 @@
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
-import { getPublicNotes } from "~/utils/post";
+import { getNoteTitle, getPublicNotes } from "~/utils/post";
 
 export async function getStaticPaths() {
   const publicNotes = await getPublicNotes();
@@ -22,7 +22,7 @@ const { lastModified, title } = remarkPluginFrontmatter;
     <WIPDisclaimer />
     <div class="article">
       <header>
-        <h1>{title}</h1>
+        <h1>{getNoteTitle(entry)}</h1>
       </header>
       <!-- <Toc headings={headings} /> -->
       <article class="prose cgrid flow-lg">

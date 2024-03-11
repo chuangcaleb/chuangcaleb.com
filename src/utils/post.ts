@@ -5,21 +5,23 @@ import { slugify } from "~/utils/text";
 const DIR = "8 public";
 const SLUG_DIR = slugify(DIR);
 
-export function getParsedPath(string: string) {
-  return path.parse(string);
+export function getNoteTitle(note: CollectionEntry<"obsidian-note">) {
+  function getParsedPath(string: string) {
+    return path.parse(string);
+  }
+  return note.data?.title ?? getParsedPath(note.id).name;
 }
 
 export function isPublic(note: CollectionEntry<"obsidian-note">) {
   return note.id.startsWith(DIR);
 }
 
-function stripRootDir(string: string, rootDir: string) {
-  return string.substring(rootDir.length + 1, string.length);
-}
+// function stripRootDir(string: string, rootDir: string) {
+//   return string.substring(rootDir.length + 1, string.length);
+// }
 
 export async function getPublicNotes() {
-  const notes = await getCollection("obsidian-note");
-  return notes;
+  return await getCollection("obsidian-note");
   // return notes
   //   .filter((n) => isPublic(n))
   //   .map((n) => ({
