@@ -2,6 +2,7 @@
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
+import Toc from "~/components/template/note/Toc.astro";
 import { getPublicNotes } from "~/utils/post";
 
 export async function getStaticPaths() {
@@ -24,7 +25,7 @@ const { lastModified, title } = remarkPluginFrontmatter;
       <header>
         <h1>{title}</h1>
       </header>
-      <!-- <Toc headings={headings} /> -->
+      <Toc headings={headings} />
       <article class="prose cgrid flow-lg">
         <Content />
       </article>
