@@ -1,0 +1,56 @@
+---
+import type { NestedHeadingNode } from "./Toc.astro";
+
+interface Props {
+  heading: NestedHeadingNode;
+}
+
+const { heading } = Astro.props;
+---
+
+<li>
+  <a href={"#" + heading.slug}>
+    {heading.text}
+  </a>
+  {
+    heading.subheadings.length > 0 && (
+      <ul>
+        {heading.subheadings.map((subheading) => (
+          <Astro.self heading={subheading} />
+        ))}
+      </ul>
+    )
+  }
+</li>
+
+<style>
+  li {
+    overflow-x: hidden;
+    font-size: var(--step--1);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    padding-block: var(--size-relative-2);
+    ul {
+      padding-block-start: var(--size-relative-1);
+    }
+    a {
+      --color: var(--text-faded);
+      --color-hover: var(--brand);
+      text-decoration: none;
+    }
+    ul li ul & {
+      margin-inline-start: var(--space-3xs);
+      padding-inline-start: var(--space-2xs);
+      border-left-width: 1px;
+      border-left-color: var(--text-muted);
+      transition-duration: 300ms;
+    }
+    nav & {
+      padding-inline: var(--space-3xs);
+    }
+    :has(> a:is(:hover, :focus, :active)) {
+      border-left-color: var(--brand);
+    }
+  }
+</style>
