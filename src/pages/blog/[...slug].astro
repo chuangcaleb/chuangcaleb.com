@@ -22,13 +22,30 @@ const { lastModified, title } = remarkPluginFrontmatter;
   <Main>
     <WIPDisclaimer />
     <div class="article">
-      <header>
+      <header class="cgrid-max region">
         <h1>{title}</h1>
       </header>
-      <Toc headings={headings} />
-      <article class="prose cgrid flow-lg">
-        <Content />
-      </article>
+      <div class="body region">
+        <Toc headings={headings} />
+        <article class="prose cgrid flow-lg">
+          <Content />
+        </article>
+      </div>
     </div>
   </Main>
 </Base>
+<style>
+  header {
+    background-color: var(--surface-1b);
+  }
+  h1 {
+    text-wrap: balance;
+  }
+  .body {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: var(--space-xs);
+    position: relative;
+    align-items: flex-start;
+  }
+</style>
