@@ -71,13 +71,13 @@ const lastModForm = format(lastModified, "dd MMMM yyyy");
     display: block;
     position: sticky;
     top: 0;
-    min-width: 30ch;
+    max-width: 30ch;
     height: 100vh;
     /* padding-inline: var(--space-xs); */
     padding-block: var(--space-2xs);
     /* This aligns top edge */
     margin-block-start: calc(-1 * var(--space-2xs));
-    margin-inline-end: var(--space-xs);
+    margin-inline-end: var(--space-2xs);
     overflow-y: scroll;
 
     @media (width < 900px) {
