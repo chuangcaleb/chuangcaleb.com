@@ -109,7 +109,7 @@ strong {
 }
 
 :where(hr) {
-  border-width: 1px;
+  border-width: 2px;
 }
 
 /* lists */
