@@ -1,4 +1,5 @@
 ---
+import { format } from "date-fns";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
@@ -16,15 +17,22 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 const { lastModified, title } = remarkPluginFrontmatter;
+
+const lastModForm = format(lastModified, "dd MMMM yyyy");
 ---
 
 <Base title={title}>
   <Main>
     <WIPDisclaimer />
     <div class="article">
-      <header class="cgrid-max region">
-        <h1>{title}</h1>
-      </header>
+      <div class="cont-header | cgrid-max">
+        <header class="region">
+          <h1>{title}</h1>
+          <ul>
+            <li>Mod: <date>{lastModForm}</date></li>
+          </ul>
+        </header>
+      </div>
       <div class="body region">
         <aside class="cgrid no-scrollbar">
           <Toc headings={headings} />
@@ -37,8 +45,14 @@ const { lastModified, title } = remarkPluginFrontmatter;
   </Main>
 </Base>
 <style>
-  header {
+  .cont-header {
     background-color: var(--surface-1b);
+  }
+  header {
+    display: flex;
+    column-gap: var(--space-xs);
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
   h1 {
     text-wrap: balance;
