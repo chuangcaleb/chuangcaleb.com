@@ -46,5 +46,7 @@ const nestedHeadings = buildToc(headings);
 ---
 
 <nav>
-  <ul>{nestedHeadings.map((h) => <TocHeading heading={h} />)}</ul>
+  <ul class="toc-root">
+    {nestedHeadings.map((h) => <TocHeading heading={h} />)}
+  </ul>
 </nav>

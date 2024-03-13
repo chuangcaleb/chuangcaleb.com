@@ -40,6 +40,10 @@
   grid-column: feature;
 }
 
+.cgrid-popout > * {
+  grid-column: popout;
+}
+
 /* utilities: children */
 
 .full {

@@ -26,7 +26,7 @@ const { lastModified, title } = remarkPluginFrontmatter;
         <h1>{title}</h1>
       </header>
       <div class="body region">
-        <aside class="no-scrollbar">
+        <aside class="cgrid no-scrollbar">
           <Toc headings={headings} />
         </aside>
         <article class="prose cgrid flow-lg">
@@ -49,17 +49,28 @@ const { lastModified, title } = remarkPluginFrontmatter;
     gap: var(--space-xs);
     position: relative;
     align-items: flex-start;
+    @media (width < 900px) {
+      flex-direction: column;
+    }
   }
   aside {
+    display: block;
     position: sticky;
     top: 0;
-    min-width: var(--size-header-3);
+    min-width: 30ch;
     height: 100vh;
-    padding-inline: var(--space-xs);
+    /* padding-inline: var(--space-xs); */
     padding-block: var(--space-2xs);
     /* This aligns top edge */
     margin-block-start: calc(-1 * var(--space-2xs));
     margin-inline-end: var(--space-xs);
     overflow-y: scroll;
+
+    @media (width < 900px) {
+      /* display: grid;
+      position: relative;
+      height: 100%; */
+      display: none;
+    }
   }
 </style>
