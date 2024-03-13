@@ -45,21 +45,6 @@ const nestedHeadings = buildToc(headings);
 // })();
 ---
 
-<aside>
-  <nav>
-    <ul>{nestedHeadings.map((h) => <TocHeading heading={h} />)}</ul>
-  </nav>
-</aside>
-
-<style>
-  aside {
-    position: sticky;
-    /* top: 0; */
-    inset-block: var(--size-relative-4);
-    min-width: 30ch;
-    height: 98vh;
-    padding-inline: var(--space-xs);
-    margin-inline-end: var(--space-xs);
-    overflow-y: scroll;
-  }
-</style>
+<nav>
+  <ul>{nestedHeadings.map((h) => <TocHeading heading={h} />)}</ul>
+</nav>

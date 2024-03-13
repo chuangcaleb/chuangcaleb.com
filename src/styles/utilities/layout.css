@@ -11,3 +11,10 @@
   background-color: var(--surface-1b);
   border-radius: var(--radius-3);
 }
+
+.no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
