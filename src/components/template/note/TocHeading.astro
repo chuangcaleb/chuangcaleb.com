@@ -1,22 +1,22 @@
 ---
-import type { NestedHeadingNode } from "./Toc.astro";
+import type { TocItem } from "lib/remark/toc";
 
 interface Props {
-  heading: NestedHeadingNode;
+  tocItem: TocItem;
 }
 
-const { heading } = Astro.props;
+const { tocItem } = Astro.props;
 ---
 
 <li>
-  <a href={"#" + heading.slug}>
-    {heading.text}
+  <a href={"#" + tocItem.slug}>
+    {tocItem.text}
   </a>
   {
-    heading.subheadings.length > 0 && (
+    tocItem.children.length > 0 && (
       <ul>
-        {heading.subheadings.map((subheading) => (
-          <Astro.self heading={subheading} />
+        {tocItem.children.map((child) => (
+          <Astro.self tocItem={child} />
         ))}
       </ul>
     )

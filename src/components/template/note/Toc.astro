@@ -1,39 +1,23 @@
 ---
 import TocHeading from "./TocHeading.astro";
+import generateToc from "lib/remark/toc";
 
-interface HeadingNode {
-  depth: number;
-  text: string;
-  slug: string;
-}
-export interface NestedHeadingNode extends HeadingNode {
-  subheadings: NestedHeadingNode[];
-}
+// interface HeadingNode {
+//   depth: number;
+//   text: string;
+//   slug: string;
+// }
+// export interface NestedHeadingNode extends HeadingNode {
+//   subheadings: NestedHeadingNode[];
+// }
 
-export type Props = {
-  headings: HeadingNode[];
-};
-
-// https://kld.dev/building-table-of-contents/
-function buildToc(headings: HeadingNode[]) {
-  const toc = [] as NestedHeadingNode[];
-  const parentHeadings = new Map();
-  headings.forEach((h) => {
-    const heading = { ...h, subheadings: [] };
-    parentHeadings.set(heading.depth, heading);
-    // Change 2 to 1 if your markdown includes your <h1>
-    if (heading.depth === 2) {
-      toc.push(heading);
-    } else {
-      parentHeadings.get(heading.depth - 1)?.subheadings.push(heading);
-    }
-  });
-  return toc;
-}
+// export type Props = {
+//   headings: HeadingNode[];
+// };
 
 const { headings } = Astro.props;
 
-const nestedHeadings = buildToc(headings);
+const toc = generateToc(headings);
 
 // Boot out H1; but we've already stripped it in lib/remark/strip-h1.mjs
 // keeping this here in case
@@ -47,6 +31,6 @@ const nestedHeadings = buildToc(headings);
 
 <nav>
   <ul class="toc-root">
-    {nestedHeadings.map((h) => <TocHeading heading={h} />)}
+    {toc.map((h) => <TocHeading tocItem={h} />)}
   </ul>
 </nav>
