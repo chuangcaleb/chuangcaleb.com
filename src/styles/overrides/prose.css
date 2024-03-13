@@ -1,4 +1,7 @@
 .prose {
+  container: prose / inline-size;
+  width: 100%;
+
   p {
     line-height: var(--font-lineheight-4);
   }
@@ -41,7 +44,7 @@
     * {
       font-size: var(--font-size-2);
     }
-    @media (width > 100ch) {
+    @container prose (inline-size > 100ch) {
       & {
         display: grid;
         grid-template-columns: subgrid;
@@ -89,7 +92,7 @@
     }
   }
 
-  @media (width > 140ch) {
+  @container prose (inline-size > 90ch) {
     /* h1, */
     h2,
     h3,
