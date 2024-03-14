@@ -61,25 +61,28 @@ const lastModForm = format(lastModified, "dd MMMM yyyy");
   .body {
     display: flex;
     flex-direction: row-reverse;
-    gap: var(--space-xs);
+    /* gap: var(--space-xs); */
     position: relative;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     @media (width < 900px) {
       flex-direction: column;
     }
   }
   aside {
-    display: block;
+    /* display: block; */
     position: sticky;
     top: 0;
-    max-width: 30ch;
+    max-width: var(--size-header-3);
     height: 100vh;
     /* padding-inline: var(--space-xs); */
     padding-block: var(--space-2xs);
     /* This aligns top edge */
     margin-block-start: calc(-1 * var(--space-2xs));
-    margin-inline-end: var(--space-2xs);
+    /* margin-inline-end: var(--space-2xs); */
     overflow-y: scroll;
+    > * {
+      max-width: 30ch;
+    }
 
     @media (width < 900px) {
       /* display: grid;
