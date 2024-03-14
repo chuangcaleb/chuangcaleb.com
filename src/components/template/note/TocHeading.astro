@@ -38,6 +38,9 @@ const { tocItem } = Astro.props;
       --color: var(--text-faded);
       --color-hover: var(--brand);
       text-decoration: none;
+      &.active {
+        --color: var(--text-1-strong);
+      }
     }
     ul li ul & {
       margin-inline-start: var(--space-3xs);

@@ -2,19 +2,6 @@
 import TocHeading from "./TocHeading.astro";
 import generateToc from "lib/remark/toc";
 
-// interface HeadingNode {
-//   depth: number;
-//   text: string;
-//   slug: string;
-// }
-// export interface NestedHeadingNode extends HeadingNode {
-//   subheadings: NestedHeadingNode[];
-// }
-
-// export type Props = {
-//   headings: HeadingNode[];
-// };
-
 const { headings } = Astro.props;
 
 const toc = generateToc(headings);
@@ -29,8 +16,40 @@ const toc = generateToc(headings);
 // })();
 ---
 
-<nav>
+<nav id="toc">
   <ul class="toc-root">
     {toc.map((h) => <TocHeading tocItem={h} />)}
   </ul>
 </nav>
+
+<script>
+  const setCurrentHeading: IntersectionObserverCallback = (entries) => {
+    // loop to each entries (headings) in the page
+    for (let entry of entries) {
+      // equivalent to the slug returned from pageHeadings
+      const { id } = entry.target;
+      // get the TOC link's element for the current entry
+      const tocLinkEl = document.querySelector(`#toc a[href='#${id}']`);
+      if (!tocLinkEl) return;
+
+      // check if the entry is intersecting
+      if (entry.isIntersecting) {
+        // remove active class from all links
+        document
+          .querySelectorAll("#toc a")
+          .forEach((e) => e.classList.remove("active"));
+        // add active class to the currently active entry
+        tocLinkEl.classList.add("active");
+      }
+    }
+  };
+  const observerOptions = {
+    threshold: 1,
+    rootMargin: "0px 0px -66%",
+  };
+  const observer = new IntersectionObserver(setCurrentHeading, observerOptions);
+  // select all headings to observe
+  const elToObserve = document.querySelectorAll("article :is(h2,h3,h4)");
+  // finally, observe the elements
+  elToObserve.forEach((el) => observer.observe(el));
+</script>
