@@ -5,11 +5,12 @@ import Main from "~/components/layout/Main.astro";
 import Toc from "~/components/template/note/Toc.astro";
 import { getPublicNotes } from "~/utils/post";
 import { formatDisplayDate } from "~/utils/time";
+import { removeConsecHyphens } from "~/utils/slugify";
 
 export async function getStaticPaths() {
   const publicNotes = await getPublicNotes();
   return publicNotes.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: removeConsecHyphens(entry.slug) },
     props: { entry },
   }));
 }

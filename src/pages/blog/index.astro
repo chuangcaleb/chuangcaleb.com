@@ -4,6 +4,7 @@ import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
 import BrandA from "~/components/styled/monom/BrandA.astro";
 import { getPublicNotes } from "~/utils/post";
+import { removeConsecHyphens } from "~/utils/slugify";
 
 const publicNotes = await getPublicNotes();
 const publicNotesFrontmatter = await Promise.all(
@@ -20,7 +21,7 @@ const publicNotesFrontmatter = await Promise.all(
         {
           publicNotes?.map(async (n, idx) => (
             <li>
-              <BrandA href={`/blog/${n.slug}`}>
+              <BrandA href={`/blog/${removeConsecHyphens(n.slug)}`}>
                 {publicNotesFrontmatter[idx].title}
               </BrandA>
             </li>
