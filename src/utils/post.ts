@@ -1,5 +1,4 @@
 import { getCollection, type CollectionEntry } from "astro:content";
-import { slugify } from "~/utils/text";
 
 const DIR = "8 public";
 // const SLUG_DIR = slugify(DIR);
