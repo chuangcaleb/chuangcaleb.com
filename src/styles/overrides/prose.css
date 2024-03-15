@@ -1,6 +1,7 @@
 .prose {
   container: prose / inline-size;
   width: 100%;
+  --hr-space: var(--space-xl);
 
   p {
     line-height: var(--font-lineheight-4);
@@ -21,8 +22,6 @@
   }
 
   hr {
-    --hr-space: var(--size-fluid-5);
-
     grid-column-start: feature;
     grid-column-end: popout;
     border-style: dashed;
