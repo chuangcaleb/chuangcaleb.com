@@ -6,6 +6,10 @@ import {
   parseISO,
 } from "date-fns";
 
+export function formatDisplayDate(datetime: number) {
+  return format(datetime, "dd MMMM yyyy");
+}
+
 export function getLongDurationSince(datetime: number) {
   const then = new Date(datetime);
   const days = differenceInDays(new Date(), then);
