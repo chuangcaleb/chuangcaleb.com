@@ -1,10 +1,10 @@
 ---
-import { format } from "date-fns";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
 import Toc from "~/components/template/note/Toc.astro";
 import { getPublicNotes } from "~/utils/post";
+import { formatDisplayDate } from "~/utils/time";
 
 export async function getStaticPaths() {
   const publicNotes = await getPublicNotes();
@@ -18,7 +18,7 @@ const { entry } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 const { lastModified, title } = remarkPluginFrontmatter;
 
-const lastModForm = format(lastModified, "dd MMMM yyyy");
+const lastModForm = formatDisplayDate(lastModified);
 ---
 
 <Base title={title}>
