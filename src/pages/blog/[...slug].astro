@@ -6,6 +6,7 @@ import Toc from "~/components/template/note/Toc.astro";
 import { getPublicNotes } from "~/utils/post";
 import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
 import { removeConsecHyphens } from "~/utils/slugify";
+import Date from "~/components/template/note/Date.astro";
 
 export async function getStaticPaths() {
   const publicNotes = await getPublicNotes();
@@ -32,16 +33,20 @@ const publishedForm = formatDisplayDate(data.date);
         <header class="region">
           <h1>{title}</h1>
           <ul>
-            <li>
-              modified <date>{modifiedForm}</date> or {
-                getLongDurationSince(lastModified)
-              }
-            </li>
-            <li>
-              published <date>{publishedForm}</date> or {
-                getLongDurationSince(data.date)
-              }
-            </li>
+            {
+              lastModified && (
+                <li>
+                  <Date title="modified" datetime={lastModified} />
+                </li>
+              )
+            }
+            {
+              data.date && (
+                <li>
+                  <Date title="published" datetime={data.date} />
+                </li>
+              )
+            }
           </ul>
         </header>
       </div>
@@ -62,11 +67,13 @@ const publishedForm = formatDisplayDate(data.date);
   }
   header {
     display: flex;
-    column-gap: var(--space-xs);
+    gap: var(--space-xs);
     justify-content: space-between;
     flex-wrap: wrap;
     ul {
+      color: var(--text-faded);
       font-size: var(--step--1);
+      margin-block: auto;
     }
   }
   h1 {

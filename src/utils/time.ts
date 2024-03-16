@@ -7,7 +7,8 @@ import {
   parseISO,
 } from "date-fns";
 
-export function formatDisplayDate(datetime: number) {
+export function formatDisplayDate(datetime?: number) {
+  if (!datetime) return null;
   return format(datetime, "dd MMMM yyyy");
 }
 
