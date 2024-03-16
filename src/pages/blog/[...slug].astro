@@ -4,7 +4,7 @@ import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
 import Toc from "~/components/template/note/Toc.astro";
 import { getPublicNotes } from "~/utils/post";
-import { formatDisplayDate } from "~/utils/time";
+import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
 import { removeConsecHyphens } from "~/utils/slugify";
 
 export async function getStaticPaths() {
@@ -16,10 +16,12 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+const { data } = entry;
 const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 const { lastModified, title } = remarkPluginFrontmatter;
 
-const lastModForm = formatDisplayDate(lastModified);
+const modifiedForm = formatDisplayDate(lastModified);
+const publishedForm = formatDisplayDate(data.date);
 ---
 
 <Base title={title}>
@@ -30,7 +32,16 @@ const lastModForm = formatDisplayDate(lastModified);
         <header class="region">
           <h1>{title}</h1>
           <ul>
-            <li>Mod: <date>{lastModForm}</date></li>
+            <li>
+              modified <date>{modifiedForm}</date> or {
+                getLongDurationSince(lastModified)
+              }
+            </li>
+            <li>
+              published <date>{publishedForm}</date> or {
+                getLongDurationSince(data.date)
+              }
+            </li>
           </ul>
         </header>
       </div>
@@ -54,6 +65,9 @@ const lastModForm = formatDisplayDate(lastModified);
     column-gap: var(--space-xs);
     justify-content: space-between;
     flex-wrap: wrap;
+    ul {
+      font-size: var(--step--1);
+    }
   }
   h1 {
     text-wrap: balance;
