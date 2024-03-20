@@ -2,11 +2,10 @@
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
+import Date from "~/components/template/note/Date.astro";
 import Toc from "~/components/template/note/Toc.astro";
 import { getPublicNotes } from "~/utils/post";
-import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
 import { removeConsecHyphens } from "~/utils/slugify";
-import Date from "~/components/template/note/Date.astro";
 
 export async function getStaticPaths() {
   const publicNotes = await getPublicNotes();
@@ -20,9 +19,6 @@ const { entry } = Astro.props;
 const { data } = entry;
 const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 const { lastModified, title } = remarkPluginFrontmatter;
-
-const modifiedForm = formatDisplayDate(lastModified);
-const publishedForm = formatDisplayDate(data.date);
 ---
 
 <Base title={title}>
