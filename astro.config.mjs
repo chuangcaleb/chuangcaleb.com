@@ -7,7 +7,6 @@ import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 import icons from "unplugin-icons/vite";
 import { remarkStripH1 } from "./lib/remark/strip-h1.mjs";
-import { remarkModifiedTime } from "./lib/remark/time-modified.mjs";
 
 const prodIntegrations = [
   robotsTxt(),
@@ -34,7 +33,7 @@ export default defineConfig({
   integrations,
   markdown: {
     shikiConfig: { theme: "css-variables" },
-    remarkPlugins: [remarkModifiedTime, remarkStripH1],
+    remarkPlugins: [remarkStripH1],
   },
   vite: {
     plugins: [icons({ compiler: "jsx", jsx: "react" })],
