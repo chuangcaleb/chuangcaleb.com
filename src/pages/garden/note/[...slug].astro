@@ -1,0 +1,112 @@
+---
+import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
+import Base from "~/components/layout/Base.astro";
+import Main from "~/components/layout/Main.astro";
+import Date from "~/components/template/note/Date.astro";
+import Toc from "~/components/template/note/Toc.astro";
+import { getPublicNotes } from "~/utils/post";
+import { removeConsecHyphens } from "~/utils/slugify";
+
+export async function getStaticPaths() {
+  const publicNotes = await getPublicNotes();
+  return publicNotes.map((entry) => ({
+    params: { slug: removeConsecHyphens(entry.slug) },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content, headings, remarkPluginFrontmatter } = await entry.render();
+const { lastModified, title } = remarkPluginFrontmatter;
+---
+
+<Base title={title}>
+  <Main>
+    <WIPDisclaimer />
+    <div class="article">
+      <div class="cont-header | cgrid-max">
+        <header class="region">
+          <h1>{title}</h1>
+          <ul>
+            {
+              lastModified && (
+                <li>
+                  <Date title="modified" datetime={lastModified} />
+                </li>
+              )
+            }
+            {
+              data.date && (
+                <li>
+                  <Date title="published" datetime={data.date} />
+                </li>
+              )
+            }
+          </ul>
+        </header>
+      </div>
+      <div class="body region">
+        <aside class="cgrid no-scrollbar">
+          <Toc headings={headings} />
+        </aside>
+        <article class="prose cgrid flow-lg">
+          <Content />
+        </article>
+      </div>
+    </div>
+  </Main>
+</Base>
+<style>
+  .cont-header {
+    background-color: var(--surface-1b);
+  }
+  header {
+    display: flex;
+    gap: var(--space-xs);
+    justify-content: space-between;
+    flex-wrap: wrap;
+    ul {
+      color: var(--text-faded);
+      font-size: var(--step--1);
+      margin-block: auto;
+    }
+  }
+  h1 {
+    text-wrap: balance;
+    word-wrap: normal;
+  }
+  .body {
+    display: flex;
+    flex-direction: row-reverse;
+    /* gap: var(--space-xs); */
+    position: relative;
+    /* align-items: flex-start; */
+    @media (width < 900px) {
+      flex-direction: column;
+    }
+  }
+  aside {
+    /* display: block; */
+    position: sticky;
+    top: 0;
+    max-width: var(--size-header-3);
+    height: 100vh;
+    /* padding-inline: var(--space-xs); */
+    padding-block: var(--space-2xs);
+    /* This aligns top edge */
+    margin-block-start: calc(-1 * var(--space-2xs));
+    /* margin-inline-end: var(--space-2xs); */
+    overflow-y: scroll;
+    > * {
+      max-width: 30ch;
+    }
+
+    @media (width < 900px) {
+      /* display: grid;
+      position: relative;
+      height: 100%; */
+      display: none;
+    }
+  }
+</style>

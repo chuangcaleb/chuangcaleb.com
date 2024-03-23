@@ -6,6 +6,7 @@ import purgecss from "astro-purgecss";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 import icons from "unplugin-icons/vite";
+import { remarkStripH1 } from "./lib/remark/strip-h1.mjs";
 
 const prodIntegrations = [
   robotsTxt(),
@@ -30,7 +31,10 @@ export default defineConfig({
   trailingSlash: "never",
   prefetch: true,
   integrations,
-  markdown: { shikiConfig: { theme: "css-variables" } },
+  markdown: {
+    shikiConfig: { theme: "css-variables" },
+    remarkPlugins: [remarkStripH1],
+  },
   vite: {
     plugins: [icons({ compiler: "jsx", jsx: "react" })],
   },

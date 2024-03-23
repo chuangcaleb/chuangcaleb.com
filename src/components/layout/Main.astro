@@ -1,28 +1,20 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import Base, { type BaseProps } from "./Base.astro";
-import Footer from "./Footer.astro";
-import Header from "./Header.astro";
 
-interface MainProps extends HTMLAttributes<"main"> {}
-type Props = MainProps & BaseProps;
-
-const { description, title, ...props } = Astro.props;
+export interface MainProps extends HTMLAttributes<"main"> {}
+type Props = MainProps;
+const props = Astro.props;
 ---
 
-<Base title={title} description={description}>
-  <Header />
-  <main id="main" {...props}>
-    <slot />
-  </main>
-  <Footer />
-</Base>
+<main id="main" {...props}>
+  <slot />
+</main>
 
 <style is:global>
   main {
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding-bottom: var(--size-fluid-5);
+    padding-bottom: var(--space-xl);
   }
 </style>
