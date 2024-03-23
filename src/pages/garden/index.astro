@@ -21,7 +21,7 @@ const publicNotesFrontmatter = await Promise.all(
         {
           publicNotes?.map(async (n, idx) => (
             <li>
-              <BrandA href={`/blog/${removeConsecHyphens(n.slug)}`}>
+              <BrandA href={`/garden/note/${removeConsecHyphens(n.slug)}`}>
                 {publicNotesFrontmatter[idx].title}
               </BrandA>
             </li>
