@@ -5,7 +5,7 @@ import Main from "~/components/layout/Main.astro";
 import Date from "~/components/template/note/Date.astro";
 import Toc from "~/components/template/note/Toc.astro";
 import { getPublicNotes } from "~/utils/post";
-import { removeConsecHyphens } from "~/utils/slugify";
+import { removeConsecHyphens } from "lib/remark/slugify";
 
 export async function getStaticPaths() {
   const publicNotes = await getPublicNotes();
