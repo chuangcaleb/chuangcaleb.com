@@ -1,12 +1,16 @@
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
+import { getPermalinks, remarkWikiLink } from "@portaljs/remark-wiki-link";
 import compressor from "astro-compressor";
 import purgecss from "astro-purgecss";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 import icons from "unplugin-icons/vite";
+import { slugify } from "./lib/remark/slugify";
 import { remarkStripH1 } from "./lib/remark/strip-h1.mjs";
+
+const NOTES_DIR = "src/content/obsidian-note";
 
 const prodIntegrations = [
   robotsTxt(),
@@ -33,7 +37,18 @@ export default defineConfig({
   integrations,
   markdown: {
     shikiConfig: { theme: "css-variables" },
-    remarkPlugins: [remarkStripH1],
+    remarkPlugins: [
+      remarkStripH1,
+      [
+        remarkWikiLink,
+        {
+          pathFormat: "obsidian-short",
+          permalinks: getPermalinks(NOTES_DIR),
+          hrefTemplate: (permalink: string) =>
+            `/garden/note${slugify(permalink)}`,
+        },
+      ],
+    ],
   },
   vite: {
     plugins: [icons({ compiler: "jsx", jsx: "react" })],
