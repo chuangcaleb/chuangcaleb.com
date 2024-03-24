@@ -1,5 +1,6 @@
 ---
 import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
+import { extractWikilink } from "lib/markdown/extractWikilink";
 
 interface Props {
   datetime: string;
@@ -7,9 +8,11 @@ interface Props {
 
 const { datetime } = Astro.props;
 
-const diplayDatetime = formatDisplayDate(datetime);
+const isValidDate = Date.parse(datetime);
+const validDatetimeString = isValidDate ? datetime : extractWikilink(datetime);
+const diplayDatetime = formatDisplayDate(validDatetimeString);
 ---
 
-<time datetime={new Date(datetime).toISOString()}>{diplayDatetime}</time> / {
-  getLongDurationSince(datetime)
-}
+<time datetime={new Date(validDatetimeString).toISOString()}
+  >{diplayDatetime}</time
+> / {getLongDurationSince(validDatetimeString)}
