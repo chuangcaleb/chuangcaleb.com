@@ -5,7 +5,7 @@ import Main from "~/components/layout/Main.astro";
 import Date from "~/components/template/note/Date.astro";
 import Toc from "~/components/template/note/Toc.astro";
 import { getPublicNotes } from "~/utils/post";
-import { removeConsecHyphens } from "lib/remark/slugify";
+import { removeConsecHyphens } from "lib/markdown/slugify";
 
 export async function getStaticPaths() {
   const publicNotes = await getPublicNotes();
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { data } = entry;
 const { Content, headings, remarkPluginFrontmatter } = await entry.render();
-const { lastModified, title } = remarkPluginFrontmatter;
+const { lastModified, title, minutesRead, wordCount } = remarkPluginFrontmatter;
 ---
 
 <Base title={title}>
@@ -28,6 +28,8 @@ const { lastModified, title } = remarkPluginFrontmatter;
       <div class="cont-header | cgrid-max">
         <header class="region">
           <h1>{title}</h1>
+          {minutesRead}
+          {wordCount}
           <ul>
             {
               lastModified && (

@@ -7,8 +7,9 @@ import purgecss from "astro-purgecss";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 import icons from "unplugin-icons/vite";
-import { slugify } from "./lib/remark/slugify";
+import { slugify } from "./lib/markdown/slugify";
 import { remarkStripH1 } from "./lib/remark/strip-h1.mjs";
+import { remarkReadingTime } from "./lib/remark/reading-time.mjs";
 
 const NOTES_DIR = "src/content/obsidian-note";
 
@@ -39,6 +40,7 @@ export default defineConfig({
     shikiConfig: { theme: "css-variables" },
     remarkPlugins: [
       remarkStripH1,
+      remarkReadingTime,
       [
         remarkWikiLink,
         {
