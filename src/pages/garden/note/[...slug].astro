@@ -1,11 +1,13 @@
 ---
+import { removeConsecHyphens } from "lib/markdown/slugify";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
-import Date from "~/components/template/note/Date.astro";
+import Metadata, {
+  type MetadataProps,
+} from "~/components/template/note/Metadata.astro";
 import Toc from "~/components/template/note/Toc.astro";
 import { getPublicNotes } from "~/utils/post";
-import { removeConsecHyphens } from "lib/markdown/slugify";
 
 export async function getStaticPaths() {
   const publicNotes = await getPublicNotes();
@@ -19,6 +21,12 @@ const { entry } = Astro.props;
 const { data } = entry;
 const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 const { lastModified, title, minutesRead, wordCount } = remarkPluginFrontmatter;
+
+const properties = [
+  { title: "size", content: `${minutesRead} / ${wordCount} words` },
+  { title: "modified", content: lastModified },
+  { title: "published", content: data.date, type: "date" },
+] as MetadataProps;
 ---
 
 <Base title={title}>
@@ -28,24 +36,7 @@ const { lastModified, title, minutesRead, wordCount } = remarkPluginFrontmatter;
       <div class="cont-header | cgrid-max">
         <header class="region">
           <h1>{title}</h1>
-          {minutesRead}
-          {wordCount}
-          <ul>
-            {
-              lastModified && (
-                <li>
-                  <Date title="modified" datetime={lastModified} />
-                </li>
-              )
-            }
-            {
-              data.date && (
-                <li>
-                  <Date title="published" datetime={data.date} />
-                </li>
-              )
-            }
-          </ul>
+          <Metadata properties={properties} />
         </header>
       </div>
       <div class="body region">
@@ -68,11 +59,6 @@ const { lastModified, title, minutesRead, wordCount } = remarkPluginFrontmatter;
     gap: var(--space-xs);
     justify-content: space-between;
     flex-wrap: wrap;
-    ul {
-      color: var(--text-faded);
-      font-size: var(--step--1);
-      margin-block: auto;
-    }
   }
   h1 {
     text-wrap: balance;

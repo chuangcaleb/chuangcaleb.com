@@ -2,12 +2,14 @@
 import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
 
 interface Props {
-  title: string;
   datetime: string;
 }
 
-const { title, datetime } = Astro.props;
+const { datetime } = Astro.props;
+
 const diplayDatetime = formatDisplayDate(datetime);
 ---
 
-{title} :: <date>{diplayDatetime}</date> / {getLongDurationSince(datetime)}
+<time datetime={new Date(datetime).toISOString()}>{diplayDatetime}</time> / {
+  getLongDurationSince(datetime)
+}
