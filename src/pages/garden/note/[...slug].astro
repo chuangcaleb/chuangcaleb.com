@@ -22,11 +22,15 @@ const { data } = entry;
 const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 const { lastModified, title, minutesRead, wordCount } = remarkPluginFrontmatter;
 
-const properties = [
+const properties: MetadataProps = [
   { title: "size", content: `${minutesRead} / ${wordCount} words` },
   { title: "modified", content: lastModified },
-  { title: "published", content: data.date, type: "date" },
-] as MetadataProps;
+  {
+    title: "published",
+    content: data.published ?? data.created ?? data.date_created ?? data.date,
+    type: "date",
+  },
+];
 ---
 
 <Base title={title}>
