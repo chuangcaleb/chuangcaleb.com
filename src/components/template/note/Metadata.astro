@@ -1,0 +1,38 @@
+---
+import Date from "./DateProp.astro";
+
+export type MetadataProps = {
+  title: string;
+  content?: string;
+  type?: "date";
+}[];
+
+type Props = { properties: MetadataProps };
+
+const { properties } = Astro.props;
+---
+
+<ul>
+  {
+    properties.map(({ title, content, type }) => {
+      if (!content) return;
+      return (
+        <li>
+          {title} ::
+          {(() => {
+            if (type === "date") return <Date datetime={content} />;
+            return content;
+          })()}
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  ul {
+    color: var(--text-faded);
+    font-size: var(--step--1);
+    margin-block: auto;{}
+  }
+</style>
