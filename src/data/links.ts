@@ -1,7 +1,7 @@
 interface Link {
   label: string;
   ariaLabel: string;
-  href: string | null;
+  href: string;
   userId?: string;
   icon: string;
 }

@@ -5,11 +5,12 @@ import { getPermalinks, remarkWikiLink } from "@portaljs/remark-wiki-link";
 import compressor from "astro-compressor";
 import purgecss from "astro-purgecss";
 import robotsTxt from "astro-robots-txt";
-import { defineConfig } from "astro/config";
+import { defineConfig, type AstroUserConfig } from "astro/config";
 import icons from "unplugin-icons/vite";
 import { slugify } from "./lib/markdown/slugify";
-import { remarkStripH1 } from "./lib/remark/strip-h1.mjs";
 import { remarkReadingTime } from "./lib/remark/reading-time.mjs";
+import { remarkStripH1 } from "./lib/remark/strip-h1.mjs";
+import LINKS from "./src/data/links";
 
 const NOTES_DIR = "src/content/obsidian-note";
 
@@ -29,6 +30,20 @@ const integrations = [
   react(),
   ...(import.meta.env.PROD ? prodIntegrations : []),
 ];
+
+const REDIRECTS = {
+  "/linkedin": LINKS.LINKEDIN.href,
+  "/github": LINKS.GITHUB.href,
+  "/cv": LINKS.CV.href,
+  "/resume": LINKS.CV.href,
+};
+
+const redirects: AstroUserConfig["redirects"] = Object.entries(
+  REDIRECTS,
+).reduce(
+  (acc, [k, v]) => ({ ...acc, [k]: { status: 307, destination: v } }),
+  {},
+);
 
 // https://astro.build/config
 export default defineConfig({
@@ -56,4 +71,5 @@ export default defineConfig({
     plugins: [icons({ compiler: "jsx", jsx: "react" })],
   },
   scopedStyleStrategy: "class",
+  redirects,
 });
