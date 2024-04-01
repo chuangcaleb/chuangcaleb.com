@@ -84,8 +84,8 @@ dependencies:
     specifier: ^0.18.5
     version: 0.18.5(@svgr/core@8.1.0)
   utopia-core-scss:
-    specifier: ^1.0.0
-    version: 1.0.0
+    specifier: ^1.0.1
+    version: 1.0.1
 
 devDependencies:
   '@types/fs-extra':
@@ -6525,8 +6525,8 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: false
 
-  /utopia-core-scss@1.0.0:
-    resolution: {integrity: sha512-FpJwNPjF3cRpJlrVcavaNVbuBKRfk6vkuYzPFI5Vmvg39ZDAMUBXHa5apnSQLHpm0l7Y6uuIqKuX3FZX43AMnw==}
+  /utopia-core-scss@1.0.1:
+    resolution: {integrity: sha512-1v4FLU6yrQPr8Zy0zJLesY9yAnCBrW1f8UbW/eV8zIEujqjUy5guMFbM4ANRo29QljpUPho91suDZZBnqUNFAQ==}
     dev: false
 
   /valid-filename@4.0.0:

@@ -42,7 +42,7 @@
     "sass": "^1.71.1",
     "sharp": "^0.33.2",
     "unplugin-icons": "^0.18.5",
-    "utopia-core-scss": "^1.0.0"
+    "utopia-core-scss": "^1.0.1"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
