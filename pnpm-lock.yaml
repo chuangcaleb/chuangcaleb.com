@@ -1132,19 +1132,19 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify/tools@4.0.2:
-    resolution: {integrity: sha512-vd/VruPQT1j6id1jpTH/+y0tgPPeoavdI2aSJB3KaplhgJXpl7IkeH/cCHMXM+x87HDtgMaGg2EzTDwe4FZuDg==}
+  /@iconify/tools@4.0.4:
+    resolution: {integrity: sha512-hX1Z3i1Tm6JxyrDv45jNEijPpepZZfal/4leFGtUC04H9LsgRo597BOBFB9PUZsQdFGLOxVUUfv6lqU/dC+xXw==}
     dependencies:
       '@iconify/types': 2.0.0
       '@iconify/utils': 2.1.22
-      '@types/tar': 6.1.11
-      axios: 1.6.7
+      '@types/tar': 6.1.12
+      axios: 1.6.8
       cheerio: 1.0.0-rc.12
       extract-zip: 2.0.1
       local-pkg: 0.5.0
       pathe: 1.1.2
       svgo: 3.2.0
-      tar: 6.2.0
+      tar: 6.2.1
     transitivePeerDependencies:
       - debug
       - supports-color
@@ -2270,8 +2270,8 @@ packages:
     resolution: {integrity: sha512-WZLiwShhwLRmeV6zH+GkbOFT6Z6VklCItrDioxUnv+u4Ll+8vKeFySoFyK/0ctcRpOmwAicELfmys1sDc/Rw+A==}
     dev: false
 
-  /@types/tar@6.1.11:
-    resolution: {integrity: sha512-ThA1WD8aDdVU4VLuyq5NEqriwXErF5gEIJeyT6gHBWU7JtSmW2a5qjNv3/vR82O20mW+1vhmeZJfBQPT3HCugg==}
+  /@types/tar@6.1.12:
+    resolution: {integrity: sha512-FwbJPi9YuovB6ilnHrz8Y4pb0Fh6N7guFkbnlCl39ua893Qi5gkXui7LSDpTQMJCmA4z5f6SeSrTPQEWLdtFVw==}
     dependencies:
       '@types/node': 20.11.24
       minipass: 4.2.8
@@ -2406,7 +2406,7 @@ packages:
   /astro-iconify@1.2.0:
     resolution: {integrity: sha512-arLDiSop3DAHHS30raZysspkz5MO9moJJZ4rJk1Ty+4W1jZDa00Jme0LrnRJRDB6BB2EDTxC553fo20yz3MeYw==}
     dependencies:
-      '@iconify/tools': 4.0.2
+      '@iconify/tools': 4.0.4
       node-fetch: 3.3.2
       resolve-pkg: 2.0.0
       svgo: 3.2.0
@@ -2535,8 +2535,8 @@ packages:
       postcss-value-parser: 4.2.0
     dev: false
 
-  /axios@1.6.7:
-    resolution: {integrity: sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==}
+  /axios@1.6.8:
+    resolution: {integrity: sha512-v/ZHtJDU39mDpyBoFVkETcd/uNdxrWRrg3bKpOKzXFA6Bvqopts6ALSMU3y6ijYxbw2B+wPrIv46egTzJXCLGQ==}
     dependencies:
       follow-redirects: 1.15.6
       form-data: 4.0.0
@@ -6236,8 +6236,8 @@ packages:
     dev: false
     optional: true
 
-  /tar@6.2.0:
-    resolution: {integrity: sha512-/Wo7DcT0u5HUV486xg675HtjNd3BXZ6xDbzsCUZPt5iw8bTQ63bP0Raut3mvro9u+CUyq7YQd8Cx55fsZXxqLQ==}
+  /tar@6.2.1:
+    resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
     dependencies:
       chownr: 2.0.0
