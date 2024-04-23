@@ -1,23 +1,33 @@
 import {
   differenceInDays,
+  differenceInMonths,
   format,
   formatDuration,
   intervalToDuration,
   parseISO,
 } from "date-fns";
 
-export function getLongDurationSince(datetime: number) {
-  const then = new Date(datetime);
-  const days = differenceInDays(new Date(), then);
-  const duration = intervalToDuration({ start: then, end: new Date() });
+export function formatDisplayDate(datetime?: string | Date) {
+  if (!datetime) return null;
+  return format(datetime, "dd MMMM yyyy");
+}
 
-  if (days < 365) {
-    const months = formatDuration({ months: duration?.months });
+export function getLongDurationSince(datetime: string | Date) {
+  const then = new Date(datetime);
+  const interval = intervalToDuration({ start: then, end: new Date() });
+
+  if (interval?.years) {
+    const years = formatDuration(interval, { format: ["years", "months"] });
+    return `${years} ago`;
+  }
+
+  if (interval?.months) {
+    const months = formatDuration(interval, { format: ["months"] });
     return `${months} ago`;
   }
 
-  const years = Number((days / 365).toFixed(1));
-  return `${formatDuration({ years })} ago`;
+  const days = formatDuration(interval, { format: ["days"] });
+  return `${days} ago`;
 }
 
 export function formatISO(date: string, template: string) {

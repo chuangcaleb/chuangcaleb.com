@@ -36,7 +36,7 @@
 
 :where(a[href]) {
   --color: var(--text-1);
-
+  --color-hover: var(--text-1-strong);
   box-decoration-break: clone;
   text-decoration-line: underline;
   font-weight: initial;
@@ -54,7 +54,7 @@
 
 :where(a[href]:is(:hover, :focus, :active)) {
   text-decoration-color: var(--brand);
-  color: var(--text-1-strong);
+  color: var(--color-hover);
 }
 
 :where(a[href]:focus) {

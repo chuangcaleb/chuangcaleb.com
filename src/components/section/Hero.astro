@@ -15,8 +15,9 @@ const props = Astro.props;
       <Image
         src={heroImg}
         alt="Head profile of Chuang Caleb"
-        width={heroImg.width / 6.5}
-        densities={[6.5, 4, 2]}
+        widths={[240, 540, 720, heroImg.width]}
+        sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 900px) 720px, ${heroImg.width}px`}
+        fetchpriority="high"
         loading="eager"
       />
     </div>
