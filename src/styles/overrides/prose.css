@@ -82,6 +82,7 @@
     grid-template-columns: subgrid;
     border-radius: var(--radius-2);
     * {
+      font-size: var(--step-0);
       grid-column: content;
       text-wrap: wrap;
     }
