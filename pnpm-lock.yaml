@@ -101,8 +101,8 @@ devDependencies:
     specifier: ^3.2.5
     version: 3.3.0
   prettier-plugin-astro:
-    specifier: ^0.12.3
-    version: 0.12.3
+    specifier: ^0.14.0
+    version: 0.14.0
   tsx:
     specifier: ^4.7.2
     version: 4.11.0
@@ -2558,7 +2558,7 @@ packages:
   /@types/sax@1.2.7:
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 20.13.0
     dev: false
 
   /@types/tar@6.1.13:
@@ -5734,8 +5734,8 @@ packages:
       which-pm: 2.0.0
     dev: false
 
-  /prettier-plugin-astro@0.12.3:
-    resolution: {integrity: sha512-GthUSu3zCvmtVyqlArosez0xE08vSJ0R1sWurxIWpABaCkNGYFANoUdFkqmIo54EV2uPLGcVJzOucWvCjPBWvg==}
+  /prettier-plugin-astro@0.14.0:
+    resolution: {integrity: sha512-7jRGJsexaRIyUzTk8uzXlP45cw6DQ5Ci4bTe0xCBCcuO1Fff8jJy9oI+kRCQKSdDFTSAArMSg8GpvzlKBtSaZA==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
       '@astrojs/compiler': 1.8.2
