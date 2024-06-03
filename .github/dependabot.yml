@@ -16,5 +16,3 @@ updates:
         update-types:
           - "minor"
           - "patch"
-    ignore:
-      - update-types: ["version-update:semver-major"]
