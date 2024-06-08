@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+
 const highlightCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -6,6 +7,7 @@ const highlightCollection = defineCollection({
     sequence: z.number(),
   }),
 });
+
 const projectCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -27,7 +29,9 @@ const projectCollection = defineCollection({
 
 const obsidianNoteCollection = defineCollection({
   type: "content",
-  schema: null,
+  schema: z.object({
+    title: z.string().optional(),
+  }),
 });
 // tags: z.array(z.string()).optional(),
 

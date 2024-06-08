@@ -1,36 +1,34 @@
 ---
-import { removeConsecHyphens } from "lib/markdown/slugify";
+import { getCollection } from "astro:content";
+import path from "path";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
-import Metadata, {
-  type MetadataProps,
-} from "~/components/template/note/Metadata.astro";
 import Toc from "~/components/template/note/Toc.astro";
-import { getPublicNotes } from "~/utils/post";
 
 export async function getStaticPaths() {
-  const publicNotes = await getPublicNotes();
-  return publicNotes.map((entry) => ({
-    params: { slug: removeConsecHyphens(entry.slug) },
+  const notes = await getCollection("obsidian-note");
+  return notes.map((entry) => ({
+    params: { slug: entry.slug },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
 const { data } = entry;
-const { Content, headings, remarkPluginFrontmatter } = await entry.render();
-const { lastModified, title, minutesRead, wordCount } = remarkPluginFrontmatter;
+const { Content, headings } = await entry.render();
+// const { lastModified, title, minutesRead, wordCount } = remarkPluginFrontmatter;
 
-const properties: MetadataProps = [
-  { title: "size", content: `${minutesRead} / ${wordCount} words` },
-  { title: "modified", content: lastModified },
-  {
-    title: "published",
-    content: data.published ?? data.created ?? data.date_created ?? data.date,
-    type: "date",
-  },
-];
+// const properties: MetadataProps = [
+//   { title: "size", content: `${minutesRead} / ${wordCount} words` },
+//   { title: "modified", content: lastModified },
+//   {
+//     title: "published",
+//     content: data.published ?? data.created ?? data.date_created ?? data.date,
+//     type: "date",
+//   },
+// ];
+const title = data.title ?? path.parse(entry.id).name;
 ---
 
 <Base title={title}>
@@ -40,7 +38,7 @@ const properties: MetadataProps = [
       <div class="cont-header | cgrid-max">
         <header class="region">
           <h1>{title}</h1>
-          <Metadata properties={properties} />
+          <!-- <Metadata properties={properties} /> -->
         </header>
       </div>
       <div class="body region">
@@ -68,6 +66,15 @@ const properties: MetadataProps = [
     text-wrap: balance;
     word-wrap: normal;
   }
+  /* Remove h1 */
+  article :global(h1:first-of-type) {
+    display: none;
+  }
+  /* Remove first element's flow space */
+  article :global(> h1:nth-child(1) + *:nth-child(2)) {
+    --flow-space: 0;
+  }
+
   .body {
     display: flex;
     flex-direction: row-reverse;
