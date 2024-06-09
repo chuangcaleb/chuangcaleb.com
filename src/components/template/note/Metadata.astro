@@ -1,6 +1,8 @@
 ---
+import MetadataValue from "./MetadataValue.astro";
+
 export type MetadataProps = {
-  [key: string]: unknown;
+  [key: string]: string | string[] | Date | null;
 };
 
 type Props = { metadata: MetadataProps };
@@ -12,9 +14,10 @@ const metadataArray = Object.entries(metadata);
 <ul>
   {
     metadataArray.map(([key, value]) => {
+      if (!value) return;
       return (
         <li>
-          {key} :: {value}
+          {key} :: <MetadataValue key={key} value={value} />
         </li>
       );
     })

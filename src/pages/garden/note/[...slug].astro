@@ -59,11 +59,7 @@ const isCollection =
               <ul>
                 {data.collectionItems.map((item) => (
                   <li>
-                    <BrandA
-                      href={slugify(path.basename(item, path.extname(item)))}
-                    >
-                      {getNoteName(item)}
-                    </BrandA>
+                    <BrandA href={slugify(item)}>{getNoteName(item)}</BrandA>
                   </li>
                 ))}
               </ul>
