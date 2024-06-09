@@ -29,14 +29,17 @@ const projectCollection = defineCollection({
 
 const obsidianNoteCollection = defineCollection({
   type: "content",
-  schema: z.object({
-    title: z.string().optional(),
-    tags: z.array(z.string()).nullable().optional(),
-    collectionItems: z.array(z.string()).optional(),
-    prev: z.string().optional(),
-    next: z.string().optional(),
-    date: z.string().optional(),
-  }),
+  schema: z
+    .object({
+      title: z.string(),
+      tags: z.array(z.string()).nullable(),
+      collectionItems: z.array(z.string()),
+      prev: z.string(),
+      next: z.string(),
+      date: z.string(),
+      collection: z.union([z.string(), z.array(z.string())]),
+    })
+    .partial(),
 });
 // tags: z.array(z.string()).optional(),
 

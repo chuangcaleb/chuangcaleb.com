@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { slugify } from "lib/markdown/slugify";
+import { getNoteName, slugify } from "lib/markdown/string";
 import path from "path";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
@@ -31,7 +31,7 @@ const { Content, headings } = await entry.render();
 //     type: "date",
 //   },
 // ];
-const title = data.title ?? path.parse(entry.id).name;
+const title = data.title ?? getNoteName(entry.id);
 const isCollection =
   data.tags &&
   (data.tags?.includes("📂/collection/series") ||
@@ -62,7 +62,7 @@ const isCollection =
                     <BrandA
                       href={slugify(path.basename(item, path.extname(item)))}
                     >
-                      {path.parse(item).name}
+                      {getNoteName(item)}
                     </BrandA>
                   </li>
                 ))}

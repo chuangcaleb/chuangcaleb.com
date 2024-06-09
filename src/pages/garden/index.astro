@@ -1,4 +1,5 @@
 ---
+import { getNoteName } from "lib/markdown/string";
 import path from "path";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
@@ -19,7 +20,7 @@ const publicNotes = await getPublicNotes();
           publicNotes?.map((n) => (
             <li>
               <BrandA href={`/garden/note/${n.slug}`}>
-                {path.parse(n.id).name}
+                {getNoteName(n.id)}
               </BrandA>
             </li>
           ))
