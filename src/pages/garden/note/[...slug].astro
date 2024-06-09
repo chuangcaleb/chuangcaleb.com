@@ -1,13 +1,12 @@
 ---
 import { getCollection } from "astro:content";
-import { getNoteName, slugify } from "lib/markdown/string";
-import path from "path";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
-import BrandA from "~/components/styled/monom/BrandA.astro";
+import CollectionList from "~/components/template/note/CollectionList.astro";
 import Metadata from "~/components/template/note/Metadata.astro";
 import Toc from "~/components/template/note/Toc.astro";
+import { getNoteName } from "~/utils/post";
 
 export async function getStaticPaths() {
   const notes = await getCollection("obsidian-note");
@@ -20,17 +19,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { data } = entry;
 const { Content, headings } = await entry.render();
-// const { lastModified, title, minutesRead, wordCount } = remarkPluginFrontmatter;
 
-// const properties: MetadataProps = [
-//   { title: "size", content: `${minutesRead} / ${wordCount} words` },
-//   { title: "modified", content: lastModified },
-//   {
-//     title: "published",
-//     content: data.published ?? data.created ?? data.date_created ?? data.date,
-//     type: "date",
-//   },
-// ];
 const title = data.title ?? getNoteName(entry.id);
 const isCollection =
   data.tags &&
@@ -54,7 +43,7 @@ const isCollection =
         </aside>
         <article class="prose cgrid flow-lg">
           <Content />
-          {
+          <!-- {
             isCollection && data?.collectionItems && (
               <ul>
                 {data.collectionItems.map((item) => (
@@ -64,7 +53,8 @@ const isCollection =
                 ))}
               </ul>
             )
-          }
+          } -->
+          <CollectionList relativePath={entry.id} />
         </article>
       </div>
     </div>

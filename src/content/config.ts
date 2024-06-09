@@ -27,6 +27,11 @@ const projectCollection = defineCollection({
   }),
 });
 
+const obsidianCollectionsCollection = defineCollection({
+  type: "data",
+  schema: z.array(z.string()),
+});
+
 const obsidianNoteCollection = defineCollection({
   type: "content",
   schema: z
@@ -34,7 +39,6 @@ const obsidianNoteCollection = defineCollection({
       title: z.string(),
       tags: z.array(z.string()).nullable(),
       collection: z.union([z.string(), z.array(z.string())]),
-      collectionItems: z.array(z.string()),
       prev: z.string(),
       next: z.string(),
       date: z.string(),
@@ -50,4 +54,5 @@ export const collections = {
   highlight: highlightCollection,
   project: projectCollection,
   "obsidian-note": obsidianNoteCollection,
+  "obsidian-collection": obsidianCollectionsCollection,
 };

@@ -26,9 +26,3 @@ export function slugify(str: string) {
 //     .replace(/-+/g, "-"); // remove consecutive hyphens
 //   return str;
 // }
-
-export function getNoteName(filepath: string) {
-  const { dir, name } = path.parse(filepath);
-  if (name === "index") return dir;
-  return name;
-}

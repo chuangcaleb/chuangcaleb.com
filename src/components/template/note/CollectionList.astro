@@ -1,0 +1,27 @@
+---
+import { slugify } from "lib/markdown/string";
+import BrandA from "~/components/styled/monom/BrandA.astro";
+import { getCollectionNotes, getNoteName } from "~/utils/post";
+
+interface Props {
+  relativePath: string;
+}
+const { relativePath } = Astro.props;
+
+const noteName = getNoteName(relativePath);
+
+const notes = await getCollectionNotes(noteName);
+---
+
+<ul>
+  {
+    notes.map((note) => {
+      if (!note) return null;
+      return (
+        <li>
+          <BrandA href={note.slug}>{getNoteName(note.id)}</BrandA>
+        </li>
+      );
+    })
+  }
+</ul>

@@ -1,4 +1,11 @@
-import { getCollection, type CollectionEntry } from "astro:content";
+import path from "path";
+import {
+  getCollection,
+  getEntry,
+  getEntryBySlug,
+  type CollectionEntry,
+} from "astro:content";
+import { slugify } from "lib/markdown/string";
 
 const DIR = "8 public";
 // const SLUG_DIR = slugify(DIR);
@@ -20,4 +27,27 @@ export function getPublicNotes() {
   //     id: stripRootDir(n.id, DIR),
   //     slug: stripRootDir(n.slug, SLUG_DIR),
   //   }));
+}
+
+export function getNoteName(filepath: string) {
+  const { dir, name } = path.parse(filepath);
+  if (name === "index") return dir;
+  return name;
+}
+
+function getNoteRoute(filepath: string) {
+  const { dir, name } = path.parse(filepath);
+  if (name === "index") return dir;
+  return path.join(dir, name);
+}
+
+export async function getCollectionNotes(id: string) {
+  const collection = await getEntry("obsidian-collection", getNoteName(id));
+  if (!collection) return [];
+  const notes = await Promise.all(
+    collection.data.map((path) =>
+      getEntryBySlug("obsidian-note", slugify(getNoteRoute(path))),
+    ),
+  );
+  return notes.filter(Boolean);
 }
