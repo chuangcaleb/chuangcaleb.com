@@ -33,6 +33,9 @@ const obsidianNoteCollection = defineCollection({
     title: z.string().optional(),
     tags: z.array(z.string()).nullable().optional(),
     collectionItems: z.array(z.string()).optional(),
+    prev: z.string().optional(),
+    next: z.string().optional(),
+    date: z.string().optional(),
   }),
 });
 // tags: z.array(z.string()).optional(),

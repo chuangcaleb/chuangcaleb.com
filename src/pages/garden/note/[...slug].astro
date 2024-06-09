@@ -1,12 +1,13 @@
 ---
 import { getCollection } from "astro:content";
+import { slugify } from "lib/markdown/slugify";
 import path from "path";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
-import Toc from "~/components/template/note/Toc.astro";
-import { slugify } from "lib/markdown/slugify";
 import BrandA from "~/components/styled/monom/BrandA.astro";
+import Metadata from "~/components/template/note/Metadata.astro";
+import Toc from "~/components/template/note/Toc.astro";
 
 export async function getStaticPaths() {
   const notes = await getCollection("obsidian-note");
@@ -44,7 +45,7 @@ const isCollection =
       <div class="cont-header | cgrid-max">
         <header class="region">
           <h1>{title}</h1>
-          <!-- <Metadata properties={properties} /> -->
+          <Metadata metadata={data} />
         </header>
       </div>
       <div class="body region">
@@ -55,20 +56,17 @@ const isCollection =
           <Content />
           {
             isCollection && data?.collectionItems && (
-              <>
-                <hr />
-                <ul>
-                  {data.collectionItems.map((item) => (
-                    <li>
-                      <BrandA
-                        href={slugify(path.basename(item, path.extname(item)))}
-                      >
-                        {path.parse(item).name}
-                      </BrandA>
-                    </li>
-                  ))}
-                </ul>
-              </>
+              <ul>
+                {data.collectionItems.map((item) => (
+                  <li>
+                    <BrandA
+                      href={slugify(path.basename(item, path.extname(item)))}
+                    >
+                      {path.parse(item).name}
+                    </BrandA>
+                  </li>
+                ))}
+              </ul>
             )
           }
         </article>
