@@ -23,8 +23,7 @@
 
   hr {
     grid-column-start: feature;
-    grid-column-end: popout;
-    border-style: dashed;
+    grid-column-end: max;
     --flow-space: var(--hr-space);
     & + * {
       --flow-space: var(--hr-space);
