@@ -5,3 +5,5 @@ export const LINK_KEYS = [
   "prev",
   "collectionItems",
 ];
+
+export const EXCLUDE_KEYS = ["collectionItems", "tags"];

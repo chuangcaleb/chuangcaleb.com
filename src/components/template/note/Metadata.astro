@@ -1,4 +1,5 @@
 ---
+import { EXCLUDE_KEYS } from "lib/obsidian/consts";
 import MetadataValue from "./MetadataValue.astro";
 
 export type MetadataProps = {
@@ -15,6 +16,7 @@ const metadataArray = Object.entries(metadata);
   {
     metadataArray.map(([key, value]) => {
       if (!value) return;
+      if (EXCLUDE_KEYS.includes(key)) return;
       return (
         <li>
           {key} :: <MetadataValue key={key} value={value} />
@@ -29,5 +31,6 @@ const metadataArray = Object.entries(metadata);
     color: var(--text-faded);
     font-size: var(--step--1);
     margin-block: auto;
+    list-style-type: none;
   }
 </style>
