@@ -31,6 +31,8 @@ const obsidianNoteCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string().optional(),
+    tags: z.array(z.string()).nullable().optional(),
+    collectionItems: z.array(z.string()).optional(),
   }),
 });
 // tags: z.array(z.string()).optional(),

@@ -5,6 +5,8 @@ import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
 import Toc from "~/components/template/note/Toc.astro";
+import { slugify } from "lib/markdown/slugify";
+import BrandA from "~/components/styled/monom/BrandA.astro";
 
 export async function getStaticPaths() {
   const notes = await getCollection("obsidian-note");
@@ -29,6 +31,10 @@ const { Content, headings } = await entry.render();
 //   },
 // ];
 const title = data.title ?? path.parse(entry.id).name;
+const isCollection =
+  data.tags &&
+  (data.tags?.includes("📂/collection/series") ||
+    data.tags?.includes("📂/collection"));
 ---
 
 <Base title={title}>
@@ -47,6 +53,24 @@ const title = data.title ?? path.parse(entry.id).name;
         </aside>
         <article class="prose cgrid flow-lg">
           <Content />
+          {
+            isCollection && data?.collectionItems && (
+              <>
+                <hr />
+                <ul>
+                  {data.collectionItems.map((item) => (
+                    <li>
+                      <BrandA
+                        href={slugify(path.basename(item, path.extname(item)))}
+                      >
+                        {path.parse(item).name}
+                      </BrandA>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )
+          }
         </article>
       </div>
     </div>

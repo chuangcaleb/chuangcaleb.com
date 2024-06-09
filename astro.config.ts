@@ -70,6 +70,6 @@ export default defineConfig({
   vite: {
     plugins: [icons({ compiler: "jsx", jsx: "react" })],
   },
-  scopedStyleStrategy: "class",
+  scopedStyleStrategy: "attribute",
   redirects,
 });
