@@ -21,10 +21,6 @@ const { data } = entry;
 const { Content, headings } = await entry.render();
 
 const title = data.title ?? getNoteName(entry.id);
-const isCollection =
-  data.tags &&
-  (data.tags?.includes("📂/collection/series") ||
-    data.tags?.includes("📂/collection"));
 ---
 
 <Base title={title}>
@@ -43,17 +39,6 @@ const isCollection =
         </aside>
         <article class="prose cgrid flow-lg">
           <Content />
-          <!-- {
-            isCollection && data?.collectionItems && (
-              <ul>
-                {data.collectionItems.map((item) => (
-                  <li>
-                    <BrandA href={slugify(item)}>{getNoteName(item)}</BrandA>
-                  </li>
-                ))}
-              </ul>
-            )
-          } -->
           <CollectionList relativePath={entry.id} />
         </article>
       </div>

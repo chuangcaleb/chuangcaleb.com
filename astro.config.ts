@@ -1,7 +1,8 @@
+import path from "path";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-// import { getPermalinks, remarkWikiLink } from "@portaljs/remark-wiki-link";
+import { getPermalinks, remarkWikiLink } from "@portaljs/remark-wiki-link";
 import compressor from "astro-compressor";
 import purgecss from "astro-purgecss";
 import robotsTxt from "astro-robots-txt";
@@ -11,8 +12,9 @@ import { defineConfig, type AstroUserConfig } from "astro/config";
 // import { remarkStripH1 } from "lib/remark/strip-h1";
 import icons from "unplugin-icons/vite";
 import LINKS from "./src/data/links";
+import { slugify } from "./lib/markdown/string";
 
-// const NOTES_DIR = "src/content/obsidian-note";
+const NOTES_DIR = "src/content/obsidian-note";
 
 const prodIntegrations = [
   robotsTxt(),
@@ -56,15 +58,15 @@ export default defineConfig({
     remarkPlugins: [
       // remarkStripH1,
       // remarkReadingTime,
-      // [
-      //   remarkWikiLink,
-      //   {
-      //     pathFormat: "obsidian-short",
-      //     permalinks: getPermalinks(NOTES_DIR),
-      //     hrefTemplate: (permalink: string) =>
-      //       `/garden/note${slugify(permalink)}`,
-      //   },
-      // ],
+      [
+        remarkWikiLink,
+        {
+          pathFormat: "obsidian-short",
+          permalinks: getPermalinks(NOTES_DIR),
+          hrefTemplate: (permalink: string) =>
+            path.join("/garden/note", slugify(permalink)),
+        },
+      ],
     ],
   },
   vite: {

@@ -9,6 +9,7 @@ export type MetadataProps = {
 type Props = { metadata: MetadataProps };
 
 const { metadata } = Astro.props;
+// TODO: sort metadata; by value type, then by key
 const metadataArray = Object.entries(metadata);
 ---
 

@@ -1,11 +1,9 @@
 ---
-import { getNoteName } from "lib/markdown/string";
-import path from "path";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
 import BrandA from "~/components/styled/monom/BrandA.astro";
-import { getPublicNotes } from "~/utils/post";
+import { getNoteName, getPublicNotes } from "~/utils/post";
 
 const publicNotes = await getPublicNotes();
 ---

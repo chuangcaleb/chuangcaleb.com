@@ -1,5 +1,3 @@
-import path from "path";
-
 export function removeConsecHyphens(string: string) {
   return string.replace(/-+/g, "-");
 }
