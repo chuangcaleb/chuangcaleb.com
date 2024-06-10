@@ -51,5 +51,10 @@
         "prettier": "^3.3.1",
         "prettier-plugin-astro": "^0.14.0",
         "tsx": "^4.13.3"
+    },
+    "pnpm": {
+        "patchedDependencies": {
+            "@portaljs/remark-wiki-link@1.2.0": "patches/@portaljs__remark-wiki-link@1.2.0.patch"
+        }
     }
 }

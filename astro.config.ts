@@ -59,6 +59,7 @@ export default defineConfig({
       // remarkStripH1,
       // remarkReadingTime,
       [
+        // https://github.com/datopian/datahub/issues/1059
         remarkWikiLink,
         {
           pathFormat: "obsidian-short",
