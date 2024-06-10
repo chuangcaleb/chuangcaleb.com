@@ -20,7 +20,8 @@ const { entry } = Astro.props;
 const { data } = entry;
 const { Content, headings } = await entry.render();
 
-const title = data.title ?? getNoteName(entry.id);
+const noteName = getNoteName(entry.id);
+const title = data.title ?? noteName;
 ---
 
 <Base title={title}>
@@ -39,7 +40,7 @@ const title = data.title ?? getNoteName(entry.id);
         </aside>
         <article class="prose cgrid flow-lg">
           <Content />
-          <CollectionList relativePath={entry.id} />
+          <CollectionList note={entry} />
         </article>
       </div>
     </div>

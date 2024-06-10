@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 
 const highlightCollection = defineCollection({
   type: "content",
@@ -29,7 +29,7 @@ const projectCollection = defineCollection({
 
 const obsidianCollectionsCollection = defineCollection({
   type: "data",
-  schema: z.array(z.string()),
+  schema: z.array(reference("obsidian-note")),
 });
 
 const obsidianNoteCollection = defineCollection({
@@ -38,7 +38,10 @@ const obsidianNoteCollection = defineCollection({
     .object({
       title: z.string(),
       tags: z.array(z.string()).nullable(),
-      collection: z.union([z.string(), z.array(z.string())]),
+      collection: z.union([
+        reference("obsidian-note"), //FIXME: should be obsidian-collections
+        z.array(reference("obsidian-note")),
+      ]),
       prev: z.string(),
       next: z.string(),
       date: z.string(),

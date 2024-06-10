@@ -1,27 +1,32 @@
 ---
-import { slugify } from "lib/markdown/string";
-import { getNoteName } from "~/utils/post";
+import { getEntry } from "astro:content";
 import BrandA from "~/components/styled/monom/BrandA.astro";
+import { getNoteName } from "~/utils/post";
+import type { MetadataValues } from "./MetadataValue.astro";
 
 interface Props {
   isLink: boolean;
-  value: string | Date;
+  value: Exclude<MetadataValues, Array<any>>;
 }
 
-const { isLink, value } = Astro.props;
+const { value } = Astro.props;
 const isDate = value instanceof Date;
+const note =
+  typeof value !== "string" &&
+  value &&
+  (await getEntry("obsidian-note", value.slug));
 ---
 
 {
   isDate ? (
     value.toLocaleDateString("en-gb")
-  ) : isLink ? (
-    <BrandA href={`/garden/note/${slugify(value)}`}>
-      {getNoteName(value)}
-    </BrandA>
-  ) : Date.parse(value) ? (
-    new Date(value).toLocaleDateString("en-gb")
-  ) : (
-    value
-  )
+  ) : note ? (
+    <BrandA href={`/garden/note/${note.slug}`}>{getNoteName(note.id)}</BrandA>
+  ) : typeof value === "string" ? (
+    Date.parse(value) ? (
+      new Date(value).toLocaleDateString("en-gb")
+    ) : (
+      value
+    )
+  ) : null
 }

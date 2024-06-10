@@ -1,10 +1,12 @@
 ---
 import { LINK_KEYS } from "lib/obsidian/consts";
 import MetadataValueItem from "./MetadataValueItem.astro";
+import type { MetadataProps } from "./Metadata.astro";
 
+export type MetadataValues = MetadataProps[keyof MetadataProps];
 interface Props {
   key: string;
-  value: string | string[] | Date;
+  value: MetadataValues;
 }
 
 const { key, value } = Astro.props;
