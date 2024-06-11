@@ -9,16 +9,15 @@ interface Props {
 }
 const { note } = Astro.props;
 
-const collectionMeta = await getEntry(
-  "obsidian-collection",
-  getNoteName(note.id)
-);
+const collectionNote = await getEntry("obsidian-note", note.slug);
 
-const isOrdered = !!note.data.tags?.includes("📂/collection/series");
+const isOrdered = !!note.data.series;
 
 const List = isOrdered ? "ol" : "ul";
 
-const notes = collectionMeta && (await getEntries(collectionMeta.data));
+const notes =
+  collectionNote?.data.collectionItems &&
+  (await getEntries(collectionNote.data.collectionItems));
 ---
 
 {

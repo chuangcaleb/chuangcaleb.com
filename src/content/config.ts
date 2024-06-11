@@ -48,6 +48,8 @@ const obsidianNoteCollection = defineCollection({
       created: z.string(),
       modified: z.string(),
       published: z.string(),
+      series: z.boolean(),
+      collectionItems: z.array(reference("obsidian-note")),
     })
     .partial(),
 });

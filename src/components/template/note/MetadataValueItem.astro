@@ -1,4 +1,5 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 import BrandA from "~/components/styled/monom/BrandA.astro";
 import { getNoteName } from "~/utils/post";
@@ -9,12 +10,17 @@ interface Props {
   value: Exclude<MetadataValues, Array<any>>;
 }
 
+type Reference =
+  | { collection: string; id: string }
+  | { collection: string; slug: string };
+
+const isReference = (x: any): x is Reference =>
+  !!x["collection"] && (!!x["id"] || !!x["slug"]);
+
 const { value } = Astro.props;
+
 const isDate = value instanceof Date;
-const note =
-  typeof value !== "string" &&
-  value &&
-  (await getEntry("obsidian-note", value.slug));
+const note = isReference(value) && (await getEntry(value));
 ---
 
 {
