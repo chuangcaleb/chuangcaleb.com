@@ -1,0 +1,35 @@
+---
+import { getEntry } from "astro:content";
+import BrandA from "~/components/styled/monom/BrandA.astro";
+import { getNoteName } from "~/utils/post";
+import type { MetadataValues } from "./MetadataValue.astro";
+
+interface Props {
+  isLink: boolean;
+  value: Exclude<MetadataValues, Array<any>>;
+}
+
+type Reference =
+  | { collection: string; id: string }
+  | { collection: string; slug: string };
+
+const isReference = (x: any): x is Reference =>
+  !!x["collection"] && (!!x["id"] || !!x["slug"]);
+
+const { value } = Astro.props;
+
+const isDate = value instanceof Date;
+const note = isReference(value) && (await getEntry(value));
+
+const isString = typeof value === "string";
+const isDateFormat = isString && Date.parse(value);
+---
+
+{isDate && value.toLocaleDateString("en-gb")}
+{
+  note && (
+    <BrandA href={`/garden/note/${note.slug}`}>{getNoteName(note.id)}</BrandA>
+  )
+}
+{isString && isDateFormat && new Date(value).toLocaleDateString("en-gb")}
+{isString && !isDateFormat && value}

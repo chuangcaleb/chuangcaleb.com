@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
+
 const highlightCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -6,6 +7,7 @@ const highlightCollection = defineCollection({
     sequence: z.number(),
   }),
 });
+
 const projectCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -25,9 +27,31 @@ const projectCollection = defineCollection({
   }),
 });
 
+const obsidianCollectionsCollection = defineCollection({
+  type: "data",
+  schema: z.array(reference("obsidian-note")),
+});
+
 const obsidianNoteCollection = defineCollection({
   type: "content",
-  schema: null,
+  schema: z
+    .object({
+      title: z.string(),
+      tags: z.array(z.string()).nullable(),
+      collection: z.union([
+        reference("obsidian-note"), //FIXME: should be obsidian-collections
+        z.array(reference("obsidian-note")),
+      ]),
+      prev: reference("obsidian-note"),
+      next: reference("obsidian-note"),
+      date: z.string(),
+      created: z.string(),
+      modified: z.string(),
+      published: z.string(),
+      series: z.boolean(),
+      collectionItems: z.array(reference("obsidian-note")),
+    })
+    .partial(),
 });
 // tags: z.array(z.string()).optional(),
 
@@ -35,4 +59,5 @@ export const collections = {
   highlight: highlightCollection,
   project: projectCollection,
   "obsidian-note": obsidianNoteCollection,
+  "obsidian-collection": obsidianCollectionsCollection,
 };

@@ -1,0 +1,31 @@
+---
+import { LINK_KEYS } from "lib/obsidian/consts";
+import MetadataValueItem from "./MetadataValueItem.astro";
+import type { MetadataProps } from "./Metadata.astro";
+
+export type MetadataValues = MetadataProps[keyof MetadataProps];
+interface Props {
+  key: string;
+  value: MetadataValues;
+}
+
+const { key, value } = Astro.props;
+
+const isLink = LINK_KEYS.includes(key);
+const isArray = Array.isArray(value);
+const isSingleArrayItem = isArray && value.length === 1;
+---
+
+{
+  isArray && !isSingleArrayItem && (
+    <ul>
+      {value.map((item) => (
+        <li>
+          <MetadataValueItem isLink={isLink} value={item} />
+        </li>
+      ))}
+    </ul>
+  )
+}
+{!isArray && <MetadataValueItem isLink={isLink} value={value} />}
+{isSingleArrayItem && <MetadataValueItem isLink={isLink} value={value[0]} />}

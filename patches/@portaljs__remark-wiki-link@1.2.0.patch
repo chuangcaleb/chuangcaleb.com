@@ -1,0 +1,52 @@
+diff --git a/dist/index.cjs b/dist/index.cjs
+index 80d21bbf699310538dbb0a5c1b063b0716706fc4..3b5c3ea0f2d957ba4901cddb24e04207746b7d13 100644
+--- a/dist/index.cjs
++++ b/dist/index.cjs
+@@ -340,6 +340,7 @@ function fromMarkdown() {
+     return stack[stack.length - 1];
+   }
+   function enterWikiLink(token) {
++
+     this.enter({
+       type: 'wikiLink',
+       data: {
+@@ -366,11 +367,13 @@ function fromMarkdown() {
+     current.data.alias = alias;
+   }
+   function exitWikiLink(token) {
+-    var wikiLink = this.exit(token);
++    // https://github.com/datopian/datahub/issues/1059
++    const wikiLink = top(this.stack)
+     var _wikiLink$data = wikiLink.data,
+-      isEmbed = _wikiLink$data.isEmbed,
+-      target = _wikiLink$data.target,
+-      alias = _wikiLink$data.alias;
++    isEmbed = _wikiLink$data.isEmbed,
++    target = _wikiLink$data.target,
++    alias = _wikiLink$data.alias;
++    this.exit(token);
+     // eslint-disable-next-line no-useless-escape
+     var wikiLinkWithHeadingPattern = /^((?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])*?)(#(?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])*)?$/;
+     var _target$match = target.match(wikiLinkWithHeadingPattern),
+diff --git a/dist/index.js b/dist/index.js
+index 8cee892269bb0768d9be4f3f6407a59e3b56af40..260f59d245faab5586b2c7c62cfc0a496fd38cd4 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -357,11 +357,13 @@ function fromMarkdown() {
+     current.data.alias = alias;
+   }
+   function exitWikiLink(token) {
+-    var wikiLink = this.exit(token);
++    // https://github.com/datopian/datahub/issues/1059
++    const wikiLink = top(this.stack)
+     var _wikiLink$data = wikiLink.data,
+-      isEmbed = _wikiLink$data.isEmbed,
+-      target = _wikiLink$data.target,
+-      alias = _wikiLink$data.alias;
++    isEmbed = _wikiLink$data.isEmbed,
++    target = _wikiLink$data.target,
++    alias = _wikiLink$data.alias;
++    this.exit(token);
+     // eslint-disable-next-line no-useless-escape
+     var wikiLinkWithHeadingPattern = /^((?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])*?)(#(?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])*)?$/;
+     var _target$match = target.match(wikiLinkWithHeadingPattern),

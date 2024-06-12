@@ -1,28 +1,25 @@
 ---
-import Date from "./DateProp.astro";
+import { EXCLUDE_KEYS } from "lib/obsidian/consts";
+import MetadataValue from "./MetadataValue.astro";
+import type { CollectionEntry } from "astro:content";
 
-export type MetadataProps = {
-  title: string;
-  content?: string;
-  type?: "date";
-}[];
+export type MetadataProps = CollectionEntry<"obsidian-note">["data"];
 
-type Props = { properties: MetadataProps };
+type Props = { metadata: MetadataProps };
 
-const { properties } = Astro.props;
+const { metadata } = Astro.props;
+// TODO: sort metadata; by value type, then by key
+const metadataArray = Object.entries(metadata);
 ---
 
 <ul>
   {
-    properties.map(({ title, content, type }) => {
-      if (!content) return;
+    metadataArray.map(([key, value]) => {
+      if (!value) return;
+      if (EXCLUDE_KEYS.includes(key)) return;
       return (
         <li>
-          {title} ::
-          {(() => {
-            if (type === "date") return <Date datetime={content} />;
-            return content;
-          })()}
+          {key} :: <MetadataValue key={key} value={value} />
         </li>
       );
     })
@@ -33,6 +30,7 @@ const { properties } = Astro.props;
   ul {
     color: var(--text-faded);
     font-size: var(--step--1);
-    margin-block: auto;{}
+    margin-block: auto;
+    list-style-type: none;
   }
 </style>

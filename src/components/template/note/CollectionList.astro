@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getEntries, getEntry } from "astro:content";
+import BrandA from "~/components/styled/monom/BrandA.astro";
+import { getNoteName } from "~/utils/post";
+
+interface Props {
+  note: CollectionEntry<"obsidian-note">;
+}
+const { note } = Astro.props;
+
+const collectionNote = await getEntry("obsidian-note", note.slug);
+
+const isOrdered = !!note.data.series;
+
+const List = isOrdered ? "ol" : "ul";
+
+const notes =
+  collectionNote?.data.collectionItems &&
+  (await getEntries(collectionNote.data.collectionItems));
+---
+
+{
+  notes && (
+    <List>
+      {notes.map((note) => {
+        if (!note) return null;
+        return (
+          <li>
+            <BrandA href={note.slug}>{getNoteName(note.id)}</BrandA>
+          </li>
+        );
+      })}
+    </List>
+  )
+}

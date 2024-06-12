@@ -23,8 +23,7 @@
 
   hr {
     grid-column-start: feature;
-    grid-column-end: popout;
-    border-style: dashed;
+    grid-column-end: max;
     --flow-space: var(--hr-space);
     & + * {
       --flow-space: var(--hr-space);
@@ -82,6 +81,7 @@
     grid-template-columns: subgrid;
     border-radius: var(--radius-2);
     * {
+      font-size: var(--step--1);
       grid-column: content;
       text-wrap: wrap;
     }

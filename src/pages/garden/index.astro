@@ -1,29 +1,47 @@
 ---
+import { getCollection } from "astro:content";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
 import BrandA from "~/components/styled/monom/BrandA.astro";
-import { getPublicNotes } from "~/utils/post";
-import { removeConsecHyphens } from "lib/markdown/slugify";
+import { getNoteName } from "~/utils/post";
 
-const publicNotes = await getPublicNotes();
-const publicNotesFrontmatter = await Promise.all(
-  publicNotes.map(async (n) => (await n.render()).remarkPluginFrontmatter),
+const publicNotes = await getCollection("obsidian-note");
+
+const collectionNotes = publicNotes.filter((n) =>
+  n.data.tags?.includes("📂/collection")
 );
+
+const leafNotes = publicNotes
+  .filter((n) => !n.data.tags?.includes("📂/collection"))
+  .sort((a, b) => (a.body.length < b.body.length ? 1 : -1));
 ---
 
 <Base>
   <Main>
     <WIPDisclaimer />
     <section class="cgrid-feature prose region flow-lg">
-      <h1>All Posts</h1>
+      <h2>Collection notes</h2>
       <ul>
         {
-          publicNotes?.map(async (n, idx) => (
+          collectionNotes?.map((n) => (
             <li>
-              <BrandA href={`/garden/note/${removeConsecHyphens(n.slug)}`}>
-                {publicNotesFrontmatter[idx].title}
+              <BrandA href={`/garden/note/${n.slug}`}>
+                {getNoteName(n.id)}
               </BrandA>
+            </li>
+          ))
+        }
+      </ul>
+      <h2>Leaf notes</h2>
+      <ul>
+        {
+          leafNotes?.map((n) => (
+            <li>
+              <BrandA href={`/garden/note/${n.slug}`}>
+                {getNoteName(n.id)}
+              </BrandA>
+              ({n.body.length} chars)
             </li>
           ))
         }
