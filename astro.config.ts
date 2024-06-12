@@ -38,6 +38,7 @@ const REDIRECTS = {
   "/github": LINKS.GITHUB.href,
   "/cv": LINKS.CV.href,
   "/resume": LINKS.CV.href,
+  "/garden/note": "/garden",
 };
 
 const redirects: AstroUserConfig["redirects"] = Object.entries(

@@ -7,20 +7,41 @@ import BrandA from "~/components/styled/monom/BrandA.astro";
 import { getNoteName } from "~/utils/post";
 
 const publicNotes = await getCollection("obsidian-note");
+
+const collectionNotes = publicNotes.filter((n) =>
+  n.data.tags?.includes("📂/collection")
+);
+
+const leafNotes = publicNotes
+  .filter((n) => !n.data.tags?.includes("📂/collection"))
+  .sort((a, b) => (a.body.length < b.body.length ? 1 : -1));
 ---
 
 <Base>
   <Main>
     <WIPDisclaimer />
     <section class="cgrid-feature prose region flow-lg">
-      <h1>All Notes</h1>
+      <h2>Collection notes</h2>
       <ul>
         {
-          publicNotes?.map((n) => (
+          collectionNotes?.map((n) => (
             <li>
               <BrandA href={`/garden/note/${n.slug}`}>
                 {getNoteName(n.id)}
               </BrandA>
+            </li>
+          ))
+        }
+      </ul>
+      <h2>Leaf notes</h2>
+      <ul>
+        {
+          leafNotes?.map((n) => (
+            <li>
+              <BrandA href={`/garden/note/${n.slug}`}>
+                {getNoteName(n.id)}
+              </BrandA>
+              ({n.body.length} chars)
             </li>
           ))
         }
