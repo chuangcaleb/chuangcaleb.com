@@ -13,10 +13,11 @@ const { key, value } = Astro.props;
 
 const isLink = LINK_KEYS.includes(key);
 const isArray = Array.isArray(value);
+const isSingleArrayItem = isArray && value.length === 1;
 ---
 
 {
-  isArray ? (
+  isArray && !isSingleArrayItem && (
     <ul>
       {value.map((item) => (
         <li>
@@ -24,7 +25,7 @@ const isArray = Array.isArray(value);
         </li>
       ))}
     </ul>
-  ) : (
-    <MetadataValueItem isLink={isLink} value={value} />
   )
 }
+{!isArray && <MetadataValueItem isLink={isLink} value={value} />}
+{isSingleArrayItem && <MetadataValueItem isLink={isLink} value={value[0]} />}
