@@ -42,8 +42,8 @@ const obsidianNoteCollection = defineCollection({
         reference("obsidian-note"), //FIXME: should be obsidian-collections
         z.array(reference("obsidian-note")),
       ]),
-      prev: z.string(),
-      next: z.string(),
+      prev: reference("obsidian-note"),
+      next: reference("obsidian-note"),
       date: z.string(),
       created: z.string(),
       modified: z.string(),
