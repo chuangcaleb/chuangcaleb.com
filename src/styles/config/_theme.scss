@@ -17,7 +17,7 @@ $light-theme: (
   brand-hsl: var(--day-hS) 30%,
   surface-1a-hsl: var(--day-hs) 94%,
   surface-1b: hsl(var(--day-hs) 91%),
-  text-1: hsl(var(--day-hs) 40%),
+  text-1: hsl(var(--day-hs) 30%),
   text-1-strong: hsl(var(--day-hs) 7%),
   text-faded: hsl(var(--day-hs) 43%),
   text-muted: hsl(var(--day-hs) 82%),
@@ -26,7 +26,7 @@ $light-theme: (
 );
 
 $dark-theme: (
-  brand-hsl: var(--day-hS) 70%,
+  brand-hsl: var(--day-hS) 68%,
   surface-1a-hsl: var(--night-hs) 18%,
   surface-1b: hsl(var(--night-hs) 12%),
   text-1: hsl(var(--night-hs) 85%),

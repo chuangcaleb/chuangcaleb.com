@@ -13,11 +13,11 @@
 
 :where(h1) {
   font-weight: var(--font-weight-8);
-  font-size: var(--step-7);
+  font-size: var(--step-5);
 }
 
 :where(h2) {
-  font-size: var(--step-5);
+  font-size: var(--step-4);
   font-weight: var(--font-weight-6);
 }
 
