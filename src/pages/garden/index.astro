@@ -36,8 +36,8 @@ const leafNotes = publicNotes
         {
           leafNotes?.map((n) => (
             <li>
-              <BrandA href={`/note/${n.slug}`}>{getNoteName(n.id)}</BrandA>(
-              {n.body.length} chars)
+              <BrandA href={`/note/${n.slug}`}>{getNoteName(n.id)}</BrandA>
+              {`(${n.body.length} chars)`}
             </li>
           ))
         }
