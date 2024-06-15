@@ -26,10 +26,6 @@ const isDateFormat = isString && Date.parse(value);
 ---
 
 {isDate && value.toLocaleDateString("en-gb")}
-{
-  note && (
-    <BrandA href={`/garden/note/${note.slug}`}>{getNoteName(note.id)}</BrandA>
-  )
-}
+{note && <BrandA href={`/note/${note.slug}`}>{getNoteName(note.id)}</BrandA>}
 {isString && isDateFormat && new Date(value).toLocaleDateString("en-gb")}
 {isString && !isDateFormat && value}

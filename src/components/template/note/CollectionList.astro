@@ -27,9 +27,7 @@ const notes =
         if (!note) return null;
         return (
           <li>
-            <BrandA href={`/garden/note/${note.slug}`}>
-              {getNoteName(note.id)}
-            </BrandA>
+            <BrandA href={`/note/${note.slug}`}>{getNoteName(note.id)}</BrandA>
           </li>
         );
       })}

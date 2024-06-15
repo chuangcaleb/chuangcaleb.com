@@ -38,7 +38,7 @@ const REDIRECTS = {
   "/github": LINKS.GITHUB.href,
   "/cv": LINKS.CV.href,
   "/resume": LINKS.CV.href,
-  "/garden/note": "/garden",
+  "/note": "/garden",
 };
 
 const redirects: AstroUserConfig["redirects"] = Object.entries(
@@ -66,7 +66,7 @@ export default defineConfig({
           pathFormat: "obsidian-short",
           permalinks: getPermalinks(NOTES_DIR),
           hrefTemplate: (permalink: string) =>
-            path.join("/garden/note", slugify(permalink)),
+            path.join("/note", slugify(permalink)),
         },
       ],
     ],
