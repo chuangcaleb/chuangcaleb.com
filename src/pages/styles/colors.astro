@@ -1,0 +1,56 @@
+---
+import Base from "~/components/layout/Base.astro";
+import Main from "~/components/layout/Main.astro";
+
+const DYNAMIC_TOKENS_BASE = { bg: 3, ui: 3, tx: 4, ax: 3 };
+
+const DYNAMIC_TOKENS = Object.entries(DYNAMIC_TOKENS_BASE).map(([key, max]) =>
+  [...Array(max).keys()].map((n) => key + (n + 1))
+);
+
+const title = "Color Tokens Style Test";
+---
+
+<Base title={title}>
+  <Main class="cgrid region flow-lg">
+    <article class="flow">
+      <h1>{title}</h1>
+      <h2>Base tokens</h2>
+      <ul class="norm">
+        {
+          DYNAMIC_TOKENS.map((tokenGroup, index) =>
+            tokenGroup.map((token) => (
+              <li style={{ gridRow: index + 1 }}>
+                <span
+                  style={{
+                    backgroundColor: `var(--${token})`,
+                    // borderColor: `color-contrast(var(--${t}) vs tan, sienna, #d2691e)`, // no support yet lol
+                  }}
+                />
+                <code>{token}</code>
+              </li>
+            ))
+          )
+        }
+      </ul>
+    </article>
+  </Main>
+</Base>
+
+<style>
+  ul {
+    display: grid;
+    gap: var(--size-relative-6);
+  }
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--size-relative-6);
+  }
+  span {
+    display: inline-block;
+    height: 3rem;
+    width: 3rem;
+    /* border-width: 2px; */
+  }
+</style>

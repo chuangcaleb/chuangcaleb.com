@@ -8,7 +8,7 @@
 }
 
 @mixin apply_theme($suffix) {
-  @each $property, $value in $light-theme {
+  @each $property, $value in $dark-theme {
     --#{$property}: var(--#{$property}-#{$suffix});
   }
 }
@@ -26,15 +26,16 @@ $light-theme: (
 );
 
 $dark-theme: (
-  brand-hsl: var(--day-hS) 68%,
-  surface-1a-hsl: var(--night-hs) 18%,
-  surface-1b: hsl(var(--night-hs) 12%),
-  text-1: hsl(var(--night-hs) 85%),
-  text-1-strong: hsl(var(--night-hs) 97%),
-  text-faded: hsl(var(--night-hs) 65%),
-  text-muted: hsl(var(--night-hs) 30%),
+  // brand-hsl: var(--day-hS) 68%,
+  brand: var(--ax1),
+  surface-1a: var(--bg1),
+  surface-1b: var(--bg2),
+  text-1-strong: var(--tx1),
+  text-1: var(--tx2),
+  text-faded: var(--tx3),
+  text-muted: var(--tx4),
   text-on-brand: hsl(var(--night-hs) 12%),
-  border: hsl(var(--night-hs) 40%),
+  border: var(--ui2)
 );
 
 :root {
@@ -49,8 +50,8 @@ $dark-theme: (
   /* -------------------------------------------------------------------------- */
 
   color-scheme: dark;
-  --brand: hsl(var(--brand-hsl));
-  --surface-1a: hsl(var(--surface-1a-hsl));
+  // --brand: hsl(var(--brand-hsl));
+  // --surface-1a: hsl(var(--surface-1a-hsl));
 
   @include apply_theme(dark);
 
