@@ -4,7 +4,6 @@
   height: 100%;
   caret-color: var(--brand);
   color: var(--text-1);
-  color-scheme: dark;
   font-family: var(--font-sans);
   line-height: var(--font-lineheight-3);
   scrollbar-color: var(--scrollthumb-color) transparent;

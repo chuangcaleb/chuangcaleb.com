@@ -36,17 +36,7 @@ The colors use HSL (hue, saturation, lightness)
 
 */
 
-body,
-[data-theme="dark"],
-.theme-dark {
-  --base-h: 234;
-  --base-s: 21%;
-  --base-l: 18%;
-
-  --accent-h: 9;
-  --accent-s: 85%;
-  --accent-l: 65%;
-
+@mixin config {
   --bg1: hsl(var(--base-h), var(--base-s), var(--base-l));
   --bg2: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 4%));
   --bg3: hsla(var(--base-h), var(--base-s), calc(var(--base-l) + 40%), 0.12);
@@ -67,7 +57,7 @@ body,
   );
   --tx3: hsl(
     var(--base-h),
-    calc(var(--base-s) - 15%),
+    calc(var(--base-s) - 10%),
     calc(var(--base-l) + 40%)
   );
   --tx4: hsl(
@@ -78,5 +68,9 @@ body,
 
   --ax1: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
   --ax2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 8%));
-  --ax3: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 5%));
+  --ax3: hsl(
+    var(--accent-h),
+    calc(var(--accent-s) - 30%),
+    calc(var(--accent-l) + 10%)
+  );
 }
