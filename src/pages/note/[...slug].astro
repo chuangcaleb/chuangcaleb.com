@@ -3,9 +3,9 @@ import { getCollection } from "astro:content";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
-import CollectionList from "~/components/template/note/CollectionList.astro";
-import Metadata from "~/components/template/note/Metadata.astro";
-import Toc from "~/components/template/note/Toc.astro";
+import CollectionList from "./_components/CollectionList.astro";
+import Metadata from "./_components/metadata/Metadata.astro";
+import Toc from "./_components/toc/Toc.astro";
 import { getNoteName } from "~/utils/post";
 
 export async function getStaticPaths() {
