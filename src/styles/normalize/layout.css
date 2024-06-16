@@ -1,8 +1,8 @@
 :where(html) {
-  accent-color: var(--brand);
+  accent-color: var(--ax1);
   background-color: var(--surface-1a);
   height: 100%;
-  caret-color: var(--brand);
+  caret-color: var(--ax1);
   color: var(--text-1);
   font-family: var(--font-sans);
   line-height: var(--font-lineheight-3);
@@ -34,7 +34,7 @@
   width: var(--size-1);
 }
 ::-webkit-scrollbar-track {
-  background-color: var(--text-muted);
+  background-color: var(--ui2);
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--text-faded);

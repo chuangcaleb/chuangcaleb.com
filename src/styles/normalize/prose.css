@@ -134,8 +134,8 @@ ol[class] {
 
 ::selection {
   color: var(--text-on-brand);
-  background: var(--brand);
+  background: var(--ax1);
 }
 img::selection {
-  background: hsla(var(--brand-hsl) / 0.7);
+  background: var(--ax4);
 }

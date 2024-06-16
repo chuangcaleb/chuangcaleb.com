@@ -32,10 +32,10 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     text-transform: lowercase;
 
     &.brand {
-      --_bg: var(--brand);
+      --_bg: var(--ax1);
       --_text: var(--text-on-brand);
       --_border: transparent;
-      --_text-hover: var(--brand);
+      --_text-hover: var(--ax1);
     }
 
     /* &:has(svg:first-child:last-child) {
@@ -54,14 +54,14 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
 
     &:is(:hover, :focus, :active) {
       --_bg: var(--_bg-hover);
-      --_text: var(--_text-hover, var(--brand));
+      --_text: var(--_text-hover, var(--ax1));
       html[data-theme="dark"] & {
         --_bg-hover: var(--text-1-strong);
         --_border: transparent;
       }
       html[data-theme="light"] & {
         --_bg-hover: var(--text-on-brand);
-        --_border: var(--brand);
+        --_border: var(--ax1);
       }
     }
 

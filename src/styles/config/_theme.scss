@@ -12,18 +12,20 @@
   --accent-l: 65%;
 
   --m: 1;
+  --a-l: 1;
 }
 
 @mixin light-theme {
   --base-h: 9;
-  --base-s: 5%;
-  --base-l: 90%;
+  --base-s: 20%;
+  --base-l: 100%;
 
-  --accent-h: 9;
-  --accent-s: 85%;
-  --accent-l: 30%;
+  --accent-h: 0;
+  --accent-s: 80%;
+  --accent-l: 35%;
 
   --m: -1;
+  --a-l: 1.5;
 }
 
 :root {
@@ -36,8 +38,6 @@
 
   color-scheme: dark;
 
-  --brand-hsl: var(--day-hS) 68%;
-  --surface-1a-hsl: var(--night-hs) 18%;
   --brand: var(--ax1);
   --surface-1a: var(--bg1);
   --surface-1b: var(--bg2);

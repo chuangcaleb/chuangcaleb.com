@@ -19,7 +19,7 @@
   }
 
   &[data-state="checked"] {
-    color: var(--brand);
+    color: var(--ax1);
     /* background-color: var(--surface-1a); */
   }
 }

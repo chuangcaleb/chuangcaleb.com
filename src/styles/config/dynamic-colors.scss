@@ -34,16 +34,22 @@ The colors use HSL (hue, saturation, lightness)
 - tx3 faded
 - tx4 blend/faint
 
-`--m` is used to flip the +/-ve direction of lightness modifiers
--> dark mode: 1
--> light mode: -1
+`--m` is the light/dark Mode coefficient
+- is used to flip the +/-ve direction of lightness modifiers
+  -> dark mode: 1 (emphasis gets lighter against dark bg)
+  -> light mode: -1 (emphasis gets darker against light bg)
 - technically, could use decimal numbers to tweak lightness-contrast
+
+`--a-l` is the accent lightness coefficient
+- is used to increase difference between accent shades
+- particularly for light mode with light bg, since accents also have high lightness
 
 */
 
 @mixin config() {
   --bg1: hsl(var(--base-h), var(--base-s), var(--base-l));
-  --bg2: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 4% * var(--m)));
+  --bg2: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 4%));
+  // don't invert for bg2 — bg2 is darker than bg1
   --bg3: hsla(
     var(--base-h),
     var(--base-s),
@@ -87,12 +93,18 @@ The colors use HSL (hue, saturation, lightness)
   --ax1: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
   --ax2: hsl(
     var(--accent-h),
-    var(--accent-s),
-    calc(var(--accent-l) + 8% * var(--m))
+    calc(var(--accent-s) - 35%),
+    calc(var(--accent-l) - 13% * var(--m) * var(--a-l))
   );
   --ax3: hsl(
     var(--accent-h),
-    calc(var(--accent-s) - 30%),
-    calc(var(--accent-l) + 10% * var(--m))
+    calc(var(--accent-s) - 50%),
+    calc(var(--accent-l) - 20% * var(--m) * var(--a-l))
+  );
+  --ax4: hsla(
+    var(--accent-h),
+    calc(var(--accent-s) - 50%),
+    calc(var(--accent-l) - 30% * var(--m) * var(--a-l)),
+    0.5
   );
 }
