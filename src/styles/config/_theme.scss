@@ -36,8 +36,6 @@
 
   @include dynamic-colors.config;
 
-  color-scheme: dark;
-
   --brand: var(--ax1);
   --surface-1a: var(--bg1);
   --surface-1b: var(--bg2);
@@ -48,6 +46,7 @@
   --text-on-brand: var(--bg2);
   --border: var(--ui2);
 
+  color-scheme: dark;
   @include dark-theme();
   @media (prefers-color-scheme: light) {
     color-scheme: light;
