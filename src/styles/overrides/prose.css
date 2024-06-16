@@ -8,14 +8,12 @@
   }
 
   h1 {
-    grid-column: max;
     max-width: var(--size-header-2);
   }
   h2,
   h3,
   h4,
   h5 {
-    grid-column: popout;
     & + * {
       --flow-space: var(--size-relative-8);
     }

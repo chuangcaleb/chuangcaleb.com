@@ -4,7 +4,7 @@
   --popout-g: minmax(0, var(--size-popout));
   --feature-g: minmax(0, 3rem);
   --wide-g: minmax(0, 10ch);
-  --content-w: min(78ch, 100% - var(--gutter) * 2);
+  --content-w: min(72ch, 100% - var(--gutter) * 2);
 
   display: grid;
   grid-template-columns:
