@@ -2,12 +2,12 @@
 import Icon from "astro-iconify";
 import { getCollection } from "astro:content";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
-import HighlightCard from "~/components/template/HighlightCard.astro";
-import Button from "../primitive/Button.astro";
+import HighlightCard from "./HighlightCard.astro";
+import Button from "~/components/primitive/Button.astro";
 import LINKS from "~/data/links";
 
 const highlights = (await getCollection("highlight")).sort(
-  (a, b) => a.data.sequence.valueOf() - b.data.sequence.valueOf(),
+  (a, b) => a.data.sequence.valueOf() - b.data.sequence.valueOf()
 );
 const links = [LINKS.LINKEDIN, LINKS.CV];
 ---
