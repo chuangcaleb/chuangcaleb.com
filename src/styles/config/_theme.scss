@@ -8,18 +8,22 @@
   --base-l: 18%;
 
   --accent-h: 9;
-  --accent-s: 86%;
+  --accent-s: 80%;
   --accent-l: 65%;
+
+  --m: 1;
 }
 
 @mixin light-theme {
-  --base-h: 234;
-  --base-s: 21%;
-  --base-l: 18%;
+  --base-h: 9;
+  --base-s: 5%;
+  --base-l: 90%;
 
   --accent-h: 9;
-  --accent-s: 86%;
-  --accent-l: 65%;
+  --accent-s: 85%;
+  --accent-l: 30%;
+
+  --m: -1;
 }
 
 :root {
