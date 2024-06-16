@@ -13,7 +13,7 @@ const projects = (await getCollection("project"))
 const { GITHUB } = LINKS;
 ---
 
-<section class="region flow-xl" id="projects">
+<section class="region flow-xl container" id="projects">
   <TagWIcon as="h2">
     <Icon name="lucide:atom" />
     {" "}<span class="text-faded">/</span> projects
@@ -24,7 +24,7 @@ const { GITHUB } = LINKS;
   <div class="cta | surface-alt flow-sm">
     <TagWIcon as="p">
       <Icon name="lucide:atom" />
-      <b>Wanna see my other projects?</b>
+      <b>There's a lot more where that came from!</b>
     </TagWIcon>
     <div>
       <Button as="a" href={GITHUB.href} theme="brand">

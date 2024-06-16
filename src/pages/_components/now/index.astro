@@ -12,8 +12,8 @@ const highlights = (await getCollection("highlight")).sort(
 const links = [LINKS.LINKEDIN, LINKS.CV];
 ---
 
-<section class="max region surface-alt">
-  <div class="wide flow-xl">
+<section class="full region surface-alt">
+  <div class="container flow-xl">
     <TagWIcon as="h2">
       <Icon name="lucide:chevron-up-circle" />
       {" "}<span class="text-faded">/</span> now
@@ -36,11 +36,6 @@ const links = [LINKS.LINKEDIN, LINKS.CV];
   section {
     display: grid;
     grid-template-columns: subgrid;
-
-    @media (width < 100ch) {
-      grid-column: full;
-      border-radius: 0;
-    }
     .cont-buttons {
       display: flex;
       column-gap: var(--space-s);

@@ -9,8 +9,7 @@ import LINKS from "~/data/links";
 const props = Astro.props;
 ---
 
-<section class="max region" {...props}>
-  <div class="container">
+<section class="region container" {...props}>
     <div class="cont-img border">
       <Image
         src={heroImg}
@@ -57,28 +56,13 @@ const props = Astro.props;
         }
       </ul>
     </div>
-  </div>
 </section>
 
 
 <style lang="scss">
-  $width-max: 1280px;
-  $gutter-max: 3rem;
-
-  $gutter: minmax(0, $gutter-max);
-  $col-center-w: min($width-max - $gutter-max * 2, 100%);
   section {
-    margin-inline: auto;
     display: grid;
-    grid-template-columns: $gutter $col-center-w $gutter;
-    justify-content: center;
-  }
-
-  .container {
-    display: grid;
-    grid-column: 2 / 2;
     grid-template-columns: 1fr minmax(9rem, 0.7fr);
-    grid-template-rows: repeat(auto, 1fr);
     column-gap: var(--space-m);
     position: relative;
   }
@@ -112,8 +96,8 @@ const props = Astro.props;
     h1 {
       grid-column: 1 / -1;
       text-wrap: balance;
-      line-height: var(--step-6);
-      font-size: var(--step-6);
+      line-height: var(--step-7);
+      font-size: var(--step-7);
     }
     p {
       text-wrap: balance;
@@ -133,11 +117,11 @@ const props = Astro.props;
     z-index: -1;
     position: relative;
     width: 100%;
+    max-width: 400px;
     height: fit-content;
 
     img {
       position: inherit;
-      width: 100%;
       z-index: -2;
     }
     &::after {

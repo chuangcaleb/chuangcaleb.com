@@ -48,14 +48,19 @@ const i = getCldImgData("projects/" + project.slug, true);
   .project {
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(var(--size-header-3), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(calc((var(--size-content-3)/2) + var(--space-m)), 1fr));
     column-gap: var(--space-m);
     row-gap: var(--space-m);
 
+    img {
+      max-width: max(40vw, 700px);
+    }
   }
-  img {
-    width: min(100%, var(--size-content-3));
+
+  .project-body {
+    max-width: var(--size-content-3);
   }
+
 
   .links {
     display: flex;

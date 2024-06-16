@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns:
     [full-start] var(--gutter)
-    [max-start] auto
+    [max-start] 0
     [wide-start] var(--wide-g)
     [feature-start] var(--feature-g)
     [popout-start] var(--popout-g)
@@ -17,7 +17,7 @@
     var(--popout-g) [popout-end]
     var(--feature-g) [feature-end]
     var(--wide-g) [wide-end]
-    auto [max-end]
+    1fr [max-end]
     var(--gutter) [full-end];
   align-content: start;
 }
@@ -68,4 +68,11 @@
 
 .content {
   grid-column: content;
+}
+
+.container {
+  grid-column: max;
+  width: 100%;
+  max-width: clamp(1000px, 78%, 1240px);
+  margin: auto;
 }
