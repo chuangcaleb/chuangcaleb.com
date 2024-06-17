@@ -5,13 +5,12 @@
   --feature-g: minmax(0, 3rem);
   --wide-g: minmax(0, 10ch);
   --content-w: min(65ch, 100% - var(--gutter) * 2);
-  --wide-g-left: 0;
 
   display: grid;
   grid-template-columns:
     [full-start] var(--gutter)
     [max-start] 0
-    [wide-start] var(--wide-g-left)
+    [wide-start] 0
     [feature-start] var(--feature-g)
     [popout-start] var(--popout-g)
     [content-start] var(--content-w) [content-end]

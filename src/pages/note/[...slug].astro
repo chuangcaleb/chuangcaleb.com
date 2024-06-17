@@ -28,78 +28,56 @@ const title = data.title ?? noteName;
 <Base title={title}>
   <Main>
     <WIPDisclaimer />
-    <!-- <div class="cont-header | cgrid-max">
-      <header class="region">
-        <h1>{title}</h1>
-      </header>
-    </div> -->
-    <article class="cgrid region prose flow-lg">
+    <div class="note-body">
       <aside class="toc-aside flow">
         <Metadata metadata={data} />
         {data && !!headings.length && <hr />}
         <Toc headings={headings} />
       </aside>
-      <Content />
-      <CollectionList note={entry} />
-    </article>
+      <article class="full cgrid prose flow-lg region">
+        <Content />
+        <CollectionList note={entry} />
+      </article>
+    </div>
   </Main>
 </Base>
 
 <style>
-  .cont-header {
-    background-color: var(--surface-1b);
-  }
-  header {
-    display: flex;
-    gap: var(--space-xs);
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  h1 {
-    text-wrap: balance;
-    word-wrap: normal;
-  }
-
   /* Remove h1 */
   .prose :global(.toc-aside + h1) {
-    /* display: none; */
     --flow-space: 0;
   }
-  /* Remove first element's flow space */
-  /* .prose > :global(.toc-aside + h1 + *) {
-    --flow-space: 0;
-  } */
+
+  .note-body {
+    display: grid;
+    grid-template-columns: 1fr 30vw;
+  }
 
   aside {
-    grid-column-start: feature-end;
-    grid-column-end: full-end;
-    grid-row: 1 / 999; /* 1 / -1 doesn't work here */
-    padding-inline-start: var(--space-m);
+    width: 100%;
+    justify-self: end;
+    padding-inline: var(--space-m);
     padding-bottom: var(--space-2xs);
-    /* overflow-y: auto; */
-    /* overflow-x: hidden; */
-    max-width: var(--size-content-2);
+    padding-block-start: var(--space-m);
     --hr-space: var(--size-relative-8);
+  }
+  article.cgrid {
+    grid-row-start: 1;
+    grid-column: 1;
+  }
 
-    @media (width < 850px) {
+  @media (width < 900px) {
+    .note-body {
+      grid-template-columns: 1fr;
+    }
+    aside {
       display: none;
     }
   }
+  article.prose {
+    padding-block-start: var(--space-m);
 
-  .cgrid {
-    @media (width < 1000px) {
-      --feature-g: 0;
-      --popout-g: 0;
-      blockquote {
-        grid-column-start: content;
-      }
-    }
-    @media (width < 850px) {
-      --wide-g-left: var(--wide-g);
-    }
-  }
-  .prose {
-    @media (width >= 1000px), (680px <= width <= 850px) {
+    @media (width >= 1000px), (680px <= width <= 900px) {
       h1,
       h2,
       h3,
