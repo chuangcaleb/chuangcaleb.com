@@ -16,7 +16,8 @@ const toc = generateToc(headings);
 // })();
 ---
 
-<nav id="toc">
+<nav id="toc" class="no-scrollbar">
+  <h4>Outline</h4>
   <ul class="toc-root">
     {toc.map((h) => <TocHeading tocItem={h} />)}
   </ul>
@@ -53,3 +54,25 @@ const toc = generateToc(headings);
   // finally, observe the elements
   elToObserve.forEach((el) => observer.observe(el));
 </script>
+
+<style>
+  nav {
+    position: sticky;
+    align-self: flex-start;
+    height: min(100%, 100vh);
+    top: var(--space-2xs);
+    width: 100%;
+    /* margin-block-start: calc(-1 * var(--space-2xs)); */
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--space-xs);
+    overflow-x: hidden;
+    padding-block-end: var(--space-l);
+    /* max-width: 30ch; */
+  }
+  nav h4 {
+    display: block;
+    /* color: var(--text-faded); */
+    font-size: var(--step-1);
+  }
+</style>

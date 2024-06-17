@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { data } = entry;
+
 const { Content, headings } = await entry.render();
 
 const noteName = getNoteName(entry.id);
@@ -27,14 +28,15 @@ const title = data.title ?? noteName;
 <Base title={title}>
   <Main>
     <WIPDisclaimer />
-    <div class="cont-header | cgrid-max">
+    <!-- <div class="cont-header | cgrid-max">
       <header class="region">
         <h1>{title}</h1>
-        <Metadata metadata={data} />
       </header>
-    </div>
+    </div> -->
     <article class="cgrid region prose flow-lg">
-      <aside class="toc-aside no-scrollbar">
+      <aside class="toc-aside flow">
+        <Metadata metadata={data} />
+        {data && !!headings.length && <hr />}
         <Toc headings={headings} />
       </aside>
       <Content />
@@ -60,26 +62,24 @@ const title = data.title ?? noteName;
 
   /* Remove h1 */
   .prose :global(.toc-aside + h1) {
-    display: none;
-  }
-  /* Remove first element's flow space */
-  .prose > :global(.toc-aside + h1 + *) {
+    /* display: none; */
     --flow-space: 0;
   }
+  /* Remove first element's flow space */
+  /* .prose > :global(.toc-aside + h1 + *) {
+    --flow-space: 0;
+  } */
 
   aside {
     grid-column-start: feature-end;
     grid-column-end: full-end;
     grid-row: 1 / 999; /* 1 / -1 doesn't work here */
-    height: min(100%, 100vh);
-    position: sticky;
-    top: var(--space-2xs);
     padding-inline-start: var(--space-m);
     padding-bottom: var(--space-2xs);
-    margin-block-start: calc(-1 * var(--space-2xs));
-    overflow-y: scroll;
-    overflow-x: hidden;
-    max-width: 30ch;
+    /* overflow-y: auto; */
+    /* overflow-x: hidden; */
+    max-width: var(--size-content-2);
+    --hr-space: var(--size-relative-8);
 
     @media (width < 850px) {
       display: none;
@@ -100,7 +100,7 @@ const title = data.title ?? noteName;
   }
   .prose {
     @media (width >= 1000px), (680px <= width <= 850px) {
-      /* h1, */
+      h1,
       h2,
       h3,
       h4,
@@ -108,7 +108,7 @@ const title = data.title ?? noteName;
         display: list-item;
       }
 
-      /* h1::marker, */
+      h1::marker,
       h2::marker,
       h3::marker,
       h4::marker,
@@ -117,9 +117,9 @@ const title = data.title ?? noteName;
         font-size: 0.8em;
         font-weight: initial;
       }
-      /* h1::marker {
-      content: "H1  ";
-    } */
+      h1::marker {
+        content: "H1  ";
+      }
       h2::marker {
         content: "H2  ";
       }

@@ -12,7 +12,7 @@ const { metadata } = Astro.props;
 const metadataArray = Object.entries(metadata);
 ---
 
-<ul>
+<ul class="metadata-root">
   {
     metadataArray.map(([key, value]) => {
       if (!value) return;
@@ -30,7 +30,5 @@ const metadataArray = Object.entries(metadata);
   ul {
     color: var(--text-faded);
     font-size: var(--step--1);
-    margin-block: auto;
-    list-style-type: none;
   }
 </style>
