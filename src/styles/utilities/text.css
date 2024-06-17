@@ -1,7 +1,3 @@
-.text-brand {
-  color: var(--brand);
-}
-
 .text-faded {
   color: var(--text-faded);
 }

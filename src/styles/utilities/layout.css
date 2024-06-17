@@ -9,7 +9,6 @@
 
 .surface-alt {
   background-color: var(--surface-1b);
-  border-radius: var(--radius-3);
 }
 
 .no-scrollbar {

@@ -1,0 +1,59 @@
+---
+import Icon from "astro-iconify";
+import { getCollection } from "astro:content";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
+import ProjectCard from "./ProjectCard.astro";
+import Button from "~/components/primitive/Button.astro";
+import LINKS from "~/data/links";
+
+const projects = (await getCollection("project"))
+  .sort((a, b) => a.data.sequence.valueOf() - b.data.sequence.valueOf())
+  .filter((p) => !p.data.hidden);
+
+const { GITHUB } = LINKS;
+---
+
+<section class="region full" id="projects">
+  <div class="flow-xl container">
+    <TagWIcon as="h2">
+      <Icon name="lucide:atom" />
+      {" "}<span class="text-faded">/</span> projects
+    </TagWIcon>
+    <div class="projects flow-xl">
+      {projects.map((p) => <ProjectCard project={p} />)}
+    </div>
+    <div class="cta | surface-alt flow-sm">
+      <TagWIcon as="p">
+        <Icon name="lucide:atom" />
+        <b>There's a lot more where that came from!</b>
+      </TagWIcon>
+      <div>
+        <Button as="a" href={GITHUB.href} theme="brand">
+          <Icon name={GITHUB.icon} />GitHub profile
+        </Button>
+        <Button as="a" href=`${GITHUB.href}?tab=repositories`>
+          <Icon name={GITHUB.icon} />all my repositories
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+  .cta {
+    padding: var(--space-m);
+    border-radius: var(--radius-3);
+
+    div {
+      display: flex;
+      column-gap: var(--space-s);
+      row-gap: var(--space-xs);
+      flex-wrap: wrap;
+    }
+  }
+</style>

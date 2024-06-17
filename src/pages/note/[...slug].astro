@@ -3,9 +3,9 @@ import { getCollection } from "astro:content";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import Base from "~/components/layout/Base.astro";
 import Main from "~/components/layout/Main.astro";
-import CollectionList from "~/components/template/note/CollectionList.astro";
-import Metadata from "~/components/template/note/Metadata.astro";
-import Toc from "~/components/template/note/Toc.astro";
+import CollectionList from "./_components/CollectionList.astro";
+import Metadata from "./_components/metadata/Metadata.astro";
+import Toc from "./_components/toc/Toc.astro";
 import { getNoteName } from "~/utils/post";
 
 export async function getStaticPaths() {
@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { data } = entry;
+
 const { Content, headings } = await entry.render();
 
 const noteName = getNoteName(entry.id);
@@ -27,80 +28,85 @@ const title = data.title ?? noteName;
 <Base title={title}>
   <Main>
     <WIPDisclaimer />
-    <div class="article">
-      <div class="cont-header | cgrid-max">
-        <header class="region">
-          <h1>{title}</h1>
-          <Metadata metadata={data} />
-        </header>
-      </div>
-      <div class="body region">
-        <aside class="cgrid no-scrollbar">
-          <Toc headings={headings} />
-        </aside>
-        <article class="prose cgrid flow-lg">
-          <Content />
-          <CollectionList note={entry} />
-        </article>
-      </div>
+    <div class="note-body">
+      <aside class="toc-aside flow">
+        <Metadata metadata={data} />
+        <hr />
+        <Toc headings={headings} />
+      </aside>
+      <article class="full cgrid prose flow-lg region">
+        <Content />
+        <CollectionList note={entry} />
+      </article>
     </div>
   </Main>
 </Base>
 
 <style>
-  .cont-header {
-    background-color: var(--surface-1b);
-  }
-  header {
-    display: flex;
-    gap: var(--space-xs);
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  h1 {
-    text-wrap: balance;
-    word-wrap: normal;
-  }
   /* Remove h1 */
-  article :global(h1:first-of-type) {
-    display: none;
-  }
-  /* Remove first element's flow space */
-  article :global(> h1:nth-child(1) + *:nth-child(2)) {
+  .prose :global(.toc-aside + h1) {
     --flow-space: 0;
   }
 
-  .body {
-    display: flex;
-    flex-direction: row-reverse;
-    /* gap: var(--space-xs); */
-    position: relative;
-    /* align-items: flex-start; */
-    @media (width < 900px) {
-      flex-direction: column;
+  .note-body {
+    display: grid;
+    grid-template-columns: 1fr 30vw;
+  }
+
+  aside {
+    width: 100%;
+    justify-self: end;
+    padding-inline: var(--space-m);
+    padding-bottom: var(--space-2xs);
+    padding-block-start: var(--space-m);
+    --hr-space: var(--size-relative-8);
+  }
+  article.cgrid {
+    grid-row-start: 1;
+    grid-column: 1;
+  }
+
+  @media (width < 900px) {
+    .note-body {
+      grid-template-columns: 1fr;
+    }
+    aside {
+      display: none;
     }
   }
-  aside {
-    /* display: block; */
-    position: sticky;
-    top: 0;
-    max-width: var(--size-header-3);
-    height: 100vh;
-    /* padding-inline: var(--space-xs); */
-    padding-block: var(--space-2xs);
-    /* This aligns top edge */
-    margin-block-start: calc(-1 * var(--space-2xs));
-    /* margin-inline-end: var(--space-2xs); */
-    overflow-y: scroll;
-    > * {
-      max-width: 30ch;
-    }
+  article.prose {
+    padding-block-start: var(--space-m);
 
-    @media (width < 900px) {
-      /* display: grid;
-      position: relative;
-      height: 100%; */
-      display: none;
+    @media (width >= 1000px), (680px <= width <= 900px) {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        display: list-item;
+      }
+
+      h1::marker,
+      h2::marker,
+      h3::marker,
+      h4::marker,
+      h5::marker {
+        color: var(--text-muted);
+        font-size: 0.8em;
+        font-weight: initial;
+      }
+      h1::marker {
+        content: "H1  ";
+      }
+      h2::marker {
+        content: "H2  ";
+      }
+      h3::marker {
+        content: "H3  ";
+      }
+      h4::marker {
+        content: "H4  ";
+      }
     }
   }
 </style>

@@ -3,19 +3,17 @@
   width: 100%;
   --hr-space: var(--space-xl);
 
-  p {
+  & > p {
     line-height: var(--font-lineheight-4);
   }
 
   h1 {
-    grid-column: max;
     max-width: var(--size-header-2);
   }
   h2,
   h3,
   h4,
   h5 {
-    grid-column: popout;
     & + * {
       --flow-space: var(--size-relative-8);
     }
@@ -23,7 +21,7 @@
 
   hr {
     grid-column-start: feature;
-    grid-column-end: max;
+    grid-column-end: feature;
     --flow-space: var(--hr-space);
     & + * {
       --flow-space: var(--hr-space);
@@ -52,8 +50,8 @@
       }
     }
   }
-  ul,
-  ol {
+  & > ul,
+  & > ol {
     li + li {
       margin-block-start: var(--size-relative-5);
     }
@@ -88,38 +86,6 @@
     /* consecutive pre's get joined */
     & + pre {
       --flow-space: 0;
-    }
-  }
-
-  @container prose (inline-size > 90ch) {
-    /* h1, */
-    h2,
-    h3,
-    h4,
-    h5 {
-      display: list-item;
-    }
-
-    /* h1::marker, */
-    h2::marker,
-    h3::marker,
-    h4::marker,
-    h5::marker {
-      color: var(--text-muted);
-      font-size: 0.8em;
-      font-weight: initial;
-    }
-    /* h1::marker {
-      content: "H1  ";
-    } */
-    h2::marker {
-      content: "H2  ";
-    }
-    h3::marker {
-      content: "H3  ";
-    }
-    h4::marker {
-      content: "H4  ";
     }
   }
 }

@@ -3,8 +3,8 @@ import { Icon } from "astro-iconify";
 import type { CollectionEntry } from "astro:content";
 import { getCldImgData } from "lib/cloudinary/get";
 import Caps from "~/components/styled/polym/Caps.astro";
-import CldImg from "../primitive/CldImg.astro";
-import BrandA from "../styled/monom/BrandA.astro";
+import CldImg from "~/components/primitive/CldImg.astro";
+import BrandA from "~/components/styled/monom/BrandA.astro";
 
 interface Props {
   project: CollectionEntry<"project">;
@@ -48,14 +48,22 @@ const i = getCldImgData("projects/" + project.slug, true);
   .project {
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(var(--size-header-3), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(calc((var(--size-content-3)/2) + var(--space-m)), 1fr));
     column-gap: var(--space-m);
     row-gap: var(--space-m);
 
+    img {
+      max-width: max(45vw, 25rem);
+      @media (width < 720px) {
+        max-width: 100%;
+      }
+    }
   }
-  img {
-    width: min(100%, var(--size-content-3));
+
+  .project-body {
+    max-width: var(--size-content-3);
   }
+
 
   .links {
     display: flex;

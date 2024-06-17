@@ -9,8 +9,7 @@ import LINKS from "~/data/links";
 const props = Astro.props;
 ---
 
-<section class="max region" {...props}>
-  <div class="container">
+<section class="region container" {...props}>
     <div class="cont-img border">
       <Image
         src={heroImg}
@@ -57,28 +56,13 @@ const props = Astro.props;
         }
       </ul>
     </div>
-  </div>
 </section>
 
 
 <style lang="scss">
-  $width-max: 1280px;
-  $gutter-max: 5rem;
-
-  $gutter: minmax(0, $gutter-max);
-  $col-center-w: min($width-max - $gutter-max * 2, 100%);
   section {
-    margin-inline: auto;
     display: grid;
-    grid-template-columns: $gutter $col-center-w $gutter;
-    justify-content: center;
-  }
-
-  .container {
-    display: grid;
-    grid-column: 2 / 2;
     grid-template-columns: 1fr minmax(9rem, 0.7fr);
-    grid-template-rows: repeat(auto, 1fr);
     column-gap: var(--space-m);
     position: relative;
   }
@@ -98,12 +82,12 @@ const props = Astro.props;
       letter-spacing: var(--font-letterspacing-1);
       color: var(--text-faded);
       text-decoration: underline;
-      text-decoration-color: var(--brand);
+      text-decoration-color: var(--ax1);
       // text-underline-offset: 0.25em;
       text-underline-offset: 0.5em;
     }
 
-    * {
+     > * {
       grid-column: 1 / -2;
       @media (width < 600px) {
         grid-column: 1 / -1;
@@ -133,15 +117,15 @@ const props = Astro.props;
     z-index: -1;
     position: relative;
     width: 100%;
+    max-width: 400px;
     height: fit-content;
 
     img {
       position: inherit;
-      width: 100%;
       z-index: -2;
     }
     &::after {
-      background-color: hsla(var(--surface-1a-hsl) / 0.35);
+      background-color: hsla(var(--base-h) var(--base-s) var(--base-l) / 0.35);
       content: "";
       position: absolute;
       height: 100%;
@@ -172,11 +156,11 @@ const props = Astro.props;
       a {
         gap: var(--size-relative-3);
         &:is(:not(:hover, :focus, :active)) span {
-          color: hsla(var(--brand-hsl) / 0.85);
+          color: var(--ax2);
         }
       }
       svg {
-        width: var(--step-5);
+        width: var(--step-4);
       }
       @media (width < 600px) {
         display: flex;
@@ -206,7 +190,7 @@ const props = Astro.props;
     -webkit-animation: 1.5s highlight 0.2s 1 normal forwards;
     animation: 1.5s highlight 0.2s 1 normal forwards;
     background-color: none;
-    background: linear-gradient(45deg, var(--brand) 50%, transparent 50%);
+    background: linear-gradient(45deg, var(--ax1) 50%, transparent 50%);
     background-size: 205% 100%;
     background-position: 100% 0;
     color: var(--text-on-brand);

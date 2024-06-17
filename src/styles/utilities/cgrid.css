@@ -4,20 +4,20 @@
   --popout-g: minmax(0, var(--size-popout));
   --feature-g: minmax(0, 3rem);
   --wide-g: minmax(0, 10ch);
-  --content-w: min(68ch, 100% - var(--gutter) * 2);
+  --content-w: min(65ch, 100% - var(--gutter) * 2);
 
   display: grid;
   grid-template-columns:
     [full-start] var(--gutter)
-    [max-start] auto
-    [wide-start] var(--wide-g)
+    [max-start] 0
+    [wide-start] 0
     [feature-start] var(--feature-g)
     [popout-start] var(--popout-g)
     [content-start] var(--content-w) [content-end]
     var(--popout-g) [popout-end]
     var(--feature-g) [feature-end]
     var(--wide-g) [wide-end]
-    auto [max-end]
+    1fr [max-end]
     var(--gutter) [full-end];
   align-content: start;
 }
@@ -68,4 +68,11 @@
 
 .content {
   grid-column: content;
+}
+
+.container {
+  grid-column: max;
+  width: 100%;
+  max-width: clamp(1000px, 78%, 1240px);
+  margin-inline: auto;
 }

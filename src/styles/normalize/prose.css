@@ -115,7 +115,7 @@ strong {
 /* lists */
 
 :where(ol, ul) {
-  padding-left: var(--size-popout);
+  padding-left: var(--size-relative-6);
   ::marker {
     color: var(--text-faded);
   }
@@ -134,8 +134,8 @@ ol[class] {
 
 ::selection {
   color: var(--text-on-brand);
-  background: var(--brand);
+  background: var(--ax1);
 }
 img::selection {
-  background: hsla(var(--brand-hsl) / 0.7);
+  background: var(--ax4);
 }

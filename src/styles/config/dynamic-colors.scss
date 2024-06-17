@@ -1,0 +1,110 @@
+/* Dynamic colors
+
+Inspired and a variant of Obsidian Minimal:
+- https://github.com/kepano/obsidian-minimal/blob/master/src/scss/variables/dynamic-color.scss
+-  https://minimal.guide/plugins/style-settings
+
+Most colors are driven from the following values, meaning that
+the backgrounds, borders, and various shades are
+automatically generated.
+
+- Base color is used for the backgrounds, text and borders.
+- Accent color is used for links and some interactive elements.
+
+The colors use HSL (hue, saturation, lightness)
+
+- Hue (0-360 degrees):0 is red, 120 is green, and 240 is blue
+- Saturation (0-100%):0% is desaturated, 100% is full saturation
+- Lightness (0-100%):0% is black, 100% is white
+
+- bg1 primary
+- bg secondary
+- bg3 active
+
+- ui1 primary
+- ui2 highlighted
+- ui3 active
+
+- ax1 accent
+- ax2 hover
+- ax3 interactive
+
+- tx1 strong
+- tx2 body
+- tx3 faded
+- tx4 blend/faint
+
+`--m` is the light/dark Mode coefficient
+- is used to flip the +/-ve direction of lightness modifiers
+  -> dark mode: 1 (emphasis gets lighter against dark bg)
+  -> light mode: -1 (emphasis gets darker against light bg)
+- technically, could use decimal numbers to tweak lightness-contrast
+
+`--a-l` is the accent lightness coefficient
+- is used to increase difference between accent shades
+- particularly for light mode with light bg, since accents also have high lightness
+
+*/
+
+@mixin config() {
+  --bg1: hsl(var(--base-h), var(--base-s), var(--base-l));
+  --bg2: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 4%));
+  // don't invert for bg2 — bg2 is darker than bg1
+  --bg3: hsla(
+    var(--base-h),
+    var(--base-s),
+    calc(var(--base-l) + 40% * var(--m)),
+    0.12
+  );
+
+  --ui1: hsl(var(--base-h), var(--base-s), calc(var(--base-l) + 6% * var(--m)));
+  --ui2: hsl(
+    var(--base-h),
+    var(--base-s),
+    calc(var(--base-l) + 12% * var(--m))
+  );
+  --ui3: hsl(
+    var(--base-h),
+    var(--base-s),
+    calc(var(--base-l) + 20% * var(--m))
+  );
+
+  --tx1: hsl(
+    var(--base-h),
+    calc(var(--base-s) - 10%),
+    calc(var(--base-l) * 6 * var(--m))
+  );
+  --tx2: hsl(
+    var(--base-h),
+    calc(var(--base-s) - 10%),
+    calc(var(--base-l) + 70% * var(--m))
+  );
+  --tx3: hsl(
+    var(--base-h),
+    calc(var(--base-s) - 10%),
+    calc(var(--base-l) + 40% * var(--m))
+  );
+  --tx4: hsl(
+    var(--base-h),
+    calc(var(--base-s) - 5%),
+    calc(var(--base-l) + 20% * var(--m))
+  );
+
+  --ax1: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --ax2: hsl(
+    var(--accent-h),
+    calc(var(--accent-s) - 35%),
+    calc(var(--accent-l) - 13% * var(--m) * var(--a-l))
+  );
+  --ax3: hsl(
+    var(--accent-h),
+    calc(var(--accent-s) - 50%),
+    calc(var(--accent-l) - 20% * var(--m) * var(--a-l))
+  );
+  --ax4: hsla(
+    var(--accent-h),
+    calc(var(--accent-s) - 50%),
+    calc(var(--accent-l) - 30% * var(--m) * var(--a-l)),
+    0.5
+  );
+}

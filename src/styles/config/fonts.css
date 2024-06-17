@@ -1,28 +1,26 @@
 @font-face {
-  font-family: "Aleo";
-  src: url("/assets/fonts/Aleo-ExtraBold.ttf") format("truetype");
+  font-family: "Alegreya";
+  src: url("/assets/fonts/Alegreya-ExtraBold.ttf") format("truetype");
   font-weight: var(--font-weight-8);
   font-display: swap;
 }
 
-/* @font-face {
-  font-family: "Aleo";
-  src: url("/assets/fonts/Aleo-SemiBold.ttf") format("truetype");
+@font-face {
+  font-family: "Alegreya";
+  src: url("/assets/fonts/Alegreya-SemiBold.ttf") format("truetype");
   font-weight: var(--font-weight-6);
-} */
+}
 
 @font-face {
-  font-family: "Aleo";
-  src: url("/assets/fonts/Aleo-Bold.ttf") format("truetype");
-  font-weight: var(--font-weight-6);
+  font-family: "Alegreya";
+  src: url("/assets/fonts/Alegreya-Bold.ttf") format("truetype");
+  font-weight: var(--font-weight-5);
   font-display: swap;
 }
 
-/* medium */
-
 @font-face {
-  font-family: "Aleo";
-  src: url("/assets/fonts/Aleo-Regular.ttf") format("truetype");
+  font-family: "Alegreya";
+  src: url("/assets/fonts/Alegreya-Regular.ttf") format("truetype");
   font-weight: var(--font-weight-4);
   font-display: swap;
 }

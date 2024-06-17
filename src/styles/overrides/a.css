@@ -8,8 +8,8 @@
   box-decoration-break: clone;
   text-decoration-line: underline;
   font-weight: var(--font-weight-5);
-  color: var(--brand);
-  text-decoration-color: hsla(var(--brand-hsl) / 0.5);
+  color: var(--ax1);
+  text-decoration-color: var(--ax3);
   text-decoration-skip-ink: none;
   margin-inline: calc(var(--size-1) * -1);
   margin-block: calc(var(--size-1) * -2);
@@ -19,7 +19,7 @@
 
 :where(a[href]):is(:hover, :focus, :active) {
   border-radius: var(--radius-2);
-  background-color: var(--brand);
+  background-color: var(--ax1);
   color: var(--text-on-brand);
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -28,7 +28,7 @@
 
 :where(a[href], button, .hover-glow):is(:hover, :focus, :active),
 .glow {
-  --glow: var(--brand);
+  --glow: var(--ax1);
   --size: var(--size-8);
   box-shadow: 0 0 var(--size) 0 var(--glow);
 }
@@ -36,11 +36,10 @@
 
 :where(a[href]) {
   --color: var(--text-1);
-  --color-underline: hsla(var(--brand-hsl) / 0.7);
+  --color-underline: var(--ax3);
   --color-hover: var(--text-1-strong);
   box-decoration-break: clone;
   text-decoration-line: underline;
-  /* font-weight: initial; */
   font-weight: var(--font-weight-5);
   color: var(--color);
   text-decoration-skip-ink: none;
@@ -60,7 +59,7 @@ a[href^="mailto:"])) {
 }
 
 :where(a[href]:is(:hover, :focus, :active)) {
-  --color-underline: var(--brand);
+  --color-underline: var(--ax1);
   color: var(--color-hover);
 }
 
