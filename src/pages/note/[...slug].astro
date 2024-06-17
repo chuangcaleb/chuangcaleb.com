@@ -70,23 +70,19 @@ const title = data.title ?? noteName;
   aside {
     grid-column-start: feature-end;
     grid-column-end: full-end;
-    /* height: 0px; */
-    grid-row: 1 / 999;
+    grid-row: 1 / -1;
+    /* height: min(100%, 100vh); */
     position: sticky;
     top: var(--space-2xs);
-    height: min(100%, 100vh);
     padding-inline: var(--space-xs);
-    /* padding-block: var(--space-2xs); */
     padding-bottom: var(--space-2xs);
-    /* This aligns top edge */
     margin-block-start: calc(-1 * var(--space-2xs));
-    /* margin-inline-end: var(--space-2xs); */
     overflow-y: scroll;
     > * {
       max-width: 30ch;
     }
 
-    @media (width < 800px) {
+    @media (width < 850px) {
       display: none;
     }
   }
@@ -95,6 +91,9 @@ const title = data.title ?? noteName;
     @media (width < 1000px) {
       --feature-g: 0;
       --popout-g: 0;
+      blockquote {
+        grid-column-start: content;
+      }
     }
     @media (width < 800px) {
       --wide-g-left: var(--wide-g);

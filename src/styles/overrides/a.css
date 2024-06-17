@@ -36,11 +36,10 @@
 
 :where(a[href]) {
   --color: var(--text-1);
-  --color-underline: var(--ax2);
+  --color-underline: var(--ax3);
   --color-hover: var(--text-1-strong);
   box-decoration-break: clone;
   text-decoration-line: underline;
-  /* font-weight: initial; */
   font-weight: var(--font-weight-5);
   color: var(--color);
   text-decoration-skip-ink: none;
