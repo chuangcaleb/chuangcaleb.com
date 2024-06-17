@@ -34,7 +34,7 @@ const title = data.title ?? noteName;
       </header>
     </div>
     <article class="cgrid region prose flow-lg">
-      <aside class="no-scrollbar">
+      <aside class="toc-aside no-scrollbar">
         <Toc headings={headings} />
       </aside>
       <Content />
@@ -59,16 +59,12 @@ const title = data.title ?? noteName;
   }
 
   /* Remove h1 */
-  article :global(h1:first-of-type) {
+  .prose :global(.toc-aside + h1) {
     display: none;
   }
   /* Remove first element's flow space */
-  article > :global(h1:first-of-type + *) {
+  .prose > :global(.toc-aside + h1 + *) {
     --flow-space: 0;
-  }
-
-  article {
-    position: relative;
   }
 
   aside {
