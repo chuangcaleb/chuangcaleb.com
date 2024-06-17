@@ -3,7 +3,7 @@
   width: 100%;
   --hr-space: var(--space-xl);
 
-  p {
+  & > p {
     line-height: var(--font-lineheight-4);
   }
 
