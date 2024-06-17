@@ -16,12 +16,18 @@ const toc = generateToc(headings);
 // })();
 ---
 
-<nav id="toc" class="no-scrollbar">
-  <h4>Outline</h4>
-  <ul class="toc-root">
-    {toc.map((h) => <TocHeading tocItem={h} />)}
-  </ul>
-</nav>
+{
+  !!toc.length && (
+    <nav id="toc" class="no-scrollbar">
+      <h4>Outline</h4>
+      <ul class="toc-root">
+        {toc.map((h) => (
+          <TocHeading tocItem={h} />
+        ))}
+      </ul>
+    </nav>
+  )
+}
 
 <script>
   const setCurrentHeading: IntersectionObserverCallback = (entries) => {

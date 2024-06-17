@@ -31,7 +31,7 @@ const title = data.title ?? noteName;
     <div class="note-body">
       <aside class="toc-aside flow">
         <Metadata metadata={data} />
-        {data && !!headings.length && <hr />}
+        <hr />
         <Toc headings={headings} />
       </aside>
       <article class="full cgrid prose flow-lg region">
