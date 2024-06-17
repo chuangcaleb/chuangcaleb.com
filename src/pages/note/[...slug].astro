@@ -70,8 +70,8 @@ const title = data.title ?? noteName;
   aside {
     grid-column-start: feature-end;
     grid-column-end: full-end;
-    grid-row: 1 / -1;
-    /* height: min(100%, 100vh); */
+    grid-row: 1 / 999; /* 1 / -1 doesn't work here */
+    height: min(100%, 100vh);
     position: sticky;
     top: var(--space-2xs);
     padding-inline: var(--space-xs);
