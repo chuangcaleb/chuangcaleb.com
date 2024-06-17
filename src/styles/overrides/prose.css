@@ -21,7 +21,7 @@
 
   hr {
     grid-column-start: feature;
-    grid-column-end: max;
+    grid-column-end: feature;
     --flow-space: var(--hr-space);
     & + * {
       --flow-space: var(--hr-space);
@@ -89,7 +89,7 @@
     }
   }
 
-  @container prose (inline-size > 90ch) {
+  @container prose (inline-size > 112ch) {
     /* h1, */
     h2,
     h3,

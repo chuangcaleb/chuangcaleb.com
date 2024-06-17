@@ -27,23 +27,19 @@ const title = data.title ?? noteName;
 <Base title={title}>
   <Main>
     <WIPDisclaimer />
-    <div class="article">
-      <div class="cont-header | cgrid-max">
-        <header class="region">
-          <h1>{title}</h1>
-          <Metadata metadata={data} />
-        </header>
-      </div>
-      <div class="body region">
-        <aside class="cgrid no-scrollbar">
-          <Toc headings={headings} />
-        </aside>
-        <article class="prose cgrid flow-lg">
-          <Content />
-          <CollectionList note={entry} />
-        </article>
-      </div>
+    <div class="cont-header | cgrid-max">
+      <header class="region">
+        <h1>{title}</h1>
+        <Metadata metadata={data} />
+      </header>
     </div>
+    <article class="cgrid region prose flow-lg">
+      <aside class="no-scrollbar">
+        <Toc headings={headings} />
+      </aside>
+      <Content />
+      <CollectionList note={entry} />
+    </article>
   </Main>
 </Base>
 
@@ -61,33 +57,31 @@ const title = data.title ?? noteName;
     text-wrap: balance;
     word-wrap: normal;
   }
+
   /* Remove h1 */
   article :global(h1:first-of-type) {
     display: none;
   }
   /* Remove first element's flow space */
-  article :global(> h1:nth-child(1) + *:nth-child(2)) {
+  article > :global(h1:first-of-type + *) {
     --flow-space: 0;
   }
 
-  .body {
-    display: flex;
-    flex-direction: row-reverse;
-    /* gap: var(--space-xs); */
+  article {
     position: relative;
-    /* align-items: flex-start; */
-    @media (width < 900px) {
-      flex-direction: column;
-    }
   }
+
   aside {
-    /* display: block; */
+    grid-column-start: feature-end;
+    grid-column-end: full-end;
+    /* height: 0px; */
+    grid-row: 1 / 999;
     position: sticky;
-    top: 0;
-    max-width: var(--size-header-3);
-    height: 100vh;
-    /* padding-inline: var(--space-xs); */
-    padding-block: var(--space-2xs);
+    top: var(--space-2xs);
+    height: min(100%, 100vh);
+    padding-inline: var(--space-xs);
+    /* padding-block: var(--space-2xs); */
+    padding-bottom: var(--space-2xs);
     /* This aligns top edge */
     margin-block-start: calc(-1 * var(--space-2xs));
     /* margin-inline-end: var(--space-2xs); */
@@ -96,11 +90,18 @@ const title = data.title ?? noteName;
       max-width: 30ch;
     }
 
-    @media (width < 900px) {
-      /* display: grid;
-      position: relative;
-      height: 100%; */
+    @media (width < 800px) {
       display: none;
+    }
+  }
+
+  .cgrid {
+    @media (width < 1000px) {
+      --feature-g: 0;
+      --popout-g: 0;
+    }
+    @media (width < 800px) {
+      --wide-g-left: var(--wide-g);
     }
   }
 </style>
