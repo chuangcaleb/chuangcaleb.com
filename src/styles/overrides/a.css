@@ -63,11 +63,11 @@ a[href^="mailto:"])) {
   color: var(--color-hover);
 }
 
-a[href^="http://"]:not([href*="stackoverflow.com"]):after,
+/* a[href^="http://"]:not([href*="stackoverflow.com"]):after,
 a[href^="https://"]:not([href*="stackoverflow.com"]):after
 {
   content: "↗️";
-}
+} */
 /* or just anything with a `:`? */
 
 :where(a[href]:focus) {
