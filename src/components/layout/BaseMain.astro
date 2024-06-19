@@ -1,14 +1,17 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import Base, { type BaseProps } from "./Base.astro";
 
 export interface MainProps extends HTMLAttributes<"main"> {}
-type Props = MainProps;
+type Props = MainProps & BaseProps;
 const props = Astro.props;
 ---
 
-<main id="main" {...props}>
-  <slot />
-</main>
+<Base title={props.title} description={props.description}>
+  <main id="main" {...props}>
+    <slot />
+  </main>
+</Base>
 
 <style is:global>
   main {

@@ -1,12 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
-import Base from "~/components/layout/Base.astro";
-import Main from "~/components/layout/Main.astro";
+import BaseMain from "~/components/layout/BaseMain.astro";
+import { getNoteName } from "~/utils/post";
 import CollectionList from "./_components/CollectionList.astro";
 import Metadata from "./_components/metadata/Metadata.astro";
 import Toc from "./_components/toc/Toc.astro";
-import { getNoteName } from "~/utils/post";
 
 export async function getStaticPaths() {
   const notes = await getCollection("obsidian-note");
@@ -25,22 +24,20 @@ const noteName = getNoteName(entry.id);
 const title = data.title ?? noteName;
 ---
 
-<Base title={title}>
-  <Main>
-    <WIPDisclaimer />
-    <div class="note-body">
-      <aside class="toc-aside flow">
-        <Metadata metadata={data} />
-        <hr />
-        <Toc headings={headings} />
-      </aside>
-      <article class="full cgrid prose flow-lg region">
-        <Content />
-        <CollectionList note={entry} />
-      </article>
-    </div>
-  </Main>
-</Base>
+<BaseMain title={title}>
+  <WIPDisclaimer />
+  <div class="note-body">
+    <aside class="toc-aside flow">
+      <Metadata metadata={data} />
+      <hr />
+      <Toc headings={headings} />
+    </aside>
+    <article class="full cgrid prose flow-lg region">
+      <Content />
+      <CollectionList note={entry} />
+    </article>
+  </div>
+</BaseMain>
 
 <style>
   /* Remove h1 */

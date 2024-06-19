@@ -1,24 +1,21 @@
 ---
-import Base from "~/components/layout/Base.astro";
-import Main from "~/components/layout/Main.astro";
+import BaseMain from "~/components/layout/BaseMain.astro";
 import Button from "~/components/primitive/Button.astro";
 const url = Astro.url;
 ---
 
-<Base title="404 Not Found">
-  <Main class="cgrid region flow-lg">
-    <article class="flow-lg">
-      <header class="flow">
-        <h1>404</h1>
-        <p>Page not Found. <em>Womp womp.</em></p>
-        <p><code>{url}</code></p>
-      </header>
-      <hr />
-      <p>I'll add something witty here another time.</p>
-      <p><Button as="a" href="/" theme="brand">take me home</Button></p>
-    </article>
-  </Main>
-</Base>
+<BaseMain title="404 Not Found" class="cgrid region flow-lg">
+  <article class="flow-lg">
+    <header class="flow">
+      <h1>404</h1>
+      <p>Page not Found. <em>Womp womp.</em></p>
+      <p><code>{url}</code></p>
+    </header>
+    <hr />
+    <p>I'll add something witty here another time.</p>
+    <p><Button as="a" href="/" theme="brand">take me home</Button></p>
+  </article>
+</BaseMain>
 
 <style>
   * {

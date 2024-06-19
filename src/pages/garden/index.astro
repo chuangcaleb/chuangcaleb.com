@@ -1,8 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
-import Base from "~/components/layout/Base.astro";
-import Main from "~/components/layout/Main.astro";
+import BaseMain from "~/components/layout/BaseMain.astro";
 import NoteCard from "~/components/primitive/NoteCard.astro";
 import BrandA from "~/components/styled/monom/BrandA.astro";
 import { getNoteName } from "~/utils/post";
@@ -18,39 +17,37 @@ const leafNotes = publicNotes
   .sort((a, b) => (a.body.length < b.body.length ? 1 : -1));
 ---
 
-<Base title="Digital Garden">
-  <Main>
-    <WIPDisclaimer />
-    <section class="cgrid prose region flow-lg">
-      <h1>Digital Garden</h1>
-      <h2>Collection notes</h2>
-      <ul class="collections">
-        {
-          collectionNotes?.map((n) => (
-            <li>
-              <a href={`/note/${n.slug}`}>
-                <NoteCard>
-                  <h3>{getNoteName(n.id)}</h3>
-                </NoteCard>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-      <h2>Leaf notes</h2>
-      <ul>
-        {
-          leafNotes?.map((n) => (
-            <li>
-              <BrandA href={`/note/${n.slug}`}>{getNoteName(n.id)}</BrandA>
-              {`(${n.body.length} chars)`}
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-  </Main>
-</Base>
+<BaseMain title="Digital Garden">
+  <WIPDisclaimer />
+  <section class="cgrid prose region flow-lg">
+    <h1>Digital Garden</h1>
+    <h2>Collection notes</h2>
+    <ul class="collections">
+      {
+        collectionNotes?.map((n) => (
+          <li>
+            <a href={`/note/${n.slug}`}>
+              <NoteCard>
+                <h3>{getNoteName(n.id)}</h3>
+              </NoteCard>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <h2>Leaf notes</h2>
+    <ul>
+      {
+        leafNotes?.map((n) => (
+          <li>
+            <BrandA href={`/note/${n.slug}`}>{getNoteName(n.id)}</BrandA>
+            {`(${n.body.length} chars)`}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseMain>
 
 <style>
   .collections {
