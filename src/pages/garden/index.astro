@@ -28,7 +28,10 @@ const leafNotes = publicNotes
           <li>
             <a href={`/note/${n.slug}`}>
               <NoteCard>
-                <h3>{getNoteName(n.id)}</h3>
+                <h3>
+                  {getNoteName(n.id)}{" "}
+                  <span>({n.data.collectionItems?.length})</span>
+                </h3>
               </NoteCard>
             </a>
           </li>
