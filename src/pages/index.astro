@@ -2,7 +2,7 @@
 import { ThemeDropdown } from "~/components/block/ThemeDropdown";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import Hero from "./_components/Hero.astro";
-import Highlights from "./_components/now/index.astro";
+import Overview from "./_components/overview/index.astro";
 import Projects from "./_components/projects/index.astro";
 import Skills from "./_components/skills/index.astro";
 import SITE from "~/data/site";
@@ -13,7 +13,7 @@ import SITE from "~/data/site";
   class="main-index | cgrid-max"
 >
   <Hero class="wide" />
-  <Highlights />
+  <Overview />
   <section class="utils-section">
     <ThemeDropdown client:only="react" />
   </section>

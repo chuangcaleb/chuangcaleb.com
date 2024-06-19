@@ -1,0 +1,58 @@
+---
+import LINKS from "~/data/links";
+import * as content from "./content.mdx";
+import BrandA from "~/components/styled/monom/BrandA.astro";
+import Button from "~/components/primitive/Button.astro";
+import Icon from "astro-iconify";
+
+const links = [LINKS.LINKEDIN, LINKS.CV];
+
+const { Content } = content;
+const components = { h1: "h3", a: BrandA };
+---
+
+<section class="full cgrid-max region surface-alt">
+  <div class="container">
+    <article class="flow-lg prose">
+      <Content components={components} />
+      <p class="cont-buttons">
+        {
+          links.map((l, idx) => (
+            <Button as="a" href={l.href} theme={!idx ? "brand" : undefined}>
+              <Icon name={l.icon} />
+              {l.label}
+            </Button>
+          ))
+        }
+      </p>
+    </article>
+  </div>
+</section>
+
+<style>
+  article {
+    max-width: var(--content-w);
+    em {
+      opacity: 0.7;
+    }
+
+    h3 {
+      color: var(--tx3);
+      font-size: var(--step-1);
+      display: flex;
+      gap: var(--size-relative-2);
+      svg {
+        width: var(--size-relative-7);
+        margin-bottom: var(--size-relative-2);
+      }
+      + * {
+        --flow-space: var(--space-xs);
+      }
+    }
+  }
+  .cont-buttons {
+    display: flex;
+    column-gap: var(--space-s);
+    flex-wrap: wrap;
+  }
+</style>

@@ -6,9 +6,7 @@ export interface Props extends HTMLAttributes<"a"> {}
 const props = Astro.props;
 ---
 
-<a {...props}>
-  <slot />
-</a>
+<a {...props}><slot /></a>
 
 <style>
   * {

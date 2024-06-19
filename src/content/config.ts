@@ -1,13 +1,5 @@
 import { defineCollection, reference, z } from "astro:content";
 
-const highlightCollection = defineCollection({
-  type: "content",
-  schema: z.object({
-    date: z.date(),
-    sequence: z.number(),
-  }),
-});
-
 const projectCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -56,7 +48,6 @@ const obsidianNoteCollection = defineCollection({
 // tags: z.array(z.string()).optional(),
 
 export const collections = {
-  highlight: highlightCollection,
   project: projectCollection,
   "obsidian-note": obsidianNoteCollection,
   "obsidian-collection": obsidianCollectionsCollection,
