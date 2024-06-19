@@ -9,6 +9,7 @@
   font-family: "Alegreya";
   src: url("/assets/fonts/Alegreya-SemiBold.ttf") format("truetype");
   font-weight: var(--font-weight-6);
+  font-display: swap;
 }
 
 @font-face {
