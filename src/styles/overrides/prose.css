@@ -38,7 +38,7 @@
     padding-block: var(--size-relative-6);
     &,
     * {
-      font-size: var(--font-size-2);
+      font-size: var(--step-0);
     }
     @container prose (inline-size > 100ch) {
       & {

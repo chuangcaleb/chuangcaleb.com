@@ -3,6 +3,7 @@ import { type HTMLTag, type Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
   theme?: "brand";
+  size?: 1;
 };
 
 const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
@@ -20,13 +21,15 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     border-width: 2px;
 
     display: inline-flex;
-    gap: var(--size-relative-3);
     align-items: center;
     justify-content: center;
+    gap: var(--size-relative-3);
+
     padding: var(--size-relative-2) var(--size-relative-3);
     border-style: solid;
     border-radius: var(--radius-2);
 
+    font-size: var(--step-0);
     font-weight: var(--font-weight-7);
     text-decoration-line: none;
     text-transform: lowercase;
@@ -38,14 +41,8 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
       --_text-hover: var(--ax1);
     }
 
-    /* &:has(svg:first-child:last-child) {
-      padding: var(--size-1);
-    }
-    &:has(svg:not(:first-child:last-child)) {
-      padding: var(--size-1) var(--size-2);
-    } */
-    &:is(a) {
-      margin: 0;
+    &[size="1"] {
+      font-size: var(--step-1);
     }
 
     &:is(:focus, :active) {
@@ -55,11 +52,11 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     &:is(:hover, :focus, :active) {
       --_bg: var(--_bg-hover);
       --_text: var(--_text-hover, var(--ax1));
-      html[data-theme="dark"] & {
+      [data-theme="dark"] & {
         --_bg-hover: var(--text-1-strong);
         --_border: transparent;
       }
-      html[data-theme="light"] & {
+      [data-theme="light"] & {
         --_bg-hover: var(--text-on-brand);
         --_border: var(--ax1);
       }
