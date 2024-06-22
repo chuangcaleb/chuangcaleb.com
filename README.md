@@ -58,9 +58,8 @@ As of latest:
 └── src
     ├── assets // optimised local image asset(s)
     ├── components
-    │   ├── block // contains many elements
+    │   ├── block // has logic, or has many elements
     │   ├── layout
-    │   ├── primitive // custom single element
     │   └── styled // just visually styled, no logic
     │       ├── monom / mono-morphic, fixed final HTML tag
     │       └── polym // poly-morphic, dynamic final HTML tag
