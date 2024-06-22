@@ -288,11 +288,27 @@ So just introduce a new variable lol, `--a-l` as the Accent Lightness coefficien
 
 ### Obsidian Notes
 
-//TODO
+I write my content locally in Obsidian and want to display them in the Astro site. I already version control with git, so I didn't need to reach for another remote cloud sync option.
 
-### Images
+However, I don't want to expose all my personal journal notes lol. Just those files/notes in select folders/directories or passing some frontmatter condition.
 
-//TODO
+One way would be to nest the obsidian vault repository within the Astro repository, and gitignore bad paths. But then that would load all Obsidian notes locally. A [previous implementation](chuangcaleb.github.io/wtsa) was to nest the Astro repository at a public directory of the Obsidian vault repository.
+
+But in the end, both ways will source control the content files, so I had [a bunch of content-commits in between my source-code-commits](https://github.com/chuangcaleb/wtsa/commits/source/). I no likey. I reached for some CMS solutions but that was over-engineering for now.
+
+Currently, I make use of the [kometenstaub/metadata-extractor](https://github.com/kometenstaub/metadata-extractor) plugin to dump the metadata cache of my Obsidian notes to a local file. A custom script to process that metadata cache (mainly to filter out private notes) and we commit this `.json` file to the Obsidian vault repo.
+
+Then a custom GitHub Actions workflow (triggers on-push to select paths) runs another script to iterate through this `.json` file and copy those subset of files into a `dist` directory. [s0/git-publish-subdir-action: GitHub Action to push a subdirectory as a branch to any git repo (e.g. for GitHub Pages)](https://github.com/s0/git-publish-subdir-action/tree/develop/) then pushes this directory to [chuangcaleb/obsidian-caleb-public: Public subset of my Obsidian vault exposed to publish on my personal website](https://github.com/chuangcaleb/obsidian-caleb-public).
+
+This `obsidian-caleb-public` repo is a [submodule](.gitmodules) that resides in this repo at [`src/content/obsidian-note`](src/content/obsidian-note). Then this frontend web layer has 0 concern for handling the content data — all that is handled on the Obsidian repo side.
+
+The scripts are currently in my private repo, I can share it upon request.
+
+### Cloudinary Images
+
+Using Cloudinary, but just for project images. May change exactly how it works. See [lib/cloudinary](lib/cloudinary).
+
+A cache step will use the Cloudinary API to get the results of all images in an asset folder and write to a local `.json` file. Then when picking an image, we just read from this cache. The alternative would be to call the API in the `.astro` frontmatter, but that would call the API on every refresh, and it would hit the limit.
 
 ## Roadmap
 
