@@ -10,23 +10,21 @@ const { Content } = content;
 const components = { h1: "h3" };
 ---
 
-<section class="full cgrid-max region surface-alt">
-  <div class="container">
-    <article class="flow-lg prose">
-      <h2 class="sr-only">Overview</h2>
-      <Content components={components} />
-      <div class="cont-buttons">
-        {
-          links.map((l, idx) => (
-            <Button as="a" href={l.href} theme={!idx ? "brand" : undefined}>
-              <Icon name={l.icon} />
-              {l.label}
-            </Button>
-          ))
-        }
-      </div>
-    </article>
-  </div>
+<section class="full linew-wide region surface-alt">
+  <article class="flow-lg prose">
+    <h2 class="sr-only">Overview</h2>
+    <Content components={components} />
+    <div class="cont-buttons">
+      {
+        links.map((l, idx) => (
+          <Button as="a" href={l.href} theme={!idx ? "brand" : undefined}>
+            <Icon name={l.icon} />
+            {l.label}
+          </Button>
+        ))
+      }
+    </div>
+  </article>
 </section>
 
 <style>

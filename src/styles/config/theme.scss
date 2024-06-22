@@ -1,6 +1,7 @@
 @use "misc";
 @use "fluid";
-@use "dynamic-colors.scss";
+@use "../utilities/grid/config" as grid;
+@use "dynamic-colors";
 
 @mixin dark-theme {
   --base-h: 234;
@@ -33,6 +34,7 @@
   @include misc.config-cgrid;
   @include fluid.type;
   @include fluid.space;
+  @include grid.config;
 
   @include dynamic-colors.config;
 

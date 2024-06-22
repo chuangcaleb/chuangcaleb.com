@@ -1,0 +1,34 @@
+.linew > * {
+  grid-column: normal;
+}
+
+.content,
+.cgrid > * {
+  grid-column: content;
+}
+
+.max,
+.cgrid-max > *,
+.linew-max > * {
+  grid-column: max;
+}
+
+.wide,
+.linew-wide > *,
+.cgrid-wide > * {
+  grid-column: wide;
+}
+
+.feature,
+.cgrid-feature > * {
+  grid-column: feature;
+}
+
+.popout,
+.cgrid-popout > * {
+  grid-column: popout;
+}
+
+.full {
+  grid-column: full;
+}

@@ -2,7 +2,7 @@
 import Contact from "./Contact.astro";
 ---
 
-<footer id="footer" class="flow-xs cgrid-max">
+<footer id="footer" class="flow-xs cgrid">
   <Contact />
   <p class="fine-print">
     <a href="https://github.com/chuangcaleb/chuangcaleb.com">source code</a>
@@ -18,7 +18,13 @@ import Contact from "./Contact.astro";
     margin-top: auto;
     background-color: var(--surface-1b);
     border-top-width: 1px;
+    @media (width < 900px) {
+      :global(*) {
+        grid-column: max;
+      }
+    }
   }
+
   .fine-print {
     color: var(--text-faded);
     font-size: var(--step--2);
@@ -28,6 +34,8 @@ import Contact from "./Contact.astro";
     text-align: center;
     column-gap: var(--space-xs);
     justify-self: center;
+    grid-column: max;
+
     a {
       --color: var(--text-faded);
     }

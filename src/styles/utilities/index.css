@@ -1,5 +1,5 @@
-@import "sr.css";
-@import "text.css";
-@import "layout.css";
-@import "flow.css";
-@import "cgrid.css";
+@import "sr";
+@import "text";
+@import "layout";
+@import "flow";
+@import "grid";

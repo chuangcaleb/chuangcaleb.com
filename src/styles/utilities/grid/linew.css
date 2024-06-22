@@ -1,0 +1,11 @@
+[class*="linew"] {
+  display: grid;
+  grid-template-columns:
+    [full-start] var(--gutter)
+    [max-start] 1fr
+    [wide-start] var(--wide-g-linew)
+    [normal-start] var(--content-w) [normal-end]
+    var(--wide-g-linew) [wide-end]
+    1fr [max-end]
+    var(--gutter) [full-end];
+}
