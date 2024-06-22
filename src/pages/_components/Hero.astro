@@ -47,7 +47,7 @@ const props = Astro.props;
       <ul class="socials-ul flow-md">
         {
           Object.values(LINKS).map((link) => (
-            <li class="flom-0">
+            <li >
               <BrandA href={link.href}>
                 <span>{link?.userId ?? link.label}</span>{}<Icon name={link.icon} />
               </BrandA>
@@ -166,6 +166,9 @@ const props = Astro.props;
         justify-content: center;
         column-gap: var(--space-m);
         row-gap: var(--space-2xs);
+        li {
+        --flow-space: 0;
+        }
         a {
           flex-direction: row-reverse;
         }
