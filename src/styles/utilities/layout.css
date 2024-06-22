@@ -17,3 +17,9 @@
     display: none; /* Safari and Chrome */
   }
 }
+
+.flex-row {
+  display: flex;
+  column-gap: var(--space-s);
+  flex-wrap: wrap;
+}

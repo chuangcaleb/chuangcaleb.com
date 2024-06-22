@@ -1,4 +1,6 @@
 import { Icon } from "astro-iconify";
+import SocialLinkButton from "~/components/block/SocialLinkButton.astro";
+import Button from "~/components/styled/polym/Button.astro";
 
 # <Icon name="lucide:briefcase" /> Professionally
 I am currently a **Software Engineer** at **[Airasia MOVE](https://www.airasia.com/aa/appdownload/)** @ *[LinkedIn](https://www.linkedin.com/company/airasia-super-app/mycompany/)*. I work on **UI/UX & Network Logic** for our *flights booking web interfaces* at [airasia.com](https://airasia.com) — visual and technical design is fun!
@@ -6,11 +8,20 @@ I am currently a **Software Engineer** at **[Airasia MOVE](https://www.airasia.c
 # <Icon name="lucide:user-cog" /> Growing Up
 I found aptitude in Redstone and [Game Dev/Design](https://www.planetminecraft.com/member/calebchan/), where I first started coding. Through a [BSc Computer Science w AI](https://www.nottingham.ac.uk/), I’ve found **Software Dev** (notably **Full-Stack Web**) as an accessible medium to create experiences.
 
+<div class='flex-row'>
+  <SocialLinkButton link="LINKEDIN" theme="brand"/>
+  <SocialLinkButton link="CV" />
+</div>
+
 # <Icon name="lucide:flame" />  My Passion
 is in **Storytelling & Narratives**: *“finding universal truths of human experience, and translating them into cohesive drama”*<sup><a href="https://www.helpingwritersbecomeauthors.com/a-writer-or-a-storyteller">1</a></sup>. I express through **music, theatre, film, storyboarding** — even tech. I have a lot to say about *story*, if you’d like to [hear from me](/garden)!
 
 # <Icon name="lucide:trees" />  Digital Garden
 I also upkeep a Digital Garden with *[Obsidian](https://obsidian.md)* — I journal daily & write down everything I learn. I publicly expose a subset of my notes at [/garden](/garden)!
 
+<Button as='a' href='/garden' >
+  <Icon name="lucide:trees" />
+  /garden
+</Button>
 
 {/* push life updates at /now and */}

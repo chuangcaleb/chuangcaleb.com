@@ -1,9 +1,5 @@
 ---
-import SocialLinkButton from "~/components/block/SocialLinkButton.astro";
-import type { LinkKey } from "~/data/links";
 import * as content from "./overview.mdx";
-
-const links = ["LINKEDIN", "CV"] as LinkKey[];
 
 const { Content } = content;
 const components = { h1: "h3" };
@@ -13,13 +9,6 @@ const components = { h1: "h3" };
   <article class="flow-lg prose">
     <h2 class="sr-only">Overview</h2>
     <Content components={components} />
-    <div class="cont-buttons">
-      {
-        links.map((l, idx) => (
-          <SocialLinkButton link={l} theme={!idx ? "brand" : undefined} />
-        ))
-      }
-    </div>
   </article>
 </section>
 
@@ -43,10 +32,5 @@ const components = { h1: "h3" };
         --flow-space: var(--size-relative-2);
       }
     }
-  }
-  .cont-buttons {
-    display: flex;
-    column-gap: var(--space-s);
-    flex-wrap: wrap;
   }
 </style>
