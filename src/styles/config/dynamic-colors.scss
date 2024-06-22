@@ -70,11 +70,7 @@ The colors use HSL (hue, saturation, lightness)
     calc(var(--base-l) + 20% * var(--m))
   );
 
-  --tx1: hsl(
-    var(--base-h),
-    calc(var(--base-s) - 10%),
-    calc(var(--base-l) * 6 * var(--m))
-  );
+  --tx1: hsl(var(--base-h), calc(var(--base-s) - 10%), calc(100% * var(--m)));
   --tx2: hsl(
     var(--base-h),
     calc(var(--base-s) - 10%),
