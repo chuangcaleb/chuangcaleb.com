@@ -1,10 +1,9 @@
 ---
-import Icon from "astro-iconify";
-import Button from "~/components/styled/polym/Button.astro";
-import LINKS from "~/data/links";
+import SocialLinkButton from "~/components/block/SocialLinkButton.astro";
+import type { LinkKey } from "~/data/links";
 import * as content from "./overview.mdx";
 
-const links = [LINKS.LINKEDIN, LINKS.CV];
+const links = ["LINKEDIN", "CV"] as LinkKey[];
 
 const { Content } = content;
 const components = { h1: "h3" };
@@ -17,10 +16,7 @@ const components = { h1: "h3" };
     <div class="cont-buttons">
       {
         links.map((l, idx) => (
-          <Button as="a" href={l.href} theme={!idx ? "brand" : undefined}>
-            <Icon name={l.icon} />
-            {l.label}
-          </Button>
+          <SocialLinkButton link={l} theme={!idx ? "brand" : undefined} />
         ))
       }
     </div>

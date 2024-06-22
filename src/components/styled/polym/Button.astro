@@ -6,6 +6,8 @@ type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
   size?: 1;
 };
 
+export type ButtonProps<T extends HTMLTag> = Props<T>;
+
 const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
 ---
 

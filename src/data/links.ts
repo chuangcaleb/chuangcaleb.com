@@ -6,7 +6,9 @@ interface Link {
   icon: string;
 }
 
-const LINKS: { [s: string]: Link } = {
+type Links = { [s: string]: Link };
+
+const LINKS = {
   LINKEDIN: {
     label: "LinkedIn",
     href: "https://linkedin.com/in/chuangcaleb/",
@@ -34,6 +36,8 @@ const LINKS: { [s: string]: Link } = {
     ariaLabel: "Email address of Chuang Caleb",
     icon: "mdi:email-outline",
   },
-} as const;
+} as const satisfies Links;
 
-export default LINKS;
+export type LinkKey = keyof typeof LINKS;
+
+export default LINKS as Links;
