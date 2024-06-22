@@ -21,12 +21,16 @@
   --flow-space: var(--size-relative-12);
 }
 
-.flom-0 {
-  --flow-space: 0;
-}
-
 .flom-2xs {
   --flow-space: var(--size-relative-1);
+}
+
+.flom-xl {
+  --flow-space: var(--size-relative-10);
+}
+
+/* .flom-0 {
+  --flow-space: 0;
 }
 
 .flom-xs {
@@ -40,9 +44,7 @@
 .flom-lg {
   --flow-space: var(--size-relative-8);
 }
-.flom-xl {
-  --flow-space: var(--size-relative-10);
-}
+
 .flom-2xl {
   --flow-space: var(--size-relative-12);
-}
+} */
