@@ -13,7 +13,7 @@
         "dev": "pnpm cloudinary:cache && astro dev",
         "preview:nobuild": "astro preview",
         "preview:nocache": "pnpm build:nocache && astro preview",
-        "preview": "astro build && astro preview"
+        "preview": "pnpm build && astro preview"
     },
     "dependencies": {
         "@astrojs/mdx": "^3.1.0",

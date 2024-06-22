@@ -25,10 +25,10 @@ const SKILLS: SkillGroups = {
     skills: [
       "raw-css",
       "design-system",
-      "responsive-ui",
       "preprocessing",
       "color-theory",
       "ux",
+      "fluid-responsive",
     ],
   },
 
@@ -76,3 +76,7 @@ const SKILLS: SkillGroups = {
 };
 
 export default SKILLS;
+
+// encryption
+
+// unifiedjs
