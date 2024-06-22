@@ -27,7 +27,7 @@ const title = data.title ?? noteName;
 <BaseMain title={title}>
   <WIPDisclaimer />
   <div class="note-body">
-    <aside class="toc-aside flow">
+    <aside class="toc-aside flow no-scrollbar">
       <Metadata metadata={data} />
       <hr />
       <Toc headings={headings} />
@@ -40,7 +40,6 @@ const title = data.title ?? noteName;
 </BaseMain>
 
 <style>
-  /* Remove h1 */
   .prose :global(.toc-aside + h1) {
     --flow-space: 0;
   }
@@ -51,12 +50,17 @@ const title = data.title ?? noteName;
   }
 
   aside {
-    width: 100%;
-    justify-self: end;
+    position: sticky;
+    top: var(--space-2xs);
+
     padding-inline: var(--space-m);
     padding-bottom: var(--space-2xs);
-    padding-block-start: var(--space-m);
-    --hr-space: var(--size-relative-8);
+    margin-block-start: var(--space-m);
+
+    height: min(100%, 100vh);
+    width: 100%;
+
+    overflow-x: hidden;
   }
   article.cgrid {
     grid-row-start: 1;

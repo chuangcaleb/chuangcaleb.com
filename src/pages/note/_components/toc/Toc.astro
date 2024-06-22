@@ -18,7 +18,7 @@ const toc = generateToc(headings);
 
 {
   !!toc.length && (
-    <nav id="toc" class="no-scrollbar">
+    <nav id="toc">
       <h4>Outline</h4>
       <ul class="toc-root">
         {toc.map((h) => (
@@ -63,17 +63,11 @@ const toc = generateToc(headings);
 
 <style>
   nav {
-    position: sticky;
-    align-self: flex-start;
-    height: min(100%, 100vh);
-    top: var(--space-2xs);
     width: 100%;
     display: flex;
     flex-direction: column;
     row-gap: var(--space-xs);
-    overflow-x: hidden;
     padding-block-end: var(--space-l);
-    max-width: 35ch;
   }
   nav h4 {
     display: block;
