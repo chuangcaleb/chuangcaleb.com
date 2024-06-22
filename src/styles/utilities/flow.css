@@ -3,6 +3,8 @@
   margin-block-start: var(--flow-space, var(--size-relative-6));
 }
 
+/* --------------------------------- parent --------------------------------- */
+
 .flow-xs > * + * {
   --flow-space: var(--size-relative-2);
 }
@@ -21,6 +23,14 @@
   --flow-space: var(--size-relative-12);
 }
 
+/* -------------------------------- children -------------------------------- */
+
+/* flom because `m` is `w` upside down lol */
+
+.flom-0 {
+  --flow-space: 0;
+}
+
 .flom-2xs {
   --flow-space: var(--size-relative-1);
 }
@@ -29,10 +39,7 @@
   --flow-space: var(--size-relative-10);
 }
 
-/* .flom-0 {
-  --flow-space: 0;
-}
-
+/* only enable if used
 .flom-xs {
   --flow-space: var(--size-relative-2);
 }
