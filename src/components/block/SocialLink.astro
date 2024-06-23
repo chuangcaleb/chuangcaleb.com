@@ -1,0 +1,19 @@
+---
+import Icon from "astro-iconify";
+import type { HTMLAttributes } from "astro/types";
+import type { LinkKey } from "~/data/links";
+import LINKS from "~/data/links";
+
+type Props = {
+  link: LinkKey;
+} & HTMLAttributes<"a">;
+
+const { link, ...props } = Astro.props;
+
+const l = LINKS[link];
+---
+
+<a href={l.href} {...props}>
+  <Icon name={l.icon} />
+  {l.label}
+</a>

@@ -6,10 +6,10 @@ export interface Props extends HTMLAttributes<"a"> {}
 const props = Astro.props;
 ---
 
-<a {...props}><slot /></a>
+<a class:list={["accent", props.class]} {...props}><slot /></a>
 
-<style>
-  * {
+<style is:global>
+  a.accent {
     --color: var(--ax1);
     --color-underline: var(--ax3);
     &:is(:hover, :focus, :active) {

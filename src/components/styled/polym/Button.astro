@@ -2,16 +2,21 @@
 import { type HTMLTag, type Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
-  theme?: "brand";
+  variant?: "brand" | "ghost";
   size?: 1;
 };
 
 export type ButtonProps<T extends HTMLTag> = Props<T>;
 
-const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
+const {
+  as: Comp = "button",
+  variant,
+  class: className,
+  ...props
+} = Astro.props;
 ---
 
-<Comp class:list={["cc-btn", theme, className]} {...props}>
+<Comp class:list={["cc-btn", variant, className]} {...props}>
   <slot />
 </Comp>
 
@@ -25,7 +30,7 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--size-relative-3);
+    gap: var(--size-relative-2);
 
     padding: var(--size-relative-2) var(--size-relative-3);
     border-style: solid;
@@ -36,12 +41,32 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     text-decoration-line: none;
     text-transform: lowercase;
 
+    [data-theme="dark"] & {
+      --_bg-hover: var(--text-1-strong);
+      --_border-hover: transparent;
+    }
+    [data-theme="light"] & {
+      --_bg-hover: var(--text-on-brand);
+      --_border-hover: var(--ax1);
+    }
+
     &.brand {
       --_bg: var(--ax1);
       --_text: var(--text-on-brand);
       --_border: transparent;
       --_text-hover: var(--ax1);
     }
+
+    /* &.ghost {
+      --_bg: none;
+      --_text: var(--text-1);
+      --_border: transparent;
+      --_border-hover: transparent;
+      --_text-hover: var(--text-1-strong);
+      --_bg-hover: var(--bg1);
+      text-decoration: underline;
+      text-decoration-color: var(--tx3);
+    } */
 
     &[size="1"] {
       font-size: var(--step-1);
@@ -54,14 +79,8 @@ const { as: Comp = "button", theme, class: className, ...props } = Astro.props;
     &:is(:hover, :focus, :active) {
       --_bg: var(--_bg-hover);
       --_text: var(--_text-hover, var(--ax1));
-      [data-theme="dark"] & {
-        --_bg-hover: var(--text-1-strong);
-        --_border: transparent;
-      }
-      [data-theme="light"] & {
-        --_bg-hover: var(--text-on-brand);
-        --_border: var(--ax1);
-      }
+      --_border: var(--_border-hover);
+      /* text-decoration-color: var(--ax2); */
     }
 
     svg {

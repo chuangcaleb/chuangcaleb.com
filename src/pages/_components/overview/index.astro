@@ -25,12 +25,14 @@ const components = { h1: "h3" };
       display: flex;
       gap: var(--size-relative-2);
       svg {
-        width: var(--size-relative-7);
         margin-bottom: var(--size-relative-2);
       }
       + * {
         --flow-space: var(--size-relative-2);
       }
+    }
+    a.accent svg {
+      width: 1.25em;
     }
   }
 </style>

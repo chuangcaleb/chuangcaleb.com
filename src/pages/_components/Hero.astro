@@ -3,7 +3,7 @@ import { Icon } from "astro-iconify";
 import { Image } from "astro:assets";
 import heroImg from "~/assets/hero.jpeg";
 import Button from "~/components/styled/polym/Button.astro";
-import BrandA from "~/components/styled/monom/BrandA.astro";
+import BrandA from "~/components/styled/monom/AccentA.astro";
 import LINKS from "~/data/links";
 
 const props = Astro.props;
@@ -35,7 +35,7 @@ const props = Astro.props;
       </p>
       <p>You'll find out about me on this site. Wanna work together?</p>
       <div class="cont-cta flom-xl">
-        <Button as="a" theme="brand" href={LINKS['EMAIL'].href} size={1}>
+        <Button as="a" variant="brand" href={LINKS['EMAIL'].href} size={1}>
           <Icon name={LINKS['EMAIL'].icon} />{}email me
         </Button>
         <Button as="a" href="#projects" size={1}>
