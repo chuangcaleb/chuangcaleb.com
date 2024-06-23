@@ -1,0 +1,172 @@
+---
+import { Breadcrumbs as AstroBreadcrumbs } from "astro-breadcrumbs";
+---
+
+<div class="prose">
+  <AstroBreadcrumbs
+    class="prose"
+    indexText="~"
+    linkTextFormat="capitalized"
+    truncated
+  >
+    <!-- <svg
+      slot="separator"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      ><polyline points="9 18 15 12 9 6"></polyline>
+    </svg> -->
+    <Fragment slot="separator"> / </Fragment>
+  </AstroBreadcrumbs>
+</div>
+
+<style is:global lang="scss">
+  @use "sass:list";
+
+  $bem-root: "c-breadcrumbs" !default;
+  $overflow-behavior: "wrap" !default;
+  $overflow-wrap-horizontal-spacing: 1rem !default;
+  $color-link: inherit !default;
+  $color-hover-link: null !default;
+  $color-separator: var(--tx3) !default;
+  $color-is-current: null !default;
+  $color-is-index: null !default;
+  $size-font: var(--step-0) !default;
+  $spacing-vertical-separator: 6px !default;
+  $icons-not-bigger-than-font-size: true !default;
+  $transition-link-breadcrumbs: color 0.2s ease-in-out !default;
+  $truncated: true !default;
+
+  $valid-overflow-behaviors: ("wrap", "ellipsis");
+
+  @if not list.index($valid-overflow-behaviors, $overflow-behavior) {
+    @error '❌  ===> #{$overflow-behavior} is not a valid option for $overflow-behavior. Please use: #{$valid-overflow-behaviors}';
+  }
+
+  .#{$bem-root} {
+    --color-link-breadcrumbs: #{$color-link};
+    --size-font-breadcrumbs: #{$size-font};
+    --spacing-vertical-separator-breadcrumbs: #{$spacing-vertical-separator};
+
+    @if $truncated {
+      .has-ellipsis {
+        display: var(--display-ellipsis-breadcrumbs, none);
+      }
+
+      &.is-truncated {
+        .has-ellipsis {
+          --display-ellipsis-breadcrumbs: flex;
+        }
+
+        .#{$bem-root}__crumb {
+          visibility: var(--visibility-truncated-breadcrumbs, hidden);
+          position: var(--position-truncated-breadcrumbs, absolute);
+
+          &:first-of-type,
+          &:last-of-type,
+          &.has-ellipsis {
+            --visibility-truncated-breadcrumbs: visible;
+            --position-truncated-breadcrumbs: relative;
+          }
+        }
+      }
+
+      &__truncated-button {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        color: var(--color-truncated-button, var(--color-link-breadcrumbs));
+      }
+    }
+
+    &__crumbs {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+
+      @if $overflow-behavior == "wrap" {
+        flex-wrap: wrap;
+      }
+
+      &:where(.has-no-separators) {
+        row-gap: var(--spacing-vertical-separator-breadcrumbs);
+
+        @if $overflow-behavior == "wrap" {
+          column-gap: $overflow-wrap-horizontal-spacing;
+        }
+      }
+    }
+
+    &__crumb {
+      display: flex;
+      align-items: center;
+
+      @if $overflow-behavior == "ellipsis" {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      &:has(.#{$bem-root}__separator) {
+        .#{$bem-root}__separator {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: var(--font-weight-7);
+          margin: 0 var(--spacing-vertical-separator-breadcrumbs);
+
+          @if $color-separator {
+            color: $color-separator;
+          }
+        }
+      }
+
+      @if $icons-not-bigger-than-font-size {
+        &:has(svg, image) :where(svg, image) {
+          max-width: var(--size-font-breadcrumbs);
+          max-height: var(--size-font-breadcrumbs);
+        }
+      }
+    }
+
+    &__link,
+    &__truncated-button {
+      font-size: var(--size-font-breadcrumbs);
+      // text-decoration: none;
+      // color: var(--color-link-breadcrumbs);
+      --color: var(--tx3);
+      line-height: 1;
+
+      @if $color-hover-link {
+        transition: $transition-link-breadcrumbs;
+
+        @media (hover: hover) {
+          &:hover {
+            --color-link-breadcrumbs: #{$color-hover-link};
+          }
+        }
+      }
+
+      @if $color-is-current {
+        &:where(.is-current) {
+          --color-link-breadcrumbs: #{$color-is-current};
+        }
+      }
+
+      @if $color-is-index {
+        &:where(.is-index) {
+          --color-link-breadcrumbs: #{$color-is-index};
+        }
+      }
+    }
+  }
+</style>

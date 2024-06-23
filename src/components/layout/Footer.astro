@@ -1,8 +1,16 @@
 ---
 import Contact from "./Contact.astro";
+import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
 ---
 
 <footer id="footer" class="flow-xs cgrid">
+  {
+    Astro.url.pathname !== "/" && (
+      <section class="region">
+        <Breadcrumbs />
+      </section>
+    )
+  }
   <Contact />
   <p class="fine-print">
     <a href="https://github.com/chuangcaleb/chuangcaleb.com">source code</a>

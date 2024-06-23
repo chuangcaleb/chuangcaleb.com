@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import { getNoteName } from "~/utils/post";
@@ -33,6 +34,7 @@ const title = data.title ?? noteName;
       <Toc headings={headings} />
     </aside>
     <article class="full cgrid prose flow-lg region">
+      <Breadcrumbs />
       <Content />
       <CollectionList note={entry} />
     </article>
@@ -40,8 +42,8 @@ const title = data.title ?? noteName;
 </BaseMain>
 
 <style>
-  .prose :global(.toc-aside + h1) {
-    --flow-space: 0;
+  .prose :global(h1:first-of-type) {
+    --flow-space: var(--space-m);
   }
 
   .note-body {

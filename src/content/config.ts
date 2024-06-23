@@ -36,7 +36,6 @@ const obsidianNoteCollection = defineCollection({
       ]),
       prev: reference("obsidian-note"),
       next: reference("obsidian-note"),
-      date: z.string(),
       created: z.string(),
       modified: z.string(),
       published: z.string(),
