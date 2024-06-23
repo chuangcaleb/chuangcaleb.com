@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { getEntries, getEntry } from "astro:content";
-import BrandA from "~/components/styled/monom/AccentA.astro";
+import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteName } from "~/utils/post";
 
 interface Props {
@@ -27,7 +27,9 @@ const notes =
         if (!note) return null;
         return (
           <li>
-            <BrandA href={`/note/${note.slug}`}>{getNoteName(note.id)}</BrandA>
+            <AccentA href={`/note/${note.slug}`}>
+              {getNoteName(note.id)}
+            </AccentA>
           </li>
         );
       })}

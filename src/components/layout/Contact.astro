@@ -2,7 +2,7 @@
 import Icon from "astro-iconify";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import LINKS from "~/data/links";
-import BrandA from "../styled/monom/AccentA.astro";
+import AccentA from "../styled/monom/AccentA.astro";
 ---
 
 <section class="region flow-lg" id="contact">
@@ -15,9 +15,9 @@ import BrandA from "../styled/monom/AccentA.astro";
     {
       Object.values(LINKS).map((l) => (
         <li>
-          <BrandA href={l.href}>
+          <AccentA href={l.href}>
             <Icon name={l.icon} aria-hidden="true" />{}{l.userId ?? l.label}
-          </BrandA>
+          </AccentA>
         </li>
       ))
     }

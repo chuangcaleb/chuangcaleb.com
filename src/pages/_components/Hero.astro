@@ -3,7 +3,7 @@ import { Icon } from "astro-iconify";
 import { Image } from "astro:assets";
 import heroImg from "~/assets/hero.jpeg";
 import Button from "~/components/styled/polym/Button.astro";
-import BrandA from "~/components/styled/monom/AccentA.astro";
+import AccentA from "~/components/styled/monom/AccentA.astro";
 import LINKS from "~/data/links";
 
 const props = Astro.props;
@@ -48,9 +48,9 @@ const props = Astro.props;
         {
           Object.values(LINKS).map((link) => (
             <li >
-              <BrandA href={link.href}>
+              <AccentA href={link.href}>
                 <span>{link?.userId ?? link.label}</span>{}<Icon name={link.icon} />
-              </BrandA>
+              </AccentA>
             </li>
           ))
         }

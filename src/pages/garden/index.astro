@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import NoteCard from "~/components/styled/monom/NoteCard.astro";
-import BrandA from "~/components/styled/monom/AccentA.astro";
+import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteName } from "~/utils/post";
 
 const publicNotes = await getCollection("obsidian-note");
@@ -43,7 +43,7 @@ const leafNotes = publicNotes
       {
         leafNotes?.map((n) => (
           <li>
-            <BrandA href={`/note/${n.slug}`}>{getNoteName(n.id)}</BrandA>
+            <AccentA href={`/note/${n.slug}`}>{getNoteName(n.id)}</AccentA>
             {`(${n.body.length} chars)`}
           </li>
         ))

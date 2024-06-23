@@ -1,6 +1,6 @@
 ---
 import { getEntry } from "astro:content";
-import BrandA from "~/components/styled/monom/AccentA.astro";
+import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteName } from "~/utils/post";
 import type { MetadataValues } from "./MetadataValue.astro";
 
@@ -26,6 +26,6 @@ const isDateFormat = isString && Date.parse(value);
 ---
 
 {isDate && value.toLocaleDateString("en-gb")}
-{note && <BrandA href={`/note/${note.slug}`}>{getNoteName(note.id)}</BrandA>}
+{note && <AccentA href={`/note/${note.slug}`}>{getNoteName(note.id)}</AccentA>}
 {isString && isDateFormat && new Date(value).toLocaleDateString("en-gb")}
 {isString && !isDateFormat && value}
