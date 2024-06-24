@@ -3,7 +3,7 @@ import { type HTMLTag, type Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
   variant?: "brand" | "ghost";
-  size?: 1;
+  step?: 1;
 };
 
 export type ButtonProps<T extends HTMLTag> = Props<T>;
@@ -68,7 +68,7 @@ const {
       text-decoration-color: var(--tx3);
     } */
 
-    &[size="1"] {
+    &[step="1"] {
       font-size: var(--step-1);
     }
 
