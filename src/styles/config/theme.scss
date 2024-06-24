@@ -9,6 +9,8 @@
 
   --m: 1;
   --a-l: 1;
+
+  --font-weight-strong: var(--font-weight-8);
 }
 
 @mixin light {
@@ -22,4 +24,6 @@
 
   --m: -1;
   --a-l: 1.5;
+
+  --font-weight-strong: var(--font-weight-5);
 }
