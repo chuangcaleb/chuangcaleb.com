@@ -1,9 +1,4 @@
-@use "misc";
-@use "fluid";
-@use "../utilities/grid/config" as grid;
-@use "dynamic-colors";
-
-@mixin dark-theme {
+@mixin dark {
   --base-h: 234;
   --base-s: 21%;
   --base-l: 18%;
@@ -16,7 +11,7 @@
   --a-l: 1;
 }
 
-@mixin light-theme {
+@mixin light {
   --base-h: 9;
   --base-s: 20%;
   --base-l: 100%;
@@ -27,37 +22,4 @@
 
   --m: -0.9;
   --a-l: 1.5;
-}
-
-:root {
-  @include misc.config-fonts;
-  @include misc.config-cgrid;
-  @include fluid.type;
-  @include fluid.space;
-  @include grid.config;
-
-  @include dynamic-colors.config;
-
-  --text-strong: var(--tx1);
-  --text-normal: var(--tx2);
-  --text-faded: var(--tx3);
-  --text-muted: var(--tx4);
-  --text-on-brand: var(--bg2);
-  --border: var(--ui2);
-
-  color-scheme: dark;
-  @include dark-theme();
-  @media (prefers-color-scheme: light) {
-    color-scheme: light;
-    @include light-theme();
-  }
-}
-
-[data-theme="dark"] {
-  color-scheme: dark;
-  @include dark-theme();
-}
-[data-theme="light"] {
-  color-scheme: light;
-  @include light-theme();
 }

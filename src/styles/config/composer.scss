@@ -1,0 +1,38 @@
+@use "misc";
+@use "fluid";
+@use "../utilities/grid/config" as grid;
+@use "dynamic-colors";
+@use "theme";
+
+:root {
+  @include misc.config-fonts;
+  @include misc.config-cgrid;
+  @include fluid.type;
+  @include fluid.space;
+  @include grid.config;
+
+  @include dynamic-colors.config;
+
+  --text-strong: var(--tx1);
+  --text-normal: var(--tx2);
+  --text-faded: var(--tx3);
+  --text-muted: var(--tx4);
+  --text-on-brand: var(--bg2);
+  --border: var(--ui2);
+
+  color-scheme: dark;
+  @include theme.dark();
+  @media (prefers-color-scheme: light) {
+    color-scheme: light;
+    @include theme.light();
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  @include theme.dark();
+}
+[data-theme="light"] {
+  color-scheme: light;
+  @include theme.light();
+}

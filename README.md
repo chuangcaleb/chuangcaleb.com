@@ -79,7 +79,8 @@ As of latest:
     │   │   ├── fonts.css // font imports
     │   │   ├── misc.scss
     │   │   ├── theme.scss // theme config
-    │   │   └── index.scss // imports everything together
+    │   │   └── composer.scss // composes everything in style rules
+    │   │   └── index.css // default export
     │   ├── normalize // reset default agent styles
     │   ├── overrides // custom site styles
     │   ├── utilities // does one job well
