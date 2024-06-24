@@ -24,14 +24,13 @@ const title = entry.data.title ?? noteName;
   <WIPDisclaimer />
   <div class="note-body">
     <aside class="flow">
-      <Breadcrumbs step={-1} />
+      <Metadata metadata={entry.data} />
       <div class="aside-sticky flow no-scrollbar">
-        <Metadata metadata={entry.data} />
-        <hr />
         <Toc headings={headings} />
       </div>
     </aside>
     <article class="full cgrid prose flow-lg region">
+      <Breadcrumbs step={-1} />
       <Content />
       <CollectionList note={entry} />
     </article>
@@ -39,6 +38,9 @@ const title = entry.data.title ?? noteName;
 </BaseMain>
 
 <style>
+  .prose :global(h1:first-of-type) {
+    --flow-space: var(--space-xs);
+  }
   .prose :global(h1 + *) {
     --flow-space: var(--space-m);
   }
