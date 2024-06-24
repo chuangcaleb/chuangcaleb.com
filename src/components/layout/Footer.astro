@@ -3,12 +3,15 @@ import Contact from "./Contact.astro";
 import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
 ---
 
-<footer id="footer" class="flow-xs cgrid">
+<footer id="footer" class="flow-xs linew-wide">
   {
     Astro.url.pathname !== "/" && (
-      <section class="region">
-        <Breadcrumbs />
-      </section>
+      <>
+        <section class="region">
+          <Breadcrumbs />
+        </section>
+        <hr />
+      </>
     )
   }
   <Contact />
