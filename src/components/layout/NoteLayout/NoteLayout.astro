@@ -22,19 +22,19 @@ const title = entry.data.title ?? noteName;
 
 <BaseMain title={title}>
   <WIPDisclaimer />
-  <div class="note-body">
+  <article class="note-body">
     <aside class="flow">
       <Metadata metadata={entry.data} />
       <div class="aside-sticky flow no-scrollbar">
         <Toc headings={headings} />
       </div>
     </aside>
-    <article class="full cgrid prose flow-lg region">
+    <div class="article-main full cgrid prose flow-lg region">
       <Breadcrumbs step={-1} />
       <Content />
       <CollectionList note={entry} />
-    </article>
-  </div>
+    </div>
+  </article>
 </BaseMain>
 
 <style>
@@ -62,11 +62,6 @@ const title = entry.data.title ?? noteName;
     width: 100%;
     overflow-x: hidden;
   }
-  article.cgrid {
-    grid-row-start: 1;
-    grid-column: 1;
-  }
-
   @media (width < 900px) {
     .note-body {
       grid-template-columns: 1fr;
@@ -75,11 +70,14 @@ const title = entry.data.title ?? noteName;
       display: none;
     }
   }
-  article.prose {
+  .article-main {
+    grid-row-start: 1;
+    grid-column: 1;
+    padding-block-start: var(--space-m);
+
     --size-header-1: 100%;
     --size-header-2: 100%;
     --size-header-3: 100%;
-    padding-block-start: var(--space-m);
 
     @media (width >= 1000px), (680px <= width <= 900px) {
       h1,
