@@ -17,19 +17,18 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { data } = entry;
 
 const { Content, headings } = await entry.render();
 
 const noteName = getNoteName(entry.id);
-const title = data.title ?? noteName;
+const title = entry.data.title ?? noteName;
 ---
 
 <BaseMain title={title}>
   <WIPDisclaimer />
   <div class="note-body">
     <aside class="toc-aside flow no-scrollbar">
-      <Metadata metadata={data} />
+      <Metadata metadata={entry.data} />
       <hr />
       <Toc headings={headings} />
     </aside>
