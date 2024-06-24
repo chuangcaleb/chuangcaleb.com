@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import SITE from "~/data/site";
 
 export type HeadProps = {
@@ -75,20 +76,26 @@ const description = descriptionProps ?? SITE.description;
 />
 <meta name="msapplication-TileColor" content={SITE.color.light} />
 
+<ViewTransitions />
+
 {
   /*
     <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml" />
      */
 }
 <script is:inline>
-  const root = document.documentElement;
-  const theme = (() => {
-    const localTheme =
-      typeof localStorage !== "undefined" && localStorage.getItem("theme");
-    if (localTheme && localTheme !== "system") return localTheme;
-    if (window.matchMedia("(prefers-color-scheme: light)").matches)
-      return "light";
-    return "dark";
-  })();
-  root.setAttribute("data-theme", theme);
+  function setTheme() {
+    const root = document.documentElement;
+    const theme = (() => {
+      const localTheme =
+        typeof localStorage !== "undefined" && localStorage.getItem("theme");
+      if (localTheme && localTheme !== "system") return localTheme;
+      if (window.matchMedia("(prefers-color-scheme: light)").matches)
+        return "light";
+      return "dark";
+    })();
+    root.setAttribute("data-theme", theme);
+  }
+  setTheme();
+  document.addEventListener("astro:after-swap", setTheme);
 </script>
