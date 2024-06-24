@@ -8,7 +8,6 @@
 }
 
 :where(svg:not([width])) {
-  vertical-align: middle;
   display: inline-block;
   width: 1em;
   /* height: 1em; */
