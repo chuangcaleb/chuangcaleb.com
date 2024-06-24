@@ -19,12 +19,12 @@ const NOTES_DIR = "src/content/obsidian-note";
 const prodIntegrations = [
   robotsTxt(),
   sitemap(),
-  compressor(),
   purgecss({
     keyframes: true,
     // variables: true,
     safelist: { standard: [/^\:[-a-z]+$/] },
   }),
+  compressor(),
 ];
 
 const integrations = [
