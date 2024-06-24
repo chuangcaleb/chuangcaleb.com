@@ -23,11 +23,13 @@ const title = entry.data.title ?? noteName;
 <BaseMain title={title}>
   <WIPDisclaimer />
   <div class="note-body">
-    <aside class="toc-aside flow no-scrollbar">
+    <aside class="flow">
       <Breadcrumbs />
-      <Metadata metadata={entry.data} />
-      <hr />
-      <Toc headings={headings} />
+      <div class="aside-sticky flow no-scrollbar">
+        <Metadata metadata={entry.data} />
+        <hr />
+        <Toc headings={headings} />
+      </div>
     </aside>
     <article class="full cgrid prose flow-lg region">
       <Content />
@@ -47,16 +49,15 @@ const title = entry.data.title ?? noteName;
   }
 
   aside {
-    position: sticky;
-    top: var(--space-2xs);
-
     padding-inline: var(--space-m);
     padding-bottom: var(--space-2xs);
     margin-block-start: var(--space-m);
-
+  }
+  .aside-sticky {
+    position: sticky;
+    top: var(--space-2xs);
     height: min(100%, 100vh);
     width: 100%;
-
     overflow-x: hidden;
   }
   article.cgrid {
