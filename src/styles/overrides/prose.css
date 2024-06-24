@@ -3,9 +3,7 @@
   width: 100%;
   --hr-space: var(--space-xl);
 
-  & > p {
-    line-height: var(--font-lineheight-4);
-  }
+  line-height: var(--font-lineheight-4);
 
   h1 {
     max-width: var(--size-header-2);
