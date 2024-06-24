@@ -1,12 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
-import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
-import BaseMain from "~/components/layout/BaseMain.astro";
-import { getNoteName } from "~/utils/post";
-import CollectionList from "./_components/CollectionList.astro";
-import Metadata from "./_components/metadata/Metadata.astro";
-import Toc from "./_components/toc/Toc.astro";
+import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
 
 export async function getStaticPaths() {
   const notes = await getCollection("obsidian-note");
@@ -17,98 +11,6 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-
-const { Content, headings } = await entry.render();
-
-const noteName = getNoteName(entry.id);
-const title = entry.data.title ?? noteName;
 ---
 
-<BaseMain title={title}>
-  <WIPDisclaimer />
-  <div class="note-body">
-    <aside class="toc-aside flow no-scrollbar">
-      <Metadata metadata={entry.data} />
-      <hr />
-      <Toc headings={headings} />
-    </aside>
-    <article class="full cgrid prose flow-lg region">
-      <Breadcrumbs />
-      <Content />
-      <CollectionList note={entry} />
-    </article>
-  </div>
-</BaseMain>
-
-<style>
-  .prose :global(h1:first-of-type) {
-    --flow-space: var(--space-m);
-  }
-
-  .note-body {
-    display: grid;
-    grid-template-columns: 1fr 30vw;
-  }
-
-  aside {
-    position: sticky;
-    top: var(--space-2xs);
-
-    padding-inline: var(--space-m);
-    padding-bottom: var(--space-2xs);
-    margin-block-start: var(--space-m);
-
-    height: min(100%, 100vh);
-    width: 100%;
-
-    overflow-x: hidden;
-  }
-  article.cgrid {
-    grid-row-start: 1;
-    grid-column: 1;
-  }
-
-  @media (width < 900px) {
-    .note-body {
-      grid-template-columns: 1fr;
-    }
-    aside {
-      display: none;
-    }
-  }
-  article.prose {
-    padding-block-start: var(--space-m);
-
-    @media (width >= 1000px), (680px <= width <= 900px) {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5 {
-        display: list-item;
-      }
-
-      h1::marker,
-      h2::marker,
-      h3::marker,
-      h4::marker,
-      h5::marker {
-        color: var(--text-muted);
-        font-size: 0.8em;
-        font-weight: initial;
-      }
-      h1::marker {
-        content: "H1  ";
-      }
-      h2::marker {
-        content: "H2  ";
-      }
-      h3::marker {
-        content: "H3  ";
-      }
-      h4::marker {
-        content: "H4  ";
-      }
-    }
-  }
-</style>
+<NoteLayout entry={entry} />
