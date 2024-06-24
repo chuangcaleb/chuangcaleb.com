@@ -38,11 +38,8 @@
 
   @include dynamic-colors.config;
 
-  --brand: var(--ax1);
-  --surface-1a: var(--bg1);
-  --surface-1b: var(--bg2);
-  --text-1-strong: var(--tx1);
-  --text-1: var(--tx2);
+  --text-strong: var(--tx1);
+  --text-normal: var(--tx2);
   --text-faded: var(--tx3);
   --text-muted: var(--tx4);
   --text-on-brand: var(--bg2);

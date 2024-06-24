@@ -1,5 +1,5 @@
 .menuContent {
-  background-color: var(--surface-1b);
+  background-color: var(--bg2);
   border-radius: var(--radius-2);
   border-width: 2px;
 }
@@ -15,11 +15,11 @@
   }
 
   &:is(:hover, :active):not([aria-selected="true"]) {
-    background-color: var(--surface-1a);
+    background-color: var(--bg1);
   }
 
   &[data-state="checked"] {
     color: var(--ax1);
-    /* background-color: var(--surface-1a); */
+    /* background-color: var(--bg1); */
   }
 }

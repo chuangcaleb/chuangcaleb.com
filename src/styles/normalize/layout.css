@@ -1,9 +1,9 @@
 :where(html) {
   accent-color: var(--ax1);
-  background-color: var(--surface-1a);
+  background-color: var(--bg1);
   height: 100%;
   caret-color: var(--ax1);
-  color: var(--text-1);
+  color: var(--text-normal);
   font-family: var(--font-sans);
   line-height: var(--font-lineheight-3);
   scrollbar-color: var(--scrollthumb-color) transparent;
@@ -41,5 +41,5 @@
   border-radius: var(--radius-2);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--text-1);
+  background-color: var(--text-normal);
 }

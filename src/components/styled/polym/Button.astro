@@ -22,8 +22,8 @@ const {
 
 <style is:global>
   .cc-btn {
-    background-color: var(--_bg, var(--surface-1b));
-    color: var(--_text, var(--text-1-strong));
+    background-color: var(--_bg, var(--bg2));
+    color: var(--_text, var(--text-strong));
     border-color: var(--_border, var(--border));
     border-width: 2px;
 
@@ -42,7 +42,7 @@ const {
     text-transform: lowercase;
 
     [data-theme="dark"] & {
-      --_bg-hover: var(--text-1-strong);
+      --_bg-hover: var(--text-strong);
       --_border-hover: transparent;
     }
     [data-theme="light"] & {
@@ -59,10 +59,10 @@ const {
 
     /* &.ghost {
       --_bg: none;
-      --_text: var(--text-1);
+      --_text: var(--text-normal);
       --_border: transparent;
       --_border-hover: transparent;
-      --_text-hover: var(--text-1-strong);
+      --_text-hover: var(--text-strong);
       --_bg-hover: var(--bg1);
       text-decoration: underline;
       text-decoration-color: var(--tx3);

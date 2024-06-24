@@ -2,7 +2,7 @@
 
 /* Headings */
 :where(h1, h2, h3, h4, h5, h6) {
-  color: var(--text-1-strong);
+  color: var(--text-strong);
   font-family: var(--font-heading);
   line-height: var(--font-lineheight-0);
   max-width: var(--size-header-1);
@@ -88,7 +88,7 @@
 
 .style-code,
 :where(:not(pre) > code) {
-  background-color: var(--surface-1b);
+  background-color: var(--bg2);
   border-radius: var(--radius-2);
   padding: var(--size-relative-2) var(--size-relative-3);
   writing-mode: lr;
@@ -104,7 +104,7 @@
 
 b,
 strong {
-  color: var(--text-1-strong);
+  color: var(--text-strong);
   font-weight: var(--font-weight-8);
 }
 
