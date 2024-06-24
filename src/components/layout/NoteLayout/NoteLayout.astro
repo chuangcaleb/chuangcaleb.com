@@ -39,15 +39,16 @@ const title = entry.data.title ?? noteName;
 
 <style>
   .prose :global(h1:first-of-type) {
-    --flow-space: var(--space-3xs);
+    --flow-space: var(--size-relative-1);
+    grid-column-end: feature;
   }
   .prose :global(h1 + *) {
-    --flow-space: var(--space-l);
+    --flow-space: var(--size-relative-6);
   }
 
   .note-body {
     display: grid;
-    grid-template-columns: 1fr 30vw;
+    grid-template-columns: 1fr 26vw;
   }
 
   aside {
