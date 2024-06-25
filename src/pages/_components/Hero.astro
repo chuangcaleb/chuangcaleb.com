@@ -184,14 +184,16 @@ const props = Astro.props;
   }
 
   mark {
-    -webkit-animation: 1.5s highlight 0.2s 1 normal forwards;
-    animation: 1.5s highlight 0.2s 1 normal forwards;
-    background-color: none;
-    background: linear-gradient(45deg, var(--ax1) 50%, transparent 50%);
+    // -webkit-animation: 1.5s highlight 0.2s 1 normal forwards;
+    animation: 1.5s highlight 1s 1 ease-out forwards;
+    background: linear-gradient(90deg, var(--ax1) 50%, var(--bg3) 50%);
     background-size: 205% 100%;
     background-position: 100% 0;
     color: var(--text-on-brand);
-    padding-inline: var(--space-3xs);
+    padding: var(--size-relative-1);
+    padding-top: 0;
+    border-radius: var(--radius-3);
+    display: inline-block;
   }
   @-webkit-keyframes highlight {
     to {
