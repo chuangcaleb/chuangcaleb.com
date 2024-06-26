@@ -41,12 +41,12 @@ const REDIRECTS = {
   "/note": "/garden",
 };
 
-const redirects: AstroUserConfig["redirects"] = Object.entries(
-  REDIRECTS,
-).reduce(
-  (acc, [k, v]) => ({ ...acc, [k]: { status: 307, destination: v } }),
-  {},
-);
+// const redirects: AstroUserConfig["redirects"] = Object.entries(
+//   REDIRECTS,
+// ).reduce(
+//   (acc, [k, v]) => ({ ...acc, [k]: { status: 307, destination: v } }),
+//   {},
+// );
 
 // https://astro.build/config
 export default defineConfig({
@@ -75,5 +75,5 @@ export default defineConfig({
     plugins: [icons({ compiler: "jsx", jsx: "react" })],
   },
   scopedStyleStrategy: "attribute",
-  redirects,
+  redirects: REDIRECTS,
 });
