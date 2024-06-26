@@ -166,7 +166,7 @@ Some instant benefits:
 
 Speaking CSS as a first-language has really made it so fluid and effective to work with (especially on a small-medium project like this). I use very simple `scss` for generating custom tokens and using mixins (allows modularizing rules into different files, while keeping it all under the same `:root` declaration lol)
 
-And compare the bundle sizes sent over the wire, between v1 and v2. As of writing, it's improved initial HTML (25.9KB to 12.1KB) and CSS (6.1KB to 7.6KB), from single-themed barebones to dynamic-themed and heavily-styled masterpiece. With much cleaner DX.
+And compare the bundle sizes sent over the wire, between v1 and v2. As of writing, it's improved initial HTML (25.9KB to 12.1KB) and CSS (6.1KB to 7.6KB now with fallbacks/polyfills), from single-themed barebones to dynamic-themed and heavily-styled masterpiece. With much cleaner DX.
 
 #### Modern Syntax + CSS Variables
 
