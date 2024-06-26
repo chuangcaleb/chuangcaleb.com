@@ -43,7 +43,7 @@ const props = Astro.props;
         </Button>
       </div>
     </div>
-    <div class="cont-socials region">
+    <div class="cont-socials">
       <ul class="socials-ul flow-md">
         {
           Object.values(LINKS).map((link) => (
@@ -146,6 +146,7 @@ const props = Astro.props;
     text-align: end;
     display: grid;
     align-items: end;
+    padding-block-start: var(--space-l);
 
     @media (width < 600px) {
       grid-column: 1 / -1;
