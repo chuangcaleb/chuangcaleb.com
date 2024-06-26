@@ -27,8 +27,8 @@
 
 /* flom because `m` is `w` upside down lol */
 
-.flom-2xs {
-  --flow-space: var(--size-relative-1);
+.flom-xs {
+  --flow-space: var(--size-relative-2);
 }
 
 .flom-xl {
@@ -40,9 +40,11 @@
   --flow-space: 0;
 }
 
-.flom-xs {
-  --flow-space: var(--size-relative-2);
+.flom-2xs {
+  --flow-space: var(--size-relative-1);
 }
+
+
 
 .flom-sm {
   --flow-space: var(--size-relative-4);

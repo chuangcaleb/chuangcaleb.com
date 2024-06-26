@@ -20,12 +20,12 @@ const props = Astro.props;
         loading="eager"
       />
     </div>
-    <div class="cont-text | flow-lg">
-      <p class="suptitle">chuang caleb</p>
-      <h1 class="flom-2xs">
+    <div class="cont-text | flow">
+      <h1 class="before-title">Chuang Caleb</h1>
+      <p class="title flom-xs">
         software dev <br />
         with a different <mark>story.</mark>
-      </h1>
+      </p>
       <p>
         Ahoy! 🌊 This is Caleb speaking. I professionally tinker with <b>
           UI design systems
@@ -75,7 +75,7 @@ const props = Astro.props;
     grid-template-rows: auto;
     align-content: start;
 
-    .suptitle {
+    .before-title {
       font-size: var(--step-3);
       font-weight: var(--font-weight-4);
       font-family: var(--font-heading);
@@ -83,8 +83,8 @@ const props = Astro.props;
       color: var(--text-faded);
       text-decoration: underline;
       text-decoration-color: var(--ax1);
-      // text-underline-offset: 0.25em;
       text-underline-offset: 0.5em;
+      text-transform: lowercase;
     }
 
      > * {
@@ -93,11 +93,14 @@ const props = Astro.props;
         grid-column: 1 / -1;
       }
     }
-    h1 {
+    .title  {
       grid-column: 1 / -1;
       text-wrap: balance;
-      line-height: var(--step-7);
+      color: var(--text-strong);
+      line-height: var(--font-lineheight-00);
+      font-weight: var(--font-weight-8);
       font-size: var(--step-7);
+      font-family: var(--font-heading);
     }
     p {
       text-wrap: balance;
