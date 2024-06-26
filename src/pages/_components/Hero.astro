@@ -188,7 +188,6 @@ const props = Astro.props;
   }
 
   mark {
-    // -webkit-animation: 1.5s highlight 0.2s 1 normal forwards;
     animation: 3s highlight 0.5s 1 ease-out forwards;
     background: linear-gradient(90deg, var(--ax1) 50%, var(--bg3) 50%);
     background-size: 205% 100%;
@@ -199,12 +198,6 @@ const props = Astro.props;
     border-radius: var(--radius-3);
     display: inline-block;
   }
-  @-webkit-keyframes highlight {
-    to {
-      background-position: 0 0;
-    }
-  }
-
   @keyframes highlight {
     to {
       background-position: 0 0;
