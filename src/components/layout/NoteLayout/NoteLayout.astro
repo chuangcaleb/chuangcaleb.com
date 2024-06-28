@@ -45,6 +45,9 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
     --flow-space: var(--size-relative-1);
     grid-column-end: feature;
   }
+  .prose :global(h1 + *) {
+    --flow-space: var(--size-relative-6);
+  }
 
   .note-body {
     display: grid;
