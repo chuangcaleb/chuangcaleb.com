@@ -1,21 +1,13 @@
 ---
-import {
-  getEntry,
-  type ContentEntryMap,
-  type ValidContentEntrySlug,
-} from "astro:content";
+import { getEntry } from "astro:content";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteName } from "~/utils/post";
 import type { MetadataValues } from "./MetadataValue.astro";
+import type { Reference } from "~/utils/meta";
 
 interface Props {
   isLink: boolean;
   value: Exclude<MetadataValues, Array<any>>;
-}
-
-interface Reference<C extends keyof ContentEntryMap> {
-  collection: C;
-  slug: ValidContentEntrySlug<C>;
 }
 
 const isReference = (x: any): x is Reference<"obsidian-note"> =>

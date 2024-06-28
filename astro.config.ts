@@ -50,7 +50,7 @@ const REDIRECTS = {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.chuangcaleb.com",
+  site: "https://chuangcaleb.com",
   trailingSlash: "never",
   prefetch: true,
   integrations,

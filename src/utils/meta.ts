@@ -1,19 +1,15 @@
-import type { CollectionEntry } from "astro:content";
-import type { Reference } from "~/components/layout/NoteLayout/components/metadata/MetadataValueItem.astro";
+import {
+  type ContentEntryMap,
+  type ValidContentEntrySlug,
+} from "astro:content";
 
-export function isMetaContains(
-  value: string | string[] | undefined,
-  query: string,
-) {
-  if (!value) return false;
-  if (Array.isArray(value)) {
-    return value.includes(query);
-  }
-  return value === "query";
+export interface Reference<C extends keyof ContentEntryMap> {
+  collection: C;
+  slug: ValidContentEntrySlug<C>;
 }
 
 export function isInCollection(
-  note: Reference | Reference[] | undefined,
+  note: Reference<"obsidian-note"> | Reference<"obsidian-note">[] | undefined,
   query: string,
 ) {
   if (!note) return false;
