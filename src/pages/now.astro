@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
+import { isInCollection } from "~/utils/meta";
+
+const allNotes = await getCollection("obsidian-note");
+const nowNotes = allNotes.filter((note) =>
+  isInCollection(note.data?.collection, "now/now")
+);
+
+const latestNowNote = nowNotes[0];
+const { Content } = await latestNowNote.render();
+---
+
+<NoteLayout title="Now">
+  <h1>Now</h1>
+  <p>Regular updates on (1) what I'm currently up to + (2) how I'm doing.</p>
+  <p>
+    Started by <a href="https://nownownow.com/about">nownownow.com/about</a> — read
+    more there!
+  </p>
+  <hr />
+  <article class="prose full cgrid flow-lg">
+    <Content />
+  </article>
+  <!-- <CollectionList isOrdered items={nowNotes} /> -->
+</NoteLayout>

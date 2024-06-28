@@ -1,11 +1,15 @@
 ---
+import type { ContentEntryMap, ValidContentEntrySlug } from "astro:content";
 import { getEntries } from "astro:content";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteName } from "~/utils/post";
 
-interface Props {
+interface Props<C extends keyof ContentEntryMap> {
   isOrdered: boolean;
-  items: any; // FIXME — why doesn't CollectionEntry<"obsidian-note"> work here?
+  items: {
+    collection: C;
+    slug: ValidContentEntrySlug<C>;
+  }[];
 }
 
 const { isOrdered, items } = Astro.props;
