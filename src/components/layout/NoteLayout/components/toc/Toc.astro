@@ -1,8 +1,13 @@
 ---
+import type { MarkdownHeading } from "astro";
 import TocHeading from "./TocHeading.astro";
 import generateToc from "lib/markdown/toc";
 
-const { headings } = Astro.props;
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings = [] } = Astro.props;
 
 const toc = generateToc(headings);
 

@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getNoteName } from "~/utils/post";
+import NoteLayout from "./NoteLayout.astro";
+
+interface Props {
+  entry: CollectionEntry<"obsidian-note">;
+}
+
+const { entry } = Astro.props;
+
+const { Content, headings } = await entry.render();
+
+// title
+const noteName = getNoteName(entry.id);
+const title = entry.data.title ?? noteName;
+
+const noteLayoutProps = {
+  title,
+  headings,
+  metadata: entry.data,
+};
+---
+
+<NoteLayout {...noteLayoutProps}>
+  <Content />
+</NoteLayout>

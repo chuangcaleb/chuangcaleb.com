@@ -1,44 +1,47 @@
 ---
+import type { MarkdownHeading } from "astro";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
 import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
-import { getNoteName } from "~/utils/post";
 import CollectionList from "./components/CollectionList.astro";
+import type { MetadataProps } from "./components/metadata/Metadata.astro";
 import Metadata from "./components/metadata/Metadata.astro";
 import Toc from "./components/toc/Toc.astro";
-import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  entry: CollectionEntry<"obsidian-note">;
+  title: string;
+  headings?: MarkdownHeading[];
+  metadata?: MetadataProps;
 }
 
-const { entry } = Astro.props;
+const { title, headings = [], metadata = {} } = Astro.props;
 
-const { Content, headings } = await entry.render();
-
-const noteName = getNoteName(entry.id);
-const title = entry.data.title ?? noteName;
+// collection
+const { collectionItems, series: isOrdered = false } = metadata;
+const isCollection = !!collectionItems?.length;
+const collectionData = isCollection && { isOrdered, items: collectionItems };
 ---
 
 <BaseMain title={title}>
   <WIPDisclaimer />
   <article class="note-body">
     <aside class="flow">
-      <Metadata metadata={entry.data} />
+      <Metadata metadata={metadata} />
       <div class="aside-sticky flow no-scrollbar">
         <Toc headings={headings} />
       </div>
     </aside>
     <div class="article-main full cgrid prose flow-lg region">
       <Breadcrumbs step={-1} />
-      <Content />
-      <CollectionList note={entry} />
+      <slot />
+      {collectionData && <CollectionList {...collectionData} />}
     </div>
   </article>
 </BaseMain>
 
 <style>
-  .prose :global(h1:first-of-type) {
+  .prose :global(:is(h1, h2, h3, h4):nth-child(2)) {
     --flow-space: var(--size-relative-1);
     grid-column-end: feature;
   }

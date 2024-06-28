@@ -1,23 +1,17 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getEntries, getEntry } from "astro:content";
+import { getEntries } from "astro:content";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteName } from "~/utils/post";
 
 interface Props {
-  note: CollectionEntry<"obsidian-note">;
+  isOrdered: boolean;
+  items: any; // FIXME — why doesn't CollectionEntry<"obsidian-note"> work here?
 }
-const { note } = Astro.props;
 
-const collectionNote = await getEntry("obsidian-note", note.slug);
-
-const isOrdered = !!note.data.series;
+const { isOrdered, items } = Astro.props;
 
 const List = isOrdered ? "ol" : "ul";
-
-const notes =
-  collectionNote?.data.collectionItems &&
-  (await getEntries(collectionNote.data.collectionItems));
+const notes = await getEntries(items);
 ---
 
 {

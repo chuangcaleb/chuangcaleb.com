@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
+import ObsidianNoteLayout from "~/components/layout/NoteLayout/ObsidianNoteLayout.astro";
 
 export async function getStaticPaths() {
   const notes = await getCollection("obsidian-note");
@@ -13,4 +13,4 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 ---
 
-<NoteLayout entry={entry} />
+<ObsidianNoteLayout entry={entry} />
