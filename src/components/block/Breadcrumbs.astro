@@ -8,7 +8,7 @@ interface Props {
 const { step = 0 } = Astro.props;
 ---
 
-<div class="prose" style={{ "--size-font-breadcrumbs": `var(--step-${step})` }}>
+<div style={{ "--size-font-breadcrumbs": `var(--step-${step})` }}>
   <AstroBreadcrumbs indexText="~" linkTextFormat="capitalized" truncated>
     <!-- <svg
       slot="separator"
