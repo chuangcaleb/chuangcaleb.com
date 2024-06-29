@@ -1,0 +1,23 @@
+---
+import Icon from "astro-iconify";
+import NavSheetReact from "./NavSheetReact";
+import NavigationLinks from "~/components/layout/NavigationLinks.astro";
+---
+
+<NavSheetReact client:idle>
+  <Icon name="lucide:chevron-first" slot="menuIcon" />
+  <Icon name="lucide:chevron-last" slot="closeIcon" />
+  <div slot="body" class="flow-lg">
+    <slot name="sheetBody" />
+    <hr />
+    <NavigationLinks />
+  </div>
+</NavSheetReact>
+<style>
+  hr:first-child {
+    display: none;
+    + * {
+      --flow-space: 0;
+    }
+  }
+</style>

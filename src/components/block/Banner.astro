@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+export interface Props extends HTMLAttributes<"div"> {}
+
+const { class: propsClass, ...props } = Astro.props;
+---
+
+<div {...props} class:list={["banner surface-alt linew-max", propsClass]}>
+  <slot />
+</div>
+
+<style>
+  .banner {
+    border-bottom-width: 0.5px;
+    padding-block: var(--size-relative-2);
+  }
+</style>

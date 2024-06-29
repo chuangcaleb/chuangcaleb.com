@@ -9,7 +9,7 @@ const { step = 0 } = Astro.props;
 ---
 
 <div style={{ "--size-font-breadcrumbs": `var(--step-${step})` }}>
-  <AstroBreadcrumbs indexText="~" linkTextFormat="capitalized" truncated>
+  <AstroBreadcrumbs indexText={Astro.url.host} truncated>
     <!-- <svg
       slot="separator"
       xmlns="http://www.w3.org/2000/svg"

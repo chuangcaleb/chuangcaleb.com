@@ -2,6 +2,8 @@
 import type { MarkdownHeading } from "astro";
 import TocHeading from "./TocHeading.astro";
 import generateToc from "lib/markdown/toc";
+import Icon from "astro-iconify";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 
 interface Props {
   headings: MarkdownHeading[];
@@ -24,7 +26,10 @@ const toc = generateToc(headings);
 {
   !!toc.length && (
     <nav id="toc">
-      <h4>Outline</h4>
+      <TagWIcon as="h4">
+        <Icon name="lucide:list" />
+        Outline
+      </TagWIcon>
       <ul class="toc-root">
         {toc.map((h) => (
           <TocHeading tocItem={h} />
@@ -79,10 +84,9 @@ const toc = generateToc(headings);
     display: flex;
     flex-direction: column;
     row-gap: var(--space-xs);
-    padding-block-end: var(--space-l);
   }
   nav h4 {
-    display: block;
+    /* display: block; */
     /* color: var(--text-faded); */
     font-size: var(--step-1);
   }

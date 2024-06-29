@@ -1,7 +1,6 @@
 ---
 import type { MarkdownHeading } from "astro";
 import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
-import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import CollectionList from "./components/CollectionList.astro";
 import type { MetadataProps } from "./components/metadata/Metadata.astro";
@@ -23,9 +22,13 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
 ---
 
 <BaseMain title={title}>
-  <WIPDisclaimer />
+  <Fragment slot="sheetBody">
+    <h3>{title}</h3>
+    <Metadata metadata={metadata} />
+    <Toc headings={headings} />
+  </Fragment>
   <article class="note-body">
-    <aside class="flow">
+    <aside class="flow-lg">
       <Metadata metadata={metadata} />
       <div class="aside-sticky flow no-scrollbar">
         <Toc headings={headings} />
@@ -64,6 +67,7 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
     height: min(100%, 100vh);
     width: 100%;
     overflow-x: hidden;
+    padding-block-end: var(--space-l);
   }
   @media (width < 900px) {
     .note-body {

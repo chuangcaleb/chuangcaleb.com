@@ -1,7 +1,9 @@
 ---
-import { EXCLUDE_KEYS } from "lib/obsidian/consts";
-import MetadataValue from "../metadata/MetadataValue.astro";
+import Icon from "astro-iconify";
 import type { CollectionEntry } from "astro:content";
+import { EXCLUDE_KEYS } from "lib/obsidian/consts";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
+import MetadataValue from "../metadata/MetadataValue.astro";
 
 export type MetadataProps = CollectionEntry<"obsidian-note">["data"];
 
@@ -12,23 +14,33 @@ const { metadata } = Astro.props;
 const metadataArray = Object.entries(metadata);
 ---
 
-<ul class="metadata-root">
-  {
-    metadataArray.map(([key, value]) => {
-      if (!value) return;
-      if (EXCLUDE_KEYS.includes(key)) return;
-      return (
-        <li>
-          {key} :: <MetadataValue key={key} value={value} />
-        </li>
-      );
-    })
-  }
-</ul>
-
+{
+  metadataArray.length > 0 && (
+    <section>
+      <TagWIcon as="h4">
+        <Icon name="lucide:database-zap" />
+        Metadata
+      </TagWIcon>
+      <ul class="metadata-root">
+        {metadataArray.map(([key, value]) => {
+          if (!value) return;
+          if (EXCLUDE_KEYS.includes(key)) return;
+          return (
+            <li>
+              {key} :: <MetadataValue key={key} value={value} />
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )
+}
 <style>
   ul {
     color: var(--text-faded);
     font-size: var(--step--1);
+  }
+  h4 {
+    font-size: var(--step-1);
   }
 </style>

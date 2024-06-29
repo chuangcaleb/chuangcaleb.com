@@ -13,9 +13,10 @@ const { title, description } = Astro.props;
 <html lang={SITE.language} data-theme="dark">
   <head>
     <Head title={title} description={description} />
-  </head>
-  <body>
-    <Header />
+  </head><body>
+    <Header>
+      <slot slot="sheetBody" name="sheetBody" />
+    </Header>
     <slot />
     <Footer />
     <style is:global>
