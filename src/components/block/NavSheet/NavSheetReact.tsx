@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import { cn } from "~/utils/css";
 import { Fragment } from "react/jsx-runtime";
 
+// lazy any lol
 const DialogDemo = (props: any) => (
   <Dialog.Root>
     <Dialog.Trigger asChild>
@@ -19,7 +20,7 @@ const DialogDemo = (props: any) => (
             <Fragment>{props.closeIcon}</Fragment>
           </button>
         </Dialog.Close>
-        <div>Some Content</div>
+        {props.body}
       </Dialog.Content>
     </Dialog.Portal>
   </Dialog.Root>
