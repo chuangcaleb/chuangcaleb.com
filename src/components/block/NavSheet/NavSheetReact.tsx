@@ -14,7 +14,9 @@ const DialogDemo = (props: any) => (
     <Dialog.Portal>
       <Dialog.Overlay className={styles.DialogOverlay} />
       <Dialog.Content className={cn(styles.DialogContent, "flow")}>
-        <Dialog.Title className={styles.DialogTitle}>Navigation</Dialog.Title>
+        <Dialog.Title className={cn(styles.DialogTitle, "sr-only")}>
+          Page Navigation
+        </Dialog.Title>
         <Dialog.Close asChild>
           <button className={styles.CloseButton} aria-label="Close">
             <Fragment>{props.closeIcon}</Fragment>

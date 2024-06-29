@@ -1,5 +1,4 @@
-[class*="flow"] > * + *,
-[class*="flow"] > * + :where(astro-island, astro-slot) > *:first-child {
+[class*="flow"] > * + * {
   --flow-space: var(--size-relative-6);
   margin-block-start: var(--flow-space, var(--size-relative-6));
 }

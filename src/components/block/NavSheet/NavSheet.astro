@@ -8,6 +8,8 @@ import NavigationLinks from "~/components/layout/NavigationLinks.astro";
   <Icon name="lucide:chevron-first" slot="menuIcon" />
   <Icon name="lucide:chevron-last" slot="closeIcon" />
   <div slot="body" class="flow">
+    <slot name="sheetBody" />
+    <hr />
     <NavigationLinks />
   </div>
 </NavSheetReact>

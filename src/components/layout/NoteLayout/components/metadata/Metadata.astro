@@ -12,23 +12,30 @@ const { metadata } = Astro.props;
 const metadataArray = Object.entries(metadata);
 ---
 
-<ul class="metadata-root">
-  {
-    metadataArray.map(([key, value]) => {
-      if (!value) return;
-      if (EXCLUDE_KEYS.includes(key)) return;
-      return (
-        <li>
-          {key} :: <MetadataValue key={key} value={value} />
-        </li>
-      );
-    })
-  }
-</ul>
-
+{
+  metadataArray.length > 0 && (
+    <>
+      <h4>Metadata</h4>
+      <ul class="metadata-root">
+        {metadataArray.map(([key, value]) => {
+          if (!value) return;
+          if (EXCLUDE_KEYS.includes(key)) return;
+          return (
+            <li>
+              {key} :: <MetadataValue key={key} value={value} />
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  )
+}
 <style>
   ul {
     color: var(--text-faded);
     font-size: var(--step--1);
+  }
+  h4 {
+    font-size: var(--step-1);
   }
 </style>

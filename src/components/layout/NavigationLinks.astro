@@ -3,15 +3,18 @@ import Icon from "astro-iconify";
 import NAV_LINKS from "~/data/nav";
 ---
 
-<ul class="flow-sm">
-  {
-    Object.values(NAV_LINKS).map((l) => (
-      <li>
-        {l.icon && <Icon name={l.icon} />} <a href={l.href}>{l.label}</a>
-      </li>
-    ))
-  }
-</ul>
+<nav>
+  <h2 class="sr-only">Site navigation</h2>
+  <ul class="flow-sm">
+    {
+      Object.values(NAV_LINKS).map((l) => (
+        <li>
+          {l.icon && <Icon name={l.icon} />} <a href={l.href}>{l.label}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
 
 <style>
   a {

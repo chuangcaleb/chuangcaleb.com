@@ -7,7 +7,9 @@ import NavSheet from "../block/NavSheet/NavSheet.astro";
     <a href="#main">Skip to content →</a>
     <a href="#footer">Skip to footer →</a>
   </div>
-  <NavSheet />
+  <NavSheet>
+    <slot slot="sheetBody" name="sheetBody" />
+  </NavSheet>
 </header>
 
 <style is:global>
