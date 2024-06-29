@@ -6,7 +6,7 @@ import { Content as ExplainNowContent } from "./explain-now.mdx";
 
 const allNotes = await getCollection("obsidian-note");
 const nowNotes = allNotes.filter((note) =>
-  isInCollection(note.data?.collection, "now/now")
+  isInCollection(note.data?.collection, "now")
 );
 
 const latestNowNote = nowNotes[0];
