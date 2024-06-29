@@ -1,6 +1,7 @@
 ---
 import Icon from "astro-iconify";
 import NAV_LINKS from "~/data/nav";
+import TagWIcon from "../styled/polym/TagWIcon.astro";
 ---
 
 <nav>
@@ -9,7 +10,9 @@ import NAV_LINKS from "~/data/nav";
     {
       Object.values(NAV_LINKS).map((l) => (
         <li>
-          {l.icon && <Icon name={l.icon} />} <a href={l.href}>{l.label}</a>
+          <TagWIcon as="a" href={l.href}>
+            {l.icon && <Icon name={l.icon} />} {l.label}
+          </TagWIcon>
         </li>
       ))
     }

@@ -13,3 +13,11 @@ import NavigationLinks from "~/components/layout/NavigationLinks.astro";
     <NavigationLinks />
   </div>
 </NavSheetReact>
+<style>
+  hr:first-child {
+    display: none;
+    + * {
+      --flow-space: 0;
+    }
+  }
+</style>
