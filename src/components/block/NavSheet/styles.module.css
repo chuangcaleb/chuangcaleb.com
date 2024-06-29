@@ -1,12 +1,26 @@
 .FloatingButton {
   position: fixed;
+}
+
+.CloseButton {
+  --flow-space: 0;
+  position: absolute;
+}
+
+:is(.FloatingButton, .CloseButton) {
   top: var(--size-2);
   right: var(--size-2);
   width: var(--size-8);
   aspect-ratio: 1/1;
   z-index: 5;
-  border-radius: 50%;
+  border-radius: var(--radius-3);
   background-color: var(--bg3);
+  svg {
+    color: var(--text-faded);
+    display: block;
+    width: 75%;
+    margin: auto;
+  }
 }
 
 .DialogOverlay {
@@ -52,20 +66,6 @@
 
 .DialogTitle {
   font-size: var(--step-2);
-}
-
-.CloseButton {
-  --flow-space: 0;
-  position: absolute;
-  top: var(--size-2);
-  right: var(--size-2);
-  border-radius: 100%;
-  transition-property: opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-  width: var(--size-8);
-  aspect-ratio: 1/1;
-  background-color: var(--bg3);
 }
 
 @keyframes overlayShow {

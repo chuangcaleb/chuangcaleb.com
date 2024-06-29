@@ -10,5 +10,6 @@
 :where(svg:not([width])) {
   display: inline-block;
   width: 1em;
+  color: currentColor;
   /* height: 1em; */
 }

@@ -1,5 +1,5 @@
 ---
-import NavSheet from "../block/NavSheet";
+import NavSheet from "../block/NavSheet/NavSheet.astro";
 ---
 
 <header>
@@ -7,7 +7,7 @@ import NavSheet from "../block/NavSheet";
     <a href="#main">Skip to content →</a>
     <a href="#footer">Skip to footer →</a>
   </div>
-  <NavSheet client:idle />
+  <NavSheet />
 </header>
 
 <style is:global>
