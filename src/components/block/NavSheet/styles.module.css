@@ -18,7 +18,8 @@
   svg {
     color: var(--text-faded);
     display: block;
-    width: 75%;
+    width: 100%;
+    padding: var(--size-2);
     margin: auto;
   }
 }
