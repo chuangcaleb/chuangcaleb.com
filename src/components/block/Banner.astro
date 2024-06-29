@@ -1,8 +1,12 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 
+export interface Props extends HTMLAttributes<"div"> {}
+
+const { class: propsClass, ...props } = Astro.props;
 ---
 
-<div class="banner surface-alt cgrid">
+<div {...props} class:list={["banner surface-alt cgrid", propsClass]}>
   <slot />
 </div>
 
