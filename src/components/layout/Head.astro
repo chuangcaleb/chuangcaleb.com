@@ -76,7 +76,11 @@ const description = descriptionProps ?? SITE.description;
 />
 <meta name="msapplication-TileColor" content={SITE.color.light} />
 
-<ViewTransitions />
+{
+
+    // Removed until we fix broken window event listeners
+    /* <ViewTransitions /> */
+}
 
 {
   /*
