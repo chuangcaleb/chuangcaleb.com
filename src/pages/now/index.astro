@@ -18,7 +18,7 @@ const { Content } = await latestNowNote.render();
     <span
       >❓ <a href="#now-shows-latest-life-updates">What is a "/now" page?</a
       ></span
-    >⋅
+    >•
     <span>
       🔗 <a href={`/note/${latestNowNote.slug}`}>Note link →</a>
     </span>
@@ -27,12 +27,13 @@ const { Content } = await latestNowNote.render();
   <hr />
   <ExplainNowContent />
   <!-- <CollectionList isOrdered items={nowNotes} /> -->
-</NoteLayout>
+</NoteLayout>ˆ
 
 <style>
   .toast {
     --flow-space: var(--space-xs);
     column-gap: var(--space-xs);
+    color: var(--text-faded);
     a {
       --color: var(--text-faded);
     }

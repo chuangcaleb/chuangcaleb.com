@@ -1,7 +1,7 @@
 ---
 import type { MarkdownHeading } from "astro";
+import Banner from "~/components/block/Banner.astro";
 import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
-import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import CollectionList from "./components/CollectionList.astro";
 import type { MetadataProps } from "./components/metadata/Metadata.astro";
@@ -23,7 +23,9 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
 ---
 
 <BaseMain title={title}>
-  <WIPDisclaimer />
+  <Banner>
+    <Breadcrumbs step={-1} />
+  </Banner>
   <article class="note-body">
     <aside class="flow">
       <Metadata metadata={metadata} />
@@ -32,7 +34,6 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
       </div>
     </aside>
     <div class="article-main full cgrid prose flow-lg region">
-      <Breadcrumbs step={-1} />
       <slot />
       {collectionData && <CollectionList {...collectionData} />}
     </div>

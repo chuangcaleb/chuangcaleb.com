@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import WIPDisclaimer from "~/components/block/WIPDisclaimer.astro";
+import Banner from "~/components/block/Banner.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import NoteCard from "~/components/styled/monom/NoteCard.astro";
 import AccentA from "~/components/styled/monom/AccentA.astro";
@@ -22,7 +22,7 @@ const leafNotes = publicNotes
 ---
 
 <BaseMain title="Digital Garden">
-  <WIPDisclaimer />
+  <Banner />
   <section class="linew-wide prose region flow-lg">
     <h1>Digital Garden</h1>
     <h2>📂 Collection notes</h2>
