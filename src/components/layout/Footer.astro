@@ -1,14 +1,17 @@
 ---
 import Contact from "./Contact.astro";
 import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
+import NavigationLinks from "./NavigationLinks.astro";
 ---
 
 <footer id="footer" class="flow-xs linew-wide">
   {
     Astro.url.pathname !== "/" && (
       <>
-        <section class="region">
+        <section class="region flow-lg">
           <Breadcrumbs />
+          <hr />
+          <NavigationLinks />
         </section>
         <hr />
       </>
@@ -32,6 +35,9 @@ import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
       :global(*) {
         grid-column: max;
       }
+    }
+    * {
+      --border: var(--ui1);
     }
   }
 
