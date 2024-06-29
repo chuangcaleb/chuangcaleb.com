@@ -1,7 +1,6 @@
 ---
 import BaseMain from "~/components/layout/BaseMain.astro";
 import Button from "~/components/styled/polym/Button.astro";
-const url = Astro.url;
 ---
 
 <BaseMain title="404 Not Found" class="linew region flow-lg">
@@ -9,10 +8,12 @@ const url = Astro.url;
     <header class="flow">
       <h1>404</h1>
       <p>Page not Found. <em>Womp womp.</em></p>
-      <p><code>{url}</code></p>
     </header>
     <hr />
     <p>I'll add something witty here another time.</p>
-    <p><Button as="a" href="/" variant="brand">take me home</Button></p>
+    <div class="flex-row">
+      <Button as="a" href="/" variant="brand">take me home</Button>
+      <Button as="a" href="/garden">see the garden?</Button>
+    </div>
   </article>
 </BaseMain>
