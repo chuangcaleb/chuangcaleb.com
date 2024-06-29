@@ -6,7 +6,7 @@ export interface Props extends HTMLAttributes<"div"> {}
 const { class: propsClass, ...props } = Astro.props;
 ---
 
-<div {...props} class:list={["banner surface-alt cgrid", propsClass]}>
+<div {...props} class:list={["banner surface-alt linew-max", propsClass]}>
   <slot />
 </div>
 
