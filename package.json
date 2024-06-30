@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "scripts": {
         "astro": "astro",
-        "build:nocache": "pnpm build",
+        "build:nocache": "astro build",
         "build": "git submodule update --remote && pnpm cloudinary:cache && astro build",
         "cloudinary:cache": "tsx ./lib/cloudinary/cache",
         "format:check": "pnpm prettier -- --list-different .",
