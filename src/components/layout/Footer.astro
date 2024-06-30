@@ -2,6 +2,7 @@
 import Contact from "./Contact.astro";
 import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
 import NavigationLinks from "./NavigationLinks.astro";
+import ThemeToggle from "../block/ThemeToggle/ThemeToggle.astro";
 ---
 
 <footer id="footer" class="flow-xs linew-wide">
@@ -18,6 +19,9 @@ import NavigationLinks from "./NavigationLinks.astro";
     )
   }
   <Contact />
+  <section class="utils-section region">
+    <ThemeToggle />
+  </section>
   <p class="fine-print">
     <a href="https://github.com/chuangcaleb/chuangcaleb.com">source code</a>
   </p>
@@ -36,9 +40,13 @@ import NavigationLinks from "./NavigationLinks.astro";
         grid-column: max;
       }
     }
-    * {
+    /* hr {
       --border: var(--ui1);
-    }
+    } */
+  }
+  .utils-section {
+    display: grid;
+    justify-content: center;
   }
 
   .fine-print {

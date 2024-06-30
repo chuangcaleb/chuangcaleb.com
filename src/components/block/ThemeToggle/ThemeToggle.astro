@@ -1,0 +1,96 @@
+---
+import Button from "~/components/styled/polym/Button.astro";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
+
+const THEMES = {
+  light: "lucide:sun",
+  dark: "lucide:moon",
+  system: "lucide:database",
+} as const satisfies { [k: string]: React.ReactNode };
+
+// type ThemeLabel = keyof typeof THEMES;
+// const THEME_LABELS = Object.keys(THEMES) as Array<ThemeLabel>;
+---
+
+<Button class="theme-toggle">
+  <noscript>theme-toggle needs Javascript enabled!</noscript>
+  {
+    Object.entries(THEMES).map(([key, value]) => (
+      <TagWIcon
+        as="span"
+        iconName={value}
+        data-label={key}
+        iconColor="unset"
+        aria-hidden="true"
+      >
+        {key}
+      </TagWIcon>
+    ))
+  }
+</Button>
+
+<style>
+  [aria-hidden="true"] {
+    display: none;
+  }
+</style>
+
+<script>
+  const root = document.documentElement;
+  // haih just manually define, passing is such a pain
+  const THEME_LABELS = ["light", "dark", "system"];
+
+  function getTheme() {
+    const localTheme =
+      typeof localStorage !== "undefined" && localStorage.getItem("theme");
+    if (!localTheme || !THEME_LABELS.includes(localTheme)) return "system";
+    return localTheme;
+  }
+
+  function setRootAttribute(theme: string) {
+    root.setAttribute("data-theme", theme);
+  }
+  function setButtonLabelsAttribute(theme: string) {
+    const buttonToActivate = document.querySelector(
+      `button.theme-toggle > [data-label=${theme}]`
+    );
+    buttonToActivate?.setAttribute("aria-hidden", "false");
+    const buttonsToDeactivate = document.querySelectorAll(
+      `button.theme-toggle > :not([data-label=${theme}])`
+    );
+    buttonsToDeactivate.forEach((b) => b?.setAttribute("aria-hidden", "true"));
+  }
+
+  function setTheme(theme: string) {
+    localStorage.setItem("theme", theme);
+    setButtonLabelsAttribute(theme);
+
+    if (theme !== "system") {
+      setRootAttribute(theme);
+    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+      setRootAttribute("light");
+    } else {
+      setRootAttribute("dark");
+    }
+  }
+
+  function handleClick() {
+    const index = THEME_LABELS.indexOf(getTheme());
+    if (index === THEME_LABELS.length - 1) {
+      setTheme(THEME_LABELS[0]);
+    } else {
+      setTheme(THEME_LABELS[index + 1]);
+    }
+  }
+
+  function initThemeToggle() {
+    setButtonLabelsAttribute(getTheme());
+    const buttons = document.querySelectorAll("button.theme-toggle");
+    buttons.forEach((button) => {
+      button.addEventListener("click", handleClick);
+    });
+  }
+
+  initThemeToggle();
+  document.addEventListener("astro:after-swap", initThemeToggle);
+</script>

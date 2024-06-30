@@ -1,9 +1,8 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import styles from "./styles.module.css";
-import { cn } from "~/utils/css";
-import { Fragment } from "react/jsx-runtime";
 import React from "react";
-import { ThemeDropdown } from "../ThemeToggle";
+import { Fragment } from "react/jsx-runtime";
+import { cn } from "~/utils/css";
+import styles from "./styles.module.css";
 
 // lazy any lol
 const NavSheetReact = (props: any) => {
@@ -45,7 +44,6 @@ const NavSheetReact = (props: any) => {
             </button>
           </Dialog.Close>
           {props.body}
-          <ThemeDropdown />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
