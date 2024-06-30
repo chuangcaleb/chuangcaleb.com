@@ -13,7 +13,8 @@
         "dev": "pnpm cloudinary:cache && astro dev",
         "preview:nobuild": "astro preview",
         "preview:nocache": "pnpm build:nocache && astro preview",
-        "preview": "pnpm build && astro preview"
+        "preview": "pnpm build && astro preview",
+        "test": "xo"
     },
     "dependencies": {
         "@astrojs/mdx": "^3.1.2",
@@ -51,7 +52,8 @@
         "@types/fs-extra": "^11.0.4",
         "prettier": "^3.3.2",
         "prettier-plugin-astro": "^0.14.0",
-        "tsx": "^4.16.0"
+        "tsx": "^4.16.0",
+        "xo": "^0.58.0"
     },
     "pnpm": {
         "patchedDependencies": {
