@@ -19,7 +19,6 @@
         "@astrojs/mdx": "^3.1.0",
         "@astrojs/react": "^3.5.0",
         "@astrojs/sitemap": "^3.1.5",
-        "@iconify-json/lucide": "^1.1.190",
         "@portaljs/remark-wiki-link": "^1.2.0",
         "@radix-ui/react-dialog": "^1.1.1",
         "@svgr/core": "^8.1.0",

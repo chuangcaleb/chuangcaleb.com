@@ -10,7 +10,7 @@ import { defineConfig, type AstroUserConfig } from "astro/config";
 // import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
 // import { remarkStripH1 } from "lib/remark/strip-h1";
-import icons from "unplugin-icons/vite";
+// import icons from "unplugin-icons/vite";
 import LINKS from "./src/data/links";
 import { slugify } from "./lib/markdown/string";
 
@@ -70,9 +70,6 @@ export default defineConfig({
         },
       ],
     ],
-  },
-  vite: {
-    plugins: [icons({ compiler: "jsx", jsx: "react" })],
   },
   scopedStyleStrategy: "attribute",
   redirects: REDIRECTS,

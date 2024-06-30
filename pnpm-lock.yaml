@@ -22,9 +22,6 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.1.5
         version: 3.1.5
-      '@iconify-json/lucide':
-        specifier: ^1.1.190
-        version: 1.1.190
       '@portaljs/remark-wiki-link':
         specifier: ^1.2.0
         version: 1.2.0(patch_hash=6yehnoiaertuwfp2ki2lmypprm)
@@ -805,9 +802,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
-
-  '@iconify-json/lucide@1.1.190':
-    resolution: {integrity: sha512-v5tTpGbApIdTYdGU+FgAZHYuzFRiJTsu9lSuLtEaSk/IeLzheexof61Ti5nKuNDSVfr6JKA+SJNJ0P1bdG8Z0w==}
 
   '@iconify/tools@4.0.4':
     resolution: {integrity: sha512-hX1Z3i1Tm6JxyrDv45jNEijPpepZZfal/4leFGtUC04H9LsgRo597BOBFB9PUZsQdFGLOxVUUfv6lqU/dC+xXw==}
@@ -4205,10 +4199,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.4':
     optional: true
-
-  '@iconify-json/lucide@1.1.190':
-    dependencies:
-      '@iconify/types': 2.0.0
 
   '@iconify/tools@4.0.4':
     dependencies:
