@@ -1,5 +1,4 @@
 ---
-import { ThemeDropdown } from "~/components/block/ThemeDropdown";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import SITE from "~/data/site";
 import Hero from "./_components/Hero.astro";
@@ -11,17 +10,7 @@ import Skills from "./_components/skills/index.astro";
 <BaseMain title={`${SITE.title} - ${SITE.subtitle}`} class="linew-wide">
   <Hero />
   <Overview />
-  <section class="utils-section">
-    <ThemeDropdown client:only="react" />
-  </section>
+
   <Projects />
   <Skills />
 </BaseMain>
-
-<style>
-  .utils-section {
-    text-align: center;
-    padding-block: var(--space-m);
-    font-size: var(--step-1);
-  }
-</style>

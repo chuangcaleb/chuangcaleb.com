@@ -1,48 +1,27 @@
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import IconLight from "~icons/lucide/sun";
 import IconDark from "~icons/lucide/moon";
 import IconSystem from "~icons/lucide/database";
 import React from "react";
 import styles from "./styles.module.css";
 
-type Theme = {
-  label: string;
-  icon: React.ReactNode;
-};
+const THEMES = {
+  light: <IconLight />,
+  dark: <IconDark />,
+  system: <IconSystem />,
+} as const satisfies { [k: string]: React.ReactNode };
 
-const THEMES: Theme[] = [
-  { label: "light", icon: <IconLight /> },
-  { label: "dark", icon: <IconDark /> },
-  { label: "system", icon: <IconSystem /> },
-] as const;
-
-type ThemeLabel = (typeof THEMES)[number]["label"];
-
-const ThemeOption = ({
-  theme,
-  disabled,
-}: {
-  theme: Theme;
-  disabled: boolean;
-}) => {
-  return (
-    <>
-      <DropdownMenu.RadioItem
-        className={styles.menuItem}
-        disabled={disabled}
-        value={theme.label}
-      >
-        {theme.icon}
-        {theme.label}
-      </DropdownMenu.RadioItem>
-    </>
-  );
-};
+type ThemeLabel = keyof typeof THEMES;
+const THEME_LABELS = Object.keys(THEMES) as Array<ThemeLabel>;
 
 function initTheme() {
+  function isTheme(value: string): value is ThemeLabel {
+    return Object.keys(THEMES).includes(value);
+  }
+
   const localTheme =
-    (typeof localStorage !== "undefined" && localStorage.getItem("theme")) ||
-    "system";
+    typeof localStorage !== "undefined" && localStorage.getItem("theme");
+  if (!localTheme || !isTheme(localTheme)) return "system";
+
   return localTheme;
 }
 
@@ -61,35 +40,19 @@ export const ThemeDropdown = () => {
     }
   }, [themeLabel]);
 
-  const currentTheme = THEMES.find((t) => t.label === themeLabel);
+  function handleClick() {
+    const index = THEME_LABELS.indexOf(themeLabel);
+    if (index === THEME_LABELS.length - 1) {
+      setThemeLabel(THEME_LABELS[0]);
+    } else {
+      setThemeLabel(THEME_LABELS[index + 1]);
+    }
+  }
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger
-        className="cc-btn"
-        aria-label="Dropdown menu for visual themes"
-      >
-        {currentTheme?.icon}
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Portal>
-        <DropdownMenu.Content
-          className={styles.menuContent}
-          onCloseAutoFocus={(event) => event.preventDefault()}
-        >
-          <DropdownMenu.RadioGroup
-            value={themeLabel}
-            onValueChange={setThemeLabel}
-          >
-            {THEMES.map((theme, i) => (
-              <ThemeOption
-                key={i}
-                theme={theme}
-                disabled={themeLabel === theme.label}
-              />
-            ))}
-          </DropdownMenu.RadioGroup>
-        </DropdownMenu.Content>
-      </DropdownMenu.Portal>
-    </DropdownMenu.Root>
+    <button onClick={handleClick}>
+      {THEMES[themeLabel]}
+      {themeLabel}
+    </button>
   );
 };
