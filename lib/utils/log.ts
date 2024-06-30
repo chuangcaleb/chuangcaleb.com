@@ -1,4 +1,4 @@
-export function composeErrorStr(error: unknown): string {
+export function composeErrorString(error: unknown): string {
 	if (error instanceof Error) {
 		return error.stack ?? error.message;
 	}

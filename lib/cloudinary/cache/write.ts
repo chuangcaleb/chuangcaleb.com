@@ -1,6 +1,6 @@
 import fs from 'node:fs';
-import {composeErrorStr} from 'lib/utils/log';
-import {JSON_FILE} from '../consts';
+import {composeErrorString} from 'lib/utils/log';
+import {JSON_FILE} from '../consts.ts';
 import type {CloudinaryResource} from '../types';
 
 export async function write(resources: CloudinaryResource[]): Promise<void> {
@@ -14,7 +14,7 @@ export async function write(resources: CloudinaryResource[]): Promise<void> {
 		console.info(`📝 Updated ${JSON_FILE}`);
 	} catch (error: unknown) {
 		console.error(
-			`🚨 Error updating ${JSON_FILE}:\n\n${composeErrorStr(error)}`,
+			`🚨 Error updating ${JSON_FILE}:\n\n${composeErrorString(error)}`,
 		);
 	}
 }

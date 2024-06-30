@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+import process from 'node:process';
 import {v2 as cloudinary} from 'cloudinary';
 import dotenv from 'dotenv';
 

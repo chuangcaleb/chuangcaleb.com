@@ -1,5 +1,5 @@
 import fsExtra from 'fs-extra/esm';
-import {composeErrorStr} from 'lib/utils/log';
+import {composeErrorString} from 'lib/utils/log';
 import {JSON_FILE} from '../consts';
 import type {CloudinaryResource} from '../types';
 
@@ -10,7 +10,7 @@ try {
 	resources = json.root;
 } catch (error: unknown) {
 	throw new Error(
-		`🚨 Error reading ${JSON_FILE}:\n\n${composeErrorStr(error)}`,
+		`🚨 Error reading ${JSON_FILE}:\n\n${composeErrorString(error)}`,
 	);
 }
 
