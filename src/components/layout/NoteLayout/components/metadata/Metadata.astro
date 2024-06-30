@@ -1,5 +1,4 @@
 ---
-import Icon from "astro-iconify";
 import type { CollectionEntry } from "astro:content";
 import { EXCLUDE_KEYS } from "lib/obsidian/consts";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
@@ -17,8 +16,7 @@ const metadataArray = Object.entries(metadata);
 {
   metadataArray.length > 0 && (
     <section>
-      <TagWIcon as="h4" iconColor="tx3">
-        <Icon name="lucide:database-zap" />
+      <TagWIcon as="h4" iconColor="tx3" iconName="lucide:database-zap">
         Metadata
       </TagWIcon>
       <ul class="metadata-root">

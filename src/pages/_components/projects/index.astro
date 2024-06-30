@@ -1,10 +1,10 @@
 ---
 import Icon from "astro-iconify";
 import { getCollection } from "astro:content";
-import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
-import ProjectCard from "./ProjectCard.astro";
 import Button from "~/components/styled/polym/Button.astro";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import LINKS from "~/data/links";
+import ProjectCard from "./ProjectCard.astro";
 
 const projects = (await getCollection("project"))
   .sort((a, b) => a.data.sequence.valueOf() - b.data.sequence.valueOf())
@@ -14,16 +14,14 @@ const { GITHUB } = LINKS;
 ---
 
 <section class="region full linew-wide flow-xl" id="projects">
-  <TagWIcon as="h2">
-    <Icon name="lucide:atom" />
+  <TagWIcon as="h2" iconName="lucide:atom">
     {" "}<span class="text-faded">/</span> projects
   </TagWIcon>
   <div class="projects flow-xl">
     {projects.map((p) => <ProjectCard project={p} />)}
   </div>
   <div class="cta | surface-alt flow-sm">
-    <TagWIcon as="p">
-      <Icon name="lucide:atom" />
+    <TagWIcon as="p" iconName="lucide:atom">
       <b>There's a lot more where that came from!</b>
     </TagWIcon>
     <div>

@@ -1,9 +1,8 @@
 ---
 import type { MarkdownHeading } from "astro";
-import TocHeading from "./TocHeading.astro";
 import generateToc from "lib/markdown/toc";
-import Icon from "astro-iconify";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
+import TocHeading from "./TocHeading.astro";
 
 interface Props {
   headings: MarkdownHeading[];
@@ -26,8 +25,7 @@ const toc = generateToc(headings);
 {
   !!toc.length && (
     <nav id="toc">
-      <TagWIcon as="h4" iconColor="tx3">
-        <Icon name="lucide:list" />
+      <TagWIcon as="h4" iconColor="tx3" iconName="lucide:list">
         Outline
       </TagWIcon>
       <ul class="toc-root">

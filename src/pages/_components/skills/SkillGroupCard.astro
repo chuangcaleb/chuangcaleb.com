@@ -2,7 +2,6 @@
 import UlInline from "~/components/styled/monom/UlInline.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import type { SkillGroup } from "~/data/skills";
-import Icon from "astro-iconify";
 interface Props {
   name: string;
   group: SkillGroup;
@@ -13,8 +12,8 @@ const { icon, skills } = group;
 ---
 
 <article class="skill-group-card | flow-sm">
-  <TagWIcon as="h3">
-    {icon && <Icon name={icon} />}{name}
+  <TagWIcon as="h3" iconName={icon}>
+    {name}
   </TagWIcon>
   <UlInline>
     {

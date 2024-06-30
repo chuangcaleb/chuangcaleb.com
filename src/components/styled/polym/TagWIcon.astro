@@ -1,19 +1,23 @@
 ---
+import Icon from "astro-iconify";
 import { type HTMLTag, type Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
-  iconColor?: "ax1" | "tx3";
+  iconColor?: "unset" | "ax1" | "tx3";
+  iconName?: string;
 };
 
 const {
   as: Tag = "h1",
   class: propsClass,
   iconColor = "ax1",
+  iconName,
   ...props
 } = Astro.props;
 ---
 
 <Tag {...props} class:list={[propsClass, iconColor]}>
+  {iconName && <Icon name={iconName} />}
   <slot />
 </Tag>
 
