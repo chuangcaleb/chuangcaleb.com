@@ -4,7 +4,7 @@ import NavigationLinks from "~/components/layout/NavigationLinks.astro";
 import NavSheetReact from "./NavSheetReact";
 ---
 
-<NavSheetReact client:idle>
+<NavSheetReact client:only="react">
   <Icon name="lucide:chevron-first" slot="menuIcon" />
   <Icon name="lucide:chevron-last" slot="closeIcon" />
   <div slot="body" class="flow-lg">
@@ -13,6 +13,7 @@ import NavSheetReact from "./NavSheetReact";
     <NavigationLinks />
   </div>
 </NavSheetReact>
+
 <style>
   hr:first-child {
     display: none;

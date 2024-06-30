@@ -13,13 +13,13 @@
         "dev": "pnpm cloudinary:cache && astro dev",
         "preview:nobuild": "astro preview",
         "preview:nocache": "pnpm build:nocache && astro preview",
-        "preview": "pnpm build && astro preview"
+        "preview": "pnpm build && astro preview",
+        "test": "xo"
     },
     "dependencies": {
         "@astrojs/mdx": "^3.1.0",
         "@astrojs/react": "^3.5.0",
         "@astrojs/sitemap": "^3.1.5",
-        "@iconify-json/lucide": "^1.1.190",
         "@portaljs/remark-wiki-link": "^1.2.0",
         "@radix-ui/react-dialog": "^1.1.1",
         "@svgr/core": "^8.1.0",
@@ -33,6 +33,7 @@
         "astro-purgecss": "^4.1.1",
         "astro-robots-txt": "^1.0.0",
         "cloudinary": "^2.2.0",
+        "clsx": "^2.1.1",
         "date-fns": "^3.6.0",
         "dotenv": "^16.4.5",
         "fs-extra": "^11.2.0",
@@ -51,7 +52,8 @@
         "@types/fs-extra": "^11.0.4",
         "prettier": "^3.3.1",
         "prettier-plugin-astro": "^0.14.0",
-        "tsx": "^4.13.3"
+        "tsx": "^4.13.3",
+        "xo": "^0.58.0"
     },
     "pnpm": {
         "patchedDependencies": {
