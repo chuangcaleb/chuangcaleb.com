@@ -1,12 +1,23 @@
 ---
+import Icon from "astro-iconify";
 import { type HTMLTag, type Polymorphic } from "astro/types";
 
-type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>;
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
+  iconColor?: "unset" | "ax1" | "tx3";
+  iconName?: string;
+};
 
-const { as: Tag = "h1", ...props } = Astro.props;
+const {
+  as: Tag = "h1",
+  class: propsClass,
+  iconColor = "ax1",
+  iconName,
+  ...props
+} = Astro.props;
 ---
 
-<Tag {...props}>
+<Tag {...props} class:list={[propsClass, iconColor]}>
+  {iconName && <Icon name={iconName} />}
   <slot />
 </Tag>
 
@@ -14,8 +25,11 @@ const { as: Tag = "h1", ...props } = Astro.props;
   * {
     display: inline-flex;
     gap: var(--size-relative-2);
-    svg {
+    &.ax1 :global(svg) {
       color: var(--ax1);
+    }
+    &.tx3 :global(svg) {
+      color: var(--tx3);
     }
   }
 </style>

@@ -1,6 +1,5 @@
 ---
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
-import Icon from "astro-iconify";
 import SKILLS from "~/data/skills";
 import SkillGroupCard from "./SkillGroupCard.astro";
 
@@ -8,8 +7,7 @@ const skillGroups = Object.entries(SKILLS);
 ---
 
 <section class="skills-section | region flow-lg">
-  <TagWIcon as="h2">
-    <Icon name="lucide:book-plus" />
+  <TagWIcon as="h2" iconName="lucide:book-plus">
     <span class="text-faded">/</span> skills
   </TagWIcon>
   <div class="skills">

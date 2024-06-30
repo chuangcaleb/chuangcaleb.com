@@ -18,11 +18,9 @@
   padding: var(--size-2);
 
   svg {
-    color: var(--text-faded);
     display: flex;
-    /* margin: auto; */
-    /* font-size: var(--size-4); */
     width: 100%;
+    color: var(--text-faded);
   }
 }
 
