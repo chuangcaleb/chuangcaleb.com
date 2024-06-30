@@ -15,12 +15,14 @@
   z-index: 5;
   border-radius: var(--radius-3);
   background-color: var(--bg3);
+  padding: var(--size-2);
+
   svg {
     color: var(--text-faded);
-    display: block;
+    display: flex;
+    /* margin: auto; */
+    /* font-size: var(--size-4); */
     width: 100%;
-    padding: var(--size-2);
-    margin: auto;
   }
 }
 
@@ -29,7 +31,7 @@
   inset: 0;
   z-index: 15;
   background-color: rgba(0, 0, 0, 0.5);
-  animation: overlayShow 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: overlayShow 500ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .DialogContent {
