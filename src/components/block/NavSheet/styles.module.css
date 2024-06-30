@@ -24,6 +24,16 @@
   }
 }
 
+.FloatingUp {
+  visibility: hidden;
+  transition: all 0.2s;
+  transform: translateY(-100%);
+}
+.FloatingDown {
+  visibility: visible;
+  transition: all 0.5s;
+}
+
 .DialogOverlay {
   position: fixed;
   inset: 0;

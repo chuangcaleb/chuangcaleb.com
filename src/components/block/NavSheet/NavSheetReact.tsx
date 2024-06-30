@@ -3,10 +3,12 @@ import React from "react";
 import { Fragment } from "react/jsx-runtime";
 import { cn } from "~/utils/css";
 import styles from "./styles.module.css";
+import { useScroll } from "~/utils/hooks/use-scroll";
 
 // lazy any lol
 const NavSheetReact = (props: any) => {
   const [open, setOpen] = React.useState(false);
+  const { direction } = useScroll("up");
 
   React.useEffect(() => {
     window.addEventListener("hashchange", handleAClick, false);
@@ -23,7 +25,12 @@ const NavSheetReact = (props: any) => {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button className={styles.FloatingButton}>
+        <button
+          className={cn([
+            styles.FloatingButton,
+            direction === "up" ? styles.FloatingUp : styles.FloatingDown,
+          ])}
+        >
           <Fragment>{props.menuIcon}</Fragment>
         </button>
       </Dialog.Trigger>

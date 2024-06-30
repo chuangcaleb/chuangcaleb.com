@@ -1,3 +1,5 @@
-export function cn(...classes: string[]) {
-  return classes.join(" ");
+import clsx, { type ClassValue } from "clsx";
+
+export function cn(...classes: ClassValue[]) {
+  return clsx(classes);
 }
