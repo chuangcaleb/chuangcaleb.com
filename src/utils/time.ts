@@ -28,6 +28,6 @@ export function getLongDurationSince(datetime: string | Date) {
 	return `${days} ago`;
 }
 
-export function formatISO(date: string, template: string) {
+export function formatIso(date: string, template: string) {
 	return format(parseISO(date), template);
 }
