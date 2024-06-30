@@ -20,7 +20,7 @@ const prodIntegrations = [
   robotsTxt(),
   sitemap(),
   purgecss({
-    keyframes: true,
+    keyframes: false,
     // variables: true,
     safelist: { standard: [/^\:[-a-z]+$/] },
   }),
