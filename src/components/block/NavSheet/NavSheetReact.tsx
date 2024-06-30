@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { cn } from "~/utils/css";
 import { Fragment } from "react/jsx-runtime";
 import React from "react";
-import { ThemeDropdown } from "../ThemeDropdown";
+import { ThemeDropdown } from "../ThemeToggle";
 
 // lazy any lol
 const NavSheetReact = (props: any) => {
