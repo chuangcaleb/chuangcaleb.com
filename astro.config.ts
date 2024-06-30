@@ -6,13 +6,13 @@ import {getPermalinks, remarkWikiLink} from '@portaljs/remark-wiki-link';
 import compressor from 'astro-compressor';
 import purgecss from 'astro-purgecss';
 import robotsTxt from 'astro-robots-txt';
-import {defineConfig, type AstroUserConfig} from 'astro/config';
+import {defineConfig} from 'astro/config';
 // Import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
 // import { remarkStripH1 } from "lib/remark/strip-h1";
 // import icons from "unplugin-icons/vite";
-import LINKS from './src/data/links';
 import {slugify} from './lib/markdown/string';
+import LINKS from './src/data/links';
 
 const NOTES_DIR = 'src/content/obsidian-note';
 
