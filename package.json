@@ -16,16 +16,16 @@
         "preview": "pnpm build && astro preview"
     },
     "dependencies": {
-        "@astrojs/mdx": "^3.1.0",
-        "@astrojs/react": "^3.5.0",
-        "@astrojs/sitemap": "^3.1.5",
+        "@astrojs/mdx": "^3.1.2",
+        "@astrojs/react": "^3.6.0",
+        "@astrojs/sitemap": "^3.1.6",
         "@portaljs/remark-wiki-link": "^1.2.0",
         "@radix-ui/react-dialog": "^1.1.1",
         "@svgr/core": "^8.1.0",
         "@svgr/plugin-jsx": "^8.1.0",
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
-        "astro": "^4.10.0",
+        "astro": "^4.11.3",
         "astro-breadcrumbs": "^2.3.1",
         "astro-compressor": "^0.4.1",
         "astro-iconify": "^1.2.0",
@@ -38,20 +38,20 @@
         "fs-extra": "^11.2.0",
         "mdast-util-to-string": "^4.0.0",
         "open-props": "^1.7.4",
-        "postcss-custom-media": "^10.0.6",
-        "postcss-preset-env": "^9.5.14",
+        "postcss-custom-media": "^10.0.7",
+        "postcss-preset-env": "^9.5.15",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "sass": "^1.77.4",
+        "sass": "^1.77.6",
         "sharp": "^0.33.4",
         "unplugin-icons": "^0.19.0",
         "utopia-core-scss": "^1.0.1"
     },
     "devDependencies": {
         "@types/fs-extra": "^11.0.4",
-        "prettier": "^3.3.1",
+        "prettier": "^3.3.2",
         "prettier-plugin-astro": "^0.14.0",
-        "tsx": "^4.13.3"
+        "tsx": "^4.16.0"
     },
     "pnpm": {
         "patchedDependencies": {
