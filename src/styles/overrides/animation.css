@@ -1,4 +1,6 @@
 /* ripped from tailwind */
+
+/* purgecss start ignore */
 @keyframes enter {
   0% {
     opacity: var(--tw-enter-opacity, 1);
@@ -32,3 +34,4 @@
       rotate(var(--tw-exit-rotate, 0));
   }
 }
+/* purgecss end ignore */

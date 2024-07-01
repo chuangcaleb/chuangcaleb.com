@@ -3,11 +3,12 @@ import React from "react";
 import { Fragment } from "react/jsx-runtime";
 import { cn } from "~/utils/css";
 import styles from "./styles.module.css";
+import { useScroll } from "~/utils/hooks/use-scroll";
 
 // lazy any lol
 const NavSheetReact = (props: any) => {
   const [open, setOpen] = React.useState(false);
-  // const { direction } = useScroll("up");
+  const { direction } = useScroll("up");
 
   React.useEffect(() => {
     window.addEventListener("hashchange", handleAClick, false);
@@ -27,7 +28,7 @@ const NavSheetReact = (props: any) => {
         <button
           className={cn([
             styles.FloatingButton,
-            styles.FloatingDown,
+            direction === "up" ? styles.FloatingUp : styles.FloatingDown,
           ])}
         >
           <Fragment>{props.menuIcon}</Fragment>
