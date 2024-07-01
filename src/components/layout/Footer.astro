@@ -6,18 +6,18 @@ import ThemeToggle from "../block/ThemeToggle.astro";
 ---
 
 <footer id="footer" class="flow-xs linew-wide">
-  {
-    Astro.url.pathname !== "/" && (
-      <>
-        <section class="region flow-lg">
+  <section class="region flow-lg">
+    {
+      Astro.url.pathname !== "/" && (
+        <>
           <Breadcrumbs />
           <hr />
-          <NavigationLinks />
-        </section>
-        <hr />
-      </>
-    )
-  }
+        </>
+      )
+    }
+    <NavigationLinks />
+  </section>
+  <hr />
   <Contact />
   <section class="utils-section region">
     <ThemeToggle />
