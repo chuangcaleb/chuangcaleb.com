@@ -7,7 +7,7 @@ import styles from "./styles.module.css";
 // lazy any lol
 const NavSheetReact = (props: any) => {
   const [open, setOpen] = React.useState(false);
-  // const { direction } = useScroll("up");
+  const { direction } = useScroll("up");
 
   React.useEffect(() => {
     window.addEventListener("hashchange", handleAClick, false);
@@ -27,7 +27,7 @@ const NavSheetReact = (props: any) => {
         <button
           className={cn([
             styles.FloatingButton,
-            styles.FloatingDown,
+            direction === "up" ? styles.FloatingUp : styles.FloatingDown,
           ])}
         >
           <Fragment>{props.menuIcon}</Fragment>
