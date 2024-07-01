@@ -3,6 +3,7 @@ import React from "react";
 import { Fragment } from "react/jsx-runtime";
 import { cn } from "~/utils/css";
 import styles from "./styles.module.css";
+import { useScroll } from "~/utils/hooks/use-scroll";
 
 // lazy any lol
 const NavSheetReact = (props: any) => {
