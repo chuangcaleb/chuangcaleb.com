@@ -1,8 +1,11 @@
-import path from "path";
+import path from 'node:path';
 
 export function getNoteName(filepath: string) {
-  // TODO: get title from file metadata first
-  const { dir, name } = path.parse(filepath);
-  if (name === "index") return dir;
-  return name;
+	// TODO: get title from file metadata first
+	const {dir, name} = path.parse(filepath);
+	if (name === 'index') {
+		return dir;
+	}
+
+	return name;
 }

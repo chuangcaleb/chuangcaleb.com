@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/triple-slash-reference */
+
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
 
-import "react";
+// import 'react';
 
-declare module "react" {
-  interface CSSProperties {
-    [key: `--${string}`]: string | number;
-  }
-}
+// declare module 'react' {
+// 	type CSSProperties = Record<`--${string}`, string | number>;
+// }
