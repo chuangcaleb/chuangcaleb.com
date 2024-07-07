@@ -1,35 +1,36 @@
-import cloudinary from '..';
+import type {ResourceApiResponse} from 'cloudinary';
 import type {CloudinaryResource} from '../types';
+import cloudinary from '..';
 
 async function fetchNextPage(
 	folderName: string,
 	nextCursor?: string,
-): Promise<CloudinaryResource[]> {
-	const response = await cloudinary.api
-		.resources({
+) {
+	try {
+		const response = await cloudinary.api
+			.resources({
 			// Metadata: true,
 			// context: true,
 			// tags: true,
-			prefix: folderName,
-			type: 'upload',
-			max_results: 500,
-			next_cursor: nextCursor,
-		})
-		.catch((error: unknown) => {
-			throw new Error(
-				`🚨 Error fetching Cloudinary resources by asset folder "${folderName}":\n\n${JSON.stringify(
-					error,
-				)}\n`,
-			);
-		});
-	console.info(`📊 Rate limit remaining: ${response.rate_limit_remaining}`);
-
-	return response.resources;
+				prefix: folderName,
+				type: 'upload',
+				max_results: 500,
+				next_cursor: nextCursor,
+			}) as ResourceApiResponse;
+		console.info(`📊 Rate limit remaining: ${response.rate_limit_remaining}`);
+		return response.resources;
+	} catch (error: unknown) {
+		throw new Error(
+			`🚨 Error fetching Cloudinary resources by asset folder "${folderName}":\n\n${JSON.stringify(
+				error,
+			)}\n`,
+		);
+	}
 }
 
 async function fetchFolderRecursive(
 	folderName: string,
-): Promise<CloudinaryResource[]> {
+) {
 	console.info(
 		`📥 Fetching all Cloudinary resources from folder "${folderName}"`,
 	);
@@ -38,6 +39,8 @@ async function fetchFolderRecursive(
 
 	let nextCursor;
 	do {
+		// We need to await page-per-page
+		// eslint-disable-next-line no-await-in-loop
 		const resources = await fetchNextPage(folderName, nextCursor);
 
 		fetchedResources.push(...resources);

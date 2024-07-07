@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import {composeErrorString} from 'lib/utils/log';
-import {JSON_FILE} from '../consts.ts';
+import {JSON_FILE} from '../consts';
 import type {CloudinaryResource} from '../types';
 
 export async function write(resources: CloudinaryResource[]): Promise<void> {

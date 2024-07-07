@@ -8,4 +8,4 @@ async function cache(folderName: string): Promise<void> {
 	await write(resources);
 }
 
-cache(ROOT_DIR);
+await cache(ROOT_DIR);

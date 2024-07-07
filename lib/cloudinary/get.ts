@@ -1,7 +1,7 @@
 import {ROOT_DIR} from './consts';
 import getCache from './cache/reader';
 
-const cache = await getCache();
+const cache = getCache();
 
 export function getCldImgData(route: string, isSuppressed = false) {
 	if (!cache) {

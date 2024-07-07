@@ -6,6 +6,7 @@ import {cn} from '~/utils/css';
 import {useScroll} from '~/utils/hooks/use-scroll';
 
 // Lazy any lol
+// eslint-disable-next-line unicorn/prevent-abbreviations
 const NavSheetReact = (properties: any) => {
 	const [open, setOpen] = React.useState(false);
 	const {direction} = useScroll('up');

@@ -18,6 +18,7 @@ const widths = [
 	2160,
 ];
 
+// eslint-disable-next-line unicorn/prevent-abbreviations
 export function composeSrc(publicId: string, version: number, width: number) {
 	return cloudinary.url(publicId, {
 		crop: 'scale',
