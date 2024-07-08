@@ -30,11 +30,11 @@ The colors use HSL (hue, saturation, lightness)
 - ax3 faded
 - ax4 blend/faint
 
-- tx1 strong
-- tx2 body
-- tx3 faded
-- tx4 blend/faint
-- tx9 opposite contrast
+- fg1 strong
+- fg2 body
+- fg3 faded
+- fg4 blend/faint
+- fg9 opposite contrast
 
 `--m` is the light/dark Mode coefficient
 - is used to flip the +/-ve direction of lightness modifiers
@@ -71,23 +71,23 @@ The colors use HSL (hue, saturation, lightness)
     calc(var(--base-l) + 20% * var(--m))
   );
 
-  --tx1: hsl(var(--base-h), calc(var(--base-s) - 10%), calc(100% * var(--m)));
-  --tx2: hsl(
+  --fg1: hsl(var(--base-h), calc(var(--base-s) - 10%), calc(100% * var(--m)));
+  --fg2: hsl(
     var(--base-h),
     calc(var(--base-s) - 10%),
     calc(var(--base-l) + 70% * var(--m))
   );
-  --tx3: hsl(
+  --fg3: hsl(
     var(--base-h),
     calc(var(--base-s) - 10%),
     calc(var(--base-l) + 40% * var(--m))
   );
-  --tx4: hsl(
+  --fg4: hsl(
     var(--base-h),
     calc(var(--base-s) - 5%),
     calc(var(--base-l) + 20% * var(--m))
   );
-  --tx9: hsl(
+  --fg9: hsl(
     var(--base-h),
     calc(var(--base-s) - 10%),
     calc(100% * var(--m) * -1)

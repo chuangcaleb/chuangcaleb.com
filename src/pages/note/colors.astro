@@ -1,7 +1,7 @@
 ---
 import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
 
-const DYNAMIC_TOKENS_BASE = { bg: 3, ui: 3, tx: 4, ax: 4 };
+const DYNAMIC_TOKENS_BASE = { bg: 3, ui: 3, fg: 4, ax: 4 };
 
 const DYNAMIC_TOKENS = Object.entries(DYNAMIC_TOKENS_BASE).map(([key, max]) =>
   [...Array(max).keys()].map((n) => key + (n + 1))

@@ -3,7 +3,7 @@ import Icon from "astro-iconify";
 import { type HTMLTag, type Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
-  iconColor?: "unset" | "ax1" | "tx3";
+  iconColor?: "unset" | "ax1" | "fg3";
   iconName?: string;
 };
 
@@ -28,8 +28,8 @@ const {
     &.ax1 :global(svg) {
       color: var(--ax1);
     }
-    &.tx3 :global(svg) {
-      color: var(--tx3);
+    &.fg3 :global(svg) {
+      color: var(--fg3);
     }
   }
 </style>

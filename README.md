@@ -204,13 +204,13 @@ Then we build four types/classes of tokens, with `n` number of color shades each
 
 - `--bg-[123]` - background (background)
 - `--ui-[123]` - border (background)
-- `--tx-[12349]` - text (foreground)
+- `--fg-[12349]` - text (foreground)
 - `--ax-[1234]`- accent (foreground)
 
 As `n` increases, *emphasis* decreases — except for:
 
 1. the last color shade of `bg` and `ui` colors, which are shades for being "active".
-2. the last color shade of `tx` (`tx-9`), which is the opposite-contrast foreground shade, for use like as text color on accent-background buttons, which is technically not least in "emphasis".
+2. the last color shade of `fg` (`fg-9`), which is the opposite-contrast foreground shade, for use like as text color on accent-background buttons, which is technically not least in "emphasis".
 
 For each specific shade, it will take the `hsl` segments and recompute a `hsl` color by modifying the `saturation` and `lightness` segments. Some shades may opt to utilize `hsla` and the opacity parameter.
 
@@ -226,10 +226,10 @@ Then we can map these to more semantic tokens, for example:
 --border-secondary: var(--ui2);
 --border-active: var(--ui3);
 
---text-strong: var(--tx1);
---text-normal: var(--tx2);
---text-faded: var(--tx3);
---text-muted: var(--tx4);
+--text-strong: var(--fg1);
+--text-normal: var(--fg2);
+--text-faded: var(--fg3);
+--text-muted: var(--fg4);
 --text-on-accent: var(--bg2); // allow reusing base color shades
 ```
 
@@ -272,7 +272,7 @@ Foreground elements with decreasing emphasis  gets dimmer in dark mode, but brig
 
 To put it simply: a shade's lightness modifier must be flipped/inverted between dark and light mode. We use `--m` as the light/dark Mode coefficient
 
-- e.g. `--tx1: hsl( calc( var(--base-l) ${+/- n}% * var(--m) ) )`
+- e.g. `--fg1: hsl( calc( var(--base-l) ${+/- n}% * var(--m) ) )`
 - is used to flip the +/-ve direction of lightness modifiers
   - dark mode: 1 (fg emphasis gets lighter against dark bg)
   - light mode: -1 (fg emphasis gets darker against light bg)
@@ -291,7 +291,7 @@ So just introduce a new variable lol, `--a-l` as the Accent Lightness coefficien
 ##### Handling exceptions
 
 1. `--bg2` is always a darker shade than `--bg1`, so we just exclude passing `--m` into `--bg2`'s shade calculation.
-2. `--tx1` should always automatically be the lightest/darkest black/white color available — so just set the Lightness component to a 95-100% and let the `--m` coefficient flip it according to light/dark mode.
+2. `--fg1` should always automatically be the lightest/darkest black/white color available — so just set the Lightness component to a 95-100% and let the `--m` coefficient flip it according to light/dark mode.
 
 <!-- I think the CSS Variables also just matured enough for people to iterate enough with it. -->
 

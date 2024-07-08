@@ -13,11 +13,11 @@
 
   @include dynamic-colors.config;
 
-  --text-strong: var(--tx1);
-  --text-normal: var(--tx2);
-  --text-faded: var(--tx3);
-  --text-muted: var(--tx4);
-  --text-on-ax: var(--tx9);
+  --text-strong: var(--fg1);
+  --text-normal: var(--fg2);
+  --text-faded: var(--fg3);
+  --text-muted: var(--fg4);
+  --text-on-ax: var(--fg9);
   --border: var(--ui2);
 
   color-scheme: dark;
