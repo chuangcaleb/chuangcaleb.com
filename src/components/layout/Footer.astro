@@ -3,12 +3,14 @@ import Contact from "./Contact.astro";
 import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
 import NavigationLinks from "./NavigationLinks.astro";
 import ThemeToggle from "../block/ThemeToggle.astro";
+
+const ROUTES_WO_BREADCRUMBS = ["/", "/404"];
 ---
 
 <footer id="footer" class="flow-xs linew-wide">
   <section class="region flow-lg">
     {
-      Astro.url.pathname !== "/" && (
+      !ROUTES_WO_BREADCRUMBS.includes(Astro.url.pathname) && (
         <>
           <Breadcrumbs />
           <hr />
