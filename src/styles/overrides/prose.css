@@ -72,14 +72,14 @@
   }
 
   pre {
-    grid-column: feature;
     display: grid;
     grid-template-columns: subgrid;
-    border-radius: var(--radius-2);
+    grid-column: feature;
+    @media (width < 90ch) {
+      grid-column: full;
+    }
     * {
-      font-size: var(--step--1);
       grid-column: content;
-      text-wrap: wrap;
     }
     /* consecutive pre's get joined */
     & + pre {

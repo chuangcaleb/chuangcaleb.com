@@ -11,7 +11,8 @@ import Button from "~/components/styled/polym/Button.astro";
       <p>Page not Found. <em>Womp womp.</em></p>
     </header>
     <hr />
-    <p>I'll add something witty here another time.</p>
+    <pre><code id="code-block">Javascript not enabled; this segment would show your current url path.</code>
+      </pre>
     <div class="flex-row">
       <Button as="a" href="/" variant="brand">
         <Icon name="lucide:home" />take me home</Button
@@ -23,3 +24,12 @@ import Button from "~/components/styled/polym/Button.astro";
     </div>
   </article>
 </BaseMain>
+<script>
+  const codeBlock = document.getElementById("code-block");
+  if (codeBlock) {
+    codeBlock.textContent =
+      window.location.host +
+      "\n" +
+      window.location.pathname.split("/").join("\n/").slice(1);
+  }
+</script>
