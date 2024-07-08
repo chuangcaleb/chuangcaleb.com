@@ -47,7 +47,7 @@
   text-decoration-color: var(--color-underline);
   &:has(*) {
     display: inline-flex;
-    gap: var(--size-relative-2);
+    gap: var(--size-relative-3);
     align-items: center;
   }
 }
