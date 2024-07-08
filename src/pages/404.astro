@@ -1,4 +1,5 @@
 ---
+import Icon from "astro-iconify";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import Button from "~/components/styled/polym/Button.astro";
 ---
@@ -12,8 +13,13 @@ import Button from "~/components/styled/polym/Button.astro";
     <hr />
     <p>I'll add something witty here another time.</p>
     <div class="flex-row">
-      <Button as="a" href="/" variant="brand">take me home</Button>
-      <Button as="a" href="/garden">see the garden?</Button>
+      <Button as="a" href="/" variant="brand">
+        <Icon name="lucide:home" />take me home</Button
+      >
+      <Button as="a" href="/garden">
+        <Icon name="lucide:trees" />
+        see the garden?</Button
+      >
     </div>
   </article>
 </BaseMain>
