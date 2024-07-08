@@ -10,7 +10,7 @@ const props = Astro.props;
 ---
 
 <section class="region" {...props}>
-    <div class="cont-img border">
+    <div class="cont-img">
       <Image
         src={heroImg}
         alt="Head profile of Chuang Caleb"
@@ -18,6 +18,7 @@ const props = Astro.props;
         sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 900px) 720px, ${heroImg.width}px`}
         fetchpriority="high"
         loading="eager"
+        class="border"
       />
     </div>
     <div class="cont-text | flow">
