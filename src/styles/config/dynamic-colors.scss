@@ -89,8 +89,8 @@ The colors use HSL (hue, saturation, lightness)
   );
   --fg9: hsl(
     var(--base-h),
-    calc(var(--base-s) - 10%),
-    calc(100% * var(--m) * -1)
+    calc(var(--base-s)),
+    calc(var(--base-l) - 15% * var(--m))
   );
 
   --ax1: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
