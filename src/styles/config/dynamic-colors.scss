@@ -34,6 +34,7 @@ The colors use HSL (hue, saturation, lightness)
 - tx2 body
 - tx3 faded
 - tx4 blend/faint
+- tx9 opposite contrast
 
 `--m` is the light/dark Mode coefficient
 - is used to flip the +/-ve direction of lightness modifiers
@@ -49,8 +50,8 @@ The colors use HSL (hue, saturation, lightness)
 
 @mixin config() {
   --bg1: hsl(var(--base-h), var(--base-s), var(--base-l));
+  // don't invert for bg2 — bg2 is always darker than bg1
   --bg2: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 4%));
-  // don't invert for bg2 — bg2 is darker than bg1
   --bg3: hsla(
     var(--base-h),
     var(--base-s),
@@ -85,6 +86,11 @@ The colors use HSL (hue, saturation, lightness)
     var(--base-h),
     calc(var(--base-s) - 5%),
     calc(var(--base-l) + 20% * var(--m))
+  );
+  --tx9: hsl(
+    var(--base-h),
+    calc(var(--base-s) - 10%),
+    calc(100% * var(--m) * -1)
   );
 
   --ax1: hsl(var(--accent-h), var(--accent-s), var(--accent-l));

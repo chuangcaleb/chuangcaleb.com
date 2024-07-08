@@ -200,17 +200,23 @@ First, a particular theme defines `--base-[hsl]` and `--accent-[hsl]`.
   --accent-l: 65%;
 ```
 
-Then we build four types of tokens, with `n` number of color shades each, (as `n` increases, emphasis decreases — except for the last color shade of `bg` and `ui` colors, which are shades for being active):
+Then we build four types/classes of tokens, with `n` number of color shades each:
 
 - `--bg-[123]` - background (background)
 - `--ui-[123]` - border (background)
-- `--tx-[1234]` - text (foreground)
+- `--tx-[12349]` - text (foreground)
 - `--ax-[1234]`- accent (foreground)
+
+As `n` increases, *emphasis* decreases — except for:
+
+1. the last color shade of `bg` and `ui` colors, which are shades for being "active".
+2. the last color shade of `tx` (`tx-9`), which is the opposite-contrast foreground shade, for use like as text color on accent-background buttons, which is technically not least in "emphasis".
 
 For each specific shade, it will take the `hsl` segments and recompute a `hsl` color by modifying the `saturation` and `lightness` segments. Some shades may opt to utilize `hsla` and the opacity parameter.
 
 ```css
---bg2: hsl(var(--base-h), calc(var(--base-s) - 2%), calc(var(--base-l) - 4%)); // hue always unmodified
+--bg2: hsl(var(--base-h), calc(var(--base-s) - 2%), calc(var(--base-l) - 4%));
+// tip: hue segment is always unmodified
 ```
 
 Then we can map these to more semantic tokens, for example:
@@ -232,16 +238,19 @@ Finally, implementations can use the semantic tokens:
 ```css
 :where(a[href]) {
   --color: var(--text-normal);
-  --color-underline: var(--ax3); // can use base color shades directly instead of semantic tokens
+  // can use base color shades directly instead of semantic tokens:
+  --color-underline: var(--ax3);
   --color-hover: var(--text-strong);
   color: var(--color);
   text-decoration-color: var(--color-underline);
 }
-:where(a[href]:is(:hover, :focus, :active)) { // psuedo-variant
+// psuedo-variant
+:where(a[href]:is(:hover, :focus, :active)) {
   --color-underline: var(--ax1);
   color: var(--color-hover);
 }
-a.accent { // variant just re-defines CSS Variables/Properties
+// variant just re-defines local CSS Variables/Properties
+a.accent {
   --color: var(--ax2);
   --color-hover: var(--ax1)
 }
@@ -279,7 +288,7 @@ So just introduce a new variable lol, `--a-l` as the Accent Lightness coefficien
 - is used to increase difference in Lightness between *accent* shades
 - larger magnitudes for light mode with light bg, since accents also have high lightness
 
-##### Some exceptions
+##### Handling exceptions
 
 1. `--bg2` is always a darker shade than `--bg1`, so we just exclude passing `--m` into `--bg2`'s shade calculation.
 2. `--tx1` should always automatically be the lightest/darkest black/white color available — so just set the Lightness component to a 95-100% and let the `--m` coefficient flip it according to light/dark mode.
