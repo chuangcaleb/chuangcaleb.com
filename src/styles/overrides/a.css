@@ -20,7 +20,7 @@
 :where(a[href]):is(:hover, :focus, :active) {
   border-radius: var(--radius-2);
   background-color: var(--ax1);
-  color: var(--text-on-brand);
+  color: var(--text-on-ax);
   outline: 2px solid transparent;
   outline-offset: 2px;
   text-decoration-line: none;

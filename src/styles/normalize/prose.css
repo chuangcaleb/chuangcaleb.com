@@ -136,7 +136,7 @@ ol[class] {
 } */
 
 ::selection {
-  color: var(--text-on-brand);
+  color: var(--text-on-ax);
   background: var(--ax1);
 }
 img::selection {
