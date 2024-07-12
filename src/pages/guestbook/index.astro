@@ -1,0 +1,14 @@
+---
+import { getGuestbookPosts } from "lib/google-sheets/sheet";
+import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
+import Post from "./_GuestPost.astro";
+const title = "Guestbook";
+
+const guestbookPosts = await getGuestbookPosts();
+---
+
+<NoteLayout title={title}>
+  <h1>{title}</h1>
+  <p>Some things some people have said about me:</p>
+  {guestbookPosts.map((post) => <Post post={post} />)}
+</NoteLayout>
