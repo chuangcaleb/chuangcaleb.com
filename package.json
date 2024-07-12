@@ -35,6 +35,8 @@
         "date-fns": "^3.6.0",
         "dotenv": "^16.4.5",
         "fs-extra": "^11.2.0",
+        "google-auth-library": "^9.11.0",
+        "google-spreadsheet": "^4.1.2",
         "mdast-util-to-string": "^4.0.0",
         "open-props": "^1.7.5",
         "postcss-custom-media": "^10.0.8",
