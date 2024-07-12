@@ -21,6 +21,11 @@ const NAV_LINKS = {
 		href: '/now',
 		icon: 'lucide:timer-reset',
 	},
+	GUESTBOOK: {
+		label: '/guestbook',
+		href: '/guestbook',
+		icon: 'lucide:notebook-pen',
+	},
 } as const satisfies Links;
 
 export default NAV_LINKS as Links;
