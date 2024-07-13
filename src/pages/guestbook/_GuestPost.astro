@@ -1,4 +1,5 @@
 ---
+import { parse } from "date-fns";
 import type { GuestPost } from "lib/google-sheets/types";
 import { formatIso } from "~/utils/time";
 
@@ -9,7 +10,6 @@ interface Props {
 const { post } = Astro.props;
 const hasAvatar = !!post["📸 Avatar Image Link"];
 const hasLink = !!post["🔗 Social Link"];
-console.log(post.Timestamp);
 ---
 
 <blockquote class="flom-lg surface-alt border flow">
@@ -37,7 +37,16 @@ console.log(post.Timestamp);
   <p class="body">{post["📃 Content Body"]}</p>
   <p>
     <i>
-      {formatIso(new Date(post.Timestamp).toISOString(), "dd MMM yyyy")}
+      {
+        formatIso(
+          parse(
+            post.Timestamp,
+            "dd/MM/yyyy HH:mm:ss",
+            new Date()
+          ).toISOString(),
+          "dd MMM yyyy"
+        )
+      }
     </i>
   </p>
 
