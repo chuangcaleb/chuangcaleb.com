@@ -4,7 +4,7 @@ import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
 import Post from "./_GuestPost.astro";
 const title = "Guestbook";
 
-const guestbookPosts = await getGuestbookPosts();
+const guestbookPosts = (await getGuestbookPosts()).reverse();
 ---
 
 <NoteLayout title={title}>
