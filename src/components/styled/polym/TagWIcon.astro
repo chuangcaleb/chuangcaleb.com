@@ -16,7 +16,7 @@ const {
 } = Astro.props;
 ---
 
-<Tag {...props} class:list={[propsClass, iconColor]}>
+<Tag {...props} class:list={[propsClass, iconColor !== "unset" && iconColor]}>
   {iconName && <Icon name={iconName} />}
   <slot />
 </Tag>
