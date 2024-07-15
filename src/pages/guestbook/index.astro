@@ -9,6 +9,6 @@ const guestbookPosts = (await getGuestbookPosts()).reverse();
 
 <NoteLayout title={title}>
   <h1>{title}</h1>
-  <p>Some things some people have said about me:</p>
+  <p>A collection of post-it notes, signed by people who know me!</p>
   {guestbookPosts.map((post) => <Post post={post} />)}
 </NoteLayout>

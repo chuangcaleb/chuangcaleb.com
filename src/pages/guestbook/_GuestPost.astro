@@ -10,6 +10,11 @@ interface Props {
 const { post } = Astro.props;
 const hasAvatar = !!post["📸 Avatar Image Link"];
 const hasLink = !!post["🔗 Social Link"];
+
+const formattedDate = formatIso(
+  parse(post.Timestamp, "dd/MM/yyyy HH:mm:ss", new Date()).toISOString(),
+  "MMMM yyyy"
+);
 ---
 
 <blockquote class="flom-lg surface-alt border flow">
@@ -34,19 +39,10 @@ const hasLink = !!post["🔗 Social Link"];
       <span><i>{post["👥 Relation to me"]}</i></span>
     </p>
   </div>
-  <p class="body">{post["📃 Content Body"]}</p>
-  <p>
+  <p class="body">
+    {post["📃 Content Body"]}
     <i>
-      {
-        formatIso(
-          parse(
-            post.Timestamp,
-            "dd/MM/yyyy HH:mm:ss",
-            new Date()
-          ).toISOString(),
-          "dd MMM yyyy"
-        )
-      }
+      {formattedDate}
     </i>
   </p>
 
@@ -64,6 +60,10 @@ const hasLink = !!post["🔗 Social Link"];
     }
     i {
       color: var(--fg3);
+      white-space: nowrap;
+    }
+    p {
+      word-wrap: initial;
     }
   </style>
 </blockquote>
