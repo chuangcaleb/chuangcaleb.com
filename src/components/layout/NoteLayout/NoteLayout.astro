@@ -1,6 +1,5 @@
 ---
 import type { MarkdownHeading } from "astro";
-import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import CollectionList from "./components/CollectionList.astro";
 import type { MetadataProps } from "./components/metadata/Metadata.astro";
@@ -34,7 +33,7 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
         <Toc headings={headings} />
       </div>
     </aside>
-    <div class="article-main full cgrid prose flow-lg region">
+    <div class="article-main full cgrid prose flow-lg">
       <slot />
       {collectionData && <CollectionList {...collectionData} />}
     </div>
@@ -58,7 +57,6 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
   aside {
     padding-inline: var(--space-m);
     padding-bottom: var(--space-2xs);
-    margin-block-start: var(--space-m);
   }
   .aside-sticky {
     position: sticky;
@@ -79,7 +77,6 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
   .article-main {
     grid-row-start: 1;
     grid-column: 1;
-    padding-block-start: var(--space-m);
 
     --size-header-1: 100%;
     --size-header-2: 100%;

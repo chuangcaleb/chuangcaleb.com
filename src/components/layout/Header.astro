@@ -12,7 +12,7 @@ type Props = HeaderProps;
 const { hasBanner = true } = Astro.props;
 ---
 
-<header>
+<header class:list={[hasBanner && "has-banner"]}>
   <div class="skip-container | sr-only-unfocused flow-sm">
     <a href="#main">Skip to content →</a>
     <a href="#footer">Skip to footer →</a>
@@ -37,7 +37,7 @@ const { hasBanner = true } = Astro.props;
   </NavSheet>
 </header>
 
-<style is:global>
+<style>
   .skip-container {
     position: fixed;
     padding: var(--size-3);
