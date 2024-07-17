@@ -1,5 +1,7 @@
 @mixin config-fonts {
-  --font-heading: "Alegreya", "Times New Roman", Candara, system-ui, sans-serif;
+  --font-heading-serif: "Alegreya", "Times New Roman", Candara, system-ui, serif;
+  --font-heading-sans: "Alegreya Sans", "Times New Roman", Candara, system-ui,
+    sans-serif;
   --font-mono: "Courier Prime", "Courier New", "Nimbus Mono PS", Courier,
     ui-monospace, monospace;
   --font-sans: "Inter", Avenir, Montserrat, Corbel, "URW Gothic",

@@ -24,3 +24,5 @@ pnpm-debug.log*
 
 # cloudinary resource details
 lib/cloudinary/*.json
+
+public/assets/fonts/archived
