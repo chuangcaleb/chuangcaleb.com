@@ -25,7 +25,7 @@ const NavSheetReact = (properties: any) => {
 		setOpen(false);
 	}
 
-	const isMobileTop = (width && width < 400 && scrollY < 1);
+	const isMobileTop = (width && width < 900 && scrollY < 1);
 	const shouldShowFloatingButton = direction === 'down' || isMobileTop;
 
 	return (
