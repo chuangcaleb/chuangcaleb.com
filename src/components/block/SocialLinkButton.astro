@@ -3,7 +3,7 @@ import type { LinkKey } from "~/data/links";
 import Button, {
   type ButtonProps,
 } from "~/components/styled/polym/Button.astro";
-import LINKS from "~/data/links";
+import SOCIALS from "~/data/links";
 import Icon from "astro-iconify";
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 
 const { link, ...props } = Astro.props;
 
-const l = LINKS[link];
+const l = SOCIALS[link];
 ---
 
 <Button as="a" href={l.href} {...props}>

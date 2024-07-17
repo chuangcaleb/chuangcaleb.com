@@ -1,7 +1,7 @@
 ---
 import Icon from "astro-iconify";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
-import LINKS from "~/data/links";
+import SOCIALS from "~/data/links";
 import AccentA from "../styled/monom/AccentA.astro";
 ---
 
@@ -12,7 +12,7 @@ import AccentA from "../styled/monom/AccentA.astro";
   <p>You made it to the end! ...Or is it just the beginning?</p>
   <ul class="norm flow-xs">
     {
-      Object.values(LINKS).map((l) => (
+      Object.values(SOCIALS).map((l) => (
         <li>
           <AccentA href={l.href}>
             <Icon name={l.icon} aria-hidden="true" />{}{l.userId ?? l.label}

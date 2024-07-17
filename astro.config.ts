@@ -12,7 +12,7 @@ import {defineConfig} from 'astro/config';
 // import { remarkStripH1 } from "lib/remark/strip-h1";
 // import icons from "unplugin-icons/vite";
 import {slugify} from './lib/markdown/string';
-import LINKS from './src/data/links';
+import SOCIALS from './src/data/links';
 
 const NOTES_DIR = 'src/content/obsidian-note';
 
@@ -34,10 +34,10 @@ const integrations = [
 ];
 
 const REDIRECTS = {
-	'/linkedin': LINKS.LINKEDIN.href,
-	'/github': LINKS.GITHUB.href,
-	'/cv': LINKS.CV.href,
-	'/resume': LINKS.CV.href,
+	'/linkedin': SOCIALS.LINKEDIN.href,
+	'/github': SOCIALS.GITHUB.href,
+	'/cv': SOCIALS.CV.href,
+	'/resume': SOCIALS.CV.href,
 	'/note': '/garden',
 };
 

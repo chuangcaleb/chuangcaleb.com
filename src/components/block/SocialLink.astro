@@ -2,7 +2,7 @@
 import Icon from "astro-iconify";
 import type { HTMLAttributes } from "astro/types";
 import type { LinkKey } from "~/data/links";
-import LINKS from "~/data/links";
+import { SOCIALS } from "~/data/links";
 
 type Props = {
   link: LinkKey;
@@ -10,7 +10,7 @@ type Props = {
 
 const { link, ...props } = Astro.props;
 
-const l = LINKS[link];
+const l = SOCIALS[link];
 ---
 
 <a href={l.href} {...props}>

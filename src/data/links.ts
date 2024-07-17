@@ -8,7 +8,7 @@ type Link = {
 
 type Links = Record<string, Link>;
 
-const LINKS = {
+const SOCIALS = {
 	LINKEDIN: {
 		label: 'LinkedIn',
 		href: 'https://linkedin.com/in/chuangcaleb/',
@@ -38,6 +38,6 @@ const LINKS = {
 	},
 } as const satisfies Links;
 
-export type LinkKey = keyof typeof LINKS;
+export type LinkKey = keyof typeof SOCIALS;
 
-export default LINKS as Links;
+export default SOCIALS as Links;

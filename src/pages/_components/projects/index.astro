@@ -3,14 +3,14 @@ import Icon from "astro-iconify";
 import { getCollection } from "astro:content";
 import Button from "~/components/styled/polym/Button.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
-import LINKS from "~/data/links";
+import { SOCIALS } from "~/data/links";
 import ProjectCard from "./ProjectCard.astro";
 
 const projects = (await getCollection("project"))
   .sort((a, b) => a.data.sequence.valueOf() - b.data.sequence.valueOf())
   .filter((p) => !p.data.hidden);
 
-const { GITHUB } = LINKS;
+const { GITHUB } = SOCIALS;
 ---
 
 <section class="region full linew-wide flow-xl" id="projects">
