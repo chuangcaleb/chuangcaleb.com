@@ -1,9 +1,10 @@
 ---
 import { type HTMLAttributes } from "astro/types";
 import TagWIcon from "../styled/polym/TagWIcon.astro";
+import type { NavigationLink } from "~/data/links";
 
 interface Props extends HTMLAttributes<"ul"> {
-  links: any;
+  links: NavigationLink[];
 }
 
 const { links = [], ...props } = Astro.props;
@@ -11,7 +12,7 @@ const { links = [], ...props } = Astro.props;
 
 <ul {...props}>
   {
-    links.map((l: any) => (
+    links.map((l) => (
       <li>
         <TagWIcon
           as="a"

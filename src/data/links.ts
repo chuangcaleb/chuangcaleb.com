@@ -1,12 +1,21 @@
-type Link = {
+type BaseLink = {
 	label: string;
-	ariaLabel: string;
 	href: string;
+};
+
+type SocialLink = BaseLink & {
+	ariaLabel: string;
 	userId?: string;
 	icon: string;
 };
 
-type Links = Record<string, Link>;
+export type NavigationLink = BaseLink & {
+	shortLabel?: string;
+	icon?: string;
+	isInHeader?: true;
+};
+
+type LinkGeneric<T> = Record<string, T>;
 
 const SOCIALS = {
 	LINKEDIN: {
@@ -36,8 +45,33 @@ const SOCIALS = {
 		ariaLabel: 'Email address of Chuang Caleb',
 		icon: 'mdi:email-outline',
 	},
-} as const satisfies Links;
+} as const satisfies LinkGeneric<SocialLink> as LinkGeneric<SocialLink>;
 
 export type LinkKey = keyof typeof SOCIALS;
 
-export default SOCIALS as Links;
+const NAV_LINKS = {
+	INDEX: {
+		label: 'chuangcaleb.com',
+		shortLabel: 'chuangcaleb',
+		href: '/',
+	},
+	GARDEN: {
+		label: '/garden',
+		href: '/garden',
+		icon: 'lucide:trees',
+		isInHeader: true,
+	},
+	NOW: {
+		label: '/now',
+		href: '/now',
+		icon: 'lucide:timer-reset',
+		isInHeader: true,
+	},
+	GUESTBOOK: {
+		label: '/guestbook',
+		href: '/guestbook',
+		icon: 'lucide:notebook-pen',
+	},
+} as const satisfies LinkGeneric<NavigationLink> as LinkGeneric<NavigationLink>;
+
+export {SOCIALS, NAV_LINKS};
