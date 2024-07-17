@@ -37,7 +37,10 @@ const formattedDate = formatIso(
           <span>{post["📇 Display Name"]}</span>
         )
       }
-      <span><i>{post["👥 Relation to me"]}</i></span>
+      <span class="flex-row subtitle">
+        <span>{post["👥 Relation to me"]}</span>
+        {post["🏷️ Tag"] !== "Other" && <i class="tag">#{post["🏷️ Tag"]}</i>}
+      </span>
     </p>
   </div>
   <p class="body">
@@ -55,13 +58,16 @@ const formattedDate = formatIso(
       height: 3em;
       border-radius: 100%;
     }
-    .cite p span {
-      display: block;
+    .cite p > span {
       line-height: var(--font-lineheight-1);
     }
-    i {
+    i,
+    .subtitle {
       color: var(--fg3);
       white-space: nowrap;
+    }
+    .subtitle {
+      text-transform: lowercase;
     }
     p {
       word-wrap: initial;

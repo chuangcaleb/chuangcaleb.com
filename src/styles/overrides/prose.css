@@ -31,9 +31,8 @@
     border-width: 1px;
     border-inline-start-width: var(--size-blockquote-strip);
     border-inline-start-color: var(--border);
+    padding: var(--size-relative-6);
     padding-inline-start: var(--size-blockquote-indent);
-    padding-inline-end: var(--size-relative-4);
-    padding-block: var(--size-relative-6);
     &,
     * {
       font-size: var(--step-0);
