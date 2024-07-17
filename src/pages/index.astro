@@ -7,10 +7,13 @@ import Projects from "./_components/projects/index.astro";
 import Skills from "./_components/skills/index.astro";
 ---
 
-<BaseMain title={`${SITE.title} - ${SITE.subtitle}`} class="linew-wide">
+<BaseMain
+  title={`${SITE.title} - ${SITE.subtitle}`}
+  class="linew-wide"
+  hasBanner={false}
+>
   <Hero />
   <Overview />
-
   <Projects />
   <Skills />
 </BaseMain>

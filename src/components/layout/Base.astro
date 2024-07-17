@@ -5,16 +5,18 @@ import Footer from "./Footer.astro";
 import Head, { type HeadProps } from "./Head.astro";
 import Header from "./Header.astro";
 
-export type BaseProps = HeadProps;
+export type BaseProps = HeadProps & {
+  hasBanner?: false;
+};
 type Props = BaseProps;
-const { title, description } = Astro.props;
+const { title, description, hasBanner } = Astro.props;
 ---
 
 <html lang={SITE.language} data-theme="dark">
   <head>
     <Head title={title} description={description} />
   </head><body>
-    <Header>
+    <Header hasBanner={hasBanner}>
       <slot slot="sheetBody" name="sheetBody" />
     </Header>
     <slot />
