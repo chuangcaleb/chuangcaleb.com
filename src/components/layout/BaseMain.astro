@@ -2,18 +2,13 @@
 import type { HTMLAttributes } from "astro/types";
 import Base, { type BaseProps } from "./Base.astro";
 
-export interface MainProps extends HTMLAttributes<"main"> {
-  hasBanner?: false;
-}
-type Props = MainProps & BaseProps;
-const props = Astro.props;
+export interface MainProps extends HTMLAttributes<"main">, BaseProps {}
+
+type Props = MainProps;
+const { title, description, hasBanner, ...props } = Astro.props;
 ---
 
-<Base
-  title={props.title}
-  description={props.description}
-  hasBanner={props.hasBanner}
->
+<Base title={title} description={description} hasBanner={hasBanner}>
   <slot slot="sheetBody" name="sheetBody" />
   <main id="main" {...props}>
     <slot />

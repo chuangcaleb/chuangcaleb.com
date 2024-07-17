@@ -3,9 +3,10 @@ import NAV_LINKS from "~/data/nav";
 import Banner from "../block/Banner.astro";
 import NavSheet from "../block/NavSheet/NavSheet.astro";
 
-interface Props {
+export interface HeaderProps {
   hasBanner?: false;
 }
+type Props = HeaderProps;
 
 const { hasBanner = true } = Astro.props;
 ---

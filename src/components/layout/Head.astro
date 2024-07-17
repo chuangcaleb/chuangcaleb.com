@@ -1,24 +1,23 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import SITE from "~/data/site";
 
 export type HeadProps = {
   description?: string;
-  title?: string;
+  title?: string | null;
 };
 
-const { title: titleProps, description: descriptionProps } = Astro.props;
+const { title: propsTitle, description: propsDescription } = Astro.props;
 
 const { pathname } = Astro.url;
 const isHome = pathname === "/";
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
-const title = titleProps
-  ? titleProps + (isHome ? "" : ` | ${SITE.title}`)
+const title = propsTitle
+  ? propsTitle + (isHome ? "" : ` | ${SITE.title}`)
   : SITE.title;
 
-const description = descriptionProps ?? SITE.description;
+const description = propsDescription ?? SITE.description;
 ---
 
 {/* Base */}

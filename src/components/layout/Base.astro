@@ -3,11 +3,9 @@ import SITE from "~/data/site";
 import "~/styles/global.css";
 import Footer from "./Footer.astro";
 import Head, { type HeadProps } from "./Head.astro";
-import Header from "./Header.astro";
+import Header, { type HeaderProps } from "./Header.astro";
 
-export type BaseProps = HeadProps & {
-  hasBanner?: false;
-};
+export type BaseProps = HeadProps & HeaderProps;
 type Props = BaseProps;
 const { title, description, hasBanner } = Astro.props;
 ---
