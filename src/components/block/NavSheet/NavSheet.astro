@@ -1,6 +1,6 @@
 ---
 import Icon from "astro-iconify";
-import NavigationLinks from "~/components/layout/NavigationLinks.astro";
+import SiteNavStack from "~/components/layout/SiteNavStack.astro";
 import NavSheetReact from "./nav-sheet-react";
 ---
 
@@ -10,7 +10,7 @@ import NavSheetReact from "./nav-sheet-react";
   <div slot="body" class="flow-lg">
     <slot name="sheetBody" />
     <hr />
-    <NavigationLinks />
+    <SiteNavStack />
   </div>
 </NavSheetReact>
 

@@ -1,4 +1,7 @@
 ---
+import NAV_LINKS from "~/data/nav";
+import Banner from "../block/Banner.astro";
+import LinkList from "../block/LinkList.astro";
 import NavSheet from "../block/NavSheet/NavSheet.astro";
 ---
 
@@ -7,6 +10,16 @@ import NavSheet from "../block/NavSheet/NavSheet.astro";
     <a href="#main">Skip to content →</a>
     <a href="#footer">Skip to footer →</a>
   </div>
+  <Banner>
+    <nav class="flex-row">
+      <h2 class="sr-only">Site navigation</h2>
+      <a href={NAV_LINKS.INDEX.href}>{NAV_LINKS.INDEX.shortLabel}</a>
+      <!-- <LinkList
+        class="flex-row"
+        links={Object.values(NAV_LINKS).filter((l) => l.isInHeader)}
+      /> -->
+    </nav>
+  </Banner>
   <NavSheet>
     <slot slot="sheetBody" name="sheetBody" />
   </NavSheet>
@@ -33,5 +46,8 @@ import NavSheet from "../block/NavSheet/NavSheet.astro";
     a {
       display: block;
     }
+  }
+  nav {
+    justify-content: space-between;
   }
 </style>

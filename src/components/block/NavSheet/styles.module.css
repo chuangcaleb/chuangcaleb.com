@@ -24,12 +24,12 @@
   }
 }
 
-.FloatingUp {
+.FloatingHide {
   visibility: hidden;
   transition: all 0.2s;
   transform: translateY(-100%);
 }
-.FloatingDown {
+.FloatingShow {
   visibility: visible;
   transition: all 0.5s;
 }

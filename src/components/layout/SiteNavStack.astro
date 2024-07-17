@@ -1,0 +1,9 @@
+---
+import NAV_LINKS from "~/data/nav";
+import LinkList from "../block/LinkList.astro";
+---
+
+<nav>
+  <h2 class="sr-only">Site navigation</h2>
+  <LinkList class="flow-sm" links={Object.values(NAV_LINKS)} />
+</nav>

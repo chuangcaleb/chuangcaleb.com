@@ -4,12 +4,14 @@ import {Fragment} from 'react/jsx-runtime';
 import styles from './styles.module.css';
 import {cn} from '~/utils/css';
 import {useScroll} from '~/utils/hooks/use-scroll';
+import {useWindowSize} from '~/utils/hooks/use-window-size';
 
 // Lazy any lol
 // eslint-disable-next-line unicorn/prevent-abbreviations
 const NavSheetReact = (properties: any) => {
 	const [open, setOpen] = React.useState(false);
-	const {direction} = useScroll('up');
+	const {scrollY, direction} = useScroll('up');
+	const {width} = useWindowSize();
 
 	React.useEffect(() => {
 		window.addEventListener('hashchange', handleAClick, false);
@@ -23,13 +25,15 @@ const NavSheetReact = (properties: any) => {
 		setOpen(false);
 	}
 
+	const shouldShowFloatingButton = direction === 'down' || (width && width < 400 && scrollY < 1);
+
 	return (
 		<Dialog.Root open={open} onOpenChange={setOpen}>
 			<Dialog.Trigger asChild>
 				<button
 					className={cn([
 						styles.FloatingButton,
-						direction === 'up' ? styles.FloatingUp : styles.FloatingDown,
+						shouldShowFloatingButton ? styles.FloatingShow : styles.FloatingHide,
 					])}
 				>
 					<Fragment>{properties.menuIcon}</Fragment>

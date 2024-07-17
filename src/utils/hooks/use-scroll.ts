@@ -37,8 +37,8 @@ export function useScroll(initialDirection: 'up' | 'down') {
 	});
 
 	return {
-		// ScrollY,
-		// scrollX,
+		scrollY,
+		// ScrollX,
 		direction,
 	};
 }

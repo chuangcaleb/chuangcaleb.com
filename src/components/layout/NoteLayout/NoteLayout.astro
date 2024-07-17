@@ -35,7 +35,6 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
       </div>
     </aside>
     <div class="article-main full cgrid prose flow-lg region">
-      <Breadcrumbs step={-1} />
       <slot />
       {collectionData && <CollectionList {...collectionData} />}
     </div>

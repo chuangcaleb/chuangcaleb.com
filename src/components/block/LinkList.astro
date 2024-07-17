@@ -1,0 +1,34 @@
+---
+import { type HTMLAttributes } from "astro/types";
+import TagWIcon from "../styled/polym/TagWIcon.astro";
+
+interface Props extends HTMLAttributes<"ul"> {
+  links: any;
+}
+
+const { links = [], ...props } = Astro.props;
+---
+
+<ul {...props}>
+  {
+    links.map((l: any) => (
+      <li>
+        <TagWIcon
+          as="a"
+          href={l.href}
+          iconName={l.icon}
+          iconColor="unset"
+          {...(l.href === Astro.url.pathname && { "aria-current": "page" })}
+        >
+          {l.label}
+        </TagWIcon>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  a {
+    color: var(--text-faded);
+  }
+</style>
