@@ -25,7 +25,8 @@ const NavSheetReact = (properties: any) => {
 		setOpen(false);
 	}
 
-	const shouldShowFloatingButton = direction === 'down' || (width && width < 400 && scrollY < 1);
+	const isMobileTop = (width && width < 400 && scrollY < 1);
+	const shouldShowFloatingButton = direction === 'down' || isMobileTop;
 
 	return (
 		<Dialog.Root open={open} onOpenChange={setOpen}>
@@ -34,6 +35,7 @@ const NavSheetReact = (properties: any) => {
 					className={cn([
 						styles.FloatingButton,
 						shouldShowFloatingButton ? styles.FloatingShow : styles.FloatingHide,
+						isMobileTop && styles.ZeroAnimationDuration,
 					])}
 				>
 					<Fragment>{properties.menuIcon}</Fragment>

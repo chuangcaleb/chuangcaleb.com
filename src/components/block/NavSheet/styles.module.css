@@ -34,6 +34,10 @@
   transition: all 0.5s;
 }
 
+.ZeroAnimationDuration {
+  transition-duration: 0ms;
+}
+
 .DialogOverlay {
   position: fixed;
   inset: 0;
