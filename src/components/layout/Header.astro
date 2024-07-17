@@ -2,6 +2,7 @@
 import NAV_LINKS from "~/data/nav";
 import Banner from "../block/Banner.astro";
 import NavSheet from "../block/NavSheet/NavSheet.astro";
+import LinkList from "../block/LinkList.astro";
 
 export interface HeaderProps {
   hasBanner?: false;
@@ -22,10 +23,11 @@ const { hasBanner = true } = Astro.props;
         <nav class="flex-row">
           <h2 class="sr-only">Site navigation</h2>
           <a href={NAV_LINKS.INDEX.href}>{NAV_LINKS.INDEX.shortLabel}</a>
-          {/* <LinkList
+          <span class="text-muted">•</span>
+          <LinkList
             class="flex-row"
             links={Object.values(NAV_LINKS).filter((l) => l.isInHeader)}
-          />  */}
+          />
         </nav>
       </Banner>
     )
@@ -58,6 +60,11 @@ const { hasBanner = true } = Astro.props;
     }
   }
   nav {
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    font-size: var(--step-0);
+    padding-right: var(--size-8);
+    > a {
+      font-family: var(--font-heading-serif);
+    }
   }
 </style>
