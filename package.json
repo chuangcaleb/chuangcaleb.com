@@ -24,6 +24,7 @@
         "@radix-ui/react-dialog": "^1.1.1",
         "@svgr/core": "^8.1.0",
         "@svgr/plugin-jsx": "^8.1.0",
+        "@unpic/astro": "^0.0.46",
         "astro": "^4.11.5",
         "astro-breadcrumbs": "^2.3.1",
         "astro-compressor": "^0.4.1",
