@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import Banner from "~/components/block/Banner.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
-import NoteCard from "~/components/styled/monom/NoteCard.astro";
 import AccentA from "~/components/styled/monom/AccentA.astro";
+import NoteCard from "~/components/styled/monom/NoteCard.astro";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
+import { NAV_LINKS } from "~/data/links";
 import { getNoteName } from "~/utils/post";
-import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
 
 const publicNotes = await getCollection("obsidian-note");
 
@@ -20,11 +20,13 @@ const collectionNotes = publicNotes
 const leafNotes = publicNotes
   .filter((n) => !n.data.tags?.includes("📂/collection"))
   .sort((a, b) => (a.body.length < b.body.length ? 1 : -1));
+
+const icon = NAV_LINKS.GARDEN.icon;
 ---
 
 <BaseMain title="Digital Garden">
   <article class="linew-wide prose flow-lg">
-    <h1>Digital Garden</h1>
+    <TagWIcon iconName={icon} as="h1">Digital Garden</TagWIcon>
     <h2>📂 Collection notes</h2>
     <ul class="collections">
       {

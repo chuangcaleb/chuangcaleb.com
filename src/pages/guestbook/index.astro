@@ -1,16 +1,22 @@
 ---
 import { getGuestbookPosts } from "lib/google-sheets/sheet";
 import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import Post from "./_GuestPost.astro";
+import { NAV_LINKS } from "~/data/links";
 const title = "Guestbook";
 
 const guestbookPosts = (await getGuestbookPosts())
   .filter((post) => post.isVerified)
   .reverse();
+
+const icon = NAV_LINKS.GUESTBOOK.icon;
 ---
 
 <NoteLayout title={title}>
-  <h1>{title}</h1>
+  <TagWIcon iconName={icon} as="h1" style={{ display: "flex" }}>
+    Guestbook
+  </TagWIcon>
   <p>A collection of post-it notes, signed by people who know me!</p>
   {guestbookPosts.map((post) => <Post post={post} />)}
 </NoteLayout>
