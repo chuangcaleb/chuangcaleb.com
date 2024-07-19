@@ -6,6 +6,7 @@ import NoteCard from "~/components/styled/monom/NoteCard.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
 import { getNoteName } from "~/utils/post";
+import { Content as GardenIntroContent } from "./garden-intro.mdx";
 
 const publicNotes = await getCollection("obsidian-note");
 
@@ -26,7 +27,10 @@ const icon = NAV_LINKS.GARDEN.icon;
 
 <BaseMain title="Digital Garden">
   <article class="linew-wide prose flow-lg">
-    <TagWIcon iconName={icon} as="h1">Digital Garden</TagWIcon>
+    <TagWIcon iconName={icon} as="h1">Caleb's Digital Garden</TagWIcon>
+    <div class="flow" style={{ maxWidth: "var(--content-w)" }}>
+      <GardenIntroContent />
+    </div>
     <h2>📂 Collection notes</h2>
     <ul class="collections">
       {
