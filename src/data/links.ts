@@ -71,7 +71,7 @@ const NAV_LINKS = {
 		label: '/guestbook',
 		href: '/guestbook',
 		icon: 'lucide:notebook-pen',
-		isInHeader: true,
+		// IsInHeader: true,
 	},
 } as const satisfies LinkGeneric<NavigationLink> as LinkGeneric<NavigationLink>;
 
