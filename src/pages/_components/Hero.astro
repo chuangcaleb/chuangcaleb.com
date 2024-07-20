@@ -12,13 +12,13 @@ const props = Astro.props;
 <section class="region" {...props}>
     <div class="cont-img">
       <Image
-        src={heroImg}
-        alt="Head profile of Chuang Caleb"
-        fetchpriority="high"
+        src='https://res.cloudinary.com/chuangcaleb/image/upload/v1721485442/chuangcaleb/hero_faqkfb.jpg'
+        alt="Facial profile picture of Chuang Caleb"
+        priority
         height={400}
         width={400}
-        loading="eager"
-        background="var(--bg1)"
+        sizes={`(max-width: 1050px) 30vw, 800px`}
+        breakpoints={[130, 260, 370, 460, 540, 630, 720, 800]}
         class="border"
       />
     </div>
