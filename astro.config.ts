@@ -11,6 +11,7 @@ import {defineConfig} from 'astro/config';
 // import { remarkReadingTime } from "lib/remark/reading-time";
 // import { remarkStripH1 } from "lib/remark/strip-h1";
 // import icons from "unplugin-icons/vite";
+import { imageService } from '@unpic/astro/service';
 import {slugify} from './lib/markdown/string';
 import {SOCIALS} from './src/data/links';
 
@@ -73,4 +74,8 @@ export default defineConfig({
 	},
 	scopedStyleStrategy: 'attribute',
 	redirects: REDIRECTS,
+	image: {
+		service: imageService(),
+	},
+
 });
