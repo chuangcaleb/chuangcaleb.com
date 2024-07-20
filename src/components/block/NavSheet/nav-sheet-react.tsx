@@ -37,6 +37,7 @@ const NavSheetReact = (properties: any) => {
 						shouldShowFloatingButton ? styles.FloatingShow : styles.FloatingHide,
 						isMobileTop && styles.ZeroAnimationDuration,
 					])}
+					aria-label='Open Navigation Sidebar Sheet'
 				>
 					<Fragment>{properties.menuIcon}</Fragment>
 				</button>
