@@ -1,22 +1,22 @@
 ---
 import Contact from "./Contact.astro";
-import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
-import SiteNavStack from "./SiteNavStack.astro";
+// import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
 import ThemeToggle from "../block/ThemeToggle.astro";
+import SiteNavStack from "./SiteNavStack.astro";
 
-const ROUTES_WO_BREADCRUMBS = ["/", "/404"];
+// const ROUTES_WO_BREADCRUMBS = ["/", "/404"];
 ---
 
 <footer id="footer" class="flow-xs linew-wide">
   <section class="region flow-lg">
-    {
+    <!-- {
       !ROUTES_WO_BREADCRUMBS.includes(Astro.url.pathname) && (
         <>
           <Breadcrumbs />
           <hr />
         </>
       )
-    }
+    } -->
     <SiteNavStack />
   </section>
   <hr />
