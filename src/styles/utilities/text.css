@@ -4,3 +4,7 @@
 .text-muted {
   color: var(--text-muted);
 }
+
+.ws-nowrap {
+  white-space: nowrap;
+}
