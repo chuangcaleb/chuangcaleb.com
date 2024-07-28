@@ -3,6 +3,7 @@ import Contact from "./Contact.astro";
 // import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
 import ThemeToggle from "../block/ThemeToggle.astro";
 import SiteNavStack from "./SiteNavStack.astro";
+import { formatDisplayDate } from "~/utils/time";
 
 // const ROUTES_WO_BREADCRUMBS = ["/", "/404"];
 ---
@@ -28,7 +29,7 @@ import SiteNavStack from "./SiteNavStack.astro";
     <a href="https://github.com/chuangcaleb/chuangcaleb.com">source code</a>
   </p>
   <p class="fine-print">
-    handcrafted by Chuang Caleb and published in {new Date().getFullYear()}
+    handcrafted by Chuang Caleb – published on {formatDisplayDate(new Date())}
   </p>
 </footer>
 
