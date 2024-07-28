@@ -9,7 +9,7 @@ const nowNotes = allNotes.filter((note) =>
   isInCollection(note.data?.collection, "now")
 );
 
-const latestNowNote = nowNotes[0];
+const latestNowNote = nowNotes[nowNotes.length - 1];
 const { Content } = await latestNowNote.render();
 ---
 
