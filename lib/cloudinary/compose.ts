@@ -1,4 +1,4 @@
-import cloudinary from '.';
+import cloudinary from './instance';
 
 const W1 = 360;
 const W2 = 480;
