@@ -1,6 +1,6 @@
 import type {ResourceApiResponse} from 'cloudinary';
 import type {CloudinaryResource} from '../types';
-import cloudinary from '..';
+import cloudinary from '../index';
 
 async function fetchNextPage(
 	folderName: string,
