@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
 import { isInCollection } from "~/utils/meta";
-import { Content as ExplainNowContent } from "./explain-now.mdx";
+import { Content as ExplainNowContent } from "./_explain-now.mdx";
 
 const allNotes = await getCollection("obsidian-note");
 const nowNotes = allNotes.filter((note) =>
