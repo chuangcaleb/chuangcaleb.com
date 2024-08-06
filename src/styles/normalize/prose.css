@@ -99,11 +99,12 @@
   background-color: var(--bg2);
   border-radius: var(--radius-2);
   overflow: auto;
-  code {
-    font-size: var(--step--1);
-    /* text-wrap: wrap; */
-    width: 100%;
-  }
+}
+
+:where(code) {
+  font-size: var(--step--1);
+  /* text-wrap: wrap; */
+  width: 100%;
 }
 
 b,

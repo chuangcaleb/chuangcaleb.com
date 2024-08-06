@@ -85,4 +85,13 @@
       --flow-space: 0;
     }
   }
+
+  table {
+    grid-column: max;
+  }
+}
+th,
+td {
+  border-width: 1px;
+  word-break: break-all;
 }
