@@ -14,13 +14,13 @@ interface Props<C extends keyof ContentEntryMap> {
 
 const { isOrdered, items } = Astro.props;
 
-const List = isOrdered ? "ol" : "ul";
+const ListHTMLElement = isOrdered ? "ol" : "ul";
 const notes = await getEntries(items);
 ---
 
 {
   notes && (
-    <List>
+    <ListHTMLElement>
       {notes.map((note) => {
         if (!note) return null;
         return (
@@ -31,6 +31,6 @@ const notes = await getEntries(items);
           </li>
         );
       })}
-    </List>
+    </ListHTMLElement>
   )
 }
