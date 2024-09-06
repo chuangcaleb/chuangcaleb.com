@@ -41,7 +41,7 @@
         "mdast-util-to-string": "^4.0.0",
         "open-props": "^1.7.6",
         "postcss-custom-media": "^10.0.8",
-        "postcss-preset-env": "^9.6.0",
+        "postcss-preset-env": "^10.0.2",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "sass": "^1.77.8",
