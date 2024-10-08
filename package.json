@@ -17,15 +17,15 @@
         "test": "xo"
     },
     "dependencies": {
-        "@astrojs/mdx": "^3.1.5",
+        "@astrojs/mdx": "^3.1.7",
         "@astrojs/react": "^3.6.2",
-        "@astrojs/sitemap": "^3.1.6",
+        "@astrojs/sitemap": "^3.2.0",
         "@portaljs/remark-wiki-link": "^1.2.0",
         "@radix-ui/react-dialog": "^1.1.1",
         "@svgr/core": "^8.1.0",
         "@svgr/plugin-jsx": "^8.1.0",
         "@unpic/astro": "^0.0.46",
-        "astro": "^4.15.1",
+        "astro": "^4.15.12",
         "astro-breadcrumbs": "^2.3.1",
         "astro-compressor": "^0.4.1",
         "astro-iconify": "^1.2.0",
