@@ -25,7 +25,7 @@
         "@svgr/core": "^8.1.0",
         "@svgr/plugin-jsx": "^8.1.0",
         "@unpic/astro": "^0.0.46",
-        "astro": "^4.15.12",
+        "astro": "^4.16.1",
         "astro-breadcrumbs": "^2.3.1",
         "astro-compressor": "^0.4.1",
         "astro-iconify": "^1.2.0",
