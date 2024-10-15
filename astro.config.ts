@@ -20,11 +20,6 @@ const NOTES_DIR = 'src/content/obsidian-note';
 const productionIntegrations = [
 	robotsTxt(),
 	sitemap(),
-	purgecss({
-		keyframes: false,
-		// Variables: true,
-		safelist: {standard: [/^:[-a-z]+$/]},
-	}),
 	compressor(),
 ];
 
