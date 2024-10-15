@@ -85,6 +85,9 @@
       --flow-space: 0;
     }
   }
+  pre[data-language="plaintext"] {
+    text-wrap: pretty;
+  }
 
   table {
     grid-column: max;
