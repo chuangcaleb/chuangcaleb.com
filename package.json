@@ -26,7 +26,7 @@
         "@svgr/plugin-jsx": "^8.1.0",
         "@unpic/astro": "^0.0.46",
         "astro": "^4.16.4",
-        "astro-breadcrumbs": "^2.3.1",
+        "astro-breadcrumbs": "^3.2.0",
         "astro-compressor": "^0.4.1",
         "astro-iconify": "^1.2.0",
         "astro-purgecss": "^4.6.1",
