@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import {composeErrorString} from 'lib/utils/log';
-import {JSON_FILE} from '../consts';
-import type {CloudinaryResource} from '../types';
+import {JSON_FILE} from '../consts.js';
+import type {CloudinaryResource} from '../types.js';
 
 export async function write(resources: CloudinaryResource[]): Promise<void> {
 	const contents = {

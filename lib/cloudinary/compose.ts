@@ -1,4 +1,4 @@
-import cloudinary from './instance';
+import cloudinary from './instance.js';
 
 const W1 = 360;
 const W2 = 480;

@@ -1,5 +1,5 @@
-import {ROOT_DIR} from './consts';
-import getCache from './cache/reader';
+import {ROOT_DIR} from './consts.js';
+import getCache from './cache/reader.js';
 
 const cache = getCache();
 
