@@ -44,7 +44,7 @@ As of latest:
 
 ### Project structure
 
-```
+```tree
 .
 ├── lib
 │   ├── *
