@@ -1,4 +1,3 @@
 [submodule "src/content/obsidian-note"]
 	path = src/content/obsidian-note
-	url = https://chuangcaleb@github.com/chuangcaleb/obsidian-caleb-public
-	branch = main
+	url = git@github.com:chuangcaleb/obsidian-caleb-public.git
