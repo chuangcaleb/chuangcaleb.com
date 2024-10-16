@@ -1,17 +1,23 @@
 ---
+import { type HTMLTag, type Polymorphic } from "astro/types";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>;
+
+const { as: Tag , ...props } = Astro.props;
 
 ---
 
-<div class="card |">
+<Tag {...props}>
   <slot />
-</div>
+</Tag>
 
 <style>
   * {
     height: 100%;
+    width: 100%;
     border-width: 2px;
-    /* border-radius: var(--radius-2); */
-    padding: var(--space-m);
+    border-radius: var(--radius-2);
+    padding: var(--space-s);
     &:hover {
       border-color: var(--ax2);
       background-color: var(--bg3);
