@@ -1,10 +1,11 @@
 ---
 import { Image } from "@unpic/astro";
 import { Icon } from "astro-iconify";
-import heroImg from "~/assets/hero.jpeg";
+// import heroImg from "~/assets/hero.jpeg";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import Button from "~/components/styled/polym/Button.astro";
 import { SOCIALS } from "~/data/links";
+import { Content as HeroBodyContent } from "./_hero-body.mdx";
 
 const props = Astro.props;
 ---
@@ -29,10 +30,7 @@ const props = Astro.props;
         software dev <br />
         with a different <mark>story.</mark>
       </p>
-      <p>
-        I professionally tinker with <b>UI design systems</b> & <b>dynamic web apps</b> — and unprofessionally with <b>narrative storytelling</b>.
-      </p>
-      <p>You'll find out about me on this site. Wanna work together?</p>
+      <HeroBodyContent/>
       <div class="cont-cta flom-xl">
         <Button as="a" variant="brand" href={SOCIALS['EMAIL'].href} step={1}>
           <Icon name={SOCIALS['EMAIL'].icon} />{}email me
@@ -86,7 +84,7 @@ const props = Astro.props;
       text-transform: lowercase;
     }
 
-     > * {
+     > :global(*) {
       grid-column: 1 / -2;
       @media (width < 600px) {
         grid-column: 1 / -1;
@@ -101,7 +99,7 @@ const props = Astro.props;
       font-size: var(--step-7);
       font-family: var(--font-heading-serif);
     }
-    p {
+    :global(p) {
       text-wrap: balance;
       font-size: var(--step-1);
     }
