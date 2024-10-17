@@ -36,10 +36,11 @@
 
 :where(a[href]) {
   --color: var(--text-normal);
-  --color-underline: var(--ax3);
+  --color-underline: var(--text-faded);
   --color-hover: var(--text-strong);
   box-decoration-break: clone;
   text-decoration-line: underline;
+  text-decoration-style: solid;
   font-weight: var(--font-weight-5);
   color: var(--color);
   text-decoration-skip-ink: none;
@@ -56,7 +57,9 @@
 [href^="https://"],
 [href^="mailto:"]):not([href^="https://chuangcaleb.com"]))
 {
-  --color-underline: var(--text-faded);
+  /* --color-underline: var(--text-faded); */
+  text-decoration-style: dashed;
+  text-decoration-thickness: 2px;
 }
 
 :where(a[href]:is(:hover, :focus, :active)) {
@@ -72,5 +75,5 @@ a[href^="https://"]:not([href*="stackoverflow.com"]):after
 /* or just anything with a `:`? */
 
 :where(a[href]:focus) {
-  text-decoration: none;
+  text-decoration-style: wavy;
 }
