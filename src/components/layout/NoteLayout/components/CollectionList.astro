@@ -22,7 +22,7 @@ const notes = await getEntries(items);
 {
   notes && (
     <ListHTMLElement>
-      {notes.map((note: any) => {
+      {notes.map((note) => {
         if (!note) return null;
         return (
           <li>
