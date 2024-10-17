@@ -36,12 +36,12 @@ const icon = NAV_LINKS.GARDEN.icon;
       {
         collectionNotes?.map((n) => (
           <li>
-            <NoteCard as='a' class="note-card" href={gnr(n.slug)}>
-                <div class='emoji'>{n.data.emojip ?? "‎‎"}</div>
-                <h3>
-                  {getNoteName(n.id)}{" "}
-                  <span>({n.data.collectionItems?.length})</span>
-                </h3>
+            <NoteCard as="a" class="note-card" href={gnr(n.slug)}>
+              <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
+              <h3>
+                {getNoteName(n.id)}{" "}
+                <span>({n.data.collectionItems?.length})</span>
+              </h3>
             </NoteCard>
           </li>
         ))
@@ -77,11 +77,11 @@ const icon = NAV_LINKS.GARDEN.icon;
       align-items: start;
       height: 100%;
       --color-underline: transparent;
-      .emoji{
-        font-size: var(--step-3);
+      .emoji {
+        font-size: var(--step-2);
       }
       h3 {
-        font-size: var(--step-2);
+        font-size: var(--step-1);
         text-wrap: balance;
         /* margin-top: auto; */
       }
