@@ -16,13 +16,13 @@
 @mixin light {
   --base-h: 9;
   --base-s: 5%;
-  --base-l: 100%;
+  --base-l: 95%;
 
   --accent-h: 0;
   --accent-s: 100%;
   --accent-l: 35%;
 
-  --m: -1;
+  --m: -1.2;
   --a-l: 1.5;
 
   --font-weight-strong: var(--font-weight-5);
