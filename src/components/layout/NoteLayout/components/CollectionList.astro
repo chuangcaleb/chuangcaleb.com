@@ -3,6 +3,7 @@ import type { ContentEntryMap, ValidContentEntrySlug } from "astro:content";
 import { getEntries } from "astro:content";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteName } from "~/utils/post";
+import { gnr } from "~/utils/post";
 
 interface Props<C extends keyof ContentEntryMap> {
   isOrdered: boolean;
@@ -21,13 +22,11 @@ const notes = await getEntries(items);
 {
   notes && (
     <ListHTMLElement>
-      {notes.map((note) => {
+      {notes.map((note: any) => {
         if (!note) return null;
         return (
           <li>
-            <AccentA href={`/note/${note.slug}`}>
-              {getNoteName(note.id)}
-            </AccentA>
+            <AccentA href={gnr(note.slug)}>{getNoteName(note.id)}</AccentA>
           </li>
         );
       })}

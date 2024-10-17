@@ -4,6 +4,7 @@ import Contact from "./Contact.astro";
 import ThemeToggle from "../block/ThemeToggle.astro";
 import SiteNavStack from "./SiteNavStack.astro";
 import { formatDisplayDate } from "~/utils/time";
+import {gnr} from '~/utils/post';
 
 // const ROUTES_WO_BREADCRUMBS = ["/", "/404"];
 ---
@@ -18,7 +19,7 @@ import { formatDisplayDate } from "~/utils/time";
     <ThemeToggle />
   </section>
   <p class="fine-print">
-    <a href="/note/meta/colophon">colophon</a>
+    <a href={gnr("/meta/colophon")}>colophon</a>
     <span class="text-muted">•</span>
     <a href="https://github.com/chuangcaleb/chuangcaleb.com">source code</a>
   </p>

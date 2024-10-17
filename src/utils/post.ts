@@ -9,3 +9,10 @@ export function getNoteName(filepath: string) {
 
 	return name;
 }
+
+function getNoteRoute(slug: string) {
+	return path.join('/note', slug);
+}
+
+// Shorter alias, like cn
+export const gnr = getNoteRoute;

@@ -4,6 +4,7 @@ import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
 import { isInCollection } from "~/utils/meta";
 import { Content as ExplainNowContent } from "./_explain-now.mdx";
 import CollectionList from "~/components/layout/NoteLayout/components/CollectionList.astro";
+import {gnr} from '~/utils/post';
 
 const allNotes = await getCollection("obsidian-note");
 const nowNotes = allNotes.filter((note) =>
@@ -21,7 +22,7 @@ const { Content } = await latestNowNote.render();
       ></span
     >•
     <span>
-      🔗 <a href={`/note/${latestNowNote.slug}`}>Note link →</a>
+      🔗 <a href={gnr(latestNowNote.slug)}>Note link →</a>
     </span>
   </p>
   <Content />

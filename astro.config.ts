@@ -1,10 +1,8 @@
-import path from 'node:path';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import {getPermalinks, remarkWikiLink} from '@portaljs/remark-wiki-link';
 import compressor from 'astro-compressor';
-import purgecss from 'astro-purgecss';
 import robotsTxt from 'astro-robots-txt';
 import {defineConfig} from 'astro/config';
 // Import { slugify } from "lib/markdown/slugify";
@@ -14,6 +12,7 @@ import {defineConfig} from 'astro/config';
 import {imageService} from '@unpic/astro/service';
 import {slugify} from './lib/markdown/string.js';
 import {SOCIALS} from './src/data/links.js';
+import {gnr} from './src/utils/post.js';
 
 const NOTES_DIR = 'src/content/obsidian-note';
 
@@ -61,8 +60,7 @@ export default defineConfig({
 				{
 					pathFormat: 'obsidian-short',
 					permalinks: getPermalinks(NOTES_DIR),
-					hrefTemplate: (permalink: string) =>
-						path.join('/note', slugify(permalink)),
+					hrefTemplate: (route: string) => gnr(slugify(route)),
 				},
 			],
 		],

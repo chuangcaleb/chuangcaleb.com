@@ -5,7 +5,7 @@ import AccentA from "~/components/styled/monom/AccentA.astro";
 import NoteCard from "~/components/styled/monom/NoteCard.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
-import { getNoteName } from "~/utils/post";
+import { getNoteName, gnr } from "~/utils/post";
 import { Content as GardenIntroContent } from "./_garden-intro.mdx";
 
 const publicNotes = await getCollection("obsidian-note");
@@ -36,7 +36,7 @@ const icon = NAV_LINKS.GARDEN.icon;
       {
         collectionNotes?.map((n) => (
           <li>
-            <NoteCard as='a' class="note-card" href={`/note/${n.slug}`}>
+            <NoteCard as='a' class="note-card" href={gnr(n.slug)}>
                 <div class='emoji'>{n.data.emojip ?? "‎‎"}</div>
                 <h3>
                   {getNoteName(n.id)}{" "}
@@ -52,7 +52,7 @@ const icon = NAV_LINKS.GARDEN.icon;
       {
         leafNotes?.map((n) => (
           <li>
-            <AccentA href={`/note/${n.slug}`}>{getNoteName(n.id)}</AccentA>
+            <AccentA href={gnr(n.slug)}>{getNoteName(n.id)}</AccentA>
             {`(${n.body.length} chars)`}
           </li>
         ))
