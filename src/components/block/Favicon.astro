@@ -1,0 +1,29 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  url?: string;
+  backgroundColor?: string;
+}
+
+const { src, alt, url, backgroundColor } = Astro.props;
+---
+
+<style>
+  img {
+    height: 0.9em;
+    /* vertical-align: sub; */
+    margin-bottom: -0.1em;
+    display: inline;
+  }
+  span {
+    white-space: nowrap;
+  }
+</style>
+
+<span>
+  <img src={src} loading="lazy" alt={alt} style={{backgroundColor}} />
+  {!url && <slot />}
+  {
+    url && <a href={url}><slot /></a>
+  }</span>
