@@ -36,7 +36,7 @@
 
 :where(a[href]) {
   --color: var(--text-normal);
-  --color-underline: var(--text-faded);
+  --color-underline: var(--ax3);
   --color-hover: var(--text-strong);
   box-decoration-break: clone;
   text-decoration-line: underline;
@@ -57,8 +57,8 @@
 [href^="https://"],
 [href^="mailto:"]):not([href^="https://chuangcaleb.com"]))
 {
-  /* --color-underline: var(--text-faded); */
-  text-decoration-style: dashed;
+  --color-underline: var(--text-faded);
+  /* text-decoration-style: dashed; */
   text-decoration-thickness: 0.12em;
 }
 
