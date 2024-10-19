@@ -120,7 +120,7 @@ strong {
 /* lists */
 
 :where(ol, ul) {
-  padding-left: var(--size-relative-6);
+  padding-left: var(--size-relative-7);
   ::marker {
     color: var(--text-faded);
   }
