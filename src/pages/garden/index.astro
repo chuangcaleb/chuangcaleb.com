@@ -25,45 +25,77 @@ const leafNotes = publicNotes
 const icon = NAV_LINKS.GARDEN.icon;
 ---
 
-<BaseMain title="Digital Garden">
-  <article class="linew-wide prose flow-lg">
-    <TagWIcon iconName={icon} as="h1">Caleb's Digital Garden</TagWIcon>
-    <div class="flow garden-intro">
+<BaseMain title="Digital Garden" class="linew-wide">
+  <article class="flow-2xl prose">
+    <TagWIcon iconName={icon} as="h1" style={{gridArea: "title"}}>Caleb's Digital Garden</TagWIcon>
+    <div class="flow garden-intro flom-lg" style={{gridArea: "intro"}}>
       <GardenIntroContent />
     </div>
-    <h2>📂 Collection notes</h2>
-    <ul class="collections">
-      {
-        collectionNotes?.map((n) => (
-          <li>
-            <NoteCard as="a" class="note-card" href={gnr(n.slug)}>
-              <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
-              <h3>
-                {getNoteName(n.id)}{" "}
-                <span>({n.data.collectionItems?.length})</span>
-              </h3>
-            </NoteCard>
-          </li>
-        ))
-      }
-    </ul>
-    <h2>🍃 Leaf notes</h2>
-    <ul>
-      {
-        leafNotes?.map((n) => (
-          <li>
-            <AccentA href={gnr(n.slug)}>{getNoteName(n.id)}</AccentA>
-            {`(${n.body.length} chars)`}
-          </li>
-        ))
-      }
-    </ul>
+    <div class="flow flom-lg" style={{gridArea: "start"}}>
+      <h3>📍 Start Here</h3>
+      <ul>
+        <li><b>🚧 WIP</b></li>
+        <li>s</li>
+        <li>s</li>
+      </ul>
+    </div>
+    <section class="prose flow-lg" style={{gridArea: "collections"}}>
+      <h2>📂 Collections</h2>
+      <ul class="collections">
+        {
+          collectionNotes?.map((n) => (
+            <li>
+              <NoteCard as="a" class="note-card" href={gnr(n.slug)}>
+                <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
+                <h3>
+                  {getNoteName(n.id)}{" "}
+                  <span>({n.data.collectionItems?.length})</span>
+                </h3>
+              </NoteCard>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section class="prose flow-lg" style={{gridArea: "leaves"}}>
+      <h2>🍃 Leaf notes</h2>
+      <ul>
+        {
+          leafNotes?.map((n) => (
+            <li>
+              <AccentA href={gnr(n.slug)}>{getNoteName(n.id)}</AccentA>
+              {`(${n.body.length} chars)`}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
   </article>
 </BaseMain>
 
 <style>
   .garden-intro {
     max-width: var(--content-w);
+  }
+  article {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    column-gap: var(--space-xs);
+    /* row-gap: var(--space-xs); */
+    grid-template-areas:
+      "title title title"
+      "intro intro start"
+      "collections collections ."
+      "leaves leaves .";
+    /* > * {
+      grid-column: 1 / -1;
+    } */
+    @media (width < 900px) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+      "title" "intro" "start" "collections" "leaves";
+    }
   }
   .collections {
     /* grid-column-end: max-end; */
@@ -78,8 +110,6 @@ const icon = NAV_LINKS.GARDEN.icon;
       display: flex;
       flex-direction: column;
       align-items: start;
-      height: 100%;
-      --color-underline: transparent;
       .emoji {
         font-size: var(--step-2);
       }
@@ -90,4 +120,7 @@ const icon = NAV_LINKS.GARDEN.icon;
       }
     }
   }
+  /* ul {
+    grid-column: span 2 / span 2;
+  } */
 </style>

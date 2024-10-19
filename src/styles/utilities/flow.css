@@ -39,6 +39,10 @@
   --flow-space: var(--size-relative-6);
 }
 
+.flom-lg {
+  --flow-space: var(--size-relative-8);
+}
+
 .flom-xl {
   --flow-space: var(--size-relative-10);
 }
@@ -53,9 +57,6 @@
   --flow-space: var(--size-relative-4);
 }
 
-.flom-lg {
-  --flow-space: var(--size-relative-8);
-}
 
 .flom-2xl {
   --flow-space: var(--size-relative-12);
