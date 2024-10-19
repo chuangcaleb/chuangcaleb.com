@@ -24,9 +24,12 @@ const { as: Tag, ...props } = Astro.props;
     border-bottom-width: 2px;
     border-bottom-color: var(--color-underline);
 
+    transition: 0.3s ease-in-out;
+
     --color-hover: var(--ax1);
     &:hover {
       border-color: var(--ax2);
+      transform: scale3d(1.02, 1.02, 1.02);
     }
   }
 </style>
