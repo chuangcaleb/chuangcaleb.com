@@ -2,7 +2,7 @@
 
 /* Headings */
 :where(h1, h2, h3, h4, h5, h6) {
-  color: var(--text-strong);
+  color: var(--color, var(--text-strong));
   font-family: var(--font-heading-sans);
   line-height: var(--font-lineheight-0);
   max-width: var(--size-header-1);

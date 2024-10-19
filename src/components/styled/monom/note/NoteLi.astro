@@ -1,0 +1,32 @@
+---
+import { type HTMLTag, type Polymorphic } from "astro/types";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>;
+
+const { as: Tag, ...props } = Astro.props;
+---
+
+<Tag {...props}>
+  <slot />
+</Tag>
+
+<style>
+  * {
+    display: block;
+    padding-block: var(--space-xs);
+
+    font-family: var(--font-heading-serif);
+    font-size: var(--step-1);
+    line-height: var(--font-lineheight-1);
+
+    text-decoration: none;
+    border-radius: 0;
+    border-bottom-width: 2px;
+    border-bottom-color: var(--color-underline);
+
+    --color-hover: var(--ax1);
+    &:hover {
+      border-color: var(--ax2);
+    }
+  }
+</style>

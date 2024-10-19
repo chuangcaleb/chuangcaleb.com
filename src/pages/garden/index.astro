@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import BaseMain from "~/components/layout/BaseMain.astro";
-import AccentA from "~/components/styled/monom/AccentA.astro";
-import NoteCard from "~/components/styled/monom/NoteCard.astro";
+import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
+import NoteLi from "~/components/styled/monom/note/NoteLi.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
 import { getNoteName, gnr } from "~/utils/post";
@@ -22,49 +22,84 @@ const leafNotes = publicNotes
   .filter((n) => !n.data.tags?.includes("📂/collection"))
   .sort((a, b) => (a.body.length < b.body.length ? 1 : -1));
 
+const FEATURED_COUNT = 5;
+const featuredNotes = leafNotes.slice(0, FEATURED_COUNT);
+const restNotes = leafNotes.slice(FEATURED_COUNT, leafNotes.length);
+
 const icon = NAV_LINKS.GARDEN.icon;
 ---
 
 <BaseMain title="Digital Garden" class="linew-wide">
   <article class="flow-2xl prose">
-    <TagWIcon iconName={icon} as="h1" style={{gridArea: "title"}}>Caleb's Digital Garden</TagWIcon>
-    <div class="flow garden-intro flom-lg" style={{gridArea: "intro"}}>
+    <TagWIcon iconName={icon} as="h1" style={{ gridArea: "title" }}
+      >Caleb's Digital Garden</TagWIcon
+    >
+    <div class="flow garden-intro flom-lg" style={{ gridArea: "intro" }}>
       <GardenIntroContent />
     </div>
-    <div class="flow flom-lg" style={{gridArea: "start"}}>
+    <div class="flow flom-lg" style={{ gridArea: "start" }}>
       <h3>📍 Start Here</h3>
       <ul>
         <li><b>🚧 WIP</b></li>
-        <li>s</li>
-        <li>s</li>
+        <li>What's the Garden About?</li>
+        <li>How To Use This Site</li>
       </ul>
     </div>
-    <section class="prose flow-lg" style={{gridArea: "collections"}}>
+    <section
+      class="note-cards-section prose flow-lg"
+      style={{ gridArea: "featured" }}
+    >
+      <h2>✨ Featured</h2>
+      <ul class="featured-ul">
+        {
+          featuredNotes?.map((n) => (
+            <li>
+              <NoteLi as="a" href={gnr(n.slug)}>
+                {getNoteName(n.id)}{" "}
+              </NoteLi>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section
+      class="note-cards-section prose flow-lg"
+      style={{ gridArea: "collections" }}
+    >
       <h2>📂 Collections</h2>
-      <ul class="collections">
+      <ul class="note-cards-ul collections-ul">
         {
           collectionNotes?.map((n) => (
             <li>
-              <NoteCard as="a" class="note-card" href={gnr(n.slug)}>
+              <NoteCard
+                as="a"
+                class="note-card"
+                href={gnr(n.slug)}
+                style={{ "--border-color-hover": "var(--ax2)" }}
+              >
                 <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
-                <h3>
-                  {getNoteName(n.id)}{" "}
-                  <span>({n.data.collectionItems?.length})</span>
-                </h3>
+                <h3>{getNoteName(n.id)}</h3>
+                <div class="metadata">
+                  {n.data.collectionItems?.length} notes
+                </div>
               </NoteCard>
             </li>
           ))
         }
       </ul>
     </section>
-    <section class="prose flow-lg" style={{gridArea: "leaves"}}>
+    <section class="prose flow-lg" style={{ gridArea: "leaves" }}>
       <h2>🍃 Leaf notes</h2>
-      <ul>
+      <ul class="note-cards-ul leaf-ul">
         {
-          leafNotes?.map((n) => (
+          restNotes?.map((n) => (
             <li>
-              <AccentA href={gnr(n.slug)}>{getNoteName(n.id)}</AccentA>
-              {`(${n.body.length} chars)`}
+              <NoteCard as="a" href={gnr(n.slug)}>
+                <div>
+                  <h3>{getNoteName(n.id)}</h3>
+                  <div class="metadata">𝑥 months ago</div>
+                </div>
+              </NoteCard>
             </li>
           ))
         }
@@ -74,53 +109,61 @@ const icon = NAV_LINKS.GARDEN.icon;
 </BaseMain>
 
 <style>
-  .garden-intro {
+  * :global(p) {
     max-width: var(--content-w);
   }
   article {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
-    column-gap: var(--space-xs);
+    column-gap: var(--space-xl);
     /* row-gap: var(--space-xs); */
     grid-template-areas:
       "title title title"
       "intro intro start"
-      "collections collections ."
-      "leaves leaves .";
-    /* > * {
-      grid-column: 1 / -1;
-    } */
+      "featured collections collections"
+      "leaves leaves leaves";
     @media (width < 900px) {
       grid-template-columns: 1fr;
-      grid-template-areas:
-      "title" "intro" "start" "collections" "leaves";
+      grid-template-areas: "title" "intro" "start" "featured" "collections" "leaves";
     }
   }
-  .collections {
-    /* grid-column-end: max-end; */
+  .collections-ul {
     display: grid;
     place-content: stretch;
     gap: var(--space-2xs);
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 25ch), 1fr));
+  }
+  .note-cards-ul {
     li {
       margin-block-start: 0;
     }
-    .note-card {
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      .emoji {
-        font-size: var(--step-2);
-      }
-      h3 {
-        font-size: var(--step-1);
-        text-wrap: balance;
-        /* margin-top: auto; */
-      }
+    .emoji {
+      font-size: var(--step-2);
+    }
+    h3 {
+      font-size: var(--step-1);
+      font-family: var(--font-heading-serif);
+      font-weight: var(--font-weight-4);
+      text-wrap: balance;
+    }
+    .metadata {
+      color: var(--fg3);
+      font-size: var(--step--2);
+      text-transform: uppercase;
     }
   }
-  /* ul {
-    grid-column: span 2 / span 2;
-  } */
+
+  .featured-ul {
+    width: fit-content;
+  }
+  .leaf-ul {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--size-content-1), var(--size-content-2))
+    );
+    column-gap: var(--space-l);
+    row-gap: var(--space-s);
+  }
 </style>
