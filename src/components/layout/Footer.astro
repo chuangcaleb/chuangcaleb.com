@@ -1,12 +1,10 @@
 ---
-import Contact from "./Contact.astro";
-// import Breadcrumbs from "~/components/block/Breadcrumbs.astro";
-import ThemeToggle from "../block/ThemeToggle.astro";
-import SiteNavStack from "./SiteNavStack.astro";
+import { gnr } from '~/utils/post';
 import { formatDisplayDate } from "~/utils/time";
-import {gnr} from '~/utils/post';
+import ThemeToggle from "../block/ThemeToggle.astro";
+import Contact from "./Contact.astro";
+import SiteNavStack from "./SiteNavStack.astro";
 
-// const ROUTES_WO_BREADCRUMBS = ["/", "/404"];
 ---
 
 <footer id="footer" class="flow-xs linew-max">
@@ -38,9 +36,6 @@ import {gnr} from '~/utils/post';
         grid-column: max;
       }
     }
-    /* hr {
-      --border: var(--ui1);
-    } */
   }
   .utils-section {
     display: grid;

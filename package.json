@@ -25,7 +25,7 @@
         "@svgr/core": "^8.1.0",
         "@svgr/plugin-jsx": "^8.1.0",
         "@unpic/astro": "^0.0.47",
-        "astro": "^4.16.4",
+        "astro": "^4.16.6",
         "astro-compressor": "^0.4.1",
         "astro-iconify": "^1.2.0",
         "astro-purgecss": "^4.6.1",
@@ -43,7 +43,6 @@
         "postcss-preset-env": "^10.0.7",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "sass": "^1.79.5",
         "sharp": "^0.33.5",
         "unplugin-icons": "^0.19.3",
         "utopia-core-scss": "^1.1.0"
