@@ -16,7 +16,14 @@ const {
 } = Astro.props;
 ---
 
-<Tag {...props} class:list={[propsClass, iconColor !== "unset" && iconColor]}>
+<Tag
+  {...props}
+  class:list={[propsClass]}
+  style={{
+    ...props.style,
+    ...(iconColor !== "unset" && { "--svg-color": `var(--${iconColor})` }),
+  }}
+>
   {iconName && <Icon name={iconName} />}
   <slot />
 </Tag>
@@ -25,11 +32,5 @@ const {
   * {
     display: inline-flex;
     gap: var(--size-relative-2);
-    &.ax1 :global(svg) {
-      color: var(--ax1);
-    }
-    &.fg3 :global(svg) {
-      color: var(--fg3);
-    }
   }
 </style>

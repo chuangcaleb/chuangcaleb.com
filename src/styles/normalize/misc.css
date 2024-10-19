@@ -11,5 +11,6 @@
   display: inline-block;
   width: 1em;
   color: currentColor;
+  color: var(--svg-color);
   /* height: 1em; */
 }
