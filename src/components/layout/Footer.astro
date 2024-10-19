@@ -1,29 +1,32 @@
 ---
-import { gnr } from '~/utils/post';
+import { gnr } from "~/utils/post";
 import { formatDisplayDate } from "~/utils/time";
 import ThemeToggle from "../block/ThemeToggle.astro";
 import Contact from "./Contact.astro";
 import SiteNavStack from "./SiteNavStack.astro";
-
 ---
 
-<footer id="footer" class="flow-xs linew-max">
-  <section class="region flow-lg">
-    <SiteNavStack />
-  </section>
-  <hr />
-  <Contact />
-  <section class="utils-section region">
-    <ThemeToggle />
-  </section>
-  <p class="fine-print">
-    <a href={gnr("/meta/colophon")}>colophon</a>
-    <span class="text-muted">•</span>
-    <a href="https://github.com/chuangcaleb/chuangcaleb.com">source code</a>
-  </p>
-  <p class="fine-print">
-    handcrafted by Chuang Caleb – published on {formatDisplayDate(new Date())}
-  </p>
+<footer id="footer" class="flow-lg">
+  <div class="cgrid">
+    <div class="footer-body">
+      <section class="site-utils-cont | region flow-lg">
+        <SiteNavStack />
+        <ThemeToggle />
+      </section>
+      <hr />
+      <Contact />
+    </div>
+  </div>
+  <div>
+    <p class="fine-print">
+      <a href={gnr("/meta/colophon")}>colophon</a>
+      <span class="text-muted">•</span>
+      <a href="https://github.com/chuangcaleb/chuangcaleb.com">source code</a>
+    </p>
+    <p class="fine-print">
+      handcrafted by Chuang Caleb – published on {formatDisplayDate(new Date())}
+    </p>
+  </div>
 </footer>
 
 <style>
@@ -37,9 +40,23 @@ import SiteNavStack from "./SiteNavStack.astro";
       }
     }
   }
-  .utils-section {
-    display: grid;
-    justify-content: center;
+  .footer-body {
+    grid-column-end: wide;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xl);
+    @media (width < 675px) {
+      flex-direction: column;
+      gap: var(--space-m);
+    }
+  }
+
+  .site-utils-cont {
+    padding-inline-end: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: min-content;
   }
 
   .fine-print {

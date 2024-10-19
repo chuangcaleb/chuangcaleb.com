@@ -1,11 +1,16 @@
 ---
 import Icon from "astro-iconify";
+import type { HTMLAttributes } from "astro/types";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
-import {SOCIALS} from "~/data/links";
+import { SOCIALS } from "~/data/links";
 import AccentA from "../styled/monom/AccentA.astro";
+
+export interface Props extends HTMLAttributes<"section"> {}
+
+const { class: propsClass, ...props } = Astro.props;
 ---
 
-<section class="region flow-lg" id="contact">
+<section class:list={["region flow-lg", propsClass]} id="contact" {...props}>
   <TagWIcon as="h2" iconName="mdi:connection">
     {" "}<span class="text-faded">#</span> contact
   </TagWIcon>
