@@ -38,7 +38,7 @@ const icon = NAV_LINKS.GARDEN.icon;
       <GardenIntroContent />
     </div>
     <div class="flow flom-lg" style={{ gridArea: "start" }}>
-      <h3>📍 Start Here</h3>
+      <h2 class="start-here-title">📍 Start Here</h2>
       <ul>
         <li><b>🚧 WIP</b></li>
         <li>What's the Garden About?</li>
@@ -111,6 +111,9 @@ const icon = NAV_LINKS.GARDEN.icon;
 <style>
   * :global(p) {
     max-width: var(--content-w);
+  }
+  .start-here-title {
+    font-size: var(--step-2);
   }
   article {
     display: grid;
