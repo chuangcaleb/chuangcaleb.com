@@ -84,11 +84,7 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
     --size-header-3: 100%;
 
     @media (width >= 1000px), (680px <= width <= 900px) {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5 {
+      > :is(h1, h2, h3, h4, h5) {
         display: list-item;
       }
 
