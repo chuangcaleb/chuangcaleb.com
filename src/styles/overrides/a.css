@@ -36,43 +36,44 @@
 
 :where(a[href]) {
   --color: var(--text-normal);
-  --color-underline: var(--ax3);
+  --color-underline: var(--fg3);
   --color-hover: var(--text-strong);
-  box-decoration-break: clone;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-  font-weight: var(--font-weight-5);
+
   color: var(--color);
-  text-decoration-skip-ink: none;
-  border-radius: var(--radius-1);
   text-decoration-color: var(--color-underline);
+
+  border-radius: var(--radius-1);
+  box-decoration-break: clone;
+  font-weight: var(--font-weight-5);
+
+  text-decoration-line: underline;
+  text-decoration-skip-ink: none;
+  text-decoration-style: solid;
   &:has(*) {
     display: inline-flex;
-    column-gap: 0.75ch;
     align-items: center;
+    column-gap: 0.75ch;
   }
 }
 
-:where(a:is([href^="http://"],
-[href^="https://"],
-[href^="mailto:"]):not([href^="https://chuangcaleb.com"]))
-{
-  --color-underline: var(--text-faded);
-  /* text-decoration-style: dashed; */
-  text-decoration-thickness: 0.12em;
+:where(article
+  a:is(
+    [href^="http://"],[href^="https://"],
+    /* [href^="mailto:"] */
+  ):not([href^="https://chuangcaleb.com"])
+) {
+  &:not(:has(*)):after,
+  & > .a-text:after {
+    content: " ↗️";
+    font-family: system-ui;
+    font-size: 0.8em;
+  }
 }
 
 :where(a[href]:is(:hover, :focus, :active)) {
   --color-underline: var(--ax1);
   color: var(--color-hover);
 }
-
-/* a[href^="http://"]:not([href*="stackoverflow.com"]):after,
-a[href^="https://"]:not([href*="stackoverflow.com"]):after
-{
-  content: "↗️";
-} */
-/* or just anything with a `:`? */
 
 :where(a[href]:focus) {
   text-decoration-style: wavy;

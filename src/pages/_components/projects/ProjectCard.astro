@@ -29,7 +29,7 @@ const i = getCldImgData("projects/" + project.slug, true);
       {
         project.data.links?.map((link) => (
           <AccentA href={link.href}>
-            <Icon name={link.icon} />{}{link.label}
+            <Icon name={link.icon} />{}<span class="a-text">{link.label}</span>
           </AccentA>
         ))
       }
