@@ -86,6 +86,7 @@
     }
   }
   pre[data-language="plaintext"] {
+    text-wrap: wrap;
     text-wrap: pretty;
   }
 
