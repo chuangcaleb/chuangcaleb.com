@@ -44,7 +44,7 @@
 
   border-radius: var(--radius-1);
   box-decoration-break: clone;
-  font-weight: var(--font-weight-5);
+  /* font-weight: var(--font-weight-5); */
 
   text-decoration-line: underline;
   text-decoration-skip-ink: none;
