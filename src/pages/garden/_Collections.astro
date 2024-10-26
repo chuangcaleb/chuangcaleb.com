@@ -1,0 +1,38 @@
+---
+import { type HTMLAttributes } from "astro/types";
+import { type CollectionEntry } from "astro:content";
+import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
+import { getNoteName, gnr } from "~/utils/post";
+
+export interface Props extends HTMLAttributes<"ul"> {
+  collections: CollectionEntry<"obsidian-note">[];
+}
+
+const {collections, class: propsClass, ...props } = Astro.props;
+
+---
+
+<ul class:list={["flow-li-0", propsClass]} {...props}>
+  {
+    collections?.map((n) => (
+      <li class=' flom-0'>
+        <NoteCard as="a" href={gnr(n.slug)}>
+          <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
+          <h3>{getNoteName(n.id)}</h3>
+          <div class="metadata">{n.data.collectionItems?.length} notes</div>
+        </NoteCard>
+      </li>
+    ))
+  }
+</ul>
+<style>
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 25ch), 1fr));
+    gap: var(--space-2xs);
+    place-content: stretch;
+  }
+  .emoji {
+    font-size: var(--step-2);
+  }
+</style>

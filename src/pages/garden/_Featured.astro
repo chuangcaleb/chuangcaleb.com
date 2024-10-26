@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import NoteLi from "~/components/styled/monom/note/NoteLi.astro";
+import { getNoteName, gnr } from "~/utils/post";
+import Collections from "./_Collections.astro";
+
+const notes = await getCollection("obsidian-note");
+
+const featuredNotes = notes
+  .filter((n) => n.data.featured)
+  .sort((a, b) =>
+    (a.data.featured as number) > (b.data?.featured as number) ? 1 : -1
+  );
+
+const featuredLeafNotes = featuredNotes.filter(
+  (n) => !n.data.tags?.includes("📂/collection")
+);
+const featuredCollections = featuredNotes.filter((n) =>
+  n.data.tags?.includes("📂/collection")
+);
+---
+
+<div class="columns prose flow-lg">
+  <ul
+    class=""
+    style={{ maxWidth: "fit-content", gridColumn: "span 2 / span 2" }}
+  >
+    {
+      featuredLeafNotes?.map((n) => (
+        <li>
+          <NoteLi as="a" href={gnr(n.slug)}>
+            {getNoteName(n.id)}{" "}
+          </NoteLi>
+        </li>
+      ))
+    }
+  </ul>
+  <Collections
+    collections={featuredCollections}
+    style={{ gridColumn: "span 3 / span 3" }}
+  />
+</div>
+
+<style>
+  .columns {
+    display: grid;
+    gap: var(--space-s);
+    grid-template-columns: repeat(1, 1fr);
+    @media (width > 900px) {
+      & > * {
+        --flow-space: 0;
+      }
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+</style>

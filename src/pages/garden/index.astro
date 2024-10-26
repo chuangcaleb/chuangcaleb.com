@@ -2,52 +2,52 @@
 import { getCollection } from "astro:content";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
-import NoteLi from "~/components/styled/monom/note/NoteLi.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
 import { getNoteName, gnr } from "~/utils/post";
+import Collections from "./_Collections.astro";
+import Featured from "./_Featured.astro";
 import { Content as GardenIntroContent } from "./_garden-intro.mdx";
 
 const publicNotes = await getCollection("obsidian-note");
-
-const collectionNotes = publicNotes.filter((n) =>
-  n.data.tags?.includes("📂/collection")
-);
-// .sort((a, b) =>
-//   (a.data?.collectionItems?.length ?? 0) <
-//   (b.data?.collectionItems?.length ?? 0)
-//     ? 1
-//     : -1
-// );
-
-const featuredCollections = collectionNotes
-  .filter((n) => n.data.featured)
-  .sort((a, b) =>
-    (a.data.featured as number) > (b.data?.featured as number) ? 1 : -1
-  );
 
 const leafNotes = publicNotes
   .filter((n) => !n.data.tags?.includes("📂/collection"))
   .sort((a, b) => (a.body.length < b.body.length ? 1 : -1));
 
-const FEATURED_COUNT = 5;
-const featuredNotes = leafNotes.slice(0, FEATURED_COUNT);
-const restNotes = leafNotes.slice(FEATURED_COUNT, leafNotes.length);
+const allCollections = publicNotes
+  .filter((n) => n.data.tags?.includes("📂/collection"))
+  .sort((a, b) =>
+    (a.data.collectionItems as any).length <
+    (b.data.collectionItems as any).length
+      ? 1
+      : -1
+  );
+
 
 const icon = NAV_LINKS.GARDEN.icon;
 
 // featured
 // Pinned
 // Latest Now
+
+// Recently Published
+// Recently Edited
+// All now's
 ---
 
 <BaseMain title="Digital Garden" class="linew-wide">
   <article class="flow-2xl prose">
-    <TagWIcon iconName={icon} as="h1">Caleb's Digital Garden</TagWIcon>
-    <div class="flow garden-intro flom-lg">
+    <TagWIcon iconName={icon} as="h1" style={{ gridColumn: "1/-1" }}
+      >Caleb's Digital Garden</TagWIcon
+    >
+    <div
+      class="flow garden-intro flom-lg"
+      style={{ gridColumn: "span 2 / span 2" }}
+    >
       <GardenIntroContent />
     </div>
-    <div class="flow flom-lg">
+    <div class="flow flom-lg" style={{ gridColumn: "span 1 / span 1" }}>
       <h2 class="start-here-title">📍 Start Here</h2>
       <ul>
         <li><b>🚧 WIP</b></li>
@@ -55,46 +55,23 @@ const icon = NAV_LINKS.GARDEN.icon;
         <li>How To Use This Site</li>
       </ul>
     </div>
-    <section class="prose flow-lg featured">
+    <section class="flow-lg" style={{ gridColumn: "1/-1" }}>
       <h2>✨ Featured</h2>
-      <ul class="featured-ul">
-        {
-          featuredNotes?.map((n) => (
-            <li>
-              <NoteLi as="a" href={gnr(n.slug)}>
-                {getNoteName(n.id)}{" "}
-              </NoteLi>
-            </li>
-          ))
-        }
-      </ul>
-      <ul class="flow-li-0 collections-ul">
-        {
-          featuredCollections?.map((n) => (
-            <li>
-              <NoteCard as="a" class="note-card" href={gnr(n.slug)}>
-                <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
-                <h3>{getNoteName(n.id)}</h3>
-                <div class="metadata">
-                  {n.data.collectionItems?.length} notes
-                </div>
-              </NoteCard>
-            </li>
-          ))
-        }
-      </ul>
+      <Featured />
     </section>
-    <section class="prose flow-lg">
+    <section class="flow-lg" style={{ gridColumn: "1/-1" }}>
+      <h2>📂 All Collections</h2>
+      <Collections collections={allCollections} />
+    </section>
+    <section class="prose flow-lg" style={{ gridColumn: "1/-1" }}>
       <h2>🍃 Leaf notes</h2>
       <ul class="flow-li-0 leaf-ul">
         {
-          restNotes?.map((n) => (
+          leafNotes?.map((n) => (
             <li>
               <NoteCard as="a" href={gnr(n.slug)}>
-                <div>
-                  <h3>{getNoteName(n.id)}</h3>
-                  <div class="metadata">𝑥 months ago</div>
-                </div>
+                <h3>{getNoteName(n.id)}</h3>
+                <div class="metadata">𝑥 months ago</div>
               </NoteCard>
             </li>
           ))
@@ -104,43 +81,32 @@ const icon = NAV_LINKS.GARDEN.icon;
   </article>
 </BaseMain>
 
-<style>
-  * :global(p) {
-    max-width: var(--content-w);
-  }
-  .start-here-title {
-    font-size: var(--step-2);
-  }
-  article {
-    display: grid;
-    /* grid-template-columns: repeat(3, 1fr); */
-    grid-template-rows: auto;
-    column-gap: var(--space-xl);
-    /* row-gap: var(--space-xs); */
-    @media (width < 900px) {
-      grid-template-columns: 1fr;
+  <style>
+    * :global(p) {
+      max-width: var(--content-w);
     }
-  }
-  .collections-ul {
-    display: grid;
-    place-content: stretch;
-    gap: var(--space-2xs);
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 25ch), 1fr));
-    .emoji {
+    .start-here-title {
       font-size: var(--step-2);
     }
-  }
+    article {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      row-gap: var(--space-xs);
+      @media (width > 900px) {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: var(--space-m);
+      }
+    }
 
-  .featured-ul {
-    width: fit-content;
-  }
-  .leaf-ul {
-    display: grid;
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(var(--size-content-1), var(--size-content-2))
-    );
-    column-gap: var(--space-l);
-    row-gap: var(--space-s);
-  }
-</style>
+    .leaf-ul {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(var(--size-content-1), var(--size-content-2))
+      );
+      column-gap: var(--space-l);
+      row-gap: var(--space-s);
+    }
+  </style>
+
