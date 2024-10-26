@@ -2,6 +2,7 @@
   container: prose / inline-size;
   width: 100%;
   --hr-space: var(--space-xl);
+  --flow-li: var(--size-relative-5);
 
   line-height: var(--font-lineheight-4);
 
@@ -50,7 +51,7 @@
   & > ul,
   & > ol {
     li + li {
-      margin-block-start: var(--size-relative-5);
+      margin-block-start: var(--flow-li);
     }
     ul,
     ol {
@@ -65,7 +66,7 @@
         left: calc(var(--size-popout) * -0.45);
       }
       & > li {
-        margin-block-start: var(--size-relative-3);
+        margin-block-start: calc(var(--flow-li) / 1.5);
       }
     }
   }

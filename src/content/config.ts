@@ -42,6 +42,7 @@ const obsidianNoteCollection = defineCollection({
 			series: z.boolean(),
 			collectionItems: z.array(reference('obsidian-note')),
 			emojip: z.string(),
+			featured: z.number(),
 		})
 		.partial(),
 });

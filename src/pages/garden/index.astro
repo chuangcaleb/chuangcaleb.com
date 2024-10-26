@@ -10,14 +10,22 @@ import { Content as GardenIntroContent } from "./_garden-intro.mdx";
 
 const publicNotes = await getCollection("obsidian-note");
 
-const collectionNotes = publicNotes
-  .filter((n) => n.data.tags?.includes("📂/collection"))
+const collectionNotes = publicNotes.filter((n) =>
+  n.data.tags?.includes("📂/collection")
+);
+// .sort((a, b) =>
+//   (a.data?.collectionItems?.length ?? 0) <
+//   (b.data?.collectionItems?.length ?? 0)
+//     ? 1
+//     : -1
+// );
+
+const featuredCollections = collectionNotes
+  .filter((n) => n.data.featured)
   .sort((a, b) =>
-    (a.data?.collectionItems?.length ?? 0) <
-    (b.data?.collectionItems?.length ?? 0)
-      ? 1
-      : -1
+    (a.data.featured as number) > (b.data?.featured as number) ? 1 : -1
   );
+
 const leafNotes = publicNotes
   .filter((n) => !n.data.tags?.includes("📂/collection"))
   .sort((a, b) => (a.body.length < b.body.length ? 1 : -1));
@@ -35,13 +43,11 @@ const icon = NAV_LINKS.GARDEN.icon;
 
 <BaseMain title="Digital Garden" class="linew-wide">
   <article class="flow-2xl prose">
-    <TagWIcon iconName={icon} as="h1" style={{ gridArea: "title" }}
-      >Caleb's Digital Garden</TagWIcon
-    >
-    <div class="flow garden-intro flom-lg" style={{ gridArea: "intro" }}>
+    <TagWIcon iconName={icon} as="h1">Caleb's Digital Garden</TagWIcon>
+    <div class="flow garden-intro flom-lg">
       <GardenIntroContent />
     </div>
-    <div class="flow flom-lg" style={{ gridArea: "start" }}>
+    <div class="flow flom-lg">
       <h2 class="start-here-title">📍 Start Here</h2>
       <ul>
         <li><b>🚧 WIP</b></li>
@@ -49,10 +55,7 @@ const icon = NAV_LINKS.GARDEN.icon;
         <li>How To Use This Site</li>
       </ul>
     </div>
-    <section
-      class="note-cards-section prose flow-lg"
-      style={{ gridArea: "featured" }}
-    >
+    <section class="prose flow-lg featured">
       <h2>✨ Featured</h2>
       <ul class="featured-ul">
         {
@@ -65,22 +68,11 @@ const icon = NAV_LINKS.GARDEN.icon;
           ))
         }
       </ul>
-    </section>
-    <section
-      class="note-cards-section prose flow-lg"
-      style={{ gridArea: "collections" }}
-    >
-      <h2>📂 Collections</h2>
-      <ul class="note-cards-ul collections-ul">
+      <ul class="flow-li-0 collections-ul">
         {
-          collectionNotes?.map((n) => (
+          featuredCollections?.map((n) => (
             <li>
-              <NoteCard
-                as="a"
-                class="note-card"
-                href={gnr(n.slug)}
-                style={{ "--border-color-hover": "var(--ax2)" }}
-              >
+              <NoteCard as="a" class="note-card" href={gnr(n.slug)}>
                 <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
                 <h3>{getNoteName(n.id)}</h3>
                 <div class="metadata">
@@ -92,9 +84,9 @@ const icon = NAV_LINKS.GARDEN.icon;
         }
       </ul>
     </section>
-    <section class="prose flow-lg" style={{ gridArea: "leaves" }}>
+    <section class="prose flow-lg">
       <h2>🍃 Leaf notes</h2>
-      <ul class="note-cards-ul leaf-ul">
+      <ul class="flow-li-0 leaf-ul">
         {
           restNotes?.map((n) => (
             <li>
@@ -121,18 +113,12 @@ const icon = NAV_LINKS.GARDEN.icon;
   }
   article {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(3, 1fr); */
     grid-template-rows: auto;
     column-gap: var(--space-xl);
     /* row-gap: var(--space-xs); */
-    grid-template-areas:
-      "title title title"
-      "intro intro start"
-      "featured collections collections"
-      "leaves leaves leaves";
     @media (width < 900px) {
       grid-template-columns: 1fr;
-      grid-template-areas: "title" "intro" "start" "featured" "collections" "leaves";
     }
   }
   .collections-ul {
@@ -140,11 +126,6 @@ const icon = NAV_LINKS.GARDEN.icon;
     place-content: stretch;
     gap: var(--space-2xs);
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 25ch), 1fr));
-  }
-  .note-cards-ul {
-    li {
-      margin-block-start: 0;
-    }
     .emoji {
       font-size: var(--step-2);
     }

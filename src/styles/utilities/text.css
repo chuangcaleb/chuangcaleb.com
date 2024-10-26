@@ -8,3 +8,7 @@
 .ws-nowrap {
   white-space: nowrap;
 }
+
+.flow-li-0 {
+  --flow-li: 0;
+}
