@@ -78,10 +78,9 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
     grid-row-start: 1;
     grid-column: 1;
 
-    --size-header-1: 100%;
-    --size-header-2: 100%;
-    --size-header-3: 100%;
-
+    :is(h1, h2, h3, h4, h5) {
+      /* max-width: initial; */
+    }
     @media (width >= 1000px), (680px <= width <= 900px) {
       > :is(h1, h2, h3, h4, h5) {
         display: list-item;

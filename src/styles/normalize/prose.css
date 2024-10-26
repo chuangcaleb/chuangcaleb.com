@@ -5,7 +5,6 @@
   color: var(--color, var(--text-strong));
   font-family: var(--font-heading-sans);
   line-height: var(--font-lineheight-0);
-  max-width: var(--size-header-1);
   text-wrap: pretty;
   word-wrap: break-word;
   hyphens: auto;
@@ -15,11 +14,13 @@
   font-weight: var(--font-weight-8);
   font-family: var(--font-heading-serif);
   font-size: var(--step-5);
+  max-width: var(--size-header-1);
 }
 
 :where(h2) {
   font-size: var(--step-4);
   font-weight: var(--font-weight-8);
+  max-width: var(--size-header-2);
 }
 
 :where(h3) {
