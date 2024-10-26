@@ -25,3 +25,6 @@
   align-items: center;
 }
 
+.flow-li-0 {
+  --flow-li: 0;
+}
