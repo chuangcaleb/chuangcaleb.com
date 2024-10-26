@@ -41,8 +41,7 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
 </BaseMain>
 
 <style>
-  .prose :global(:is(h1):first-of-type) {
-    --flow-space: var(--size-relative-1);
+  .prose :global(:is(h1):first-child) {
     grid-column-end: feature;
   }
   .prose :global(h1 + *) {
