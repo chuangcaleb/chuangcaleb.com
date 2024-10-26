@@ -5,6 +5,7 @@ import { getNoteName } from "~/utils/post";
 import type { MetadataValues } from "./MetadataValue.astro";
 import type { Reference } from "~/utils/meta";
 import {gnr} from '~/utils/post';
+import { formatDisplayDate } from "~/utils/time";
 
 interface Props {
   isLink: boolean;
@@ -23,7 +24,7 @@ const isString = typeof value === "string";
 const isDateFormat = isString && Date.parse(value);
 ---
 
-{isDate && value.toLocaleDateString("en-gb")}
+{isDate && formatDisplayDate(value)}
 {note && <AccentA href={gnr(note.slug)}>{getNoteName(note.id)}</AccentA>}
-{isString && isDateFormat && new Date(value).toLocaleDateString("en-gb")}
+{isString && isDateFormat && formatDisplayDate(new Date(value))}
 {isString && !isDateFormat && value}

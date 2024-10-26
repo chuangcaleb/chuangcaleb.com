@@ -29,3 +29,9 @@ const isSingleArrayItem = isArray && value.length === 1;
 }
 {!isArray && <MetadataValueItem isLink={isLink} value={value} />}
 {isSingleArrayItem && <MetadataValueItem isLink={isLink} value={value[0]} />}
+
+<style>
+  ul {
+    list-style-type: disc;
+  }
+</style>

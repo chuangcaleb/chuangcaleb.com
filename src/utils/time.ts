@@ -7,7 +7,7 @@ export function formatDisplayDate(datetime?: string | Date) {
 		return null;
 	}
 
-	return format(datetime, 'dd MMMM yyyy');
+	return format(datetime, 'dd MMM yyyy');
 }
 
 export function getLongDurationSince(datetime: string | Date) {

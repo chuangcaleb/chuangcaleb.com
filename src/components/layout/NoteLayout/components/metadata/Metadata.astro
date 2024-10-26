@@ -34,9 +34,19 @@ const metadataArray = Object.entries(metadata);
   )
 }
 <style>
-  ul {
+  section {
+    max-width: var(--size-header-3);
     color: var(--text-faded);
-    font-size: var(--step--1);
+    & :global(*) {
+      font-size: var(--step--1);
+    }
+  }
+  li:first-child{
+    border-top-width: 1px;
+  }
+  li {
+    border-bottom-width: 1px;
+    padding-block: var(--space-3xs)
   }
   h4 {
     font-size: var(--step-1);
