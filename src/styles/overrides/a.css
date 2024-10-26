@@ -64,7 +64,7 @@
 ) {
   &:not(:has(*)):after,
   & > .a-text:after {
-    content: " ↗️";
+    content: " ↗️\FE0E";
     font-family: system-ui;
     font-size: 0.8em;
   }
