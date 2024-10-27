@@ -5,6 +5,7 @@ import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
 import { getNoteName, gnr } from "~/utils/post";
+import NoteList from "~/components/layout/NoteList.astro";
 import Collections from "./_Collections.astro";
 import Featured from "./_Featured.astro";
 import { Content as GardenIntroContent } from "./_garden-intro.mdx";
@@ -13,7 +14,9 @@ const publicNotes = await getCollection("obsidian-note");
 
 const leafNotes = publicNotes
   .filter((n) => !n.data.tags?.includes("📂/collection"))
-  .sort((a, b) => (a.body.length < b.body.length ? 1 : -1));
+  .sort((a, b) => (a.body.length < b.body.length ? 1 : -1))
+  // TODO: should be able to pass the whole thing w/o mapping
+  .map((n) => ({slug: n.slug, collection: n.collection}));
 
 const allCollections = publicNotes
   .filter((n) => n.data.tags?.includes("📂/collection"))
@@ -23,7 +26,6 @@ const allCollections = publicNotes
       ? 1
       : -1
   );
-
 
 const icon = NAV_LINKS.GARDEN.icon;
 
@@ -64,49 +66,27 @@ const icon = NAV_LINKS.GARDEN.icon;
       <Collections collections={allCollections} />
     </section>
     <section class="prose flow-lg" style={{ gridColumn: "1/-1" }}>
-      <h2>🍃 Leaf notes</h2>
-      <ul class="flow-li-0 leaf-ul">
-        {
-          leafNotes?.map((n) => (
-            <li>
-              <NoteCard as="a" href={gnr(n.slug)}>
-                <h3>{getNoteName(n.id)}</h3>
-                <div class="metadata">𝑥 months ago</div>
-              </NoteCard>
-            </li>
-          ))
-        }
-      </ul>
+      <h2>🍃 All leaf notes</h2>
+      <NoteList items={leafNotes} />
     </section>
   </article>
 </BaseMain>
 
-  <style>
-    * :global(p) {
-      max-width: var(--content-w);
+<style>
+  * :global(p) {
+    max-width: var(--content-w);
+  }
+  .start-here-title {
+    font-size: var(--step-2);
+  }
+  article {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: var(--space-xs);
+    @media (width > 900px) {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: var(--space-m);
     }
-    .start-here-title {
-      font-size: var(--step-2);
-    }
-    article {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
-      row-gap: var(--space-xs);
-      @media (width > 900px) {
-        grid-template-columns: repeat(3, 1fr);
-        column-gap: var(--space-m);
-      }
-    }
-
-    .leaf-ul {
-      display: grid;
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(var(--size-content-1), var(--size-content-2))
-      );
-      column-gap: var(--space-l);
-      row-gap: var(--space-s);
-    }
-  </style>
-
+  }
+</style>

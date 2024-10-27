@@ -1,7 +1,7 @@
 ---
 import type { MarkdownHeading } from "astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
-import CollectionList from "./components/CollectionList.astro";
+import NoteList from "~/components/layout/NoteList.astro";
 import type { MetadataProps } from "./components/metadata/Metadata.astro";
 import Metadata from "./components/metadata/Metadata.astro";
 import Toc from "./components/toc/Toc.astro";
@@ -35,7 +35,14 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
     </aside>
     <div class="article-main full cgrid prose flow-lg">
       <slot />
-      {collectionData && <CollectionList {...collectionData} />}
+      {
+        collectionData && (
+          <Fragment>
+            <hr />
+            <NoteList class="feature" {...collectionData} />
+          </Fragment>
+        )
+      }
     </div>
   </article>
 </BaseMain>

@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
 import { isInCollection } from "~/utils/meta";
 import { Content as ExplainNowContent } from "./_explain-now.mdx";
-import CollectionList from "~/components/layout/NoteLayout/components/CollectionList.astro";
 import {gnr} from '~/utils/post';
 
 const allNotes = await getCollection("obsidian-note");
@@ -28,7 +27,6 @@ const { Content } = await latestNowNote.render();
   <Content />
   <hr />
   <ExplainNowContent />
-  {/*<CollectionList isOrdered items={nowNotes} />*/}
 </NoteLayout>
 
 <style>

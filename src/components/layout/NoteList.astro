@@ -1,18 +1,19 @@
 ---
+import { type HTMLAttributes } from "astro/types";
 import type { ContentEntryMap, ValidContentEntrySlug } from "astro:content";
 import { getEntries } from "astro:content";
 import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
 import { getNoteName, gnr } from "~/utils/post";
 
-interface Props<C extends keyof ContentEntryMap> {
-  isOrdered: boolean;
+interface Props<C extends keyof ContentEntryMap> extends HTMLAttributes<"ul"> {
+  isOrdered?: boolean;
   items: {
     collection: C;
     slug: ValidContentEntrySlug<C>;
   }[];
 }
 
-const { isOrdered, items } = Astro.props;
+const { isOrdered = false, items, class: propsClass, ...rest } = Astro.props;
 
 const ListHTMLElement = isOrdered ? "ol" : "ul";
 const notes = await getEntries(items);
@@ -20,9 +21,8 @@ const notes = await getEntries(items);
 
 {
   notes && (
-    <Fragment>
-      <hr />
-      <ListHTMLElement class="flom-xl">
+
+      <ListHTMLElement {...rest} class:list={["list flow-li-0", propsClass]}>
         {notes.map((note, index) => {
           if (!note) return null;
           return (
@@ -38,6 +38,17 @@ const notes = await getEntries(items);
           );
         })}
       </ListHTMLElement>
-    </Fragment>
   )
 }
+
+<style>
+  .list {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(100%, 35ch), 1fr)
+    );
+    column-gap: var(--space-l);
+    row-gap: var(--space-s);
+  }
+</style>
