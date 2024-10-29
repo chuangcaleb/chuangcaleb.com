@@ -29,6 +29,8 @@ const allCollections = publicNotes
 
 const icon = NAV_LINKS.GARDEN.icon;
 
+const description = "Like a blog, but more 🐬 fluid. I like to yap about 🎭 narrative storytelling and sometimes 💻 tech stuff, and perhaps you like to listen to yapping..."
+
 // featured
 // Pinned
 // Latest Now
@@ -38,7 +40,7 @@ const icon = NAV_LINKS.GARDEN.icon;
 // All now's
 ---
 
-<BaseMain title="Digital Garden" class="linew-wide">
+<BaseMain title="Digital Garden" description={description} class="linew-wide">
   <article class="flow-2xl prose">
     <TagWIcon iconName={icon} as="h1" style={{ gridColumn: "1/-1" }}
       >Caleb's Digital Garden</TagWIcon
