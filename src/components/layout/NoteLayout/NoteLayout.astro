@@ -48,13 +48,6 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
 </BaseMain>
 
 <style>
-  .prose :global(:is(h1):first-child) {
-    grid-column-end: feature;
-  }
-  .prose :global(h1 + *) {
-    --flow-space: var(--size-relative-7);
-  }
-
   .note-body {
     display: grid;
     grid-template-columns: 1fr 26vw;
@@ -84,6 +77,13 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
   .article-main {
     grid-row-start: 1;
     grid-column: 1;
+
+    & :global(:is(h1)) {
+      grid-column-end: feature;
+    }
+    & :global(h1 + *) {
+      --flow-space: var(--size-relative-7);
+    }
 
     :is(h1, h2, h3, h4, h5) {
       /* max-width: initial; */
