@@ -28,3 +28,4 @@ const isDateFormat = isString && Date.parse(value);
 {note && <AccentA href={gnr(note.slug)}>{getNoteName(note.id)}</AccentA>}
 {isString && isDateFormat && formatDisplayDate(new Date(value))}
 {isString && !isDateFormat && value}
+{!isDate && !isString && !note && value}
