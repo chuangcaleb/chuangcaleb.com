@@ -26,3 +26,4 @@ pnpm-debug.log*
 lib/cloudinary/*.json
 
 public/assets/fonts/archived
+TODO.md
