@@ -1,53 +1,66 @@
 ---
 import { type HTMLAttributes } from "astro/types";
-import type { ContentEntryMap, ValidContentEntrySlug } from "astro:content";
+import type {
+  CollectionEntry,
+  ContentEntryMap,
+  ValidContentEntrySlug,
+} from "astro:content";
 import { getEntries } from "astro:content";
 import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
 import { getNoteName, gnr } from "~/utils/post";
+import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
 
-interface Props<C extends keyof ContentEntryMap> extends HTMLAttributes<"ul"> {
+type Entries<C extends keyof ContentEntryMap> = {
+  collection: C;
+  slug: ValidContentEntrySlug<C>;
+}[];
+
+interface Props extends HTMLAttributes<"ul"> {
   isOrdered?: boolean;
-  items: {
-    collection: C;
-    slug: ValidContentEntrySlug<C>;
-  }[];
+  items: Entries<"obsidian-note">;
 }
 
 const { isOrdered = false, items, class: propsClass, ...rest } = Astro.props;
 
 const ListHTMLElement = isOrdered ? "ol" : "ul";
-const notes = await getEntries(items);
+const notes = await getEntries<"obsidian-note">(items);
+
+const renderMetadata = (note: CollectionEntry<"obsidian-note">) =>
+  [
+    formatDisplayDate(note.data?.published),
+    note.data?.modified &&
+      `modified ${getLongDurationSince(note.data?.modified)}`,
+  ]
+    .filter(Boolean)
+    .join(" ⋅ ");
 ---
 
 {
   notes && (
-
-      <ListHTMLElement {...rest} class:list={["list flow-li-0", propsClass]}>
-        {notes.map((note, index) => {
-          if (!note) return null;
-          return (
-            <li>
-              <NoteCard as="a" href={gnr(note.slug)}>
-                <h3>
-                  {isOrdered && `#${index + 1}: `}
-                  {getNoteName(note.id)}
-                </h3>
-                <div class="metadata">𝑥 months ago</div>
-              </NoteCard>
-            </li>
-          );
-        })}
-      </ListHTMLElement>
+    <ListHTMLElement {...rest} class:list={["list flow-li-0", propsClass]}>
+      {notes.map((note, index) => {
+        if (!note) return null;
+        return (
+          <li>
+            <NoteCard as="a" href={gnr(note.slug)}>
+              <h3>
+                {isOrdered && `#${index + 1}: `}
+                {note.data?.emojip && `${note.data?.emojip} `}
+                {getNoteName(note.id)}
+              </h3>
+              <div class="metadata">{renderMetadata(note)}</div>
+            </NoteCard>
+          </li>
+        );
+      })}
+    </ListHTMLElement>
   )
 }
 
 <style>
   .list {
     display: grid;
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(min(100%, 35ch), 1fr)
-    );
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 35ch), 1fr));
     grid-auto-rows: 1fr;
     column-gap: var(--space-l);
     row-gap: var(--space-s);
