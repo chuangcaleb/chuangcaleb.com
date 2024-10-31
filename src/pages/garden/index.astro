@@ -1,22 +1,21 @@
 ---
 import { getCollection } from "astro:content";
 import BaseMain from "~/components/layout/BaseMain.astro";
-import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
+import NoteList from "~/components/layout/NoteList.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
-import { getNoteName, gnr } from "~/utils/post";
-import NoteList from "~/components/layout/NoteList.astro";
 import Collections from "./_Collections.astro";
 import Featured from "./_Featured.astro";
 import { Content as GardenIntroContent } from "./_garden-intro.mdx";
+import type { Note } from "~/types";
 
-const publicNotes = await getCollection("obsidian-note");
+const publicNotes = await getCollection<"obsidian-note">("obsidian-note");
 
 const leafNotes = publicNotes
   .filter((n) => !n.data.tags?.includes("📂/collection"))
   .sort((a, b) => (a.body.length < b.body.length ? 1 : -1))
   // TODO: should be able to pass the whole thing w/o mapping
-  .map((n) => ({slug: n.slug, collection: n.collection}));
+  .map((n) => ({ slug: n.slug, collection: n.collection }));
 
 const allCollections = publicNotes
   .filter((n) => n.data.tags?.includes("📂/collection"))
@@ -29,7 +28,8 @@ const allCollections = publicNotes
 
 const icon = NAV_LINKS.GARDEN.icon;
 
-const description = "Like a blog, but more 🐬 fluid. I like to yap about 🎭 narrative storytelling and sometimes 💻 tech stuff, and perhaps you like to listen to yapping..."
+const description =
+  "Like a blog, but more 🐬 fluid. I like to yap about 🎭 narrative storytelling and sometimes 💻 tech stuff, and perhaps you like to listen to yapping...";
 
 // featured
 // Pinned
@@ -42,9 +42,7 @@ const description = "Like a blog, but more 🐬 fluid. I like to yap about 🎭 
 
 <BaseMain title="Digital Garden" description={description} class="linew-wide">
   <article class="flow-2xl prose">
-    <TagWIcon iconName={icon} as="h1"
-      >Caleb's Digital Garden</TagWIcon
-    >
+    <TagWIcon iconName={icon} as="h1">Caleb's Digital Garden</TagWIcon>
     <div
       class="flow garden-intro flom-lg"
       style={{ gridColumn: "span 2 / span 2" }}
@@ -63,7 +61,10 @@ const description = "Like a blog, but more 🐬 fluid. I like to yap about 🎭 
       <h2>✨ Featured</h2>
       <Featured />
     </section>
-
+    <section class="prose flow-lg" style={{ gridColumn: "1/-1" }}>
+      <h2>Recently Published</h2>
+      <NoteList items={leafNotes} />
+    </section>
     <section class="flow-lg">
       <h2>📂 All Collections</h2>
       <Collections collections={allCollections} />
