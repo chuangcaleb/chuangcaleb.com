@@ -42,7 +42,7 @@ const description = "Like a blog, but more 🐬 fluid. I like to yap about 🎭 
 
 <BaseMain title="Digital Garden" description={description} class="linew-wide">
   <article class="flow-2xl prose">
-    <TagWIcon iconName={icon} as="h1" style={{ gridColumn: "1/-1" }}
+    <TagWIcon iconName={icon} as="h1"
       >Caleb's Digital Garden</TagWIcon
     >
     <div
@@ -59,15 +59,16 @@ const description = "Like a blog, but more 🐬 fluid. I like to yap about 🎭 
         <li>How To Use This Site</li>
       </ul>
     </div>
-    <section class="flow-lg" style={{ gridColumn: "1/-1" }}>
+    <section class="flow-lg">
       <h2>✨ Featured</h2>
       <Featured />
     </section>
-    <section class="flow-lg" style={{ gridColumn: "1/-1" }}>
+
+    <section class="flow-lg">
       <h2>📂 All Collections</h2>
       <Collections collections={allCollections} />
     </section>
-    <section class="prose flow-lg" style={{ gridColumn: "1/-1" }}>
+    <section class="prose flow-lg">
       <h2>🍃 All leaf notes</h2>
       <NoteList items={leafNotes} />
     </section>
@@ -89,6 +90,9 @@ const description = "Like a blog, but more 🐬 fluid. I like to yap about 🎭 
     @media (width > 900px) {
       grid-template-columns: repeat(3, 1fr);
       column-gap: var(--space-m);
+    }
+    & > * {
+      grid-column: 1 / -1;
     }
   }
 </style>
