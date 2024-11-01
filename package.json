@@ -18,7 +18,7 @@
     },
     "dependencies": {
         "@astrojs/check": "^0.9.4",
-        "@astrojs/mdx": "^3.1.8",
+        "@astrojs/mdx": "^3.1.9",
         "@astrojs/react": "^3.6.2",
         "@astrojs/sitemap": "^3.2.1",
         "@portaljs/remark-wiki-link": "^1.2.0",
@@ -26,7 +26,7 @@
         "@svgr/core": "^8.1.0",
         "@svgr/plugin-jsx": "^8.1.0",
         "@unpic/astro": "^0.0.47",
-        "astro": "^4.16.6",
+        "astro": "^4.16.8",
         "astro-compressor": "^0.4.1",
         "astro-iconify": "^1.2.0",
         "astro-purgecss": "^4.6.1",
@@ -40,21 +40,21 @@
         "google-spreadsheet": "^4.1.4",
         "mdast-util-to-string": "^4.0.0",
         "open-props": "^1.7.7",
-        "postcss-custom-media": "^11.0.3",
-        "postcss-preset-env": "^10.0.7",
+        "postcss-custom-media": "^11.0.4",
+        "postcss-preset-env": "^10.0.8",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "sharp": "^0.33.5",
         "typescript": "^5.6.3",
-        "unplugin-icons": "^0.19.3",
-        "utopia-core-scss": "^1.1.0"
+        "unplugin-icons": "^0.20.0",
+        "utopia-core-scss": "^1.2.0"
     },
     "devDependencies": {
         "@types/fs-extra": "^11.0.4",
-        "@types/react": "^18.3.11",
+        "@types/react": "^18.3.12",
         "@types/react-dom": "^18.3.1",
-        "sass": "^1.80.3",
-        "tsx": "^4.19.1",
+        "sass": "^1.80.5",
+        "tsx": "^4.19.2",
         "xo": "^0.59.3"
     },
     "pnpm": {
