@@ -56,15 +56,18 @@
   }
 }
 
-:where(article
-  a:is(
-    [href^="http://"],[href^="https://"],
-    /* [href^="mailto:"] */
-  ):not([href^="https://chuangcaleb.com"])
+:where(
+  article
+    a:is(
+      [href^="http://"],
+      [href^="https://"]
+    ):not(
+      [href^="https://chuangcaleb.com"]
+    )
 ) {
   &:not(:has(*)):after,
   & > .a-text:after {
-    content: " ↗️\FE0E";
+    content: " \2197\FE0E";
     font-family: system-ui;
     font-size: 0.8em;
   }
