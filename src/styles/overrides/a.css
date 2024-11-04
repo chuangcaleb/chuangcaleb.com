@@ -69,7 +69,7 @@
   & > .a-text:after {
     content: " \2197\FE0E";
     font-family: system-ui;
-    font-size: 0.8em;
+    /* font-size: 0.9em; */
   }
 }
 
