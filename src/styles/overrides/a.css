@@ -68,8 +68,7 @@
   &:not(:has(*)):after,
   & > .a-text:after {
     content: " \2197\FE0E";
-    font-family: 'Helvetica Neue', system-ui;
-    font-size: 0.9em;
+    font-family: system-ui;
   }
 }
 
