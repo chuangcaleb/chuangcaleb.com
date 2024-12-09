@@ -85,36 +85,4 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
       --flow-space: var(--size-relative-7);
     }
 
-    :is(h1, h2, h3, h4, h5) {
-      /* max-width: initial; */
-    }
-    @media (width >= 1000px), (680px <= width <= 900px) {
-      > :is(h1, h2, h3, h4, h5) {
-        display: list-item;
-      }
-
-      h1::marker,
-      h2::marker,
-      h3::marker,
-      h4::marker,
-      h5::marker {
-        color: var(--text-muted);
-        font-size: 0.8em;
-        font-family: var(--font-heading-serif);
-        font-weight: initial;
-      }
-      h1::marker {
-        content: "H1  ";
-      }
-      h2::marker {
-        content: "H2  ";
-      }
-      h3::marker {
-        content: "H3  ";
-      }
-      h4::marker {
-        content: "H4  ";
-      }
-    }
-  }
 </style>
