@@ -5,7 +5,7 @@ import ObsidianNoteLayout from "~/components/layout/NoteLayout/ObsidianNoteLayou
 export async function getStaticPaths() {
   const notes = await getCollection("obsidian-note");
   return notes.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }

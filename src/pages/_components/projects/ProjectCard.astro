@@ -1,7 +1,7 @@
 ---
 import { Image } from "@unpic/astro";
 import { Icon } from "astro-iconify";
-import type { CollectionEntry } from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
 import { getCldImgData } from "lib/cloudinary/get";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import Caps from "~/components/styled/polym/Caps.astro";
@@ -12,9 +12,9 @@ interface Props {
 
 const { project } = Astro.props;
 
-const { Content } = await project.render();
+const { Content } = await render(project);
 
-const i = getCldImgData("projects/" + project.slug, true);
+const i = getCldImgData("projects/" + project.id, true);
 ---
 
 <article class="project">

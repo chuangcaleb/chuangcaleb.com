@@ -1,29 +1,20 @@
 ---
 import { type HTMLAttributes } from "astro/types";
-import type {
-  CollectionEntry,
-  ContentEntryMap,
-  ValidContentEntrySlug,
-} from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import { getEntries } from "astro:content";
 import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
 import { getNoteName, gnr } from "~/utils/post";
 import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
 
-type Entries<C extends keyof ContentEntryMap> = {
-  collection: C;
-  slug: ValidContentEntrySlug<C>;
-}[];
-
 interface Props extends HTMLAttributes<"ul"> {
   isOrdered?: boolean;
-  items: Entries<"obsidian-note">;
+  items: CollectionEntry<"obsidian-note">["data"]["collectionItems"];
 }
 
 const { isOrdered = false, items, class: propsClass, ...rest } = Astro.props;
 
 const ListHTMLElement = isOrdered ? "ol" : "ul";
-const notes = await getEntries<"obsidian-note">(items);
+const notes = !!items ? await getEntries<"obsidian-note">(items) : [];
 
 const renderMetadata = (note: CollectionEntry<"obsidian-note">) =>
   [
@@ -42,11 +33,11 @@ const renderMetadata = (note: CollectionEntry<"obsidian-note">) =>
         if (!note) return null;
         return (
           <li>
-            <NoteCard as="a" href={gnr(note.slug)}>
+            <NoteCard as="a" href={gnr(note.id)}>
               <h3>
                 {isOrdered && `#${index + 1}: `}
                 {note.data?.emojip && `${note.data?.emojip} `}
-                {getNoteName(note.id)}
+                {getNoteName(note.filePath)}
               </h3>
               <div class="metadata">{renderMetadata(note)}</div>
             </NoteCard>
