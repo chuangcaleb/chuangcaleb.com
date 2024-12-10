@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
 import { getNoteName } from "~/utils/post";
 import NoteLayout from "./NoteLayout.astro";
 
@@ -9,19 +9,13 @@ interface Props {
 
 const { entry } = Astro.props;
 
-const { Content, headings } = await entry.render();
+const { Content, headings } = await render(entry);
 
 // title
-const noteName = getNoteName(entry.id);
+const noteName = getNoteName(entry.filePath);
 const title = entry.data.title ?? noteName;
-
-const noteLayoutProps = {
-  title,
-  headings,
-  metadata: entry.data,
-};
 ---
 
-<NoteLayout {...noteLayoutProps}>
+<NoteLayout title={title} headings={headings} metadata={entry.data}>
   <Content />
 </NoteLayout>

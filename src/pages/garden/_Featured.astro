@@ -28,8 +28,8 @@ const featuredCollections = featuredNotes.filter((n) =>
     {
       featuredLeafNotes?.map((n) => (
         <li>
-          <NoteLi as="a" href={gnr(n.slug)}>
-            {getNoteName(n.id)}{" "}
+          <NoteLi as="a" href={gnr(n.id)}>
+            {getNoteName(n.filePath)}{" "}
           </NoteLi>
         </li>
       ))

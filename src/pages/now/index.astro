@@ -1,17 +1,17 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
-import { isInCollection } from "~/utils/meta";
+
+import { gnr } from "~/utils/post";
 import { Content as ExplainNowContent } from "./_explain-now.mdx";
-import {gnr} from '~/utils/post';
 
 const allNotes = await getCollection("obsidian-note");
-const nowNotes = allNotes.filter((note) =>
-  isInCollection(note.data?.collection, "now")
-);
+const nowNotes = allNotes
+  .filter((note) => note.data?.collection?.some((c) => c.id === "now"))
+  .sort((a, b) => (a.id > b.id ? 1 : -1));
 
 const latestNowNote = nowNotes[nowNotes.length - 1];
-const { Content } = await latestNowNote.render();
+const { Content } = await render(latestNowNote);
 ---
 
 <NoteLayout title="Now">
@@ -21,7 +21,7 @@ const { Content } = await latestNowNote.render();
       ></span
     >•
     <span>
-      🔗 <a href={gnr(latestNowNote.slug)}>Note link →</a>
+      🔗 <a href={gnr(latestNowNote.id)}>Note link →</a>
     </span>
   </p>
   <Content />

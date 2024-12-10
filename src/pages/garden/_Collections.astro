@@ -8,17 +8,16 @@ export interface Props extends HTMLAttributes<"ul"> {
   collections: CollectionEntry<"obsidian-note">[];
 }
 
-const {collections, class: propsClass, ...props } = Astro.props;
-
+const { collections, class: propsClass, ...props } = Astro.props;
 ---
 
 <ul class:list={["flow-li-0", propsClass]} {...props}>
   {
     collections?.map((n) => (
-      <li class=' flom-0'>
-        <NoteCard as="a" href={gnr(n.slug)}>
+      <li class=" flom-0">
+        <NoteCard as="a" href={gnr(n.id)}>
           <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
-          <h3>{getNoteName(n.id)}</h3>
+          <h3>{getNoteName(n.filePath)}</h3>
           <div class="metadata">{n.data.collectionItems?.length} NOTES</div>
         </NoteCard>
       </li>

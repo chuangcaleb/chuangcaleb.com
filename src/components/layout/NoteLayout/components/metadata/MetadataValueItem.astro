@@ -1,11 +1,10 @@
 ---
 import { getEntry } from "astro:content";
 import AccentA from "~/components/styled/monom/AccentA.astro";
-import { getNoteName } from "~/utils/post";
-import type { MetadataValues } from "./MetadataValue.astro";
 import type { Reference } from "~/utils/meta";
-import {gnr} from '~/utils/post';
+import { getNoteName, gnr } from "~/utils/post";
 import { formatDisplayDate } from "~/utils/time";
+import type { MetadataValues } from "./MetadataValue.astro";
 
 interface Props {
   isLink: boolean;
@@ -25,7 +24,7 @@ const isDateFormat = isString && Date.parse(value);
 ---
 
 {isDate && formatDisplayDate(value)}
-{note && <AccentA href={gnr(note.slug)}>{getNoteName(note.id)}</AccentA>}
+{note && <AccentA href={gnr(note.id)}>{getNoteName(note.filePath)}</AccentA>}
 {isString && isDateFormat && formatDisplayDate(new Date(value))}
 {isString && !isDateFormat && value}
 {!isDate && !isString && !note && value}
