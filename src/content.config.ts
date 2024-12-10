@@ -1,3 +1,4 @@
+import {glob} from 'astro/loaders';
 import {defineCollection, reference, z} from 'astro:content';
 
 // Two kinds of collections:
@@ -5,7 +6,7 @@ import {defineCollection, reference, z} from 'astro:content';
 // obsidian collections, by caleb
 
 const projectCollection = defineCollection({
-	type: 'content',
+	loader: glob({pattern: '**/[^_]*.md', base: './src/content/project'}),
 	schema: z.object({
 		sequence: z.number(),
 		hidden: z.boolean().optional(),
@@ -52,7 +53,7 @@ const baseObsidianNoteSchema = z
 	.partial();
 
 const obsidianNoteCollection = defineCollection({
-	type: 'content',
+	loader: glob({pattern: '**/[^_]*.md', base: './src/content/obsidian-note'}),
 	schema: baseObsidianNoteSchema,
 	// Schema: z.union([baseObsidianNoteSchema, ma]),
 });
