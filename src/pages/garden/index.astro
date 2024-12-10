@@ -14,8 +14,6 @@ const publicNotes = await getCollection<"obsidian-note">("obsidian-note");
 const leafNotes = publicNotes
   .filter((n) => !n.data.tags?.includes("📂/collection"))
   .sort((a, b) => (a.body && b.body && a.body.length < b.body.length ? 1 : -1));
-// TODO: should be able to pass the whole thing w/o mapping
-// .map((n) => ({ id: n.id, collection: n.collection }));
 
 const allCollections = publicNotes
   .filter((n) => n.data.tags?.includes("📂/collection"))

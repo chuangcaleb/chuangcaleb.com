@@ -16,7 +16,7 @@ const isArray = Array.isArray(value);
 const isSingleArrayItem = isArray && value.length === 1;
 ---
 
-<!-- {
+{
   isArray && !isSingleArrayItem && (
     <ul>
       {value.map((item) => (
@@ -28,7 +28,7 @@ const isSingleArrayItem = isArray && value.length === 1;
   )
 }
 {!isArray && <MetadataValueItem isLink={isLink} value={value} />}
-{isSingleArrayItem && <MetadataValueItem isLink={isLink} value={value[0]} />} -->
+{isSingleArrayItem && <MetadataValueItem isLink={isLink} value={value[0]} />}
 <style>
   ul {
     list-style-type: disc;

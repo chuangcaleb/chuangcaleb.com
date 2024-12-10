@@ -11,13 +11,10 @@ interface Props {
   value: Exclude<MetadataValues, Array<any>>;
 }
 
-const isReference = (x: any): x is Reference<"obsidian-note"> =>
-  !!x["collection"] && (!!x["id"] || !!x["slug"]);
-
 const { value } = Astro.props;
 
 const isDate = value instanceof Date;
-const note = isReference(value) && (await getEntry(value));
+const note = value && typeof value === "object" && (await getEntry(value));
 
 const isString = typeof value === "string";
 const isDateFormat = isString && Date.parse(value);
