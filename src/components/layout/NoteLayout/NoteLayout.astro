@@ -18,8 +18,6 @@ const { title, headings = [], metadata = {} } = Astro.props;
 const { collectionItems, series: isOrdered = false } = metadata;
 const isCollection = !!collectionItems?.length;
 const collectionData = isCollection && { isOrdered, items: collectionItems };
-
-console.log("🚀 ~ collectionData:", collectionData);
 ---
 
 <BaseMain title={title}>
