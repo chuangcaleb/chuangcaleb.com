@@ -16,9 +16,9 @@ const drive = google.drive({version: 'v3', auth: jwt});
 // get root id
 const rootId = process.env.GOOGLE_DRIVE_CONTENT_FOLDER_ID;
 
-console.log('🚀 ~ rootId:', rootId);
+console.log('🚀 ~ rootId:', process.env);
 
-if (!rootId) throw new Error(`Missing env: GOOGLE_DRIVE_CONTENT_FOLDER_ID`);
+// if (!rootId) throw new Error(`Missing env: GOOGLE_DRIVE_CONTENT_FOLDER_ID`);
 
 // // helper functions
 // async function getFolderContents(id: string) {
