@@ -53,4 +53,3 @@ export const collections = {
 	project: projectCollection,
 	'obsidian-note': obsidianNoteCollection,
 };
-

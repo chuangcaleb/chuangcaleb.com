@@ -1,7 +1,4 @@
-import {
-	type ContentEntryMap,
-	type ValidContentEntrySlug,
-} from 'astro:content';
+import {type ContentEntryMap, type ValidContentEntrySlug} from 'astro:content';
 
 export type Reference<C extends keyof ContentEntryMap> = {
 	collection: C;

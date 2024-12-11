@@ -20,9 +20,9 @@ export default function generateToc(
 	// Title = "Overview",
 ) {
 	// Const overview = { depth: 2, slug: "overview", text: title };
-	headings
-    // Overview,
-    = headings.filter(({depth}) => depth > 1 && depth < 5);
+	headings =
+		// Overview,
+		headings.filter(({depth}) => depth > 1 && depth < 5);
 	const toc: TocItem[] = [];
 
 	for (const heading of headings) {
