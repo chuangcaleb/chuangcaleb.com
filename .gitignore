@@ -25,5 +25,8 @@ pnpm-debug.log*
 # cloudinary resource details
 lib/cloudinary/*.json
 
+# gdrive-synced folder
+src/content/obsidian-note
+
 public/assets/fonts/archived
 TODO.md

@@ -11,7 +11,7 @@ export async function write(resources: CloudinaryResource[]): Promise<void> {
 
 	try {
 		fs.writeFileSync(JSON_FILE, JSON.stringify(contents, null, 2));
-		console.info(`📝 Updated ${JSON_FILE}`);
+		console.info(`📝 Updated ${JSON_FILE}\n`);
 	} catch (error: unknown) {
 		console.error(
 			`🚨 Error updating ${JSON_FILE}:\n\n${composeErrorString(error)}`,
