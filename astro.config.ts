@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import {getPermalinks, remarkWikiLink} from '@portaljs/remark-wiki-link';
 import compressor from 'astro-compressor';
 import robotsTxt from 'astro-robots-txt';
-import {defineConfig} from 'astro/config';
+import {defineConfig, envField} from 'astro/config';
 // Import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
 // import { remarkStripH1 } from "lib/remark/strip-h1";
@@ -16,11 +16,7 @@ import {gnr} from './src/utils/post.js';
 
 const NOTES_DIR = 'src/content/obsidian-note';
 
-const productionIntegrations = [
-	robotsTxt(),
-	sitemap(),
-	compressor(),
-];
+const productionIntegrations = [robotsTxt(), sitemap(), compressor()];
 
 const integrations = [
 	mdx(),
@@ -69,5 +65,33 @@ export default defineConfig({
 	redirects: REDIRECTS,
 	image: {
 		service: imageService({placeholder: 'blurhash'}),
+	},
+	env: {
+		schema: {
+			CLOUDINARY_API_KEY: envField.string({
+				access: 'secret',
+				context: 'server',
+			}),
+			CLOUDINARY_API_SECRET: envField.string({
+				access: 'secret',
+				context: 'server',
+			}),
+			CLOUDINARY_CLOUD_NAME: envField.string({
+				access: 'secret',
+				context: 'server',
+			}),
+			GOOGLE_SERVICE_ACCOUNT_EMAIL: envField.string({
+				access: 'secret',
+				context: 'server',
+			}),
+			GOOGLE_PRIVATE_KEY: envField.string({
+				access: 'secret',
+				context: 'server',
+			}),
+			GUESTBOOK_GOOGLE_SHEET_ID: envField.string({
+				access: 'secret',
+				context: 'server',
+			}),
+		},
 	},
 });
