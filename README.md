@@ -8,20 +8,22 @@ Personal portfolio site to share (1) about myself + (2) content I've written. Th
 
 All commands are run from the root of the project, from a terminal.
 
-| Command               | Action                                             |
-| :-------------------- | :------------------------------------------------- |
-| `pnpm install`         | Installs dependencies                              |
-| `pnpm cloudinary:cache`| Pre-cache Cloudinary images with its API            |
-| `pnpm dev`         | Starts local dev server at `localhost:4321`        |
-| `pnpm dev:nocache` | Runs dev without `cloudinary:cache`                 |
-| `pnpm build`       | Build production site to `./dist/` (with `cloudinary:cache` + `git submodule update` from latest remote)           |
-| `pnpm build:nocache`| Only build production site  |
-| `pnpm preview`     | Build (cache + submodule) then preview locally, before deploying       |
-| `pnpm preview:nocache`     | Same as `preview`, but don't `cloudinary:cache` when building       |
-| `pnpm preview:nobuild`     | Same as `preview`, but without build step, so directly re-using existing local build      |
-| `pnpm format:check`      | Print code-format results with Prettier                         |
-| `pnpm format:fix`      | Format all code with Prettier (will write)                         |
-| `pnpm astro ...`   | Run CLI commands like `astro add`, `astro preview` |
+| Command                 | Action                                                                                                   |
+| :---------------------- | :------------------------------------------------------------------------------------------------------- |
+| `pnpm install`          | Installs dependencies                                                                                    |
+| `pnpm dev`              | Starts local dev server at `localhost:4321`                                                              |
+| `pnpm dev:nocache`      | Runs dev without `cloudinary:cache`                                                                      |
+| `pnpm build`            | Build production site to `./dist/` (with `cloudinary:cache` + `git submodule update` from latest remote) |
+| `pnpm build:nocache`    | Only build production site                                                                               |
+| `pnpm preview`          | Build (cache + submodule) then preview locally, before deploying                                         |
+| `pnpm preview:nocache`  | Same as `preview`, but don't `cloudinary:cache` when building                                            |
+| `pnpm preview:nobuild`  | Same as `preview`, but without build step, so directly re-using existing local build                     |
+| `pnpm format:check`     | Print code-format results with Prettier                                                                  |
+| `pnpm format:fix`       | Format all code with Prettier (will write)                                                               |
+| `pnpm cloudinary:cache` | Pre-cache Cloudinary images with its API                                                                 |
+| `pnpm gdrive:download`  | Download Google Drive folder to local path                                                               |
+| `pnpm setup:external`   | Alias for gdrive:download && cloudinary:cache                                                            |
+| `pnpm astro ...`        | Run CLI commands like `astro add`, `astro preview`                                                       |
 
 Check [package.json](./package.json) for specific implementation.
 
@@ -130,7 +132,7 @@ Here are some shoutouts:
 - [argyleink/open-props: CSS custom properties to help accelerate adaptive and consistent design](https://github.com/argyleink/open-props) provides some zero-specificity standardised style tokens in CSS Variable form.
 - [Axiomatic CSS and Lobotomized Owls – A List Apart](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/) was REVOLUTIONARY for me for controlling (rather, letting go of control of!) flowing prose layout — see [flow.css](src/styles/utilities/flow.css)
 - [CSS Grid full-bleed layout tutorial](https://www.joshwcomeau.com/css/full-bleed/) — I struggled with full-bleed alternate-background-color sections
-- [Layout Breakouts with CSS Grid](https://ryanmulligan.dev/blog/layout-breakouts/) takes the above concept further with *named grid lines* for content layouts that breakout of the line-width. I may have gone overboard with **SIX** named breakpoints at [cgrid.css](src/styles/utilities/grid/cgrid.css)
+- [Layout Breakouts with CSS Grid](https://ryanmulligan.dev/blog/layout-breakouts/) takes the above concept further with _named grid lines_ for content layouts that breakout of the line-width. I may have gone overboard with **SIX** named breakpoints at [cgrid.css](src/styles/utilities/grid/cgrid.css)
 - [utopia-core-scss](https://github.com/trys/utopia-core-scss) by [Utopia](https://utopia.fyi/) generates fluid-responsive CSS Variable tokens.
 
 #### Color Scheme
@@ -144,13 +146,13 @@ I'm still forming my adaptation of the color scheme system, the below is a WIP:
 First, a particular theme defines `--base-[hsl]` and `--accent-[hsl]`.
 
 ```css
-  --base-h: 234;
-  --base-s: 21%;
-  --base-l: 18%;
+--base-h: 234;
+--base-s: 21%;
+--base-l: 18%;
 
-  --accent-h: 9;
-  --accent-s: 80%;
-  --accent-l: 65%;
+--accent-h: 9;
+--accent-s: 80%;
+--accent-l: 65%;
 ```
 
 Then we build four types/classes of tokens, with `n` number of color shades each:
@@ -160,7 +162,7 @@ Then we build four types/classes of tokens, with `n` number of color shades each
 - `--fg-[12349]` - text (foreground)
 - `--ax-[1234]`- accent (foreground)
 
-As `n` increases, *emphasis* decreases — except for:
+As `n` increases, _emphasis_ decreases — except for:
 
 1. the last color shade of `bg` and `ui` colors, which are shades for being "active".
 2. the last color shade of `fg` (`fg-9`), which is the opposite-contrast foreground shade, for use like as text color on accent-background buttons, which is technically not least in "emphasis".
@@ -221,7 +223,7 @@ Dynamic color generation is more complicated when handling light/dark modes. Whi
 
 ##### Lightness Coefficient
 
-Foreground elements with decreasing emphasis  gets dimmer in dark mode, but brighter in light mode. Reverse is true with background colors.
+Foreground elements with decreasing emphasis gets dimmer in dark mode, but brighter in light mode. Reverse is true with background colors.
 
 To put it simply: a shade's lightness modifier must be flipped/inverted between dark and light mode. We use `--m` as the light/dark Mode coefficient
 
@@ -238,7 +240,7 @@ After Lightness is flipped appropriately, there's another issue: accent colors a
 So just introduce a new variable lol, `--a-l` as the Accent Lightness coefficient to work together with the Lightness coefficient, only for accent shades
 
 - e.g. `--ax1: hsl( calc( var(--base-l) ${+/- n}% * var(--m) * var(--a-l) ) )`
-- is used to increase difference in Lightness between *accent* shades
+- is used to increase difference in Lightness between _accent_ shades
 - larger magnitudes for light mode with light bg, since accents also have high lightness
 
 ##### Handling exceptions
