@@ -6,7 +6,9 @@ import type {CloudinaryResource} from '../types.js';
 let resources: CloudinaryResource[];
 
 try {
-	const json = await fsExtra.readJson(JSON_FILE) as {root: CloudinaryResource[]};
+	const json = (await fsExtra.readJson(JSON_FILE)) as {
+		root: CloudinaryResource[];
+	};
 	resources = json.root;
 } catch (error: unknown) {
 	throw new Error(

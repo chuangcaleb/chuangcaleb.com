@@ -2,21 +2,17 @@ import type {ResourceApiResponse} from 'cloudinary';
 import type {CloudinaryResource} from '../types.js';
 import cloudinary from '../instance.js';
 
-async function fetchNextPage(
-	folderName: string,
-	nextCursor?: string,
-) {
+async function fetchNextPage(folderName: string, nextCursor?: string) {
 	try {
-		const response = await cloudinary.api
-			.resources({
+		const response = (await cloudinary.api.resources({
 			// Metadata: true,
 			// context: true,
 			// tags: true,
-				prefix: folderName,
-				type: 'upload',
-				max_results: 500,
-				next_cursor: nextCursor,
-			}) as ResourceApiResponse;
+			prefix: folderName,
+			type: 'upload',
+			max_results: 500,
+			next_cursor: nextCursor,
+		})) as ResourceApiResponse;
 		console.info(`📊 Rate limit remaining: ${response.rate_limit_remaining}`);
 		return response.resources;
 	} catch (error: unknown) {
@@ -28,9 +24,7 @@ async function fetchNextPage(
 	}
 }
 
-async function fetchFolderRecursive(
-	folderName: string,
-) {
+async function fetchFolderRecursive(folderName: string) {
 	console.info(
 		`📥 Fetching all Cloudinary resources from folder "${folderName}"`,
 	);

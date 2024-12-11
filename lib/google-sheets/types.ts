@@ -1,6 +1,6 @@
 export type GuestPost = {
 	isVerified?: 'TRUE';
-	'Timestamp': string;
+	Timestamp: string;
 	// 'Email address' ;
 	'📇 Display Name': string;
 	// '🤝 Real Name':;

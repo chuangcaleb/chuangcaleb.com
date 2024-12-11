@@ -9,7 +9,7 @@ export function getCldImgData(route: string, isSuppressed = false) {
 	}
 
 	const publicId = `${ROOT_DIR}/${route}`;
-	const imgData = cache.find(resource => resource.public_id === publicId);
+	const imgData = cache.find((resource) => resource.public_id === publicId);
 
 	if (!imgData && !isSuppressed) {
 		console.warn(

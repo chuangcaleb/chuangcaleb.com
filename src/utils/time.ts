@@ -1,6 +1,4 @@
-import {
-	format, formatDuration, intervalToDuration, parseISO,
-} from 'date-fns';
+import {format, formatDuration, intervalToDuration, parseISO} from 'date-fns';
 
 export function formatDisplayDate(datetime?: string | Date) {
 	if (!datetime) {

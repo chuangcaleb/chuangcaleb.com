@@ -14,10 +14,10 @@ const NavSheetReact = (properties: any) => {
 	const {width} = useWindowSize();
 
 	React.useEffect(() => {
-		window.addEventListener('hashchange', handleAClick, false);
+		globalThis.addEventListener('hashchange', handleAClick, false);
 
 		return () => {
-			window.removeEventListener('hashchange', handleAClick, false);
+			globalThis.removeEventListener('hashchange', handleAClick, false);
 		};
 	}, []);
 
@@ -25,7 +25,7 @@ const NavSheetReact = (properties: any) => {
 		setOpen(false);
 	}
 
-	const isMobileTop = (width && width < 900 && scrollY < 1);
+	const isMobileTop = width && width < 900 && scrollY < 1;
 	const shouldShowFloatingButton = direction === 'down' || isMobileTop;
 
 	return (
@@ -34,10 +34,12 @@ const NavSheetReact = (properties: any) => {
 				<button
 					className={cn([
 						styles.FloatingButton,
-						shouldShowFloatingButton ? styles.FloatingShow : styles.FloatingHide,
+						shouldShowFloatingButton
+							? styles.FloatingShow
+							: styles.FloatingHide,
 						isMobileTop && styles.ZeroAnimationDuration,
 					])}
-					aria-label='Open Navigation Sidebar Sheet'
+					aria-label="Open Navigation Sidebar Sheet"
 				>
 					<Fragment>{properties.menuIcon}</Fragment>
 				</button>
@@ -48,13 +50,13 @@ const NavSheetReact = (properties: any) => {
 					className={cn(styles.DialogContent, 'flow sheet-content')}
 				>
 					<Dialog.Title className={cn(styles.DialogTitle, 'sr-only')}>
-            Page Navigation
+						Page Navigation
 					</Dialog.Title>
 					<Dialog.Description className={'sr-only'}>
-            Navigation for the current page
+						Navigation for the current page
 					</Dialog.Description>
 					<Dialog.Close asChild>
-						<button className={styles.CloseButton} aria-label='Close'>
+						<button className={styles.CloseButton} aria-label="Close">
 							<Fragment>{properties.closeIcon}</Fragment>
 						</button>
 					</Dialog.Close>

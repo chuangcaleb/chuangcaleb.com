@@ -19,7 +19,7 @@ export async function getGuestbookPosts() {
 		const sheet = document.sheetsByIndex[0];
 		const rows = await sheet.getRows();
 
-		return rows.map(r => r.toObject()) as GuestPost[];
+		return rows.map((r) => r.toObject()) as GuestPost[];
 	} catch (error) {
 		throw error;
 	}
