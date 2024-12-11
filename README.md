@@ -25,6 +25,8 @@ All commands are run from the root of the project, from a terminal.
 
 Check [package.json](./package.json) for specific implementation.
 
+![package.json scripts](./docs/package-json-scripts.svg)
+
 ## Architecture / Tech Stack
 
 As of latest:
