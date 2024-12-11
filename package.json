@@ -11,7 +11,7 @@
         "dev": "pnpm cloudinary:cache && astro dev",
         "format:check": "pnpm xo -- --list-different .",
         "format:fix": "pnpm xo --write .",
-        "gdrive:cache": "tsx ./lib/google/drive/download-folder",
+        "gdrive:download": "tsx ./lib/google/drive/download-folder",
         "preview:nobuild": "astro preview",
         "preview:nocache": "pnpm build:nocache && astro preview",
         "preview": "pnpm build && astro preview",
