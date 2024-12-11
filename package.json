@@ -8,7 +8,7 @@
         "build": "pnpm setup-external && astro build",
         "cloudinary:cache": "tsx ./lib/cloudinary/cache",
         "dev:nocache": "astro dev",
-        "dev": "pnpm cloudinary:cache && astro dev",
+        "dev": "pnpm setup-external && astro dev",
         "format:check": "pnpm xo -- --list-different .",
         "format:fix": "pnpm xo --write .",
         "gdrive:download": "tsx ./lib/google/drive/download-folder",
