@@ -25,18 +25,14 @@ async function getFolderContents(id: string) {
 	return response.data.files;
 }
 
-async function downloadFile(
-	fileName: string,
-	fileId: string,
-	filePath: string,
-) {
+async function downloadFile(fileId: string, filePath: string) {
 	const response = await drive.files.get(
 		{fileId, alt: 'media'},
 		{responseType: 'stream'},
 	);
 	const destination = fs.createWriteStream(filePath);
 	await pipeline(response.data, destination);
-	console.info(`  ✅ ${fileName}`);
+	console.info(`  ✅ ${filePath}`);
 }
 
 // main function
@@ -68,7 +64,7 @@ async function downloadFolder(folderId: string, destination: string) {
 			}
 
 			// 3b. If file, then download
-			await downloadFile(file.name, file.id, filePath);
+			await downloadFile(file.id, filePath);
 		}
 	} catch (error) {
 		if (error instanceof Error) {
