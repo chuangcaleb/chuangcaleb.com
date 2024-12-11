@@ -2,6 +2,8 @@
 
 Personal portfolio site to share (1) about myself + (2) content I've written. This v2 focuses on streamlining DX by leaning into CSS Variables.
 
+![website screenshot of chuangcaleb.com](https://res.cloudinary.com/chuangcaleb/image/upload/v1721208198/chuangcaleb/upload/projects/chuangcaleb-site.png)
+
 ## Getting Started
 
 ### Commands
