@@ -6,6 +6,8 @@ import dotenv from 'dotenv';
 import fs from 'fs-extra';
 import jwt from '../jwt.js';
 
+// TODO: conver to Promise.all
+
 dotenv.config();
 
 // initialize + authorize drive client
