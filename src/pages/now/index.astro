@@ -11,21 +11,29 @@ const nowNotes = allNotes
   .sort((a, b) => (a.id > b.id ? 1 : -1));
 
 const latestNowNote = nowNotes[nowNotes.length - 1];
-const { Content } = await render(latestNowNote);
+
+const { Content } = latestNowNote ? await render(latestNowNote) : {};
 ---
 
 <NoteLayout title="Now">
-  <p class="toast flex-row">
-    <span
-      >❓ <a href="#now-shows-latest-life-updates">What is a "/now" page?</a
-      ></span
-    >•
-    <span>
-      🔗 <a href={gnr(latestNowNote.id)}>Note link →</a>
-    </span>
-  </p>
-  <Content />
-  <hr />
+  {
+    latestNowNote && (
+      <>
+        <p class="toast flex-row">
+          <span>
+            ❓{" "}
+            <a href="#now-shows-latest-life-updates">What is a "/now" page?</a>
+          </span>
+          •
+          <span>
+            🔗 <a href={gnr(latestNowNote.id)}>Note link →</a>
+          </span>
+        </p>
+        {Content && <Content />}
+        <hr />
+      </>
+    )
+  }
   <ExplainNowContent />
 </NoteLayout>
 
