@@ -1,7 +1,7 @@
 import process from 'node:process';
 import dotenv from 'dotenv';
 import {GoogleSpreadsheet} from 'google-spreadsheet';
-import jwt from './jwt.js';
+import jwt from '../jwt.js';
 import type {GuestPost} from './types.js';
 
 dotenv.config();
