@@ -1,5 +1,6 @@
 import process from 'node:process';
 import path from 'node:path';
+import {pipeline} from 'node:stream/promises';
 import {google} from 'googleapis';
 import dotenv from 'dotenv';
 import fs from 'fs-extra';
@@ -27,17 +28,13 @@ async function downloadFile(
 	fileId: string,
 	filePath: string,
 ) {
-	const destination_ = fs.createWriteStream(filePath);
-	await drive.files.get({fileId}, {responseType: 'stream'}).then((response) => {
-		response.data
-			.on('end', () => {
-				console.info(`  ✅ ${fileName}`);
-			})
-			.on('error', (error) => {
-				console.error(`🚨 Error downloading ${fileName}`, error);
-			})
-			.pipe(destination_);
-	});
+	const response = await drive.files.get(
+		{fileId, alt: 'media'},
+		{responseType: 'stream'},
+	);
+	const destination = fs.createWriteStream(filePath);
+	await pipeline(response.data, destination);
+	console.info(`  ✅ ${fileName}`);
 }
 
 // main function
