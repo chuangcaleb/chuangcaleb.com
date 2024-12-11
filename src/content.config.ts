@@ -6,7 +6,7 @@ import {defineCollection, reference, z} from 'astro:content';
 // obsidian collections, by caleb
 
 const projectCollection = defineCollection({
-	loader: glob({pattern: '**/[^_]*.md', base: './src/content/project'}),
+	loader: glob({pattern: '**/[^_]*.mdx', base: './src/content/project'}),
 	schema: z.object({
 		sequence: z.number(),
 		hidden: z.boolean().optional(),
@@ -25,15 +25,6 @@ const projectCollection = defineCollection({
 });
 
 /* ------------------------------------ - ----------------------------------- */
-
-// const ma = z.discriminatedUnion('emojip', [
-// 	z.object({
-// 		emojip: z.string(),
-// 		series: z.boolean(),
-// 		collectionItems: z.array(reference('obsidian-note')),
-// 	}),
-// 	z.object({emojip: z.undefined()}),
-// ]);
 
 const baseObsidianNoteSchema = z
 	.object({
