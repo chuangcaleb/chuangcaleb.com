@@ -254,19 +254,29 @@ So just introduce a new variable lol, `--a-l` as the Accent Lightness coefficien
 
 ### Obsidian Notes
 
-I write my content locally in Obsidian and want to display them in the Astro site. I already version control with git, so I didn't need to reach for another remote cloud sync option.
+#### Context
 
-However, I don't want to expose all my personal journal notes lol. Just those files/notes in select folders/directories or passing some frontmatter condition.
+I write my content locally in Obsidian and want to display them in the Astro site. I already version control with git, ~~so I didn't need to reach for another remote cloud sync option~~ but my public notes are mixed in with private ones. I don't want to expose all my personal journal notes lol. Just those files/notes in select folders/directories or passing some frontmatter condition.
 
 One way would be to nest the obsidian vault repository within the Astro repository, and gitignore bad paths. But then that would load all Obsidian notes locally. A [previous implementation](chuangcaleb.github.io/wtsa) was to nest the Astro repository at a public directory of the Obsidian vault repository.
 
 But in the end, both ways will source control the content files, so I had [a bunch of content-commits in between my source-code-commits](https://github.com/chuangcaleb/wtsa/commits/source/). I no likey. I reached for some CMS solutions but that was over-engineering for now.
 
-Currently, I make use of the [kometenstaub/metadata-extractor](https://github.com/kometenstaub/metadata-extractor) plugin to dump the metadata cache of my Obsidian notes to a local file. A custom script to process that metadata cache (mainly to filter out private notes) and we commit this `.json` file to the Obsidian vault repo.
+#### Processing
 
-Then a custom GitHub Actions workflow (triggers on-push to select paths) runs another script to iterate through this `.json` file and copy those subset of files into a `dist` directory. [s0/git-publish-subdir-action: GitHub Action to push a subdirectory as a branch to any git repo (e.g. for GitHub Pages)](https://github.com/s0/git-publish-subdir-action/tree/develop/) then pushes this directory to [chuangcaleb/obsidian-caleb-public: Public subset of my Obsidian vault exposed to publish on my personal website](https://github.com/chuangcaleb/obsidian-caleb-public).
+Currently, I make use of the [kometenstaub/metadata-extractor](https://github.com/kometenstaub/metadata-extractor) plugin to dump the metadata cache of my entire Obsidian workspace, to a local `.json` file. I run a custom script to process that metadata cache to filter out private notes and reorganize nested paths to root. A second script copies the processed list of markdown files and writes their new filepaths into an output directory. All this processing is `gitignored` in my main Obsidian repo.
 
-This `obsidian-caleb-public` repo is a [submodule](.gitmodules) that resides in this repo at [`src/content/obsidian-note`](src/content/obsidian-note). Then this frontend web layer has 0 concern for handling the content data — all that is handled on the Obsidian repo side.
+#### Syncing
+
+That output folder is synced to the cloud using Google Drive.
+
+I had previously git-tracked this output directory and attached that repository as a [submodule](.gitmodules) that would reside in this repo at [`src/content/obsidian-note`](src/content/obsidian-note). It was simple and was my working solution for months... but (1a) version controlling non-source-code-data felt wrong, (2) I didn't want to look into safely running shell commands for stuff like `git push`. (1b) I also intend to sync up my non-markdown assets like images.
+
+Using [Google Drive Desktop](https://workspace.google.com/products/drive/#download), I set my local output folder of markdown files for syncing up to the Drive.
+
+I use the same [Google Service Account](https://developers.google.com/identity/protocols/oauth2/service-account) from the [guestbook feature](https://chuangcaleb.com/note/making-my-website-guestbook/) to download the files with [googleapis - npm](https://www.npmjs.com/package/googleapis) to the `src/content/obsidian-note/` folder. For implementation details, see [[lib/google/drive/download-folder.ts]].
+
+It's an alright solution! This is another pledge to the Google overlords... but honestly there's no sensitive information. I just need a few MB's of cloud bucket storage, and this simple + free solution is easily better than provisioning an S2 bucket and all that.
 
 The scripts are currently in my private repo, I can share it upon request.
 
