@@ -18,6 +18,13 @@ const icon = NAV_LINKS.GUESTBOOK.icon;
   <TagWIcon iconName={icon} as="h1" style={{ display: "flex" }}>
     Guestbook
   </TagWIcon>
-  <p>A collection of post-it notes, signed by people who know me!</p>
+  <p>
+    <b>A collection of post-it notes, signed by people who know me!</b>
+  </p>
+  <p>
+    I explain the technical behind-the-scenes at <a
+      href="/note/making-my-website-guestbook/">Making My Website Guestbook</a
+    >!
+  </p>
   {guestbookPosts.map((post) => <Post post={post} />)}
 </NoteLayout>
