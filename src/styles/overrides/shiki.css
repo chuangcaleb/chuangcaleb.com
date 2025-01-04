@@ -1,6 +1,6 @@
 :root {
-  --astro-code-color-text: var(--text-normal);
-  --astro-code-color-background: var(--bg2);
+  --astro-code-foreground: var(--text-normal);
+  --astro-code-background: var(--bg2);
   /* --astro-code-token-constant: plum;
   --astro-code-token-string: orchid;
   --astro-code-token-comment: salmon;
