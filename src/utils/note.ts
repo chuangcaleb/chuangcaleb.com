@@ -1,5 +1,10 @@
 import path from 'node:path';
-import {getCollection, getEntries, type CollectionEntry} from 'astro:content';
+import {
+	getCollection,
+	getEntries,
+	getEntry,
+	type CollectionEntry,
+} from 'astro:content';
 import type {CollectionItems, SuperNote} from 'lib/utils/types';
 import {gnr} from '~/utils/note-route';
 
@@ -38,4 +43,12 @@ export async function getNoteEntries(
 	if (!items) return [];
 	const entries = await getEntries<'obsidian-note'>(items);
 	return entries.map((n) => gnm(n));
+}
+
+export async function getNoteEntry(
+	item: NonNullable<CollectionItems>[number],
+): Promise<SuperNote | undefined> {
+	const entry = await getEntry(item);
+	if (!entry) return undefined;
+	return gnm(entry);
 }
