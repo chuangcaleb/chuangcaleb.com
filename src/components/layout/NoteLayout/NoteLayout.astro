@@ -24,12 +24,14 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
   <Fragment slot="sheetBody">
     <h3>{title}</h3>
     <Metadata metadata={metadata} />
+    <slot name="sidebar" />
     <Toc headings={headings} />
   </Fragment>
   <article class="note-body">
     <aside class="flow-lg">
       <Metadata metadata={metadata} />
       <div class="aside-sticky flow no-scrollbar">
+        <slot name="sidebar" />
         <Toc headings={headings} />
       </div>
     </aside>
