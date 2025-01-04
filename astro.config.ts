@@ -8,6 +8,7 @@ import {defineConfig, envField} from 'astro/config';
 // Import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
 // import { remarkStripH1 } from "lib/remark/strip-h1";
+import {remarkSimpleStripPercentComments} from "./lib/remark/stripObsidianComments";
 import {imageService} from '@unpic/astro/service';
 import {slugify} from './lib/markdown/string.js';
 import {SOCIALS} from './src/data/links.js';
@@ -49,6 +50,7 @@ export default defineConfig({
 		remarkPlugins: [
 			// RemarkStripH1,
 			// remarkReadingTime,
+			remarkSimpleStripPercentComments,
 			[
 				// https://github.com/datopian/datahub/issues/1059
 				remarkWikiLink,
