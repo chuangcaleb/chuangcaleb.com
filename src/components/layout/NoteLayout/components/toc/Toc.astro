@@ -11,15 +11,6 @@ interface Props {
 const { headings = [] } = Astro.props;
 
 const toc = generateToc(headings);
-
-// Boot out H1; but we've already stripped it in lib/remark/strip-h1.mjs
-// keeping this here in case
-// const tocHeadings = (function () {
-//   if (headings[0].depth === 1) {
-//     headings.shift();
-//   }
-//   return headings;
-// })();
 ---
 
 {
@@ -45,8 +36,6 @@ const toc = generateToc(headings);
     row-gap: var(--space-xs);
   }
   nav h4 {
-    /* display: block; */
-    /* color: var(--text-faded); */
     font-size: var(--step-1);
   }
 </style>
