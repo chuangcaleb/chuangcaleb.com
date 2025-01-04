@@ -78,5 +78,5 @@
 }
 
 :where(a[href]:focus) {
-  text-decoration-style: wavy;
+  text-decoration-line: none;
 }

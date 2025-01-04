@@ -1,0 +1,54 @@
+---
+import type { MarkdownHeading } from "astro";
+import generateToc from "lib/markdown/toc";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
+import TocHeading from "./TocHeading.astro";
+import Toc from "./Toc.astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings = [] } = Astro.props;
+---
+
+<Toc headings={headings} />
+
+<script>
+  function initToc() {
+    const setCurrentHeading: IntersectionObserverCallback = (entries) => {
+      // loop to each entries (headings) in the page
+      for (let entry of entries) {
+        // equivalent to the slug returned from pageHeadings
+        const { id } = entry.target;
+        // get the TOC link's element for the current entry
+        const tocLinkEl = document.querySelector(`#toc a[href='#${id}']`);
+        if (!tocLinkEl) return;
+
+        // check if the entry is intersecting
+        if (entry.isIntersecting) {
+          // remove active class from all links
+          document
+            .querySelectorAll("#toc a")
+            .forEach((e) => e.classList.remove("active"));
+          // add active class to the currently active entry
+          tocLinkEl.classList.add("active");
+        }
+      }
+    };
+    const observerOptions = {
+      threshold: 1,
+      rootMargin: "0px 0px -66%",
+    };
+    const observer = new IntersectionObserver(
+      setCurrentHeading,
+      observerOptions
+    );
+    // select all headings to observe
+    const elToObserve = document.querySelectorAll("article :is(h2,h3,h4)");
+    // finally, observe the elements
+    elToObserve.forEach((el) => observer.observe(el));
+  }
+  initToc();
+  document.addEventListener("astro:after-swap", initToc);
+</script>

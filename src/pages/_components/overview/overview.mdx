@@ -1,13 +1,21 @@
+import { formatDuration, intervalToDuration } from "date-fns";
 import { Icon } from "astro-iconify";
-import Favicon from "~/components/block/Favicon.astro";
-import SocialLink from "~/components/block/SocialLink.astro";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import Button from "~/components/styled/polym/Button.astro";
+import Favicon from "~/components/block/Favicon.astro";
+import SocialLink from "~/components/block/SocialLink.astro";
 
 # <Icon name="lucide:briefcase" /> Professionally
-I'm 3 months in as a **Frontend Engineer** at <Favicon src="https://cdn.prod.website-files.com/63ccf2efea97bef692d278ea/63ccfe821fe6f56a745f7ee1_Decube%20Logomark%20(Light).png" alt="decube logo" url="https://decube.io" backgroundColor="white">decube</Favicon>, developing our web app! Previously with <Favicon src="https://static.airasia.com/design/logos/airasia-move-light.svg"  alt="airasia MOVE logo" url="https://www.linkedin.com/company/airasia-super-app/mycompany/">Airasia MOVE</Favicon>, working on **UI/UX & Network Logic** for the ✈️ *flights booking web-interface* at [airasia.com](https://airasia.com).
+
+export const monthsWorking = formatDuration(
+  intervalToDuration({ start: new Date("2024-07-22"), end: new Date() }),
+  { format: ["months"] }
+);
+
+I'm {monthsWorking} in as **Frontend Engineer** at <Favicon src="https://cdn.prod.website-files.com/63ccf2efea97bef692d278ea/63ccfe821fe6f56a745f7ee1_Decube%20Logomark%20(Light).png" alt="decube logo" url="https://decube.io" backgroundColor="white">decube</Favicon>, developing our web app! Previously with <Favicon src="https://static.airasia.com/design/logos/airasia-move-light.svg"  alt="airasia MOVE logo" url="https://www.linkedin.com/company/airasia-super-app/mycompany/">Airasia MOVE</Favicon>, working on **UI/UX & Network Logic** for the ✈️ _flights booking web-interface_ at [airasia.com](https://airasia.com).
 
 # <Icon name="lucide:user-cog" /> Growing Up
+
 I found aptitude in Redstone and 🎮 [Game Dev/Design](https://www.planetminecraft.com/member/calebchan/), where I first started coding. Through a <Favicon src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgBAQkBBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tNTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3NTc3Nzc3NzcvNzc3NTc3NzU1Nzc3Nzc3Ny0rNzUrLTc1LSs3NSsrLTU3K//AABEIABAAEAMBEQACEQEDEQH/xAAWAAEBAQAAAAAAAAAAAAAAAAAFAwD/xAAoEAABAQYEBgMAAAAAAAAAAAABAgMEBgcREgAhQWEFCDFRkaETFhf/xAAYAQACAwAAAAAAAAAAAAAAAAABBAIFBv/EABwRAAIDAQADAAAAAAAAAAAAAAIRAAEDEgQTIf/aAAwDAQACEQMRAD8ApDnD2HOTPD8cbvPwJsKgrvQjLxXFztpeY9VUy/ieMOh83agkXujlIKbH0hwfA9sii68aVJoDvSmDkRFTKlGzyECQ25oaiRlydTjM3GjsHk2WBJ0zGfrA1z7FOSwv1k04HxR5RGswWkRslrWlRqL00I26npgtUowGX3q5/9k=" url="https://www.nottingham.ac.uk/" alt="University of Nottingham logo">BSc Computer Science w AI</Favicon>, I’ve found **Software Dev** (notably **Full-Stack Web**) as an accessible medium to ✨create experiences✨.
 
 <div class="flex-row">
@@ -16,13 +24,20 @@ I found aptitude in Redstone and 🎮 [Game Dev/Design](https://www.planetminecr
 </div>
 
 # <Icon name="lucide:flame" /> My Passion
-is in 🎭 **Storytelling & Narratives**: *“finding universal truths of human experience, and translating them into cohesive drama”*<sup><a href="https://www.helpingwritersbecomeauthors.com/a-writer-or-a-storyteller">1</a></sup>. I create with *music, theatre, film, storyboarding* — even *tech*. I have a lot to say about **story**, if you’d like to [hear me](/garden)!
+
+is in 🎭 **Storytelling & Narratives**: _“finding universal truths of human experience, and translating them into cohesive drama”_<sup><a href="https://www.helpingwritersbecomeauthors.com/a-writer-or-a-storyteller">1</a></sup>. I create with _music, theatre, film, storyboarding_—even _tech_. I have a lot to say about **story**, if you’d like to [hear me](/garden)!
 
 # <Icon name="lucide:trees" /> Digital Garden
-I also upkeep a 🪴 **Digital Garden** with <Favicon src="https://obsidian.md/images/obsidian-logo-gradient.svg" alt="obsidian logo" url="https://obsidian.md">Obsidian</Favicon> — it’s my *daily journal*, *knowledge base*, and *content creation space*. A subset of *my notes* is publicly exposed at [/garden](/garden) and *life updates* are posted at [/now](/now)!
 
+I also upkeep a 🪴 **Digital Garden** with <Favicon src="https://obsidian.md/images/obsidian-logo-gradient.svg" alt="obsidian logo" url="https://obsidian.md">Obsidian</Favicon> — it’s my _daily journal_, _knowledge base_, and _content creation space_. A subset of _my notes_ is publicly exposed at [/garden](/garden) and _life updates_ are posted at [/now](/now)!
 
 <div class="flex-row">
-  <AccentA href="/now" ><Icon name="lucide:timer-reset" />/now</AccentA>
-  <AccentA href="/garden" ><Icon name="lucide:trees" />/garden</AccentA>
+  <AccentA href="/now">
+    <Icon name="lucide:timer-reset" />
+    /now
+  </AccentA>
+  <AccentA href="/garden">
+    <Icon name="lucide:trees" />
+    /garden
+  </AccentA>
 </div>

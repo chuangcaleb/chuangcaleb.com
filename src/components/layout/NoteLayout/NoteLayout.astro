@@ -5,6 +5,7 @@ import NoteList from "~/components/layout/NoteList.astro";
 import type { MetadataProps } from "./components/metadata/Metadata.astro";
 import Metadata from "./components/metadata/Metadata.astro";
 import Toc from "./components/toc/Toc.astro";
+import TocScrollspy from "./components/toc/TocScrollspy.astro";
 
 interface Props {
   title: string;
@@ -24,13 +25,15 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
   <Fragment slot="sheetBody">
     <h3>{title}</h3>
     <Metadata metadata={metadata} />
+    <slot name="sidebar" />
     <Toc headings={headings} />
   </Fragment>
   <article class="note-body">
     <aside class="flow-lg">
       <Metadata metadata={metadata} />
       <div class="aside-sticky flow no-scrollbar">
-        <Toc headings={headings} />
+        <slot name="sidebar" />
+        <TocScrollspy headings={headings} />
       </div>
     </aside>
     <div class="article-main full cgrid prose flow-lg">

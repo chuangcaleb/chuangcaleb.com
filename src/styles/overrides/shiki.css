@@ -1,13 +1,17 @@
+/*
+Mostly sourced from:
+https://github.com/shikijs/textmate-grammars-themes/blob/main/packages/tm-themes/themes/catppuccin-macchiato.json
+*/
 :root {
-  --astro-code-color-text: var(--text-normal);
-  --astro-code-color-background: var(--bg2);
-  /* --astro-code-token-constant: plum;
-  --astro-code-token-string: orchid;
-  --astro-code-token-comment: salmon;
-  --astro-code-token-keyword: powderblue;
-  --astro-code-token-parameter: seashell;
-  --astro-code-token-function: dodgerblue;
-  --astro-code-token-string-expression: burlywood;
-  --astro-code-token-punctuation: linen;
-  --astro-code-token-link: honeydew; */
+  --astro-code-foreground: var(--text-normal);
+  --astro-code-background: var(--bg2);
+  --astro-code-token-constant: #f5a97f;
+  --astro-code-token-string: #a6da95;
+  --astro-code-token-comment: var(--text-faded);
+  --astro-code-token-keyword: #c6a0f6;
+  --astro-code-token-parameter: #a5adcb;
+  --astro-code-token-function: #8aadf4;
+  --astro-code-token-string-expression: #a6da95;
+  --astro-code-token-punctuation: #cad3f5;
+  --astro-code-token-link: #c6a0f6;
 }

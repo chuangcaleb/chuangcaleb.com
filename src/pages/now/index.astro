@@ -1,8 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
-
-import { gnr } from "~/utils/post";
+import { getNoteName, gnr } from "~/utils/post";
 import { Content as ExplainNowContent } from "./_explain-now.mdx";
 
 const allNotes = await getCollection("obsidian-note");
@@ -11,36 +10,34 @@ const nowNotes = allNotes
   .sort((a, b) => (a.id > b.id ? 1 : -1));
 
 const latestNowNote = nowNotes[nowNotes.length - 1];
+const previousNowNote = nowNotes[nowNotes.length - 2];
 
 const { Content } = latestNowNote ? await render(latestNowNote) : {};
 ---
 
 <NoteLayout title="Now">
-  {
-    latestNowNote && (
-      <>
-        <p class="toast flex-row">
-          <span>
-            ❓{" "}
-            <a href="#now-shows-latest-life-updates">What is a "/now" page?</a>
-          </span>
-          •
-          <span>
-            🔗 <a href={gnr(latestNowNote.id)}>Note link →</a>
-          </span>
-        </p>
-        {Content && <Content />}
-        <hr />
-      </>
-    )
-  }
+  {Content && <Content />}
   <ExplainNowContent />
+  <ul slot="sidebar" class="toast flow-s">
+    <li>
+      <a href="#now-shows-latest-life-updates">What is a "/now" page?</a>
+    </li>
+    <li><a href={gnr("now")}>All "Now" notes</a></li>
+    <li><a href={gnr(latestNowNote.id)}>Archive Link →</a></li>
+    {
+      previousNowNote && (
+        <li>
+          <a href={gnr(previousNowNote.id)}>
+            ← Prev: {getNoteName(previousNowNote.filePath)}
+          </a>
+        </li>
+      )
+    }
+  </ul>
 </NoteLayout>
 
 <style>
   .toast {
-    --flow-space: var(--space-xs);
-    column-gap: var(--space-xs);
     color: var(--text-faded);
     a {
       --color: var(--text-faded);
