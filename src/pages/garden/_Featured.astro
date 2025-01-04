@@ -1,10 +1,9 @@
 ---
-import { getCollection } from "astro:content";
 import NoteLi from "~/components/styled/monom/note/NoteLi.astro";
-import { getNoteName, gnr } from "~/utils/post";
+import { getAllNotes } from "~/utils/note";
 import Collections from "./_Collections.astro";
 
-const notes = await getCollection("obsidian-note");
+const notes = await getAllNotes();
 
 const featuredNotes = notes
   .filter((n) => n.data.featured)
@@ -28,8 +27,8 @@ const featuredCollections = featuredNotes.filter((n) =>
     {
       featuredLeafNotes?.map((n) => (
         <li>
-          <NoteLi as="a" href={gnr(n.id)}>
-            {getNoteName(n.filePath)}{" "}
+          <NoteLi as="a" href={n.route}>
+            {n.name}{" "}
           </NoteLi>
         </li>
       ))

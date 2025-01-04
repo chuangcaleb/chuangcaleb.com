@@ -8,11 +8,11 @@ import {defineConfig, envField} from 'astro/config';
 // Import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
 // import { remarkStripH1 } from "lib/remark/strip-h1";
-// import icons from "unplugin-icons/vite";
 import {imageService} from '@unpic/astro/service';
+import {remarkSimpleStripPercentComments} from './lib/remark/strip-obsidian-comments.js';
 import {slugify} from './lib/markdown/string.js';
 import {SOCIALS} from './src/data/links.js';
-import {gnr} from './src/utils/post.js';
+import {gnr} from './src/utils/note-route.js';
 
 const NOTES_DIR = 'src/content/obsidian-note';
 
@@ -32,13 +32,6 @@ const REDIRECTS = {
 	'/note': '/garden',
 };
 
-// Const redirects: AstroUserConfig["redirects"] = Object.entries(
-//   REDIRECTS,
-// ).reduce(
-//   (acc, [k, v]) => ({ ...acc, [k]: { status: 307, destination: v } }),
-//   {},
-// );
-
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://chuangcaleb.com',
@@ -50,6 +43,7 @@ export default defineConfig({
 		remarkPlugins: [
 			// RemarkStripH1,
 			// remarkReadingTime,
+			remarkSimpleStripPercentComments,
 			[
 				// https://github.com/datopian/datahub/issues/1059
 				remarkWikiLink,

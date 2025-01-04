@@ -22,14 +22,14 @@ const { headings = [] } = Astro.props;
         // equivalent to the slug returned from pageHeadings
         const { id } = entry.target;
         // get the TOC link's element for the current entry
-        const tocLinkEl = document.querySelector(`#toc a[href='#${id}']`);
+        const tocLinkEl = document.querySelector(`.toc a[href='#${id}']`);
         if (!tocLinkEl) return;
 
         // check if the entry is intersecting
         if (entry.isIntersecting) {
           // remove active class from all links
           document
-            .querySelectorAll("#toc a")
+            .querySelectorAll(".toc a")
             .forEach((e) => e.classList.remove("active"));
           // add active class to the currently active entry
           tocLinkEl.classList.add("active");

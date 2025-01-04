@@ -54,7 +54,6 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
   .note-body {
     display: grid;
     grid-template-columns: 1fr 26vw;
-    padding-bottom: var(--space-3xl);
   }
 
   aside {
@@ -64,10 +63,9 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
   .aside-sticky {
     position: sticky;
     top: var(--space-xs);
-    height: min(100%, 100vh);
+    height: min(min-content, 100vh);
     width: 100%;
     overflow-x: hidden;
-    padding-block-end: var(--space-l);
   }
   @media (width < 900px) {
     .note-body {
@@ -80,9 +78,11 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
   .article-main {
     grid-row-start: 1;
     grid-column: 1;
+    padding-bottom: var(--space-3xl);
 
     & :global(:is(h1)) {
       grid-column-end: feature;
+      --flow-space: var(--space-2xs);
     }
     & :global(h1 + *) {
       --flow-space: var(--size-relative-7);

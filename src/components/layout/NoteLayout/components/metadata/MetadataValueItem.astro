@@ -1,7 +1,6 @@
 ---
-import { getEntry } from "astro:content";
 import AccentA from "~/components/styled/monom/AccentA.astro";
-import { getNoteName, gnr } from "~/utils/post";
+import { getNoteEntry } from "~/utils/note";
 import { formatDisplayDate } from "~/utils/time";
 import type { MetadataValues } from "./MetadataValue.astro";
 
@@ -13,14 +12,15 @@ interface Props {
 const { value } = Astro.props;
 
 const isDate = value instanceof Date;
-const note = value && typeof value === "object" && (await getEntry(value));
+const note =
+  !!value && typeof value === "object" && (await getNoteEntry(value));
 
 const isString = typeof value === "string";
 const isDateFormat = isString && Date.parse(value);
 ---
 
 {isDate && formatDisplayDate(value)}
-{note && <AccentA href={gnr(note.id)}>{getNoteName(note.filePath)}</AccentA>}
+{note && <AccentA href={note.route}>{note.name}</AccentA>}
 {isString && isDateFormat && formatDisplayDate(new Date(value))}
 {isString && !isDateFormat && value}
 {!isDate && !isString && !note && value}
