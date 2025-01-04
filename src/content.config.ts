@@ -46,7 +46,6 @@ const baseObsidianNoteSchema = z
 const obsidianNoteCollection = defineCollection({
 	loader: glob({pattern: '**/[^_]*.md', base: './src/content/obsidian-note'}),
 	schema: baseObsidianNoteSchema,
-	// Schema: z.union([baseObsidianNoteSchema, ma]),
 });
 
 export const collections = {

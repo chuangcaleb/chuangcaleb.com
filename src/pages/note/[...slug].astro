@@ -1,9 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import ObsidianNoteLayout from "~/components/layout/NoteLayout/ObsidianNoteLayout.astro";
+import { getAllNotes } from "~/utils/note";
 
 export async function getStaticPaths() {
-  const notes = await getCollection("obsidian-note");
+  const notes = await getAllNotes();
   return notes.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },

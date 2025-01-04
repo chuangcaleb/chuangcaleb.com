@@ -1,11 +1,9 @@
 ---
 import { type HTMLAttributes } from "astro/types";
-import { type CollectionEntry } from "astro:content";
+import type { SuperNotes } from "lib/utils/types";
 import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
-import { getNoteName, gnr } from "~/utils/post";
-
 export interface Props extends HTMLAttributes<"ul"> {
-  collections: CollectionEntry<"obsidian-note">[];
+  collections: SuperNotes;
 }
 
 const { collections, class: propsClass, ...props } = Astro.props;
@@ -15,9 +13,9 @@ const { collections, class: propsClass, ...props } = Astro.props;
   {
     collections?.map((n) => (
       <li class=" flom-0">
-        <NoteCard as="a" href={gnr(n.id)}>
+        <NoteCard as="a" href={n.route}>
           <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
-          <h3>{getNoteName(n.filePath)}</h3>
+          <h3>{n.name}</h3>
           <div class="metadata">{n.data.collectionItems?.length} NOTES</div>
         </NoteCard>
       </li>

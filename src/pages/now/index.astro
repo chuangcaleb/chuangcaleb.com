@@ -1,10 +1,11 @@
 ---
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
-import { getNoteName, gnr } from "~/utils/post";
+import { getAllNotes } from "~/utils/note";
 import { Content as ExplainNowContent } from "./_explain-now.mdx";
+import { gnr } from "~/utils/note-route";
 
-const allNotes = await getCollection("obsidian-note");
+const allNotes = await getAllNotes();
 const nowNotes = allNotes
   .filter((note) => note.data?.collection?.some((c) => c.id === "now"))
   .sort((a, b) => (a.id > b.id ? 1 : -1));
@@ -23,13 +24,11 @@ const { Content } = latestNowNote ? await render(latestNowNote) : {};
       <a href="#now-shows-latest-life-updates">What is a "/now" page?</a>
     </li>
     <li><a href={gnr("now")}>All "Now" notes</a></li>
-    <li><a href={gnr(latestNowNote.id)}>Archive Link →</a></li>
+    <li><a href={latestNowNote.route}>Archive Link →</a></li>
     {
       previousNowNote && (
         <li>
-          <a href={gnr(previousNowNote.id)}>
-            ← Prev: {getNoteName(previousNowNote.filePath)}
-          </a>
+          <a href={previousNowNote.route}>← Prev: {previousNowNote.name}</a>
         </li>
       )
     }

@@ -1,15 +1,14 @@
 ---
-import { getCollection } from "astro:content";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import NoteList from "~/components/layout/NoteList.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
+import { getAllNotes } from "~/utils/note";
 import Collections from "./_Collections.astro";
 import Featured from "./_Featured.astro";
 import { Content as GardenIntroContent } from "./_garden-intro.mdx";
-import type { Note } from "~/types";
 
-const publicNotes = await getCollection<"obsidian-note">("obsidian-note");
+const publicNotes = await getAllNotes();
 
 const leafNotes = publicNotes
   .filter((n) => !n.data.tags?.includes("📂/collection"))
