@@ -82,6 +82,7 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
 
     & :global(:is(h1)) {
       grid-column-end: feature;
+      --flow-space: var(--space-2xs);
     }
     & :global(h1 + *) {
       --flow-space: var(--size-relative-7);

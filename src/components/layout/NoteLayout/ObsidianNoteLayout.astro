@@ -1,7 +1,8 @@
 ---
-import { render, type CollectionEntry } from "astro:content";
-import { getNoteName } from "~/utils/post";
+import { getEntries, render, type CollectionEntry } from "astro:content";
+import { getNoteName, gnr } from "~/utils/post";
 import NoteLayout from "./NoteLayout.astro";
+import AccentA from "~/components/styled/monom/AccentA.astro";
 
 interface Props {
   entry: CollectionEntry<"obsidian-note">;
@@ -14,9 +15,33 @@ const { Content, headings } = await render(entry);
 // title
 const noteName = getNoteName(entry.filePath);
 const title = entry.data.title ?? noteName;
+const collectionsBelonging = entry.data.collection;
+const cs = !!collectionsBelonging
+  ? await getEntries<"obsidian-note">(collectionsBelonging)
+  : [];
 ---
 
 <NoteLayout title={title} headings={headings} metadata={entry.data}>
+  {
+    !!cs.length ? (
+      <div class="collections content">
+        {cs.map((c) => (
+          <AccentA href={gnr(c.id)}>
+            {`${c.data.emojip} ${getNoteName(c.filePath)}`}
+          </AccentA>
+        ))}
+      </div>
+    ) : (
+      <AccentA href="/garden">🪴 Back to Garden</AccentA>
+    )
+  }
   <Content />
   <slot slot="sidebar" name="sidebar" />
 </NoteLayout>
+
+<style>
+  .collections {
+    display: flex;
+    gap: var(--space-m);
+  }
+</style>
