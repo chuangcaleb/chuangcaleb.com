@@ -18,7 +18,5 @@ const title = entry.data.title ?? noteName;
 
 <NoteLayout title={title} headings={headings} metadata={entry.data}>
   <Content />
-  <Fragment slot="sidebar">
-    <slot name="sidebar" />
-  </Fragment>
+  <slot slot="sidebar" name="sidebar" />
 </NoteLayout>
