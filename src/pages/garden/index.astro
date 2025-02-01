@@ -38,23 +38,25 @@ const description =
 ---
 
 <BaseMain title="Digital Garden" description={description} class="linew-wide">
-  <article class="flow-2xl prose">
-    <TagWIcon iconName={icon} as="h1">Caleb's Digital Garden</TagWIcon>
-    <div
-      class="flow garden-intro flom-lg"
-      style={{ gridColumn: "span 2 / span 2" }}
-    >
-      <GardenIntroContent />
-    </div>
-    <div class="flow flom-lg" style={{ gridColumn: "span 1 / span 1" }}>
-      <h2 class="start-here-title">📍 Start Here</h2>
-      <ul>
-        <li><b>🚧 WIP</b></li>
-        <li>What's the Garden About?</li>
-        <li>How To Use This Site</li>
-      </ul>
-    </div>
-    <section class="flow-lg">
+  <article class="flow-2xl">
+    <header class="flow-xl prose">
+      <TagWIcon iconName={icon} as="h1">Caleb's Digital Garden</TagWIcon>
+      <div
+        class="flow garden-intro flom-lg"
+        style={{ gridColumn: "span 2 / span 2" }}
+      >
+        <GardenIntroContent />
+      </div>
+      <div class="flow flom-lg" style={{ gridColumn: "span 1 / span 1" }}>
+        <h2 class="start-here-title">📍 Start Here</h2>
+        <ul>
+          <li><b>🚧 WIP</b></li>
+          <li>What's the Garden About?</li>
+          <li>How To Use This Site</li>
+        </ul>
+      </div>
+    </header>
+    <section class="flow-lg region">
       <h2>✨ Featured</h2>
       <Featured />
     </section>
@@ -62,7 +64,7 @@ const description =
       <h2>Recently Published</h2>
       <NoteList items={leafNotes} />
     </section> -->
-    <section class="flow-lg">
+    <section class="flow-lg region">
       <h2>📂 All Collections</h2>
       <Collections collections={allCollections} />
     </section>
@@ -80,7 +82,7 @@ const description =
   .start-here-title {
     font-size: var(--step-2);
   }
-  article {
+  header {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
