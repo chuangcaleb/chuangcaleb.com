@@ -13,6 +13,7 @@ const { title, description, hasBanner } = Astro.props;
 <html lang={SITE.language} data-theme="dark">
   <head>
     <Head title={title} description={description} />
+    <slot name="head" />
   </head>
   <body>
     <Header hasBanner={hasBanner}>

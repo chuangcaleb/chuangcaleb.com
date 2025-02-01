@@ -22,6 +22,7 @@ const collectionData = isCollection && { isOrdered, items: collectionItems };
 ---
 
 <BaseMain title={title}>
+  <slot slot="head" name="head" />
   <Fragment slot="sheetBody">
     <h3>{title}</h3>
     <Metadata metadata={metadata} />

@@ -10,6 +10,7 @@ const { title, description, hasBanner, ...props } = Astro.props;
 
 <Base title={title} description={description} hasBanner={hasBanner}>
   <slot slot="sheetBody" name="sheetBody" />
+  <slot slot="head" name="head" />
   <main id="main" {...props}>
     <slot />
   </main>
