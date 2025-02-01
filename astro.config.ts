@@ -24,14 +24,6 @@ const integrations = [
 	...(import.meta.env.PROD ? productionIntegrations : []),
 ];
 
-// const REDIRECTS = {
-// 	'/linkedin': SOCIALS.LINKEDIN.href,
-// 	'/github': SOCIALS.GITHUB.href,
-// 	'/cv': SOCIALS.CV.href,
-// 	'/resume': SOCIALS.CV.href,
-// 	'/note': '/garden',
-// };
-
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://chuangcaleb.com',

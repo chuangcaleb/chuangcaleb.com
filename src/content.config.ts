@@ -1,9 +1,13 @@
-import {glob} from 'astro/loaders';
+import {file, glob} from 'astro/loaders';
 import {defineCollection, reference, z} from 'astro:content';
 
-// Two kinds of collections:
-// astro collections
-// obsidian collections, by caleb
+const redirects = defineCollection({
+	loader: file('src/data/redirects.yaml'),
+	schema: z.object({
+		id: z.string(),
+		redirect: z.string(),
+	}),
+});
 
 const projectCollection = defineCollection({
 	loader: glob({pattern: '**/[^_]*.mdx', base: './src/content/project'}),
@@ -51,4 +55,5 @@ const obsidianNoteCollection = defineCollection({
 export const collections = {
 	project: projectCollection,
 	'obsidian-note': obsidianNoteCollection,
+	redirects,
 };
