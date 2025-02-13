@@ -48,8 +48,8 @@
   text-decoration-line: underline;
   text-decoration-skip-ink: none;
   text-decoration-style: solid;
+  display: inline-flex;
   &:has(*) {
-    display: inline-flex;
     align-items: center;
     column-gap: 0.5ch;
   }
