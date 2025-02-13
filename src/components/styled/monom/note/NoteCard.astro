@@ -3,10 +3,10 @@ import { type HTMLTag, type Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>;
 
-const { as: Tag , ...props } = Astro.props;
-
+const { as: Tag, class: className, ...props } = Astro.props;
 ---
-<Tag {...props}>
+
+<Tag class:list={["unstyled-hover-link", className]} {...props}>
   <slot />
 </Tag>
 
@@ -45,7 +45,7 @@ const { as: Tag , ...props } = Astro.props;
     & :global(.metadata) {
       color: var(--fg3);
       font-size: var(--step--1);
-      font-family: var(--font-mono)
+      font-family: var(--font-mono);
     }
   }
 </style>

@@ -16,7 +16,10 @@ const {
 } = Astro.props;
 ---
 
-<Comp class:list={["cc-btn", variant, className]} {...props}>
+<Comp
+  class:list={["cc-btn unstyled-hover-link", variant, className]}
+  {...props}
+>
   <slot />
 </Comp>
 

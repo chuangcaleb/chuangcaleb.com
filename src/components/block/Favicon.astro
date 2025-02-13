@@ -12,7 +12,7 @@ const { src, alt, url, backgroundColor } = Astro.props;
 <style>
   img {
     height: 0.9em;
-    /* vertical-align: sub; */
+    margin-left: 0.1em;
     margin-bottom: -0.1em;
     display: inline;
   }
@@ -24,6 +24,5 @@ const { src, alt, url, backgroundColor } = Astro.props;
 <span>
   <img src={src} loading="lazy" alt={alt} style={{backgroundColor}} />
   {!url && <slot />}
-  {
-    url && <a href={url}><slot /></a>
-  }</span>
+  {url && <a href={url}><slot /></a>}
+</span>

@@ -9,7 +9,7 @@ const { tocItem } = Astro.props;
 ---
 
 <li>
-  <a href={"#" + tocItem.slug}>
+  <a class="unstyled-hover-link" href={"#" + tocItem.slug}>
     {tocItem.text}
   </a>
   {
