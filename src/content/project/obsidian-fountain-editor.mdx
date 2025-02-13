@@ -14,8 +14,10 @@ links:
     label: demo
 ---
 import Favicon from "~/components/block/Favicon.astro";
+import ObsidianIcon from "~/assets/obsidian.svg";
+import FountainIcon from "~/assets/fountain.jpg";
 
-<Favicon src="https://obsidian.md/images/obsidian-logo-gradient.svg" alt="obsidian logo" url="https://obsidian.md">Obsidian</Favicon> plugin for formatting <Favicon src="https://fountain.io/wp-content/uploads/2023/05/fountain-sign-164-150x150.png" url="https://fountain.io" alt="Fountain logo">Fountain</Favicon> screenplay syntax in the editor.
+<Favicon img={ObsidianIcon} alt="obsidian logo" url="https://obsidian.md">Obsidian</Favicon> plugin for formatting <Favicon img={FountainIcon} url="https://fountain.io" alt="Fountain logo">Fountain</Favicon> screenplay syntax in the editor.
 
 <div class="flex-row">
   <img src="https://img.shields.io/badge/dynamic/json?logo=obsidian&color=%23483699&style=flat&label=downloads&query=%24%5B%22fountain-editor%22%5D.downloads&url=https%3A%2F%2Fraw.githubusercontent.com%2Fobsidianmd%2Fobsidian-releases%2Fmaster%2Fcommunity-plugin-stats.json" alt="Obsidian Downloads" loading="lazy" />
