@@ -18,23 +18,24 @@ const cs = await getNoteEntries(entry.data.collection);
 ---
 
 <NoteLayout title={entry.name} headings={headings} metadata={entry.data}>
-  {
-    !!cs.length ? (
-      <div class="collections content">
-        {cs.map((c) => (
+  <div class="breadcrumb content">
+    {
+      !!cs.length ? (
+        cs.map((c) => (
           <AccentA href={c.route}>{`${c.data.emojip} ${c.name}`}</AccentA>
-        ))}
-      </div>
-    ) : (
-      <AccentA href="/garden">🪴 Back to Garden</AccentA>
-    )
-  }
+        ))
+      ) : (
+        <AccentA href="/garden">🪴 Back to Garden</AccentA>
+      )
+    }
+  </div>
+
   <Content />
   <slot slot="sidebar" name="sidebar" />
 </NoteLayout>
 
 <style>
-  .collections {
+  .breadcrumb {
     display: flex;
     gap: var(--space-m);
   }
