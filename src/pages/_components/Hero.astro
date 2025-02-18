@@ -45,7 +45,7 @@ const props = Astro.props;
         {
           Object.values(SOCIALS).map((link) => (
             <li >
-              <AccentA href={link.href}>
+              <AccentA href={link.href} noExtArrow>
                 <span>{link?.userId ?? link.label}</span>{}<Icon name={link.icon} />
               </AccentA>
             </li>

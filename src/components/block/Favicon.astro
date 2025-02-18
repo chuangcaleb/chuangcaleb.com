@@ -1,4 +1,6 @@
 ---
+import ProseA from "../styled/monom/ProseA.astro";
+
 interface Props {
   img: ImageMetadata;
   alt: string;
@@ -25,11 +27,28 @@ const { img, alt, url, backgroundColor } = Astro.props;
 </style>
 
 <span class="favicon">
-  <img
-    src={img.src}
-    alt={alt}
-    {...backgroundColor && { style: { backgroundColor } }}
-  />
-  {!url && <slot />}
-  {url && <a href={url}><slot /></a>}
-</span>
+  {
+    !url && (
+      <>
+        <img
+          src={img.src}
+          alt={alt}
+          {...(backgroundColor && { style: { backgroundColor } })}
+        />
+        <slot />
+      </>
+    )
+  }
+  {
+    url && (
+      <ProseA href={url}>
+        <img
+          src={img.src}
+          alt={alt}
+          {...(backgroundColor && { style: { backgroundColor } })}
+        />
+        <slot />
+      </ProseA>
+    )
+  }</span
+>

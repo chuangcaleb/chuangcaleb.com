@@ -4,6 +4,8 @@ import NoteLayout from "~/components/layout/NoteLayout/NoteLayout.astro";
 import { getAllNotes } from "~/utils/note";
 import { Content as ExplainNowContent } from "./_explain-now.mdx";
 import { gnr } from "~/utils/note-route";
+import ProseA from "~/components/styled/monom/ProseA.astro";
+import { defaultComponents } from "lib/utils/markdown";
 
 const allNotes = await getAllNotes();
 const nowNotes = allNotes
@@ -17,8 +19,8 @@ const { Content } = latestNowNote ? await render(latestNowNote) : {};
 ---
 
 <NoteLayout title="Now">
-  {Content && <Content />}
-  <ExplainNowContent />
+  {Content && <Content components={defaultComponents} />}
+  <ExplainNowContent components={defaultComponents} />
   <ul slot="sidebar" class="toast flow-s">
     <li>
       <a href="#now-shows-latest-life-updates">What is a "/now" page?</a>

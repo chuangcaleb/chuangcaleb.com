@@ -3,7 +3,9 @@ import { Image } from "@unpic/astro";
 import { Icon } from "astro-iconify";
 import { render, type CollectionEntry } from "astro:content";
 import { getCldImgData } from "lib/cloudinary/get";
+import { defaultComponents } from "lib/utils/markdown";
 import AccentA from "~/components/styled/monom/AccentA.astro";
+import ProseA from "~/components/styled/monom/ProseA.astro";
 import Caps from "~/components/styled/polym/Caps.astro";
 
 interface Props {
@@ -12,7 +14,8 @@ interface Props {
 
 const { project } = Astro.props;
 
-const { Content } = await render(project);
+const { Content } = await render(project)
+
 
 const i = getCldImgData("projects/" + project.id, true);
 ---
@@ -23,7 +26,7 @@ const i = getCldImgData("projects/" + project.id, true);
       <h3>{project.data.title}</h3>
       <Caps>{project.data.kind}</Caps>
     </header>
-    <Content  />
+    <Content components={defaultComponents} />
     <div class="links">
       <Icon name="lucide:link" />
       {

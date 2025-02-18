@@ -19,7 +19,7 @@ const { class: propsClass, ...props } = Astro.props;
     {
       Object.values(SOCIALS).map((l) => (
         <li>
-          <AccentA href={l.href}>
+          <AccentA href={l.href} noExtArrow>
             <Icon name={l.icon} aria-hidden="true" />{}{l.userId ?? l.label}
           </AccentA>
         </li>

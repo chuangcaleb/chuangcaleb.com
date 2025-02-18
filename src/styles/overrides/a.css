@@ -51,23 +51,7 @@
   &:has(*) {
     display: inline-flex;
     align-items: center;
-    column-gap: 0.75ch;
-  }
-}
-
-:where(
-  article
-    a:is(
-      [href^="http://"],
-      [href^="https://"]
-    ):not(
-      [href^="https://chuangcaleb.com"]
-    )
-) {
-  &:not(:has(*)):after,
-  & > .a-text:after {
-    content: " \2197\FE0E";
-    font-family: system-ui;
+    column-gap: 0.5ch;
   }
 }
 

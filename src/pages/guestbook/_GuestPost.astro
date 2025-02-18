@@ -1,6 +1,7 @@
 ---
 import { parse } from "date-fns";
 import type { GuestPost } from "lib/google/sheets/types";
+import ProseA from "~/components/styled/monom/ProseA.astro";
 import { formatIso } from "~/utils/time";
 
 interface Props {
@@ -34,7 +35,9 @@ const formattedDate = formatIso(
     <p>
       {
         hasLink ? (
-          <a href={post["🔗 Social Link"]}>{post["📇 Display Name"]}</a>
+          <ProseA href={post["🔗 Social Link"]}>
+            {post["📇 Display Name"]}
+          </ProseA>
         ) : (
           <span>{post["📇 Display Name"]}</span>
         )
