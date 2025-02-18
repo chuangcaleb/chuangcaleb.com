@@ -7,15 +7,17 @@ import AccentA from "../styled/monom/AccentA.astro";
 
 type Props = {
   link: LinkKey;
+  extArrow?: boolean;
+  display?: "userId" | "label";
 } & HTMLAttributes<"a">;
 
-const { link, ...props } = Astro.props;
+const { link, extArrow = false, display = "label", ...props } = Astro.props;
 
 const l = SOCIALS[link];
 ---
 
-<AccentA href={l.href} {...props}>
+<AccentA {...props} href={l.href} noExtArrow={!extArrow}>
   <Icon name={l.icon} class="scale-body" aria-hidden="true" /><span
-    class="a-text">{l.label}</span
+    class="a-text">{(display === "label" ? l.label : l.userId) ?? l.label}</span
   >
 </AccentA>
