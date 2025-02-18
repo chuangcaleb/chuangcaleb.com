@@ -4,6 +4,7 @@ import type { HTMLAttributes } from "astro/types";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { SOCIALS } from "~/data/links";
 import AccentA from "../styled/monom/AccentA.astro";
+import SocialLink from "../block/SocialLink.astro";
 
 export interface Props extends HTMLAttributes<"section"> {}
 
@@ -17,11 +18,9 @@ const { class: propsClass, ...props } = Astro.props;
   <p>You made it to the end! ...Or is it just the beginning?</p>
   <ul class="norm flow-xs">
     {
-      Object.values(SOCIALS).map((l) => (
+      Object.keys(SOCIALS).map((l) => (
         <li>
-          <AccentA href={l.href}>
-            <Icon name={l.icon} aria-hidden="true" />{}{l.userId ?? l.label}
-          </AccentA>
+          <SocialLink link={l} display="userId" />
         </li>
       ))
     }

@@ -1,11 +1,12 @@
 ---
+import { defaultComponents } from "lib/utils/markdown";
 import * as content from "./overview.mdx";
 
 const { Content } = content;
-const components = { h1: "h3" };
+const components = { h1: "h3", ...defaultComponents };
 ---
 
-<section class="full linew-wide region surface-alt flom-md">
+<section class="full linew-wide region surface-alt flom-xl">
   <article class="flow-lg prose">
     <h2 class="sr-only">Overview</h2>
     <Content components={components} />
@@ -30,7 +31,7 @@ const components = { h1: "h3" };
         --flow-space: var(--size-relative-2);
       }
     }
-    a.accent svg {
+    a.accent svg.scale-body {
       width: 1.25em;
     }
   }

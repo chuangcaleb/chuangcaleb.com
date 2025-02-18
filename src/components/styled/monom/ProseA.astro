@@ -1,0 +1,38 @@
+---
+import { type HTMLAttributes } from "astro/types";
+
+export interface Props extends HTMLAttributes<"a"> {
+  noExtArrow?: boolean;
+}
+
+const props = Astro.props;
+const { noExtArrow = false, href, ...rest } = props;
+const isExternal = !noExtArrow && href?.toString().startsWith("http");
+---
+
+<style>
+  svg {
+    width: 0.5em;
+    height: 0.5em;
+    overflow: visible;
+    margin-inline-end: 0.15em;
+  }
+  path {
+    stroke-width: 2px;
+    fill: none;
+    stroke: currentColor;
+  }
+</style>
+
+<a href={href} {...rest}>
+  <slot />{
+    isExternal && (
+      <svg viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+        <>
+          <path class="icons_stroke__FrZ8d" d="M1 12L12.5 0.499965" />
+          <path class="icons_stroke__FrZ8d" d="M1 0.5H12.5V12" />
+        </>
+      </svg>
+    )
+  }</a
+>

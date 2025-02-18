@@ -3,16 +3,21 @@ import Icon from "astro-iconify";
 import type { HTMLAttributes } from "astro/types";
 import type { LinkKey } from "~/data/links";
 import { SOCIALS } from "~/data/links";
+import AccentA from "../styled/monom/AccentA.astro";
 
 type Props = {
   link: LinkKey;
+  extArrow?: boolean;
+  display?: "userId" | "label";
 } & HTMLAttributes<"a">;
 
-const { link, ...props } = Astro.props;
+const { link, extArrow = false, display = "label", ...props } = Astro.props;
 
 const l = SOCIALS[link];
 ---
 
-<a href={l.href} {...props}>
-  <Icon name={l.icon} /><span class="a-text">{l.label}</span>
-</a>
+<AccentA {...props} href={l.href} noExtArrow={!extArrow}>
+  <Icon name={l.icon} class="scale-body" aria-hidden="true" /><span
+    class="a-text">{(display === "label" ? l.label : l.userId) ?? l.label}</span
+  >
+</AccentA>

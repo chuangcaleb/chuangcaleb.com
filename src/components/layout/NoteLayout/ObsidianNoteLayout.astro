@@ -1,5 +1,6 @@
 ---
 import { render } from "astro:content";
+import { defaultComponents } from "lib/utils/markdown";
 import type { SuperNotes } from "lib/utils/types";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteEntries } from "~/utils/note";
@@ -30,7 +31,7 @@ const cs = await getNoteEntries(entry.data.collection);
     }
   </div>
 
-  <Content />
+  <Content components={defaultComponents} />
   <slot slot="sidebar" name="sidebar" />
 </NoteLayout>
 

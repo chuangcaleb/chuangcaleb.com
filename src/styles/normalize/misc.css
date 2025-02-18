@@ -12,5 +12,6 @@
   width: 1em;
   color: currentColor;
   color: var(--svg-color);
+  vertical-align: middle;
   /* height: 1em; */
 }

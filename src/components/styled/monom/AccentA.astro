@@ -1,17 +1,21 @@
 ---
 import { type HTMLAttributes } from "astro/types";
+import ProseA from "./ProseA.astro";
 
-export interface Props extends HTMLAttributes<"a"> {}
+export interface Props extends HTMLAttributes<"a"> {
+  noExtArrow?: boolean;
+}
 
 const { class: propsClass, ...props } = Astro.props;
 ---
 
-<a {...props} class:list={["accent", propsClass]}><slot /></a>
+<ProseA {...props} class:list={["accent", propsClass]}><slot /></ProseA>
 
 <style is:global>
   a.accent {
     --color: var(--ax1);
     --color-underline: var(--ax3);
+    font-size: var(--step-0);
     &:is(:hover, :focus, :active) {
       --color-underline: var(--ax1);
     }
