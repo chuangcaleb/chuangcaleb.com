@@ -17,7 +17,7 @@ const l = SOCIALS[link];
 ---
 
 <AccentA {...props} href={l.href} noExtArrow={!extArrow}>
-  <Icon name={l.icon} class="scale-body" aria-hidden="true" /><span
-    class="a-text">{(display === "label" ? l.label : l.userId) ?? l.label}</span
+  <Icon name={l.icon} aria-hidden="true" /><span class="a-text"
+    >{(display === "label" ? l.label : l.userId) ?? l.label}</span
   >
 </AccentA>

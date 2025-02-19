@@ -27,7 +27,11 @@ const isExternal = !noExtArrow && href?.toString().startsWith("http");
 <a href={href} {...rest}>
   <slot />{
     isExternal && (
-      <svg viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        class="ext-arrow"
+        viewBox="0 0 13 13"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <>
           <path class="icons_stroke__FrZ8d" d="M1 12L12.5 0.499965" />
           <path class="icons_stroke__FrZ8d" d="M1 0.5H12.5V12" />
