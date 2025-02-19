@@ -82,7 +82,7 @@ const props = Astro.props;
 
     > :global(*) {
       grid-column: 1 / -2;
-      @media (width < 600px) {
+      @media (width < 675px) {
         grid-column: 1 / -1;
       }
     }
@@ -140,12 +140,12 @@ const props = Astro.props;
     align-items: end;
     margin-block-start: var(--space-l);
 
-    @media (width >= 600px) {
+    @media (width >= 675px) {
       :global(a) {
         flex-direction: row-reverse;
       }
     }
-    @media (width < 600px) {
+    @media (width < 675px) {
       grid-column: 1 / -1;
       grid-row: auto;
     }
@@ -154,7 +154,7 @@ const props = Astro.props;
       :global(svg) {
         width: var(--step-3);
       }
-      @media (width < 600px) {
+      @media (width < 675px) {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
