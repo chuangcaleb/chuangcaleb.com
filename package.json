@@ -38,7 +38,7 @@
         "fs-extra": "^11.3.0",
         "google-auth-library": "^9.15.1",
         "google-spreadsheet": "^4.1.4",
-        "googleapis": "^144.0.0",
+        "googleapis": "^148.0.0",
         "mdast-util-to-string": "^4.0.0",
         "open-props": "^1.7.14",
         "postcss-custom-media": "^11.0.5",
