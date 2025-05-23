@@ -9,9 +9,8 @@ import {defineConfig, envField} from 'astro/config';
 // import { remarkReadingTime } from "lib/remark/reading-time";
 // import { remarkStripH1 } from "lib/remark/strip-h1";
 import {imageService} from '@unpic/astro/service';
-import {remarkSimpleStripPercentComments} from './lib/remark/strip-obsidian-comments.js';
 import {slugify} from './lib/markdown/string.js';
-import {SOCIALS} from './src/data/links.js';
+import {remarkSimpleStripPercentComments} from './lib/remark/strip-obsidian-comments.js';
 import {gnr} from './src/utils/note-route.js';
 
 const NOTES_DIR = 'src/content/obsidian-note';
