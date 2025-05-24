@@ -9,6 +9,7 @@ export function slugify(string_: string) {
 		.replaceAll(/[\u0300-\u036F]/g, '') // Remove all the accents, which happen to be all in the \u03xx UNICODE block.
 		.trim() // Trim leading or trailing whitespace
 		.toLowerCase() // Convert to lowercase
+		.replaceAll(/[[\]{}()]/g, '') // Remove brackets of all kinds
 		.replaceAll(/[^a-z\d -/]/g, '') // Remove non-alphanumeric characters
 		.replaceAll(/\s+/g, '-') // Replace spaces with hyphens
 		.replaceAll(/-+/g, '-'); // Remove consecutive hyphens
