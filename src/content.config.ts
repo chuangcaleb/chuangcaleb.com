@@ -37,12 +37,12 @@ const baseObsidianNoteSchema = z
 		collection: z.array(reference('obsidian-note')),
 		prev: reference('obsidian-note'),
 		next: reference('obsidian-note'),
-		created: z.string(),
-		modified: z.string(),
-		published: z.string(),
+		created: z.union([z.string(), z.date()]),
+		modified: z.union([z.string(), z.date()]),
+		published: z.union([z.string(), z.date()]),
 		featured: z.number(),
 		emojip: z.string(),
-		series: z.boolean(),
+		series: z.array(reference('obsidian-note')).optional(),
 		collectionItems: z.array(reference('obsidian-note')),
 	})
 	.partial();
