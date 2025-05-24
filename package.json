@@ -12,10 +12,11 @@
         "format:check": "pnpm xo -- --list-different .",
         "format:fix": "pnpm xo --write .",
         "gdrive:download": "tsx ./lib/google/drive/download-folder",
+        "b2:download": "node ./lib/b2/index.mjs",
         "preview:nobuild": "astro preview",
         "preview:nocache": "pnpm build:nocache && astro preview",
         "preview": "pnpm build && astro preview",
-        "setup-external": "pnpm gdrive:download && pnpm cloudinary:cache",
+        "setup-external": "pnpm b2:download && pnpm cloudinary:cache",
         "test": "xo"
     },
     "dependencies": {
@@ -31,6 +32,7 @@
         "astro-iconify": "^1.2.0",
         "astro-purgecss": "^5.2.2",
         "astro-robots-txt": "^1.0.0",
+        "backblaze-b2": "^1.7.0",
         "cloudinary": "^2.6.0",
         "clsx": "^2.1.1",
         "date-fns": "^4.1.0",
