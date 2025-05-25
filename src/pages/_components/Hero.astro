@@ -1,26 +1,25 @@
 ---
-import { Image } from "@unpic/astro";
 import { Icon } from "astro-iconify";
 import SocialLink from "~/components/block/SocialLink.astro";
 import Button from "~/components/styled/polym/Button.astro";
 import { SOCIALS } from "~/data/links";
 import { Content as HeroBodyContent } from "./_hero-body.mdx";
+import profileImg from "src/assets/img/profile.jpg";
+import { Picture } from "astro:assets";
 
 const props = Astro.props;
 ---
 
 <section class="region" {...props}>
   <div class="cont-img">
-    <Image
-      src="https://res.cloudinary.com/chuangcaleb/image/upload/v1721485442/chuangcaleb/hero_faqkfb.jpg"
+    <Picture
+      src={profileImg}
       alt="Facial profile picture of Chuang Caleb"
-      priority
-      height={400}
-      width={400}
-      sizes={`(max-width: 1050px) 30vw, 800px`}
-      breakpoints={[140, 280, 400, 480, 560, 650, 720, 800]}
-      aspectRatio={1}
+      sizes={`(max-width: 1050px) 35.4vw, 800px`}
+      widths={[140, 280, 400, 480, 560, 650, 720, 800]}
       class="border"
+      formats={["avif", "webp"]}
+      loading="eager"
     />
   </div>
   <div class="cont-text | flow">

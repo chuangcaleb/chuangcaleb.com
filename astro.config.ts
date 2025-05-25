@@ -48,9 +48,9 @@ export default defineConfig({
 	},
 	scopedStyleStrategy: 'attribute',
 	// redirects: REDIRECTS,
-	image: {
-		service: imageService({placeholder: 'blurhash'}),
-	},
+	// image: {
+	// 	service: imageService({placeholder: 'blurhash'}),
+	// },
 	env: {
 		schema: {
 			CLOUDINARY_API_KEY: envField.string({

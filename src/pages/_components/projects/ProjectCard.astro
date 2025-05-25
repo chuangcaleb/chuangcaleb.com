@@ -1,11 +1,9 @@
 ---
-import { Image } from "@unpic/astro";
 import { Icon } from "astro-iconify";
+import { Picture } from "astro:assets";
 import { render, type CollectionEntry } from "astro:content";
-import { getCldImgData } from "lib/cloudinary/get";
 import { defaultComponents } from "lib/utils/markdown";
 import AccentA from "~/components/styled/monom/AccentA.astro";
-import ProseA from "~/components/styled/monom/ProseA.astro";
 import Caps from "~/components/styled/polym/Caps.astro";
 
 interface Props {
@@ -17,7 +15,6 @@ const { project } = Astro.props;
 const { Content } = await render(project)
 
 
-const i = getCldImgData("projects/" + project.id, true);
 ---
 
 <article class="project">
@@ -39,15 +36,15 @@ const i = getCldImgData("projects/" + project.id, true);
     </div>
   </div>
   {
-    i ? (
-      <Image
-        src={i.secure_url}
+    project.data.image ? (
+      <Picture
+        src={project.data.image}
         alt={`Display image showcasing my ${project.data.kind} project for ${project.data.title}`}
         height={450}
-        // width={700}
-        // aspectRatio={1.6}
+        sizes={`(max-width: 637px) 93vw, 623px`}
+        widths={[343, 480, 560, 623]}
         class="border"
-        layout="constrained"
+        formats={["avif", "webp"]}
         />
     ) : (
       <div />

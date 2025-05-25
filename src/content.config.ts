@@ -11,21 +11,23 @@ const redirects = defineCollection({
 
 const projectCollection = defineCollection({
 	loader: glob({pattern: '**/[^_]*.mdx', base: './src/content/project'}),
-	schema: z.object({
-		sequence: z.number(),
-		hidden: z.boolean().optional(),
-		title: z.string(),
-		kind: z.string(),
-		links: z
-			.array(
-				z.object({
-					icon: z.string(),
-					href: z.string(),
-					label: z.string(),
-				}),
-			)
-			.optional(),
-	}),
+	schema: ({image}) =>
+		z.object({
+			sequence: z.number(),
+			hidden: z.boolean().optional(),
+			title: z.string(),
+			kind: z.string(),
+			image: image().optional(),
+			links: z
+				.array(
+					z.object({
+						icon: z.string(),
+						href: z.string(),
+						label: z.string(),
+					}),
+				)
+				.optional(),
+		}),
 });
 
 /* ------------------------------------ - ----------------------------------- */
