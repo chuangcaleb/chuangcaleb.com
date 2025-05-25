@@ -8,7 +8,6 @@ import {defineConfig, envField} from 'astro/config';
 // Import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
 // import { remarkStripH1 } from "lib/remark/strip-h1";
-import {imageService} from '@unpic/astro/service';
 import {slugify} from './lib/markdown/string.js';
 import {remarkSimpleStripPercentComments} from './lib/remark/strip-obsidian-comments.js';
 import {gnr} from './src/utils/note-route.js';
