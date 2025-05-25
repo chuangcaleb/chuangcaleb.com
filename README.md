@@ -23,8 +23,8 @@ All commands are run from the root of the project, from a terminal.
 | `pnpm format:check`     | Print code-format results with Prettier                                                                  |
 | `pnpm format:fix`       | Format all code with Prettier (will write)                                                               |
 | `pnpm cloudinary:cache` | Pre-cache Cloudinary images with its API                                                                 |
-| `pnpm gdrive:download`  | Download Google Drive folder to local path                                                               |
-| `pnpm setup:external`   | Alias for gdrive:download && cloudinary:cache                                                            |
+| `pnpm b2:download`  | Download b2 bucket to local `src/content` directory                                                               |
+| `pnpm setup:external`   | Alias for `b2:download && cloudinary:cache`                                                            |
 | `pnpm astro ...`        | Run CLI commands like `astro add`, `astro preview`                                                       |
 
 Check [package.json](./package.json) for specific implementation.
@@ -256,7 +256,7 @@ So just introduce a new variable lol, `--a-l` as the Accent Lightness coefficien
 
 #### Context
 
-I write my content locally in Obsidian and want to display them in the Astro site. I already version control with git, ~~so I didn't need to reach for another remote cloud sync option~~ but my public notes are mixed in with private ones. I don't want to expose all my personal journal notes lol. Just those files/notes in select folders/directories or passing some frontmatter condition.
+I write my content locally in Obsidian and want to display them in the Astro site. I already version control with git, ~~so I didn't need to reach for another remote cloud sync option~~ but my public notes are mixed in with private ones. I don't want to expose all my personal journal notes lol. Just those files/notes ~~in select folders/directories or~ passing some frontmatter condition.
 
 One way would be to nest the obsidian vault repository within the Astro repository, and gitignore bad paths. But then that would load all Obsidian notes locally. A [previous implementation](chuangcaleb.github.io/wtsa) was to nest the Astro repository at a public directory of the Obsidian vault repository.
 
@@ -264,21 +264,41 @@ But in the end, both ways will source control the content files, so I had [a bun
 
 #### Processing
 
-Currently, I make use of the [kometenstaub/metadata-extractor](https://github.com/kometenstaub/metadata-extractor) plugin to dump the metadata cache of my entire Obsidian workspace, to a local `.json` file. I run a custom script to process that metadata cache to filter out private notes and reorganize nested paths to root. A second script copies the processed list of markdown files and writes their new filepaths into an output directory. All this processing is `gitignored` in my main Obsidian repo.
+~~Currently, I make use of the [kometenstaub/metadata-extractor](https://github.com/kometenstaub/metadata-extractor) plugin to dump the metadata cache of my entire Obsidian workspace, to a local `.json` file.~~ I had simplified a script to directly read from directory.
+
+I run a custom script to process that metadata cache to ~~filter out private note~~ select all notes with a frontmatter, and reorganize nested paths to root. The next step copies the processed list of markdown files and writes their new filepaths into an output directory. All this processing is `gitignored` in my main Obsidian repo.
 
 #### Syncing
 
-That output folder is synced to the cloud using Google Drive.
+That output folder is synced to the cloud using ~~git~~ ~~Google Drive~~ B2 Backblaze.
 
 I had previously git-tracked this output directory and attached that repository as a [submodule](.gitmodules) that would reside in this repo at [`src/content/obsidian-note`](src/content/obsidian-note). It was simple and was my working solution for months... but (1a) version controlling non-source-code-data felt wrong, (2) I didn't want to look into safely running shell commands for stuff like `git push`. (1b) I also intend to sync up my non-markdown assets like images.
 
-Using [Google Drive Desktop](https://workspace.google.com/products/drive/#download), I set my local output folder of markdown files for syncing up to the Drive.
+2nd solution was using [Google Drive Desktop](https://workspace.google.com/products/drive/#download). I set my local output folder of markdown files for syncing up to the Drive. I used the same [Google Service Account](https://developers.google.com/identity/protocols/oauth2/service-account) from the [guestbook feature](https://chuangcaleb.com/note/making-my-website-guestbook/) to download the files with [googleapis - npm](https://www.npmjs.com/package/googleapis) to the `src/content/obsidian-note/` folder. For implementation details, see [[lib/google/drive/download-folder.ts]].
 
-I use the same [Google Service Account](https://developers.google.com/identity/protocols/oauth2/service-account) from the [guestbook feature](https://chuangcaleb.com/note/making-my-website-guestbook/) to download the files with [googleapis - npm](https://www.npmjs.com/package/googleapis) to the `src/content/obsidian-note/` folder. For implementation details, see [[lib/google/drive/download-folder.ts]].
+It was an alright solution! There's no sensitive information. I just need a few MB's of cloud bucket storage, and this simple + free solution is easily better than provisioning an S3 bucket and all that.
 
-It's an alright solution! This is another pledge to the Google overlords... but honestly there's no sensitive information. I just need a few MB's of cloud bucket storage, and this simple + free solution is easily better than provisioning an S2 bucket and all that.
+But I eventually found Backblaze B2, and figured out how to handle allat.
 
-The scripts are currently in my private repo, I can share it upon request.
+Syncing up uses the `b2` CLI.
+
+```shell
+b2 sync
+ \ --delete # mirror, delete on remote if not found in local
+ \ --compare-versions size # see note below
+ \ --replace-newer # vs. skip-newer
+ \ --exclude-regex '.*\\.DS_Store$' # ignores .DS_Store's
+ \ '/Users/chuangcaleb/Documents/Obsidian/obsidian-caleb/system/cloud-sync'
+ \ b2://obsidian-caleb
+```
+
+Note: currently `b2 sync` cannot track diff by SHA1
+So we are using next best, file size
+[sync — B2_Command_Line_Tool 4.0.2 documentation](https://b2-command-line-tool.readthedocs.io/en/master/subcommands/sync.html)
+
+Syncing down necessitates the `backblaze-b2` package from `npm` (instead of `b2` CLI), because it needs to be executed in the `node` environment of the cloud runner during `build`.
+
+The pre-upload processing script is currently in my private repo, it just doesn't belong anywhere else, it's very customized. I can share it upon request.
 
 ### Cloudinary Images
 
