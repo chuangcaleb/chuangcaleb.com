@@ -53,19 +53,14 @@
     "devDependencies": {
         "@types/fs-extra": "^11.0.4",
         "@types/mdast": "^4.0.4",
+        "@types/node": "^22.15.27",
         "@types/react": "^19.1.0",
         "@types/react-dom": "^18.3.5",
         "@types/unist": "^3.0.3",
         "astro-og": "^0.3.0",
-        "mdast": "^3.0.0",
         "sass": "^1.86.1",
         "tsx": "^4.19.3",
         "unist-util-visit": "^5.0.0",
         "xo": "^0.60.0"
-    },
-    "pnpm": {
-        "patchedDependencies": {
-            "@portaljs/remark-wiki-link@1.2.0": "patches/@portaljs__remark-wiki-link@1.2.0.patch"
-        }
     }
 }

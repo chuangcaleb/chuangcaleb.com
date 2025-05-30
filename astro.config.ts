@@ -1,7 +1,6 @@
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import {getPermalinks, remarkWikiLink} from '@portaljs/remark-wiki-link';
 import compressor from 'astro-compressor';
 import robotsTxt from 'astro-robots-txt';
 import {defineConfig, envField} from 'astro/config';
@@ -9,9 +8,8 @@ import {defineConfig, envField} from 'astro/config';
 // import { remarkReadingTime } from "lib/remark/reading-time";
 // import { remarkStripH1 } from "lib/remark/strip-h1";
 import og from 'astro-og';
+import remarkWikilinks from './lib/remark/remark-wikilinks.js';
 import {remarkSimpleStripPercentComments} from './lib/remark/strip-obsidian-comments.js';
-
-const NOTES_DIR = 'src/content/obsidian-note';
 
 const productionIntegrations = [robotsTxt(), sitemap(), compressor()];
 
@@ -34,22 +32,15 @@ export default defineConfig({
 			// RemarkStripH1,
 			// remarkReadingTime,
 			remarkSimpleStripPercentComments,
-			[
-				// https://github.com/datopian/datahub/issues/1059
-				remarkWikiLink,
-				{
-					pathFormat: 'obsidian-short',
-					permalinks: getPermalinks(NOTES_DIR),
-					hrefTemplate: (route: string) => gnr(slugify(route)),
-				},
-			],
+			remarkWikilinks,
 		],
 	},
 	scopedStyleStrategy: 'attribute',
 	// redirects: REDIRECTS,
-	// image: {
-	// 	service: imageService({placeholder: 'blurhash'}),
-	// },
+	image: {
+		// endpoint: ,
+		domains: ['assets.chuangcaleb.com'],
+	},
 	env: {
 		schema: {
 			CLOUDINARY_API_KEY: envField.string({
