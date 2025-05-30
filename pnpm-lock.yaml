@@ -97,6 +97,9 @@ importers:
       typescript:
         specifier: ^5.8.2
         version: 5.8.2
+      unified:
+        specifier: ^11.0.5
+        version: 11.0.5
       utopia-core-scss:
         specifier: ^1.2.1
         version: 1.2.1
@@ -104,18 +107,33 @@ importers:
       '@types/fs-extra':
         specifier: ^11.0.4
         version: 11.0.4
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
       '@types/react':
         specifier: ^19.1.0
         version: 19.1.0
       '@types/react-dom':
         specifier: ^18.3.5
         version: 18.3.5(@types/react@19.1.0)
+      '@types/unist':
+        specifier: ^3.0.3
+        version: 3.0.3
+      astro-og:
+        specifier: ^0.3.0
+        version: 0.3.0(astro@5.5.6(@types/node@22.14.0)(rollup@4.38.0)(sass-embedded@1.80.3)(sass@1.86.1)(terser@5.39.0)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0))
+      mdast:
+        specifier: ^3.0.0
+        version: 3.0.0
       sass:
         specifier: ^1.86.1
         version: 1.86.1
       tsx:
         specifier: ^4.19.3
         version: 4.19.3
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
       xo:
         specifier: ^0.60.0
         version: 0.60.0(@types/eslint@9.6.1)(webpack@5.92.1)
@@ -1812,6 +1830,11 @@ packages:
 
   astro-iconify@1.2.0:
     resolution: {integrity: sha512-arLDiSop3DAHHS30raZysspkz5MO9moJJZ4rJk1Ty+4W1jZDa00Jme0LrnRJRDB6BB2EDTxC553fo20yz3MeYw==}
+
+  astro-og@0.3.0:
+    resolution: {integrity: sha512-qC3/EbNg863hBH3e8a7HkomAzU2ZoDcRNey1H1iXVXoLmRbLvCj8ZDrz0gJOZ3H1oWAAJWsagUnFy+d33rSdxA==}
+    peerDependencies:
+      astro: '>=5.0.0'
 
   astro-purgecss@5.2.2:
     resolution: {integrity: sha512-lL4JqBlIyRTj6CQPJrGRWJYX6OzyGBEGjLwxmgSHALn0xKsU0zf9X4Lnd+L+SM0wa+o7UbD9wXMhmK42sjXl8g==}
@@ -3560,6 +3583,10 @@ packages:
   mdast-util-wiki-link@0.0.2:
     resolution: {integrity: sha512-lSsR10/dPuYIxzjGZIGA4oYzsnEnqcsD6DTXL0pqdbBzNB9teKVZB2aIzZcUsdg31v/NoHOstkVwzbN6VrQLtw==}
 
+  mdast@3.0.0:
+    resolution: {integrity: sha512-xySmf8g4fPKMeC07jXGz971EkLbWAJ83s4US2Tj9lEdnZ142UP5grN73H1Xd3HzrdbU5o9GYYP/y8F9ZSwLE9g==}
+    deprecated: '`mdast` was renamed to `remark`'
+
   mdn-data@2.0.28:
     resolution: {integrity: sha512-aylIc7Z9y4yzHYAJNuESG3hfhC+0Ibp/MAMiaOZgNv4pmEdFyfZhhhny4MNiAfWdBQ1RQ2mfDWmM1x8SvGyp8g==}
 
@@ -4226,6 +4253,9 @@ packages:
   postcss@8.5.3:
     resolution: {integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==}
     engines: {node: ^10 || ^12 || >=14}
+
+  preact@10.26.5:
+    resolution: {integrity: sha512-fmpDkgfGU6JYux9teDWLhj9mKN55tyepwYbxHgQuIxbWQzgFg5vk7Mrrtfx7xRxq798ynkY4DDDxZr235Kk+4w==}
 
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
@@ -7271,6 +7301,11 @@ snapshots:
       - debug
       - supports-color
 
+  astro-og@0.3.0(astro@5.5.6(@types/node@22.14.0)(rollup@4.38.0)(sass-embedded@1.80.3)(sass@1.86.1)(terser@5.39.0)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0)):
+    dependencies:
+      astro: 5.5.6(@types/node@22.14.0)(rollup@4.38.0)(sass-embedded@1.80.3)(sass@1.86.1)(terser@5.39.0)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0)
+      preact: 10.26.5
+
   astro-purgecss@5.2.2(astro@5.5.6(@types/node@22.14.0)(rollup@4.38.0)(sass-embedded@1.80.3)(sass@1.86.1)(terser@5.39.0)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0))(purgecss@6.0.0):
     dependencies:
       astro: 5.5.6(@types/node@22.14.0)(rollup@4.38.0)(sass-embedded@1.80.3)(sass@1.86.1)(terser@5.39.0)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0)
@@ -9540,6 +9575,8 @@ snapshots:
       '@babel/runtime': 7.26.7
       mdast-util-to-markdown: 0.6.5
 
+  mdast@3.0.0: {}
+
   mdn-data@2.0.28: {}
 
   mdn-data@2.0.30: {}
@@ -10422,6 +10459,8 @@ snapshots:
       nanoid: 3.3.11
       picocolors: 1.1.1
       source-map-js: 1.2.1
+
+  preact@10.26.5: {}
 
   prelude-ls@1.2.1: {}
 

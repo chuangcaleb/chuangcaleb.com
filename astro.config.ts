@@ -8,9 +8,8 @@ import {defineConfig, envField} from 'astro/config';
 // Import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
 // import { remarkStripH1 } from "lib/remark/strip-h1";
-import {slugify} from './lib/markdown/string.js';
+import og from 'astro-og';
 import {remarkSimpleStripPercentComments} from './lib/remark/strip-obsidian-comments.js';
-import {gnr} from './src/utils/note-route.js';
 
 const NOTES_DIR = 'src/content/obsidian-note';
 
@@ -19,6 +18,7 @@ const productionIntegrations = [robotsTxt(), sitemap(), compressor()];
 const integrations = [
 	mdx(),
 	react(),
+	...(import.meta.env.DEV ? [og()] : []),
 	...(import.meta.env.PROD ? productionIntegrations : []),
 ];
 
