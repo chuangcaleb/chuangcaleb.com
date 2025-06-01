@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "@astrojs/check": "^0.9.4",
-        "@astrojs/mdx": "^4.2.3",
+        "@astrojs/mdx": "^4.3.0",
         "@astrojs/react": "^4.2.3",
         "@astrojs/sitemap": "^3.3.0",
         "@portaljs/remark-wiki-link": "^1.2.0",
@@ -46,7 +46,7 @@
         "postcss-preset-env": "^10.1.5",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
-        "sharp": "^0.33.5",
+        "sharp": "^0.34.2",
         "typescript": "^5.8.2",
         "utopia-core-scss": "^1.2.1"
     },
