@@ -16,9 +16,12 @@ interface Props {
 const { title, headings = [], metadata = {} } = Astro.props;
 
 // collection
-const { collectionItems, series: isOrdered = false } = metadata;
+const { collectionItems, series } = metadata;
 const isCollection = !!collectionItems?.length;
-const collectionData = isCollection && { isOrdered, items: collectionItems };
+const collectionData = isCollection && {
+  isOrdered: !!series,
+  items: collectionItems,
+};
 ---
 
 <BaseMain title={title}>
