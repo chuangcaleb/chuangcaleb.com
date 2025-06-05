@@ -20,7 +20,7 @@ const { collectionItems, series } = metadata;
 const isCollection = !!collectionItems?.length;
 const collectionData = isCollection && {
   isOrdered: !!series,
-  items: collectionItems,
+  items: series ?? collectionItems,
 };
 ---
 
