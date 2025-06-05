@@ -55,14 +55,15 @@
   }
 }
 
-:where(a[href]:is(:hover, :focus, :active)) {
+:where(a[href]:is(:hover, :focus-visible, :active)) {
   color: var(--color-hover);
   --color-underline: var(--ax1);
 
+  /* fancy background stuff */
   &:not(.unstyled-hover-link) {
-    background-color: var(--ui2);
-    padding: var(--size-relative-1) var(--size-relative-2);
-    margin: calc(var(--size-relative-1) * -1) calc(var(--size-relative-2) * -1);
+    /* background-color: var(--ui2);
+    margin: calc(var(--size-relative-1) * -1) calc(var(--size-relative-2) * -1); */
+    background-color: var(--ui1);
   }
 }
 
