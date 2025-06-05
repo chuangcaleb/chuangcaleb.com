@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import type {Plugin} from 'unified';
 import type {Parent} from 'unist';
 import {visit} from 'unist-util-visit';
-import {slugify} from '../markdown/string.js';
+import {slug as githubSlug} from 'github-slugger';
 import {gnr} from '../../src/utils/note-route.js';
 
 dotenv.config();
@@ -40,7 +40,7 @@ function buildNoteSlugMap(): Record<string, string> {
 	for (const file of files) {
 		const stem = path.basename(file, '.md');
 		const relativePath = path.relative(NOTES_DIR, file);
-		const slug = slugify(relativePath.replace(/\.md$/, ''));
+		const slug = githubSlug(relativePath.replace(/\.md$/, ''));
 		map[stem.toLowerCase()] = slug;
 	}
 
@@ -75,11 +75,22 @@ const remarkWikilinks: Plugin<void[], Root> = () => {
 				}
 
 				if (isImage === '!') {
+					// Image wikilink
 					newNodes.push({
 						type: 'html',
 						value: `<Image src="${IMAGE_BASE_URL}/${rawTarget}" alt="${alias ?? rawTarget}" loading="lazy" decoding="async" />`,
 					});
+				} else if (rawTarget.startsWith('#')) {
+					// Section heading link
+					const heading = rawTarget.slice(1).trim();
+					const slug = githubSlug(heading);
+
+					newNodes.push({
+						type: 'html',
+						value: `<a href="#${slug}">${alias ?? heading}</a>`,
+					});
 				} else {
+					// Normal note link
 					const normalizedTarget = rawTarget.trim().toLowerCase();
 					const matchedSlug = noteSlugMap[normalizedTarget];
 
