@@ -22,12 +22,12 @@ pnpm-debug.log*
 
 .vscode/settings.json
 
-# cloudinary resource details
-lib/cloudinary/*.json
-
-# gdrive-synced folder
+# cloud-synced folder
 src/content/obsidian-note
 
+# redirects
+_redirects
 note-redirects.json
+
 public/assets/fonts/archived
 TODO.md
