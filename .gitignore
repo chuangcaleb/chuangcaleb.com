@@ -28,5 +28,6 @@ lib/cloudinary/*.json
 # gdrive-synced folder
 src/content/obsidian-note
 
+note-redirects.json
 public/assets/fonts/archived
 TODO.md
