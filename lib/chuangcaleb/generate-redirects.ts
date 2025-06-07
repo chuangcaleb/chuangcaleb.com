@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import * as yaml from 'js-yaml';
 
-// CONFIG — adjust these paths
 const JSON_FILE = 'src/data/note-redirects.json';
 const YAML_FILE = 'src/data/redirects.yaml';
 const OUTPUT_FILE = 'public/_redirects';
@@ -22,7 +21,7 @@ const redirects: string[] = [];
 
 // From JSON
 for (const [from, to] of Object.entries(jsonRedirects)) {
-	redirects.push(`/${from} /${to} 301`);
+	redirects.push(`/note/${from} /note/${to} 301`);
 }
 
 // From YAML
