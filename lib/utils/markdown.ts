@@ -1,3 +1,4 @@
-import ProseA from "~/components/styled/monom/ProseA.astro";
+import ProseA from '~/components/styled/monom/ProseA.astro';
 
-export const defaultComponents = { a: ProseA };
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+export const defaultComponents = {a: ProseA};

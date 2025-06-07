@@ -1,12 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
-import type {HTML, Root, Text} from 'mdast';
 import dotenv from 'dotenv';
+import {slug as githubSlug} from 'github-slugger';
+import type {Html, Root, Text} from 'mdast';
 import type {Plugin} from 'unified';
 import type {Parent} from 'unist';
 import {visit} from 'unist-util-visit';
-import {slug as githubSlug} from 'github-slugger';
 import {gnr} from '../../src/utils/note-route.js';
 
 dotenv.config();
@@ -55,7 +55,7 @@ const remarkWikilinks: Plugin<void[], Root> = () => {
 			if (!parent || typeof index !== 'number') return;
 
 			const text = node.value;
-			const newNodes: Array<Text | HTML> = [];
+			const newNodes: Array<Text | Html> = [];
 			let lastIndex = 0;
 
 			const wikilinkRegex = /(!?)\[\[([\s\S]+?)]]/g;

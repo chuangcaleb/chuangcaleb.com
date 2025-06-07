@@ -6,7 +6,7 @@ import {
 	type CollectionEntry,
 } from 'astro:content';
 import type {CollectionItems, SuperNote} from 'lib/utils/types';
-import {gnr} from '~/utils/note-route';
+import {gnr} from '~/utils/note-route.ts';
 
 export function getNoteName(filepath: string | undefined) {
 	if (!filepath) {

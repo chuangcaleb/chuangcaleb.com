@@ -2,12 +2,12 @@ import * as Dialog from '@radix-ui/react-dialog';
 import React from 'react';
 import {Fragment} from 'react/jsx-runtime';
 import styles from './styles.module.css';
-import {cn} from '~/utils/css';
-import {useScroll} from '~/utils/hooks/use-scroll';
-import {useWindowSize} from '~/utils/hooks/use-window-size';
+import {cn} from '~/utils/css.ts';
+import {useScroll} from '~/utils/hooks/use-scroll.ts';
+import {useWindowSize} from '~/utils/hooks/use-window-size.ts';
 
 // Lazy any lol
-// eslint-disable-next-line unicorn/prevent-abbreviations
+
 const NavSheetReact = (properties: any) => {
 	const [open, setOpen] = React.useState(false);
 	const {scrollY, direction} = useScroll('up');
