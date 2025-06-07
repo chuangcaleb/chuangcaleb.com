@@ -4,5 +4,3 @@
   redirect: "https://github.com/chuangcaleb"
 - id: "cv"
   redirect: "https://docs.google.com/document/d/1qohsYe0w-Mq5yqIdNaHPuOHvs2lYvnGySULgR2Baqwk/edit?usp=sharing"
-- id: "note"
-  redirect: "/garden"
