@@ -5,7 +5,7 @@ const redirects = defineCollection({
 	loader: file('src/data/redirects.yaml'),
 	schema: z.object({
 		id: z.string(),
-		redirect: z.string(),
+		to: z.string(),
 	}),
 });
 

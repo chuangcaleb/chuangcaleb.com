@@ -13,7 +13,7 @@ const jsonRedirects = JSON.parse(jsonContent) as Record<string, string>;
 const yamlContent = fs.readFileSync(YAML_FILE, 'utf8');
 const yamlRedirects = yaml.load(yamlContent) as Array<{
 	id: string;
-	redirect: string;
+	to: string;
 }>;
 
 // Build redirects array
@@ -21,12 +21,12 @@ const redirects: string[] = [];
 
 // From JSON
 for (const [from, to] of Object.entries(jsonRedirects)) {
-	redirects.push(`/note/${from} /note/${to} 301`);
+	redirects.push(`/notes/${from} /notes/${to} 301`);
 }
 
 // From YAML
 for (const entry of yamlRedirects) {
-	redirects.push(`/${entry.id} ${entry.redirect} 301`);
+	redirects.push(`${entry.id} ${entry.to} 301`);
 }
 
 // Write output file

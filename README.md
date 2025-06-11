@@ -123,7 +123,7 @@ And also just leaning into co-locating css `<styles>` in `.astro` files themselv
 
 ### CSS Methodology
 
-I've extracted my writings about my past experience with and moving away from atomic-utility CSS, as it's not specific to this project. You can read about it at [What’s Next After Atomic-Utility CSS | chuangcaleb.com](https://chuangcaleb.com/note/whats-next-after-atomic-utility-css).
+I've extracted my writings about my past experience with and moving away from atomic-utility CSS, as it's not specific to this project. You can read about it at [What’s Next After Atomic-Utility CSS | chuangcaleb.com](https://chuangcaleb.com/notes/whats-next-after-atomic-utility-css).
 
 #### Modern Syntax + CSS Variables
 
@@ -274,7 +274,7 @@ That output folder is synced to the cloud using ~~git~~ ~~Google Drive~~ B2 Back
 
 I had previously git-tracked this output directory and attached that repository as a [submodule](.gitmodules) that would reside in this repo at [`src/content/obsidian-note`](src/content/obsidian-note). It was simple and was my working solution for months... but (1a) version controlling non-source-code-data felt wrong, (2) I didn't want to look into safely running shell commands for stuff like `git push`. (1b) I also intend to sync up my non-markdown assets like images.
 
-2nd solution was using [Google Drive Desktop](https://workspace.google.com/products/drive/#download). I set my local output folder of markdown files for syncing up to the Drive. I used the same [Google Service Account](https://developers.google.com/identity/protocols/oauth2/service-account) from the [guestbook feature](https://chuangcaleb.com/note/making-my-website-guestbook/) to download the files with [googleapis - npm](https://www.npmjs.com/package/googleapis) to the `src/content/obsidian-note/` folder. For implementation details, see [[lib/google/drive/download-folder.ts]].
+2nd solution was using [Google Drive Desktop](https://workspace.google.com/products/drive/#download). I set my local output folder of markdown files for syncing up to the Drive. I used the same [Google Service Account](https://developers.google.com/identity/protocols/oauth2/service-account) from the [guestbook feature](https://chuangcaleb.com/notes/making-my-website-guestbook/) to download the files with [googleapis - npm](https://www.npmjs.com/package/googleapis) to the `src/content/obsidian-note/` folder. For implementation details, see [[lib/google/drive/download-folder.ts]].
 
 It was an alright solution! There's no sensitive information. I just need a few MB's of cloud bucket storage, and this simple + free solution is easily better than provisioning an S3 bucket and all that.
 
