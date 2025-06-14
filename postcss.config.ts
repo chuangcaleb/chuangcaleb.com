@@ -5,7 +5,7 @@ import presetEnv from 'postcss-preset-env';
 const config = {
 	plugins: [
 		presetEnv({
-			stage: 1,
+			stage: 3,
 			// minimumVendorImplementations: 2, // default
 			features: {
 				'nesting-rules': true,
