@@ -16,15 +16,15 @@
 
 @mixin light {
   color-scheme: light;
-  --base-h: 9;
-  --base-s: 5%;
-  --base-l: 95%;
+  --base-h: 44;
+  --base-s: 40%;
+  --base-l: 87%;
 
   --accent-h: 0;
   --accent-s: 100%;
   --accent-l: 35%;
 
-  --m: -1.2;
+  --m: -1;
   --a-l: 1.5;
 
   --fw-strong: var(--fw-5);
