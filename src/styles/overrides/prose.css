@@ -84,9 +84,14 @@
   table {
     grid-column: max;
   }
-}
-th,
-td {
-  border-width: var(--bw-1);
-  word-break: break-all;
+
+  th,
+  td {
+    border-width: var(--bw-1);
+    word-break: break-all;
+  }
+
+  img {
+    grid-column: wide;
+  }
 }

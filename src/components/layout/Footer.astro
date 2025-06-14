@@ -6,17 +6,14 @@ import Contact from "./Contact.astro";
 import SiteNavStack from "./SiteNavStack.astro";
 ---
 
-<footer id="footer" class="flow-lg">
-  <div class="cgrid">
-    <div class="footer-body">
-      <section class="site-utils-cont | region flow-lg">
-        <SiteNavStack />
-        <ThemeToggle />
-      </section>
-      <hr />
-      <Contact />
-    </div>
+<footer id="footer" class="flow-lg linew-wide">
+  <SiteNavStack isFooter />
+  <div class="utils">
+    <ThemeToggle />
+    <hr />
   </div>
+  <Contact />
+
   <div>
     <p class="fine-print">
       <a href={gnr("/meta/colophon")}>colophon</a>
@@ -31,37 +28,25 @@ import SiteNavStack from "./SiteNavStack.astro";
 
 <style>
   footer {
+    padding-top: var(--space-3xl);
     margin-block-start: var(--space-2xl);
     background-color: var(--bg2);
-    border-top-width: 1px;
-    @media (width < 900px) {
-      :global(*) {
-        grid-column: max;
-      }
-    }
-  }
-  .footer-body {
-    grid-column-end: wide;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xl);
-    @media (width < 675px) {
-      flex-direction: column;
-      gap: var(--space-m);
-    }
+    border-top-width: var(--bw-1);
+    clip-path: polygon(0 0, 100% 5%, 100% 100%, 0% 100%);
   }
 
-  .site-utils-cont {
-    padding-inline-end: var(--space-2xl);
+  .utils {
+    --flow-space: var(--space-2xl);
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width: min-content;
+    align-items: center;
+    gap: var(--space-m);
+    hr {
+      flex: 1;
+    }
   }
-
   .fine-print {
     color: var(--text-faded);
-    font-size: var(--step--2);
+    font-size: var(--step--1);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
