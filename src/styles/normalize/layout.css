@@ -8,7 +8,7 @@
   line-height: var(--font-lh-3);
   scrollbar-color: var(--scrollthumb-color) transparent;
   scroll-behavior: smooth;
-  scroll-padding: var(--size-relative-4);
+  scroll-padding: var(--size-ch-4);
 }
 
 *,

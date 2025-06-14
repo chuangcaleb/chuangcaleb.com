@@ -26,10 +26,10 @@ const { tocItem } = Astro.props;
 <style>
   li {
     font-size: var(--step--1);
-    padding-block: var(--size-relative-2);
+    padding-block: var(--size-ch-2);
 
     ul {
-      padding-block-start: var(--size-relative-1);
+      padding-block-start: var(--size-ch-1);
       list-style-type: none;
       padding-inline: unset;
     }
@@ -41,7 +41,7 @@ const { tocItem } = Astro.props;
       overflow-x: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      outline-offset: var(--size-relative-2);
+      outline-offset: var(--size-ch-2);
 
       &.active {
         --color: var(--text-strong);

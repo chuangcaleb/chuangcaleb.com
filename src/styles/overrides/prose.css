@@ -2,7 +2,7 @@
   container: prose / inline-size;
   width: 100%;
   --hr-space: var(--space-xl);
-  --flow-li: var(--size-relative-5);
+  --flow-li: var(--size-ch-5);
 
   line-height: var(--font-lh-4);
 
@@ -14,7 +14,7 @@
   h4,
   h5 {
     & + * {
-      --flow-space: var(--size-relative-8);
+      --flow-space: var(--size-ch-8);
     }
   }
 
@@ -32,7 +32,7 @@
     border-width: var(--bw-1);
     border-inline-start-width: var(--size-blockquote-strip);
     border-inline-start-color: var(--border);
-    padding: var(--size-relative-6);
+    padding: var(--size-ch-6);
     padding-inline-start: var(--size-blockquote-indent);
     &,
     * {

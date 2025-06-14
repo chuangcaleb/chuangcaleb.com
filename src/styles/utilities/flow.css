@@ -1,26 +1,26 @@
 [class*="flow"] > * + * {
-  --flow-space: var(--size-relative-6);
-  margin-block-start: var(--flow-space, var(--size-relative-6));
+  --flow-space: var(--size-ch-6);
+  margin-block-start: var(--flow-space, var(--size-ch-6));
 }
 
 /* --------------------------------- parent --------------------------------- */
 
 .flow-xs > * + * {
-  --flow-space: var(--size-relative-2);
+  --flow-space: var(--size-ch-2);
 }
 
 .flow-sm > * + * {
-  --flow-space: var(--size-relative-4);
+  --flow-space: var(--size-ch-4);
 }
 
 .flow-lg > * + * {
-  --flow-space: var(--size-relative-8);
+  --flow-space: var(--size-ch-8);
 }
 .flow-xl > * + * {
-  --flow-space: var(--size-relative-10);
+  --flow-space: var(--size-ch-10);
 }
 .flow-2xl > * + * {
-  --flow-space: var(--size-relative-12);
+  --flow-space: var(--size-ch-12);
 }
 
 /* -------------------------------- children -------------------------------- */
@@ -32,32 +32,32 @@
 }
 
 .flom-xs {
-  --flow-space: var(--size-relative-2);
+  --flow-space: var(--size-ch-2);
 }
 
 .flom-md {
-  --flow-space: var(--size-relative-6);
+  --flow-space: var(--size-ch-6);
 }
 
 .flom-lg {
-  --flow-space: var(--size-relative-8);
+  --flow-space: var(--size-ch-8);
 }
 
 .flom-xl {
-  --flow-space: var(--size-relative-10);
+  --flow-space: var(--size-ch-10);
 }
 
 /* only enable if used
 
 .flom-2xs {
-  --flow-space: var(--size-relative-1);
+  --flow-space: var(--size-ch-1);
 }
 
 .flom-sm {
-  --flow-space: var(--size-relative-4);
+  --flow-space: var(--size-ch-4);
 }
 
 
 .flom-2xl {
-  --flow-space: var(--size-relative-12);
+  --flow-space: var(--size-ch-12);
 } */

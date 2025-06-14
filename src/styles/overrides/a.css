@@ -26,7 +26,7 @@
   /* fancy background stuff */
   &:not(.unstyled-hover-link) {
     /* background-color: var(--ui2);
-    margin: calc(var(--size-relative-1) * -1) calc(var(--size-relative-2) * -1); */
+    margin: calc(var(--size-ch-1) * -1) calc(var(--size-ch-2) * -1); */
     background-color: var(--ui1);
   }
 }

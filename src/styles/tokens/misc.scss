@@ -1,6 +1,6 @@
 @mixin config-cgrid {
-  --size-blockquote-strip: var(--size-relative-3);
-  --size-blockquote-indent: var(--size-relative-7);
+  --size-blockquote-strip: var(--size-ch-3);
+  --size-blockquote-indent: var(--size-ch-7);
   --size-popout: calc(
     var(--size-blockquote-strip) + var(--size-blockquote-indent)
   );

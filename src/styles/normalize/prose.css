@@ -78,7 +78,7 @@
 :where(:not(pre) > code) {
   background-color: var(--bg2);
   border-radius: var(--radius-2);
-  padding: var(--size-relative-2) var(--size-relative-3);
+  padding: var(--size-ch-2) var(--size-ch-3);
   writing-mode: lr;
 }
 
@@ -88,8 +88,8 @@
   /* max-inline-size: max-content; */
   writing-mode: lr;
   direction: ltr;
-  padding-block: var(--size-relative-6);
-  padding-inline: var(--size-relative-4);
+  padding-block: var(--size-ch-6);
+  padding-inline: var(--size-ch-4);
   background-color: var(--bg2);
   border-radius: var(--radius-2);
   overflow: auto;
@@ -114,7 +114,7 @@ strong {
 /* lists */
 
 :where(ol, ul) {
-  padding-left: var(--size-relative-7);
+  padding-left: var(--size-ch-7);
   ::marker {
     color: var(--text-faded);
   }
