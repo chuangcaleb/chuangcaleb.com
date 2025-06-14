@@ -1,7 +1,6 @@
 @use "borders";
 @use "fonts";
 @use "sizes";
-@use "misc";
 @use "fluid";
 @use "../utilities/grid/tokens" as grid;
 @use "dynamic-colors";
@@ -11,9 +10,10 @@
   @include borders.tokens;
   @include fonts.tokens;
   @include sizes.tokens;
-  @include misc.config-cgrid;
+
   @include fluid.type;
   @include fluid.space;
+
   @include grid.tokens;
 
   @include dynamic-colors.tokens;

@@ -1,5 +1,4 @@
 .prose {
-  container: prose / inline-size;
   width: 100%;
   --hr-space: var(--space-xl);
   --flow-li: var(--size-ch-5);
@@ -28,26 +27,17 @@
   }
 
   blockquote {
-    grid-column-start: popout;
-    border-width: var(--bw-1);
-    border-inline-start-width: var(--size-blockquote-strip);
-    border-inline-start-color: var(--border);
-    padding: var(--size-ch-6);
-    padding-inline-start: var(--size-blockquote-indent);
+    grid-column-end: popout;
+    border-left-width: var(--size-ch-2);
+    border-inline-start-color: var(--fg4);
+    padding-block: var(--size-ch-2);
+    padding-inline-start: calc(var(--size-popout) - var(--size-ch-2));
     &,
     * {
       font-size: var(--step-0);
     }
-    @container prose (inline-size > 100ch) {
-      & {
-        display: grid;
-        grid-template-columns: subgrid;
-      }
-      & > :global(*) {
-        grid-column: content;
-      }
-    }
   }
+
   & > ul,
   & > ol {
     li + li {

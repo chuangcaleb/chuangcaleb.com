@@ -1,5 +1,6 @@
 @mixin tokens {
   --gutter: clamp(1rem, 3vw, 3rem);
+  --size-popout: var(--size-ch-8);
   --popout-g: minmax(0, var(--size-popout));
   --wide-g-linew: minmax(0, 25ch);
   --wide-g-cgrid: minmax(0, 10ch);
