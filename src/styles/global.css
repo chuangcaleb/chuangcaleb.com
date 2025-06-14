@@ -4,7 +4,8 @@
 @import "open-props/fonts";
 @import "open-props/sizes";
 
-@import "config";
+@import "fonts";
+@import "config/composer.scss";
 @import "normalize";
 @import "overrides";
 @import "utilities";
