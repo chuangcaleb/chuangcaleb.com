@@ -19,8 +19,8 @@
   }
 
   hr {
-    grid-column-start: feature;
-    grid-column-end: feature;
+    grid-column-start: popout;
+    grid-column-end: popout;
     --flow-space: var(--hr-space);
     & + * {
       --flow-space: var(--hr-space);
@@ -74,7 +74,7 @@
   pre {
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: feature;
+    grid-column: popout;
     @media (width < 90ch) {
       grid-column: full;
     }

@@ -19,11 +19,6 @@
   grid-column: wide;
 }
 
-.feature,
-.cgrid-feature > * {
-  grid-column: feature;
-}
-
 .popout,
 .cgrid-popout > * {
   grid-column: popout;

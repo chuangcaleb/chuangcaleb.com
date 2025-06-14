@@ -46,7 +46,7 @@ const collectionData = isCollection && {
         collectionData && (
           <Fragment>
             <hr />
-            <NoteList class="feature" {...collectionData} />
+            <NoteList class="popout" {...collectionData} />
           </Fragment>
         )
       }
@@ -84,7 +84,6 @@ const collectionData = isCollection && {
     grid-column: 1;
 
     & :global(:is(h1)) {
-      grid-column-end: feature;
       --flow-space: var(--space-2xs);
     }
     & :global(h1 + *) {

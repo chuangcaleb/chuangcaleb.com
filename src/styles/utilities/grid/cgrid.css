@@ -3,13 +3,11 @@
   display: grid;
   grid-template-columns:
     [full-start] var(--gutter)
-    [max-start] 0
+    [max-start] 1fr
     [wide-start] var(--wide-g-cgrid)
-    [feature-start] var(--feature-g)
     [popout-start] var(--popout-g)
     [content-start] var(--content-w) [content-end]
     var(--popout-g) [popout-end]
-    var(--feature-g) [feature-end]
     var(--wide-g-cgrid) [wide-end]
     1fr [max-end]
     var(--gutter) [full-end];
