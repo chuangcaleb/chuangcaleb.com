@@ -17,22 +17,20 @@ const components = { h1: "h3", ...defaultComponents };
   article {
     max-width: var(--content-w);
 
-    h3 {
+    :global(h3) {
       color: var(--fg3);
       font-size: var(--step-1);
       font-weight: var(--font-weight-5);
       font-family: var(--font-heading-serif);
       display: flex;
       gap: 0.75ch;
-      svg {
-        margin-bottom: var(--size-relative-2);
-      }
-      + * {
-        --flow-space: var(--size-relative-2);
-      }
     }
-    a svg:not(.ext-arrow) {
-      width: 1.25em;
+
+    :global(h3 svg) {
+      margin-bottom: var(--size-relative-2);
+    }
+    :global(h3 + *) {
+      --flow-space: var(--size-relative-2);
     }
   }
 </style>
