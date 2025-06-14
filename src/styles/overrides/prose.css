@@ -1,4 +1,5 @@
 .prose {
+  container-type: inline-size;
   width: 100%;
   --hr-space: var(--space-xl);
   --flow-li: var(--size-ch-5);
@@ -91,7 +92,16 @@
     word-break: break-all;
   }
 
-  img {
+  & > img {
     grid-column: wide;
+    --flow-space: var(--space-xl);
+    & + * {
+      --flow-space: var(--space-xl);
+    }
+    @container (width < 600px) {
+      grid-column: full;
+      border-radius: 0;
+      border-inline: 0;
+    }
   }
 }

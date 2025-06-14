@@ -1,5 +1,5 @@
 .border {
-  border-width: var(--bw-2);
+  border-width: var(--bw-1);
   border-radius: var(--radius-2);
 }
 

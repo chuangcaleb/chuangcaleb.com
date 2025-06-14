@@ -10,29 +10,25 @@ import {visit} from 'unist-util-visit';
 import {gnr} from '../../src/utils/note-route.js';
 
 dotenv.config();
+
 const {IMAGE_BASE_URL} = process.env;
 if (!IMAGE_BASE_URL) throw new Error('Missing IMAGE_BASE_URL env secret');
+
 const NOTES_DIR = path.resolve('src/content/obsidian-note');
 
-// Recursively collect .md files in directory
+// Collect all markdown files recursively
 function collectMarkdownFiles(directory: string): string[] {
 	const entries = fs.readdirSync(directory, {withFileTypes: true});
 
 	return entries.flatMap((entry) => {
 		const fullPath = path.join(directory, entry.name);
-		if (entry.isDirectory()) {
-			return collectMarkdownFiles(fullPath);
-		}
-
-		if (entry.isFile() && fullPath.endsWith('.md')) {
-			return [fullPath];
-		}
-
+		if (entry.isDirectory()) return collectMarkdownFiles(fullPath);
+		if (entry.isFile() && fullPath.endsWith('.md')) return [fullPath];
 		return [];
 	});
 }
 
-// Recursively collect all .md files and return a lookup map
+// Build a map of filename (stem) → slug
 function buildNoteSlugMap(): Record<string, string> {
 	const files = collectMarkdownFiles(NOTES_DIR);
 	const map: Record<string, string> = {};
@@ -51,6 +47,25 @@ const noteSlugMap = buildNoteSlugMap();
 
 const remarkWikilinks: Plugin<void[], Root> = () => {
 	return (tree) => {
+		// Handle standalone image paragraphs (![[image.png]])
+		visit(tree, 'paragraph', (node, index, parent) => {
+			if (!parent || typeof index !== 'number') return;
+
+			if (node.children.length === 1 && node.children[0].type === 'text') {
+				const text = node.children[0].value.trim();
+				const match = /^!\[\[([^\]|]+)(?:\|([^\]]+))?]]$/.exec(text);
+				if (match) {
+					const [_, filename, altText] = match;
+					const imageHtml: Html = {
+						type: 'html',
+						value: `<Image src="${IMAGE_BASE_URL}/${filename}" alt="${altText ?? filename}" class="border" loading="lazy" decoding="async" />`,
+					};
+					(parent as Parent).children.splice(index, 1, imageHtml);
+				}
+			}
+		});
+
+		// Handle inline wikilinks in text nodes
 		visit(tree, 'text', (node, index, parent) => {
 			if (!parent || typeof index !== 'number') return;
 
@@ -75,22 +90,21 @@ const remarkWikilinks: Plugin<void[], Root> = () => {
 				}
 
 				if (isImage === '!') {
-					// Image wikilink
+					// Inline image (not standalone paragraph)
 					newNodes.push({
 						type: 'html',
-						value: `<Image src="${IMAGE_BASE_URL}/${rawTarget}" alt="${alias ?? rawTarget}" loading="lazy" decoding="async" />`,
+						value: `<Image src="${IMAGE_BASE_URL}/${rawTarget}" alt="${alias ?? rawTarget}" class="border" loading="lazy" decoding="async" />`,
 					});
 				} else if (rawTarget.startsWith('#')) {
-					// Section heading link
+					// Heading link
 					const heading = rawTarget.slice(1).trim();
 					const slug = githubSlug(heading);
-
 					newNodes.push({
 						type: 'html',
 						value: `<a href="#${slug}">${alias ?? heading}</a>`,
 					});
 				} else {
-					// Normal note link
+					// Note link
 					const normalizedTarget = rawTarget.trim().toLowerCase();
 					const matchedSlug = noteSlugMap[normalizedTarget];
 
