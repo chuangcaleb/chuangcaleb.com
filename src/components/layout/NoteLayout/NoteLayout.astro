@@ -35,7 +35,7 @@ const collectionData = isCollection && {
   <article class="note-body">
     <aside class="flow-lg">
       <Metadata metadata={metadata} />
-      <div class="aside-sticky flow no-scrollbar">
+      <div class="aside-sticky flow">
         <slot name="sidebar" />
         <TocScrollspy headings={headings} />
       </div>
@@ -63,10 +63,12 @@ const collectionData = isCollection && {
   aside {
     padding-inline: var(--space-m);
     padding-bottom: var(--space-2xs);
+    position: relative;
   }
   .aside-sticky {
     position: sticky;
     top: var(--space-xs);
+    max-height: 98vh;
     height: min(min-content, 100vh);
     width: 100%;
     overflow-x: hidden;
