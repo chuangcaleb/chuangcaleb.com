@@ -1,10 +1,12 @@
 import process from 'node:process';
-import postcssPresetEnv from 'postcss-preset-env';
 import autoprefixer from 'autoprefixer';
+import mixins from 'postcss-mixins';
+import presetEnv from 'postcss-preset-env';
 
 const config = {
 	plugins: [
-		postcssPresetEnv({
+		mixins(),
+		presetEnv({
 			stage: 1,
 			// minimumVendorImplementations: 2, // default
 			features: {

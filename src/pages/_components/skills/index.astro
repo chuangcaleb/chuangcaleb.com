@@ -24,7 +24,7 @@ const skillGroups = Object.entries(SKILLS);
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-xs);
-    > * {
+    & > :global(*) {
       flex-basis: var(--size-header-3);
       flex-grow: 1;
     }

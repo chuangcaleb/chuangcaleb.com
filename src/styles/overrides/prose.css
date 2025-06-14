@@ -43,7 +43,7 @@
         display: grid;
         grid-template-columns: subgrid;
       }
-      > * {
+      & > :global(*) {
         grid-column: content;
       }
     }
