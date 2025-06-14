@@ -1,3 +1,4 @@
+@use "borders";
 @use "misc";
 @use "fluid";
 @use "../utilities/grid/tokens" as grid;
@@ -5,6 +6,7 @@
 @use "theme";
 
 :root {
+  @include borders.tokens;
   @include misc.config-fonts;
   @include misc.config-cgrid;
   @include fluid.type;
@@ -13,6 +15,7 @@
 
   @include dynamic-colors.tokens;
 
+  // base colors
   --text-strong: var(--fg1);
   --text-normal: var(--fg2);
   --text-faded: var(--fg3);

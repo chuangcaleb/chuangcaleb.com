@@ -29,7 +29,7 @@
 
   blockquote {
     grid-column-start: popout;
-    border-width: 1px;
+    border-width: var(--bw-1);
     border-inline-start-width: var(--size-blockquote-strip);
     border-inline-start-color: var(--border);
     padding: var(--size-relative-6);
@@ -59,7 +59,7 @@
       &::before {
         content: "";
         position: absolute;
-        border-width: 1px;
+        border-width: var(--bw-1);
         border-color: var(--text-muted);
         border-style: dashed;
         height: 100%;
@@ -97,6 +97,6 @@
 }
 th,
 td {
-  border-width: 1px;
+  border-width: var(--bw-1);
   word-break: break-all;
 }

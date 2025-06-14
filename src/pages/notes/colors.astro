@@ -24,7 +24,9 @@ const title = "Color Tokens Style Test";
                 // borderColor: `color-contrast(var(--${t}) vs tan, sienna, #d2691e)`, // no support yet lol
               }}
             />
-            <span><code>{token}</code></span>
+            <span>
+              <code>{token}</code>
+            </span>
           </li>
         ))
       )
@@ -50,7 +52,7 @@ const title = "Color Tokens Style Test";
     display: inline-block;
     height: 3rem;
     aspect-ratio: 1 / 1;
-    /* border-width: 2px; */
+    /* border-width: var(--bw-2); */
     border-radius: 100%;
   }
 </style>
