@@ -1,14 +1,16 @@
-// Postcss.config.js
-// import postcssCustomMedia from "postcss-custom-media";
 import process from 'node:process';
 import postcssPresetEnv from 'postcss-preset-env';
 import autoprefixer from 'autoprefixer';
 
 const config = {
 	plugins: [
-		// PostcssJitProps(OpenProps),
-		// postcssCustomMedia(),
-		postcssPresetEnv({stage: 3, minimumVendorImplementations: 2}),
+		postcssPresetEnv({
+			stage: 1,
+			// minimumVendorImplementations: 2, // default
+			features: {
+				'nesting-rules': true,
+			},
+		}),
 		// cssnano — astro minimises css by default
 		...(process.env.NODE_ENV === 'production' ? [autoprefixer] : []),
 	],
