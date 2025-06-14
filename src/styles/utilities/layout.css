@@ -1,5 +1,5 @@
 .border {
-  border-width: var(--border-size-2);
+  border-width: 2px;
   border-radius: var(--radius-2);
 }
 

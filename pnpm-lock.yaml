@@ -132,9 +132,6 @@ importers:
       postcss:
         specifier: ^8.5.5
         version: 8.5.5
-      postcss-mixins:
-        specifier: ^11.0.3
-        version: 11.0.3(postcss@8.5.5)
       sass:
         specifier: ^1.89.1
         version: 1.89.1
@@ -2127,10 +2124,6 @@ packages:
   callsites@3.1.0:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
-
-  camelcase-css@2.0.1:
-    resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
-    engines: {node: '>= 6'}
 
   camelcase@8.0.0:
     resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
@@ -4251,12 +4244,6 @@ packages:
     peerDependencies:
       postcss: ^8.4
 
-  postcss-js@4.0.1:
-    resolution: {integrity: sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==}
-    engines: {node: ^12 || ^14 || >= 16}
-    peerDependencies:
-      postcss: ^8.4.21
-
   postcss-lab-function@7.0.10:
     resolution: {integrity: sha512-tqs6TCEv9tC1Riq6fOzHuHcZyhg4k3gIAMB8GGY/zA1ssGdm6puHMVE7t75aOSoFg7UD2wyrFFhbldiCMyyFTQ==}
     engines: {node: '>=18'}
@@ -4268,12 +4255,6 @@ packages:
     engines: {node: '>=18'}
     peerDependencies:
       postcss: ^8.4
-
-  postcss-mixins@11.0.3:
-    resolution: {integrity: sha512-HZa6DHlN7uCkp7GTFNvhpyK/Gi9+vrVG7FPl2oQdj+sXUuYo4ri9OsWBseTnvnLfWxRWOq8/VwcHcixtZPrRRg==}
-    engines: {node: ^18.0 || ^ 20.0 || >= 22.0}
-    peerDependencies:
-      postcss: ^8.2.14
 
   postcss-nesting@13.0.2:
     resolution: {integrity: sha512-1YCI290TX+VP0U/K/aFxzHzQWHWURL+CtHMSbex1lCdpXD1SoR2sYuxDu5aNI9lPoXpKTCggFZiDJbwylU0LEQ==}
@@ -4334,12 +4315,6 @@ packages:
   postcss-selector-parser@7.1.0:
     resolution: {integrity: sha512-8sLjZwK0R+JlxlYcTuVnyT2v+htpdrjDOKuMcOVdYjt52Lh8hWRYpxBPoKx/Zg+bcjc3wx6fmQevMmUztS/ccA==}
     engines: {node: '>=4'}
-
-  postcss-simple-vars@7.0.1:
-    resolution: {integrity: sha512-5GLLXaS8qmzHMOjVxqkk1TZPf1jMqesiI7qLhnlyERalG0sMbHIbJqrcnrpmZdKCLglHnRHoEBB61RtGTsj++A==}
-    engines: {node: '>=14.0'}
-    peerDependencies:
-      postcss: ^8.2.1
 
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
@@ -7829,8 +7804,6 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  camelcase-css@2.0.1: {}
-
   camelcase@8.0.0: {}
 
   caniuse-lite@1.0.30001721: {}
@@ -10515,11 +10488,6 @@ snapshots:
       postcss: 8.5.5
       postcss-value-parser: 4.2.0
 
-  postcss-js@4.0.1(postcss@8.5.5):
-    dependencies:
-      camelcase-css: 2.0.1
-      postcss: 8.5.5
-
   postcss-lab-function@7.0.10(postcss@8.5.5):
     dependencies:
       '@csstools/css-color-parser': 3.0.10(@csstools/css-parser-algorithms@3.0.5(@csstools/css-tokenizer@3.0.4))(@csstools/css-tokenizer@3.0.4)
@@ -10533,14 +10501,6 @@ snapshots:
     dependencies:
       postcss: 8.5.5
       postcss-value-parser: 4.2.0
-
-  postcss-mixins@11.0.3(postcss@8.5.5):
-    dependencies:
-      postcss: 8.5.5
-      postcss-js: 4.0.1(postcss@8.5.5)
-      postcss-simple-vars: 7.0.1(postcss@8.5.5)
-      sugarss: 4.0.1(postcss@8.5.5)
-      tinyglobby: 0.2.14
 
   postcss-nesting@13.0.2(postcss@8.5.5):
     dependencies:
@@ -10658,10 +10618,6 @@ snapshots:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
-
-  postcss-simple-vars@7.0.1(postcss@8.5.5):
-    dependencies:
-      postcss: 8.5.5
 
   postcss-value-parser@4.2.0: {}
 
@@ -11431,6 +11387,7 @@ snapshots:
   sugarss@4.0.1(postcss@8.5.5):
     dependencies:
       postcss: 8.5.5
+    optional: true
 
   supports-color@7.2.0:
     dependencies:

@@ -1,6 +1,6 @@
 @use "misc";
 @use "fluid";
-@use "../utilities/grid/config" as grid;
+@use "../utilities/grid/tokens" as grid;
 @use "dynamic-colors";
 @use "theme";
 
@@ -9,9 +9,9 @@
   @include misc.config-cgrid;
   @include fluid.type;
   @include fluid.space;
-  @include grid.config;
+  @include grid.tokens;
 
-  @include dynamic-colors.config;
+  @include dynamic-colors.tokens;
 
   --text-strong: var(--fg1);
   --text-normal: var(--fg2);
