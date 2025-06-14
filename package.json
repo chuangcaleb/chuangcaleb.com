@@ -38,7 +38,7 @@
     "github-slugger": "^2.0.0",
     "google-auth-library": "^9.15.1",
     "google-spreadsheet": "^4.1.4",
-    "googleapis": "^148.0.0",
+    "googleapis": "^150.0.1",
     "js-yaml": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
     "postcss-custom-media": "^11.0.6",
