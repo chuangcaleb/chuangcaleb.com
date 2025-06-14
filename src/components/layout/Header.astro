@@ -40,7 +40,7 @@ const { hasBanner = true } = Astro.props;
 <style>
   .skip-container {
     position: fixed;
-    padding: var(--size-3);
+    padding: var(--space-s);
     z-index: 10;
 
     transition: transform 0.3s;
@@ -60,7 +60,6 @@ const { hasBanner = true } = Astro.props;
     }
   }
   nav {
-    /* justify-content: space-between; */
     font-size: var(--step-1);
     padding-right: var(--size-8);
     & > :global(a) {

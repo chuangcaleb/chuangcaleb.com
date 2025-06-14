@@ -4,7 +4,7 @@
 /* @import "open-props/aspects"; */
 /* @import "open-props/borders"; */
 @import "open-props/fonts";
-@import "open-props/sizes";
+/* @import "open-props/sizes"; */
 
 @import "tokens/composer.scss";
 @import "normalize";

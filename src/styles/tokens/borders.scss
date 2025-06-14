@@ -1,9 +1,12 @@
 @mixin tokens {
+  // * border widths
   --bw-1: 1px;
   --bw-2: 2px;
   // --bw-3: 5px;
   // --bw-4: 10px;
   // --bw-5: 25px;
+
+  // * border radius
   // --radius-1: 2px;
   --radius-2: 5px;
   --radius-3: 1rem;
