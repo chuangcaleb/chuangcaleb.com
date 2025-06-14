@@ -2,20 +2,18 @@
 
 @font-face {
   font-family: "Alegreya";
-  src:
-    url("/assets/fonts/alegreya-extrabold.woff2") format("woff2"),
+  src: url("/assets/fonts/alegreya-extrabold.woff2") format("woff2"),
     url("/assets/fonts/alegreya-extrabold.woff") format("woff");
-  font-weight: var(--font-weight-8);
+  font-weight: var(--fw-8);
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Alegreya";
-  src:
-    url("/assets/fonts/alegreya-medium.woff2") format("woff2"),
+  src: url("/assets/fonts/alegreya-medium.woff2") format("woff2"),
     url("/assets/fonts/alegreya-medium.woff") format("woff");
-  font-weight: var(--font-weight-5);
+  font-weight: var(--fw-5);
   font-style: normal;
   font-display: swap;
 }
@@ -24,40 +22,36 @@
 
 @font-face {
   font-family: "Alegreya Sans";
-  src:
-    url("/assets/fonts/alegreyasans-extrabold.woff2") format("woff2"),
+  src: url("/assets/fonts/alegreyasans-extrabold.woff2") format("woff2"),
     url("/assets/fonts/alegreyasans-extrabold.woff") format("woff");
-  font-weight: var(--font-weight-8);
+  font-weight: var(--fw-8);
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src:
-    url("/assets/fonts/alegreyasans-bold.woff2") format("woff2"),
+  src: url("/assets/fonts/alegreyasans-bold.woff2") format("woff2"),
     url("/assets/fonts/alegreyasans-bold.woff") format("woff");
-  font-weight: var(--font-weight-7);
+  font-weight: var(--fw-7);
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src:
-    url("/assets/fonts/alegreyasans-medium.woff2") format("woff2"),
+  src: url("/assets/fonts/alegreyasans-medium.woff2") format("woff2"),
     url("/assets/fonts/alegreyasans-medium.woff") format("woff");
-  font-weight: var(--font-weight-5);
+  font-weight: var(--fw-5);
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src:
-    url("/assets/fonts/alegreyasans-regular.woff2") format("woff2"),
+  src: url("/assets/fonts/alegreyasans-regular.woff2") format("woff2"),
     url("/assets/fonts/alegreyasans-regular.woff") format("woff");
-  font-weight: var(--font-weight-4);
+  font-weight: var(--fw-4);
   font-style: normal;
   font-display: swap;
 }

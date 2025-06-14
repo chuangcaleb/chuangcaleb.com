@@ -4,7 +4,7 @@
   --hr-space: var(--space-xl);
   --flow-li: var(--size-relative-5);
 
-  line-height: var(--font-lineheight-4);
+  line-height: var(--font-lh-4);
 
   h1 {
     max-width: var(--size-header-2);
