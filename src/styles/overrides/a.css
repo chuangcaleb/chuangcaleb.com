@@ -27,7 +27,9 @@
   &:not(.unstyled-hover-link) {
     /* background-color: var(--ui2);
     margin: calc(var(--size-ch-1) * -1) calc(var(--size-ch-2) * -1); */
-    background-color: var(--ui1);
+    background-color: var(--ui2);
+    margin-inline: calc(var(--size-ch-2) * -1);
+    padding-inline: var(--size-ch-2);
   }
 }
 
