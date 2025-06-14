@@ -41,7 +41,6 @@
     "googleapis": "^148.0.0",
     "js-yaml": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
-    "open-props": "^1.7.15",
     "postcss-custom-media": "^11.0.6",
     "postcss-preset-env": "^10.2.1",
     "react": "^19.1.0",
