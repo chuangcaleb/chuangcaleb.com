@@ -43,18 +43,6 @@ export default defineConfig({
 	},
 	env: {
 		schema: {
-			CLOUDINARY_API_KEY: envField.string({
-				access: 'secret',
-				context: 'server',
-			}),
-			CLOUDINARY_API_SECRET: envField.string({
-				access: 'secret',
-				context: 'server',
-			}),
-			CLOUDINARY_CLOUD_NAME: envField.string({
-				access: 'secret',
-				context: 'server',
-			}),
 			GOOGLE_SERVICE_ACCOUNT_EMAIL: envField.string({
 				access: 'secret',
 				context: 'server',
