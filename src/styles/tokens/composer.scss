@@ -20,19 +20,15 @@
   --text-on-ax: var(--fg9);
   --border: var(--ui2);
 
-  color-scheme: dark;
   @include theme.dark();
   @media (prefers-color-scheme: light) {
-    color-scheme: light;
     @include theme.light();
   }
 }
 
 [data-theme="dark"] {
-  color-scheme: dark;
   @include theme.dark();
 }
 [data-theme="light"] {
-  color-scheme: light;
   @include theme.light();
 }
