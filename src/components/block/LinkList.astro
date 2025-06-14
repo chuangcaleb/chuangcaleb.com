@@ -41,6 +41,7 @@ const { links = [], isFooter = false, ...props } = Astro.props;
       ul {
         display: flex;
         flex-wrap: wrap;
+        align-items: baseline;
       }
       li {
         --flow-space: 0;
@@ -49,7 +50,7 @@ const { links = [], isFooter = false, ...props } = Astro.props;
         margin-right: var(--space-m);
       }
       li:first-child {
-        font-size: var(--step-1);
+        font-size: var(--step-2);
         margin-inline-end: var(--space-xl);
       }
     }
