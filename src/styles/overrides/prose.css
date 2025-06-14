@@ -6,9 +6,6 @@
 
   line-height: var(--font-lh-4);
 
-  h1 {
-    max-width: var(--size-header-2);
-  }
   h2,
   h3,
   h4,
