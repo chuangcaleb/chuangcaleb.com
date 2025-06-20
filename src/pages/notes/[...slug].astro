@@ -1,7 +1,6 @@
 ---
 import ObsidianNoteLayout from "~/components/layout/NoteLayout/ObsidianNoteLayout.astro";
 import { getAllNotes } from "~/utils/note";
-import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const notes = await getAllNotes();

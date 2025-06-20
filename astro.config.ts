@@ -7,8 +7,8 @@ import robotsTxt from 'astro-robots-txt';
 import {defineConfig, envField} from 'astro/config';
 // Import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
-// import { remarkStripH1 } from "lib/remark/strip-h1";
 import og from 'astro-og';
+import {remarkStripH1} from './lib/remark/strip-h1.js';
 import remarkWikilinks from './lib/remark/remark-wikilinks.js';
 import {remarkSimpleStripPercentComments} from './lib/remark/strip-obsidian-comments.js';
 import {remarkStripObsidianUtilities} from './lib/remark/strip-obsidian-utilities.ts';
@@ -31,7 +31,7 @@ export default defineConfig({
 	markdown: {
 		shikiConfig: {theme: 'css-variables'},
 		remarkPlugins: [
-			// RemarkStripH1,
+			remarkStripH1,
 			// remarkReadingTime,
 			remarkStripObsidianUtilities,
 			remarkSimpleStripPercentComments,
