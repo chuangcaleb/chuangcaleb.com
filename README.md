@@ -14,17 +14,16 @@ All commands are run from the root of the project, from a terminal.
 | :---------------------- | :------------------------------------------------------------------------------------------------------- |
 | `pnpm install`          | Installs dependencies                                                                                    |
 | `pnpm dev`              | Starts local dev server at `localhost:4321`                                                              |
-| `pnpm dev:nocache`      | Runs dev without `cloudinary:cache`                                                                      |
-| `pnpm build`            | Build production site to `./dist/` (with `cloudinary:cache` + `git submodule update` from latest remote) |
-| `pnpm build:nocache`    | Only build production site                                                                               |
+| `pnpm dev:nosetup`      | Runs dev without `setup:external`                                                                      |
+| `pnpm build`            | Build production site to `./dist/` (with `setup:external` + `git submodule update` from latest remote) |
+| `pnpm build:nosetup`    | Only build production site                                                                               |
 | `pnpm preview`          | Build (cache + submodule) then preview locally, before deploying                                         |
-| `pnpm preview:nocache`  | Same as `preview`, but don't `cloudinary:cache` when building                                            |
+| `pnpm preview:nosetup`  | Same as `preview`, but don't `setup:external` when building                                            |
 | `pnpm preview:nobuild`  | Same as `preview`, but without build step, so directly re-using existing local build                     |
 | `pnpm format:check`     | Print code-format results with Prettier                                                                  |
 | `pnpm format:fix`       | Format all code with Prettier (will write)                                                               |
-| `pnpm cloudinary:cache` | Pre-cache Cloudinary images with its API                                                                 |
 | `pnpm b2:download`  | Download b2 bucket to local `src/content` directory                                                               |
-| `pnpm setup:external`   | Alias for `b2:download && cloudinary:cache`                                                            |
+| `pnpm setup:external`   | Syncs down external data; alias for `b2:download`                                                            |
 | `pnpm astro ...`        | Run CLI commands like `astro add`, `astro preview`                                                       |
 
 Check [package.json](./package.json) for specific implementation.
@@ -33,20 +32,22 @@ Check [package.json](./package.json) for specific implementation.
 
 ## Architecture / Tech Stack
 
-As of latest:
+As of latest: update me
+remove clsx
 
 - Web Framework: [Astro](https://astro.build/)
 - UI Component(s) Library: [Radix Primitives](https://www.radix-ui.com/primitives)
   - UI Library: [React](https://react.dev/)
 - CSS/Design
-  - Methodology: [CUBE CSS](https://cube.fyi/)
+  - Methodology: [CUBE CSS](https://cube.fyi/) ()
   - CSS Tokens: [Open Props](https://open-props.style/)
   - CSS Extension: [Sass/Scss](https://sass-lang.com/)
   - Preprocessing: [PostCSS](https://postcss.org/)
   - Fluid Responsive Design: [utopia-core-scss](https://github.com/trys/utopia-core-scss) @ [Utopia](https://utopia.fyi/)
-- Deployment + CD: [Cloudflare Pages](https://pages.cloudflare.com/)
-- Image CDN: [Cloudinary](https://cloudinary.com/)
-- CMS: [Obsidian](https://obsidian.md/) + [GitHub](https://github.com/) repo
+- CMS: [Obsidian](https://obsidian.md/) + [Backblaze B2](https://www.backblaze.com/cloud-storage)
+- External from this repo:
+  - Deployment + CD: [Cloudflare Pages](https://pages.cloudflare.com/)
+  - Image CDN: [Cloudflare CDN](https://www.cloudflare.com/application-services/products/cdn/)
 
 ### Project structure
 
@@ -60,9 +61,10 @@ As of latest:
 │   ├── assets
 │   │   ├── favicon
 │   │   └── fonts
-│   └── _headers
+│   ├── _headers
+│   └── _redirects // generated
 └── src
-    ├── assets // optimised local image asset(s)
+    ├── assets // optimised local asset(s)
     ├── components
     │   ├── block // has logic, or has many elements
     │   ├── layout
@@ -79,19 +81,20 @@ As of latest:
     │   └── **
     │       └── _components // scoped helper components
     ├── styles
-    │   ├── config
+    │   ├── tokens
+    │   │   ├── borders.scss
     │   │   ├── dynamic-colors.scss // color calculations
     │   │   ├── fluid.scss // utopia-core-scss fluid type generators
-    │   │   ├── fonts.css // font imports
-    │   │   ├── misc.scss
+    │   │   ├── fonts.scss
+    │   │   ├── sizes.scss
     │   │   ├── theme.scss // theme config
-    │   │   └── composer.scss // composes everything in style rules
-    │   │   └── index.css // default export
+    │   │   └── composer.scss // composes everything in style rules, module default export
     │   ├── normalize // reset default agent styles
     │   ├── overrides // custom site styles
     │   ├── utilities // does one job well
+    │   ├── fonts.css // @font-face declarations
     │   └── global.css // main css entry point
-    └── utils // /src-specific utilities
+    └── utils // `/src`-specific utilities
 ```
 
 Astro looks for .astro or .md files in the `src/pages/` directory. Each page is exposed as a route based on its file name, except if a route segment starts with an `_` (like `_components`).
@@ -296,16 +299,6 @@ Note: currently `b2 sync` cannot track diff by SHA1
 So we are using next best, file size
 [sync — B2_Command_Line_Tool 4.0.2 documentation](https://b2-command-line-tool.readthedocs.io/en/master/subcommands/sync.html)
 
-Syncing down necessitates the `backblaze-b2` package from `npm` (instead of `b2` CLI), because it needs to be executed in the `node` environment of the cloud runner during `build`.
+Syncing down necessitates the `backblaze-b2` package from `npm` (instead of `b2` CLI), because it needs to be executed in the `node` environment of the cloud runner during `build`. See [lib/b2/index.mjs](lib/b2/index.mjs) for implementation.
 
 The pre-upload processing script is currently in my private repo, it just doesn't belong anywhere else, it's very customized. I can share it upon request.
-
-### Cloudinary Images
-
-Using Cloudinary, but just for project images. May change exactly how it works. See [lib/cloudinary](lib/cloudinary).
-
-A cache step will use the Cloudinary API to get the results of all images in an asset folder and write to a local `.json` file. Then when picking an image, we just read from this cache. The alternative would be to call the API in the `.astro` frontmatter, but that would call the API on every refresh, and it would hit the limit.
-
-## Roadmap
-
-- [unpic.pics](https://unpic.pics/)

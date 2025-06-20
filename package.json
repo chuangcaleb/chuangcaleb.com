@@ -4,18 +4,17 @@
   "version": "2.0.0",
   "scripts": {
     "astro": "astro",
-    "build:nocache": "astro build",
+    "build:nosetup": "astro build",
     "build": "pnpm setup-external && astro build",
-    "dev:nocache": "astro dev",
+    "dev:nosetup": "astro dev",
     "dev": "pnpm setup-external && astro dev",
     "format:check": "pnpm xo -- --list-different .",
     "format:fix": "pnpm xo --write .",
     "gdrive:download": "tsx lib/google/drive/download-folder",
     "b2:download": "node lib/b2/index.mjs && tsx lib/chuangcaleb/generate-redirects.ts",
     "preview:nobuild": "astro preview",
-    "preview:nocache": "pnpm build:nocache && astro preview",
+    "preview:nosetup": "pnpm build:nosetup && astro preview",
     "preview": "pnpm build && astro preview",
-    "setup-external": "pnpm b2:download",
     "test": "xo"
   },
   "dependencies": {
