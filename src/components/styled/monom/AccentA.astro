@@ -1,6 +1,5 @@
 ---
 import { type HTMLAttributes } from "astro/types";
-import ProseA from "./ProseA.astro";
 
 export interface Props extends HTMLAttributes<"a"> {
   noExtArrow?: boolean;
@@ -9,7 +8,7 @@ export interface Props extends HTMLAttributes<"a"> {
 const { class: propsClass, ...props } = Astro.props;
 ---
 
-<ProseA {...props} class:list={["accent", propsClass]}><slot /></ProseA>
+<a {...props} class:list={["accent", propsClass]}><slot /></a>
 
 <style is:global>
   a.accent {

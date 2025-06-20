@@ -2,7 +2,6 @@
 import { Icon } from "astro-iconify";
 import { Picture } from "astro:assets";
 import { render, type CollectionEntry } from "astro:content";
-import { defaultComponents } from "lib/utils/markdown";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import Caps from "~/components/styled/polym/Caps.astro";
 
@@ -23,7 +22,7 @@ const { Content } = await render(project)
       <h3>{project.data.title}</h3>
       <Caps>{project.data.kind}</Caps>
     </header>
-    <Content components={defaultComponents} />
+    <Content />
     <div class="links">
       <Icon name="lucide:link" />
       {

@@ -41,14 +41,14 @@ const { img, alt, url, backgroundColor } = Astro.props;
   }
   {
     url && (
-      <ProseA href={url}>
+      <a href={url}>
         <img
           src={img.src}
           alt={alt}
           {...(backgroundColor && { style: { backgroundColor } })}
         />
         <slot />
-      </ProseA>
+      </a>
     )
   }</span
 >
