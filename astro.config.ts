@@ -11,6 +11,7 @@ import {defineConfig, envField} from 'astro/config';
 import og from 'astro-og';
 import remarkWikilinks from './lib/remark/remark-wikilinks.js';
 import {remarkSimpleStripPercentComments} from './lib/remark/strip-obsidian-comments.js';
+import {remarkStripObsidianUtilities} from './lib/remark/strip-obsidian-utilities.ts';
 
 const productionIntegrations = [robotsTxt(), sitemap(), compressor()];
 
@@ -32,6 +33,7 @@ export default defineConfig({
 		remarkPlugins: [
 			// RemarkStripH1,
 			// remarkReadingTime,
+			remarkStripObsidianUtilities,
 			remarkSimpleStripPercentComments,
 			remarkWikilinks,
 		],
