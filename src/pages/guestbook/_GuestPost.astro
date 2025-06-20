@@ -18,7 +18,7 @@ const formattedDate = formatIso(
 );
 ---
 
-<blockquote class="flom-lg surface-alt border flow">
+<div class="post | flom-lg surface-alt border flow">
   <div class="cite | flex-row">
     {
       post["📸 Avatar Image Link"] && (
@@ -39,7 +39,7 @@ const formattedDate = formatIso(
             {post["📇 Display Name"]}
           </ProseA>
         ) : (
-          <span>{post["📇 Display Name"]}</span>
+          <span class="display-name">{post["📇 Display Name"]}</span>
         )
       }
       <span class="flex-row subtitle">
@@ -54,29 +54,37 @@ const formattedDate = formatIso(
       {formattedDate}
     </i>
   </p>
+</div>
 
-  <style>
-    blockquote *:not(.body) {
-      font-size: var(--step--1);
-    }
-    img {
-      /* height: 3em; */
-      /* aspect-ratio: 1/1; */
-      border-radius: 100%;
-    }
-    .cite p > span {
-      line-height: var(--font-lh-1);
-    }
-    i,
-    .subtitle {
-      color: var(--fg3);
-      white-space: nowrap;
-    }
-    .subtitle {
-      text-transform: lowercase;
-    }
-    p {
-      word-wrap: initial;
-    }
-  </style>
-</blockquote>
+<style>
+  .post {
+    padding-block: var(--step-2);
+    padding-inline: var(--step-1);
+    padding-inline-start: var(--step-2);
+  }
+
+  .subtitle {
+    font-size: var(--step--1);
+    text-transform: lowercase;
+  }
+  img {
+    /* height: 3em; */
+    /* aspect-ratio: 1/1; */
+    border-radius: 100%;
+  }
+  .cite p > span {
+    line-height: var(--font-lh-1);
+  }
+  i,
+  .subtitle {
+    color: var(--fg3);
+    white-space: nowrap;
+  }
+  .body i {
+    padding-inline-start: var(--step--1);
+  }
+
+  p {
+    word-wrap: initial;
+  }
+</style>
