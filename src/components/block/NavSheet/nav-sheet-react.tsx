@@ -8,7 +8,7 @@ import {useWindowSize} from '~/utils/hooks/use-window-size.ts';
 
 // Lazy any lol
 
-const NavSheetReact = (properties: any) => {
+const NavSheetReact = (props: any) => {
 	const [open, setOpen] = React.useState(false);
 	const {scrollY, direction} = useScroll('up');
 	const {width} = useWindowSize();
@@ -49,8 +49,9 @@ const NavSheetReact = (properties: any) => {
 		};
 	}, []);
 
-	const isMobileTop = width && width < 900 && scrollY < 1;
-	const shouldShowFloatingButton = direction === 'down' || isMobileTop;
+	const isMobileTop = width && width < 900 && scrollY < 10;
+	const shouldShowFloatingButton =
+		direction === 'down' || Boolean(isMobileTop) || Boolean(props.isNotesRoute);
 
 	return (
 		<Dialog.Root open={open} onOpenChange={setOpen}>
@@ -65,7 +66,7 @@ const NavSheetReact = (properties: any) => {
 					])}
 					aria-label="Open Navigation Sidebar Sheet"
 				>
-					<Fragment>{properties.menuIcon}</Fragment>
+					<Fragment>{props.menuIcon}</Fragment>
 				</button>
 			</Dialog.Trigger>
 			<Dialog.Portal>
@@ -82,10 +83,10 @@ const NavSheetReact = (properties: any) => {
 					</Dialog.Description>
 					<Dialog.Close asChild>
 						<button className={styles.CloseButton} aria-label="Close">
-							<Fragment>{properties.closeIcon}</Fragment>
+							<Fragment>{props.closeIcon}</Fragment>
 						</button>
 					</Dialog.Close>
-					{properties.body}
+					{props.body}
 				</Dialog.Content>
 			</Dialog.Portal>
 		</Dialog.Root>

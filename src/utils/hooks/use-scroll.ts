@@ -7,6 +7,7 @@
 
 import {useState, useEffect} from 'react';
 
+// TODO: optimise return memoisable values, so nav sheet isn't re-rendered on every scroll
 export function useScroll(initialDirection: 'up' | 'down') {
 	// Storing this to get the scroll direction
 	const [lastScrollTop, setLastScrollTop] = useState(0);
