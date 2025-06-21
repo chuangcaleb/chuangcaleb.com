@@ -18,35 +18,23 @@ const cs = await getNoteEntries(entry.data.collection);
 ---
 
 <NoteLayout title={entry.name} headings={headings} metadata={entry.data}>
-  <header class="full flow-xl">
-    <h1>{entry.name}</h1>
-    <div class="breadcrumb content">
-      {
-        !!cs.length ? (
-          cs.map((c) => (
-            <AccentA href={c.route}>{`${c.data.emojip} ${c.name}`}</AccentA>
-          ))
-        ) : (
-          <AccentA href="/garden">← 🪴 Garden Root</AccentA>
-        )
-      }
-    </div>
-  </header>
+  <div class="breadcrumb content">
+    {
+      !!cs.length ? (
+        cs.map((c) => (
+          <AccentA href={c.route}>{`${c.data.emojip} ${c.name}`}</AccentA>
+        ))
+      ) : (
+        <AccentA href="/garden">← 🪴 Garden Root</AccentA>
+      )
+    }
+  </div>
 
   <Content />
   <slot slot="sidebar" name="sidebar" />
 </NoteLayout>
 
 <style>
-  header {
-    background-color: var(--bg2);
-    display: grid;
-    grid-template-columns: subgrid;
-    padding-block: var(--space-2xl);
-    * {
-      grid-column: content;
-    }
-  }
   .breadcrumb {
     display: flex;
     gap: var(--space-m);
