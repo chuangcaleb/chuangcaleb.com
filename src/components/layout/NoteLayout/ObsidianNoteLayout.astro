@@ -25,10 +25,15 @@ const cs = await getNoteEntries(entry.data.collection);
         {
           !!cs.length ? (
             cs.map((c) => (
-              <AccentA href={c.route}>{`${c.data.emojip} ${c.name}`}</AccentA>
+              <span>
+                ↑{" "}
+                <AccentA href={c.route}>{`${c.data.emojip} ${c.name}`}</AccentA>
+              </span>
             ))
           ) : (
-            <AccentA href="/garden">← 🪴 Garden Root</AccentA>
+            <span>
+              ↑ <AccentA href="/garden">🪴 Garden Root</AccentA>
+            </span>
           )
         }
       </div>
@@ -42,5 +47,9 @@ const cs = await getNoteEntries(entry.data.collection);
   .breadcrumb {
     display: flex;
     gap: var(--space-m);
+  }
+  span {
+    display: flex;
+    gap: var(--space-2xs);
   }
 </style>
