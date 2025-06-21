@@ -4,6 +4,7 @@ import faviconUrl from "/src/assets/favicon/favicon.ico";
 import faviconAppleTouchUrl from "/src/assets/favicon/apple-touch-icon.png";
 import favicon32Url from "/src/assets/favicon/favicon-32x32.png";
 import favicon16Url from "/src/assets/favicon/favicon-16x16.png";
+import { ClientRouter } from "astro:transitions";
 
 export type HeadProps = {
   description?: string;
@@ -67,12 +68,7 @@ const description = propsDescription ?? SITE.description;
 />
 <meta name="msapplication-TileColor" content={SITE.color.light} />
 
-{
-
-    // Removed until we fix broken window event listeners
-    /* <ViewTransitions /> */
-}
-
+<ClientRouter />
 {
   /*
     <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml" />
