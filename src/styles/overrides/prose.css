@@ -1,7 +1,7 @@
 .prose {
   container-type: inline-size;
   width: 100%;
-  --hr-space: var(--space-xl);
+  --hr-space: var(--space-3xl);
   --flow-li: var(--size-ch-5);
 
   line-height: var(--font-lh-4);
@@ -16,8 +16,7 @@
   }
 
   hr {
-    grid-column-start: popout;
-    grid-column-end: popout;
+    grid-column: popout;
     --flow-space: var(--hr-space);
     & + * {
       --flow-space: var(--hr-space);
