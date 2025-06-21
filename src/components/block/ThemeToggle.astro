@@ -9,7 +9,7 @@ const THEMES = {
 } as const satisfies { [k: string]: React.ReactNode };
 ---
 
-<Button class="theme-toggle">
+<Button class="theme-toggle" aria-hidden>
   <noscript>theme-toggle needs Javascript enabled!</noscript>
   {
     Object.entries(THEMES).map(([key, value]) => (
@@ -18,7 +18,7 @@ const THEMES = {
         iconName={value}
         data-label={key}
         iconColor="unset"
-        aria-hidden="true"
+        data-hidden="true"
       >
         {key}
       </TagWIcon>
@@ -27,7 +27,7 @@ const THEMES = {
 </Button>
 
 <style>
-  [aria-hidden="true"] {
+  [data-hidden="true"] {
     display: none;
   }
 </style>
@@ -51,11 +51,11 @@ const THEMES = {
     const buttonToActivate = document.querySelector(
       `button.theme-toggle > [data-label=${theme}]`
     );
-    buttonToActivate?.setAttribute("aria-hidden", "false");
+    buttonToActivate?.setAttribute("data-hidden", "false");
     const buttonsToDeactivate = document.querySelectorAll(
       `button.theme-toggle > :not([data-label=${theme}])`
     );
-    buttonsToDeactivate.forEach((b) => b?.setAttribute("aria-hidden", "true"));
+    buttonsToDeactivate.forEach((b) => b?.setAttribute("data-hidden", "true"));
   }
 
   function setTheme(theme: string) {

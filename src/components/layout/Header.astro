@@ -14,8 +14,8 @@ const { hasBanner = true } = Astro.props;
 
 <header>
   <div class="skip-container | sr-only-unfocused flow-sm">
-    <a href="#main">Skip to content →</a>
-    <a href="#footer">Skip to footer →</a>
+    <a href="#main" aria-label="Skip to content">Skip to content →</a>
+    <a href="#footer" aria-label="Skip to footer">Skip to footer →</a>
   </div>
   {
     hasBanner && (
@@ -23,7 +23,9 @@ const { hasBanner = true } = Astro.props;
         <nav class="flex-row">
           <h2 class="sr-only">Site navigation</h2>
           <a href={NAV_LINKS.INDEX.href}>{NAV_LINKS.INDEX.shortLabel}</a>
-          <span class="text-muted">•</span>
+          <span class="text-muted" aria-hidden>
+            •
+          </span>
           <LinkList
             class="flex-row"
             links={Object.values(NAV_LINKS).filter((l) => l.isInHeader)}
