@@ -1,8 +1,7 @@
 export default {
 	title: 'chuangcaleb.com',
 	subtitle: 'software dev with a different story',
-	description:
-		"I professionally tinker with UI Design & dynamic web apps — and unprofessionally with storytelling. You'll find out about me on this site. Wanna work together?",
+	description: "Chuang Caleb's web-portfolio and public digital garden.",
 	language: 'en',
 	author: {
 		name: 'Chuang Caleb',
