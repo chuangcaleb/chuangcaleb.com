@@ -47,6 +47,7 @@ const baseObsidianNoteSchema = z
 		series: z.array(reference('obsidian-note')).optional(),
 		collectionItems: z.array(reference('obsidian-note')),
 		description: z.string(),
+		resources: z.array(z.string()),
 	})
 	.partial();
 

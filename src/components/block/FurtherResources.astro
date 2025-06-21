@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from "astro:content";
+import TagWIcon from "../styled/polym/TagWIcon.astro";
+
+interface Props {
+  resources: CollectionEntry<"obsidian-note">["data"]["resources"];
+}
+
+const { resources } = Astro.props;
+
+function parseMarkdownLinks(
+  markdownLinks: CollectionEntry<"obsidian-note">["data"]["resources"]
+) {
+  return markdownLinks
+    ?.map((link) => {
+      const match = link.match(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/);
+      if (!match) return null;
+
+      const alias = match[1];
+      const url = match[2];
+      let domain;
+
+      try {
+        domain = new URL(url).hostname;
+      } catch (e) {
+        domain = null;
+      }
+
+      return { alias, link: url, domain };
+    })
+    .filter((l) => !!l); // remove nulls for non-matching items
+}
+
+const formattedResources = parseMarkdownLinks(resources);
+---
+
+{
+  formattedResources?.length && (
+    <>
+      <hr />
+      <TagWIcon iconName="lucide:external-link" as="h2" iconColor="fg3">
+        External Resources
+      </TagWIcon>
+      <ul class="flow-xs">
+        {formattedResources.map((r) => (
+          <li>
+            <a href={r.link}>{r.alias}</a>
+            <span>{r.domain}</span>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
+<style>
+  span {
+    color: var(--text-faded);
+    font-size: var(--step--1);
+    display: block;
+  }
+</style>
