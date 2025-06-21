@@ -16,6 +16,7 @@ const { class: propsClass, ...props } = Astro.props;
     {" "}<span class="text-faded">#</span> contact
   </TagWIcon>
   <p>You made it to the end! ...Or is it just the beginning?</p>
+  <h3 class="sr-only">Social links</h3>
   <ul class="norm flow-xs">
     {
       Object.keys(SOCIALS).map((l) => (

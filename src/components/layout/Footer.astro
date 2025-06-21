@@ -10,14 +10,14 @@ import SiteNavStack from "./SiteNavStack.astro";
   <SiteNavStack isFooter />
   <div class="utils">
     <ThemeToggle />
-    <hr />
+    <hr aria-hidden />
   </div>
   <Contact />
 
   <div>
     <p class="fine-print">
       <a href={gnr("/meta/colophon")}>colophon</a>
-      <span class="text-muted">•</span>
+      <span class="text-muted" aria-hidden>•</span>
       <a href="https://github.com/chuangcaleb/chuangcaleb.com">source code</a>
     </p>
     <p class="fine-print">

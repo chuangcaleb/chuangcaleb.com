@@ -1,4 +1,4 @@
-.sr-only-unfocused:not(:focus),
+/* .sr-only-unfocused:not(:focus), */
 .sr-only-unfocused:not(:focus-within),
 .sr-only {
   position: absolute;
