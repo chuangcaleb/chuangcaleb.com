@@ -5,7 +5,6 @@ import { formatDisplayDate } from "~/utils/time";
 import type { MetadataValues } from "./MetadataValue.astro";
 
 interface Props {
-  isLink: boolean;
   value: Exclude<MetadataValues, Array<any>>;
 }
 
@@ -13,7 +12,10 @@ const { value } = Astro.props;
 
 const isDate = value instanceof Date;
 const note =
-  !!value && typeof value === "object" && (await getNoteEntry(value));
+  !!value &&
+  typeof value === "object" &&
+  !isDate &&
+  (await getNoteEntry(value));
 
 const isString = typeof value === "string";
 const isDateFormat = isString && Date.parse(value);

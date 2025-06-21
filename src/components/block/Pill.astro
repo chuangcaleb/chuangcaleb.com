@@ -1,0 +1,14 @@
+---
+import type { MetadataValues } from "../layout/NoteLayout/components/metadata/MetadataValue.astro";
+import MetadataValueItem from "../layout/NoteLayout/components/metadata/MetadataValueItem.astro";
+
+interface Props {
+  key: string;
+  value: Exclude<MetadataValues, Array<any>>;
+}
+
+const { value } = Astro.props;
+---
+
+<div><MetadataValueItem value={value} /></div>
+<style></style>

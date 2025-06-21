@@ -25,7 +25,7 @@ const metadataArray = Object.entries(metadata);
           if (EXCLUDE_KEYS.includes(key)) return;
           return (
             <li>
-              {key} :: <MetadataValue key={key} value={value} />
+              {key} :: <MetadataValue value={value} />
             </li>
           );
         })}
