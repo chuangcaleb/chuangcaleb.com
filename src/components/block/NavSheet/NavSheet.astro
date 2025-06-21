@@ -2,9 +2,11 @@
 import Icon from "astro-iconify";
 import SiteNavStack from "~/components/layout/SiteNavStack.astro";
 import NavSheetReact from "./nav-sheet-react";
+
+const isNotesRoute = Astro.url.pathname.startsWith("/notes");
 ---
 
-<NavSheetReact client:only="react">
+<NavSheetReact client:only="react" isNotesRoute={isNotesRoute}>
   <Icon name="lucide:chevron-first" slot="menuIcon" />
   <Icon name="lucide:chevron-last" slot="closeIcon" />
   <div slot="body" class="flow-lg">
