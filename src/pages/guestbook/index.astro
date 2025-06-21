@@ -17,11 +17,9 @@ const icon = NAV_LINKS.GUESTBOOK.icon;
 <NoteLayout title={title}>
   <slot slot="header">
     <TagWIcon iconName={icon} as="h1" style={{ display: "flex" }}>
-      Guestbook
+      {title}
     </TagWIcon>
-    <p>
-      <b>A collection of post-it notes, signed by people who know me!</b>
-    </p>
+    <p>A collection of post-it notes, signed by people who know me!</p>
   </slot>
   <p>
     I explain the technical behind-the-scenes at <a
