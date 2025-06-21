@@ -17,11 +17,12 @@ const { Content, headings } = await render(entry);
 
 // title
 const cs = await getNoteEntries(entry.data.collection);
+const title = `${entry.data.emojip ? entry.data.emojip + " " : ""} ${entry.name}`;
 ---
 
 <NoteLayout title={entry.name} headings={headings} metadata={entry.data}>
   <slot slot="header">
-    <NoteHeader title={entry.name} description={entry.data.description}>
+    <NoteHeader title={title} description={entry.data.description}>
       <div class="metadata | content">
         <div class="parents">
           {
