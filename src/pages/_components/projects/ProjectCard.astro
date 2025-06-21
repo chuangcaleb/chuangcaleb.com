@@ -23,8 +23,8 @@ const { Content } = await render(project)
       <Caps>{project.data.kind}</Caps>
     </header>
     <Content />
+
     <div class="links">
-      <Icon name="lucide:link" />
       {
         project.data.links?.map((link) => (
           <AccentA href={link.href}>
@@ -69,9 +69,6 @@ const { Content } = await render(project)
     flex-wrap: wrap;
     column-gap: var(--size-ch-6);
 
-    & > svg:first-child {
-    color: var(--text-faded);
-  }
   }
 
   header {
