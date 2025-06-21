@@ -9,12 +9,12 @@ import Toc from "./components/toc/Toc.astro";
 
 interface Props {
   title: string;
+  description?: string;
   headings?: MarkdownHeading[];
   metadata?: MetadataProps;
-  noHeader?: boolean;
 }
 
-const { title, headings = [], metadata = {}, noHeader = false } = Astro.props;
+const { title, description, headings = [], metadata = {} } = Astro.props;
 
 // collection
 const { collectionItems, series } = metadata;
@@ -25,7 +25,7 @@ const collectionData = isCollection && {
 };
 ---
 
-<BaseMain title={title}>
+<BaseMain title={title} description={metadata.description ?? description}>
   <slot slot="head" name="head" />
   <Fragment slot="sheetBody">
     <h3>{title}</h3>
@@ -34,15 +34,11 @@ const collectionData = isCollection && {
     <Toc headings={headings} />
   </Fragment>
   <div class="flow-lg">
-    {
-      !noHeader && (
-        <div class="header-section | cgrid flow-md">
-          <slot name="header">
-            <NoteHeader title={title} />
-          </slot>
-        </div>
-      )
-    }
+    <div class="header-section | cgrid flow-md">
+      <slot name="header">
+        <NoteHeader title={title} />
+      </slot>
+    </div>
 
     <article class="cgrid prose flow-lg">
       <slot />

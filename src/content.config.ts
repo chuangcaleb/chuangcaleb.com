@@ -46,6 +46,7 @@ const baseObsidianNoteSchema = z
 		emojip: z.string(),
 		series: z.array(reference('obsidian-note')).optional(),
 		collectionItems: z.array(reference('obsidian-note')),
+		description: z.string(),
 	})
 	.partial();
 

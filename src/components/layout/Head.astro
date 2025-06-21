@@ -1,9 +1,9 @@
 ---
 import SITE from "~/data/site";
-import faviconUrl from "/src/assets/favicon/favicon.ico"
-import faviconAppleTouchUrl from "/src/assets/favicon/apple-touch-icon.png"
-import favicon32Url from "/src/assets/favicon/favicon-32x32.png"
-import favicon16Url from "/src/assets/favicon/favicon-16x16.png"
+import faviconUrl from "/src/assets/favicon/favicon.ico";
+import faviconAppleTouchUrl from "/src/assets/favicon/apple-touch-icon.png";
+import favicon32Url from "/src/assets/favicon/favicon-32x32.png";
+import favicon16Url from "/src/assets/favicon/favicon-16x16.png";
 
 export type HeadProps = {
   description?: string;
@@ -40,6 +40,8 @@ const description = propsDescription ?? SITE.description;
 {/* Open Graph / Facebook */}
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
+<meta property="og:site_name" content={SITE.title} />
+<meta property="og:url" content={canonicalUrl.href} />
 {description && <meta property="og:description" content={description} />}
 
 {/* Twitter */}
@@ -49,23 +51,9 @@ const description = propsDescription ?? SITE.description;
 
 {/* Favicon & Manifest */}
 <link rel="shortcut icon" href={faviconUrl} />
-<link
-  rel="apple-touch-icon"
-  sizes="180x180"
-  href={faviconAppleTouchUrl.src}
-/>
-<link
-  rel="icon"
-  type="image/png"
-  sizes="32x32"
-  href={favicon32Url.src}
-/>
-<link
-  rel="icon"
-  type="image/png"
-  sizes="16x16"
-  href={favicon16Url.src}
-/>
+<link rel="apple-touch-icon" sizes="180x180" href={faviconAppleTouchUrl.src} />
+<link rel="icon" type="image/png" sizes="32x32" href={favicon32Url.src} />
+<link rel="icon" type="image/png" sizes="16x16" href={favicon16Url.src} />
 <link rel="manifest" href="/site.webmanifest" />
 <meta
   name="theme-color"
@@ -78,7 +66,6 @@ const description = propsDescription ?? SITE.description;
   media=" (prefers-color-scheme: dark)"
 />
 <meta name="msapplication-TileColor" content={SITE.color.light} />
-
 
 {
 

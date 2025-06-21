@@ -1,10 +1,18 @@
 ---
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <h1>{title}</h1>
+<p>{description}</p>
 <slot />
+
+<style>
+  p {
+    color: var(--text-faded);
+  }
+</style>
