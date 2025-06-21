@@ -16,15 +16,12 @@ const {
 } = Astro.props;
 ---
 
-<Comp
-  class:list={["cc-btn unstyled-hover-link", variant, className]}
-  {...props}
->
+<Comp class:list={["unstyled-hover-link", variant, className]} {...props}>
   <slot />
 </Comp>
 
-<style is:global>
-  .cc-btn {
+<style>
+  * {
     background-color: var(--_bg, var(--bg2));
     color: var(--_text, var(--text-strong));
     border-color: var(--_border, var(--border));
@@ -44,11 +41,11 @@ const {
     text-decoration-line: none;
     text-transform: lowercase;
 
-    [data-theme="dark"] & {
+    :global([data-theme="dark"]) & {
       --_bg-hover: var(--fg1);
-      --_border-hover: transparent;
+      --_border-hover: var(--ax1);
     }
-    [data-theme="light"] & {
+    :global([data-theme="light"]) & {
       --_bg-hover: var(--text-on-ax);
       --_border-hover: var(--ax1);
     }
@@ -86,7 +83,7 @@ const {
       /* text-decoration-color: var(--ax2); */
     }
 
-    svg {
+    & :global(svg) {
       width: 1.5em;
     }
   }
