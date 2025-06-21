@@ -1,0 +1,20 @@
+---
+interface Props {
+  prefix: string;
+}
+
+const { prefix } = Astro.props;
+---
+
+<span>
+  {prefix}
+  <slot />
+</span>
+
+<style>
+  span {
+    display: flex;
+    gap: var(--space-xs);
+    color: var(--text-faded);
+  }
+</style>

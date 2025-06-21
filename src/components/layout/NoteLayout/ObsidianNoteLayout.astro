@@ -6,6 +6,7 @@ import { getNoteEntries } from "~/utils/note";
 import NoteLayout from "./NoteLayout.astro";
 import NoteHeader from "./components/NoteHeader.astro";
 import Pill from "~/components/block/Pill.astro";
+import MetadataContainer from "./components/MetadataContainer.astro";
 
 interface Props {
   entry: SuperNotes[number];
@@ -27,18 +28,20 @@ const title = `${entry.data.emojip ? entry.data.emojip + " " : ""} ${entry.name}
         <div class="parents">
           {
             !!cs.length ? (
-              <span>
-                ↑{" "}
-                {cs.map((c) => (
-                  <AccentA
-                    href={c.route}
-                  >{`${c.data.emojip} ${c.name}`}</AccentA>
+              <MetadataContainer prefix="↑">
+                {cs.map((c, index) => (
+                  <>
+                    {index > 0 && "•"}
+                    <AccentA href={c.route}>
+                      {`${c.data.emojip} ${c.name}`}
+                    </AccentA>
+                  </>
                 ))}
-              </span>
+              </MetadataContainer>
             ) : (
-              <span>
-                ↑ <AccentA href="/garden">🪴 Garden Root</AccentA>
-              </span>
+              <MetadataContainer prefix="↑">
+                <AccentA href="/garden">🪴 Garden Root</AccentA>
+              </MetadataContainer>
             )
           }
         </div>
@@ -68,8 +71,6 @@ const title = `${entry.data.emojip ? entry.data.emojip + " " : ""} ${entry.name}
     gap: var(--space-m);
   }
   span {
-    display: flex;
-    gap: var(--space-xs);
     color: var(--text-faded);
   }
 </style>
