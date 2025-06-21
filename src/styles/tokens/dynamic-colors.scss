@@ -51,7 +51,7 @@ The colors use HSL (hue, saturation, lightness)
 @mixin tokens {
   --bg1: hsl(var(--base-h), var(--base-s), var(--base-l));
   // don't invert for bg2 — bg2 is always darker than bg1
-  --bg2: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 2%));
+  --bg2: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 1.5%));
   --bg3: hsla(
     var(--base-h),
     var(--base-s),
