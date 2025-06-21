@@ -15,12 +15,14 @@ const icon = NAV_LINKS.GUESTBOOK.icon;
 ---
 
 <NoteLayout title={title}>
-  <TagWIcon iconName={icon} as="h1" style={{ display: "flex" }}>
-    Guestbook
-  </TagWIcon>
-  <p>
-    <b>A collection of post-it notes, signed by people who know me!</b>
-  </p>
+  <slot slot="header">
+    <TagWIcon iconName={icon} as="h1" style={{ display: "flex" }}>
+      Guestbook
+    </TagWIcon>
+    <p>
+      <b>A collection of post-it notes, signed by people who know me!</b>
+    </p>
+  </slot>
   <p>
     I explain the technical behind-the-scenes at <a
       href="/notes/making-my-website-guestbook/">Making My Website Guestbook</a
