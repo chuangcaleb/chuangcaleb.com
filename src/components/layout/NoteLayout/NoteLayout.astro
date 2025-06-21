@@ -6,6 +6,7 @@ import type { MetadataProps } from "./components/metadata/Metadata.astro";
 import Metadata from "./components/metadata/Metadata.astro";
 import Toc from "./components/toc/Toc.astro";
 import TocScrollspy from "./components/toc/TocScrollspy.astro";
+import NoteHeader from "./components/NoteHeader.astro";
 
 interface Props {
   title: string;
@@ -32,16 +33,23 @@ const collectionData = isCollection && {
     <slot name="sidebar" />
     <Toc headings={headings} />
   </Fragment>
-  <article class="note-body">
+  <div class="note-body">
+    <div class="header-section">
+      <div class="header-cont | cgrid flow-xl">
+        <slot name="header">
+          <NoteHeader title={title} />
+        </slot>
+      </div>
+    </div>
     <aside class="flow-lg">
       <Metadata metadata={metadata} />
-      <div class="aside-sticky flow">
+      <div class="aside-sticky | flow">
         <slot name="sidebar" />
         <TocScrollspy headings={headings} />
       </div>
     </aside>
-    <div class="article-main full cgrid prose flow-lg">
-      <h1>{title}</h1>
+
+    <article class="article-main full cgrid prose flow-lg">
       <slot />
       {
         collectionData && (
@@ -51,20 +59,34 @@ const collectionData = isCollection && {
           </Fragment>
         )
       }
-    </div>
-  </article>
+    </article>
+  </div>
 </BaseMain>
 
 <style>
   .note-body {
     display: grid;
     grid-template-columns: 1fr 26vw;
+    gap: var(--space-2xl);
+  }
+
+  .header-section {
+    grid-column: span 2 / span 2;
+    display: grid;
+    grid-template-columns: subgrid;
+    background-color: var(--bg2);
+    padding-block: var(--space-2xl);
+  }
+  .header-cont {
+    grid-column: span 1/ 1;
   }
 
   aside {
     padding-inline: var(--space-m);
     padding-bottom: var(--space-2xs);
     position: relative;
+    grid-column: 2;
+    grid-row: 2;
   }
   .aside-sticky {
     position: sticky;
@@ -83,14 +105,13 @@ const collectionData = isCollection && {
     }
   }
   .article-main {
-    grid-row-start: 1;
     grid-column: 1;
 
-    & :global(:is(h1)) {
+    /* & :global(:is(h1)) {
       --flow-space: var(--space-2xs);
     }
     & :global(h1 + *) {
       --flow-space: var(--size-ch-7);
-    }
+    } */
   }
 </style>

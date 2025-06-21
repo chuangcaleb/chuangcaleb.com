@@ -4,6 +4,7 @@ import type { SuperNotes } from "lib/utils/types";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteEntries } from "~/utils/note";
 import NoteLayout from "./NoteLayout.astro";
+import NoteHeader from "./components/NoteHeader.astro";
 
 interface Props {
   entry: SuperNotes[number];
@@ -18,18 +19,21 @@ const cs = await getNoteEntries(entry.data.collection);
 ---
 
 <NoteLayout title={entry.name} headings={headings} metadata={entry.data}>
-  <div class="breadcrumb content">
-    {
-      !!cs.length ? (
-        cs.map((c) => (
-          <AccentA href={c.route}>{`${c.data.emojip} ${c.name}`}</AccentA>
-        ))
-      ) : (
-        <AccentA href="/garden">← 🪴 Garden Root</AccentA>
-      )
-    }
-  </div>
-
+  <slot slot="header">
+    <NoteHeader title={entry.name}>
+      <div class="breadcrumb content">
+        {
+          !!cs.length ? (
+            cs.map((c) => (
+              <AccentA href={c.route}>{`${c.data.emojip} ${c.name}`}</AccentA>
+            ))
+          ) : (
+            <AccentA href="/garden">← 🪴 Garden Root</AccentA>
+          )
+        }
+      </div>
+    </NoteHeader>
+  </slot>
   <Content />
   <slot slot="sidebar" name="sidebar" />
 </NoteLayout>
