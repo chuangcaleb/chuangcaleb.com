@@ -3,6 +3,7 @@ import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteEntry } from "~/utils/note";
 import { formatDisplayDate } from "~/utils/time";
 import type { MetadataValues } from "./MetadataValue.astro";
+import NoteLink from "~/components/block/NoteLink.astro";
 
 interface Props {
   value: Exclude<MetadataValues, Array<any>>;
@@ -22,7 +23,7 @@ const isDateFormat = isString && Date.parse(value);
 ---
 
 {isDate && formatDisplayDate(value)}
-{note && <AccentA href={note.route}>{note.name}</AccentA>}
+{note && <NoteLink note={note} />}
 {isString && isDateFormat && formatDisplayDate(new Date(value))}
 {isString && !isDateFormat && value}
 {!isDate && !isString && !note && value}
