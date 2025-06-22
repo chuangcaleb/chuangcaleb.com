@@ -9,7 +9,7 @@ const isNotesRoute = Astro.url.pathname.startsWith("/notes");
 <NavSheetReact client:only="react" isNotesRoute={isNotesRoute}>
   <Icon name="lucide:chevron-first" slot="menuIcon" />
   <Icon name="lucide:chevron-last" slot="closeIcon" />
-  <div slot="body" class="flow-lg">
+  <div slot="body" class="body | flow-lg">
     <slot name="sheetBody" />
     <hr />
     <SiteNavStack />
@@ -17,6 +17,15 @@ const isNotesRoute = Astro.url.pathname.startsWith("/notes");
 </NavSheetReact>
 
 <style>
+  .body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  hr {
+    margin-block-start: auto;
+    /* --flow-space: auto; */
+  }
   hr:first-child {
     display: none;
     :global(& + *) {
