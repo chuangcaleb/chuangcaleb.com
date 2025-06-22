@@ -8,9 +8,16 @@ import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
 interface Props extends HTMLAttributes<"ul"> {
   isOrdered?: boolean;
   items: CollectionEntry<"obsidian-note">["data"]["collectionItems"];
+  variant?: "card";
 }
 
-const { isOrdered = false, items, class: propsClass, ...rest } = Astro.props;
+const {
+  isOrdered = false,
+  items,
+  class: propsClass,
+  variant,
+  ...rest
+} = Astro.props;
 
 const ListHTMLElement = isOrdered ? "ol" : "ul";
 const notes = await getNoteEntries(items);
@@ -27,19 +34,30 @@ const renderMetadata = (note: CollectionEntry<"obsidian-note">) =>
 
 {
   notes && (
-    <ListHTMLElement {...rest} class:list={["list flow-li-0", propsClass]}>
+    <ListHTMLElement
+      {...rest}
+      class:list={[variant && `variant-${variant}`, propsClass]}
+    >
       {notes.map((note, index) => {
         if (!note) return null;
         return (
           <li>
-            <NoteCard as="a" href={note.route}>
-              <h3>
-                {isOrdered && `#${index + 1}: `}
+            {variant === "card" && (
+              <NoteCard as="a" href={note.route}>
+                <h3>
+                  {isOrdered && `#${index + 1}: `}
+                  {note.data?.emojip && `${note.data?.emojip} `}
+                  {note.name}
+                </h3>
+                <div class="metadata">{renderMetadata(note)}</div>
+              </NoteCard>
+            )}
+            {variant !== "card" && (
+              <a href={note.route}>
                 {note.data?.emojip && `${note.data?.emojip} `}
                 {note.name}
-              </h3>
-              <div class="metadata">{renderMetadata(note)}</div>
-            </NoteCard>
+              </a>
+            )}
           </li>
         );
       })}
@@ -48,7 +66,7 @@ const renderMetadata = (note: CollectionEntry<"obsidian-note">) =>
 }
 
 <style>
-  .list {
+  .variant-card {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 35ch), 1fr));
     grid-auto-rows: 1fr;

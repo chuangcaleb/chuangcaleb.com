@@ -5,7 +5,7 @@ import FurtherResources from "~/components/block/FurtherResources.astro";
 import Pill from "~/components/block/Pill.astro";
 import NoteList from "~/components/layout/NoteList.astro";
 import AccentA from "~/components/styled/monom/AccentA.astro";
-import { getNoteEntries } from "~/utils/note";
+import { getNoteEntries, getNoteEntry } from "~/utils/note";
 import Metadata from "./components/metadata/Metadata.astro";
 import MetadataContainer from "./components/MetadataContainer.astro";
 import NoteHeader from "./components/NoteHeader.astro";
@@ -21,16 +21,20 @@ const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
 
 // title
-const cs = await getNoteEntries(entry.data.collection);
+const parentCollections = [...(entry.data.collection ?? [])];
+const parentCollectionData = await getNoteEntries(parentCollections);
 const title = `${entry.data.emojip ? entry.data.emojip + " " : ""} ${entry.name}`;
 
-// collection
+// collection children
 const { collectionItems, series, description } = entry.data;
 const isCollection = !!collectionItems?.length;
 const collectionData = isCollection && {
   isOrdered: !!series,
   items: series ?? collectionItems,
 };
+
+// collection parents
+const seriesesData = parentCollectionData.filter((note) => !!note.data.series);
 ---
 
 <NoteLayout title={entry.name} description={description}>
@@ -39,9 +43,9 @@ const collectionData = isCollection && {
       <div class="metadata | content">
         <div class="parents">
           {
-            !!cs.length ? (
+            !!parentCollectionData.length ? (
               <MetadataContainer prefix="↑">
-                {cs.map((c, index) => (
+                {parentCollectionData.map((c, index) => (
                   <>
                     {index > 0 && "•"}
                     <AccentA href={c.route}>
@@ -75,11 +79,29 @@ const collectionData = isCollection && {
   }
   {
     collectionData && (
-      <Fragment>
-        <hr />
-        <NoteList class="popout" {...collectionData} />
-      </Fragment>
+      <>
+        <h2 class="sr-only">Notes belonging to this collection</h2>
+        <NoteList class="popout" {...collectionData} variant="card" />
+      </>
     )
+  }
+  {
+    seriesesData.map((series, index) => (
+      <>
+        <hr />
+        <h2>
+          {parentCollectionData[index].data.emojip}{" "}
+          {parentCollectionData[index].name}
+        </h2>
+        <p>
+          ↑{" "}
+          <AccentA href={parentCollectionData[index].route}>
+            {parentCollectionData[index].name}
+          </AccentA>
+        </p>
+        <NoteList items={series.data.series} isOrdered />
+      </>
+    ))
   }
   <Fragment slot="sheetBody">
     <h3>{title}</h3>
