@@ -35,8 +35,8 @@
     }
   }
 
-  & > ul,
-  & > ol {
+  & > ul:not([class]),
+  & > ol:not([class]) {
     li + li {
       margin-block-start: var(--flow-li);
     }

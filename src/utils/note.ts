@@ -8,7 +8,7 @@ import {
 import type {CollectionItems, SuperNote} from 'lib/utils/types';
 import {gnr} from '~/utils/note-route.ts';
 
-export function getNoteName(filepath: string | undefined) {
+function getNoteName(filepath: string | undefined) {
 	if (!filepath) {
 		return 'UNKNOWN NAME';
 	}
