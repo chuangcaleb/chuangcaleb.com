@@ -12,6 +12,7 @@ import NoteHeader from "./components/NoteHeader.astro";
 import Toc from "./components/toc/Toc.astro";
 import NoteLayout from "./NoteLayout.astro";
 import NoteLink from "~/components/block/NoteLink.astro";
+import SeriesList from "./components/SeriesList.astro";
 
 interface Props {
   entry: SuperNote;
@@ -86,21 +87,8 @@ const seriesesData = parentCollectionData.filter((note) => !!note.data.series);
       </>
     )
   }
-  {
-    seriesesData.map((series, index) => (
-      <>
-        <hr />
-        <h2>
-          {parentCollectionData[index].data.emojip}{" "}
-          {parentCollectionData[index].name}
-        </h2>
-        <p>
-          ↑ <NoteLink note={parentCollectionData[index]} variant="accent" />
-        </p>
-        <NoteList items={series.data.series} isOrdered />
-      </>
-    ))
-  }
+  {seriesesData && <SeriesList serieses={seriesesData} />}
+
   <Fragment slot="sheetBody">
     <h3>{title}</h3>
     <Metadata metadata={entry.data} />
