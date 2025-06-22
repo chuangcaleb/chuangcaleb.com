@@ -42,7 +42,7 @@ const seriesesData = parentCollectionData.filter((note) => !!note.data.series);
 <NoteLayout title={entry.name} description={description}>
   <slot slot="header">
     <NoteHeader title={title} description={entry.data.description}>
-      <div class="metadata | content">
+      <div class="metadata-header | content">
         <div class="parents">
           {
             !!parentCollectionData.length ? (
@@ -80,14 +80,18 @@ const seriesesData = parentCollectionData.filter((note) => !!note.data.series);
     )
   }
   {
-    collectionData && (
-      <>
-        <h2 class="sr-only">Notes belonging to this collection</h2>
-        <NoteList class="popout" {...collectionData} variant="card" />
-      </>
+    (collectionData || !!seriesesData.length) && (
+      <div class="metadata-footer | wide region prose linew flow-lg">
+        {collectionData && (
+          <>
+            <h2>{title}</h2>
+            <NoteList {...collectionData} variant="card" />
+          </>
+        )}
+        {!!seriesesData.length && <SeriesList serieses={seriesesData} />}
+      </div>
     )
   }
-  {seriesesData && <SeriesList serieses={seriesesData} />}
 
   <Fragment slot="sheetBody">
     <h3>{title}</h3>
@@ -98,11 +102,16 @@ const seriesesData = parentCollectionData.filter((note) => !!note.data.series);
 </NoteLayout>
 
 <style>
-  .metadata {
+  .metadata-header {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: var(--space-xs);
+  }
+  .metadata-footer {
+    border-width: 1px;
+    /* background-color: var(--bg2); */
+    --flow-space: var(--space-3xl);
   }
   .parents {
     display: flex;
