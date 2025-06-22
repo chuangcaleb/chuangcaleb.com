@@ -1,0 +1,25 @@
+---
+import type { SuperNote } from "lib/utils/types";
+import NoteLink from "~/components/block/NoteLink.astro";
+import NoteList from "../../NoteList.astro";
+interface Props {
+  serieses: SuperNote[];
+}
+
+const { serieses } = Astro.props;
+---
+
+<hr />
+{
+  serieses.map((parent) => (
+    <>
+      <h2>
+        {parent.data.emojip} {parent.name}
+      </h2>
+      <p>
+        ↑ <NoteLink note={parent} variant="accent" />
+      </p>
+      <NoteList items={parent.data.series} isOrdered />
+    </>
+  ))
+}
