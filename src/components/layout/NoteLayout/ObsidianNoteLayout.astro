@@ -1,19 +1,20 @@
 ---
 import { render } from "astro:content";
-import type { SuperNotes } from "lib/utils/types";
+import type { SuperNote } from "lib/utils/types";
 import FurtherResources from "~/components/block/FurtherResources.astro";
 import Pill from "~/components/block/Pill.astro";
 import NoteList from "~/components/layout/NoteList.astro";
 import AccentA from "~/components/styled/monom/AccentA.astro";
-import { getNoteEntries, getNoteEntry } from "~/utils/note";
+import { getNoteEntries } from "~/utils/note";
 import Metadata from "./components/metadata/Metadata.astro";
 import MetadataContainer from "./components/MetadataContainer.astro";
 import NoteHeader from "./components/NoteHeader.astro";
 import Toc from "./components/toc/Toc.astro";
 import NoteLayout from "./NoteLayout.astro";
+import NoteLink from "~/components/block/NoteLink.astro";
 
 interface Props {
-  entry: SuperNotes[number];
+  entry: SuperNote;
 }
 
 const { entry } = Astro.props;
@@ -94,10 +95,7 @@ const seriesesData = parentCollectionData.filter((note) => !!note.data.series);
           {parentCollectionData[index].name}
         </h2>
         <p>
-          ↑{" "}
-          <AccentA href={parentCollectionData[index].route}>
-            {parentCollectionData[index].name}
-          </AccentA>
+          ↑ <NoteLink note={parentCollectionData[index]} variant="accent" />
         </p>
         <NoteList items={series.data.series} isOrdered />
       </>

@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
 import { getNoteEntries } from "~/utils/note";
 import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
+import NoteLink from "../block/NoteLink.astro";
 
 interface Props extends HTMLAttributes<"ul"> {
   isOrdered?: boolean;
@@ -52,12 +53,7 @@ const renderMetadata = (note: CollectionEntry<"obsidian-note">) =>
                 <div class="metadata">{renderMetadata(note)}</div>
               </NoteCard>
             )}
-            {variant !== "card" && (
-              <a href={note.route}>
-                {note.data?.emojip && `${note.data?.emojip} `}
-                {note.name}
-              </a>
-            )}
+            {variant !== "card" && <NoteLink note={note} />}
           </li>
         );
       })}
