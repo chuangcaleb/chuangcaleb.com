@@ -61,11 +61,13 @@ const { links = [], variant, ...props } = Astro.props;
         --flow-space: 0;
         display: inline-flex;
         font-size: var(--step-0);
-        margin-right: var(--space-m);
-      }
-      li:first-child a {
-        font-size: var(--step-2);
         margin-inline-end: var(--space-m);
+        &:first-child {
+          margin-inline-end: var(--space-xl);
+          a {
+            font-size: var(--step-2);
+          }
+        }
       }
     }
   }
