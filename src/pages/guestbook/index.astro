@@ -6,6 +6,8 @@ import Post from "./_GuestPost.astro";
 import { NAV_LINKS } from "~/data/links";
 
 const title = "Guestbook";
+const description =
+  "A collection of post-it notes, signed by people who know me!";
 
 const guestbookPosts = (await getGuestbookPosts())
   .filter((post) => post.isVerified)
@@ -14,16 +16,18 @@ const guestbookPosts = (await getGuestbookPosts())
 const icon = NAV_LINKS.GUESTBOOK.icon;
 ---
 
-<NoteLayout title={title}>
+<NoteLayout title={title} description={description}>
   <slot slot="header">
     <TagWIcon iconName={icon} as="h1" style={{ display: "flex" }}>
       {title}
     </TagWIcon>
-    <p>A collection of post-it notes, signed by people who know me!</p>
+    <p class="text-faded">
+      {description}
+    </p>
   </slot>
   <p>
     I explain the technical behind-the-scenes at <a
-      href="/notes/making-my-website-guestbook/">Making My Website Guestbook</a
+      href="/notes/making-my-website-guestbook">Making My Website Guestbook</a
     >!
   </p>
   {guestbookPosts.map((post) => <Post post={post} />)}
