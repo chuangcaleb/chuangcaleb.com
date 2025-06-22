@@ -14,6 +14,6 @@ const { isFooter = false } = Astro.props;
   <LinkList
     class="flow-sm"
     links={Object.values(NAV_LINKS)}
-    isFooter={isFooter}
+    variant={isFooter ? "footer" : undefined}
   />
 </nav>

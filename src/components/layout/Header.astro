@@ -22,13 +22,10 @@ const { hasBanner = true } = Astro.props;
       <Banner>
         <nav class="flex-row">
           <h2 class="sr-only">Site navigation</h2>
-          <a href={NAV_LINKS.INDEX.href}>{NAV_LINKS.INDEX.shortLabel}</a>
-          <span class="text-muted" aria-hidden>
-            •
-          </span>
           <LinkList
             class="flex-row"
             links={Object.values(NAV_LINKS).filter((l) => l.isInHeader)}
+            variant="header"
           />
         </nav>
       </Banner>
