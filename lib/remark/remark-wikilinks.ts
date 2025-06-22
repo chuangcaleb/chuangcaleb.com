@@ -23,20 +23,38 @@ function collectMarkdownFiles(directory: string): string[] {
 	return entries.flatMap((entry) => {
 		const fullPath = path.join(directory, entry.name);
 		if (entry.isDirectory()) return collectMarkdownFiles(fullPath);
-		if (entry.isFile() && fullPath.endsWith('.md')) return [fullPath];
+		if (entry.isFile() && fullPath.endsWith('.md')) return fullPath;
+
 		return [];
 	});
 }
 
+function extractSlug(fileContent: string): string | undefined {
+	// Match frontmatter block (first `---` to next `---`)
+	const match = /^---\n([\s\S]*?)\n---/.exec(fileContent);
+	if (!match) return undefined;
+
+	// Match a line like `slug: something`
+	const slugLine = /^\s*slug\s*:\s*(.+)$/m.exec(match[1]);
+	if (!slugLine) return undefined;
+
+	// Remove quotes if present
+	return slugLine[1].trim().replaceAll(/^["']|["']$/g, '');
+}
+
 // Build a map of filename (stem) → slug
 function buildNoteSlugMap(): Record<string, string> {
-	const files = collectMarkdownFiles(NOTES_DIR);
+	const filePaths = collectMarkdownFiles(NOTES_DIR);
 	const map: Record<string, string> = {};
 
-	for (const file of files) {
-		const stem = path.basename(file, '.md');
-		const relativePath = path.relative(NOTES_DIR, file);
-		const slug = githubSlug(relativePath.replace(/\.md$/, ''));
+	for (const filePath of filePaths) {
+		const stem = path.basename(filePath, '.md');
+		const fileContent = fs.readFileSync(filePath, 'utf8');
+		const slug = extractSlug(fileContent);
+		if (!slug) {
+			throw new Error(`Missing 'slug' in frontmatter of file: ${filePath}`);
+		}
+
 		map[stem.toLowerCase()] = slug;
 	}
 
