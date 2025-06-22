@@ -54,6 +54,7 @@ const NAV_LINKS = {
 		label: 'chuangcaleb.com',
 		shortLabel: 'chuangcaleb',
 		href: '/',
+		isInHeader: true,
 	},
 	GARDEN: {
 		label: '/garden',
