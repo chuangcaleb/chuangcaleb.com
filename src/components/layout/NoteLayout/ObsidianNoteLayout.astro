@@ -1,13 +1,16 @@
 ---
 import { render } from "astro:content";
 import type { SuperNotes } from "lib/utils/types";
+import FurtherResources from "~/components/block/FurtherResources.astro";
+import Pill from "~/components/block/Pill.astro";
+import NoteList from "~/components/layout/NoteList.astro";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteEntries } from "~/utils/note";
-import NoteLayout from "./NoteLayout.astro";
-import NoteHeader from "./components/NoteHeader.astro";
-import Pill from "~/components/block/Pill.astro";
+import Metadata from "./components/metadata/Metadata.astro";
 import MetadataContainer from "./components/MetadataContainer.astro";
-import FurtherResources from "~/components/block/FurtherResources.astro";
+import NoteHeader from "./components/NoteHeader.astro";
+import Toc from "./components/toc/Toc.astro";
+import NoteLayout from "./NoteLayout.astro";
 
 interface Props {
   entry: SuperNotes[number];
@@ -20,9 +23,17 @@ const { Content, headings } = await render(entry);
 // title
 const cs = await getNoteEntries(entry.data.collection);
 const title = `${entry.data.emojip ? entry.data.emojip + " " : ""} ${entry.name}`;
+
+// collection
+const { collectionItems, series, description } = entry.data;
+const isCollection = !!collectionItems?.length;
+const collectionData = isCollection && {
+  isOrdered: !!series,
+  items: series ?? collectionItems,
+};
 ---
 
-<NoteLayout title={entry.name} headings={headings} metadata={entry.data}>
+<NoteLayout title={entry.name} description={description}>
   <slot slot="header">
     <NoteHeader title={title} description={entry.data.description}>
       <div class="metadata | content">
@@ -62,7 +73,20 @@ const title = `${entry.data.emojip ? entry.data.emojip + " " : ""} ${entry.name}
       <FurtherResources resources={entry.data.resources} />
     )
   }
-  <slot slot="sidebar" name="sidebar" />
+  {
+    collectionData && (
+      <Fragment>
+        <hr />
+        <NoteList class="popout" {...collectionData} />
+      </Fragment>
+    )
+  }
+  <Fragment slot="sheetBody">
+    <h3>{title}</h3>
+    <Metadata metadata={entry.data} />
+    <slot name="sidebar" />
+    <Toc headings={headings} />
+  </Fragment>
 </NoteLayout>
 
 <style>
