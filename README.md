@@ -8,7 +8,7 @@ Personal portfolio site to share (1) about myself + (2) content I've written. Th
 
 ### Commands
 
-All commands are run from the root of the project, from a terminal.
+Check [package.json](./package.json) for specific implementation.
 
 | Command                 | Action                                                                                                   |
 | :---------------------- | :------------------------------------------------------------------------------------------------------- |
@@ -26,14 +26,9 @@ All commands are run from the root of the project, from a terminal.
 | `pnpm setup:external`   | Syncs down external data; alias for `b2:download`                                                            |
 | `pnpm astro ...`        | Run CLI commands like `astro add`, `astro preview`                                                       |
 
-Check [package.json](./package.json) for specific implementation.
-
 ![package.json scripts](./docs/package-json-scripts.svg)
 
 ## Architecture / Tech Stack
-
-As of latest: update me
-remove clsx
 
 - Web Framework: [Astro](https://astro.build/)
 - UI Component(s) Library: [Radix Primitives](https://www.radix-ui.com/primitives)
