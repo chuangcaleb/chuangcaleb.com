@@ -13,11 +13,13 @@
       showSubResults: true,
       resetStyles: false,
       showImages: false,
+      bundlePath: "_pagefind",
     });
   });
 </script>
 
-<script src="/pagefind/pagefind-ui.js" is:inline defer></script>
+<script src="/_pagefind/pagefind-ui.js" type="text/javascript" is:inline defer
+></script>
 
 <style>
   .search-container {
@@ -256,7 +258,7 @@
     font-family: var(--pagefind-ui-font);
   }
   .pagefind-ui__hidden {
-    display: none !important;
+    display: none;
   }
   .pagefind-ui__suppressed {
     opacity: 0;
