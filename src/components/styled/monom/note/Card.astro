@@ -18,13 +18,15 @@ const { as: Tag, class: className, ...props } = Astro.props;
     justify-content: center; */
     display: block;
     height: 100%;
-    padding: var(--space-s);
+    padding: var(--space-m);
 
     border-width: var(--bw-2);
     border-color: var(--ui1);
     border-radius: var(--radius-2);
 
     transition: 0.3s ease-in-out;
+
+    container-type: inline-size;
 
     /* background-color: var(--bg1); */
     --color-underline: transparent;

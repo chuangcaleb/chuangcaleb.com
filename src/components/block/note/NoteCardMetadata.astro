@@ -21,18 +21,21 @@ const shouldShowModified = modified && !emojip;
 
 {description && emojip && <span class="description">{description}</span>}
 {published && <span>{formatDisplayDate(published)}</span>}
-<span>{shouldShowModified && `modified ${getLongDurationSince(modified)}`}</span
->
-{emojip && <span>{`${down?.length} NOTES `}</span>}
+{
+  shouldShowModified && (
+    <span>{`modified ${getLongDurationSince(modified)}`}</span>
+  )
+}
+{emojip && <span class="children-count">{`${down?.length} NOTES`}</span>}
 
 <style>
-  .description + * {
-    margin-block-start: var(--space-xs);
-  }
   * {
+    display: block;
     color: var(--fg3);
     font-size: var(--step--1);
     line-height: var(--font-lh-1);
-    /* font-family: var(--font-mono); */
+  }
+  .children-count {
+    margin-block-start: var(--space-2xs);
   }
 </style>

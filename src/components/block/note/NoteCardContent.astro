@@ -9,13 +9,11 @@ interface Props {
 const { note } = Astro.props;
 ---
 
-{note.data?.emojip && <span class="emoji">{`${note.data?.emojip} `}</span>}
-<h3>
-  {note.name}
+<h3 class="flow-sm">
+  {note.data?.emojip && <span class="emoji">{`${note.data?.emojip} `}</span>}
+  <span>{note.name}</span>
 </h3>
-<div class="metadata">
-  <NoteCardMetadata data={note.data} />
-</div>
+<NoteCardMetadata data={note.data} />
 
 <style>
   h3 {
@@ -29,7 +27,12 @@ const { note } = Astro.props;
     flex-direction: column;
   }
 
-  .emoji {
-    font-size: var(--step-2);
+  @container (min-width: 300px) {
+    span {
+      display: block;
+    }
+    .emoji {
+      font-size: var(--step-2);
+    }
   }
 </style>
