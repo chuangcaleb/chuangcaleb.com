@@ -15,7 +15,7 @@ const leafNotes = publicNotes
   .sort((a, b) => (a.body && b.body && a.body.length < b.body.length ? 1 : -1));
 
 const allTopics = publicNotes
-  .filter((n) => n.data.emojip)
+  .filter((n) => n.data.emojip && n.data.up?.length === 0)
   .sort((a, b) =>
     (a.data.down ?? []).length < (b.data.down ?? []).length ? 1 : -1
   );
@@ -62,7 +62,7 @@ const description =
       <NoteList items={leafNotes} />
     </section> -->
     <section class="flow-lg region">
-      <h2>📂 All Topics</h2>
+      <h2>📂 All Top-Level Topics</h2>
       <Topics topics={allTopics} />
     </section>
     <section class="prose flow-lg">
