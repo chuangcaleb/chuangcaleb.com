@@ -1,14 +1,14 @@
 ---
-import type { Note } from "lib/utils/types";
+import type { Note, NoteMetadata } from "lib/utils/types";
 import TagWIcon from "../styled/polym/TagWIcon.astro";
 
 interface Props {
-  resources: Note["data"]["resources"];
+  resources: NoteMetadata["resources"];
 }
 
 const { resources } = Astro.props;
 
-function parseMarkdownLinks(markdownLinks: Note["data"]["resources"]) {
+function parseMarkdownLinks(markdownLinks: NoteMetadata["resources"]) {
   return markdownLinks
     ?.map((link) => {
       const match = link.match(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/);

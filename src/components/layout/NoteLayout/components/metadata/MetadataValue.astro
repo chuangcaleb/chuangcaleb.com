@@ -1,8 +1,8 @@
 ---
-import type { MetadataProps } from "./Metadata.astro";
+import type { NoteMetadata } from "lib/utils/types";
 import MetadataValueItem from "./MetadataValueItem.astro";
 
-export type MetadataValues = MetadataProps[keyof MetadataProps];
+export type MetadataValues = NoteMetadata[keyof NoteMetadata];
 interface Props {
   value: MetadataValues;
 }

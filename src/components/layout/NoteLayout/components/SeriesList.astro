@@ -18,7 +18,7 @@ const { serieses } = Astro.props;
       <p>
         ↑ <NoteLink note={parent} variant="accent" />
       </p>
-      <NoteList items={parent.data.series} isOrdered />
+      {parent.data.series && <NoteList items={parent.data.series} isOrdered />}
     </>
   ))
 }
