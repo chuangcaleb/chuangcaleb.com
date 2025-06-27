@@ -15,6 +15,10 @@
     }
   }
 
+  p {
+    white-space: pre-line;
+  }
+
   hr {
     grid-column: popout;
     --flow-space: var(--hr-space);
@@ -78,16 +82,6 @@
     text-wrap: pretty;
   }
 
-  table {
-    grid-column: max;
-  }
-
-  th,
-  td {
-    border-width: var(--bw-1);
-    word-break: break-all;
-  }
-
   & > img {
     grid-column: wide;
     --flow-space: var(--space-xl);
@@ -99,5 +93,26 @@
       border-radius: 0;
       border-inline: 0;
     }
+  }
+
+  table {
+    table-layout: fixed;
+    border-collapse: collapse;
+
+    grid-column: popout;
+
+    max-width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+
+  th,
+  td {
+    border-width: var(--bw-1);
+    padding: var(--space-3xs) var(--space-2xs);
+  }
+
+  th {
+    text-align: start;
   }
 }
