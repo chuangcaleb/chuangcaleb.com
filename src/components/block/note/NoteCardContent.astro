@@ -1,0 +1,27 @@
+---
+import type { Note, SuperNote } from "lib/utils/types";
+import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
+
+interface Props {
+  isOrdered?: boolean;
+  note: SuperNote;
+}
+
+const { isOrdered = false, note } = Astro.props;
+
+const renderMetadata = (note: Note) =>
+  [
+    formatDisplayDate(note.data?.published),
+    note.data?.modified &&
+      `modified ${getLongDurationSince(note.data?.modified)}`,
+  ]
+    .filter(Boolean)
+    .join(" ⋅ ");
+---
+
+<h3>
+  <!-- {isOrdered && `#${index + 1}: `} -->
+  {note.data?.emojip && `${note.data?.emojip} `}
+  {note.name}
+</h3>
+<div class="metadata">{renderMetadata(note)}</div>

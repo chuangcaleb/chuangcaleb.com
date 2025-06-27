@@ -1,7 +1,7 @@
 ---
 import { type HTMLAttributes } from "astro/types";
 import type { SuperNotes } from "lib/utils/types";
-import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
+import Card from "~/components/styled/monom/note/Card.astro";
 export interface Props extends HTMLAttributes<"ul"> {
   topics: SuperNotes;
 }
@@ -13,11 +13,11 @@ const { topics, class: propsClass, ...props } = Astro.props;
   {
     topics?.map((n) => (
       <li class=" flom-0">
-        <NoteCard as="a" href={n.route}>
+        <Card as="a" href={n.route}>
           <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
           <h3>{n.name}</h3>
           <div class="metadata">{n.data.down?.length} NOTES</div>
-        </NoteCard>
+        </Card>
       </li>
     ))
   }
