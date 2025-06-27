@@ -12,10 +12,18 @@ const { serieses } = Astro.props;
 {
   serieses.map((parent) => (
     <>
+      <h2>{`${parent.data.emojip ? parent.data.emojip + " " : ""} ${parent.name}`}</h2>
       <p>
-        ↑ <NoteLink note={parent} variant="accent" />
+        {"↑"}
+        <NoteLink note={parent} variant="accent" />
       </p>
       {parent.data.series && <NoteList items={parent.data.series} isOrdered />}
     </>
   ))
 }
+
+<style>
+  h2 {
+    color: var(--text-faded);
+  }
+</style>

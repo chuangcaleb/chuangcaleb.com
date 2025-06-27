@@ -83,8 +83,12 @@ const seriesesNotes = parentNotes.filter((note) => !!note.data.series);
     (childrenNotes || !!seriesesNotes.length) && (
       <div class="metadata-footer | wide region prose linew flow-lg">
         <>
-          <h2>{title}</h2>
-          {childrenNotes && <NoteList {...childrenNotes} variant="card" />}
+          {childrenNotes && (
+            <>
+              <h2>{title}</h2>
+              <NoteList {...childrenNotes} variant="card" />
+            </>
+          )}
           {!!seriesesNotes.length && <SeriesList serieses={seriesesNotes} />}
         </>
       </div>
@@ -108,13 +112,15 @@ const seriesesNotes = parentNotes.filter((note) => !!note.data.series);
   }
   .metadata-footer {
     border-width: 1px;
+    border-radius: var(--radius-3);
     /* background-color: var(--bg2); */
-    --flow-space: var(--space-3xl);
+    --flow-space: var(--space-2xl);
   }
   .parents {
     display: flex;
     gap: var(--space-m);
   }
+  h2,
   span {
     color: var(--text-faded);
   }
