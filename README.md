@@ -43,9 +43,8 @@ Check [package.json](./package.json) for specific implementation.
   - Fluid Responsive Design: [utopia-core-scss](https://github.com/trys/utopia-core-scss) @ [Utopia](https://utopia.fyi/)
 - CMS: [Obsidian](https://obsidian.md/) + [Backblaze B2](https://www.backblaze.com/cloud-storage)
 - Search: [Pagefind](https://pagefind.app)
-- External from this repo:
-  - Deployment + CD: [Cloudflare Pages](https://pages.cloudflare.com/)
-  - Image CDN: [Cloudflare CDN](https://www.cloudflare.com/application-services/products/cdn/)
+- Deployment + CD: [Cloudflare Pages](https://pages.cloudflare.com/) (_headers,_redirects)
+- Image CDN: [Cloudflare CDN](https://www.cloudflare.com/application-services/products/cdn/)
 
 ### Project structure
 
