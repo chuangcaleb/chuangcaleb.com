@@ -54,6 +54,8 @@ article a[href^="/notes/"]:not(.unstyled-hover-link) {
   padding-inline-start: var(--size-ch-5);
   --anchor-hover-m-s: 0;
 }
+
+/* should not handle <sup/> footnotes?? */
 article a[href^="#"]::before {
   content: "#";
   color: var(--text-faded);
