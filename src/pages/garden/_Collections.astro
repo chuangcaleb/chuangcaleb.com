@@ -16,7 +16,7 @@ const { collections, class: propsClass, ...props } = Astro.props;
         <NoteCard as="a" href={n.route}>
           <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
           <h3>{n.name}</h3>
-          <div class="metadata">{n.data.collectionItems?.length} NOTES</div>
+          <div class="metadata">{n.data.down?.length} NOTES</div>
         </NoteCard>
       </li>
     ))

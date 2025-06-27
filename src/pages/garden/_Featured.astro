@@ -11,12 +11,8 @@ const featuredNotes = notes
     (a.data.featured as number) > (b.data?.featured as number) ? 1 : -1
   );
 
-const featuredLeafNotes = featuredNotes.filter(
-  (n) => !n.data.tags?.includes("📂/collection")
-);
-const featuredCollections = featuredNotes.filter((n) =>
-  n.data.tags?.includes("📂/collection")
-);
+const featuredLeafNotes = featuredNotes.filter((n) => !n.data.emojip);
+const featuredCollections = featuredNotes.filter((n) => n.data.emojip);
 ---
 
 <div class="columns prose flow-lg">

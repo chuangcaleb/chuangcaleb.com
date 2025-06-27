@@ -7,7 +7,7 @@ import { Content as ExplainNowContent } from "./_explain-now.mdx";
 
 const allNotes = await getAllNotes();
 const nowNotes = allNotes
-  .filter((note) => note.data?.collection?.some((c) => c.id === "now"))
+  .filter((note) => note.data?.up?.some((c) => c.id === "now"))
   .sort((a, b) => (a.id > b.id ? 1 : -1));
 
 const latestNowNote = nowNotes[nowNotes.length - 1];

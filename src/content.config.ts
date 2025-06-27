@@ -34,20 +34,24 @@ const projectCollection = defineCollection({
 
 const baseObsidianNoteSchema = z
 	.object({
+		// meta - content
 		title: z.string(),
 		tags: z.array(z.string()).nullable(),
-		collection: z.array(reference('obsidian-note')),
-		prev: reference('obsidian-note'),
-		next: reference('obsidian-note'),
+		description: z.string(),
+		// meta - time
 		created: z.union([z.string(), z.date()]),
 		modified: z.union([z.string(), z.date()]),
 		published: z.union([z.string(), z.date()]),
-		featured: z.number(),
+		// misc
 		emojip: z.string(),
-		series: z.array(reference('obsidian-note')).optional(),
-		collectionItems: z.array(reference('obsidian-note')),
-		description: z.string(),
 		resources: z.array(z.string()),
+		featured: z.number(),
+		// hierarchy
+		up: z.array(reference('obsidian-note')),
+		down: z.array(reference('obsidian-note')),
+		series: z.array(reference('obsidian-note')).optional(),
+		prev: reference('obsidian-note'),
+		next: reference('obsidian-note'),
 	})
 	.partial();
 
