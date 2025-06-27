@@ -3,7 +3,7 @@
 - id: "/github"
   to: "https://github.com/chuangcaleb"
 - id: "/cv"
-  to: "https://docs.google.com/document/d/1qohsYe0w-Mq5yqIdNaHPuOHvs2lYvnGySULgR2Baqwk/edit?usp=sharing"
+  to: "https://rxresu.me/chuangcaleb/frontend-dev"
 - id: "/note"
   to: "/notes"
 - id: "/note/*"
