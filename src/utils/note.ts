@@ -1,10 +1,5 @@
 import path from 'node:path';
-import {
-	getCollection,
-	getEntries,
-	getEntry,
-	type CollectionEntry,
-} from 'astro:content';
+import {getCollection, getEntries, getEntry} from 'astro:content';
 import type {Note, NoteReference, SuperNote} from 'lib/utils/types';
 import {gnr} from '~/utils/note-route.ts';
 
