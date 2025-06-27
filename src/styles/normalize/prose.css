@@ -129,8 +129,11 @@ ol[class] {
 mark,
 ::selection {
   color: var(--text-on-ax);
+  padding: var(--size-ch-1);
+  border-radius: var(--size-ch-2);
   background: var(--ax1);
 }
+
 img::selection {
   background: var(--ax4);
 }
