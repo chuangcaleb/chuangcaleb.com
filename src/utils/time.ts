@@ -13,17 +13,31 @@ export function getLongDurationSince(datetime: string | Date) {
 	const interval = intervalToDuration({start: then, end: new Date()});
 
 	if (interval?.years) {
-		const years = formatDuration(interval, {format: ['years', 'months']});
-		return `${years} ago`;
+		const value = Number(
+			(
+				interval.years + (interval?.months ? interval.months / 12 : 0)
+			).toPrecision(2),
+		);
+		return `${value} years ago`;
 	}
 
 	if (interval?.months) {
-		const months = formatDuration(interval, {format: ['months']});
-		return `${months} ago`;
+		const value = Number(
+			(interval.months + (interval?.days ? interval.days / 28 : 0)).toPrecision(
+				2,
+			),
+		);
+		return `${value} months ago`;
 	}
 
-	const days = formatDuration(interval, {format: ['days']});
-	return `${days} ago`;
+	if (interval?.days) {
+		const value = interval?.days ?? 1;
+		return `${value} days ago`;
+	}
+
+	const value = interval?.hours ?? 1;
+
+	return `${value} hours ago`;
 }
 
 export function formatIso(date: string, template: string) {
