@@ -3,15 +3,15 @@ import { type HTMLAttributes } from "astro/types";
 import type { SuperNotes } from "lib/utils/types";
 import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
 export interface Props extends HTMLAttributes<"ul"> {
-  collections: SuperNotes;
+  topics: SuperNotes;
 }
 
-const { collections, class: propsClass, ...props } = Astro.props;
+const { topics, class: propsClass, ...props } = Astro.props;
 ---
 
 <ul class:list={["flow-li-0", propsClass]} {...props}>
   {
-    collections?.map((n) => (
+    topics?.map((n) => (
       <li class=" flom-0">
         <NoteCard as="a" href={n.route}>
           <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
