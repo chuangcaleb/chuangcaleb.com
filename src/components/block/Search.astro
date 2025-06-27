@@ -7,14 +7,16 @@
 </div>
 
 <script is:inline>
-  window.addEventListener("DOMContentLoaded", () => {
+  function init() {
     new PagefindUI({
       element: "#search",
       showSubResults: true,
       resetStyles: false,
       showImages: false,
     });
-  });
+  }
+  document.addEventListener("astro:after-swap", init);
+  window.addEventListener("DOMContentLoaded", init);
 </script>
 
 <script src="/_pagefind/pagefind-ui.js" type="text/javascript" is:inline defer
