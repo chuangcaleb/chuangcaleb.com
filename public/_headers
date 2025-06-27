@@ -2,3 +2,5 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/fonts/*
   Cache-Control: public, max-age=10512000
+/_pagefind/*
+  Cache-Control: public, max-age=31536000, immutable

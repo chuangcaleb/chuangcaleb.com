@@ -6,10 +6,10 @@
 
   line-height: var(--font-lh-4);
 
-  h2,
-  h3,
-  h4,
-  h5 {
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5 {
     & + * {
       --flow-space: var(--size-ch-8);
     }

@@ -9,7 +9,8 @@
 :where(a[href],
   /* area, */
   button,
-  /* input,
+  input,
+  /*
     label[for],
     select,
     summary,
@@ -24,7 +25,7 @@
 :where(a[href],
   /* area, */
   button,
-  /* input:not([type="text"]):not([type="email"]):not([type="number"]):not(
+   /*input:not([type="text"]):not([type="email"]):not([type="number"]):not(
         [type="password"]
       ):not([type=""]):not([type="tel"]):not([type="url"]),
     label[for],
@@ -49,4 +50,12 @@ a:not([class]) {
 
 :focus-visible {
   outline-color: var(--ax1);
+}
+
+:where(input) {
+  background-color: var(--ui1);
+  padding-inline: var(--space-s);
+  padding-block: var(--space-2xs);
+  border-radius: var(--radius-2);
+  border-width: var(--bw1);
 }

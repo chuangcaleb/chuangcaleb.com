@@ -1,6 +1,6 @@
-import {EXIT, visit} from 'unist-util-visit';
+import type {Root} from 'mdast';
 import type {Plugin} from 'unified';
-import type {Root, Heading, Text} from 'mdast';
+import {EXIT, visit} from 'unist-util-visit';
 
 export const remarkStripH1: Plugin<void[], Root> = () => {
 	return (tree: Root) => {

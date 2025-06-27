@@ -1,5 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import React, {useEffect, type MouseEvent} from 'react';
+import React, {useEffect} from 'react';
 import {Fragment} from 'react/jsx-runtime';
 import styles from './styles.module.css';
 import {cn} from '~/utils/css.ts';

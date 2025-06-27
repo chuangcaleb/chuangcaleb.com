@@ -6,26 +6,27 @@ type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>;
 const { as: Tag, class: className, ...props } = Astro.props;
 ---
 
-<Tag class:list={["unstyled-hover-link", className]} {...props}>
+<Tag class:list={["unstyled-hover-link flow-xs", className]} {...props}>
   <slot />
 </Tag>
 
 <style>
   * {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    padding: var(--space-s);
-
+    /* display: flex;
     flex-direction: column;
     align-items: start;
+    justify-content: center; */
+    display: block;
+    height: 100%;
+    padding: var(--space-m);
 
     border-width: var(--bw-2);
     border-color: var(--ui1);
     border-radius: var(--radius-2);
 
     transition: 0.3s ease-in-out;
+
+    container-type: inline-size;
 
     /* background-color: var(--bg1); */
     --color-underline: transparent;
@@ -35,18 +36,6 @@ const { as: Tag, class: className, ...props } = Astro.props;
       background-color: var(--bg3);
 
       transform: scale3d(1.02, 1.02, 1.02);
-    }
-
-    & :global(h3) {
-      font-size: var(--step-1);
-      font-family: var(--font-heading-serif);
-      font-weight: var(--fw-4);
-      text-wrap: balance;
-    }
-    & :global(.metadata) {
-      color: var(--fg3);
-      font-size: var(--step--1);
-      font-family: var(--font-mono);
     }
   }
 </style>

@@ -10,7 +10,7 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<BaseMain title={title} description={description}>
+<BaseMain title={title} description={description} data-pagefind-body>
   <slot slot="head" name="head" />
   <slot slot="sheetBody" name="sheetBody" />
 

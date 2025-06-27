@@ -6,13 +6,12 @@ import Pill from "~/components/block/Pill.astro";
 import NoteList from "~/components/layout/NoteList.astro";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteEntries } from "~/utils/note";
-import Metadata from "./components/metadata/Metadata.astro";
+import Metadata from "./components/metadata/AsideMetadata.astro";
 import MetadataContainer from "./components/MetadataContainer.astro";
 import NoteHeader from "./components/NoteHeader.astro";
+import SeriesList from "./components/SeriesList.astro";
 import Toc from "./components/toc/Toc.astro";
 import NoteLayout from "./NoteLayout.astro";
-import NoteLink from "~/components/block/NoteLink.astro";
-import SeriesList from "./components/SeriesList.astro";
 
 interface Props {
   entry: SuperNote;
@@ -23,20 +22,21 @@ const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
 
 // title
-const parentCollections = [...(entry.data.collection ?? [])];
-const parentCollectionData = await getNoteEntries(parentCollections);
+const parents = [...(entry.data.up ?? [])];
+const parentNotes = await getNoteEntries(parents);
 const title = `${entry.data.emojip ? entry.data.emojip + " " : ""} ${entry.name}`;
 
-// collection children
-const { collectionItems, series, description } = entry.data;
-const isCollection = !!collectionItems?.length;
-const collectionData = isCollection && {
+// children
+const { down: children, series, description } = entry.data;
+const isParent = !!children?.length;
+const childrenNotes = isParent && {
   isOrdered: !!series,
-  items: series ?? collectionItems,
+  items: series ?? children,
 };
 
-// collection parents
-const seriesesData = parentCollectionData.filter((note) => !!note.data.series);
+// parents which are also series
+// type SeriesesNotes = Series[]; type Series = SeriesMember[]
+const seriesesNotes = parentNotes.filter((note) => !!note.data.series);
 ---
 
 <NoteLayout title={entry.name} description={description}>
@@ -45,9 +45,9 @@ const seriesesData = parentCollectionData.filter((note) => !!note.data.series);
       <div class="metadata-header | content">
         <div class="parents">
           {
-            !!parentCollectionData.length ? (
+            !!parentNotes.length ? (
               <MetadataContainer prefix="↑">
-                {parentCollectionData.map((c, index) => (
+                {parentNotes.map((c, index) => (
                   <>
                     {index > 0 && "•"}
                     <AccentA href={c.route}>
@@ -58,7 +58,7 @@ const seriesesData = parentCollectionData.filter((note) => !!note.data.series);
               </MetadataContainer>
             ) : (
               <MetadataContainer prefix="↑">
-                <AccentA href="/garden">🪴 Garden Root</AccentA>
+                <AccentA href="/garden">🌲 Garden Root</AccentA>
               </MetadataContainer>
             )
           }
@@ -80,15 +80,13 @@ const seriesesData = parentCollectionData.filter((note) => !!note.data.series);
     )
   }
   {
-    (collectionData || !!seriesesData.length) && (
+    (childrenNotes || !!seriesesNotes.length) && (
       <div class="metadata-footer | wide region prose linew flow-lg">
-        {collectionData && (
-          <>
-            <h2>{title}</h2>
-            <NoteList {...collectionData} variant="card" />
-          </>
-        )}
-        {!!seriesesData.length && <SeriesList serieses={seriesesData} />}
+        <>
+          <h2>{title}</h2>
+          {childrenNotes && <NoteList {...childrenNotes} variant="card" />}
+          {!!seriesesNotes.length && <SeriesList serieses={seriesesNotes} />}
+        </>
       </div>
     )
   }

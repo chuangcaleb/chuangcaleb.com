@@ -1,7 +1,7 @@
 ---
 import NoteLi from "~/components/styled/monom/note/NoteLi.astro";
 import { getAllNotes } from "~/utils/note";
-import Collections from "./_Collections.astro";
+import Topics from "./_Topics.astro";
 
 const notes = await getAllNotes();
 
@@ -11,12 +11,8 @@ const featuredNotes = notes
     (a.data.featured as number) > (b.data?.featured as number) ? 1 : -1
   );
 
-const featuredLeafNotes = featuredNotes.filter(
-  (n) => !n.data.tags?.includes("📂/collection")
-);
-const featuredCollections = featuredNotes.filter((n) =>
-  n.data.tags?.includes("📂/collection")
-);
+const featuredLeafNotes = featuredNotes.filter((n) => !n.data.emojip);
+const featuredTopics = featuredNotes.filter((n) => n.data.emojip);
 ---
 
 <div class="columns prose flow-lg">
@@ -34,10 +30,7 @@ const featuredCollections = featuredNotes.filter((n) =>
       ))
     }
   </ul>
-  <Collections
-    collections={featuredCollections}
-    style={{ gridColumn: "span 3 / span 3" }}
-  />
+  <Topics topics={featuredTopics} style={{ gridColumn: "span 3 / span 3" }} />
 </div>
 
 <style>

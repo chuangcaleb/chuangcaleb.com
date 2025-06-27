@@ -1,14 +1,14 @@
 ---
 import { type HTMLAttributes } from "astro/types";
-import type { CollectionEntry } from "astro:content";
-import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
+import type { NoteReference } from "lib/utils/types";
+import Card from "~/components/styled/monom/note/Card.astro";
 import { getNoteEntries } from "~/utils/note";
-import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
 import NoteLink from "../block/NoteLink.astro";
+import NoteCardContent from "~/components/block/note/NoteCardContent.astro";
 
 interface Props extends HTMLAttributes<"ul"> {
   isOrdered?: boolean;
-  items: CollectionEntry<"obsidian-note">["data"]["collectionItems"];
+  items: NoteReference[];
   variant?: "card";
 }
 
@@ -22,15 +22,6 @@ const {
 
 const ListHTMLElement = isOrdered ? "ol" : "ul";
 const notes = await getNoteEntries(items);
-
-const renderMetadata = (note: CollectionEntry<"obsidian-note">) =>
-  [
-    formatDisplayDate(note.data?.published),
-    note.data?.modified &&
-      `modified ${getLongDurationSince(note.data?.modified)}`,
-  ]
-    .filter(Boolean)
-    .join(" ⋅ ");
 ---
 
 {
@@ -39,19 +30,14 @@ const renderMetadata = (note: CollectionEntry<"obsidian-note">) =>
       {...rest}
       class:list={[variant && `variant-${variant}`, propsClass]}
     >
-      {notes.map((note, index) => {
+      {notes.map((note) => {
         if (!note) return null;
         return (
           <li>
             {variant === "card" && (
-              <NoteCard as="a" href={note.route}>
-                <h3>
-                  {isOrdered && `#${index + 1}: `}
-                  {note.data?.emojip && `${note.data?.emojip} `}
-                  {note.name}
-                </h3>
-                <div class="metadata">{renderMetadata(note)}</div>
-              </NoteCard>
+              <Card as="a" href={note.route}>
+                <NoteCardContent note={note} />
+              </Card>
             )}
             {variant !== "card" && <NoteLink note={note} />}
           </li>

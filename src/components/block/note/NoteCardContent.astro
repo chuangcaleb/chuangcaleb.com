@@ -1,0 +1,38 @@
+---
+import type { SuperNote } from "lib/utils/types";
+import NoteCardMetadata from "./NoteCardMetadata.astro";
+
+interface Props {
+  note: SuperNote;
+}
+
+const { note } = Astro.props;
+---
+
+<h3 class="flow-sm">
+  {note.data?.emojip && <span class="emoji">{`${note.data?.emojip} `}</span>}
+  <span>{note.name}</span>
+</h3>
+<NoteCardMetadata data={note.data} />
+
+<style>
+  h3 {
+    font-size: var(--step-1);
+    font-family: var(--font-heading-sans);
+    font-weight: var(--fw-6);
+    text-wrap: balance;
+  }
+  .metadata {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @container (min-width: 300px) {
+    span {
+      display: block;
+    }
+    .emoji {
+      font-size: var(--step-2);
+    }
+  }
+</style>

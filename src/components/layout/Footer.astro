@@ -4,19 +4,24 @@ import { formatDisplayDate } from "~/utils/time";
 import ThemeToggle from "../block/ThemeToggle.astro";
 import Contact from "./Contact.astro";
 import SiteNavStack from "./SiteNavStack.astro";
+import Search from "~/components/block/Search.astro";
+import Button from "../styled/polym/Button.astro";
 ---
 
 <footer id="footer" class="flow-lg linew-wide">
   <SiteNavStack isFooter />
+
+  <Search />
   <div class="utils">
     <ThemeToggle />
+    <Button as="a" href="#search-container">Scroll to Search</Button>
     <hr aria-hidden />
   </div>
   <Contact />
 
   <div>
     <p class="fine-print">
-      <a href={gnr("meta/colophon")}>colophon</a>
+      <a href={gnr("colophon")}>colophon</a>
       <span class="text-muted" aria-hidden>•</span>
       <a href="https://github.com/chuangcaleb/chuangcaleb.com">source code</a>
     </p>

@@ -2,7 +2,7 @@
 import { type HTMLTag, type Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
-  variant?: "brand" | "ghost";
+  variant?: "brand";
   step?: 1;
 };
 

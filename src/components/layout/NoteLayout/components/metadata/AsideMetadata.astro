@@ -1,12 +1,10 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import { EXCLUDE_KEYS } from "lib/obsidian/consts";
+import type { NoteMetadata } from "lib/utils/types";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import MetadataValue from "../metadata/MetadataValue.astro";
 
-export type MetadataProps = CollectionEntry<"obsidian-note">["data"];
-
-type Props = { metadata: MetadataProps };
+type Props = { metadata: NoteMetadata };
 
 const { metadata } = Astro.props;
 // TODO: sort metadata; by value type, then by key
