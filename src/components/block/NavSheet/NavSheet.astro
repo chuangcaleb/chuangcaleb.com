@@ -4,32 +4,31 @@ import SiteNavStack from "~/components/layout/SiteNavStack.astro";
 import NavSheetReact from "./nav-sheet-react";
 
 const isNotesRoute = Astro.url.pathname.startsWith("/notes");
+// lazy css. i"m leaving a dead `div` DOM element, but... meh
+// const slotContent = !!(await Astro.slots.render("default")).trim();
 ---
 
 <NavSheetReact client:only="react" isNotesRoute={isNotesRoute}>
   <Icon name="lucide:chevron-first" slot="menuIcon" />
   <Icon name="lucide:chevron-last" slot="closeIcon" />
-  <div slot="body" class="body | flow-lg">
-    <slot name="sheetBody" />
-    <hr />
-    <SiteNavStack />
+  <div slot="body" class="wrapper | flow-lg">
+    <div class="flow-lg">
+      <slot />
+    </div>
+    <div class="flow-lg">
+      <hr />
+      <SiteNavStack />
+    </div>
   </div>
 </NavSheetReact>
 
 <style>
-  .body {
+  .wrapper {
     height: 100%;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
-  }
-  hr {
-    margin-block-start: auto;
-    /* --flow-space: auto; */
-  }
-  hr:first-child {
-    display: none;
-    :global(& + *) {
-      --flow-space: 0;
-    }
+    padding: var(--space-l);
+    justify-content: space-between;
   }
 </style>
