@@ -10,21 +10,23 @@ Personal portfolio site to share (1) about myself + (2) content I've written. Th
 
 Check [package.json](./package.json) for specific implementation.
 
-| Command                 | Action                                                                                                   |
-| :---------------------- | :------------------------------------------------------------------------------------------------------- |
-| `pnpm install`          | Installs dependencies                                                                                    |
-| `pnpm dev`              | Starts local dev server at `localhost:4321`                                                              |
-| `pnpm dev:nosetup`      | Runs dev without `setup:external`                                                                      |
-| `pnpm build`            | Build production site to `./dist/` (with `setup:external` + `git submodule update` from latest remote) |
-| `pnpm build:nosetup`    | Only build production site                                                                               |
-| `pnpm preview`          | Build (cache + submodule) then preview locally, before deploying                                         |
-| `pnpm preview:nosetup`  | Same as `preview`, but don't `setup:external` when building                                            |
-| `pnpm preview:nobuild`  | Same as `preview`, but without build step, so directly re-using existing local build                     |
-| `pnpm format:check`     | Print code-format results with Prettier                                                                  |
-| `pnpm format:fix`       | Format all code with Prettier (will write)                                                               |
-| `pnpm b2:download`  | Download b2 bucket to local `src/content` directory                                                               |
-| `pnpm setup:external`   | Syncs down external data; alias for `b2:download`                                                            |
-| `pnpm astro ...`        | Run CLI commands like `astro add`, `astro preview`                                                       |
+| Command                | Action                                                                                      |
+| :--------------------- | :------------------------------------------------------------------------------------------ |
+| `pnpm install`         | Installs dependencies                                                                       |
+| `pnpm dev`             | Starts local dev server at `localhost:4321`                                                 |
+| `pnpm dev:nosetup`     | Runs dev without `setup:external`                                                           |
+| `pnpm build`           | Build production site to `./dist/` (with `setup-external` + `pagefind` )                    |
+| `pnpm build:nosetup`   | Only build without setup                                                                    |
+| `pnpm preview`         | Run full build, then preview locally                                                        |
+| `pnpm preview:nosetup` | Same as `preview`, but with `build:nosetup`                                                 |
+| `pnpm preview:nobuild` | Same as `preview`, but without build step at all, so directly re-using existing local build |
+| `pnpm format:check`    | Print code-format results with Prettier                                                     |
+| `pnpm format:fix`      | Format all code with Prettier (will write)                                                  |
+| `pnpm b2:download`     | Download b2 bucket to local `src/content` directory                                         |
+| `pnpm pagefind`        | Index HTML notes with pagefind (from build `dist` directory)                                |
+| `pnpm pagefind:dev`    | Run pagefind, but copy to public directory (for local dev)                                  |
+| `pnpm setup:external`  | Syncs down external data; alias for `b2:download`                                           |
+| `pnpm astro ...`       | Alias to run CLI commands like `astro add`, `astro preview`                                          |
 
 ![package.json scripts](./docs/package-json-scripts.svg)
 
@@ -40,6 +42,7 @@ Check [package.json](./package.json) for specific implementation.
   - Preprocessing: [PostCSS](https://postcss.org/)
   - Fluid Responsive Design: [utopia-core-scss](https://github.com/trys/utopia-core-scss) @ [Utopia](https://utopia.fyi/)
 - CMS: [Obsidian](https://obsidian.md/) + [Backblaze B2](https://www.backblaze.com/cloud-storage)
+- Search: [Pagefind](https://pagefind.app)
 - External from this repo:
   - Deployment + CD: [Cloudflare Pages](https://pages.cloudflare.com/)
   - Image CDN: [Cloudflare CDN](https://www.cloudflare.com/application-services/products/cdn/)
@@ -207,7 +210,7 @@ Finally, implementations can use the semantic tokens:
 // variant just re-defines local CSS Variables/Properties
 a.accent {
   --color: var(--ax2);
-  --color-hover: var(--ax1)
+  --color-hover: var(--ax1);
 }
 ```
 
