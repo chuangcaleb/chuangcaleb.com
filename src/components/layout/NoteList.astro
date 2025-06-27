@@ -1,6 +1,6 @@
 ---
 import { type HTMLAttributes } from "astro/types";
-import type { CollectionEntry } from "astro:content";
+import type { Note, NoteReference } from "lib/utils/types";
 import NoteCard from "~/components/styled/monom/note/NoteCard.astro";
 import { getNoteEntries } from "~/utils/note";
 import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
@@ -8,7 +8,7 @@ import NoteLink from "../block/NoteLink.astro";
 
 interface Props extends HTMLAttributes<"ul"> {
   isOrdered?: boolean;
-  items: CollectionEntry<"obsidian-note">["data"]["collectionItems"];
+  items: NoteReference[];
   variant?: "card";
 }
 
@@ -23,7 +23,7 @@ const {
 const ListHTMLElement = isOrdered ? "ol" : "ul";
 const notes = await getNoteEntries(items);
 
-const renderMetadata = (note: CollectionEntry<"obsidian-note">) =>
+const renderMetadata = (note: Note) =>
   [
     formatDisplayDate(note.data?.published),
     note.data?.modified &&

@@ -5,7 +5,7 @@ import {
 	getEntry,
 	type CollectionEntry,
 } from 'astro:content';
-import type {CollectionItems, SuperNote} from 'lib/utils/types';
+import type {Note, NoteReference, SuperNote} from 'lib/utils/types';
 import {gnr} from '~/utils/note-route.ts';
 
 function getNoteName(filepath: string | undefined) {
@@ -24,7 +24,7 @@ function getNoteName(filepath: string | undefined) {
 }
 
 // get note meta
-function gnm(entry: CollectionEntry<'obsidian-note'>): SuperNote {
+function gnm(entry: Note): SuperNote {
 	return {
 		...entry,
 		name: getNoteName(entry.filePath),
@@ -38,15 +38,15 @@ export async function getAllNotes(): Promise<SuperNote[]> {
 }
 
 export async function getNoteEntries(
-	items?: CollectionItems,
+	noteChildren?: NoteReference[],
 ): Promise<SuperNote[]> {
-	if (!items) return [];
-	const entries = await getEntries<'obsidian-note'>(items);
+	if (!noteChildren) return [];
+	const entries = await getEntries<'obsidian-note'>(noteChildren);
 	return entries.map((n) => gnm(n));
 }
 
 export async function getNoteEntry(
-	item: NonNullable<CollectionItems>[number],
+	item: NoteReference,
 ): Promise<SuperNote | undefined> {
 	const entry = await getEntry(item);
 	if (!entry) return undefined;

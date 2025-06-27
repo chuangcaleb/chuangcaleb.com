@@ -29,7 +29,7 @@ const title = `${entry.data.emojip ? entry.data.emojip + " " : ""} ${entry.name}
 // children
 const { down: children, series, description } = entry.data;
 const isParent = !!children?.length;
-const collectionData = isParent && {
+const childrenNotes = isParent && {
   isOrdered: !!series,
   items: series ?? children,
 };
@@ -80,12 +80,12 @@ const seriesesNotes = parentNotes.filter((note) => !!note.data.series);
     )
   }
   {
-    (collectionData || !!seriesesNotes.length) && (
+    (childrenNotes || !!seriesesNotes.length) && (
       <div class="metadata-footer | wide region prose linew flow-lg">
-        {collectionData && (
+        {childrenNotes && (
           <>
             <h2>{title}</h2>
-            <NoteList {...collectionData} variant="card" />
+            <NoteList {...childrenNotes} variant="card" />
           </>
         )}
         {!!seriesesNotes.length && <SeriesList serieses={seriesesNotes} />}

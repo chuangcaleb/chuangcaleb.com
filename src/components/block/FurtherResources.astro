@@ -1,16 +1,14 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { Note } from "lib/utils/types";
 import TagWIcon from "../styled/polym/TagWIcon.astro";
 
 interface Props {
-  resources: CollectionEntry<"obsidian-note">["data"]["resources"];
+  resources: Note["data"]["resources"];
 }
 
 const { resources } = Astro.props;
 
-function parseMarkdownLinks(
-  markdownLinks: CollectionEntry<"obsidian-note">["data"]["resources"]
-) {
+function parseMarkdownLinks(markdownLinks: Note["data"]["resources"]) {
   return markdownLinks
     ?.map((link) => {
       const match = link.match(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/);
