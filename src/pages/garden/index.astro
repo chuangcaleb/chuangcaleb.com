@@ -1,18 +1,17 @@
 ---
 import BaseMain from "~/components/layout/BaseMain.astro";
-import NoteList from "~/components/layout/NoteList.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
 import { getAllNotes } from "~/utils/note";
-import Topics from "./_Topics.astro";
 import Featured from "./_Featured.astro";
 import { Content as GardenIntroContent } from "./_garden-intro.mdx";
+import Topics from "./_Topics.astro";
 
 const publicNotes = await getAllNotes();
 
-const leafNotes = publicNotes
-  .filter((n) => !n.data.emojip)
-  .sort((a, b) => (a.body && b.body && a.body.length < b.body.length ? 1 : -1));
+// const leafNotes = publicNotes
+//   .filter((n) => !n.data.emojip)
+//   .sort((a, b) => (a.body && b.body && a.body.length < b.body.length ? 1 : -1));
 
 const allTopics = publicNotes
   .filter((n) => n.data.emojip && n.data.up?.length === 0)
