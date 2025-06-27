@@ -7,7 +7,7 @@
     "build:nosetup": "astro check && astro build",
     "pagefind": "pagefind --site dist",
     "pagefind:dev": "pagefind --site dist && cp -r dist/pagefind public/",
-    "build": "astro check && pnpm setup-external && astro build && pnpm pagefind",
+    "build": "pnpm setup-external && astro check && astro build && pnpm pagefind",
     "dev:nosetup": "astro dev",
     "dev": "pnpm setup-external && astro dev",
     "format:check": "pnpm xo -- --list-different .",
