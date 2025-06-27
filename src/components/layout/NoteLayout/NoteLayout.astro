@@ -10,11 +10,11 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<BaseMain title={title} description={description} data-pagefind-body>
+<BaseMain title={title} description={description}>
   <slot slot="head" name="head" />
   <slot slot="sheetBody" name="sheetBody" />
 
-  <div class="flow-lg">
+  <div class="flow-lg" data-pagefind-body>
     <div class="header-section | cgrid flow-sm">
       <slot name="header">
         <NoteHeader title={title} />
