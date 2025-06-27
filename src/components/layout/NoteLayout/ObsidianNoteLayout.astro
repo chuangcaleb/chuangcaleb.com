@@ -6,7 +6,7 @@ import Pill from "~/components/block/Pill.astro";
 import NoteList from "~/components/layout/NoteList.astro";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteEntries } from "~/utils/note";
-import Metadata from "./components/metadata/Metadata.astro";
+import Metadata from "./components/metadata/AsideMetadata.astro";
 import MetadataContainer from "./components/MetadataContainer.astro";
 import NoteHeader from "./components/NoteHeader.astro";
 import SeriesList from "./components/SeriesList.astro";
@@ -82,13 +82,11 @@ const seriesesNotes = parentNotes.filter((note) => !!note.data.series);
   {
     (childrenNotes || !!seriesesNotes.length) && (
       <div class="metadata-footer | wide region prose linew flow-lg">
-        {childrenNotes && (
-          <>
-            <h2>{title}</h2>
-            <NoteList {...childrenNotes} variant="card" />
-          </>
-        )}
-        {!!seriesesNotes.length && <SeriesList serieses={seriesesNotes} />}
+        <>
+          <h2>{title}</h2>
+          {childrenNotes && <NoteList {...childrenNotes} variant="card" />}
+          {!!seriesesNotes.length && <SeriesList serieses={seriesesNotes} />}
+        </>
       </div>
     )
   }

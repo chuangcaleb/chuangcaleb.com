@@ -1,6 +1,7 @@
 ---
 import { type HTMLAttributes } from "astro/types";
 import type { SuperNotes } from "lib/utils/types";
+import NoteCardContent from "~/components/block/note/NoteCardContent.astro";
 import Card from "~/components/styled/monom/note/Card.astro";
 export interface Props extends HTMLAttributes<"ul"> {
   topics: SuperNotes;
@@ -12,11 +13,9 @@ const { topics, class: propsClass, ...props } = Astro.props;
 <ul class:list={["flow-li-0", propsClass]} {...props}>
   {
     topics?.map((n) => (
-      <li class=" flom-0">
+      <li class="flom-0">
         <Card as="a" href={n.route}>
-          <div class="emoji">{n.data.emojip ?? "‎‎"}</div>
-          <h3>{n.name}</h3>
-          <div class="metadata">{n.data.down?.length} NOTES</div>
+          <NoteCardContent note={n} />
         </Card>
       </li>
     ))
@@ -29,8 +28,5 @@ const { topics, class: propsClass, ...props } = Astro.props;
     grid-auto-rows: 1fr;
     gap: var(--space-xs);
     place-content: stretch;
-  }
-  .emoji {
-    font-size: var(--step-2);
   }
 </style>

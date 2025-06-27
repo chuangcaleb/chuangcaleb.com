@@ -1,27 +1,35 @@
 ---
-import type { Note, SuperNote } from "lib/utils/types";
-import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
+import type { SuperNote } from "lib/utils/types";
+import NoteCardMetadata from "./NoteCardMetadata.astro";
 
 interface Props {
-  isOrdered?: boolean;
   note: SuperNote;
 }
 
-const { isOrdered = false, note } = Astro.props;
-
-const renderMetadata = (note: Note) =>
-  [
-    formatDisplayDate(note.data?.published),
-    note.data?.modified &&
-      `modified ${getLongDurationSince(note.data?.modified)}`,
-  ]
-    .filter(Boolean)
-    .join(" ⋅ ");
+const { note } = Astro.props;
 ---
 
+{note.data?.emojip && <span class="emoji">{`${note.data?.emojip} `}</span>}
 <h3>
-  <!-- {isOrdered && `#${index + 1}: `} -->
-  {note.data?.emojip && `${note.data?.emojip} `}
   {note.name}
 </h3>
-<div class="metadata">{renderMetadata(note)}</div>
+<div class="metadata">
+  <NoteCardMetadata data={note.data} />
+</div>
+
+<style>
+  h3 {
+    font-size: var(--step-1);
+    font-family: var(--font-heading-sans);
+    font-weight: var(--fw-6);
+    text-wrap: balance;
+  }
+  .metadata {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .emoji {
+    font-size: var(--step-2);
+  }
+</style>

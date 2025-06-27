@@ -30,7 +30,7 @@ const notes = await getNoteEntries(items);
       {...rest}
       class:list={[variant && `variant-${variant}`, propsClass]}
     >
-      {notes.map((note, index) => {
+      {notes.map((note) => {
         if (!note) return null;
         return (
           <li>

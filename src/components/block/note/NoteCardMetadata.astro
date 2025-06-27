@@ -1,0 +1,38 @@
+---
+import type { NoteMetadata } from "lib/utils/types";
+import { formatDisplayDate, getLongDurationSince } from "~/utils/time";
+
+interface Props {
+  data: NoteMetadata;
+}
+
+const { data } = Astro.props;
+const { published, modified, emojip, down, description } = data;
+// const renderMetadata = (note: Note) =>
+//   [
+//     formatDisplayDate(note.data?.published),
+//     note.data?.modified &&
+//       `modified ${getLongDurationSince(note.data?.modified)}`,
+//   ]
+//     .filter(Boolean)
+//     .join(" ⋅ ");
+const shouldShowModified = modified && !emojip;
+---
+
+{description && emojip && <span class="description">{description}</span>}
+{published && <span>{formatDisplayDate(published)}</span>}
+<span>{shouldShowModified && `modified ${getLongDurationSince(modified)}`}</span
+>
+{emojip && <span>{`${down?.length} NOTES `}</span>}
+
+<style>
+  .description + * {
+    margin-block-start: var(--space-xs);
+  }
+  * {
+    color: var(--fg3);
+    font-size: var(--step--1);
+    line-height: var(--font-lh-1);
+    /* font-family: var(--font-mono); */
+  }
+</style>
