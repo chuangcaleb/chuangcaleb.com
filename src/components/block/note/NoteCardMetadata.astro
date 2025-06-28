@@ -20,7 +20,14 @@ const shouldShowModified = modified && !emojip;
 ---
 
 {description && emojip && <span class="description">{description}</span>}
-{published && <span>{formatDisplayDate(published)}</span>}
+{
+  published && (
+    <span class="published">
+      <span class="sr-only">published on </span>
+      {formatDisplayDate(published)}
+    </span>
+  )
+}
 {
   shouldShowModified && (
     <span>{`modified ${getLongDurationSince(modified)}`}</span>
@@ -31,9 +38,12 @@ const shouldShowModified = modified && !emojip;
 <style>
   * {
     display: block;
-    color: var(--fg3);
+    color: var(--text-faded);
     font-size: var(--step--1);
     line-height: var(--font-lh-1);
+  }
+  .published {
+    color: var(--text-normal);
   }
   .children-count {
     margin-block-start: var(--space-2xs);
