@@ -21,7 +21,7 @@ const notes = await getNoteEntries(references);
     return (
       <li>
         {variant !== "inline" && (
-          <Card as="a" href={note.route}>
+          <Card as="a" href={note.route} aria-label={note.name}>
             <NoteCardContent note={note} />
           </Card>
         )}

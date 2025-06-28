@@ -1,0 +1,13 @@
+---
+import { type HTMLAttributes } from "astro/types";
+import { getLongDurationSince } from "~/utils/time";
+
+interface Props extends HTMLAttributes<"ul"> {
+  date: Date;
+}
+
+const { date } = Astro.props;
+const duration = getLongDurationSince(date);
+---
+
+<span aria-label={duration.long}>{duration.short}</span>
