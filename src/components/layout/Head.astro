@@ -22,7 +22,10 @@ const title = propsTitle
   ? propsTitle + (isHome ? "" : ` | ${SITE.title}`)
   : SITE.title;
 
-const description = propsDescription ?? SITE.description;
+const isNotesRoute = Astro.url.pathname.startsWith("/notes");
+const description =
+  propsDescription ??
+  (isNotesRoute ? SITE.siteDescriptionFallback : SITE.description);
 ---
 
 {/* Base */}
