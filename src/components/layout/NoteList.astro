@@ -1,10 +1,10 @@
 ---
 import { type HTMLAttributes } from "astro/types";
 import type { NoteReference } from "lib/utils/types";
+import NoteCardContent from "~/components/block/note/NoteCardContent.astro";
 import Card from "~/components/styled/monom/note/Card.astro";
 import { getNoteEntries } from "~/utils/note";
 import NoteLink from "../block/NoteLink.astro";
-import NoteCardContent from "~/components/block/note/NoteCardContent.astro";
 
 interface Props extends HTMLAttributes<"ul"> {
   isOrdered?: boolean;
@@ -26,10 +26,7 @@ const notes = await getNoteEntries(items);
 
 {
   notes && (
-    <ListHTMLElement
-      {...rest}
-      class:list={[variant && `variant-${variant}`, propsClass]}
-    >
+    <ListHTMLElement {...rest} class:list={[variant && `flow-sm`, propsClass]}>
       {notes.map((note) => {
         if (!note) return null;
         return (
@@ -46,13 +43,3 @@ const notes = await getNoteEntries(items);
     </ListHTMLElement>
   )
 }
-
-<style>
-  .variant-card {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 35ch), 1fr));
-    grid-auto-rows: 1fr;
-    column-gap: var(--space-m);
-    row-gap: var(--space-s);
-  }
-</style>
