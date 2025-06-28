@@ -35,7 +35,6 @@ const projectCollection = defineCollection({
 const baseObsidianNoteSchema = z
 	.object({
 		// meta - content
-		title: z.string(),
 		tags: z.array(z.string()).nullable(),
 		description: z.string(),
 		// meta - time

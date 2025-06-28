@@ -2,14 +2,13 @@
 import { render } from "astro:content";
 import type { SuperNote } from "lib/utils/types";
 import FurtherResources from "~/components/block/FurtherResources.astro";
-import NoteListItems from "~/components/block/note/NoteListItems.astro";
 import Pill from "~/components/block/Pill.astro";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteEntries } from "~/utils/note";
 import Metadata from "./components/metadata/AsideMetadata.astro";
 import MetadataContainer from "./components/MetadataContainer.astro";
 import NoteHeader from "./components/NoteHeader.astro";
-import SeriesList from "./components/SeriesList.astro";
+import NoteRelationsSection from "./components/NoteRelationsSection.astro";
 import Toc from "./components/toc/Toc.astro";
 import NoteLayout from "./NoteLayout.astro";
 
@@ -20,28 +19,21 @@ interface Props {
 const { entry } = Astro.props;
 
 const { Content, headings } = await render(entry);
+const metadata = entry.data;
 
 // title
-const parents = [...(entry.data.up ?? [])];
+const title = `${metadata.emojip ? metadata.emojip + " " : ""} ${entry.name}`;
+
+// parents
+const parents = [...(metadata.up ?? [])];
 const parentNotes = await getNoteEntries(parents);
-const title = `${entry.data.emojip ? entry.data.emojip + " " : ""} ${entry.name}`;
-
-// children
-const { down: children, series, description } = entry.data;
-const isParent = !!children?.length;
-const childrenNotes = isParent && {
-  isOrdered: !!series,
-  items: series ?? children,
-};
-
-// parents which are also series
-// type SeriesesNotes = Series[]; type Series = SeriesMember[]
-const seriesesNotes = parentNotes.filter((note) => !!note.data.series);
+// description
+const { description } = metadata;
 ---
 
 <NoteLayout title={entry.name} description={description}>
   <slot slot="header">
-    <NoteHeader title={title} description={entry.data.description}>
+    <NoteHeader title={title} description={description}>
       <div class="metadata-header | content">
         <div class="parents">
           {
@@ -64,9 +56,9 @@ const seriesesNotes = parentNotes.filter((note) => !!note.data.series);
           }
         </div>
         {
-          entry.data.published && (
-            <span>
-              Published on <Pill key="published" value={entry.data.published} />
+          metadata.published && (
+            <span class="text-faded">
+              Published on <Pill key="published" value={metadata.published} />
             </span>
           )
         }
@@ -74,32 +66,12 @@ const seriesesNotes = parentNotes.filter((note) => !!note.data.series);
     </NoteHeader>
   </slot>
   <Content />
-  {
-    entry.data.resources && (
-      <FurtherResources resources={entry.data.resources} />
-    )
-  }
-  {
-    (childrenNotes || !!seriesesNotes.length) && (
-      <div class="metadata-footer | wide region prose linew flow-lg">
-        <>
-          {childrenNotes && (
-            <>
-              <h2>↓ {title}</h2>
-              <ul class="flow-sm">
-                <NoteListItems references={childrenNotes.items} />
-              </ul>
-            </>
-          )}
-          {!!seriesesNotes.length && <SeriesList serieses={seriesesNotes} />}
-        </>
-      </div>
-    )
-  }
+  {metadata.resources && <FurtherResources resources={metadata.resources} />}
+  <NoteRelationsSection metadata={metadata} />
 
   <Fragment slot="sheetBody">
     <h3>{title}</h3>
-    <Metadata metadata={entry.data} />
+    <Metadata metadata={metadata} />
     <slot name="sidebar" />
     <Toc headings={headings} />
   </Fragment>
@@ -112,18 +84,9 @@ const seriesesNotes = parentNotes.filter((note) => !!note.data.series);
     flex-wrap: wrap;
     gap: var(--space-xs);
   }
-  .metadata-footer {
-    border-width: 1px;
-    border-radius: var(--radius-3);
-    /* background-color: var(--bg2); */
-    --flow-space: var(--space-2xl);
-  }
+
   .parents {
     display: flex;
     gap: var(--space-m);
-  }
-  h2,
-  span {
-    color: var(--text-faded);
   }
 </style>
