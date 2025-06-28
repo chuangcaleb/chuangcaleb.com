@@ -18,7 +18,7 @@ export function getLongDurationSince(datetime: string | Date) {
 				interval.years + (interval?.months ? interval.months / 12 : 0)
 			).toPrecision(2),
 		);
-		return `${value} years ago`;
+		return `${value} ${value === 1 ? 'year' : 'years'} ago`;
 	}
 
 	if (interval?.months) {
@@ -27,17 +27,15 @@ export function getLongDurationSince(datetime: string | Date) {
 				2,
 			),
 		);
-		return `${value} months ago`;
+		return `${value} ${value === 1 ? 'month' : 'months'} ago`;
 	}
 
 	if (interval?.days) {
 		const value = interval?.days ?? 1;
-		return `${value} days ago`;
+		return `${value} ${value === 1 ? 'day' : 'days'} ago`;
 	}
 
-	const value = interval?.hours ?? 1;
-
-	return `${value} hours ago`;
+	return `<1 day ago`;
 }
 
 export function formatIso(date: string, template: string) {
