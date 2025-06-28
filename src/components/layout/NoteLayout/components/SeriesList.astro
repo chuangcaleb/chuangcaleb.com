@@ -1,7 +1,7 @@
 ---
 import type { SuperNote } from "lib/utils/types";
+import NoteListItems from "~/components/block/note/NoteListItems.astro";
 import NoteLink from "~/components/block/NoteLink.astro";
-import NoteList from "../../NoteList.astro";
 interface Props {
   serieses: SuperNote[];
 }
@@ -17,7 +17,11 @@ const { serieses } = Astro.props;
         {"↑"}
         <NoteLink note={parent} variant="accent" />
       </p>
-      {parent.data.series && <NoteList items={parent.data.series} isOrdered />}
+      {parent.data.series && (
+        <ol>
+          <NoteListItems references={parent.data.series} variant="inline" />
+        </ol>
+      )}
     </>
   ))
 }

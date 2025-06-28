@@ -1,7 +1,7 @@
 ---
+import NoteListItems from "~/components/block/note/NoteListItems.astro";
 import NoteLi from "~/components/styled/monom/note/NoteLi.astro";
 import { getAllNotes } from "~/utils/note";
-import Topics from "./_Topics.astro";
 
 const notes = await getAllNotes();
 
@@ -30,10 +30,18 @@ const featuredTopics = featuredNotes.filter((n) => n.data.emojip);
       ))
     }
   </ul>
-  <Topics topics={featuredTopics} style={{ gridColumn: "span 3 / span 3" }} />
+  <ol class="topic-cards" style={{ gridColumn: "span 3 / span 3" }}>
+    <NoteListItems references={featuredTopics} />
+  </ol>
 </div>
 
 <style>
+  .topic-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 25ch), 1fr));
+    grid-auto-rows: 1fr;
+    gap: var(--space-xs);
+  }
   .columns {
     display: grid;
     gap: var(--space-s);

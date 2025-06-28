@@ -1,13 +1,12 @@
 ---
 import type { SuperNote } from "lib/utils/types";
+import NoteListItems from "~/components/block/note/NoteListItems.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
-import NoteList from "~/components/layout/NoteList.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
 import { getAllNotes } from "~/utils/note";
 import Featured from "./_Featured.astro";
 import { Content as GardenIntroContent } from "./_garden-intro.mdx";
-import Topics from "./_Topics.astro";
 
 const publicNotes = await getAllNotes();
 
@@ -71,32 +70,26 @@ const description =
       <h2>✨ Featured</h2>
       <Featured />
     </section>
-    {
-      /*<section class="prose flow-lg" style={{ gridColumn: "1/-1" }}>
-      <h2>Recently Published</h2>
-      <NoteList items={leafNotes} />
-    </section>*/
-    }
     <section class="flow-lg region">
       <h2>📂 All Top-Level Topics</h2>
-      <Topics topics={allTopics} />
+      <ul class="topics-cards">
+        <NoteListItems references={allTopics} />
+      </ul>
     </section>
     <div class="recents region">
       <section class="prose flow-lg">
         <h2>📤 Recently Published</h2>
-        <NoteList items={recentlyPublished} variant="card" />
+        <ol class="flow-sm">
+          <NoteListItems references={recentlyPublished} />
+        </ol>
       </section>
       <section class="prose flow-lg">
         <h2>🥬 Recently Modified</h2>
-        <NoteList items={recentlyModified} variant="card" />
+        <ol class="flow-sm">
+          <NoteListItems references={recentlyModified} />
+        </ol>
       </section>
     </div>
-    {
-      /* <section class="prose flow-lg">
-      <h2>🍃 All leaf notes</h2>
-      <NoteList items={leafNotes} variant="card" />
-    </section>*/
-    }
   </article>
 </BaseMain>
 
@@ -121,9 +114,15 @@ const description =
       grid-column: 1 / -1;
     }
   }
-  .recents {
+  .topics-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 25ch), 1fr));
+    grid-auto-rows: 1fr;
+    gap: var(--space-xs);
+  }
+  .recents {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 30ch), 1fr));
     row-gap: var(--space-xl);
     column-gap: var(--space-m);
   }

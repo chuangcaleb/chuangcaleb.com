@@ -1,0 +1,32 @@
+---
+import type { NoteReference } from "lib/utils/types";
+import NoteCardContent from "~/components/block/note/NoteCardContent.astro";
+import NoteLink from "~/components/block/NoteLink.astro";
+import Card from "~/components/styled/monom/note/Card.astro";
+import { getNoteEntries } from "~/utils/note";
+
+interface Props {
+  references: NoteReference[];
+  variant?: "inline" | "card";
+}
+
+const { references, variant = "card" } = Astro.props;
+
+const notes = await getNoteEntries(references);
+---
+
+{
+  notes.map((note) => {
+    if (!note) return null;
+    return (
+      <li>
+        {variant !== "inline" && (
+          <Card as="a" href={note.route}>
+            <NoteCardContent note={note} />
+          </Card>
+        )}
+        {variant === "inline" && <NoteLink note={note} />}
+      </li>
+    );
+  })
+}

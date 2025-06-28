@@ -2,8 +2,8 @@
 import { render } from "astro:content";
 import type { SuperNote } from "lib/utils/types";
 import FurtherResources from "~/components/block/FurtherResources.astro";
+import NoteListItems from "~/components/block/note/NoteListItems.astro";
 import Pill from "~/components/block/Pill.astro";
-import NoteList from "~/components/layout/NoteList.astro";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteEntries } from "~/utils/note";
 import Metadata from "./components/metadata/AsideMetadata.astro";
@@ -86,7 +86,9 @@ const seriesesNotes = parentNotes.filter((note) => !!note.data.series);
           {childrenNotes && (
             <>
               <h2>↓ {title}</h2>
-              <NoteList {...childrenNotes} variant="card" />
+              <ul class="flow-sm">
+                <NoteListItems references={childrenNotes.items} />
+              </ul>
             </>
           )}
           {!!seriesesNotes.length && <SeriesList serieses={seriesesNotes} />}
