@@ -1,5 +1,7 @@
 ---
+import type { SuperNote } from "lib/utils/types";
 import BaseMain from "~/components/layout/BaseMain.astro";
+import NoteList from "~/components/layout/NoteList.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
 import { getAllNotes } from "~/utils/note";
@@ -12,6 +14,21 @@ const publicNotes = await getAllNotes();
 // const leafNotes = publicNotes
 //   .filter((n) => !n.data.emojip)
 //   .sort((a, b) => (a.body && b.body && a.body.length < b.body.length ? 1 : -1));
+
+const recentlyPublished = publicNotes
+  .filter(
+    (n): n is SuperNote & { data: { published: Date } } => !!n.data.published
+  )
+  .sort((a, b) => b.data?.published?.getTime() - a.data.published.getTime())
+  .slice(0, 5);
+
+const recentlyModified = publicNotes
+  .filter(
+    (n): n is SuperNote & { data: { modified: Date } } =>
+      !!n.data.modified && !n.data.emojip
+  )
+  .sort((a, b) => b.data?.modified?.getTime() - a.data.modified.getTime())
+  .slice(0, 5);
 
 const allTopics = publicNotes
   .filter((n) => n.data.emojip && n.data.up?.length === 0)
@@ -63,6 +80,14 @@ const description =
     <section class="flow-lg region">
       <h2>📂 All Top-Level Topics</h2>
       <Topics topics={allTopics} />
+    </section>
+    <section class="prose flow-lg">
+      <h2>Recently Published</h2>
+      <NoteList items={recentlyPublished} variant="card" />
+    </section>
+    <section class="prose flow-lg">
+      <h2>Recently Modified</h2>
+      <NoteList items={recentlyModified} variant="card" />
     </section>
     {
       /* <section class="prose flow-lg">

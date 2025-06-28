@@ -18,11 +18,16 @@ const note =
   (await getNoteEntry(value));
 
 const isString = typeof value === "string";
-const isDateFormat = isString && Date.parse(value);
+// const isDateFormat = isString && Date.parse(value);
 ---
 
 {isDate && formatDisplayDate(value)}
 {note && <NoteLink note={note} />}
-{isString && isDateFormat && formatDisplayDate(new Date(value))}
+{
+  /*
+isString && isDateFormat && formatDisplayDate(new Date(value))
 {isString && !isDateFormat && value}
+*/
+}
+{isString && value}
 {!isDate && !isString && !note && value}

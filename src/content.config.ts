@@ -39,9 +39,9 @@ const baseObsidianNoteSchema = z
 		tags: z.array(z.string()).nullable(),
 		description: z.string(),
 		// meta - time
-		created: z.union([z.string(), z.date()]),
-		modified: z.union([z.string(), z.date()]),
-		published: z.union([z.string(), z.date()]),
+		created: z.date(),
+		published: z.date(),
+		modified: z.date(),
 		// misc
 		emojip: z.string(),
 		resources: z.array(z.string()),
