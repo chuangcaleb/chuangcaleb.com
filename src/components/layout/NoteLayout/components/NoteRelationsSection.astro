@@ -2,7 +2,6 @@
 import NoteListItems from "~/components/block/note/NoteListItems.astro";
 import NoteLink from "~/components/block/NoteLink.astro";
 import type { formatNoteRelations } from "~/utils/note-relations";
-import SeriesList from "./SeriesList.astro";
 
 interface Props {
   formattedRelations: NonNullable<
@@ -50,7 +49,22 @@ const childrenHeader =
       </>
     )
   }
-  {!!serieses.length && <SeriesList serieses={serieses} />}
+  {
+    !!serieses.length &&
+      serieses.map((series) => (
+        <>
+          <h3 class="text-faded">
+            ↓{" "}
+            {`${series.data.emojip ? series.data.emojip + " " : ""} ${series.name}`}
+          </h3>
+          {series.data.series && (
+            <ol>
+              <NoteListItems references={series.data.series} variant="inline" />
+            </ol>
+          )}
+        </>
+      ))
+  }
 </div>
 
 <style>
