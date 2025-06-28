@@ -1,8 +1,7 @@
 ---
-import { NAV_LINKS } from "~/data/links";
 import Banner from "../block/Banner.astro";
 import NavSheet from "../block/NavSheet/NavSheet.astro";
-import LinkList from "../block/LinkList.astro";
+import SiteNavStack from "./SiteNavStack.astro";
 
 export interface HeaderProps {
   hasBanner?: false;
@@ -20,14 +19,7 @@ const { hasBanner = true } = Astro.props;
   {
     hasBanner && (
       <Banner>
-        <nav class="flex-row">
-          <h2 class="sr-only">Site navigation</h2>
-          <LinkList
-            class="flex-row"
-            links={Object.values(NAV_LINKS).filter((l) => l.isInHeader)}
-            variant="header"
-          />
-        </nav>
+        <SiteNavStack class="flex-row" variant="header" />
       </Banner>
     )
   }

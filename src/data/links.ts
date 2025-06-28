@@ -12,7 +12,7 @@ type SocialLink = BaseLink & {
 export type NavigationLink = BaseLink & {
 	shortLabel?: string;
 	icon?: string;
-	isInHeader?: true;
+	enabled: Array<'header' | 'footer' | 'sheet'>;
 };
 
 type LinkGeneric<T> = Record<string, T>;
@@ -49,31 +49,37 @@ const SOCIALS = {
 
 export type LinkKey = keyof typeof SOCIALS;
 
-const NAV_LINKS = {
+const NAV_LINKS: LinkGeneric<NavigationLink> = {
 	INDEX: {
 		label: 'chuangcaleb.com',
 		shortLabel: 'chuangcaleb',
 		href: '/',
-		isInHeader: true,
+		enabled: ['header', 'sheet', 'footer'],
 	},
 	GARDEN: {
 		label: '/garden',
 		href: '/garden',
 		icon: 'lucide:trees',
-		isInHeader: true,
+		enabled: ['header', 'sheet', 'footer'],
 	},
 	NOW: {
 		label: '/now',
 		href: '/now',
 		icon: 'lucide:timer-reset',
-		isInHeader: true,
+		enabled: ['sheet', 'footer'],
 	},
 	GUESTBOOK: {
 		label: '/guestbook',
 		href: '/guestbook',
 		icon: 'lucide:notebook-pen',
-		// IsInHeader: true,
+		enabled: ['sheet', 'footer'],
 	},
-} as const satisfies LinkGeneric<NavigationLink> as LinkGeneric<NavigationLink>;
+	SEARCH: {
+		label: 'search',
+		href: '#search-container',
+		icon: 'lucide:search',
+		enabled: ['header', 'sheet'],
+	},
+} as const;
 
 export {SOCIALS, NAV_LINKS};
