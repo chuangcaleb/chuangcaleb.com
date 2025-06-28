@@ -5,7 +5,7 @@ import LinkList from "../block/LinkList.astro";
 
 interface Props {
   variant: "header" | "footer" | "sheet";
-  class: HTMLAttributes<"ul">["class"];
+  class?: HTMLAttributes<"ul">["class"];
 }
 
 const { variant, class: propsClass } = Astro.props;
