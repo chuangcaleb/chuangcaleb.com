@@ -12,7 +12,7 @@ const { serieses } = Astro.props;
 {
   serieses.map((parent) => (
     <>
-      <h2>{`${parent.data.emojip ? parent.data.emojip + " " : ""} ${parent.name}`}</h2>
+      <h3>{`${parent.data.emojip ? parent.data.emojip + " " : ""} ${parent.name}`}</h3>
       <p>
         {"↑ "}
         <NoteLink note={parent} variant="accent" />

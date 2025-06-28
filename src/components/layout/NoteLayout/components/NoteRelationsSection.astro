@@ -1,5 +1,6 @@
 ---
 import NoteListItems from "~/components/block/note/NoteListItems.astro";
+import NoteLink from "~/components/block/NoteLink.astro";
 import type { formatNoteRelations } from "~/utils/note-relations";
 import SeriesList from "./SeriesList.astro";
 
@@ -9,13 +10,40 @@ interface Props {
   >;
 }
 
-const { children, serieses } = Astro.props.formattedRelations;
+const { children, parents, type } = Astro.props.formattedRelations;
+// parents which are also series
+// type SeriesesNotes = Series[]; type Series = SeriesMember[]
+const serieses = parents.filter((note) => Boolean(note.data.series));
+// const regularParents = parents.filter((note) => !note.data.series);
+
+const childrenHeader =
+  type === "regular"
+    ? "Children notes"
+    : type === "topic/series"
+      ? "Children notes under this topic series"
+      : "Children notes under this topic";
 ---
 
-<div class="metadata-footer | wide region prose linew flow-lg">
+<div class="container | wide region prose linew flow-lg">
+  <h2 class="sr-only">Note Relations</h2>
+  {
+    !!parents.length && (
+      <>
+        <h3 class="text-faded">↑ Parent notes</h3>
+        <ul>
+          {parents.map((parent) => (
+            <li>
+              <NoteLink note={parent} variant="accent" />
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
   {
     children && (
       <>
+        <h3 class="text-faded">↓ {childrenHeader}</h3>
         <ul class="flow-sm">
           <NoteListItems references={children.items} />
         </ul>
@@ -26,7 +54,7 @@ const { children, serieses } = Astro.props.formattedRelations;
 </div>
 
 <style>
-  .metadata-footer {
+  .container {
     border-width: 1px;
     border-radius: var(--radius-3);
     background-color: var(--bg2);
