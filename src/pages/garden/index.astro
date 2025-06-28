@@ -7,6 +7,7 @@ import { NAV_LINKS } from "~/data/links";
 import { getAllNotes } from "~/utils/note";
 import Featured from "./_Featured.astro";
 import { Content as GardenIntroContent } from "./_garden-intro.mdx";
+import Topics from "./_Topics.astro";
 
 const publicNotes = await getAllNotes();
 
@@ -29,7 +30,7 @@ const recentlyModified = publicNotes
   .sort((a, b) => b.data?.modified?.getTime() - a.data.modified.getTime())
   .slice(0, 5); // TODO: exclude from recentlyPublished list
 
-const allTopics = publicNotes
+const topLevelTopics = publicNotes
   .filter((n) => n.data.emojip && n.data.up?.length === 0)
   .sort((a, b) => (b.data.featured ?? 0) - (a.data.featured ?? 0));
 
@@ -72,9 +73,7 @@ const description =
     </section>
     <section class="flow-lg region">
       <h2>📂 All Top-Level Topics</h2>
-      <ul class="topics-cards">
-        <NoteListItems references={allTopics} />
-      </ul>
+      <Topics topics={topLevelTopics} />
     </section>
     <div class="recents region">
       <section class="prose flow-lg">
@@ -113,12 +112,6 @@ const description =
     & > * {
       grid-column: 1 / -1;
     }
-  }
-  .topics-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 25ch), 1fr));
-    grid-auto-rows: 1fr;
-    gap: var(--space-xs);
   }
   .recents {
     display: grid;
