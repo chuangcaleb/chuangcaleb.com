@@ -5,6 +5,7 @@ import FurtherResources from "~/components/block/FurtherResources.astro";
 import Pill from "~/components/block/Pill.astro";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteEntries } from "~/utils/note";
+import { formatNoteRelations } from "~/utils/note-relations";
 import Metadata from "./components/metadata/AsideMetadata.astro";
 import MetadataContainer from "./components/MetadataContainer.astro";
 import NoteHeader from "./components/NoteHeader.astro";
@@ -29,6 +30,8 @@ const parents = [...(metadata.up ?? [])];
 const parentNotes = await getNoteEntries(parents);
 // description
 const { description } = metadata;
+
+const formattedRelations = await formatNoteRelations(metadata);
 ---
 
 <NoteLayout title={entry.name} description={description}>
@@ -67,7 +70,11 @@ const { description } = metadata;
   </slot>
   <Content />
   {metadata.resources && <FurtherResources resources={metadata.resources} />}
-  <NoteRelationsSection metadata={metadata} />
+  {
+    formattedRelations && (
+      <NoteRelationsSection formattedRelations={formattedRelations} />
+    )
+  }
 
   <Fragment slot="sheetBody">
     <h3>{title}</h3>

@@ -1,42 +1,28 @@
 ---
-import type { NoteMetadata } from "lib/utils/types";
 import NoteListItems from "~/components/block/note/NoteListItems.astro";
-import { getNoteEntries } from "~/utils/note";
+import type { formatNoteRelations } from "~/utils/note-relations";
 import SeriesList from "./SeriesList.astro";
 
 interface Props {
-  metadata: NoteMetadata;
+  formattedRelations: NonNullable<
+    Awaited<ReturnType<typeof formatNoteRelations>>
+  >;
 }
 
-// (childrenNotes || !!seriesesNotes.length) && (
-const { metadata } = Astro.props;
-const { down: children = [], up: parents = [], series } = metadata;
-
-const parentNotes = await getNoteEntries(parents);
-
-const isParent = !!children?.length;
-const childrenNotes = isParent && {
-  isOrdered: !!series,
-  items: series ?? children,
-};
-
-// parents which are also series
-// type SeriesesNotes = Series[]; type Series = SeriesMember[]
-const seriesesNotes = parentNotes.filter((note) => !!note.data.series);
-// const regularParentsNotes = parentNotes.filter((note) => !note.data.series);
+const { children, serieses } = Astro.props.formattedRelations;
 ---
 
 <div class="metadata-footer | wide region prose linew flow-lg">
   {
-    childrenNotes && (
+    children && (
       <>
         <ul class="flow-sm">
-          <NoteListItems references={childrenNotes.items} />
+          <NoteListItems references={children.items} />
         </ul>
       </>
     )
   }
-  {!!seriesesNotes.length && <SeriesList serieses={seriesesNotes} />}
+  {!!serieses.length && <SeriesList serieses={serieses} />}
 </div>
 
 <style>
