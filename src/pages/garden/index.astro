@@ -28,7 +28,7 @@ const recentlyModified = publicNotes
       !!n.data.modified && !n.data.emojip
   )
   .sort((a, b) => b.data?.modified?.getTime() - a.data.modified.getTime())
-  .slice(0, 5);
+  .slice(0, 5); // TODO: exclude from recentlyPublished list
 
 const allTopics = publicNotes
   .filter((n) => n.data.emojip && n.data.up?.length === 0)
@@ -49,7 +49,7 @@ const description =
 ---
 
 <BaseMain title="Digital Garden" description={description} class="linew-wide">
-  <article class="flow-2xl">
+  <article class="flow-xl">
     <header class="flow-xl prose">
       <TagWIcon iconName={icon} as="h1">Caleb's Digital Garden</TagWIcon>
       <div
@@ -81,14 +81,16 @@ const description =
       <h2>📂 All Top-Level Topics</h2>
       <Topics topics={allTopics} />
     </section>
-    <section class="prose flow-lg">
-      <h2>Recently Published</h2>
-      <NoteList items={recentlyPublished} variant="card" />
-    </section>
-    <section class="prose flow-lg">
-      <h2>Recently Modified</h2>
-      <NoteList items={recentlyModified} variant="card" />
-    </section>
+    <div class="recents region">
+      <section class="prose flow-lg">
+        <h2>📤 Recently Published</h2>
+        <NoteList items={recentlyPublished} variant="card" />
+      </section>
+      <section class="prose flow-lg">
+        <h2>🥬 Recently Modified</h2>
+        <NoteList items={recentlyModified} variant="card" />
+      </section>
+    </div>
     {
       /* <section class="prose flow-lg">
       <h2>🍃 All leaf notes</h2>
@@ -118,5 +120,11 @@ const description =
     & > * {
       grid-column: 1 / -1;
     }
+  }
+  .recents {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 25ch), 1fr));
+    row-gap: var(--space-xl);
+    column-gap: var(--space-m);
   }
 </style>
