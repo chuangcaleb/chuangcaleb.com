@@ -1,5 +1,5 @@
 /* .sr-only-unfocused:not(:focus), */
-.sr-only-unfocused:not(:focus-within),
+/* .sr-only-unfocused:not(:focus-within), */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -12,8 +12,8 @@
   border-width: 0;
 }
 
-.sr-only-unfocused:not(:focus) + *,
-.sr-only-unfocused:not(:focus-within) + *,
+/* .sr-only-unfocused:not(:focus) + *, */
+/* .sr-only-unfocused:not(:focus-within) + *, */
 .sr-only + * {
-  --flow-space: 0;
+  --flow-space: 0 !important;
 }
