@@ -18,6 +18,14 @@ const notes = await getNoteEntries(references);
 {
   notes.map((note) => {
     if (!note) return null;
+    const isRouteMatch = note.route === Astro.url.pathname;
+    if (isRouteMatch) {
+      return (
+        <li>
+          <b>{note.name}</b>
+        </li>
+      );
+    }
     return (
       <li>
         {variant !== "inline" && (
