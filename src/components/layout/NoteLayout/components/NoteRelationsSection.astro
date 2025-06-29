@@ -9,7 +9,7 @@ interface Props {
   >;
 }
 
-const { children, parents, type } = Astro.props.formattedRelations;
+const { children, parents, type, prev, next } = Astro.props.formattedRelations;
 // parents which are also series
 // type SeriesesNotes = Series[]; type Series = SeriesMember[]
 const serieses = parents.filter((note) => Boolean(note.data.series));
@@ -35,6 +35,27 @@ const childrenHeader =
               <NoteLink note={parent} variant="accent" />
             </li>
           ))}
+        </ul>
+      </>
+    )
+  }
+
+  {
+    prev && (
+      <>
+        <h3 class="text-faded">← Previous notes</h3>
+        <ul class="flow-sm">
+          <NoteListItems references={[prev]} />
+        </ul>
+      </>
+    )
+  }
+  {
+    next && (
+      <>
+        <h3 class="text-faded">→ Next notes</h3>
+        <ul class="flow-sm">
+          <NoteListItems references={[next]} />
         </ul>
       </>
     )
