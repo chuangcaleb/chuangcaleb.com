@@ -2,11 +2,11 @@
 import { render } from "astro:content";
 import type { SuperNote } from "lib/utils/types";
 import FurtherResources from "~/components/block/FurtherResources.astro";
-import Pill from "~/components/block/Pill.astro";
 import AccentA from "~/components/styled/monom/AccentA.astro";
 import { getNoteEntries } from "~/utils/note";
 import { formatNoteRelations } from "~/utils/note-relations";
 import Metadata from "./components/metadata/AsideMetadata.astro";
+import MetadataValueItem from "./components/metadata/MetadataValueItem.astro";
 import MetadataContainer from "./components/MetadataContainer.astro";
 import NoteHeader from "./components/NoteHeader.astro";
 import NoteRelationsSection from "./components/NoteRelationsSection.astro";
@@ -61,7 +61,7 @@ const formattedRelations = await formatNoteRelations(metadata);
         {
           metadata.published && (
             <span class="text-faded">
-              Published on <Pill key="published" value={metadata.published} />
+              Published on <MetadataValueItem value={metadata.published} />
             </span>
           )
         }

@@ -1,0 +1,29 @@
+---
+interface Props {
+  emoji: string;
+  label: string;
+  ariaLabel?: string;
+}
+
+const { emoji, label, ariaLabel } = Astro.props;
+---
+
+<span class="wrapper | border" aria-label={ariaLabel}
+  >{}<span class="emoji">{emoji}</span>
+  {label}
+</span>
+
+<style>
+  .wrapper {
+    text-transform: uppercase;
+    padding-inline: var(--space-3xs);
+    font-weight: var(--fw-6);
+    background-color: var(--bg3);
+    color: var(--text-normal);
+    /* font-size: var(--step--2); */
+  }
+  .emoji {
+    filter: grayscale(0.5);
+    /* opacity: 0.7; */
+  }
+</style>

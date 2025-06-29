@@ -20,7 +20,7 @@
 
 .flex-row {
   display: flex;
-  gap: var(--space-s);
+  gap: var(--f-gap, var(--space-s));
   flex-wrap: wrap;
   align-items: center;
 }

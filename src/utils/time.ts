@@ -8,8 +8,7 @@ export function formatDisplayDate(datetime?: string | Date) {
 	return format(datetime, 'dd MMM yyyy');
 }
 
-export function getLongDurationSince(datetime: string | Date) {
-	const then = new Date(datetime);
+export function getLongDurationSince(then: Date) {
 	const daysCount = differenceInDays(new Date(), then);
 	// rounding
 	if (daysCount >= 350) {
@@ -48,6 +47,11 @@ export function getLongDurationSince(datetime: string | Date) {
 	// }
 
 	// return `<1 day ago`;
+}
+
+export function isWithinDuration(datetime: Date, days: number) {
+	const daysCount = differenceInDays(new Date(), datetime);
+	return daysCount < days;
 }
 
 export function formatIso(date: string, template: string) {

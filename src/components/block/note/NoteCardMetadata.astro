@@ -1,6 +1,7 @@
 ---
 import type { NoteMetadata } from "lib/utils/types";
-import { formatDisplayDate } from "~/utils/time";
+import Pill from "~/components/block/note/Pill.astro";
+import { formatDisplayDate, isWithinDuration } from "~/utils/time";
 import Duration from "../Duration.astro";
 
 interface Props {
@@ -22,26 +23,47 @@ const publishedTime = published && formatDisplayDate(published);
 ---
 
 {description && emojip && <span class="description">{description}</span>}
-{
-  publishedTime && (
-    <time class="published" aria-label="" datetime={published.toISOString()}>
-      <span class="sr-only">published on </span>
-      {publishedTime}
-    </time>
-  )
-}
-{
-  shouldShowModified && (
-    <span>
-      modified <Duration date={modified} />
-    </span>
-  )
-}
+<span class="flex-row">
+  {
+    publishedTime && (
+      <>
+        <time
+          class="published"
+          aria-label=""
+          datetime={published.toISOString().slice(0, 10)}
+        >
+          <span class="sr-only">published on </span>
+
+          {publishedTime}
+        </time>
+        {isWithinDuration(published, 45) && (
+          <Pill emoji="🐣" label="new" ariaLabel="newly published" />
+        )}
+      </>
+    )
+  }
+</span>
+<span class="flex-row">
+  {
+    shouldShowModified && (
+      <>
+        <span>
+          modified <Duration date={modified} />
+        </span>
+        {isWithinDuration(modified, 14) && (
+          <Pill emoji="🥬" label="fresh" ariaLabel="recently published" />
+        )}
+      </>
+    )
+  }
+</span>
 {emojip && <span class="children-count">{`${down?.length} NOTES`}</span>}
 
 <style>
+  .flex-row {
+    --f-gap: var(--space-2xs);
+  }
   * {
-    display: block;
     color: var(--text-faded);
     font-size: var(--step--1);
     line-height: var(--font-lh-1);
