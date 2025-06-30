@@ -2,13 +2,26 @@
 interface Props {
   title: string;
   description?: string;
+  pagefindWeight?: number;
 }
 
-const { title, description } = Astro.props;
+const { title, description, pagefindWeight } = Astro.props;
 ---
 
-<h1>{title}</h1>
-<p>{description}</p>
+<h1 {...pagefindWeight && { "data-pagefind-weight": pagefindWeight }}>
+  {title}
+</h1>
+{
+  description && (
+    <p
+      {...(pagefindWeight && {
+        "data-pagefind-weight": Number(pagefindWeight * 0.8).toFixed(1),
+      })}
+    >
+      {description}
+    </p>
+  )
+}
 <slot />
 
 <style>

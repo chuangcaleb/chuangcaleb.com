@@ -32,11 +32,17 @@ const parentNotes = await getNoteEntries(parents);
 const { description } = metadata;
 
 const formattedRelations = await formatNoteRelations(metadata);
+
+const pagefindWeight = !!metadata.emojip ? 9 : 8;
 ---
 
 <NoteLayout title={entry.name} description={description}>
   <slot slot="header">
-    <NoteHeader title={title} description={description}>
+    <NoteHeader
+      title={title}
+      description={description}
+      pagefindWeight={pagefindWeight}
+    >
       <div class="metadata-header | content">
         <div class="parents">
           {
