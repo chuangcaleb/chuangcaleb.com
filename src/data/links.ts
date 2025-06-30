@@ -34,7 +34,7 @@ const SOCIALS = {
 	},
 	CV: {
 		label: 'CV / Résumé',
-		href: 'https://docs.google.com/document/d/1qohsYe0w-Mq5yqIdNaHPuOHvs2lYvnGySULgR2Baqwk/edit?usp=sharing',
+		href: 'https://rxresu.me/chuangcaleb/frontend-dev',
 		ariaLabel: 'CV / Résumé of Chuang Caleb',
 		icon: 'academicons:cv',
 	},
@@ -82,4 +82,4 @@ const NAV_LINKS: LinkGeneric<NavigationLink> = {
 	},
 } as const;
 
-export {SOCIALS, NAV_LINKS};
+export {NAV_LINKS, SOCIALS};
