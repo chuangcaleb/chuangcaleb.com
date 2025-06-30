@@ -1,6 +1,5 @@
 ---
 import NoteListItems from "~/components/block/note/NoteListItems.astro";
-import NoteLink from "~/components/block/NoteLink.astro";
 import type { formatNoteRelations } from "~/utils/note-relations";
 
 interface Props {
@@ -32,12 +31,8 @@ const childrenHeader =
     !!parents.length && (
       <>
         <h3 class="text-faded">↑ Parent notes</h3>
-        <ul>
-          {parents.map((parent) => (
-            <li>
-              <NoteLink note={parent} variant="accent" />
-            </li>
-          ))}
+        <ul class="flow-sm">
+          <NoteListItems references={parents} />
         </ul>
       </>
     )
