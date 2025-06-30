@@ -1,6 +1,7 @@
 ---
 import type { NoteMetadata } from "lib/utils/types";
 import Pill from "~/components/block/note/Pill.astro";
+import { metaMinDays } from "~/data/note-meta";
 import { formatDisplayDate, isWithinDuration } from "~/utils/time";
 import Duration from "../Duration.astro";
 
@@ -36,7 +37,7 @@ const publishedTime = published && formatDisplayDate(published);
 
           {publishedTime}
         </time>
-        {isWithinDuration(published, 45) && (
+        {isWithinDuration(published, metaMinDays.newPublished) && (
           <Pill emoji="🐣" label="new" ariaLabel="newly published" />
         )}
       </>
@@ -50,8 +51,8 @@ const publishedTime = published && formatDisplayDate(published);
         <span>
           modified <Duration date={modified} />
         </span>
-        {isWithinDuration(modified, 14) && (
-          <Pill emoji="🥬" label="fresh" ariaLabel="recently published" />
+        {isWithinDuration(modified, metaMinDays.freshModified) && (
+          <Pill emoji="🥬" label="fresh" ariaLabel="recently modified" />
         )}
       </>
     )
