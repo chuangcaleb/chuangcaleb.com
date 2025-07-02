@@ -20,7 +20,7 @@ export async function formatNoteRelations(metadata: NoteMetadata) {
 		return 'regular';
 	})();
 
-	if (!childrenNotes && !parentNotes) return null;
+	if (!childrenNotes && parentNotes.length === 0) return null;
 	return {
 		children: childrenNotes,
 		parents: parentNotes,
