@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { data } = Astro.props;
-const { published, modified, emojip, down, description } = data;
+const { published, modified, emojip, down, description, wip } = data;
 // const renderMetadata = (note: Note) =>
 //   [
 //     formatDisplayDate(note.data?.published),
@@ -57,6 +57,7 @@ const publishedTime = published && formatDisplayDate(published);
       </>
     )
   }
+  {wip && <Pill emoji="🚧" label="wip" ariaLabel="work-in-progress" />}
 </span>
 {emojip && <span class="children-count">{`${down?.length} NOTES`}</span>}
 

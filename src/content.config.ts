@@ -37,6 +37,7 @@ const baseObsidianNoteSchema = z
 		// meta - content
 		tags: z.array(z.string()).nullable(),
 		description: z.string(),
+		wip: z.boolean(),
 		// meta - time
 		created: z.date(),
 		published: z.date(),
