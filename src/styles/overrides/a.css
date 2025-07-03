@@ -60,3 +60,9 @@ article a[href^="#"]::before {
   content: "#";
   color: var(--text-faded);
 }
+
+.note-not-found {
+  color: var(--text-faded);
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}

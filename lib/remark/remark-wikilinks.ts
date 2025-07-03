@@ -43,9 +43,9 @@ function extractSlug(fileContent: string): string | undefined {
 }
 
 // Build a map of filename (stem) → slug
-function buildNoteSlugMap(): Record<string, string> {
+function buildNoteSlugMap(): Map<string, string> {
 	const filePaths = collectMarkdownFiles(NOTES_DIR);
-	const map: Record<string, string> = {};
+	const map = new Map<string, string>();
 
 	for (const filePath of filePaths) {
 		const stem = path.basename(filePath, '.md');
@@ -55,7 +55,7 @@ function buildNoteSlugMap(): Record<string, string> {
 			throw new Error(`Missing 'slug' in frontmatter of file: ${filePath}`);
 		}
 
-		map[stem.toLowerCase()] = slug;
+		map.set(stem.toLowerCase(), slug);
 	}
 
 	return map;
@@ -113,27 +113,61 @@ const remarkWikilinks: Plugin<void[], Root> = () => {
 						type: 'html',
 						value: `<Image src="${IMAGE_BASE_URL}/${rawTarget}" alt="${alias ?? rawTarget}" class="border" loading="lazy" decoding="async" />`,
 					});
-				} else if (rawTarget.startsWith('#')) {
-					// Heading link
-					const heading = rawTarget.slice(1).trim();
-					const slug = githubSlug(heading);
-					newNodes.push({
-						type: 'html',
-						value: `<a href="#${slug}">${alias ?? heading}</a>`,
-					});
 				} else {
 					// Note link
 					const normalizedTarget = rawTarget.trim().toLowerCase();
-					const matchedSlug = noteSlugMap[normalizedTarget];
 
-					if (matchedSlug) {
+					// extract text before `#`
+					const segments = (() => {
+						// basic note link
+						if (!normalizedTarget.includes('#')) {
+							return {title: normalizedTarget, hash: undefined};
+						}
+
+						// local hash link
+						if (normalizedTarget.startsWith('#')) {
+							return {title: undefined, hash: normalizedTarget.slice(1)};
+						}
+
+						// note link with hash
+						const titleRegex = /^(.*)#(.*)/;
+						const titleMatch = titleRegex.exec(normalizedTarget);
+						if (!titleMatch) return undefined;
+						return {title: titleMatch[1], hash: titleMatch[2]};
+					})();
+					if (!segments) return;
+
+					const finalSlug = (() => {
+						// local hash
+						if (segments.title === undefined) {
+							return `#${githubSlug(segments.hash)}`;
+						}
+
+						const matchedNoteSlug = noteSlugMap.get(segments.title);
+
+						// handle note note found?
+						if (!matchedNoteSlug) {
+							return;
+						}
+
+						// single note link
+						if (segments.hash === undefined) return gnr(matchedNoteSlug);
+						// note link with hash
+						return `${gnr(matchedNoteSlug)}#${githubSlug(segments.hash)}`;
+					})();
+
+					if (finalSlug) {
 						newNodes.push({
 							type: 'html',
-							value: `<a href="${gnr(matchedSlug)}">${alias ?? rawTarget}</a>`,
+							value: `<a href="${finalSlug}">${alias ?? rawTarget}</a>`,
 						});
 					} else {
 						// fallback: keep as plain text
-						newNodes.push({type: 'text', value: fullMatch});
+						// newNodes.push({ type: 'text', value: fullMatch });
+						newNodes.push({
+							type: 'html',
+							value: `<span class="note-not-found underline">${fullMatch}<span class="sr-only"> (broken link, note not found)</span></span>`,
+						});
 					}
 				}
 
