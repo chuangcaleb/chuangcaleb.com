@@ -62,12 +62,12 @@ const NAV_LINKS: LinkGeneric<NavigationLink> = {
 		icon: 'lucide:trees',
 		enabled: ['header', 'sheet', 'footer'],
 	},
-	NOW: {
-		label: '/now',
-		href: '/now',
-		icon: 'lucide:timer-reset',
-		enabled: ['sheet', 'footer'],
-	},
+	// NOW: {
+	// 	label: '/now',
+	// 	href: '/now',
+	// 	icon: 'lucide:timer-reset',
+	// 	enabled: ['sheet', 'footer'],
+	// },
 	GUESTBOOK: {
 		label: '/guestbook',
 		href: '/guestbook',
