@@ -8,8 +8,9 @@ import {defineConfig, envField} from 'astro/config';
 // Import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
 import og from 'astro-og';
-import {remarkStripH1} from './lib/remark/strip-h1.js';
+import rehypeWrapTables from './lib/rehype/wrap-tables.js';
 import remarkWikilinks from './lib/remark/remark-wikilinks.js';
+import {remarkStripH1} from './lib/remark/strip-h1.js';
 import {remarkSimpleStripPercentComments} from './lib/remark/strip-obsidian-comments.js';
 import {remarkStripObsidianUtilities} from './lib/remark/strip-obsidian-utilities.ts';
 
@@ -31,12 +32,14 @@ export default defineConfig({
 	markdown: {
 		shikiConfig: {theme: 'css-variables'},
 		remarkPlugins: [
+			// remarkGfm,
 			remarkStripH1,
 			// remarkReadingTime,
 			remarkStripObsidianUtilities,
 			remarkSimpleStripPercentComments,
 			remarkWikilinks,
 		],
+		rehypePlugins: [rehypeWrapTables],
 	},
 	// redirects: REDIRECTS,
 	image: {

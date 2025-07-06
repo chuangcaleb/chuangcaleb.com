@@ -95,15 +95,19 @@
     }
   }
 
-  table {
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-wrapper table {
     table-layout: fixed;
     border-collapse: collapse;
 
-    grid-column: popout;
+    min-width: 100%;
+    width: max-content;
 
-    max-width: 100%;
-    overflow-x: scroll;
-    white-space: nowrap;
+    grid-column: popout;
   }
 
   th,
