@@ -36,9 +36,7 @@ const formattedResources = parseMarkdownLinks(resources);
   !!formattedResources?.length && (
     <>
       <hr />
-      <TagWIcon iconName="lucide:external-link" as="h2" iconColor="fg3">
-        External Resources
-      </TagWIcon>
+      <h2 class="text-faded">External Resources</h2>
       <ul class="flow-xs">
         {formattedResources.map((r) => (
           <li>
