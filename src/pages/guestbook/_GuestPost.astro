@@ -34,7 +34,9 @@ const formattedDate = formatIso(
     <p>
       {
         hasLink ? (
-          <a href={post["🔗 Social Link"]}>{post["📇 Display Name"]}</a>
+          <a class="display-name" href={post["🔗 Social Link"]}>
+            {post["📇 Display Name"]}
+          </a>
         ) : (
           <span class="display-name">{post["📇 Display Name"]}</span>
         )
@@ -58,6 +60,11 @@ const formattedDate = formatIso(
     padding-block: var(--step-2);
     padding-inline: var(--step-1);
     padding-inline-start: var(--step-2);
+  }
+  .display-name {
+    font-family: var(--font-heading-sans);
+    font-weight: var(--fw-5);
+    font-size: var(--step-1);
   }
 
   .subtitle {
