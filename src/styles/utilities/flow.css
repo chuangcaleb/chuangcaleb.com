@@ -4,7 +4,7 @@
 }
 
 [class*="flow"]
-  > :not(:is(h1, h2, h3, h4, h5, h6))
+  > :not(:is(h1, h2, h3, h4, h5, h6, hr))
   + :is(h1, h2, h3, h4, h5, h6) {
   margin-block-start: calc(var(--flow-space) * 1.75);
 }
