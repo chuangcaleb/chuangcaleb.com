@@ -20,9 +20,16 @@
 
 .flex-row {
   display: flex;
-  gap: var(--f-gap, var(--space-s));
-  flex-wrap: wrap;
+  column-gap: var(--f-gap, var(--space-s));
   align-items: center;
+}
+
+.f-gap-2xs {
+  --f-gap: var(--space-2xs);
+}
+
+.wrap {
+  flex-wrap: wrap;
 }
 
 .flow-li-0 {

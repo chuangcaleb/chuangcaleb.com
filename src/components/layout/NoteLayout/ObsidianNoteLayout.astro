@@ -51,17 +51,19 @@ console.log(parentNotes.length, metadata.emojip);
       <div class="metadata-header | content">
         {
           (!!parentNotes.length || !!metadata.emojip) && (
-            <div class="parents">
+            <div class="parents | text-faded">
               {!!parentNotes.length ? (
                 <MetadataContainer prefix="↑">
-                  {parentNotes.map((c, index) => (
-                    <>
-                      {index > 0 && "•"}
-                      <AccentA href={c.route}>
-                        {`${c.data.emojip} ${c.name}`}
-                      </AccentA>
-                    </>
-                  ))}
+                  <span class="flex-row wrap f-gap-2xs">
+                    {parentNotes.map((c, index) => (
+                      <span>
+                        <AccentA href={c.route}>
+                          {`${c.data.emojip} ${c.name}`}
+                        </AccentA>
+                        {index < parentNotes.length - 1 && ", "}
+                      </span>
+                    ))}
+                  </span>
                 </MetadataContainer>
               ) : (
                 <MetadataContainer prefix="↑">
@@ -111,8 +113,9 @@ console.log(parentNotes.length, metadata.emojip);
   }
 
   .parents {
-    display: flex;
+    /* display: flex;
     gap: var(--space-m);
+    flex-wrap: wrap; */
   }
 
   .relations-cont {

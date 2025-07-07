@@ -44,7 +44,7 @@ const publishedTime = published && formatDisplayDate(published);
     )
   }
 </span>
-<span class="flex-row">
+<span class="flex-row f-gap-2xs">
   {
     shouldShowModified && (
       <>
@@ -62,9 +62,6 @@ const publishedTime = published && formatDisplayDate(published);
 {emojip && <span class="children-count">{`${down?.length} NOTES`}</span>}
 
 <style>
-  .flex-row {
-    --f-gap: var(--space-2xs);
-  }
   * {
     color: var(--text-faded);
     font-size: var(--step--1);

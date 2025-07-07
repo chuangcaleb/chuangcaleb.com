@@ -6,15 +6,13 @@ interface Props {
 const { prefix } = Astro.props;
 ---
 
-<span>
-  {prefix}
+<span class="flex-row">
+  <span class="prefix | text-faded">{prefix}</span>
   <slot />
 </span>
 
 <style>
-  span {
-    display: flex;
-    gap: var(--space-xs);
-    color: var(--text-faded);
+  .flex-row {
+    align-items: start;
   }
 </style>
