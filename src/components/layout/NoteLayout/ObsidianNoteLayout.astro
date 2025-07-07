@@ -78,7 +78,9 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
   {metadata.resources && <FurtherResources resources={metadata.resources} />}
   {
     formattedRelations && (
-      <NoteRelationsSection formattedRelations={formattedRelations} />
+      <div class="relations-cont | full region">
+        <NoteRelationsSection formattedRelations={formattedRelations} />
+      </div>
     )
   }
 
@@ -101,5 +103,18 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
   .parents {
     display: flex;
     gap: var(--space-m);
+  }
+
+  .relations-cont {
+    --flow-space: var(--space-3xl);
+    background-color: var(--bg2);
+    /* border-block-width: 1px; */
+
+    @media (width > 800px) {
+      grid-column: wide;
+      border-radius: var(--radius-3);
+      border-width: 1px;
+      /* border-inline-width: 1px; */
+    }
   }
 </style>

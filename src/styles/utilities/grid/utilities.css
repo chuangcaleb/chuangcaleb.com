@@ -2,7 +2,7 @@
   grid-column: normal;
 }
 
-.content,
+/* .content, */
 .cgrid > * {
   grid-column: content;
 }

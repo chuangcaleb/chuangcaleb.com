@@ -16,21 +16,18 @@ const serieses = parents.filter((note) => Boolean(note.data.series));
 
 const childrenHeader =
   type === "regular"
-    ? "Children notes"
+    ? "Children note(s)"
     : type === "topic/series"
-      ? "Children notes under this topic series"
-      : "Children notes under this topic";
+      ? "Children note(s) under this topic series"
+      : "Children note(s) under this topic";
 ---
 
-<div
-  class="container | wide region prose linew flow-lg"
-  data-pagefind-ignore="all"
->
+<div class="container | linew-wide prose flow-lg" data-pagefind-ignore="all">
   <h2 class="sr-only">Note Relations</h2>
   {
     !!parents.length && (
       <>
-        <h3 class="text-faded">↑ Parent notes</h3>
+        <h3 class="text-faded">↑ Parent note(s)</h3>
         <ul class="flow-sm">
           <NoteListItems references={parents} />
         </ul>
@@ -41,7 +38,7 @@ const childrenHeader =
   {
     prev && (
       <>
-        <h3 class="text-faded">← Previous notes</h3>
+        <h3 class="text-faded">← Previous note(s)</h3>
         <ul class="flow-sm">
           <NoteListItems references={[prev]} />
         </ul>
@@ -51,7 +48,7 @@ const childrenHeader =
   {
     next && (
       <>
-        <h3 class="text-faded">→ Next notes</h3>
+        <h3 class="text-faded">→ Next note(s)</h3>
         <ul class="flow-sm">
           <NoteListItems references={[next]} />
         </ul>
@@ -88,10 +85,23 @@ const childrenHeader =
 </div>
 
 <style>
-  .container {
-    border-width: 1px;
-    border-radius: var(--radius-3);
-    background-color: var(--bg2);
-    --flow-space: var(--space-2xl);
+  h3 {
+    text-transform: uppercase;
+    font-size: var(--step-0);
   }
+  ul {
+    display: grid;
+    @media (width > 800px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    gap: var(--space-s);
+    /* grid-column: wide; */
+    :global(li) {
+      --flow-space: 0;
+    }
+  }
+  /* .content,
+  .content + * {
+    grid-column: normal;
+  } */
 </style>
