@@ -20,26 +20,32 @@ const notes = await getNoteEntries(references);
   notes.map((note) => {
     if (!note) return null;
     const isRouteMatch = note.route === Astro.url.pathname;
-    if (isRouteMatch) {
-      return (
-        <li>
-          <b>{note.name}</b>
-        </li>
-      );
-    }
+
     return (
       <li>
-        {variant === "card" && (
-          <Card as="a" href={note.route} aria-label={note.name}>
-            <NoteCardContent note={note} />
-          </Card>
-        )}
+        {variant === "card" &&
+          (isRouteMatch ? (
+            <Card as="div" aria-label={note.name} variant="active">
+              <NoteCardContent note={note} />
+            </Card>
+          ) : (
+            <Card as="a" href={note.route} aria-label={note.name}>
+              <NoteCardContent note={note} />
+            </Card>
+          ))}
         {variant === "inline" && (
           <NoteLi as="a" href={note.route}>
             <NoteCardContent note={note} />
           </NoteLi>
         )}
-        {variant === "simple" && <NoteLink note={note} />}
+        {variant === "simple" &&
+          (isRouteMatch ? (
+            <li>
+              <b>{note.name}</b>
+            </li>
+          ) : (
+            <NoteLink note={note} />
+          ))}
       </li>
     );
   })

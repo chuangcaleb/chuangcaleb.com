@@ -2,26 +2,33 @@
 import type { HTMLAttributes } from "astro/types";
 import Base, { type BaseProps } from "./Base.astro";
 
-export interface MainProps extends HTMLAttributes<"main">, BaseProps {}
+export interface MainProps extends HTMLAttributes<"main">, BaseProps {
+  noBottomPadding?: boolean;
+}
 
 type Props = MainProps;
-const { title, description, hasBanner, ...props } = Astro.props;
+const {
+  title,
+  description,
+  hasBanner,
+  noBottomPadding = false,
+  ...props
+} = Astro.props;
 ---
 
 <Base title={title} description={description} hasBanner={hasBanner}>
   <slot slot="sheetBody" name="sheetBody" />
   <slot slot="head" name="head" />
-  <main id="main" {...props}>
+  <main id="main" {...props} data-pb={noBottomPadding}>
     <slot />
   </main>
 </Base>
 
 <style is:global>
   main {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
     min-height: 50vh;
-    padding-bottom: var(--space-xl);
+  }
+  [data-pb="false"] {
+    padding-bottom: var(--space-3xl);
   }
 </style>

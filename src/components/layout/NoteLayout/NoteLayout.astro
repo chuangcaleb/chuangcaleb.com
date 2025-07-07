@@ -5,9 +5,10 @@ import NoteHeader from "./components/NoteHeader.astro";
 interface Props {
   title: string;
   description?: string;
+  noBottomPadding?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noBottomPadding = false } = Astro.props;
 ---
 
 <BaseMain
@@ -15,11 +16,13 @@ const { title, description } = Astro.props;
   description={description}
   class="flow-xl"
   data-pagefind-body
+  noBottomPadding={noBottomPadding}
+  }
 >
   <slot slot="head" name="head" />
   <slot slot="sheetBody" name="sheetBody" />
 
-  <div class="header-section | cgrid flow-sm">
+  <div class="header-section | region cgrid flow-sm">
     <slot name="header">
       <NoteHeader title={title} />
     </slot>
@@ -33,8 +36,8 @@ const { title, description } = Astro.props;
 <style>
   .header-section {
     background-color: var(--bg2);
-    padding-block-start: var(--space-2xl);
-    padding-block-end: var(--space-3xl);
+    padding-block-start: var(--space-xl);
+    padding-block-end: var(--space-2xl);
   }
 </style>
 

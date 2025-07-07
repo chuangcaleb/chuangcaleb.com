@@ -1,12 +1,15 @@
 ---
 import { type HTMLTag, type Polymorphic } from "astro/types";
 
-type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>;
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag; variant?: "active" }>;
 
-const { as: Tag, class: className, ...props } = Astro.props;
+const { as: Tag, class: className, variant, ...props } = Astro.props;
 ---
 
-<Tag class:list={["unstyled-hover-link flow-xs", className]} {...props}>
+<Tag
+  class:list={["unstyled-hover-link flow-xs", variant, className]}
+  {...props}
+>
   <slot />
 </Tag>
 
@@ -23,7 +26,7 @@ const { as: Tag, class: className, ...props } = Astro.props;
 
     border-width: var(--bw-2);
     border-color: var(--ui1);
-    /* border-radius: var(--radius-2); (set on all a) */
+    border-radius: var(--radius-2); /* (set on all a) */
 
     transition: 0.3s ease-in-out;
 
@@ -31,12 +34,17 @@ const { as: Tag, class: className, ...props } = Astro.props;
 
     /* background-color: var(--bg1); */
     --color-underline: transparent;
-    &:hover {
+    &:is(a):hover {
       --color: var(--ax1);
       border-color: var(--border-color-hover, var(--ui3));
       background-color: var(--bg3);
 
       transform: scale3d(1.02, 1.02, 1.02);
+    }
+    &.active {
+      border-color: var(--ui3);
+      background-color: var(--bg3);
+      /* opacity: 0.8; */
     }
   }
 </style>

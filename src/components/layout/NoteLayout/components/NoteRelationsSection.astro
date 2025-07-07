@@ -59,7 +59,7 @@ const childrenHeader =
     children && (
       <>
         <h3 class="text-faded">↓ {childrenHeader}</h3>
-        <ul class="flow-sm">
+        <ul class:list={["flow-sm", type === "topic/series" && "one-col"]}>
           <NoteListItems references={children.items} />
         </ul>
       </>
@@ -75,8 +75,8 @@ const childrenHeader =
             (topic series)
           </h3>
           {series.data.series && (
-            <ol>
-              <NoteListItems references={series.data.series} variant="simple" />
+            <ol class="flow-sm one-col">
+              <NoteListItems references={series.data.series} />
             </ol>
           )}
         </>
@@ -89,10 +89,16 @@ const childrenHeader =
     text-transform: uppercase;
     font-size: var(--step-0);
   }
+  ol,
   ul {
     display: grid;
     @media (width > 800px) {
-      grid-template-columns: repeat(2, 1fr);
+      &:not(.one-col) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      &.one-col :global(li) {
+        max-width: var(--size-content-2);
+      }
     }
     gap: var(--space-s);
     /* grid-column: wide; */
@@ -100,8 +106,4 @@ const childrenHeader =
       --flow-space: 0;
     }
   }
-  /* .content,
-  .content + * {
-    grid-column: normal;
-  } */
 </style>

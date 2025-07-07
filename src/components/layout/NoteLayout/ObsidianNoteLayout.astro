@@ -36,7 +36,11 @@ const formattedRelations = await formatNoteRelations(metadata);
 const pagefindWeight = !!metadata.emojip ? 10 : 8;
 ---
 
-<NoteLayout title={entry.name} description={description}>
+<NoteLayout
+  title={entry.name}
+  description={description}
+  noBottomPadding={!!formattedRelations}
+>
   <slot slot="header">
     <NoteHeader
       title={title}
@@ -78,9 +82,12 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
   {metadata.resources && <FurtherResources resources={metadata.resources} />}
   {
     formattedRelations && (
-      <div class="relations-cont | full region">
-        <NoteRelationsSection formattedRelations={formattedRelations} />
-      </div>
+      <>
+        <div class="relations-cont | full region">
+          <NoteRelationsSection formattedRelations={formattedRelations} />
+        </div>
+        <div class="footer-block | full" aria-hidden />
+      </>
     )
   }
 
@@ -108,13 +115,20 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
   .relations-cont {
     --flow-space: var(--space-3xl);
     background-color: var(--bg2);
-    /* border-block-width: 1px; */
-
-    @media (width > 800px) {
+    @media (width >= 800px) {
       grid-column: wide;
-      border-radius: var(--radius-3);
+      border-radius: var(--radius-2);
       border-width: 1px;
-      /* border-inline-width: 1px; */
+    }
+  }
+  .footer-block {
+    --flow-space: 0;
+    z-index: -1;
+    margin-top: calc(10rem * -1);
+    height: 10rem;
+    background-color: var(--bg2);
+    @media (width < 800px) {
+      display: none;
     }
   }
 </style>
