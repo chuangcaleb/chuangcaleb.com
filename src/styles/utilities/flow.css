@@ -3,6 +3,11 @@
   margin-block-start: var(--flow-space, var(--size-ch-6));
 }
 
+[class*="flow"]
+  > :not(:is(h1, h2, h3, h4, h5, h6))
+  + :is(h1, h2, h3, h4, h5, h6) {
+  margin-block-start: calc(var(--flow-space) * 1.75);
+}
 /* --------------------------------- parent --------------------------------- */
 
 .flow-xs > * + * {
