@@ -3,11 +3,12 @@ import type { NoteReference } from "lib/utils/types";
 import NoteCardContent from "~/components/block/note/NoteCardContent.astro";
 import NoteLink from "~/components/block/NoteLink.astro";
 import Card from "~/components/styled/monom/note/Card.astro";
+import NoteLi from "~/components/styled/monom/note/NoteLi.astro";
 import { getNoteEntries } from "~/utils/note";
 
 interface Props {
   references: NoteReference[];
-  variant?: "inline" | "card";
+  variant?: "simple" | "inline" | "card";
 }
 
 const { references, variant = "card" } = Astro.props;
@@ -28,12 +29,17 @@ const notes = await getNoteEntries(references);
     }
     return (
       <li>
-        {variant !== "inline" && (
+        {variant === "card" && (
           <Card as="a" href={note.route} aria-label={note.name}>
             <NoteCardContent note={note} />
           </Card>
         )}
-        {variant === "inline" && <NoteLink note={note} />}
+        {variant === "inline" && (
+          <NoteLi as="a" href={note.route}>
+            <NoteCardContent note={note} />
+          </NoteLi>
+        )}
+        {variant === "simple" && <NoteLink note={note} />}
       </li>
     );
   })

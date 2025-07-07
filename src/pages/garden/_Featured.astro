@@ -24,7 +24,7 @@ const featuredTopics = featuredNotes.filter((n) => n.data.emojip);
       featuredLeafNotes?.map((n) => (
         <li>
           <NoteLi as="a" href={n.route}>
-            {n.name}{" "}
+            <span class="item">{n.name} </span>
           </NoteLi>
         </li>
       ))
@@ -34,6 +34,12 @@ const featuredTopics = featuredNotes.filter((n) => n.data.emojip);
 </div>
 
 <style>
+  .item {
+    font-family: var(--font-heading-sans);
+    font-weight: var(--fw-6);
+    font-size: var(--step-1);
+    line-height: var(--font-lh-1);
+  }
   .topic-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 25ch), 1fr));
