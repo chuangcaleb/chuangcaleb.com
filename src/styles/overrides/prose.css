@@ -96,6 +96,7 @@
   }
 
   .table-wrapper {
+    grid-column: popout;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -106,8 +107,6 @@
 
     min-width: 100%;
     width: max-content;
-
-    grid-column: popout;
   }
 
   th,
