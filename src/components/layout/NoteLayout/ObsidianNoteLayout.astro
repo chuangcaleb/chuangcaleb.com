@@ -34,6 +34,7 @@ const { description } = metadata;
 const formattedRelations = await formatNoteRelations(metadata);
 
 const pagefindWeight = !!metadata.emojip ? 10 : 8;
+console.log(parentNotes.length, metadata.emojip);
 ---
 
 <NoteLayout
@@ -48,26 +49,28 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
       pagefindWeight={pagefindWeight}
     >
       <div class="metadata-header | content">
-        <div class="parents">
-          {
-            !!parentNotes.length ? (
-              <MetadataContainer prefix="↑">
-                {parentNotes.map((c, index) => (
-                  <>
-                    {index > 0 && "•"}
-                    <AccentA href={c.route}>
-                      {`${c.data.emojip} ${c.name}`}
-                    </AccentA>
-                  </>
-                ))}
-              </MetadataContainer>
-            ) : (
-              <MetadataContainer prefix="↑">
-                <AccentA href="/garden">🌲 Garden Root</AccentA>
-              </MetadataContainer>
-            )
-          }
-        </div>
+        {
+          (!!parentNotes.length || !!metadata.emojip) && (
+            <div class="parents">
+              {!!parentNotes.length ? (
+                <MetadataContainer prefix="↑">
+                  {parentNotes.map((c, index) => (
+                    <>
+                      {index > 0 && "•"}
+                      <AccentA href={c.route}>
+                        {`${c.data.emojip} ${c.name}`}
+                      </AccentA>
+                    </>
+                  ))}
+                </MetadataContainer>
+              ) : (
+                <MetadataContainer prefix="↑">
+                  <AccentA href="/garden">🌲 Garden Root</AccentA>
+                </MetadataContainer>
+              )}
+            </div>
+          )
+        }
         {
           metadata.published && (
             <span class="text-faded">
