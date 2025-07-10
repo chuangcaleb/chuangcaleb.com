@@ -7,7 +7,7 @@
     "format:check": "pnpm xo -- --list-different .",
     "format:fix": "pnpm xo --write .",
     "test": "xo",
-    "b2:download": "node lib/b2/index.mjs && tsx lib/chuangcaleb/generate-redirects.ts",
+    "b2:download": "node lib/b2/index.mjs && tsx lib/chuangcaleb/generate-redirects.ts && pn astro sync",
     "setup-external": "pnpm b2:download",
     "dev": "pnpm setup-external && astro dev",
     "dev:nosetup": "astro dev",
