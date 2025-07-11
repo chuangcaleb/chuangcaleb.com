@@ -8,20 +8,22 @@ interface Props {
 const { title, description, pagefindWeight } = Astro.props;
 ---
 
-<h1 {...pagefindWeight && { "data-pagefind-weight": pagefindWeight }}>
-  {title}
-</h1>
-{
-  description && (
-    <p
-      {...(pagefindWeight && {
-        "data-pagefind-weight": Number(pagefindWeight * 0.8).toFixed(1),
-      })}
-    >
-      {description}
-    </p>
-  )
-}
+<div class="flow-sm">
+  <h1 {...pagefindWeight && { "data-pagefind-weight": pagefindWeight }}>
+    {title}
+  </h1>
+  {
+    description && (
+      <p
+        {...(pagefindWeight && {
+          "data-pagefind-weight": Number(pagefindWeight * 0.8).toFixed(1),
+        })}
+      >
+        {description}
+      </p>
+    )
+  }
+</div>
 <slot />
 
 <style>
