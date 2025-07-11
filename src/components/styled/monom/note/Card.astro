@@ -28,8 +28,6 @@ const { as: Tag, class: className, variant, ...props } = Astro.props;
 
     border-width: var(--bw-2);
 
-    transition: 0.3s ease-in-out;
-
     container-type: inline-size;
 
     /* background-color: var(--bg1); */
@@ -38,8 +36,6 @@ const { as: Tag, class: className, variant, ...props } = Astro.props;
       --color: var(--ax1);
       border-color: var(--border-color-hover, var(--ui3));
       background-color: var(--bg3);
-
-      transform: scale3d(1.02, 1.02, 1.02);
     }
     &.active {
       border-color: var(--ui3);
