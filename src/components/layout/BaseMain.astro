@@ -19,7 +19,7 @@ const {
 <Base title={title} description={description} hasBanner={hasBanner}>
   <slot slot="sheetBody" name="sheetBody" />
   <slot slot="head" name="head" />
-  <main id="main" {...props} data-pb={noBottomPadding}>
+  <main id="main" {...props} data-pb={!noBottomPadding}>
     <slot />
   </main>
 </Base>
@@ -28,7 +28,7 @@ const {
   main {
     min-height: 50vh;
   }
-  [data-pb="false"] {
+  [data-pb="true"] {
     padding-bottom: var(--space-3xl);
   }
 </style>
