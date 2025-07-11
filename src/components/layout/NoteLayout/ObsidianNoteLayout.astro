@@ -50,7 +50,7 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
       <div class="metadata-header | content">
         {
           (!!parentNotes.length || !!metadata.emojip) && (
-            <div class="parents | text-faded">
+            <div class="text-faded">
               {!!parentNotes.length ? (
                 <MetadataContainer prefix="↑">
                   <span class="flex-row wrap f-gap-2xs">
@@ -104,17 +104,14 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
 </NoteLayout>
 
 <style>
+  h3 {
+    font-family: var(--font-heading-sans);
+  }
   .metadata-header {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: var(--space-xs);
-  }
-
-  .parents {
-    /* display: flex;
-    gap: var(--space-m);
-    flex-wrap: wrap; */
   }
 
   .relations-cont {
