@@ -7,7 +7,7 @@ const { as: Tag, class: className, variant, ...props } = Astro.props;
 ---
 
 <Tag
-  class:list={["unstyled-hover-link flow-xs", variant, className]}
+  class:list={["unstyled-hover-link flow-xs border", variant, className]}
   {...props}
 >
   <slot />
@@ -19,15 +19,14 @@ const { as: Tag, class: className, variant, ...props } = Astro.props;
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    max-width: var(--size-content-2);
-
     /* display: block; */
+
+    position: relative;
     height: 100%;
     padding: var(--space-m);
+    max-width: var(--size-content-2);
 
     border-width: var(--bw-2);
-    border-color: var(--ui1);
-    border-radius: var(--radius-2); /* (set on all a) */
 
     transition: 0.3s ease-in-out;
 

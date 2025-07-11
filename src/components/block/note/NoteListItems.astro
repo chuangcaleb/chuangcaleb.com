@@ -9,30 +9,35 @@ import { getNoteEntries } from "~/utils/note";
 interface Props {
   references: NoteReference[];
   variant?: "simple" | "inline" | "card";
+  isOrdered?: boolean;
 }
 
-const { references, variant = "card" } = Astro.props;
+const { references, variant = "card", isOrdered = false } = Astro.props;
 
 const notes = await getNoteEntries(references);
 ---
 
 {
-  notes.map((note) => {
+  notes.map((note, index) => {
     if (!note) return null;
     const isRouteMatch = note.route === Astro.url.pathname;
 
     return (
       <li>
-        {variant === "card" &&
-          (isRouteMatch ? (
-            <Card as="div" aria-label={note.name} variant="active">
+        {variant === "card" && (
+          <>
+            <Card
+              {...(isRouteMatch
+                ? { as: "div", "aria-label": note.name, variant: "active" }
+                : { as: "a", href: note.route, "aria-label": note.name })}
+            >
+              {isOrdered && (
+                <span class="counter text-faded surface-alt">{index + 1}</span>
+              )}
               <NoteCardContent note={note} />
             </Card>
-          ) : (
-            <Card as="a" href={note.route} aria-label={note.name}>
-              <NoteCardContent note={note} />
-            </Card>
-          ))}
+          </>
+        )}
         {variant === "inline" && (
           <NoteLi as="a" href={note.route}>
             <NoteCardContent note={note} />
@@ -50,3 +55,17 @@ const notes = await getNoteEntries(references);
     );
   })
 }
+
+<style>
+  .counter {
+    position: absolute;
+    top: calc(var(--space-s) * -1);
+    left: calc(var(--space-s) * -1 - 0.4ch);
+    padding-inline: var(--space-s);
+    border-radius: 50%;
+
+    font-size: var(--step-2);
+    font-weight: var(--fw-6);
+    font-family: var(--font-heading-sans);
+  }
+</style>

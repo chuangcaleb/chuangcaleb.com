@@ -24,6 +24,7 @@ const childrenHeader =
 
 <div class="container | linew-wide prose flow-lg" data-pagefind-ignore="all">
   <h2 class="sr-only">Note Relations</h2>
+  {/* Parents / Ups */}
   {
     !!parents.length && (
       <>
@@ -35,6 +36,7 @@ const childrenHeader =
     )
   }
 
+  {/* Prevs */}
   {
     prev && (
       <>
@@ -45,6 +47,7 @@ const childrenHeader =
       </>
     )
   }
+  {/* Nexts */}
   {
     next && (
       <>
@@ -55,16 +58,21 @@ const childrenHeader =
       </>
     )
   }
+  {/* Downs / Children */}
   {
     children && (
       <>
         <h3 class="text-faded">↓ {childrenHeader}</h3>
         <ul class:list={["flow-sm", type === "topic/series" && "one-col"]}>
-          <NoteListItems references={children.items} />
+          <NoteListItems
+            references={children.items}
+            isOrdered={type === "topic/series"}
+          />
         </ul>
       </>
     )
   }
+  {/* Parent's series */}
   {
     !!serieses.length &&
       serieses.map((series) => (
@@ -76,7 +84,7 @@ const childrenHeader =
           </h3>
           {series.data.series && (
             <ol class="flow-sm one-col">
-              <NoteListItems references={series.data.series} />
+              <NoteListItems references={series.data.series} isOrdered />
             </ol>
           )}
         </>
