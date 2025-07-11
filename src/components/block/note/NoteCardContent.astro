@@ -26,8 +26,11 @@ const { note } = Astro.props;
     display: flex;
     flex-direction: column;
   }
+  .emoji {
+    opacity: 0.75;
+  }
 
-  @container (min-width: 250px) {
+  @container (min-width: 270px) {
     span {
       display: block;
     }
