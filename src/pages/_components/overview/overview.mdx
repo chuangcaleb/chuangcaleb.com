@@ -1,5 +1,5 @@
 import { Icon } from "astro-iconify";
-import { formatDuration, intervalToDuration } from "date-fns";
+import { differenceInDays } from "date-fns";
 import AirasiaMoveIcon from "~/assets/airasia-move.svg";
 import DecubeIcon from "~/assets/decube.png";
 import ObsidianIcon from "~/assets/obsidian.svg";
@@ -11,12 +11,9 @@ import Button from "~/components/styled/polym/Button.astro";
 
 ## <Icon name="lucide:briefcase" /> Professionally
 
-export const monthsWorking = formatDuration(
-  intervalToDuration({ start: new Date("2024-07-22"), end: new Date() }),
-  { format: ["months"] }
-);
+export const daysWorking = differenceInDays(new Date(), new Date("2022-08-14"));
 
-I'm {monthsWorking} in as **Frontend Engineer** at <Favicon img={DecubeIcon} alt="decube logo" url="https://decube.io" backgroundColor="white">decube</Favicon>, developing our web app! Previously with <Favicon img={AirasiaMoveIcon}  alt="airasia MOVE logo" url="https://www.linkedin.com/company/airasia-super-app/mycompany/">Airasia MOVE</Favicon>, working on **UI/UX & Network Logic** for the ✈️ _flights booking web-interface_ at [airasia.com](https://airasia.com).
+I'm currently a **Frontend Engineer** at <Favicon img={DecubeIcon} alt="decube logo" url="https://decube.io" backgroundColor="white">decube</Favicon>, developing our web app! Previously with <Favicon img={AirasiaMoveIcon}  alt="airasia MOVE logo" url="https://www.linkedin.com/company/airasia-super-app/mycompany/">Airasia MOVE</Favicon>, working on **UI/UX & Network Logic** for the ✈️ _flights booking web-interface_ at [airasia.com](https://airasia.com). {daysWorking}+ total days employed!
 
 ## <Icon name="lucide:user-cog" /> Growing Up
 
@@ -33,7 +30,7 @@ is in 🎭 **Storytelling & Narratives**: _“finding universal truths of human 
 
 ## <Icon name="lucide:trees" /> Digital Garden
 
-I also upkeep a 🪴 **Digital Garden** with <Favicon img={ObsidianIcon} alt="obsidian logo" url="https://obsidian.md">Obsidian</Favicon> — it’s my _daily journal_, _knowledge base_, and _content creation studio_. A subset of _my notes_ is publicly exposed at [/garden](/garden) and _life updates_ are posted at [/now](/now)!
+I also upkeep a 🪴 **Digital Garden** with <Favicon img={ObsidianIcon} alt="obsidian logo" url="https://obsidian.md">Obsidian</Favicon> — it’s my _daily journal_, _knowledge base_, and _content creation studio_. Some of _my notes_ are publicly exposed at [/garden](/garden) and _life updates_ are posted at [/now](/now)!
 
 <div class="flex-row">
   <AccentA href="/now">
