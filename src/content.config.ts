@@ -37,7 +37,6 @@ const baseObsidianNoteSchema = z
 		// meta - content
 		tags: z.array(z.string()).nullable(),
 		description: z.string(),
-		status: z.enum(['wip', 'stub']).optional(),
 		// meta - time
 		created: z.date(),
 		published: z.date(),
@@ -46,10 +45,13 @@ const baseObsidianNoteSchema = z
 		emojip: z.string(),
 		resources: z.array(z.string()),
 		featured: z.number(),
+		// epistemic
+		status: z.enum(['wip', 'stub']),
+		fyi: z.string(),
 		// hierarchy
 		up: z.array(reference('obsidian-note')),
 		down: z.array(reference('obsidian-note')),
-		series: z.array(reference('obsidian-note')).optional(),
+		series: z.array(reference('obsidian-note')),
 		prev: reference('obsidian-note'),
 		next: reference('obsidian-note'),
 	})

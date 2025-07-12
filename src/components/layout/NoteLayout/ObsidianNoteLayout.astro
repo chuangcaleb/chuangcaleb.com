@@ -12,6 +12,7 @@ import NoteHeader from "./components/NoteHeader.astro";
 import NoteRelationsSection from "./components/NoteRelationsSection.astro";
 import Toc from "./components/toc/Toc.astro";
 import NoteLayout from "./NoteLayout.astro";
+import Alert from "~/components/block/Alert.astro";
 
 interface Props {
   entry: SuperNote;
@@ -80,6 +81,8 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
           )
         }
       </div>
+      {metadata.fyi && <Alert variant="fyi" content={metadata.fyi} />}
+      {metadata.status && <Alert variant={metadata.status} />}
     </NoteHeader>
   </slot>
   <Content />

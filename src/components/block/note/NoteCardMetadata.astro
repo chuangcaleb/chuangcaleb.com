@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { data } = Astro.props;
-const { published, modified, emojip, down, description, status } = data;
+const { published, modified, emojip, down, description, status, fyi } = data;
 // const renderMetadata = (note: Note) =>
 //   [
 //     formatDisplayDate(note.data?.published),
@@ -24,50 +24,53 @@ const publishedTime = published && formatDisplayDate(published);
 ---
 
 {description && emojip && <span class="description">{description}</span>}
-<span class="flex-row">
-  {
-    publishedTime && (
-      <>
-        <time
-          class="published"
-          aria-label=""
-          datetime={published.toISOString().slice(0, 10)}
-        >
-          <span class="sr-only">published on </span>
-
-          {publishedTime}
-        </time>
-        {isWithinDuration(published, metaMinDays.newPublished) && (
-          <Pill emoji="🐣" label="new" ariaLabel="newly published" />
+{
+  publishedTime && (
+    <span class="flex-row">
+      <time
+        class="published"
+        aria-label=""
+        datetime={published.toISOString().slice(0, 10)}
+      >
+        <span class="sr-only">published on </span>
+        {publishedTime}
+      </time>
+      {isWithinDuration(published, metaMinDays.newPublished) && (
+        <Pill emoji="🐣" label="new" ariaLabel="newly published" />
+      )}
+    </span>
+  )
+}
+{
+  !emojip && (
+    <span class="flex-row f-gap-2xs">
+      {shouldShowModified && (
+        <span>
+          modified <Duration date={modified} />
+        </span>
+      )}
+      {status === "wip" && (
+        <Pill emoji="🚧" label="wip" ariaLabel="work-in-progress" />
+      )}
+      {status === "stub" && <Pill emoji="🌱" label="stub" />}
+      {fyi && <Pill emoji="🚨" label="fyi" aria-label="has a disclaimer" />}
+      {shouldShowModified &&
+        isWithinDuration(modified, metaMinDays.freshModified) && (
+          <Pill emoji="🥬" label="fresh" ariaLabel="recently modified" />
         )}
-      </>
-    )
-  }
-</span>
-<span class="flex-row f-gap-2xs">
-  {
-    shouldShowModified && (
-      <span>
-        modified <Duration date={modified} />
-      </span>
-    )
-  }
-  {status === "stub" && <Pill emoji="🌱" label="stub" />}
-  {
-    // status === "wip" && (
-    //   <Pill emoji="🚧" label="wip" ariaLabel="work-in-progress" />
-    // )
-  }
-  {
-    shouldShowModified &&
-      isWithinDuration(modified, metaMinDays.freshModified) && (
-        <Pill emoji="🥬" label="fresh" ariaLabel="recently modified" />
-      )
-  }
-</span>
+    </span>
+  )
+}
 {
   emojip && (
-    <span class="children-count flex-row">{`${down?.length} NOTES`}</span>
+    <span class="children-count flex-row">
+      {`${down?.length} NOTES`}{" "}
+      {status === "wip" && (
+        <Pill emoji="🚧" label="wip" ariaLabel="work-in-progress" />
+      )}
+      {status === "stub" && <Pill emoji="🌱" label="stub" />}
+      {fyi && <Pill emoji="🚨" label="fyi" aria-label="has a disclaimer" />}
+    </span>
   )
 }
 
