@@ -48,35 +48,39 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
       description={description}
       pagefindWeight={pagefindWeight}
     >
-      <div class="metadata-header | content">
+      <div class="metadata-header | content text-faded">
         {
           (!!parentNotes.length || !!metadata.emojip) && (
-            <div class="text-faded">
+            <>
               {!!parentNotes.length ? (
-                <MetadataContainer prefix="↑">
-                  <span class="flex-row wrap f-gap-2xs">
+                <MetadataContainer prefix="↑" ariaLabel="Parent notes">
+                  <ul class="flex-row wrap f-gap-2xs">
                     {parentNotes.map((c, index) => (
-                      <span>
-                        <AccentA href={c.route}>
-                          {`${c.data.emojip} ${c.name}`}
-                        </AccentA>
-                        {index < parentNotes.length - 1 && ", "}
-                      </span>
+                      <>
+                        <li>
+                          <AccentA href={c.route}>
+                            {`${c.data.emojip} ${c.name}`}
+                          </AccentA>
+                        </li>
+                        {index < parentNotes.length - 1 && (
+                          <span aria-hidden>{" • "}</span>
+                        )}
+                      </>
                     ))}
-                  </span>
+                  </ul>
                 </MetadataContainer>
               ) : (
-                <MetadataContainer prefix="↑">
+                <MetadataContainer prefix="↑" ariaLabel="Parent notes">
                   <AccentA href="/garden">🌲 Garden Root</AccentA>
                 </MetadataContainer>
               )}
-            </div>
+            </>
           )
         }
         {
           metadata.published && (
-            <span class="text-faded">
-              Published on <MetadataValueItem value={metadata.published} />
+            <span>
+              published on <MetadataValueItem value={metadata.published} />
             </span>
           )
         }

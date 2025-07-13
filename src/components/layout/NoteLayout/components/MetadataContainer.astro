@@ -1,13 +1,14 @@
 ---
 interface Props {
   prefix: string;
+  ariaLabel: string;
 }
 
-const { prefix } = Astro.props;
+const { prefix, ariaLabel } = Astro.props;
 ---
 
 <span class="flex-row">
-  <span class="prefix | text-faded">{prefix}</span>
+  <span aria-label={ariaLabel}>{prefix}</span>
   <slot />
 </span>
 
