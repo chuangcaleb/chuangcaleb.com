@@ -53,7 +53,7 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
       pagefindWeight={pagefindWeight}
     >
       <hr />
-      <div class="metadata-header | content text-faded flow-sm">
+      <div class="content text-faded flow-sm">
         {
           (!!parentNotes.length || !!metadata.emojip) && (
             <>
@@ -143,12 +143,6 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
   h3 {
     font-family: var(--font-heading-sans);
   }
-  /* .metadata-header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-  } */
 
   .relations-cont {
     --flow-space: var(--space-3xl);
