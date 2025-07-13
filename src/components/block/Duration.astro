@@ -4,10 +4,11 @@ import { getLongDurationSince } from "~/utils/time";
 
 interface Props extends HTMLAttributes<"ul"> {
   date: Date;
+  variant?: "long" | "short";
 }
 
-const { date } = Astro.props;
+const { date, variant = "short" } = Astro.props;
 const duration = getLongDurationSince(date);
 ---
 
-<span aria-label={duration.long}>{duration.short}</span>
+<span aria-label={duration.long}>{duration[variant]}</span>

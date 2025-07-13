@@ -13,6 +13,7 @@ import NoteRelationsSection from "./components/NoteRelationsSection.astro";
 import Toc from "./components/toc/Toc.astro";
 import NoteLayout from "./NoteLayout.astro";
 import Alert from "~/components/block/Alert.astro";
+import Duration from "~/components/block/Duration.astro";
 
 interface Props {
   entry: SuperNote;
@@ -48,7 +49,7 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
       description={description}
       pagefindWeight={pagefindWeight}
     >
-      <div class="metadata-header | content text-faded">
+      <div class="metadata-header | content text-faded flow">
         {
           (!!parentNotes.length || !!metadata.emojip) && (
             <>
@@ -77,13 +78,26 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
             </>
           )
         }
-        {
-          metadata.published && (
-            <span>
-              published on <MetadataValueItem value={metadata.published} />
-            </span>
-          )
-        }
+        <div class="flex-row wrap">
+          {
+            metadata.published && (
+              <>
+                <div class="ws-nowrap">
+                  published on <MetadataValueItem value={metadata.published} />
+                </div>
+                {" • "}
+              </>
+            )
+          }
+          {
+            metadata.modified && (
+              <div class="modified | ws-nowrap">
+                last modified{" "}
+                <Duration date={metadata.modified} variant="long" /> ago
+              </div>
+            )
+          }
+        </div>
       </div>
       {metadata.fyi && <Alert variant="fyi" content={metadata.fyi} />}
       {metadata.status && <Alert variant={metadata.status} />}
@@ -114,12 +128,12 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
   h3 {
     font-family: var(--font-heading-sans);
   }
-  .metadata-header {
+  /* .metadata-header {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: var(--space-xs);
-  }
+  } */
 
   .relations-cont {
     --flow-space: var(--space-3xl);
@@ -139,5 +153,9 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
     @media (width < 800px) {
       display: none;
     }
+  }
+
+  .modified {
+    font-style: italic;
   }
 </style>
