@@ -1,11 +1,5 @@
 // TODO: style with color
 export const pillVariants = {
-	wip: {
-		emoji: '🚧',
-		short: 'wip',
-		label: 'This note is a work-in-progress.',
-		ariaLabel: 'This note is a work in progress.',
-	},
 	fyi: {
 		emoji: '🚨',
 		short: 'fyi',
@@ -17,6 +11,18 @@ export const pillVariants = {
 		short: 'stub',
 		label: 'This note is a stub.',
 		ariaLabel: 'This note is a stub.',
+	},
+	wip: {
+		emoji: '🚧',
+		short: 'wip',
+		label: 'This note is a work-in-progress.',
+		ariaLabel: 'This note is a work in progress.',
+	},
+	mvp: {
+		emoji: '🏁',
+		short: 'mvp',
+		label: 'This note is complete "enough", but lacks refinement.',
+		ariaLabel: 'This note is complete "enough", but lacks refinement.',
 	},
 	fresh: {
 		emoji: '🥬',

@@ -48,8 +48,7 @@ const publishedTime = published && formatDisplayDate(published);
 <span class="flex-row f-gap-2xs">
   {emojip && `${down?.length} NOTES`}
   {words && !emojip && <Pill {...getWordCountPill(words)} />}
-  {status === "wip" && <Pill variant="wip" />}
-  {status === "stub" && <Pill variant="stub" />}
+  {status && <Pill variant={status} />}
   {fyi && <Pill variant="fyi" />}
   {
     shouldShowModified &&
