@@ -14,6 +14,9 @@ import Toc from "./components/toc/Toc.astro";
 import NoteLayout from "./NoteLayout.astro";
 import Alert from "~/components/block/Alert.astro";
 import Duration from "~/components/block/Duration.astro";
+import { isWithinDuration } from "~/utils/time";
+import Pill from "~/components/block/note/Pill.astro";
+import { metaMinDays } from "~/utils/note-meta";
 
 interface Props {
   entry: SuperNote;
@@ -49,7 +52,8 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
       description={description}
       pagefindWeight={pagefindWeight}
     >
-      <div class="metadata-header | content text-faded flow">
+      <hr />
+      <div class="metadata-header | content text-faded flow-sm">
         {
           (!!parentNotes.length || !!metadata.emojip) && (
             <>
@@ -83,17 +87,28 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
             metadata.published && (
               <>
                 <div class="ws-nowrap">
-                  published on <MetadataValueItem value={metadata.published} />
+                  <div class="sr-only">published on </div>
+                  <MetadataValueItem value={metadata.published} />
                 </div>
-                {" • "}
+                {isWithinDuration(
+                  metadata.published,
+                  metaMinDays.newPublished
+                ) && <Pill variant="new" />}
+                <span aria-hidden>{" • "}</span>
               </>
             )
           }
           {
             metadata.modified && (
-              <div class="modified | ws-nowrap">
-                last modified{" "}
-                <Duration date={metadata.modified} variant="long" /> ago
+              <div class="flex-row ws-nowrap">
+                <span class="modified">
+                  last modified
+                  <Duration date={metadata.modified} variant="long" /> ago
+                </span>
+                {isWithinDuration(
+                  metadata.modified,
+                  metaMinDays.freshModified
+                ) && <Pill variant="fresh" />}
               </div>
             )
           }
@@ -157,5 +172,8 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
 
   .modified {
     font-style: italic;
+  }
+  hr + :global(*) {
+    --flow-space: var(--space-s);
   }
 </style>
