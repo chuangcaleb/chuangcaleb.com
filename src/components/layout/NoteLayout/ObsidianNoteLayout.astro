@@ -108,6 +108,14 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
             )
           }
         </div>
+        {
+          metadata.words > 15 && (
+            <div>
+              {metadata.words}
+              {" words"}
+            </div>
+          )
+        }
       </div>
       {metadata.fyi && <Alert variant="fyi" content={metadata.fyi} />}
       {metadata.status && <Alert variant={metadata.status} />}
