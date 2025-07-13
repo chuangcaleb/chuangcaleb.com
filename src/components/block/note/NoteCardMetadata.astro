@@ -44,24 +44,21 @@ const publishedTime = published && formatDisplayDate(published);
   )
 }
 
-<span class:list={["flex-row f-gap-2xs", emojip && "is-topic"]}>
+<span class="flex-row f-gap-2xs epistemic">
   {emojip && `${down?.length} NOTES`}
-  {
-    shouldShowModified && (
-      <span>
-        modified <Duration date={modified} />
-      </span>
-    )
-  }
   {words && !emojip && <Pill {...getWordCountPill(words)} />}
   {status === "wip" && <Pill variant="wip" />}
   {status === "stub" && <Pill variant="stub" />}
   {fyi && <Pill variant="fyi" />}
   {
     shouldShowModified &&
-      isWithinDuration(modified, metaMinDays.freshModified) && (
+      (isWithinDuration(modified, metaMinDays.freshModified) ? (
         <Pill variant="fresh" />
-      )
+      ) : (
+        <span>
+          modified <Duration date={modified} /> ago
+        </span>
+      ))
   }
 </span>
 
@@ -74,7 +71,7 @@ const publishedTime = published && formatDisplayDate(published);
   .published {
     color: var(--text-normal);
   }
-  .is-topic {
-    margin-block-start: var(--space-2xs);
+  .epistemic {
+    margin-block-start: var(--space-xs);
   }
 </style>
