@@ -77,7 +77,7 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
           )
         }
         <hr />
-        <div class="flow-sm">
+        <div class="epistemic | flow-xs">
           <div class="time | flex-row wrap">
             {
               metadata.published && (
@@ -186,9 +186,13 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
     font-style: italic;
   }
   .time {
-    row-gap: var(--size-ch-4);
+    row-gap: var(--size-ch-2);
+  }
+  .epistemic {
+    font-size: var(--step--1);
   }
   /* hr + :global(*) {
     --flow-space: var(--space-s);
   } */
 </style>
+˝
