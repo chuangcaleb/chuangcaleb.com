@@ -1,16 +1,22 @@
 ---
-interface Props {
-  emoji: string;
-  label: string;
-  ariaLabel?: string;
-}
+import { pillVariants } from "~/utils/pill-variants";
 
-const { emoji, label, ariaLabel } = Astro.props;
+type Props =
+  | {
+      emoji: string;
+      short: string;
+      ariaLabel?: string;
+      variant?: never;
+    }
+  | { variant: keyof typeof pillVariants };
+
+const rawProps = Astro.props;
+const props = rawProps.variant ? pillVariants[rawProps.variant] : rawProps;
 ---
 
-<span class="wrapper | border" aria-label={ariaLabel}
-  >{}<span class="emoji">{emoji}</span>
-  {label}
+<span class="wrapper | border" aria-label={props.ariaLabel}
+  >{}<span class="emoji">{props.emoji}</span>
+  {rawProps.variant ?? props.short}
 </span>
 
 <style>

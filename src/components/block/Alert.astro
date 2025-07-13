@@ -1,36 +1,20 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import Pill from "./note/Pill.astro";
+import { pillVariants } from "~/utils/pill-variants";
 
 interface Props extends HTMLAttributes<"div"> {
-  variant: "wip" | "fyi" | "stub";
+  variant: keyof typeof pillVariants;
   content?: string;
 }
-
-// TODO: Extract
-// TODO: style with color
-const variants = {
-  wip: {
-    emoji: "🚧",
-    label: "This note is a work-in-progress.",
-  },
-  fyi: {
-    emoji: "🚨",
-    label: "For Your Information",
-  },
-  stub: {
-    emoji: "🌱",
-    label: "This note is a stub.",
-  },
-};
 
 const { content, variant } = Astro.props;
 ---
 
 <div class="border flow-xs">
   <header class="flex-row">
-    <Pill emoji={variants[variant].emoji} label={variant} />
-    <strong>{variants[variant].label}</strong>
+    <Pill variant={variant} />
+    <strong>{pillVariants[variant].label}</strong>
   </header>
   {content && <div class="body">{content}</div>}
 </div>

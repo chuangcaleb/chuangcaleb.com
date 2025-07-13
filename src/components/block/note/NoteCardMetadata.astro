@@ -1,7 +1,7 @@
 ---
 import type { NoteMetadata } from "lib/utils/types";
 import Pill from "~/components/block/note/Pill.astro";
-import { metaMinDays } from "~/data/note-meta";
+import { metaMinDays } from "~/utils/note-meta";
 import { formatDisplayDate, isWithinDuration } from "~/utils/time";
 import Duration from "../Duration.astro";
 
@@ -36,7 +36,7 @@ const publishedTime = published && formatDisplayDate(published);
         {publishedTime}
       </time>
       {isWithinDuration(published, metaMinDays.newPublished) && (
-        <Pill emoji="🐣" label="new" ariaLabel="newly published" />
+        <Pill variant="new" />
       )}
     </span>
   )
@@ -49,14 +49,12 @@ const publishedTime = published && formatDisplayDate(published);
           modified <Duration date={modified} />
         </span>
       )}
-      {status === "wip" && (
-        <Pill emoji="🚧" label="wip" ariaLabel="work-in-progress" />
-      )}
-      {status === "stub" && <Pill emoji="🌱" label="stub" />}
-      {fyi && <Pill emoji="🚨" label="fyi" aria-label="has a disclaimer" />}
+      {status === "wip" && <Pill variant="wip" />}
+      {status === "stub" && <Pill variant="stub" />}
+      {fyi && <Pill variant="fyi" />}
       {shouldShowModified &&
         isWithinDuration(modified, metaMinDays.freshModified) && (
-          <Pill emoji="🥬" label="fresh" ariaLabel="recently modified" />
+          <Pill variant="fresh" />
         )}
     </span>
   )
@@ -64,12 +62,9 @@ const publishedTime = published && formatDisplayDate(published);
 {
   emojip && (
     <span class="children-count flex-row">
-      {`${down?.length} NOTES`}{" "}
-      {status === "wip" && (
-        <Pill emoji="🚧" label="wip" ariaLabel="work-in-progress" />
-      )}
-      {status === "stub" && <Pill emoji="🌱" label="stub" />}
-      {fyi && <Pill emoji="🚨" label="fyi" aria-label="has a disclaimer" />}
+      {`${down?.length} NOTES`} {status === "wip" && <Pill variant="wip" />}
+      {status === "stub" && <Pill variant="stub" />}
+      {fyi && <Pill variant="fyi" />}
     </span>
   )
 }
