@@ -21,8 +21,8 @@ export const pillVariants = {
 	mvp: {
 		emoji: '🏁',
 		short: 'mvp',
-		label: 'This note is complete "enough", but lacks refinement.',
-		ariaLabel: 'This note is complete "enough", but lacks refinement.',
+		label: 'This note is complete “enough”, but lacks refinement.',
+		ariaLabel: 'This note is complete “enough”, but lacks refinement.',
 	},
 	fresh: {
 		emoji: '🥬',

@@ -48,7 +48,7 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
       description={description}
       pagefindWeight={pagefindWeight}
     >
-      <div class="content text-faded flow">
+      <div class="content text-faded flow-lg">
         {
           (!!metadata.up?.length || !!metadata.prev || !!metadata.next) && (
             <div class="flow-xs">
@@ -78,33 +78,43 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
         }
         <hr />
         <div class="flow-sm">
-          <div class="flex-row wrap">
+          <div class="time | flex-row wrap">
             {
               metadata.published && (
                 <>
-                  <div class="ws-nowrap">
-                    <div class="sr-only">published on </div>
-                    <MetadataValueItem value={metadata.published} />
+                  <div class="flex-row f-gap-2xs ws-nowrap">
+                    {isWithinDuration(
+                      metadata.published,
+                      metaMinDays.newPublished
+                    ) && (
+                      <>
+                        <Pill variant="new" /> —
+                      </>
+                    )}
+                    <span>
+                      <div class="sr-only">published on </div>
+                      <MetadataValueItem value={metadata.published} />
+                    </span>
                   </div>
-                  {isWithinDuration(
-                    metadata.published,
-                    metaMinDays.newPublished
-                  ) && <Pill variant="new" />}
                   <span aria-hidden>{" • "}</span>
                 </>
               )
             }
             {
               metadata.modified && (
-                <div class="flex-row ws-nowrap">
+                <div class="flex-row f-gap-2xs ws-nowrap">
+                  {isWithinDuration(
+                    metadata.modified,
+                    metaMinDays.freshModified
+                  ) && (
+                    <>
+                      <Pill variant="fresh" /> —
+                    </>
+                  )}
                   <span class="modified">
                     last modified
                     <Duration date={metadata.modified} variant="long" /> ago
                   </span>
-                  {isWithinDuration(
-                    metadata.modified,
-                    metaMinDays.freshModified
-                  ) && <Pill variant="fresh" />}
                 </div>
               )
             }
@@ -112,9 +122,9 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
           {
             metadata.words > 15 && (
               <div class="flex-row f-gap-2xs">
-                <Pill {...getWordCountPill(metadata.words)} /> —
+                <Pill {...getWordCountPill(metadata.words)} />
                 <span>
-                  {metadata.words}
+                  — {metadata.words}
                   {" words"}
                 </span>
               </div>
@@ -175,7 +185,10 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
   .modified {
     font-style: italic;
   }
-  hr + :global(*) {
-    --flow-space: var(--space-s);
+  .time {
+    row-gap: var(--size-ch-4);
   }
+  /* hr + :global(*) {
+    --flow-space: var(--space-s);
+  } */
 </style>
