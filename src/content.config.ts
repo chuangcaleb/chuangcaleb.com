@@ -32,31 +32,29 @@ const projectCollection = defineCollection({
 
 /* ------------------------------------ - ----------------------------------- */
 
-const baseObsidianNoteSchema = z
-	.object({
-		// meta - content
-		tags: z.array(z.string()).nullable(),
-		description: z.string(),
-		// meta - time
-		created: z.date(),
-		published: z.date(),
-		modified: z.date(),
-		// misc
-		emojip: z.string(),
-		resources: z.array(z.string()),
-		featured: z.number(),
-		// epistemic
-		words: z.number(),
-		status: z.enum(['wip', 'stub']),
-		fyi: z.string(),
-		// hierarchy
-		up: z.array(reference('obsidian-note')),
-		down: z.array(reference('obsidian-note')),
-		series: z.array(reference('obsidian-note')),
-		prev: reference('obsidian-note'),
-		next: reference('obsidian-note'),
-	})
-	.partial();
+const baseObsidianNoteSchema = z.object({
+	// meta - content
+	tags: z.array(z.string()).nullable().optional(),
+	description: z.string().optional(),
+	// meta - time
+	// created: z.date().optional(),
+	published: z.date().optional(),
+	modified: z.date().optional(),
+	// misc
+	emojip: z.string().optional(),
+	resources: z.array(z.string()).optional(),
+	featured: z.number().optional(),
+	// epistemic
+	words: z.number(),
+	status: z.enum(['wip', 'stub']).optional(),
+	fyi: z.string().optional(),
+	// hierarchy
+	up: z.array(reference('obsidian-note')).optional(),
+	down: z.array(reference('obsidian-note')).optional(),
+	series: z.array(reference('obsidian-note')).optional(),
+	prev: reference('obsidian-note').optional(),
+	next: reference('obsidian-note').optional(),
+});
 
 const obsidianNoteCollection = defineCollection({
 	loader: glob({pattern: '**/[^_]*.md', base: './src/content/obsidian-note'}),
