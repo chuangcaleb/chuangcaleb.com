@@ -32,7 +32,14 @@ const notes = await getNoteEntries(references);
                 : { as: "a", href: note.route, "aria-label": note.name })}
             >
               {isOrdered && (
-                <span class="counter text-faded surface-alt">{index + 1}</span>
+                <span
+                  class:list={[
+                    "counter text-faded surface-alt",
+                    isRouteMatch && "active",
+                  ]}
+                >
+                  {index + 1}
+                </span>
               )}
               <NoteCardContent note={note} />
             </Card>
@@ -63,10 +70,17 @@ const notes = await getNoteEntries(references);
     left: calc(var(--space-s) * -1 - 0.4ch);
     padding-inline: var(--space-s);
     border-radius: 50%;
-    min-width: 3ch;
 
     font-size: var(--step-2);
     font-weight: var(--fw-6);
     font-family: var(--font-heading-sans);
+
+    & + :global(*) {
+      --flow-space: 0;
+    }
+
+    &.active {
+      color: var(--text-normal);
+    }
   }
 </style>
