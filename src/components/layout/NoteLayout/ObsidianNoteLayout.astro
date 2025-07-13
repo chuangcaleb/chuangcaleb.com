@@ -77,57 +77,48 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
           )
         }
         <hr />
-        <div class="epistemic | flow-xs">
-          <div class="time | flex-row wrap">
-            {
-              metadata.published && (
-                <>
-                  <div class="flex-row f-gap-2xs ws-nowrap">
-                    {isWithinDuration(
-                      metadata.published,
-                      metaMinDays.newPublished
-                    ) && (
-                      <>
-                        <Pill variant="new" /> —
-                      </>
-                    )}
-                    <span>
-                      <div class="sr-only">published on </div>
-                      <MetadataValueItem value={metadata.published} />
-                    </span>
-                  </div>
-                  <span aria-hidden>{" • "}</span>
-                </>
-              )
-            }
-            {
-              metadata.modified && (
-                <div class="flex-row f-gap-2xs ws-nowrap">
-                  {isWithinDuration(
-                    metadata.modified,
-                    metaMinDays.freshModified
-                  ) && (
-                    <>
-                      <Pill variant="fresh" /> —
-                    </>
-                  )}
-                  <span class="modified">
-                    last modified
-                    <Duration date={metadata.modified} variant="long" /> ago
-                  </span>
-                </div>
-              )
-            }
-          </div>
+        <div class="epistemic | flex-row wrap">
           {
             metadata.words > 15 && (
-              <div class="flex-row f-gap-2xs">
-                <Pill {...getWordCountPill(metadata.words)} />
-                <span>
-                  — {metadata.words}
-                  {" words"}
+              <>
+                <span class="flex-row f-gap-2xs ws-nowrap">
+                  <Pill {...getWordCountPill(metadata.words)} />
+                  <span>
+                    {metadata.words}
+                    {" words"}
+                  </span>
                 </span>
-              </div>
+                <span aria-hidden>{" • "}</span>
+              </>
+            )
+          }
+          {
+            metadata.published && (
+              <span class="flex-row f-gap-2xs ws-nowrap">
+                {isWithinDuration(
+                  metadata.published,
+                  metaMinDays.newPublished
+                ) && <Pill variant="new" />}
+                <span>
+                  <div class="sr-only">published on </div>
+                  <MetadataValueItem value={metadata.published} />
+                </span>
+                <span aria-hidden>{" • "}</span>
+              </span>
+            )
+          }
+          {
+            metadata.modified && (
+              <span class="flex-row f-gap-2xs ws-nowrap">
+                {isWithinDuration(
+                  metadata.modified,
+                  metaMinDays.freshModified
+                ) && <Pill variant="fresh" />}
+                <span class="modified">
+                  last modified
+                  <Duration date={metadata.modified} variant="long" /> ago
+                </span>
+              </span>
             )
           }
         </div>
@@ -185,11 +176,10 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
   .modified {
     font-style: italic;
   }
-  .time {
-    row-gap: var(--size-ch-2);
-  }
+
   .epistemic {
     font-size: var(--step--1);
+    row-gap: var(--size-ch-2);
   }
   /* hr + :global(*) {
     --flow-space: var(--space-s);
