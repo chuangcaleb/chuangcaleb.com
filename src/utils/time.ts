@@ -20,7 +20,7 @@ export function getLongDurationSince(then: Date) {
 	}
 
 	if (daysCount === 0) {
-		return {short: `<1d`, long: `less than 1 day`};
+		return {short: `<1d`, long: `some hours`};
 	}
 
 	return {
