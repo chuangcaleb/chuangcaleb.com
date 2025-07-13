@@ -12,7 +12,7 @@ const { content, variant } = Astro.props;
 ---
 
 <div class="border">
-  <header class="flex-row">
+  <header class="flex-row wrap">
     <Pill variant={variant} />
     <strong>{pillVariants[variant].label}</strong>
   </header>
@@ -20,6 +20,9 @@ const { content, variant } = Astro.props;
 </div>
 
 <style>
+  .flex-row {
+    row-gap: var(--space-xs);
+  }
   .border {
     padding: var(--space-s);
     background-color: var(--bg1);
