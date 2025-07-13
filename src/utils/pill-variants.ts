@@ -45,5 +45,5 @@ export function getWordCountPill(count: number) {
 		return {emoji: '◨', short: '2PAGES'};
 	}
 
-	return {emoji: '◈', short: 'LONGFORM'};
+	return {emoji: '◆', short: 'LONGFORM'};
 }

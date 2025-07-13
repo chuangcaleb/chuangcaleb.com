@@ -11,7 +11,7 @@ interface Props extends HTMLAttributes<"div"> {
 const { content, variant } = Astro.props;
 ---
 
-<div class="border flow-xs">
+<div class="border">
   <header class="flex-row">
     <Pill variant={variant} />
     <strong>{pillVariants[variant].label}</strong>
@@ -23,5 +23,8 @@ const { content, variant } = Astro.props;
   .border {
     padding: var(--space-s);
     background-color: var(--bg1);
+  }
+  .body {
+    padding: var(--space-xs);
   }
 </style>

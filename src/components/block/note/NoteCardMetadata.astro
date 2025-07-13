@@ -25,7 +25,8 @@ const shouldShowModified = modified && !emojip;
 const publishedTime = published && formatDisplayDate(published);
 ---
 
-{description && emojip && <span class="description">{description}</span>}
+{description && <span class="description">{description}</span>}
+<div class="spacer"></div>
 {
   publishedTime && (
     <span class="flex-row">
@@ -44,7 +45,7 @@ const publishedTime = published && formatDisplayDate(published);
   )
 }
 
-<span class="flex-row f-gap-2xs epistemic">
+<span class="flex-row f-gap-2xs">
   {emojip && `${down?.length} NOTES`}
   {words && !emojip && <Pill {...getWordCountPill(words)} />}
   {status === "wip" && <Pill variant="wip" />}
@@ -55,9 +56,9 @@ const publishedTime = published && formatDisplayDate(published);
       (isWithinDuration(modified, metaMinDays.freshModified) ? (
         <Pill variant="fresh" />
       ) : (
-        <span>
-          modified <Duration date={modified} /> ago
-        </span>
+        <i>
+          • modified <Duration date={modified} /> ago
+        </i>
       ))
   }
 </span>
@@ -68,10 +69,10 @@ const publishedTime = published && formatDisplayDate(published);
     font-size: var(--step--1);
     line-height: var(--font-lh-1);
   }
-  .published {
-    color: var(--text-normal);
+  .spacer {
+    height: var(--size-ch-1);
   }
-  .epistemic {
-    margin-block-start: var(--space-xs);
+  .published {
+    font-weight: var(--fw-6);
   }
 </style>
