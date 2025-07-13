@@ -41,33 +41,26 @@ const publishedTime = published && formatDisplayDate(published);
     </span>
   )
 }
-{
-  !emojip && (
-    <span class="flex-row f-gap-2xs">
-      {shouldShowModified && (
-        <span>
-          modified <Duration date={modified} />
-        </span>
-      )}
-      {status === "wip" && <Pill variant="wip" />}
-      {status === "stub" && <Pill variant="stub" />}
-      {fyi && <Pill variant="fyi" />}
-      {shouldShowModified &&
-        isWithinDuration(modified, metaMinDays.freshModified) && (
-          <Pill variant="fresh" />
-        )}
-    </span>
-  )
-}
-{
-  emojip && (
-    <span class="children-count flex-row">
-      {`${down?.length} NOTES`} {status === "wip" && <Pill variant="wip" />}
-      {status === "stub" && <Pill variant="stub" />}
-      {fyi && <Pill variant="fyi" />}
-    </span>
-  )
-}
+
+<span class:list={["flex-row f-gap-2xs", emojip && "is-topic"]}>
+  {emojip && `${down?.length} NOTES`}
+  {
+    shouldShowModified && (
+      <span>
+        modified <Duration date={modified} />
+      </span>
+    )
+  }
+  {status === "wip" && <Pill variant="wip" />}
+  {status === "stub" && <Pill variant="stub" />}
+  {fyi && <Pill variant="fyi" />}
+  {
+    shouldShowModified &&
+      isWithinDuration(modified, metaMinDays.freshModified) && (
+        <Pill variant="fresh" />
+      )
+  }
+</span>
 
 <style>
   * {
@@ -78,7 +71,7 @@ const publishedTime = published && formatDisplayDate(published);
   .published {
     color: var(--text-normal);
   }
-  .children-count {
+  .is-topic {
     margin-block-start: var(--space-2xs);
   }
 </style>
