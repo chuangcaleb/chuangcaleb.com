@@ -4,13 +4,15 @@ import Pill from "~/components/block/note/Pill.astro";
 import { metaMinDays } from "~/utils/note-meta";
 import { formatDisplayDate, isWithinDuration } from "~/utils/time";
 import Duration from "../Duration.astro";
+import { getWordCountPill } from "~/utils/pill-variants";
 
 interface Props {
   data: NoteMetadata;
 }
 
 const { data } = Astro.props;
-const { published, modified, emojip, down, description, status, fyi } = data;
+const { published, modified, emojip, down, description, status, fyi, words } =
+  data;
 // const renderMetadata = (note: Note) =>
 //   [
 //     formatDisplayDate(note.data?.published),
@@ -51,6 +53,7 @@ const publishedTime = published && formatDisplayDate(published);
       </span>
     )
   }
+  {words && !emojip && <Pill {...getWordCountPill(words)} />}
   {status === "wip" && <Pill variant="wip" />}
   {status === "stub" && <Pill variant="stub" />}
   {fyi && <Pill variant="fyi" />}

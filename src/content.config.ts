@@ -46,6 +46,7 @@ const baseObsidianNoteSchema = z
 		resources: z.array(z.string()),
 		featured: z.number(),
 		// epistemic
+		words: z.number(),
 		status: z.enum(['wip', 'stub']),
 		fyi: z.string(),
 		// hierarchy

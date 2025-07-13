@@ -31,3 +31,19 @@ export const pillVariants = {
 		ariaLabel: 'This note was newly published.',
 	},
 };
+
+export function getWordCountPill(count: number) {
+	if (count <= 200) {
+		return {emoji: '⊙', short: 'ATOMIC'};
+	}
+
+	if (count <= 500) {
+		return {emoji: '▯', short: '1PAGE'};
+	}
+
+	if (count <= 1000) {
+		return {emoji: '◨', short: '2PAGES'};
+	}
+
+	return {emoji: '◈', short: 'LONGFORM'};
+}
