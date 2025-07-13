@@ -13,14 +13,20 @@ export function getLongDurationSince(then: Date) {
 	// rounding
 	if (daysCount >= 350) {
 		const years = Number((daysCount / 365).toPrecision(2));
-		return {short: `${years}y`, long: `about ${years} years`};
+		return {
+			short: `${years}y`,
+			long: `about ${years} year${years === 1 ? '' : 's'}`,
+		};
 	}
 
 	if (daysCount === 0) {
-		return {short: `<1d`, long: `less than ${daysCount} days`};
+		return {short: `<1d`, long: `less than 1 day`};
 	}
 
-	return {short: `${daysCount}d`, long: `${daysCount} days`};
+	return {
+		short: `${daysCount}d`,
+		long: `${daysCount} day${daysCount === 1 ? '' : 's'}`,
+	};
 	// const interval = intervalToDuration({start: then, end: new Date()});
 
 	// if (interval?.years) {
