@@ -1,10 +1,13 @@
 ---
 import { render } from "astro:content";
 import type { SuperNote } from "lib/utils/types";
+import Alert from "~/components/block/Alert.astro";
+import Duration from "~/components/block/Duration.astro";
 import FurtherResources from "~/components/block/FurtherResources.astro";
-import AccentA from "~/components/styled/monom/AccentA.astro";
-import { getNoteEntries } from "~/utils/note";
+import Pill from "~/components/block/note/Pill.astro";
+import { metaMinDays } from "~/utils/note-meta";
 import { formatNoteRelations } from "~/utils/note-relations";
+import { isWithinDuration } from "~/utils/time";
 import Metadata from "./components/metadata/AsideMetadata.astro";
 import MetadataValueItem from "./components/metadata/MetadataValueItem.astro";
 import MetadataContainer from "./components/MetadataContainer.astro";
@@ -12,11 +15,6 @@ import NoteHeader from "./components/NoteHeader.astro";
 import NoteRelationsSection from "./components/NoteRelationsSection.astro";
 import Toc from "./components/toc/Toc.astro";
 import NoteLayout from "./NoteLayout.astro";
-import Alert from "~/components/block/Alert.astro";
-import Duration from "~/components/block/Duration.astro";
-import { isWithinDuration } from "~/utils/time";
-import Pill from "~/components/block/note/Pill.astro";
-import { metaMinDays } from "~/utils/note-meta";
 
 interface Props {
   entry: SuperNote;
@@ -30,9 +28,6 @@ const metadata = entry.data;
 // title
 const title = `${metadata.emojip ? metadata.emojip + " " : ""} ${entry.name}`;
 
-// parents
-const parents = [...(metadata.up ?? [])];
-const parentNotes = await getNoteEntries(parents);
 // description
 const { description } = metadata;
 
@@ -55,33 +50,33 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
       <hr />
       <div class="content text-faded flow-sm">
         {
-          (!!parentNotes.length || !!metadata.emojip) && (
-            <>
-              {!!parentNotes.length ? (
-                <MetadataContainer prefix="↑" ariaLabel="Parent notes">
-                  <ul class="flex-row wrap f-gap-2xs">
-                    {parentNotes.map((c, index) => (
-                      <>
-                        <li>
-                          <AccentA href={c.route}>
-                            {`${c.data.emojip} ${c.name}`}
-                          </AccentA>
-                        </li>
-                        {index < parentNotes.length - 1 && (
-                          <span aria-hidden>{" • "}</span>
-                        )}
-                      </>
-                    ))}
-                  </ul>
-                </MetadataContainer>
-              ) : (
-                <MetadataContainer prefix="↑" ariaLabel="Parent notes">
-                  <AccentA href="/garden">🌲 Garden Root</AccentA>
-                </MetadataContainer>
+          (!!metadata.up?.length || !!metadata.prev || !!metadata.next) && (
+            <div class="flow-xs">
+              {!!metadata.up && (
+                <MetadataContainer
+                  references={metadata.up}
+                  prefix="↑"
+                  ariaLabel="Parent notes"
+                />
               )}
-            </>
+              {!!metadata.prev && (
+                <MetadataContainer
+                  references={[metadata.prev]}
+                  prefix="←"
+                  ariaLabel="Previous notes in order"
+                />
+              )}
+              {!!metadata.next && (
+                <MetadataContainer
+                  references={[metadata.next]}
+                  prefix="→"
+                  ariaLabel="Next notes in order"
+                />
+              )}
+            </div>
           )
         }
+
         <div class="flex-row wrap">
           {
             metadata.published && (

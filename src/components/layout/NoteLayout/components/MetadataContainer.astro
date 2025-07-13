@@ -1,16 +1,42 @@
 ---
+import type { NoteReference } from "lib/utils/types";
+import { getNoteEntries } from "~/utils/note";
+
+import AccentA from "~/components/styled/monom/AccentA.astro";
+
 interface Props {
+  references: NoteReference[];
   prefix: string;
-  ariaLabel: string;
+  ariaLabel?: string;
 }
+
+const { references } = Astro.props;
+
+const notes = await getNoteEntries(references);
 
 const { prefix, ariaLabel } = Astro.props;
 ---
 
-<span class="flex-row">
-  <span aria-label={ariaLabel}>{prefix}</span>
-  <slot />
-</span>
+{
+  !!notes.length && (
+    <span class="flex-row">
+      {<span aria-label={ariaLabel}>{prefix}</span>}
+      <ul class="flex-row wrap f-gap-2xs">
+        {notes.map((note, index) => (
+          <>
+            <li>
+              <AccentA href={note.route}>
+                {note.data.emojip ? `${note.data.emojip} ` : ""}
+                {note.name}
+              </AccentA>
+            </li>
+            {index < notes.length - 1 && <span aria-hidden>{" • "}</span>}
+          </>
+        ))}
+      </ul>
+    </span>
+  )
+}
 
 <style>
   .flex-row {
