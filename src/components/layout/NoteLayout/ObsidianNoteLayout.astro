@@ -48,36 +48,9 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
       description={description}
       pagefindWeight={pagefindWeight}
     >
-      <div class="content text-faded flow-lg">
-        {
-          (!!metadata.up?.length || !!metadata.prev || !!metadata.next) && (
-            <div class="flow-xs">
-              {!!metadata.up && (
-                <MetadataContainer
-                  references={metadata.up}
-                  prefix="↑"
-                  ariaLabel="Parent notes"
-                />
-              )}
-              {!!metadata.prev && (
-                <MetadataContainer
-                  references={[metadata.prev]}
-                  prefix="←"
-                  ariaLabel="Previous notes in order"
-                />
-              )}
-              {!!metadata.next && (
-                <MetadataContainer
-                  references={[metadata.next]}
-                  prefix="→"
-                  ariaLabel="Next notes in order"
-                />
-              )}
-            </div>
-          )
-        }
+      <slot slot="super">
         <hr />
-        <div class="epistemic | flex-row wrap">
+        <div class="epistemic | flex-row wrap text-faded">
           {
             metadata.words > 15 && (
               <>
@@ -122,6 +95,35 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
             )
           }
         </div>
+      </slot>
+      <div class="content text-faded flow-lg">
+        {
+          (!!metadata.up?.length || !!metadata.prev || !!metadata.next) && (
+            <div class="flow-xs">
+              {!!metadata.up && (
+                <MetadataContainer
+                  references={metadata.up}
+                  prefix="↑"
+                  ariaLabel="Parent notes"
+                />
+              )}
+              {!!metadata.prev && (
+                <MetadataContainer
+                  references={[metadata.prev]}
+                  prefix="←"
+                  ariaLabel="Previous notes in order"
+                />
+              )}
+              {!!metadata.next && (
+                <MetadataContainer
+                  references={[metadata.next]}
+                  prefix="→"
+                  ariaLabel="Next notes in order"
+                />
+              )}
+            </div>
+          )
+        }
       </div>
       {metadata.fyi && <Alert variant="fyi" content={metadata.fyi} />}
       {metadata.status && <Alert variant={metadata.status} />}
@@ -184,8 +186,8 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
     font-size: var(--step--1);
     row-gap: var(--size-ch-2);
   }
-  hr + :global(*) {
-    --flow-space: var(--space-xs);
+  hr {
+    border-color: var(--ui1);
   }
 </style>
 ˝
