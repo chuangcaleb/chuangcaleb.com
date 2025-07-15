@@ -6,5 +6,7 @@
   to: "https://rxresu.me/chuangcaleb/frontend-dev"
 - id: "/note"
   to: "/notes"
+- id: "/garden"
+  to: "/notes"
 - id: "/note/*"
   to: "/notes/:splat"

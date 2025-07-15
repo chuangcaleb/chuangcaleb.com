@@ -1,17 +1,18 @@
 ---
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
-import Featured from "../garden/_Featured.astro";
+import Featured from "../notes/_components/Featured.astro";
+import Button from "~/components/styled/polym/Button.astro";
 ---
 
 <section class="flow-lg prose region">
   <TagWIcon as="h2" iconName="lucide:trees">
-    <span class="text-faded">/</span><a href="/garden">garden</a>
+    <span class="text-faded">/</span><a href="/notes">notes</a>
   </TagWIcon>
   <p class="max-w-content">
     {}Like a blog, but more 🐬 <em>fluid</em>. I like to yap about 🎭 <strong
       >narrative storytelling</strong
     > and sometimes 💻 <em>tech stuff</em>, and perhaps you like to <a
-      href="/garden">listen to yapping...</a
+      href="/notes">listen to yapping...</a
     >
   </p>
   <Featured />

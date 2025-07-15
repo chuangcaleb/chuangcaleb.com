@@ -57,8 +57,8 @@ const NAV_LINKS: LinkGeneric<NavigationLink> = {
 		enabled: ['header', 'sheet', 'footer'],
 	},
 	GARDEN: {
-		label: '/garden',
-		href: '/garden',
+		label: '/notes',
+		href: '/notes',
 		icon: 'lucide:trees',
 		enabled: ['header', 'sheet', 'footer'],
 	},
