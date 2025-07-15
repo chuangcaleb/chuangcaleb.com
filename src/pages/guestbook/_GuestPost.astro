@@ -1,6 +1,7 @@
 ---
 import { parse } from "date-fns";
 import type { GuestPost } from "lib/google/sheets/types";
+import Pill from "~/components/block/note/Pill.astro";
 import { formatIso } from "~/utils/time";
 
 interface Props {
@@ -43,7 +44,7 @@ const formattedDate = formatIso(
       }
       <span class="flex-row wrap subtitle">
         <span>{post["👥 Relation to me"]}</span>
-        {post["🏷️ Tag"] !== "Other" && <i class="tag">#{post["🏷️ Tag"]}</i>}
+        {post["🏷️ Tag"] !== "Other" && <Pill short={`#${post["🏷️ Tag"]}`} />}
       </span>
     </p>
   </div>
@@ -62,9 +63,8 @@ const formattedDate = formatIso(
     padding-inline-start: var(--step-2);
   }
   .display-name {
-    font-family: var(--font-heading-sans);
-    font-weight: var(--fw-5);
-    font-size: var(--step-1);
+    font-weight: var(--fw-6);
+    /* font-size: var(--step-0); */
   }
 
   .subtitle {
@@ -79,7 +79,6 @@ const formattedDate = formatIso(
   .cite p > span {
     line-height: var(--font-lh-1);
   }
-  i,
   .subtitle {
     color: var(--fg3);
     white-space: nowrap;
