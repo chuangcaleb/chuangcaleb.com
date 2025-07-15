@@ -21,3 +21,9 @@ const { variant, class: propsClass } = Astro.props;
     variant={variant === "sheet" ? undefined : variant}
   />
 </nav>
+
+<style>
+  * {
+    --color-underline: var(--fg3);
+  }
+</style>
