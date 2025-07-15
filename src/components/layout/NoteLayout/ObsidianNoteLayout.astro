@@ -49,7 +49,6 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
       pagefindWeight={pagefindWeight}
     >
       <slot slot="super">
-        <hr />
         <div class="epistemic | flex-row wrap text-faded">
           {
             metadata.words > 15 && (
@@ -95,6 +94,7 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
             )
           }
         </div>
+        <hr />
       </slot>
       <div class="content text-faded flow-lg">
         {
@@ -125,8 +125,10 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
           )
         }
       </div>
-      {metadata.fyi && <Alert variant="fyi" content={metadata.fyi} />}
-      {metadata.status && <Alert variant={metadata.status} />}
+      <slot slot="footer">
+        {metadata.fyi && <Alert variant="fyi" content={metadata.fyi} />}
+        {metadata.status && <Alert variant={metadata.status} />}
+      </slot>
     </NoteHeader>
   </slot>
   <Content />

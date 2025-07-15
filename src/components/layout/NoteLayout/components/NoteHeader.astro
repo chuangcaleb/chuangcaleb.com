@@ -9,25 +9,28 @@ const { title, description, pagefindWeight } = Astro.props;
 ---
 
 <div class="header-order">
-  <header class="flow-sm">
-    <h1 {...pagefindWeight && { "data-pagefind-weight": pagefindWeight }}>
-      {title}
-    </h1>
-    {
-      description && (
-        <p
-          {...(pagefindWeight && {
-            "data-pagefind-weight": Number(pagefindWeight * 0.8).toFixed(1),
-          })}
-        >
-          {description}
-        </p>
-      )
-    }
-  </header>
   <slot name="super" />
+  <div class="flow-lg">
+    <header class="flow-sm">
+      <h1 {...pagefindWeight && { "data-pagefind-weight": pagefindWeight }}>
+        {title}
+      </h1>
+      {
+        description && (
+          <p
+            {...(pagefindWeight && {
+              "data-pagefind-weight": Number(pagefindWeight * 0.8).toFixed(1),
+            })}
+          >
+            {description}
+          </p>
+        )
+      }
+    </header>
+    <slot />
+  </div>
 </div>
-<slot />
+<slot name="footer" />
 
 <style>
   p {
@@ -36,9 +39,10 @@ const { title, description, pagefindWeight } = Astro.props;
   .header-order {
     display: flex;
     flex-direction: column;
-    gap: var(--space-s);
-    @media (width > 600px) {
+    gap: var(--space-xs);
+    @media (width < 600px) {
       flex-direction: column-reverse;
+      gap: var(--space-m);
     }
   }
 </style>
