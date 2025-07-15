@@ -29,25 +29,23 @@ const publishedTime = published && formatDisplayDate(published);
 <div class="spacer" aria-hidden></div>
 {
   publishedTime && (
-    <span class="published | flex-row f-gap-2xs">
+    <span class="published">
       <time aria-label="" datetime={published.toISOString().slice(0, 10)}>
         <span class="sr-only">published on </span>
         {publishedTime}
       </time>
+      {published && isWithinDuration(published, metaMinDays.newPublished) && (
+        <Pill variant="new" />
+      )}
     </span>
   )
 }
 
-<span class="flex-row f-gap-2xs">
+<span class="flex-row wrap f-gap-2xs">
   {emojip && `${down?.length} NOTES`}
   {words && !emojip && <Pill {...getWordCountPill(words)} />}
   {status && <Pill variant={status} />}
   {fyi && <Pill variant="fyi" />}
-  {
-    published && isWithinDuration(published, metaMinDays.newPublished) && (
-      <Pill variant="new" />
-    )
-  }
   {
     shouldShowModified &&
       (isWithinDuration(modified, metaMinDays.freshModified) ? (
@@ -74,8 +72,10 @@ const publishedTime = published && formatDisplayDate(published);
     top: calc(var(--size-ch-4) * -1);
     left: calc(var(--space-s) + 0.1em);
     font-weight: var(--fw-6);
-    background-color: var(--bg2);
-    padding-inline: var(--size-ch-2);
+    background-color: var(--bg1);
     border-radius: var(--radius-2);
+    time {
+      padding-inline: var(--size-ch-2);
+    }
   }
 </style>
