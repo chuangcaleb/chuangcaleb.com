@@ -14,7 +14,7 @@ const { content, variant } = Astro.props;
 <div class="border">
   <header class="flex-row wrap">
     <Pill variant={variant} />
-    <strong>{pillVariants[variant].label}</strong>
+    {pillVariants[variant].label}
   </header>
   {content && <div class="body">{content}</div>}
 </div>
