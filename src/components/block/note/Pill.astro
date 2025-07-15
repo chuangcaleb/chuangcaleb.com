@@ -22,6 +22,7 @@ const props = rawProps.variant ? pillVariants[rawProps.variant] : rawProps;
 <style>
   .wrapper {
     padding-inline: var(--space-2xs);
+    /* needs this pt for some reason */
     padding-top: var(--space-3xs);
     /* background-color: var(--bg3); */
     text-transform: uppercase;
@@ -29,6 +30,7 @@ const props = rawProps.variant ? pillVariants[rawProps.variant] : rawProps;
     /* color: var(--text-normal); */
     font-size: var(--step--1);
     font-family: var(--font-mono);
+    line-height: var(--font-lh-0);
   }
   .emoji {
     filter: grayscale(0.5);

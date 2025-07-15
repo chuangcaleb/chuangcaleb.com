@@ -99,7 +99,7 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
                   metadata.published,
                   metaMinDays.newPublished
                 ) && <Pill variant="new" />}
-                <span>
+                <span class="published">
                   <div class="sr-only">published on </div>
                   <MetadataValueItem value={metadata.published} />
                 </span>
@@ -173,6 +173,9 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
     }
   }
 
+  .published {
+    font-weight: var(--fw-7);
+  }
   .modified {
     font-style: italic;
   }
@@ -181,8 +184,8 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
     font-size: var(--step--1);
     row-gap: var(--size-ch-2);
   }
-  /* hr + :global(*) {
-    --flow-space: var(--space-s);
-  } */
+  hr + :global(*) {
+    --flow-space: var(--space-xs);
+  }
 </style>
 ˝

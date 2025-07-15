@@ -21,7 +21,7 @@ const { title, description, noBottomPadding = false } = Astro.props;
   <slot slot="sheetBody" name="sheetBody" />
 
   <article class="flow-xl">
-    <header class="region cgrid flow-lg">
+    <header class="region cgrid-popout flow-lg">
       <slot name="header">
         <NoteHeader title={title} />
       </slot>
