@@ -43,7 +43,7 @@ const formattedDate = formatIso(
         )
       }
       <span class="flex-row wrap subtitle">
-        <span>{post["👥 Relation to me"]}</span>
+        <span>→ {post["👥 Relation to me"]}</span>
         {post["🏷️ Tag"] !== "Other" && <Pill short={`#${post["🏷️ Tag"]}`} />}
       </span>
     </p>
