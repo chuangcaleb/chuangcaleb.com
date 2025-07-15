@@ -16,7 +16,7 @@ const { content, variant } = Astro.props;
     <Pill variant={variant} />
     {pillVariants[variant].label}
   </header>
-  {content && <div class="body">{content}</div>}
+  {content && <div class="body | text-faded">{content}</div>}
 </div>
 
 <style>

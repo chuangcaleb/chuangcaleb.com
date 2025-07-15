@@ -29,18 +29,11 @@ const publishedTime = published && formatDisplayDate(published);
 <div class="spacer"></div>
 {
   publishedTime && (
-    <span class="flex-row f-gap-2xs">
-      <time
-        class="published"
-        aria-label=""
-        datetime={published.toISOString().slice(0, 10)}
-      >
+    <span class="published | flex-row f-gap-2xs">
+      <time aria-label="" datetime={published.toISOString().slice(0, 10)}>
         <span class="sr-only">published on </span>
         {publishedTime}
       </time>
-      {isWithinDuration(published, metaMinDays.newPublished) && (
-        <Pill variant="new" />
-      )}
     </span>
   )
 }
@@ -50,6 +43,11 @@ const publishedTime = published && formatDisplayDate(published);
   {words && !emojip && <Pill {...getWordCountPill(words)} />}
   {status && <Pill variant={status} />}
   {fyi && <Pill variant="fyi" />}
+  {
+    published && isWithinDuration(published, metaMinDays.newPublished) && (
+      <Pill variant="new" />
+    )
+  }
   {
     shouldShowModified &&
       (isWithinDuration(modified, metaMinDays.freshModified) ? (
@@ -72,6 +70,11 @@ const publishedTime = published && formatDisplayDate(published);
     height: var(--size-ch-1);
   }
   .published {
+    position: absolute;
+    top: calc(var(--size-ch-4) * -1);
+    left: calc(var(--space-s) + 0.1em);
     font-weight: var(--fw-6);
+    background-color: var(--bg2);
+    padding-inline: var(--size-ch-2);
   }
 </style>
