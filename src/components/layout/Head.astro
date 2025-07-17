@@ -5,6 +5,7 @@ import faviconAppleTouchUrl from "/src/assets/favicon/apple-touch-icon.png";
 import favicon32Url from "/src/assets/favicon/favicon-32x32.png";
 import favicon16Url from "/src/assets/favicon/favicon-16x16.png";
 import { ClientRouter } from "astro:transitions";
+import { Font } from "astro:assets";
 
 export type HeadProps = {
   description?: string;
@@ -70,6 +71,8 @@ const description =
   media=" (prefers-color-scheme: dark)"
 />
 <meta name="msapplication-TileColor" content={SITE.color.light} />
+
+<Font cssVariable="--font-mono" />
 
 <ClientRouter />
 {

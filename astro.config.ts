@@ -4,7 +4,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import compressor from 'astro-compressor';
 import robotsTxt from 'astro-robots-txt';
-import {defineConfig, envField} from 'astro/config';
+import {defineConfig, envField, fontProviders} from 'astro/config';
 // Import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
 import og from 'astro-og';
@@ -41,7 +41,25 @@ export default defineConfig({
 		],
 		rehypePlugins: [rehypeWrapTables],
 	},
-	// redirects: REDIRECTS,
+	experimental: {
+		fonts: [
+			{
+				provider: fontProviders.fontsource(),
+				name: 'Courier Prime',
+				cssVariable: '--font-mono',
+				weights: [400],
+				// styles: ['normal'],
+				fallbacks: [
+					'Courier Prime',
+					'Courier New',
+					'Nimbus Mono PS',
+					'Courier',
+					'ui-monospace',
+					'monospace',
+				],
+			},
+		],
+	},
 	image: {
 		// endpoint: ,
 		domains: [process.env.IMAGE_DOMAIN!],
