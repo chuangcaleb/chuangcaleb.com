@@ -2,7 +2,7 @@
   container-type: inline-size;
   width: 100%;
   --hr-space: var(--space-3xl);
-  --flow-li: var(--size-ch-5);
+  --flow-li: var(--size-ch-4);
 
   line-height: var(--font-lh-4);
 
