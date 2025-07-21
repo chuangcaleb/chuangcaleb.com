@@ -134,6 +134,10 @@ mark,
   background: var(--ax1);
 }
 
+mark {
+  font-weight: var(--fw-6);
+}
+
 img::selection {
   background: hsla(
     var(--accent-h),
