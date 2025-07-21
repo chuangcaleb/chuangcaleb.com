@@ -4,10 +4,11 @@ import NoteListItems from "~/components/block/note/NoteListItems.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
-import { getAllNotes } from "~/utils/note";
+import { getAllNotes, getNoteEntry } from "~/utils/note";
 import Featured from "./_components/Featured.astro";
 import { Content as GardenIntroContent } from "./_components/garden-intro.mdx";
 import Topics from "./_components/Topics.astro";
+import NoteLink from "~/components/block/NoteLink.astro";
 
 const publicNotes = await getAllNotes();
 
@@ -46,6 +47,11 @@ const description =
 // Recently Published
 // Recently Edited
 // All now's
+
+const terms = await getNoteEntry({
+  id: "public-digital-garden/terms-of-service",
+  collection: "obsidian-note",
+});
 ---
 
 <BaseMain title="Digital Garden" description={description} class="linew-wide">
@@ -62,7 +68,13 @@ const description =
         <h2 class="start-here-title">📍 Start Here</h2>
         <ul>
           <li><b>🚧 WIP</b></li>
-          <li>What's the Garden About?</li>
+          {
+            terms && (
+              <li>
+                <NoteLink note={terms} />
+              </li>
+            )
+          }
           <li>How To Use This Site</li>
         </ul>
       </div>
