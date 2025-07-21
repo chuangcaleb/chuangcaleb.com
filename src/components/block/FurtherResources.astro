@@ -35,7 +35,7 @@ const formattedResources = parseMarkdownLinks(resources);
   !!formattedResources?.length && (
     <>
       <h2 class="text-faded">↗ External Resources</h2>
-      <ul class="flow-xs">
+      <ul class="flow-sm">
         {formattedResources.map((r) => (
           <li>
             <a href={r.link}>{r.alias}</a>
