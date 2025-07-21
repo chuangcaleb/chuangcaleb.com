@@ -32,17 +32,15 @@ const { links = [], variant, ...props } = Astro.props;
 </div>
 
 <style>
-  a {
-    --color: var(--text-faded);
+  * {
+    --color-link: var(--text-faded);
   }
   li:first-child a {
     font-family: var(--font-heading-serif);
     font-size: var(--step-1);
   }
   [data-variant="header"] li:first-child {
-    a {
-      --color: var(--text-normal);
-    }
+    --color-link: var(--text-normal);
     &::after {
       content: "•";
       color: var(--text-faded);

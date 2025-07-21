@@ -49,6 +49,7 @@
     "postcss-preset-env": "^10.2.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "rehype-external-links": "^3.0.0",
     "sharp": "^0.34.2",
     "typescript": "^5.8.3",
     "unified": "^11.0.5",

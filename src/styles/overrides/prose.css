@@ -1,9 +1,13 @@
 .prose {
   container-type: inline-size;
   width: 100%;
+
+  /* default vars */
   --hr-space: var(--space-3xl);
   --flow-li: var(--size-ch-4);
 
+  /* default styles */
+  font-size: var(--step-0);
   line-height: var(--font-lh-4);
 
   & > h2,

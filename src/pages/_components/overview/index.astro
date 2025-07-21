@@ -16,6 +16,10 @@ const components = { h2: "h3" };
   article {
     max-width: var(--content-w);
 
+    :global(p) {
+      --color-link: var(--text-normal);
+    }
+
     :global(h3) {
       color: var(--fg3);
       font-size: var(--step-1);

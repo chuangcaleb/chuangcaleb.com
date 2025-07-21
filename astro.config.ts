@@ -8,6 +8,7 @@ import {defineConfig, envField, fontProviders} from 'astro/config';
 // Import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
 import og from 'astro-og';
+import rehypeExternalLinks from 'rehype-external-links';
 import rehypeWrapTables from './lib/rehype/wrap-tables.js';
 import remarkWikilinks from './lib/remark/remark-wikilinks.js';
 import {remarkStripH1} from './lib/remark/strip-h1.js';
@@ -39,7 +40,21 @@ export default defineConfig({
 			remarkSimpleStripPercentComments,
 			remarkWikilinks,
 		],
-		rehypePlugins: [rehypeWrapTables],
+		rehypePlugins: [
+			rehypeWrapTables,
+			[
+				rehypeExternalLinks,
+				{
+					content: {type: 'text', value: ' ↗'},
+					contentProperties: {
+						class: ['external-arrow'],
+						'aria-hidden': true,
+					},
+					properties: {target: '_blank'},
+					rel: ['noopener'],
+				},
+			],
+		],
 	},
 	experimental: {
 		fonts: [

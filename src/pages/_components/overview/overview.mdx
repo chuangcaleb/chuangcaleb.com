@@ -6,7 +6,7 @@ import ObsidianIcon from "~/assets/obsidian.svg";
 import UoNIcon from "~/assets/uon.jpg";
 import Favicon from "~/components/block/Favicon.astro";
 import SocialLink from "~/components/block/SocialLink.astro";
-import AccentA from "~/components/styled/monom/AccentA.astro";
+import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import Button from "~/components/styled/polym/Button.astro";
 
 ## <Icon name="lucide:briefcase" /> Professionally
@@ -33,12 +33,10 @@ is in 🎭 **Storytelling & Narratives**: _“finding universal truths of human 
 I also upkeep a 🪴 **Digital Garden** with <Favicon img={ObsidianIcon} alt="obsidian logo" url="https://obsidian.md">Obsidian</Favicon> — it’s my _daily journal_, _knowledge base_, and _content creation studio_. Some of _my notes_ are publicly exposed at [/notes](/notes) and _life updates_ are posted at [/now](/now)!
 
 <div class="flex-row">
-  <AccentA href="/notes">
-    <Icon name="lucide:trees" />
+  <TagWIcon as="a" href="/notes" iconName="lucide:trees">
     {"/notes"}
-  </AccentA>
-  <AccentA href="/now">
-    <Icon name="lucide:timer-reset" />
+  </TagWIcon>
+  <TagWIcon as="a" href="/now" iconName="lucide:timer-reset">
     {"/now"}
-  </AccentA>
+  </TagWIcon>
 </div>

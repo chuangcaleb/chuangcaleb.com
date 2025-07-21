@@ -1,5 +1,5 @@
 :where(a[href]) {
-  color: var(--color);
+  color: var(--color-link);
   text-decoration-color: var(--color-underline);
 
   border-radius: var(--radius-2);
@@ -8,11 +8,6 @@
   text-decoration-line: underline;
   text-decoration-skip-ink: none;
   text-decoration-style: solid;
-  &:has(*) {
-    display: inline-flex;
-    align-items: center;
-    column-gap: 0.5ch;
-  }
 }
 
 :where(a[href]:is(:hover, :focus-visible, :active)) {
@@ -23,8 +18,7 @@
   &:not(.unstyled-hover-link) {
     background-color: var(--ui2);
     padding-inline: var(--size-ch-2);
-    margin-inline-start: calc(var(--anchor-hover-m-s, var(--size-ch-2)) * -1);
-    margin-inline-end: calc(var(--anchor-hover-m-e, var(--size-ch-2)) * -1);
+    margin-inline: calc(var(--size-ch-2) * -1);
   }
 }
 
@@ -32,27 +26,12 @@
   text-decoration-line: none;
 }
 
-article a:not([href^="#"]):not([href^="/"]) {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='gray' d='M6 3h7v7h-2V6.41l-7.3 7.3-1.4-1.42 7.3-7.3H6z'/%3E%3C/svg%3E");
-  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2.5' stroke='gray' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25' /%3E%3C/svg%3E%0A"); */
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: var(--size-ch-4);
-  padding-inline-end: var(--size-ch-5);
-  --anchor-hover-m-e: 0;
+.external-arrow {
+  color: var(--text-faded);
 }
-/* article a[href^="/notes/"]:not(.unstyled-hover-link) {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 16' fill='none' stroke='gray' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 2h4l3 3v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z'/%3E%3Cpolyline points='7 2 7 5 10 5'/%3E%3C/svg%3E");
-
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: var(--size-ch-4);
-  padding-inline-start: var(--size-ch-5);
-  --anchor-hover-m-s: 0;
-} */
 
 /* should not handle <sup/> footnotes?? */
-article a[href^="#"]::before {
+[data-footnote-ref][href^="#"]::before {
   content: "#";
   color: var(--text-faded);
 }

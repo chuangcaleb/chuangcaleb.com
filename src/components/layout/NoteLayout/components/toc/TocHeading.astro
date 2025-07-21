@@ -34,7 +34,7 @@ const { tocItem } = Astro.props;
       padding-inline: unset;
     }
     a {
-      --color: var(--text-faded);
+      --color-link: var(--text-faded);
       --color-hover: var(--ax1);
       text-decoration: none;
       display: block;
@@ -44,7 +44,7 @@ const { tocItem } = Astro.props;
       outline-offset: var(--size-ch-2);
 
       &.active {
-        --color: var(--text-strong);
+        --color-link: var(--text-strong);
       }
     }
     ul & {
