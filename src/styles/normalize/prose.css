@@ -135,5 +135,10 @@ mark,
 }
 
 img::selection {
-  background: var(--ax4);
+  background: hsla(
+    var(--accent-h),
+    calc(var(--accent-s) - 50%),
+    calc(var(--accent-l) - 30% * var(--m) * var(--a-l)),
+    0.5
+  );
 }

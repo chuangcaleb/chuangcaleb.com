@@ -108,10 +108,4 @@ The colors use HSL (hue, saturation, lightness)
     calc(var(--accent-s) - 50%),
     calc(var(--accent-l) - 20% * var(--m) * var(--a-l))
   );
-  --ax4: hsla(
-    var(--accent-h),
-    calc(var(--accent-s) - 50%),
-    calc(var(--accent-l) - 30% * var(--m) * var(--a-l)),
-    0.5
-  );
 }
