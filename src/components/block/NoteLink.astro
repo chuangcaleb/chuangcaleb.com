@@ -1,17 +1,14 @@
 ---
 import type { SuperNote } from "lib/utils/types";
-import AccentA from "../styled/monom/AccentA.astro";
 
 interface Props {
   note: SuperNote;
-  variant?: "accent";
 }
 
-const { note, variant } = Astro.props;
-const Tag = variant === "accent" ? AccentA : "a";
+const { note } = Astro.props;
 ---
 
-<Tag href={note.route}>
+<a href={note.route}>
   {note.data?.emojip && `${note.data?.emojip} `}
   {note.name}
-</Tag>
+</a>

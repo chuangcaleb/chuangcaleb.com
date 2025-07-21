@@ -1,8 +1,7 @@
 ---
 import type { NoteReference } from "lib/utils/types";
+import NoteLink from "~/components/block/NoteLink.astro";
 import { getNoteEntries } from "~/utils/note";
-
-import AccentA from "~/components/styled/monom/AccentA.astro";
 
 interface Props {
   references: NoteReference[];
@@ -25,10 +24,7 @@ const { prefix, ariaLabel } = Astro.props;
         {notes.map((note, index) => (
           <>
             <li>
-              <AccentA href={note.route}>
-                {note.data.emojip ? `${note.data.emojip} ` : ""}
-                {note.name}
-              </AccentA>
+              <NoteLink note={note} />
             </li>
             {index < notes.length - 1 && <span aria-hidden>{" • "}</span>}
           </>
