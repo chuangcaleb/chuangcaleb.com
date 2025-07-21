@@ -11,7 +11,10 @@ type Props =
   | { variant: keyof typeof pillVariants };
 
 const rawProps = Astro.props;
-const props = rawProps.variant ? pillVariants[rawProps.variant] : rawProps;
+const props =
+  typeof rawProps.variant === "string"
+    ? pillVariants[rawProps.variant]
+    : rawProps;
 ---
 
 <span class="wrapper | border" aria-label={props.ariaLabel}
