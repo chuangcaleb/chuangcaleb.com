@@ -21,15 +21,17 @@ const { Content } = await render(project);
     </header>
     <Content />
 
-    <div class="links">
+    <ul class="links">
       {
         project.data.links?.map((link) => (
-          <TagWIcon as="a" href={link.href} iconName={link.icon}>
-            {link.label}
-          </TagWIcon>
+          <li>
+            <TagWIcon as="a" href={link.href} iconName={link.icon}>
+              {link.label}
+            </TagWIcon>
+          </li>
         ))
       }
-    </div>
+    </ul>
   </div>
   {
     project.data.image ? (
