@@ -9,6 +9,7 @@ import Featured from "./_components/Featured.astro";
 import { Content as GardenIntroContent } from "./_components/garden-intro.mdx";
 import Topics from "./_components/Topics.astro";
 import NoteLink from "~/components/block/NoteLink.astro";
+import { pillVariants } from "~/utils/pill-variants";
 
 const publicNotes = await getAllNotes();
 
@@ -89,13 +90,13 @@ const terms = await getNoteEntry({
     </section>
     <div class="recents region">
       <section class="prose flow-lg">
-        <h2>📤 Recently Published</h2>
+        <h2>{pillVariants.new.emoji} Recently Published</h2>
         <ol class="flow">
           <NoteListItems references={recentlyPublished} />
         </ol>
       </section>
       <section class="prose flow-lg">
-        <h2>🥬 Recently Modified</h2>
+        <h2>{pillVariants.fresh.emoji} Recently Modified</h2>
         <ol class="flow">
           <NoteListItems references={recentlyModified} />
         </ol>
