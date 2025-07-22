@@ -45,6 +45,7 @@ export default defineConfig({
 			[
 				rehypeExternalLinks,
 				{
+					host: ['chuangcaleb.com'],
 					content: {type: 'text', value: ' ↗'},
 					contentProperties: {
 						class: ['external-arrow'],
