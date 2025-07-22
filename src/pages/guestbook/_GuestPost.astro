@@ -32,7 +32,7 @@ const formattedDate = formatIso(
         />
       )
     }
-    <p>
+    <header>
       {
         hasLink ? (
           <a class="display-name" href={post["🔗 Social Link"]}>
@@ -46,11 +46,11 @@ const formattedDate = formatIso(
         <span>→ {post["👥 Relation to me"]}</span>
         {post["🏷️ Tag"] !== "Other" && <Pill short={`#${post["🏷️ Tag"]}`} />}
       </span>
-    </p>
+    </header>
   </div>
   <p class="body">
     {post["📃 Content Body"]}
-    <i>
+    <i class="text-faded">
       {formattedDate}
     </i>
   </p>
@@ -63,6 +63,7 @@ const formattedDate = formatIso(
     padding-inline-start: var(--step-2);
   }
   .display-name {
+    --color-link: var(--text-normal);
     font-weight: var(--fw-6);
     /* font-size: var(--step-0); */
   }
@@ -84,7 +85,7 @@ const formattedDate = formatIso(
     white-space: nowrap;
   }
   .body i {
-    padding-inline-start: var(--step--1);
+    padding-inline-start: var(--size-ch-3);
   }
 
   p {
