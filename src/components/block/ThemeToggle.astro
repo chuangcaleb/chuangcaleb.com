@@ -9,7 +9,7 @@ const THEMES = {
 } as const satisfies { [k: string]: React.ReactNode };
 ---
 
-<Button class="theme-toggle" aria-hidden>
+<Button class="theme-toggle">
   <noscript>theme-toggle requires Javascript!</noscript>
   {
     Object.entries(THEMES).map(([key, value]) => (
