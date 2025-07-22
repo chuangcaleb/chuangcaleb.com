@@ -49,6 +49,7 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
       pagefindWeight={pagefindWeight}
     >
       <slot slot="super">
+        <hr />
         <div class="epistemic | flex-row wrap text-faded">
           {
             metadata.words > 15 && (
@@ -94,37 +95,18 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
             )
           }
         </div>
-        <hr />
       </slot>
-      <div class="content text-faded flow-lg">
-        {
-          (!!metadata.up?.length || !!metadata.prev || !!metadata.next) && (
-            <div class="flow-xs">
-              {!!metadata.up && (
-                <MetadataContainer
-                  references={metadata.up}
-                  prefix="↑"
-                  ariaLabel="Parent notes"
-                />
-              )}
-              {!!metadata.prev && (
-                <MetadataContainer
-                  references={[metadata.prev]}
-                  prefix="←"
-                  ariaLabel="Previous notes in order"
-                />
-              )}
-              {!!metadata.next && (
-                <MetadataContainer
-                  references={[metadata.next]}
-                  prefix="→"
-                  ariaLabel="Next notes in order"
-                />
-              )}
-            </div>
-          )
-        }
-      </div>
+      {
+        !!metadata.up && (
+          <div class="content text-faded flow-lg">
+            <MetadataContainer
+              references={metadata.up}
+              prefix="↑"
+              ariaLabel="Parent notes"
+            />
+          </div>
+        )
+      }
       <slot slot="footer">
         {metadata.fyi && <Alert variant="fyi" content={metadata.fyi} />}
         {metadata.status && <Alert variant={metadata.status} />}
