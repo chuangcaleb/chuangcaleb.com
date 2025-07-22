@@ -3,7 +3,7 @@
 /* Headings */
 :where(h1, h2, h3, h4, h5, h6) {
   color: var(--color, var(--text-strong));
-  /* font-family: var(--font-heading-sans); */
+  font-family: var(--font-heading-sans);
   line-height: var(--font-lh-0);
   text-wrap: balance;
   /* font-family: var(--font-heading-sans); */
