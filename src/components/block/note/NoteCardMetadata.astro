@@ -74,8 +74,9 @@ const publishedTime = published && formatDisplayDate(published);
     font-weight: var(--fw-6);
     background-color: var(--bg1);
     border-radius: var(--radius-2);
-    time {
-      padding-inline: var(--size-ch-2);
+    padding-inline: var(--size-ch-2);
+    & > :global(*) + :global(*) {
+      margin-left: var(--size-ch-2);
     }
   }
 </style>
