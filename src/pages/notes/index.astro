@@ -49,34 +49,27 @@ const description =
 // Recently Edited
 // All now's
 
-const terms = await getNoteEntry({
-  id: "public-digital-garden/terms-of-service",
-  collection: "obsidian-note",
-});
+const startHereNotes = [
+  {
+    id: "public-digital-garden/terms-of-service",
+    collection: "obsidian-note",
+  } as const,
+];
 ---
 
 <BaseMain title="Digital Garden" description={description} class="linew-wide">
   <article class="flow-xl">
     <header class="flow-xl prose">
-      <TagWIcon iconName={icon} as="h1">Caleb's Digital Garden</TagWIcon>
-      <div
-        class="flow garden-intro flom-lg"
-        style={{ gridColumn: "span 2 / span 2" }}
-      >
+      <TagWIcon iconName={icon} as="h1" style={{ gridArea: "t" }}>
+        Caleb's Digital Garden
+      </TagWIcon>
+      <div class="flow garden-intro flom-lg" style={{ gridArea: "i" }}>
         <GardenIntroContent />
       </div>
-      <div class="flow flom-lg" style={{ gridColumn: "span 1 / span 1" }}>
+      <div class="flow-lg flom-lg start-here-section" style={{ gridArea: "s" }}>
         <h2 class="start-here-title">📍 Start Here</h2>
-        <ul>
-          <li><b>🚧 WIP</b></li>
-          {
-            terms && (
-              <li>
-                <NoteLink note={terms} />
-              </li>
-            )
-          }
-          <li>How To Use This Site</li>
+        <ul class="flow">
+          <NoteListItems references={startHereNotes} />
         </ul>
       </div>
     </header>
@@ -106,26 +99,27 @@ const terms = await getNoteEntry({
 </BaseMain>
 
 <style>
-  * :global(p) {
-    max-width: var(--content-w);
-  }
   .start-here-title {
     font-size: var(--step-2);
   }
   header {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    grid-template: "t" "i" "s";
     padding-block: var(--space-l);
     row-gap: var(--space-xs);
-    @media (width > 900px) {
-      grid-template-columns: repeat(3, 1fr);
-      column-gap: var(--space-m);
+  }
+  @media (width > 900px) {
+    header {
+      grid-template:
+        "t t t s s"
+        "i i i s s" / 1fr 1fr 1fr 1fr 1fr;
+      column-gap: var(--space-xl);
     }
-    & > * {
-      grid-column: 1 / -1;
+    .start-here-section {
+      /* margin: 0; */
     }
   }
+
   .recents {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 30ch), 1fr));
