@@ -11,8 +11,17 @@ interface Props {
 }
 
 const { data } = Astro.props;
-const { published, modified, emojip, down, description, status, fyi, words } =
-  data;
+const {
+  published,
+  modified,
+  emojip,
+  down,
+  description,
+  status,
+  fyi,
+  words,
+  series,
+} = data;
 // const renderMetadata = (note: Note) =>
 //   [
 //     formatDisplayDate(note.data?.published),
@@ -44,6 +53,7 @@ const publishedTime = published && formatDisplayDate(published);
 <span class="flex-row wrap f-gap-2xs">
   {emojip && `${down?.length} NOTES`}
   {words && !emojip && <Pill {...getWordCountPill(words)} />}
+  {!!series && <Pill variant="series" />}
   {status && <Pill variant={status} />}
   {fyi && <Pill variant="fyi" />}
   {

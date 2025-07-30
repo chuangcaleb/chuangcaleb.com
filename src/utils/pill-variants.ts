@@ -38,11 +38,16 @@ export const pillVariants: Record<string, PillVariant> = {
 		short: 'new',
 		label: 'This note was newly published.',
 	},
+	series: {
+		emoji: '📚',
+		short: 'series',
+		label: '',
+	},
 };
 
 export function getWordCountPill(count: number) {
 	if (count <= 200) {
-		return {emoji: '⊙', short: 'ATOMIC'};
+		return {emoji: '⊙', short: 'ATOM'};
 	}
 
 	if (count <= 500) {

@@ -44,8 +44,8 @@ const baseObsidianNoteSchema = z.object({
 	emojip: z.string().optional(),
 	resources: z.array(z.string()).optional(),
 	featured: z.number().optional(),
-	// epistemic
 	words: z.number(),
+	// epistemic
 	status: z.enum(['wip', 'stub', 'mvp']).optional(),
 	fyi: z.string().optional(),
 	// hierarchy
