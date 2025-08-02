@@ -22,14 +22,7 @@ const {
   words,
   series,
 } = data;
-// const renderMetadata = (note: Note) =>
-//   [
-//     formatDisplayDate(note.data?.published),
-//     note.data?.modified &&
-//       `modified ${getLongDurationSince(note.data?.modified)}`,
-//   ]
-//     .filter(Boolean)
-//     .join(" ⋅ ");
+
 const shouldShowModified = modified && !emojip;
 const publishedTime = published && formatDisplayDate(published);
 ---
@@ -39,12 +32,13 @@ const publishedTime = published && formatDisplayDate(published);
 {
   publishedTime && (
     <span class="published">
-      <time aria-label="" datetime={published.toISOString().slice(0, 10)}>
-        <span class="sr-only">published on </span>
-        {publishedTime}
-      </time>
-      {published && isWithinDuration(published, metaMinDays.newPublished) && (
+      {published && isWithinDuration(published, metaMinDays.newPublished) ? (
         <Pill variant="new" />
+      ) : (
+        <time aria-label="" datetime={published.toISOString().slice(0, 10)}>
+          <span class="sr-only">published on </span>
+          {publishedTime}
+        </time>
       )}
     </span>
   )
