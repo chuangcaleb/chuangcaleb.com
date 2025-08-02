@@ -1,0 +1,66 @@
+---
+import Button from "~/components/styled/polym/Button.astro";
+import TermsAlert from "./TermsAlert.astro";
+---
+
+<h2>Toggle visual display</h2>
+<p>
+  {
+    `Congratulations! You've made it to the end of this note! Since you've read through it all, here is a button toggles the display of the annoying(?) Terms of Service alert at the top of every note!`
+  }
+</p>
+<p>
+  {
+    `It simply stores a flag in your browser's localStorage. If you are on a new device or browser profile, you can always return here and toggle hide again!`
+  }
+</p>
+<div>
+  <Button id="terms-toggle">Toggle</Button>
+</div>
+<TermsAlert />
+
+<script>
+  const root = document.documentElement;
+
+  function getState() {
+    const isTermsHidden =
+      typeof localStorage !== "undefined" &&
+      localStorage.getItem("isTermsHidden");
+    // if (!localTheme || !THEME_LABELS.includes(localTheme)) return false;
+    return isTermsHidden === "true";
+  }
+
+  function handleToggleTermsAlert(state: boolean) {
+    root.setAttribute("data-is-terms-hidden", String(state));
+  }
+
+  function setButtonText(state: boolean) {
+    const button = document.querySelector(`button#terms-toggle`);
+    if (!button) return;
+    button.innerHTML = state ? "terms: hidden" : "terms: shown";
+  }
+
+  function setState(state: boolean) {
+    localStorage.setItem("isTermsHidden", String(state));
+    handleToggleTermsAlert(state);
+  }
+
+  function handleClick() {
+    const newState = !getState();
+    setState(newState);
+    setButtonText(newState);
+  }
+
+  function initTermsToggle() {
+    const state = getState();
+    setButtonText(state);
+    handleToggleTermsAlert(state);
+    const buttons = document.querySelectorAll("button#terms-toggle");
+    buttons.forEach((button) => {
+      button.addEventListener("click", handleClick);
+    });
+  }
+
+  initTermsToggle();
+  document.addEventListener("astro:after-swap", initTermsToggle);
+</script>

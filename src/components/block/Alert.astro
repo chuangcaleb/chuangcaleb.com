@@ -11,7 +11,7 @@ const { variant } = Astro.props;
 const hasSlot = !!(await Astro.slots.render("default"));
 ---
 
-<div class="border">
+<div class="border" {...variant === "terms" && { "data-variant": "terms" }}>
   <header class="flex-row wrap">
     <Pill variant={variant} />
     {pillVariants[variant].label}
@@ -35,5 +35,9 @@ const hasSlot = !!(await Astro.slots.render("default"));
   }
   .body {
     padding: var(--space-xs);
+  }
+
+  :global([data-is-terms-hidden="true"]) [data-variant="terms"] {
+    display: none;
   }
 </style>

@@ -5,17 +5,20 @@ import Alert from "~/components/block/Alert.astro";
 import Duration from "~/components/block/Duration.astro";
 import FurtherResources from "~/components/block/FurtherResources.astro";
 import Pill from "~/components/block/note/Pill.astro";
+import { termsRoute } from "~/data/special-routes";
 import { metaMinDays } from "~/utils/note-meta";
 import { formatNoteRelations } from "~/utils/note-relations";
+import { getWordCountPill } from "~/utils/pill-variants";
 import { isWithinDuration } from "~/utils/time";
 import Metadata from "./components/metadata/AsideMetadata.astro";
 import MetadataValueItem from "./components/metadata/MetadataValueItem.astro";
 import MetadataContainer from "./components/MetadataContainer.astro";
 import NoteHeader from "./components/NoteHeader.astro";
 import NoteRelationsSection from "./components/NoteRelationsSection.astro";
+import TermsToggle from "./components/TermsToggle.astro";
 import Toc from "./components/toc/Toc.astro";
 import NoteLayout from "./NoteLayout.astro";
-import { getWordCountPill } from "~/utils/pill-variants";
+import TermsAlert from "./components/TermsAlert.astro";
 
 interface Props {
   entry: SuperNote;
@@ -110,18 +113,17 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
       <slot slot="footer">
         {metadata.fyi && <Alert variant="fyi">{metadata.fyi}</Alert>}
         {metadata.status && <Alert variant={metadata.status} />}
-        <Alert variant="terms">
-          By consuming, you are bound to to the site's
-          <a href="/notes/public-digital-garden/terms-of-service">
-            Terms of Service</a
-          >, which lets me publish half-baked notes with peace of mind :D
-          (TL;DR: please, consume notes responsibly)
-        </Alert>
+        <TermsAlert />
       </slot>
     </NoteHeader>
   </slot>
+
   <Content />
+
+  {Astro.url.pathname === termsRoute && <TermsToggle />}
+
   {metadata.resources && <FurtherResources resources={metadata.resources} />}
+
   {
     formattedRelations && (
       <>
