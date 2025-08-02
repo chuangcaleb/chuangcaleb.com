@@ -43,6 +43,11 @@ export const pillVariants: Record<string, PillVariant> = {
 		short: 'series',
 		label: '',
 	},
+	terms: {
+		emoji: '☑️',
+		short: 'terms',
+		label: 'Terms of Service',
+	},
 };
 
 export function getWordCountPill(count: number) {

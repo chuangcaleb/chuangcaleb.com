@@ -108,8 +108,15 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
         )
       }
       <slot slot="footer">
-        {metadata.fyi && <Alert variant="fyi" content={metadata.fyi} />}
+        {metadata.fyi && <Alert variant="fyi">{metadata.fyi}</Alert>}
         {metadata.status && <Alert variant={metadata.status} />}
+        <Alert variant="terms">
+          By consuming, you are bound to to the site's
+          <a href="/notes/public-digital-garden/terms-of-service">
+            Terms of Service</a
+          >, which lets me publish half-baked notes with peace of mind :D
+          (TL;DR: please, consume notes responsibly)
+        </Alert>
       </slot>
     </NoteHeader>
   </slot>

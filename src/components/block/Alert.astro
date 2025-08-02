@@ -5,10 +5,10 @@ import { pillVariants } from "~/utils/pill-variants";
 
 interface Props extends HTMLAttributes<"div"> {
   variant: keyof typeof pillVariants;
-  content?: string;
 }
 
-const { content, variant } = Astro.props;
+const { variant } = Astro.props;
+const hasSlot = !!(await Astro.slots.render("default"));
 ---
 
 <div class="border">
@@ -16,7 +16,13 @@ const { content, variant } = Astro.props;
     <Pill variant={variant} />
     {pillVariants[variant].label}
   </header>
-  {content && <div class="body | text-faded">{content}</div>}
+  {
+    !!hasSlot && (
+      <div class="body | text-faded">
+        <slot />
+      </div>
+    )
+  }
 </div>
 
 <style>
