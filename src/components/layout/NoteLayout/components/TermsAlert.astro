@@ -8,3 +8,49 @@ import { termsRoute } from "~/data/special-routes";
   <a href={termsRoute}> Terms of Service</a>, which lets me publish half-baked
   notes with peace of mind :D (TL;DR: just consume notes responsibly!)
 </Alert>
+
+<script>
+  const root = document.documentElement;
+
+  function getState() {
+    const isTermsHidden =
+      typeof localStorage !== "undefined" &&
+      localStorage.getItem("isTermsHidden");
+    // if (!localTheme || !THEME_LABELS.includes(localTheme)) return false;
+    return isTermsHidden === "true";
+  }
+
+  function handleToggleTermsAlert(state: boolean) {
+    root.setAttribute("data-is-terms-hidden", String(state));
+  }
+
+  function setButtonText(state: boolean) {
+    const button = document.querySelector(`button#terms-toggle`);
+    if (!button) return;
+    button.innerHTML = state ? "terms: hidden" : "terms: shown";
+  }
+
+  function setState(state: boolean) {
+    localStorage.setItem("isTermsHidden", String(state));
+    handleToggleTermsAlert(state);
+  }
+
+  function handleClick() {
+    const newState = !getState();
+    setState(newState);
+    setButtonText(newState);
+  }
+
+  function initTermsToggle() {
+    const state = getState();
+    setButtonText(state);
+    handleToggleTermsAlert(state);
+    const buttons = document.querySelectorAll("button#terms-toggle");
+    buttons.forEach((button) => {
+      button.addEventListener("click", handleClick);
+    });
+  }
+
+  initTermsToggle();
+  document.addEventListener("astro:after-swap", initTermsToggle);
+</script>
