@@ -23,7 +23,7 @@
   }
 
   hr {
-    grid-column: popout;
+    grid-column: wide;
     --flow-space: var(--hr-space);
     & + * {
       --flow-space: var(--hr-space);
