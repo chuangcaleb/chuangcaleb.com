@@ -1,4 +1,4 @@
-:where(.prose) {
+.prose {
   container-type: inline-size;
   width: 100%;
 
