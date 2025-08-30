@@ -4,12 +4,11 @@ import NoteListItems from "~/components/block/note/NoteListItems.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
-import { getAllNotes, getNoteEntry } from "~/utils/note";
+import { getAllNotes } from "~/utils/note";
+import { pillVariants } from "~/utils/pill-variants";
 import Featured from "./_components/Featured.astro";
 import { Content as GardenIntroContent } from "./_components/garden-intro.mdx";
 import Topics from "./_components/Topics.astro";
-import NoteLink from "~/components/block/NoteLink.astro";
-import { pillVariants } from "~/utils/pill-variants";
 
 const publicNotes = await getAllNotes();
 
