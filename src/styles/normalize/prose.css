@@ -62,6 +62,7 @@
 .style-code,
 :where(code, kbd, samp, pre) {
   font-family: var(--font-mono);
+  font-size: 90%;
 }
 
 .style-code,
@@ -73,7 +74,8 @@
 :where(:not(pre) > code) {
   background-color: var(--bg2);
   border-radius: var(--radius-2);
-  padding: var(--size-ch-2) var(--size-ch-3);
+  padding: var(--size-ch-1) var(--size-ch-2);
+  vertical-align: text-top;
   writing-mode: lr;
 }
 
@@ -88,12 +90,6 @@
   background-color: var(--bg2);
   border-radius: var(--radius-2);
   overflow: auto;
-}
-
-:where(code) {
-  /* font-size: var(--step--1); */
-  /* text-wrap: wrap; */
-  width: 100%;
 }
 
 b,

@@ -74,7 +74,7 @@
     @media (width < 90ch) {
       grid-column: full;
     }
-    * {
+    & > * {
       grid-column: content;
     }
     /* consecutive pre's get joined */
