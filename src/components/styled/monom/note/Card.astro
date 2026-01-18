@@ -39,5 +39,8 @@ const { as: Tag, class: className, variant, ...props } = Astro.props;
       border-color: var(--ui3);
       background-color: var(--bg3);
     }
+    &:has(.published) {
+      margin-block-start: calc(var(--flow-space) * 1.35);
+    }
   }
 </style>

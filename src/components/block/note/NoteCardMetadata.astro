@@ -27,7 +27,6 @@ const shouldShowModified = modified && !emojip;
 const publishedTime = published && formatDisplayDate(published);
 ---
 
-{description && <span class="description">{description}</span>}
 {
   publishedTime && (
     <span class="published">
@@ -42,6 +41,7 @@ const publishedTime = published && formatDisplayDate(published);
     </span>
   )
 }
+{description && <span class="description">{description}</span>}
 
 <span class="flex-row wrap f-gap-2xs">
   {emojip && `${down?.length} NOTES`}
@@ -72,7 +72,8 @@ const publishedTime = published && formatDisplayDate(published);
   }
   .published {
     position: absolute;
-    top: calc(var(--space-m) * -1);
+    margin: 0;
+    top: calc(var(--space-2xs) * -1);
     left: calc(var(--space-s) + 0.1em);
     font-weight: var(--fw-6);
     background-color: var(--bg1);
