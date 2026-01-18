@@ -28,7 +28,6 @@ const publishedTime = published && formatDisplayDate(published);
 ---
 
 {description && <span class="description">{description}</span>}
-<div class="spacer" aria-hidden></div>
 {
   publishedTime && (
     <span class="published">
@@ -73,7 +72,7 @@ const publishedTime = published && formatDisplayDate(published);
   }
   .published {
     position: absolute;
-    top: calc(var(--size-ch-4) * -1);
+    top: calc(var(--space-m) * -1);
     left: calc(var(--space-s) + 0.1em);
     font-weight: var(--fw-6);
     background-color: var(--bg1);

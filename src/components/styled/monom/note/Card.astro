@@ -7,7 +7,7 @@ const { as: Tag, class: className, variant, ...props } = Astro.props;
 ---
 
 <Tag
-  class:list={["unstyled-hover-link flow-xs border", variant, className]}
+  class:list={["unstyled-hover-link flow-md border", variant, className]}
   {...props}
 >
   <slot />
@@ -25,12 +25,10 @@ const { as: Tag, class: className, variant, ...props } = Astro.props;
     position: relative;
     height: 100%;
     padding: var(--space-m);
-    padding-bottom: var(--space-s);
     max-width: var(--size-content-2);
 
     container-type: inline-size;
 
-    /* background-color: var(--bg1); */
     --color-underline: transparent;
     &:is(a):hover {
       --color: var(--ax1);
@@ -40,7 +38,6 @@ const { as: Tag, class: className, variant, ...props } = Astro.props;
     &.active {
       border-color: var(--ui3);
       background-color: var(--bg3);
-      /* opacity: 0.8; */
     }
   }
 </style>
