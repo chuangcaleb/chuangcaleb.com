@@ -56,7 +56,7 @@ const publishedTime = published && formatDisplayDate(published);
         <Pill variant="fresh" />
       ) : (
         <i>
-          • modified <Duration date={modified} /> ago
+          modified <Duration date={modified} /> ago
         </i>
       ))
   }
@@ -82,5 +82,11 @@ const publishedTime = published && formatDisplayDate(published);
     & > :global(*) + :global(*) {
       margin-left: var(--size-ch-2);
     }
+  }
+
+  i::before {
+    display: inline-block;
+    content: "•";
+    padding-inline-end: var(--size-1);
   }
 </style>
