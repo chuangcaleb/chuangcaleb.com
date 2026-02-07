@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  astro-iconify:
+    hash: 702a5414568e6e0e734c4a6e8e8b320d2ea6a49e5cff1b97f3209767837fca2d
+    path: patches/astro-iconify.patch
+
 importers:
 
   .:
@@ -34,7 +39,7 @@ importers:
         version: 1.2.0
       astro-iconify:
         specifier: ^1.2.0
-        version: 1.2.0
+        version: 1.2.0(patch_hash=702a5414568e6e0e734c4a6e8e8b320d2ea6a49e5cff1b97f3209767837fca2d)
       astro-pagefind:
         specifier: ^1.8.5
         version: 1.8.5(astro@5.16.11(@types/node@24.0.12)(rollup@4.55.1)(sass-embedded@1.80.3)(sass@1.97.2)(sugarss@4.0.1(postcss@8.5.6))(terser@5.39.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
@@ -570,8 +575,8 @@ packages:
     peerDependencies:
       postcss: ^8.4
 
-  '@cyberalien/svg-utils@1.0.11':
-    resolution: {integrity: sha512-qEE9mnyI+avfGT3emKuRs3ucYkITeaV0Xi7VlYN41f+uGnZBecQP3jwz/AF437H9J4Q7qPClHKm4NiTYpNE6hA==}
+  '@cyberalien/svg-utils@1.1.1':
+    resolution: {integrity: sha512-i05Cnpzeezf3eJAXLx7aFirTYYoq5D1XUItp1XsjqkerNJh//6BG9sOYHbiO7v0KYMvJAx3kosrZaRcNlQPdsA==}
 
   '@emmetio/abbreviation@2.3.3':
     resolution: {integrity: sha512-mgv58UrU3rh4YgbE/TzgLQwJ3pFsHHhCLqY20aJq+9comytTXUDNGG/SMtSeMJdkpxgXSXunBGLD8Boka3JyVA==}
@@ -983,8 +988,8 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify/tools@5.0.2':
-    resolution: {integrity: sha512-esoFiH0LYpiqqVAO+RTenh6qqGKf0V8T0T6IG7dFLCw26cjcYGG34UMHjkbuq+MMl23U39FtkzhWZsCDDtOhew==}
+  '@iconify/tools@5.0.3':
+    resolution: {integrity: sha512-W5nbH5fNv20TvU49Al19Foos/ViAnmppbCNV9ieGl6/dRMDRzxeFol6peXX/NAgaOytQwZZxTTJRq/Kxd4eWsA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3242,6 +3247,7 @@ packages:
 
   glob@10.5.0:
     resolution: {integrity: sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   globals@14.0.0:
@@ -6339,7 +6345,7 @@ snapshots:
     dependencies:
       postcss: 8.5.6
 
-  '@cyberalien/svg-utils@1.0.11':
+  '@cyberalien/svg-utils@1.1.1':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6610,9 +6616,9 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@iconify/tools@5.0.2':
+  '@iconify/tools@5.0.3':
     dependencies:
-      '@cyberalien/svg-utils': 1.0.11
+      '@cyberalien/svg-utils': 1.1.1
       '@iconify/types': 2.0.0
       '@iconify/utils': 3.1.0
       fflate: 0.8.2
@@ -7771,9 +7777,9 @@ snapshots:
 
   astro-compressor@1.2.0: {}
 
-  astro-iconify@1.2.0:
+  astro-iconify@1.2.0(patch_hash=702a5414568e6e0e734c4a6e8e8b320d2ea6a49e5cff1b97f3209767837fca2d):
     dependencies:
-      '@iconify/tools': 5.0.2
+      '@iconify/tools': 5.0.3
       node-fetch: 3.3.2
       resolve-pkg: 2.0.0
       svgo: 3.3.2
