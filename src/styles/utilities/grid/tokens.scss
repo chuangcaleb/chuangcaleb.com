@@ -2,8 +2,8 @@
   --gutter: clamp(1rem, 3vw, 3rem);
   --size-popout: var(--size-ch-8);
   --popout-g: minmax(0, var(--size-popout));
-  --wide-g-linew: minmax(0, 22ch);
-  --wide-g-cgrid: minmax(0, 9ch);
-  --content-base: 70ch;
+  --wide-g-linew: minmax(0, 12rem);
+  --wide-g-cgrid: minmax(0, 5rem);
+  --content-base: 50rem;
   --content-w: min(var(--content-base), 100% - var(--gutter) * 2);
 }
