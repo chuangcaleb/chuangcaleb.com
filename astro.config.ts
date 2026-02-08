@@ -7,6 +7,7 @@ import robotsTxt from 'astro-robots-txt';
 import {defineConfig, envField, fontProviders} from 'astro/config';
 // Import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
+import icon from 'astro-icon';
 import og from 'astro-og';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeWrapTables from './lib/rehype/wrap-tables.js';
@@ -20,6 +21,13 @@ const productionIntegrations = [robotsTxt(), sitemap(), compressor()];
 const integrations = [
 	mdx(),
 	react(),
+	icon({
+		include: {
+			lucide: ['*'],
+			mdi: ['*'],
+			'simple-icons': ['obsidian'],
+		},
+	}),
 	...(import.meta.env.DEV ? [og()] : []),
 	...(import.meta.env.PROD ? productionIntegrations : []),
 ];

@@ -36,7 +36,7 @@ const SOCIALS = {
 		label: 'CV / Résumé',
 		href: 'https://rxresu.me/chuangcaleb/frontend-dev',
 		ariaLabel: 'CV / Résumé of Chuang Caleb',
-		icon: 'academicons:cv',
+		icon: 'mdi:email-outline',
 	},
 	EMAIL: {
 		label: 'Email',

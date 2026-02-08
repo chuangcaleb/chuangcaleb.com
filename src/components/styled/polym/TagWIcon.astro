@@ -1,5 +1,5 @@
 ---
-import Icon from "astro-iconify";
+import { Icon } from "astro-icon/components";
 import { type HTMLTag, type Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
@@ -16,15 +16,17 @@ const {
 } = Astro.props;
 ---
 
-<Tag
-  {...props}
-  class:list={[propsClass]}
-  style={{
-    ...props.style,
-    ...(iconColor !== "unset" && { "--svg-color": `var(--${iconColor})` }),
-  }}
->
-  {iconName && <Icon name={iconName} />}
+<Tag {...props} class:list={[propsClass]}>
+  {
+    iconName && (
+      <Icon
+        name={iconName}
+        {...(iconColor !== "unset" && {
+          style: { color: `var(--${iconColor})` },
+        })}
+      />
+    )
+  }
   <slot />
 </Tag>
 
