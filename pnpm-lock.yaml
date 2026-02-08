@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   astro-iconify:
-    hash: 702a5414568e6e0e734c4a6e8e8b320d2ea6a49e5cff1b97f3209767837fca2d
+    hash: c8a50e245227c42458e06bac212b252fa622d5f48f013f4611e1935b0168a0e0
     path: patches/astro-iconify.patch
 
 importers:
@@ -39,7 +39,7 @@ importers:
         version: 1.2.0
       astro-iconify:
         specifier: ^1.2.0
-        version: 1.2.0(patch_hash=702a5414568e6e0e734c4a6e8e8b320d2ea6a49e5cff1b97f3209767837fca2d)
+        version: 1.2.0(patch_hash=c8a50e245227c42458e06bac212b252fa622d5f48f013f4611e1935b0168a0e0)
       astro-pagefind:
         specifier: ^1.8.5
         version: 1.8.5(astro@5.16.11(@types/node@24.0.12)(rollup@4.55.1)(sass-embedded@1.80.3)(sass@1.97.2)(sugarss@4.0.1(postcss@8.5.6))(terser@5.39.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
@@ -7781,7 +7781,7 @@ snapshots:
 
   astro-compressor@1.2.0: {}
 
-  astro-iconify@1.2.0(patch_hash=702a5414568e6e0e734c4a6e8e8b320d2ea6a49e5cff1b97f3209767837fca2d):
+  astro-iconify@1.2.0(patch_hash=c8a50e245227c42458e06bac212b252fa622d5f48f013f4611e1935b0168a0e0):
     dependencies:
       '@iconify/tools': 5.0.3
       node-fetch: 3.3.2
