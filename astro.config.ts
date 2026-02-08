@@ -82,6 +82,22 @@ export default defineConfig({
 					'monospace',
 				],
 			},
+			{
+				provider: fontProviders.google(),
+				name: 'Asap',
+				cssVariable: '--font-body',
+				weights: [400, 600],
+				fallbacks: [
+					'-apple-system',
+					'BlinkMacSystemFont',
+					'Inter',
+					'IBM Plex Sans',
+					'Segoe UI',
+					'Helvetica',
+					'Arial',
+					'sans-serif',
+				],
+			},
 		],
 	},
 	image: {
