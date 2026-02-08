@@ -4,6 +4,6 @@
   --popout-g: minmax(0, var(--size-popout));
   --wide-g-linew: minmax(0, 12rem);
   --wide-g-cgrid: minmax(0, 5rem);
-  --content-base: 50rem;
+  --content-base: 46rem;
   --content-w: min(var(--content-base), 100% - var(--gutter) * 2);
 }
