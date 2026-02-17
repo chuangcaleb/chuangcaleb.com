@@ -21,8 +21,14 @@ jobs:
         id: check-pr
         run: |
           # Check if there's already an open PR from staging to main
-          PR_COUNT=$(gh pr list --base main --head staging --state open --json number --jq 'length')
+          PR_LIST=$(gh pr list --base main --head staging --state open --json number)
+          PR_COUNT=$(echo "$PR_LIST" | jq 'length')
           echo "pr_count=$PR_COUNT" >> $GITHUB_OUTPUT
+          
+          if [ "$PR_COUNT" != "0" ]; then
+            PR_NUMBER=$(echo "$PR_LIST" | jq -r '.[0].number')
+            echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -49,13 +55,10 @@ jobs:
       - name: Create Pull Request
         if: steps.check-pr.outputs.pr_count == '0'
         run: |
-          gh pr create \
-            --base main \
-            --head staging \
-            --title "🚀 Deploy updates from staging to main" \
-            --body "## Staging to Main Deployment
+          PR_BODY=$(cat <<'EOF_BODY'
+          ## Staging to Main Deployment
 
-          This PR contains ${{ steps.commits.outputs.commit_count }} update(s) from the \`staging\` branch, ready for deployment to \`main\`.
+          This PR contains ${{ steps.commits.outputs.commit_count }} update(s) from the `staging` branch, ready for deployment to `main`.
 
           ### Recent Changes
           ${{ steps.commits.outputs.commits }}
@@ -68,10 +71,18 @@ jobs:
           
           ### Merging
           This PR should be manually reviewed and merged when ready to deploy to production.
-          After merging, \`main\` will be in sync with \`staging\`.
+          After merging, `main` will be in sync with `staging`.
           
           ---
-          *This PR was automatically created by the staging-to-main workflow.*"
+          *This PR was automatically created by the staging-to-main workflow.*
+          EOF_BODY
+          )
+          
+          gh pr create \
+            --base main \
+            --head staging \
+            --title "🚀 Deploy updates from staging to main" \
+            --body "$PR_BODY"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -79,12 +90,10 @@ jobs:
         if: steps.check-pr.outputs.pr_count != '0'
         run: |
           # Update the existing PR with a comment about new changes
-          PR_NUMBER=$(gh pr list --base main --head staging --state open --json number --jq '.[0].number')
-          
           COMMITS=$(git log origin/main..origin/staging --pretty=format:"- %s (%h)" --no-merges | head -10)
           COMMIT_COUNT=$(git rev-list --count origin/main..origin/staging)
           
-          gh pr comment "$PR_NUMBER" --body "🔄 **New updates pushed to staging**
+          gh pr comment "${{ steps.check-pr.outputs.pr_number }}" --body "🔄 **New updates pushed to staging**
           
           The staging branch has been updated with new changes.
           

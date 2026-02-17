@@ -42,24 +42,12 @@ jobs:
           - [ ] Check the changelog for breaking changes
           - [ ] Review the migration guide if available
           - [ ] Consider testing locally before merging
-          - [ ] After merging to \`staging\`, a PR to \`main\` will be auto-created for final review"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Comment on CI failures
-        # If CI fails, provide guidance
-        if: failure()
-        run: |
-          gh pr comment "$PR_URL" --body "❌ **CI Validation Failed**
+          - [ ] After merging to \`staging\`, a PR to \`main\` will be auto-created for final review
           
-          The dependency update could not be auto-merged due to CI failures.
-          
-          **Next steps:**
-          1. Review the CI logs above
-          2. Check if the failure is related to the dependency update
-          3. If needed, manually fix the issues and push to this PR
-          4. Once CI passes, auto-merge will proceed (for minor/patch) or manual merge required (for major)"
+          **If CI fails:**
+          - Review the CI logs to determine if the failure is related to this update
+          - Use \`@dependabot recreate\` to recreate the PR if needed
+          - Or manually fix issues and push to this branch"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
