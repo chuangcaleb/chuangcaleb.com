@@ -9,6 +9,8 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "monthly"
+    # Automatically merge minor and patch updates after CI passes
+    open-pull-requests-limit: 5
     groups:
       nonmajor:
         patterns:
@@ -16,3 +18,10 @@ updates:
         update-types:
           - "minor"
           - "patch"
+
+  # Keep GitHub Actions up to date
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 3
