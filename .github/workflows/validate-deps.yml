@@ -1,0 +1,61 @@
+name: Validate Dependencies
+
+on:
+  pull_request:
+    branches:
+      - staging
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  # precheck:
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     has_deps_changed: ${{ steps.detect.outputs.has_deps_changed }}
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Detect dependency changes
+  #       id: detect
+  #       uses: actions/github-script@v6
+  #       with:
+  #         script: |
+  #           const depFiles = ['pnpm-lock.yaml', 'package.json'];
+  #           const pr = context.payload.pull_request;
+  #           const files = await github.paginate(github.rest.pulls.listFiles, { owner: context.repo.owner, repo: context.repo.repo, pull_number: pr.number });
+  #           const filenames = files.map(f => f.filename);
+  #           const hasDeps = filenames.some(f => depFiles.some(d => f === d || f.endsWith('/' + d)));
+  #           core.setOutput('has_deps_changed', hasDeps ? 'true' : 'false');
+  #           core.setOutput('changed_files', filenames.join(','));
+
+  validate-deps:
+    # needs: [precheck]
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    # if: github.actor == 'dependabot[bot]' && needs.precheck.outputs.has_deps_changed == 'true'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate dependencies
+        run: |
+          echo "Dependency files changed in PR. Run your validation steps here."

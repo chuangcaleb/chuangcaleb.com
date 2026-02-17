@@ -5,14 +5,14 @@ import {pipeline} from 'node:stream/promises';
 import {type drive_v3, google} from 'googleapis';
 import dotenv from 'dotenv';
 import fs from 'fs-extra';
-import jwt from '../jwt.js';
+import {auth} from '../jwt.js';
 
 dotenv.config();
 
 type DriveFile = drive_v3.Schema$File;
 
 // initialize + authorize drive client
-const drive = google.drive({version: 'v3', auth: jwt});
+const drive: drive_v3.Drive = google.drive({version: 'v3', auth});
 
 // get root id
 const rootId = process.env.GOOGLE_DRIVE_CONTENT_FOLDER_ID;

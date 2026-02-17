@@ -24,7 +24,7 @@ jobs:
           PR_LIST=$(gh pr list --base main --head staging --state open --json number)
           PR_COUNT=$(echo "$PR_LIST" | jq 'length')
           echo "pr_count=$PR_COUNT" >> $GITHUB_OUTPUT
-          
+
           if [ "$PR_COUNT" != "0" ]; then
             PR_NUMBER=$(echo "$PR_LIST" | jq -r '.[0].number')
             echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
@@ -38,18 +38,18 @@ jobs:
         run: |
           # Get commits that are in staging but not in main
           COMMITS=$(git log origin/main..origin/staging --pretty=format:"- %s (%h)" --no-merges | head -20)
-          
+
           # If there are more than 20 commits, add a note
           COMMIT_COUNT=$(git rev-list --count origin/main..origin/staging)
           if [ "$COMMIT_COUNT" -gt 20 ]; then
             COMMITS="$COMMITS"$'\n'"... and $((COMMIT_COUNT - 20)) more commits"
           fi
-          
+
           # Escape for GitHub output
           echo "commits<<EOF" >> $GITHUB_OUTPUT
           echo "$COMMITS" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-          
+
           echo "commit_count=$COMMIT_COUNT" >> $GITHUB_OUTPUT
 
       - name: Create Pull Request
@@ -68,16 +68,16 @@ jobs:
           - [ ] Verify CI checks pass
           - [ ] Check for any breaking changes or major updates
           - [ ] Ensure all changes are production-ready
-          
+
           ### Merging
           This PR should be manually reviewed and merged when ready to deploy to production.
           After merging, `main` will be in sync with `staging`.
-          
+
           ---
           *This PR was automatically created by the staging-to-main workflow.*
           EOF_BODY
           )
-          
+
           gh pr create \
             --base main \
             --head staging \
@@ -86,20 +86,35 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update existing PR
+      - name: Update PR description with new commits
         if: steps.check-pr.outputs.pr_count != '0'
         run: |
-          # Update the existing PR with a comment about new changes
+          # Get the latest commits
           COMMITS=$(git log origin/main..origin/staging --pretty=format:"- %s (%h)" --no-merges | head -10)
           COMMIT_COUNT=$(git rev-list --count origin/main..origin/staging)
-          
-          gh pr comment "${{ steps.check-pr.outputs.pr_number }}" --body "🔄 **New updates pushed to staging**
-          
-          The staging branch has been updated with new changes.
-          
-          **Recent commits (showing latest 10 of $COMMIT_COUNT total):**
-          $COMMITS
-          
-          Please review the updated changes before merging."
+
+          # Fetch the current PR body
+          PR_BODY=$(gh pr view "${{ steps.check-pr.outputs.pr_number }}" --json body -q ".body")
+
+          # Define the section markers
+          START_MARKER="<!-- STAGING-TO-MAIN-RECENT-COMMITS-START -->"
+          END_MARKER="<!-- STAGING-TO-MAIN-RECENT-COMMITS-END -->"
+
+          # Prepare the new section content
+          NEW_SECTION="$START_MARKER\n\n🔄 **New updates pushed to staging**\n\nThe staging branch has been updated with new changes.\n\n**Recent commits (showing latest 10 of $COMMIT_COUNT total):**\n$COMMITS\n\nPlease review the updated changes before merging.\n\n$END_MARKER"
+
+          # If the section exists, replace it; otherwise, append it
+          if echo "$PR_BODY" | grep -q "$START_MARKER"; then
+            # Replace the section between the markers
+            UPDATED_BODY=$(echo "$PR_BODY" | awk -v start="$START_MARKER" -v end="$END_MARKER" -v new="$NEW_SECTION" '
+              BEGIN{found=0}
+              {if($0~start){found=1; print new; next} if($0~end){found=0; next} if(!found)print $0}
+            ')
+          else
+            UPDATED_BODY="$PR_BODY\n\n$NEW_SECTION"
+          fi
+
+          # Update the PR body
+          gh pr edit "${{ steps.check-pr.outputs.pr_number }}" --body "$UPDATED_BODY"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
