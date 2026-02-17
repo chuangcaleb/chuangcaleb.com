@@ -47,15 +47,15 @@ jobs:
           # Check if there are uncommitted changes after autofix
           # Autofix may have made changes that need to be committed
           
-          # Get the list of changed files (both staged and unstaged)
-          CHANGED_FILES=$(git diff --name-only HEAD && git diff --name-only --staged)
+          # Get the list of changed files (both staged and unstaged, deduplicated)
+          CHANGED_FILES=$(git diff --name-only HEAD | sort -u)
           
           if [ -z "$CHANGED_FILES" ]; then
             echo "substantive_changes=false" >> $GITHUB_OUTPUT
             echo "No changes detected after autofix"
           else
-            # Filter out package version files
-            SUBSTANTIVE_CHANGES=$(echo "$CHANGED_FILES" | grep -v -E '^(package\.json|package-lock\.json|pnpm-lock\.yaml|yarn\.lock)$' || true)
+            # Filter out package version files (including in subdirectories for monorepo support)
+            SUBSTANTIVE_CHANGES=$(echo "$CHANGED_FILES" | grep -v -E '(^|/)package\.json$|(^|/)package-lock\.json$|(^|/)pnpm-lock\.yaml$|(^|/)yarn\.lock$' || true)
             
             if [ -z "$SUBSTANTIVE_CHANGES" ]; then
               echo "substantive_changes=false" >> $GITHUB_OUTPUT
@@ -79,7 +79,8 @@ jobs:
         if: |
           (steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
           steps.metadata.outputs.update-type == 'version-update:semver-minor') &&
-          (steps.build.outcome == 'success' || steps.check-changes.outputs.substantive_changes == 'false')
+          (steps.build.outcome == 'success' || 
+           (steps.build.outcome == 'failure' && steps.check-changes.outputs.substantive_changes == 'false'))
         run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
