@@ -58,8 +58,12 @@ jobs:
               core.setOutput('should_run', prs.length === 0 ? 'true' : 'false');
             }
 
-            const hasDeps = filenames.some(f => depFiles.some(d => f === d || f.endsWith('/' + d)));
-            const hasSource = filenames.some(f => srcPattern.test(f));
+            const depsChanges = filenames.filter(f => depFiles.some(d => f === d || f.endsWith('/' + d)));
+            const sourceChanges = filenames.filter(f => srcPattern.test(f));
+            console.log('Dependency changes:', depsChanges);
+            console.log('Source changes:', sourceChanges);
+            const hasDeps = depsChanges.length > 0;
+            const hasSource = sourceChanges.length > 0;
             core.setOutput('has_deps_changed', hasDeps ? 'true' : 'false');
             core.setOutput('has_source_changed', hasSource ? 'true' : 'false');
             core.setOutput('changed_files', filenames.join(','));
