@@ -1,7 +1,7 @@
 import process from 'node:process';
 import dotenv from 'dotenv';
 import {GoogleSpreadsheet} from 'google-spreadsheet';
-import jwt from '../jwt.js';
+import {auth} from '../jwt.js';
 import type {GuestPost} from './types.js';
 
 dotenv.config();
@@ -12,7 +12,7 @@ export async function getGuestbookPosts() {
 		throw new Error('Missing GUESTBOOK_GOOGLE_SHEET_ID in .env');
 	}
 
-	const document = new GoogleSpreadsheet(id, jwt);
+	const document = new GoogleSpreadsheet(id, auth);
 
 	await document.loadInfo();
 	const sheet = document.sheetsByIndex[0];

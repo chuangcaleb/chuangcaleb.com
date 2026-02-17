@@ -4,6 +4,7 @@
 
 - Follow XO + Prettier defaults; lint config in [xo.config.ts](xo.config.ts) and TypeScript alias in [tsconfig.json](tsconfig.json).
 - Prefer Astro component patterns used in layout and blocks, e.g. [src/components/layout/Base.astro](src/components/layout/Base.astro).
+- Prefer named exports over default exports
 
 ## Architecture
 
