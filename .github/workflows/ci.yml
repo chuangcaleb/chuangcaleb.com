@@ -8,13 +8,109 @@ on:
   push:
     branches:
       - main
-
 permissions:
   contents: read
+  pull-requests: read
 
 jobs:
-  validate:
+  precheck:
     runs-on: ubuntu-latest
+    outputs:
+      has_deps_changed: ${{ steps.detect.outputs.has_deps_changed }}
+      has_source_changed: ${{ steps.detect.outputs.has_source_changed }}
+      should_run: ${{ steps.detect.outputs.should_run }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed files
+        id: detect
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const depFiles = ['pnpm-lock.yaml', 'package.json'];
+            const srcPattern = /\.(ts|tsx|js|jsx|mjs|cjs|astro|css|scss|mdx)$/i;
+            let filenames = [];
+
+            if (github.context.eventName === 'pull_request') {
+              const pr = github.context.payload.pull_request;
+              const files = await github.paginate(github.rest.pulls.listFiles, { owner: context.repo.owner, repo: context.repo.repo, pull_number: pr.number });
+              filenames = files.map(f => f.filename);
+              // when running on a PR, we always want to run (should_run=true)
+              core.setOutput('should_run', 'true');
+            } else {
+              const before = process.env.GITHUB_EVENT_BEFORE || github.context.payload.before;
+              const after = github.context.sha;
+              if (before) {
+                const comp = await github.rest.repos.compareCommits({ owner: context.repo.owner, repo: context.repo.repo, base: before, head: after });
+                filenames = (comp.data.files || []).map(f => f.filename);
+              } else {
+                filenames = [];
+              }
+
+              const branch = github.context.ref.replace('refs/heads/', '');
+              const prs = await github.paginate(
+                github.rest.pulls.list,
+                { owner: context.repo.owner, repo: context.repo.repo, state: 'open', head: `${context.repo.owner}:${branch}` }
+              );
+              core.setOutput('should_run', prs.length === 0 ? 'true' : 'false');
+            }
+
+            const hasDeps = filenames.some(f => depFiles.some(d => f === d || f.endsWith('/' + d)));
+            const hasSource = filenames.some(f => srcPattern.test(f));
+            core.setOutput('has_deps_changed', hasDeps ? 'true' : 'false');
+            core.setOutput('has_source_changed', hasSource ? 'true' : 'false');
+            core.setOutput('changed_files', filenames.join(','));
+
+      - name: Check for open PR for pushed branch
+        id: pr_check
+        if: github.event_name == 'push'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const branch = github.context.ref.replace('refs/heads/', '');
+            const prs = await github.paginate(
+              github.rest.pulls.list,
+              { owner: context.repo.owner, repo: context.repo.repo, state: 'open', head: `${context.repo.owner}:${branch}` }
+            );
+            core.setOutput('should_run', prs.length === 0 ? 'true' : 'false');
+
+      - name: Ensure should_run output is set
+        id: ensure
+        run: |
+          if [ "${{ github.event_name }}" != "push" ]; then
+            echo "should_run=true" >> $GITHUB_OUTPUT
+          else
+            # use pr_check output (will be set when step ran)
+            if [ -n "${{ steps.pr_check.outputs.should_run }}" ]; then
+              echo "should_run=${{ steps.pr_check.outputs.should_run }}" >> $GITHUB_OUTPUT
+            else
+              echo "should_run=true" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+  lint:
+    needs: [precheck]
+    runs-on: ubuntu-latest
+    if: (github.event_name == 'pull_request' || (github.event_name == 'push' && needs.precheck.outputs.should_run == 'true')) && needs.precheck.outputs.has_source_changed == 'true'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Run lint (XO)
+        run: pnpm format:check
+
+  validate:
+    needs: [precheck]
+    runs-on: ubuntu-latest
+    if: (github.event_name == 'pull_request' || (github.event_name == 'push' && needs.precheck.outputs.should_run == 'true')) && needs.precheck.outputs.has_deps_changed == 'true'
     steps:
       - uses: actions/checkout@v4
 
