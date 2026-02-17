@@ -14,6 +14,59 @@ jobs:
     # Only run on Dependabot PRs targeting staging branch
     if: github.actor == 'dependabot[bot]' && github.base_ref == 'staging'
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        id: build
+        continue-on-error: true
+        run: pnpm build
+
+      - name: Run Copilot Autofix
+        if: steps.build.outcome == 'failure'
+        uses: github/copilot-autofix-action@v1
+
+      - name: Check for substantive changes
+        id: check-changes
+        if: steps.build.outcome == 'failure'
+        run: |
+          # Check if there are uncommitted changes after autofix
+          # Autofix may have made changes that need to be committed
+          
+          # Get the list of changed files (both staged and unstaged, deduplicated)
+          CHANGED_FILES=$(git diff --name-only HEAD | sort -u)
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "substantive_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected after autofix"
+          else
+            # Filter out package version files (including in subdirectories for monorepo support)
+            SUBSTANTIVE_CHANGES=$(echo "$CHANGED_FILES" | grep -v -E '(^|/)package\.json$|(^|/)package-lock\.json$|(^|/)pnpm-lock\.yaml$|(^|/)yarn\.lock$' || true)
+            
+            if [ -z "$SUBSTANTIVE_CHANGES" ]; then
+              echo "substantive_changes=false" >> $GITHUB_OUTPUT
+              echo "No substantive changes detected - only package version bumps"
+            else
+              echo "substantive_changes=true" >> $GITHUB_OUTPUT
+              echo "Substantive changes detected:"
+              echo "$SUBSTANTIVE_CHANGES"
+            fi
+          fi
+
       - name: Dependabot metadata
         id: metadata
         uses: dependabot/fetch-metadata@v2
@@ -22,10 +75,36 @@ jobs:
 
       - name: Enable auto-merge for minor and patch updates
         # Auto-merge for patch and minor updates only to staging branch
+        # Skip auto-merge if build failed and substantive changes were made by autofix
         if: |
-          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
-          steps.metadata.outputs.update-type == 'version-update:semver-minor'
+          (steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-minor') &&
+          (steps.build.outcome == 'success' || 
+           (steps.build.outcome == 'failure' && steps.check-changes.outputs.substantive_changes == 'false'))
         run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment on autofix with substantive changes
+        # Leave a comment when autofix made substantive changes requiring manual review
+        if: |
+          steps.build.outcome == 'failure' &&
+          steps.check-changes.outputs.substantive_changes == 'true' &&
+          (steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-minor')
+        run: |
+          gh pr comment "$PR_URL" --body "🔧 **Copilot Autofix Applied - Manual Review Required**
+          
+          The build failed for this dependency update and Copilot Autofix has made changes beyond package version bumps.
+          
+          **Action needed:**
+          - Review the autofix changes carefully
+          - Verify the fixes are correct and safe
+          - Test locally if needed
+          - Manually merge when satisfied
+          
+          This PR will **not** be auto-merged due to the substantive code changes."
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -46,6 +125,7 @@ jobs:
           
           **If CI fails:**
           - Review the CI logs to determine if the failure is related to this update
+          - Copilot Autofix will run automatically if the build fails
           - Use \`@dependabot recreate\` to recreate the PR if needed
           - Or manually fix issues and push to this branch"
         env:
