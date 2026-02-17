@@ -2,38 +2,19 @@ name: CI
 
 on:
   pull_request:
-  push:
     branches:
       - main
       - staging
+  push:
+    branches:
+      - main
 
 permissions:
   contents: read
-  pull-requests: read
 
 jobs:
-  precheck:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-    outputs:
-      should_run: ${{ steps.pr_check.outputs.should_run }}
-    steps:
-      - name: Check for open PR for pushed branch
-        id: pr_check
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const branch = github.context.ref.replace('refs/heads/', '');
-            const prs = await github.paginate(
-              github.rest.pulls.list,
-              { owner: context.repo.owner, repo: context.repo.repo, state: 'open', head: `${context.repo.owner}:${branch}` }
-            );
-            core.setOutput('should_run', prs.length === 0 ? 'true' : 'false');
-
   validate:
-    needs: [precheck]
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' || (github.event_name == 'push' && needs.precheck.outputs.should_run == 'true')
     steps:
       - uses: actions/checkout@v4
 
