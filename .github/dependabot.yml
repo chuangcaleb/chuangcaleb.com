@@ -9,6 +9,8 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "monthly"
+    # Target staging branch for all dependency updates
+    target-branch: "staging"
     # Automatically merge minor and patch updates after CI passes
     open-pull-requests-limit: 5
     groups:
@@ -24,4 +26,6 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    # Target staging branch for GitHub Actions updates
+    target-branch: "staging"
     open-pull-requests-limit: 3
