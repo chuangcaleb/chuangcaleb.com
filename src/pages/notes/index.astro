@@ -18,7 +18,7 @@ const publicNotes = await getAllNotes();
 
 const recentlyPublished = publicNotes
   .filter(
-    (n): n is SuperNote & { data: { published: Date } } => !!n.data.published
+    (n): n is SuperNote & { data: { published: Date } } => !!n.data.published,
   )
   .sort((a, b) => b.data?.published?.getTime() - a.data.published.getTime())
   .slice(0, 5);
@@ -26,7 +26,7 @@ const recentlyPublished = publicNotes
 const recentlyModified = publicNotes
   .filter(
     (n): n is SuperNote & { data: { modified: Date } } =>
-      !!n.data.modified && !n.data.emojip
+      !!n.data.modified && !n.data.emojip,
   )
   .sort((a, b) => b.data?.modified?.getTime() - a.data.modified.getTime())
   .slice(0, 5); // TODO: exclude from recentlyPublished list
@@ -70,7 +70,7 @@ const startHereNotes = [
         <GardenIntroContent />
       </div>
       <div class="flow-lg flom-lg start-here-section" style={{ gridArea: "s" }}>
-        <h2 class="start-here-title">📍 Start Here</h2>
+        <h2 class="start-here-title">📍 Why not call it a blog?</h2>
         <ul class="flow">
           <NoteListItems references={startHereNotes} />
         </ul>
