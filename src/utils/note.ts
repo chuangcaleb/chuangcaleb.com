@@ -13,7 +13,7 @@ function gnm(entry: Note): SuperNote | undefined {
 	if (!entry) return undefined;
 	return {
 		...entry,
-		name: entry.data.title,
+		name: getNoteName(entry.filePath),
 		route: gnr(entry.id),
 	};
 }
