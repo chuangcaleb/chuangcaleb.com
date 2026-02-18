@@ -25,7 +25,7 @@ const { as: Tag, class: className, variant, ...props } = Astro.props;
     position: relative;
     height: 100%;
     padding: var(--space-m);
-    /* max-width: var(--size-content-2); */
+    padding-block: var(--space-l);
 
     container-type: inline-size;
 
@@ -40,7 +40,7 @@ const { as: Tag, class: className, variant, ...props } = Astro.props;
       background-color: var(--bg3);
     }
     &:has(.published) {
-      margin-block-start: calc(var(--flow-space) * 1.35);
+      /* margin-block-start: calc(var(--flow-space) * 1.35); */
     }
   }
 </style>

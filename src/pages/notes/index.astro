@@ -12,10 +12,6 @@ import Topics from "./_components/Topics.astro";
 
 const publicNotes = await getAllNotes();
 
-// const leafNotes = publicNotes
-//   .filter((n) => !n.data.emojip)
-//   .sort((a, b) => (a.body && b.body && a.body.length < b.body.length ? 1 : -1));
-
 const recentlyPublished = publicNotes
   .filter(
     (n): n is SuperNote & { data: { published: Date } } => !!n.data.published,
@@ -29,7 +25,7 @@ const recentlyModified = publicNotes
       !!n.data.modified && !n.data.emojip,
   )
   .sort((a, b) => b.data?.modified?.getTime() - a.data.modified.getTime())
-  .slice(0, 5); // TODO: exclude from recentlyPublished list
+  .slice(0, 5);
 
 const topLevelTopics = publicNotes
   .filter((n) => n.data.emojip && n.data.up?.length === 0)
@@ -84,20 +80,18 @@ const startHereNotes = [
       <h2>📂 Top-Level Topic Notes</h2>
       <Topics topics={topLevelTopics} />
     </section>
-    <div class="recents region">
-      <section class="prose flow-lg">
-        <h2>{pillVariants.new.emoji} Recently Published</h2>
-        <ol class="flow">
-          <NoteListItems references={recentlyPublished} />
-        </ol>
-      </section>
-      <section class="prose flow-lg">
-        <h2>{pillVariants.fresh.emoji} Recently Modified</h2>
-        <ol class="flow">
-          <NoteListItems references={recentlyModified} />
-        </ol>
-      </section>
-    </div>
+    <section class="prose flow-lg">
+      <h2>{pillVariants.new.emoji} Recently Published</h2>
+      <ol class="">
+        <NoteListItems references={recentlyPublished} />
+      </ol>
+    </section>
+    <section class="prose flow-lg">
+      <h2>{pillVariants.fresh.emoji} Recently Modified</h2>
+      <ol class="">
+        <NoteListItems references={recentlyModified} />
+      </ol>
+    </section>
   </article>
 </BaseMain>
 
@@ -118,15 +112,13 @@ const startHereNotes = [
         "i i i s s" / 1fr 1fr 1fr 1fr 1fr;
       column-gap: var(--space-xl);
     }
-    .start-here-section {
-      /* margin: 0; */
-    }
   }
 
-  .recents {
+  ol {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 30ch), 1fr));
-    row-gap: var(--space-xl);
-    column-gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+    grid-template-rows: repeat(auto-fit, 1fr);
+    row-gap: var(--space-m);
+    column-gap: var(--space-s);
   }
 </style>
