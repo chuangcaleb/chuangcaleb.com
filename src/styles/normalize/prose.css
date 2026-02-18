@@ -62,7 +62,7 @@
 .style-code,
 :where(code, kbd, samp, pre) {
   font-family: var(--font-mono);
-  font-size: 90%;
+  font-size: calc(var(--step-0) * 0.95);
 }
 
 .style-code,

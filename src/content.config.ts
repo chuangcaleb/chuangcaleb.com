@@ -54,6 +54,7 @@ const baseObsidianNoteSchema = z.object({
 	series: z.array(reference('obsidian-note')).optional(),
 	prev: reference('obsidian-note').optional(),
 	next: reference('obsidian-note').optional(),
+	backlinks: z.array(reference('obsidian-note')).optional(),
 });
 
 const obsidianNoteCollection = defineCollection({

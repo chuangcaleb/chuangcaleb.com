@@ -73,7 +73,7 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
               <span class="flex-row f-gap-2xs ws-nowrap">
                 {isWithinDuration(
                   metadata.published,
-                  metaMinDays.newPublished
+                  metaMinDays.newPublished,
                 ) && <Pill variant="new" />}
                 <span class="published">
                   <div class="sr-only">published on </div>
@@ -88,7 +88,7 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
               <span class="flex-row f-gap-2xs ws-nowrap">
                 {isWithinDuration(
                   metadata.modified,
-                  metaMinDays.freshModified
+                  metaMinDays.freshModified,
                 ) && <Pill variant="fresh" />}
                 <span class="modified">
                   last modified

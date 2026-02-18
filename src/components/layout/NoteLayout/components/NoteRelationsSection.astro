@@ -8,11 +8,10 @@ interface Props {
   >;
 }
 
-const { children, parents, type, prev, next } = Astro.props.formattedRelations;
+const { children, parents, type, prev, next, backlinks } =
+  Astro.props.formattedRelations;
 // parents which are also series
-// type SeriesesNotes = Series[]; type Series = SeriesMember[]
 const serieses = parents.filter((note) => Boolean(note.data.series));
-// const regularParents = parents.filter((note) => !note.data.series);
 
 const childrenHeader =
   type === "regular"
@@ -78,9 +77,9 @@ const childrenHeader =
       serieses.map((series) => (
         <>
           <h3 class="text-faded">
-            ↓{" "}
-            {`${series.data.emojip ? series.data.emojip + " " : ""} ${series.name}`}
-            (topic series)
+            {`↓
+            ${series.data.emojip ? series.data.emojip + " " : ""} ${series.name}
+            (topic series)`}
           </h3>
           {series.data.series && (
             <ol class="flow-sm one-col">
@@ -90,13 +89,24 @@ const childrenHeader =
         </>
       ))
   }
+  {/* Backlinks */}
+  {
+    backlinks.length > 0 && (
+      <>
+        <h3 class="text-faded">⇄ Backlinks</h3>
+        <ul class="flow-sm">
+          <NoteListItems references={backlinks} />
+        </ul>
+      </>
+    )
+  }
 </div>
 
 <style>
   h3 {
     text-transform: uppercase;
     font-size: var(--step-0);
-    font-family: var(--font-body);
+    letter-spacing: var(--font-ls-4);
   }
   ol,
   ul {
@@ -111,7 +121,6 @@ const childrenHeader =
     }
     column-gap: var(--space-s);
     row-gap: var(--space-m);
-    /* grid-column: wide; */
     :global(li) {
       --flow-space: 0;
     }

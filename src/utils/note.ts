@@ -4,22 +4,13 @@ import type {Note, NoteReference, SuperNote} from 'lib/utils/types';
 import {gnr} from '~/utils/note-route.ts';
 
 function getNoteName(filepath: string | undefined) {
-	if (!filepath) {
-		return 'UNKNOWN NAME';
-	}
-
-	// TODO: get title from file metadata first
-	const {dir, name} = path.parse(filepath);
-
-	if (name === 'index') {
-		return dir.split('/').at(-1) ?? name;
-	}
-
-	return name;
+	if (!filepath) return 'UNKNOWN NAME';
+	return path.parse(filepath).name;
 }
 
 // get note meta
-function gnm(entry: Note): SuperNote {
+function gnm(entry: Note): SuperNote | undefined {
+	if (!entry) return undefined;
 	return {
 		...entry,
 		name: getNoteName(entry.filePath),
@@ -29,7 +20,9 @@ function gnm(entry: Note): SuperNote {
 
 export async function getAllNotes(): Promise<SuperNote[]> {
 	const notes = await getCollection('obsidian-note');
-	return notes.map((n) => gnm(n));
+	return notes
+		.map((n) => gnm(n))
+		.filter((n): n is SuperNote => n !== undefined);
 }
 
 export async function getNoteEntries(
@@ -37,7 +30,10 @@ export async function getNoteEntries(
 ): Promise<SuperNote[]> {
 	if (!noteChildren) return [];
 	const entries = await getEntries<'obsidian-note'>(noteChildren);
-	return entries.map((n) => gnm(n));
+
+	return entries
+		.map((n) => gnm(n))
+		.filter((n): n is SuperNote => n !== undefined);
 }
 
 export async function getNoteEntry(

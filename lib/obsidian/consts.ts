@@ -1,7 +1,8 @@
 export const EXCLUDE_KEYS = [
-	'down',
-	'tags',
-	'series',
-	'resources',
 	'description',
+	'down',
+	'resources',
+	'series',
+	'tags',
+	'title',
 ];

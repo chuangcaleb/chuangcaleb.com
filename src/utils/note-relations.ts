@@ -2,7 +2,14 @@ import type {NoteMetadata} from 'lib/utils/types';
 import {getNoteEntries} from './note.ts';
 
 export async function formatNoteRelations(metadata: NoteMetadata) {
-	const {down: children = [], up: parents = [], prev, next, series} = metadata;
+	const {
+		down: children = [],
+		up: parents = [],
+		prev,
+		next,
+		series,
+		backlinks = [],
+	} = metadata;
 
 	const parentNotes = await getNoteEntries(parents);
 
@@ -27,5 +34,6 @@ export async function formatNoteRelations(metadata: NoteMetadata) {
 		prev,
 		next,
 		type,
+		backlinks,
 	} as const;
 }
