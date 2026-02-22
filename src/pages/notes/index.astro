@@ -72,21 +72,21 @@ const startHereNotes = [
         </ul>
       </div>
     </header>
-    <section class="flow-lg region">
+    <section class="flow-xl region">
       <h2>✨ Featured</h2>
       <Featured />
     </section>
-    <section class="flow-lg region">
+    <section class="flow-xl region">
       <h2>📂 Top-Level Topic Notes</h2>
       <Topics topics={topLevelTopics} />
     </section>
-    <section class="prose flow-lg">
+    <section class="flow-xl">
       <h2>{pillVariants.new.emoji} Recently Published</h2>
       <ol class="">
         <NoteListItems references={recentlyPublished} />
       </ol>
     </section>
-    <section class="prose flow-lg">
+    <section class="flow-xl">
       <h2>{pillVariants.fresh.emoji} Recently Modified</h2>
       <ol class="">
         <NoteListItems references={recentlyModified} />
