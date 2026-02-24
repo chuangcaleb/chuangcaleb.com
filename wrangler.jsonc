@@ -1,6 +1,6 @@
 {
   "main": "dist/_worker.js/index.js",
-  "name": "chuangcaleb-com",
+  "name": "chuangcaleb",
   "compatibility_date": "2026-02-24",
   "compatibility_flags": [
     "nodejs_compat"
