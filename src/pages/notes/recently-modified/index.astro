@@ -1,0 +1,17 @@
+---
+import BaseMain from "~/components/layout/BaseMain.astro";
+import { getAllNotes } from "~/utils/note";
+import PaginatedSection from "../_components/PaginatedSection.astro";
+import { modifiedMeta } from "./meta";
+
+export const prerender = false;
+const meta = modifiedMeta;
+
+const notes = await getAllNotes();
+const recentlyModified = meta.fn(notes);
+---
+
+<BaseMain {...meta} class="linew region flow-xl">
+  <h2>{meta.heading}</h2>
+  <PaginatedSection notes={recentlyModified} />
+</BaseMain>

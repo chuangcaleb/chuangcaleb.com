@@ -15,12 +15,13 @@
     "build:nosetup": "astro check && astro build",
     "pagefind": "pagefind --site dist --output-subdir _pagefind",
     "pagefind:dev": "pnpm pagefind && cp -r dist/_pagefind public/",
-    "preview:nobuild": "astro preview",
-    "preview:nosetup": "pnpm build:nosetup && astro preview",
-    "preview": "pnpm build && astro preview"
+    "preview:nobuild": "wrangler pages dev ./dist",
+    "preview:nosetup": "pnpm build:nosetup && wrangler pages dev ./dist",
+    "preview": "pnpm build && wrangler pages dev ./dist"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
+    "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.7.0",

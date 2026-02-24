@@ -10,6 +10,7 @@ import {defineConfig, envField, fontProviders} from 'astro/config';
 import icon from 'astro-icon';
 import og from 'astro-og';
 import rehypeExternalLinks from 'rehype-external-links';
+import cloudflare from '@astrojs/cloudflare';
 import rehypeWrapTables from './lib/rehype/wrap-tables.js';
 import remarkWikilinks from './lib/remark/remark-wikilinks.js';
 import {remarkStripH1} from './lib/remark/strip-h1.js';
@@ -65,6 +66,7 @@ export default defineConfig({
 			],
 		],
 	},
+
 	experimental: {
 		fonts: [
 			{
@@ -101,7 +103,6 @@ export default defineConfig({
 		],
 	},
 	image: {
-		// endpoint: ,
 		domains: [process.env.IMAGE_DOMAIN!],
 	},
 	env: {
@@ -124,4 +125,5 @@ export default defineConfig({
 			}),
 		},
 	},
+	adapter: cloudflare(),
 });

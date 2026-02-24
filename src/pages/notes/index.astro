@@ -1,34 +1,18 @@
 ---
-import type { SuperNote } from "lib/utils/types";
 import NoteListItems from "~/components/block/note/NoteListItems.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
 import { getAllNotes } from "~/utils/note";
-import { pillVariants } from "~/utils/pill-variants";
 import Featured from "./_components/Featured.astro";
 import { Content as GardenIntroContent } from "./_components/garden-intro.mdx";
 import Topics from "./_components/Topics.astro";
-import NotesSection from "./_components/NotesSection.astro";
+import { modifiedMeta } from "./recently-modified/meta";
+import { publishedMeta } from "./recently-published/meta";
 
-const publicNotes = await getAllNotes();
+const allNotes = await getAllNotes();
 
-const recentlyPublished = publicNotes
-  .filter(
-    (n): n is SuperNote & { data: { published: Date } } => !!n.data.published,
-  )
-  .sort((a, b) => b.data?.published?.getTime() - a.data.published.getTime())
-  .slice(0, 5);
-
-const recentlyModified = publicNotes
-  .filter(
-    (n): n is SuperNote & { data: { modified: Date } } =>
-      !!n.data.modified && !n.data.emojip,
-  )
-  .sort((a, b) => b.data?.modified?.getTime() - a.data.modified.getTime())
-  .slice(0, 5);
-
-const topLevelTopics = publicNotes
+const topLevelTopics = allNotes
   .filter((n) => n.data.emojip && n.data.up?.length === 0)
   .sort((a, b) => (b.data.featured ?? 0) - (a.data.featured ?? 0));
 
@@ -82,16 +66,16 @@ const startHereNotes = [
       <Topics topics={topLevelTopics} />
     </section>
     <section class="flow-xl">
-      <NotesSection
-        title={`${pillVariants.new.emoji} Recently Published`}
-        references={recentlyPublished}
-      />
+      <h2>{publishedMeta.heading}</h2>
+      <ol class="">
+        <NoteListItems references={publishedMeta.fn(allNotes).slice(0, 5)} />
+      </ol>
     </section>
     <section class="flow-xl">
-      <NotesSection
-        title={`${pillVariants.fresh.emoji} Recently Modified`}
-        references={recentlyModified}
-      />
+      <h2>{modifiedMeta.heading}</h2>
+      <ol class="">
+        <NoteListItems references={modifiedMeta.fn(allNotes).slice(0, 5)} />
+      </ol>
     </section>
   </article>
 </BaseMain>
@@ -113,5 +97,13 @@ const startHereNotes = [
         "i i i s s" / 1fr 1fr 1fr 1fr 1fr;
       column-gap: var(--space-xl);
     }
+  }
+
+  ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+    grid-template-rows: repeat(auto-fit, 1fr);
+    row-gap: var(--space-m);
+    column-gap: var(--space-s);
   }
 </style>
