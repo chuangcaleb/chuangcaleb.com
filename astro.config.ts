@@ -103,7 +103,7 @@ export default defineConfig({
 		],
 	},
 	image: {
-		domains: [process.env.IMAGE_DOMAIN!],
+		domains: [process.env.IMAGE_DOMAIN],
 	},
 	env: {
 		schema: {
@@ -125,5 +125,9 @@ export default defineConfig({
 			}),
 		},
 	},
-	adapter: cloudflare(),
+	adapter: cloudflare({
+		platformProxy: {
+			enabled: true,
+		},
+	}),
 });
