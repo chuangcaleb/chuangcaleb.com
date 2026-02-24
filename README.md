@@ -26,7 +26,7 @@ Check [package.json](./package.json) for specific implementation.
 | `pnpm pagefind`        | Index HTML notes with pagefind (from build `dist` directory)                                |
 | `pnpm pagefind:dev`    | Run pagefind, but copy to public directory (for local dev)                                  |
 | `pnpm setup:external`  | Syncs down external data; alias for `b2:download`                                           |
-| `pnpm astro ...`       | Alias to run CLI commands like `astro add`, `astro preview`                                          |
+| `pnpm astro ...`       | Alias to run CLI commands like `astro add`, `astro preview`                                 |
 
 ![package.json scripts](./docs/package-json-scripts.svg)
 
