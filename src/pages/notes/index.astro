@@ -9,6 +9,7 @@ import { pillVariants } from "~/utils/pill-variants";
 import Featured from "./_components/Featured.astro";
 import { Content as GardenIntroContent } from "./_components/garden-intro.mdx";
 import Topics from "./_components/Topics.astro";
+import NotesSection from "./_components/NotesSection.astro";
 
 const publicNotes = await getAllNotes();
 
@@ -81,16 +82,16 @@ const startHereNotes = [
       <Topics topics={topLevelTopics} />
     </section>
     <section class="flow-xl">
-      <h2>{pillVariants.new.emoji} Recently Published</h2>
-      <ol class="">
-        <NoteListItems references={recentlyPublished} />
-      </ol>
+      <NotesSection
+        title={`${pillVariants.new.emoji} Recently Published`}
+        references={recentlyPublished}
+      />
     </section>
     <section class="flow-xl">
-      <h2>{pillVariants.fresh.emoji} Recently Modified</h2>
-      <ol class="">
-        <NoteListItems references={recentlyModified} />
-      </ol>
+      <NotesSection
+        title={`${pillVariants.fresh.emoji} Recently Modified`}
+        references={recentlyModified}
+      />
     </section>
   </article>
 </BaseMain>
@@ -112,13 +113,5 @@ const startHereNotes = [
         "i i i s s" / 1fr 1fr 1fr 1fr 1fr;
       column-gap: var(--space-xl);
     }
-  }
-
-  ol {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
-    grid-template-rows: repeat(auto-fit, 1fr);
-    row-gap: var(--space-m);
-    column-gap: var(--space-s);
   }
 </style>
