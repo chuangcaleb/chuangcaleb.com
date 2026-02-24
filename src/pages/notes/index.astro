@@ -66,15 +66,27 @@ const startHereNotes = [
       <Topics topics={topLevelTopics} />
     </section>
     <section class="flow-xl">
-      <h2>{publishedMeta.heading}</h2>
+      <div class="flow-lg">
+        <h2>{publishedMeta.heading}</h2>
+        <p>
+          {publishedMeta.subtitle}
+          <a href="/notes/recently-published">[view all]</a>
+        </p>
+      </div>
       <ol class="">
-        <NoteListItems references={publishedMeta.fn(allNotes).slice(0, 5)} />
+        <NoteListItems references={publishedMeta.fn(allNotes).slice(0, 6)} />
       </ol>
     </section>
     <section class="flow-xl">
-      <h2>{modifiedMeta.heading}</h2>
+      <div class="flow-lg">
+        <h2>{modifiedMeta.heading}</h2>
+        <p>
+          {modifiedMeta.subtitle}
+          <a href="/notes/recently-modified">[view all]</a>
+        </p>
+      </div>
       <ol class="">
-        <NoteListItems references={modifiedMeta.fn(allNotes).slice(0, 5)} />
+        <NoteListItems references={modifiedMeta.fn(allNotes).slice(0, 6)} />
       </ol>
     </section>
   </article>
