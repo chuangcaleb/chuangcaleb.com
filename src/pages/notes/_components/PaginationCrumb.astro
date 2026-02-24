@@ -1,0 +1,23 @@
+---
+type Props = {
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+};
+const { currentPage, totalPages, totalItems } = Astro.props;
+---
+
+<div class="pagination-info">
+  Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong> ({
+    totalItems
+  } total)
+</div>
+
+<style>
+  .pagination-info {
+    color: var(--text-faded);
+  }
+  strong {
+    color: var(--text-normal);
+  }
+</style>

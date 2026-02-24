@@ -2,6 +2,7 @@
 import type { SuperNote } from "lib/utils/types";
 import NoteListItems from "~/components/block/note/NoteListItems.astro";
 import PaginationControls from "./PaginationControls.astro";
+import PaginationCrumb from "./PaginationCrumb.astro";
 
 const PAGE_SIZE = 12;
 
@@ -21,16 +22,22 @@ const startIndex = (validPage - 1) * PAGE_SIZE;
 const paginatedNotes = allNotes.slice(startIndex, startIndex + PAGE_SIZE);
 ---
 
-<ol class="">
-  <NoteListItems references={paginatedNotes} />
-</ol>
-<PaginationControls
-  currentPage={validPage}
-  totalPages={totalPages}
-  totalItems={allNotes.length}
-  pageSize={PAGE_SIZE}
-  section="published"
-/>
+<section class="flow-lg">
+  <PaginationCrumb
+    currentPage={validPage}
+    totalPages={totalPages}
+    totalItems={allNotes.length}
+  />
+  <ol class="">
+    <NoteListItems references={paginatedNotes} />
+  </ol>
+  <PaginationControls
+    currentPage={validPage}
+    totalPages={totalPages}
+    totalItems={allNotes.length}
+    section="published"
+  />
+</section>
 
 <style>
   ol {

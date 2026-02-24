@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import PaginationCrumb from "./PaginationCrumb.astro";
 
 /**
  * InfiniteScrollPaginator - Pagination controls component
@@ -17,19 +18,12 @@ import { Icon } from "astro-icon/components";
 
 interface Props {
   currentPage: number;
-  pageSize: number;
   section?: string;
   totalItems: number;
   totalPages: number;
 }
 
-const {
-  currentPage,
-  pageSize: _pageSize,
-  section,
-  totalItems,
-  totalPages,
-} = Astro.props;
+const { currentPage, section, totalItems, totalPages } = Astro.props;
 
 const hasNext = currentPage < totalPages;
 const hasPrevious = currentPage > 1;
@@ -68,11 +62,11 @@ function makeHref(page: number) {
   }
 
   {/* Page info */}
-  <div class="pagination-info">
-    Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong> ({
-      totalItems
-    } total)
-  </div>
+  <PaginationCrumb
+    currentPage={currentPage}
+    totalPages={totalPages}
+    totalItems={totalItems}
+  />
 
   {/* Next page link */}
   {
@@ -120,11 +114,5 @@ function makeHref(page: number) {
     gap: var(--space-m);
     justify-content: center;
     padding-block: var(--space-m);
-  }
-  .pagination-info {
-    color: var(--text-faded);
-  }
-  strong {
-    color: var(--text-normal);
   }
 </style>
