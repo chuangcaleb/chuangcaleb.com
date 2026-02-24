@@ -1,5 +1,5 @@
 {
-  "main": "dist/_worker.js/index.js",
+  "main": "functions/index.js",
   "name": "chuangcaleb",
   "compatibility_date": "2026-02-24",
   "compatibility_flags": [
