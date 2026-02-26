@@ -1,0 +1,50 @@
+---
+import type { SuperNote } from "lib/utils/types";
+import NoteListItems from "~/components/block/note/NoteListItems.astro";
+import PaginationControls from "./PaginationControls.astro";
+import PaginationCrumb from "./PaginationCrumb.astro";
+
+const PAGE_SIZE = 12;
+
+type Props = {
+  notes: SuperNote[];
+};
+
+const { notes: allNotes } = Astro.props;
+
+// Get current page from query params
+const page = Math.max(1, Number(Astro.url.searchParams.get("page")) || 1);
+
+// Calculate pagination
+const totalPages = Math.ceil(allNotes.length / PAGE_SIZE);
+const validPage = Math.max(1, Math.min(page, totalPages || 1));
+const startIndex = (validPage - 1) * PAGE_SIZE;
+const paginatedNotes = allNotes.slice(startIndex, startIndex + PAGE_SIZE);
+---
+
+<section class="flow-lg">
+  <PaginationCrumb
+    currentPage={validPage}
+    totalPages={totalPages}
+    totalItems={allNotes.length}
+  />
+  <ol class="">
+    <NoteListItems references={paginatedNotes} />
+  </ol>
+  <PaginationControls
+    currentPage={validPage}
+    totalPages={totalPages}
+    totalItems={allNotes.length}
+    section="published"
+  />
+</section>
+
+<style>
+  ol {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(50ch, 1fr)); */
+    grid-template-rows: repeat(auto-fit, 1fr);
+    row-gap: var(--space-m);
+    column-gap: var(--space-s);
+  }
+</style>

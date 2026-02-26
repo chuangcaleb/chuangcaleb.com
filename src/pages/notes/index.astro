@@ -1,33 +1,18 @@
 ---
-import type { SuperNote } from "lib/utils/types";
 import NoteListItems from "~/components/block/note/NoteListItems.astro";
 import BaseMain from "~/components/layout/BaseMain.astro";
 import TagWIcon from "~/components/styled/polym/TagWIcon.astro";
 import { NAV_LINKS } from "~/data/links";
 import { getAllNotes } from "~/utils/note";
-import { pillVariants } from "~/utils/pill-variants";
 import Featured from "./_components/Featured.astro";
 import { Content as GardenIntroContent } from "./_components/garden-intro.mdx";
 import Topics from "./_components/Topics.astro";
+import { modifiedMeta } from "./recently-modified/meta";
+import { publishedMeta } from "./recently-published/meta";
 
-const publicNotes = await getAllNotes();
+const allNotes = await getAllNotes();
 
-const recentlyPublished = publicNotes
-  .filter(
-    (n): n is SuperNote & { data: { published: Date } } => !!n.data.published,
-  )
-  .sort((a, b) => b.data?.published?.getTime() - a.data.published.getTime())
-  .slice(0, 5);
-
-const recentlyModified = publicNotes
-  .filter(
-    (n): n is SuperNote & { data: { modified: Date } } =>
-      !!n.data.modified && !n.data.emojip,
-  )
-  .sort((a, b) => b.data?.modified?.getTime() - a.data.modified.getTime())
-  .slice(0, 5);
-
-const topLevelTopics = publicNotes
+const topLevelTopics = allNotes
   .filter((n) => n.data.emojip && n.data.up?.length === 0)
   .sort((a, b) => (b.data.featured ?? 0) - (a.data.featured ?? 0));
 
@@ -72,24 +57,36 @@ const startHereNotes = [
         </ul>
       </div>
     </header>
-    <section class="flow-lg region">
+    <section class="flow-xl region">
       <h2>✨ Featured</h2>
       <Featured />
     </section>
-    <section class="flow-lg region">
+    <section class="flow-xl region">
       <h2>📂 Top-Level Topic Notes</h2>
       <Topics topics={topLevelTopics} />
     </section>
-    <section class="prose flow-lg">
-      <h2>{pillVariants.new.emoji} Recently Published</h2>
+    <section class="flow-xl">
+      <div class="flow-lg">
+        <h2>{publishedMeta.heading}</h2>
+        <p>
+          {publishedMeta.subtitle}
+          <!-- <a href="/notes/recently-published">[view all]</a> -->
+        </p>
+      </div>
       <ol class="">
-        <NoteListItems references={recentlyPublished} />
+        <NoteListItems references={publishedMeta.fn(allNotes).slice(0, 6)} />
       </ol>
     </section>
-    <section class="prose flow-lg">
-      <h2>{pillVariants.fresh.emoji} Recently Modified</h2>
+    <section class="flow-xl">
+      <div class="flow-lg">
+        <h2>{modifiedMeta.heading}</h2>
+        <p>
+          {modifiedMeta.subtitle}
+          <!-- <a href="/notes/recently-modified">[view all]</a> -->
+        </p>
+      </div>
       <ol class="">
-        <NoteListItems references={recentlyModified} />
+        <NoteListItems references={modifiedMeta.fn(allNotes).slice(0, 6)} />
       </ol>
     </section>
   </article>

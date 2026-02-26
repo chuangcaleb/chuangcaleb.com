@@ -15,9 +15,9 @@
     "build:nosetup": "astro check && astro build",
     "pagefind": "pagefind --site dist --output-subdir _pagefind",
     "pagefind:dev": "pnpm pagefind && cp -r dist/_pagefind public/",
-    "preview:nobuild": "astro preview",
-    "preview:nosetup": "pnpm build:nosetup && astro preview",
-    "preview": "pnpm build && astro preview"
+    "preview:nobuild": "wrangler pages dev ./dist",
+    "preview:nosetup": "pnpm build:nosetup && wrangler pages dev ./dist",
+    "preview": "pnpm build && wrangler pages dev ./dist"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -50,8 +50,8 @@
     "pagefind": "^1.4.0",
     "postcss-custom-media": "^12.0.0",
     "postcss-preset-env": "^11.1.3",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "rehype-external-links": "^3.0.0",
     "sharp": "^0.34.5",
     "typescript": "^5.9.3",
@@ -74,5 +74,8 @@
     "tsx": "^4.21.0",
     "unist-util-visit": "^5.1.0",
     "xo": "^1.2.3"
+  },
+  "engines": {
+    "node": ">=18.20.8"
   }
 }
