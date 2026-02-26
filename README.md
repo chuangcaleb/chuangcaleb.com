@@ -299,19 +299,3 @@ So we are using next best, file size
 Syncing down necessitates the `backblaze-b2` package from `npm` (instead of `b2` CLI), because it needs to be executed in the `node` environment of the cloud runner during `build`. See [lib/b2/index.mjs](lib/b2/index.mjs) for implementation.
 
 The pre-upload processing script is currently in my private repo, it just doesn't belong anywhere else, it's very customized. I can share it upon request.
-
-## On-Demand Rendering
-
-Wanted to try out [Astro's On-Demand rendering](https://docs.astro.build/en/guides/on-demand-rendering/) for pagination. Added the `@astrojs/cloudflare` adpater.
-
-However on local, we get `[preview] The @astrojs/cloudflare adapter does not support the preview command.`. We need to use the `wrangler` CLI utility, and call `wrangler pages dev ./dist` instead.
-
-On my device, I get `FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory`. To fix this, use the following shell variable.
-
-```shell
-NODE_OPTIONS="--max-old-space-size=6144" pnpm astro check
-# or
-NODE_OPTIONS="--max-old-space-size=6144" pnpm preview
-```
-
-Also this warning: 📣 Remember to rerun 'wrangler types' after you change your wrangler.json file.
