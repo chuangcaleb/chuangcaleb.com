@@ -4,7 +4,7 @@ import { getAllNotes } from "~/utils/note";
 import PaginatedSection from "../_components/pagination/PaginatedSection.astro";
 import { publishedMeta } from "./meta";
 
-export const prerender = false;
+// export const prerender = false;
 const meta = publishedMeta;
 
 const notes = await getAllNotes();
