@@ -31,11 +31,15 @@
   }
 
   blockquote {
-    grid-column-end: popout;
+    grid-column: popout;
+    @media (width < 90ch) {
+      grid-column: full;
+    }
     border-left-width: var(--size-ch-2);
     border-inline-start-color: var(--fg4);
-    padding-block: var(--size-ch-2);
-    padding-inline-start: calc(var(--size-popout) - var(--size-ch-2));
+    padding-block: var(--space-m);
+    padding-inline: calc(var(--size-popout) - var(--size-ch-2));
+    background-color: var(--bg3);
     & {
       font-size: var(--step-0);
     }
