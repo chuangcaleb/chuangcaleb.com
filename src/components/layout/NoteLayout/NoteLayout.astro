@@ -5,18 +5,12 @@ import NoteHeader from "./components/NoteHeader.astro";
 interface Props {
   title: string;
   description?: string;
-  noBottomPadding?: boolean;
 }
 
-const { title, description, noBottomPadding = false } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
-<BaseMain
-  title={title}
-  description={description}
-  data-pagefind-body
-  noBottomPadding={noBottomPadding}
->
+<BaseMain title={title} description={description} data-pagefind-body>
   <slot slot="head" name="head" />
   <slot slot="sheetBody" name="sheetBody" />
 

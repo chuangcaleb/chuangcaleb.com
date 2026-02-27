@@ -19,6 +19,7 @@ import TermsToggle from "./components/TermsToggle.astro";
 import Toc from "./components/toc/Toc.astro";
 import NoteLayout from "./NoteLayout.astro";
 import TermsAlert from "./components/TermsAlert.astro";
+import GardenNav from "./components/GardenNav.astro";
 
 interface Props {
   entry: SuperNote;
@@ -40,11 +41,7 @@ const formattedRelations = await formatNoteRelations(metadata);
 const pagefindWeight = !!metadata.emojip ? 10 : 8;
 ---
 
-<NoteLayout
-  title={entry.name}
-  description={description}
-  noBottomPadding={!!formattedRelations}
->
+<NoteLayout title={entry.name} description={description}>
   <slot slot="header">
     <NoteHeader
       title={title}
@@ -124,16 +121,20 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
 
   {metadata.resources && <FurtherResources resources={metadata.resources} />}
 
-  {
-    formattedRelations && (
-      <>
-        <div class="relations-cont | full region">
+  <div class="relations-cont | full region">
+    <div
+      class="container | linew-wide prose flow-xl"
+      data-pagefind-ignore="all"
+    >
+      {
+        formattedRelations && (
           <NoteRelationsSection formattedRelations={formattedRelations} />
-        </div>
-        <div class="footer-block | full" aria-hidden />
-      </>
-    )
-  }
+        )
+      }
+      <GardenNav />
+    </div>
+  </div>
+  <div class="footer-block | full" aria-hidden></div>
 
   <Fragment slot="sheetBody">
     <h3>{title}</h3>

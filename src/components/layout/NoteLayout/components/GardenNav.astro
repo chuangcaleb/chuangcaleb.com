@@ -1,0 +1,33 @@
+---
+import { modifiedMeta } from "~/pages/notes/modified/meta";
+import { publishedMeta } from "~/pages/notes/published/meta";
+---
+
+<nav aria-label="Digital garden navigation">
+  <ul class="flow-sm">
+    <li>
+      <a href={publishedMeta.link}>{publishedMeta.heading}</a>
+    </li>
+    <li>
+      <a href={modifiedMeta.link}>{modifiedMeta.heading}</a>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  nav {
+    --color-link: var(--text-faded);
+    --color-underline: var(--text-faded);
+
+    @media (width > 600px) {
+      ul {
+        display: flex;
+        gap: var(--space-xl);
+        justify-content: center;
+        li {
+          --flow-space: 0;
+        }
+      }
+    }
+  }
+</style>

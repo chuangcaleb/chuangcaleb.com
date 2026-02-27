@@ -11,12 +11,12 @@ interface Props {
 const { variant, class: propsClass } = Astro.props;
 ---
 
-<nav>
+<nav aria-label="Site navigation">
   <h2 class="sr-only">Site navigation</h2>
   <LinkList
     class={propsClass ?? "flow-sm"}
     links={Object.values(NAV_LINKS).filter((link) =>
-      link.enabled.includes(variant)
+      link.enabled.includes(variant),
     )}
     variant={variant === "sheet" ? undefined : variant}
   />
