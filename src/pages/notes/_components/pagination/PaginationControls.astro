@@ -60,6 +60,7 @@ const { page, section } = Astro.props;
     align-items: center;
     gap: var(--space-2xs);
     text-decoration: none;
+    max-width: fit-content;
     transition:
       background-color 0.2s,
       color 0.2s;
@@ -71,17 +72,19 @@ const { page, section } = Astro.props;
     &[aria-disabled="true"] {
       cursor: not-allowed;
       color: var(--text-muted);
-      /* visibility: hidden; */
     }
   }
 
   .pagination-controls {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-m);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--space-xl);
     justify-content: center;
+
+    margin-inline: auto;
     padding-block: var(--space-m);
+
     font-size: var(--step--1);
+    max-width: fit-content;
   }
 </style>

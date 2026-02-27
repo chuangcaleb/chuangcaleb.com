@@ -12,15 +12,15 @@ const dateRange = (() => {
   if (!key) return;
   const firstItem = page.data[0];
   const firstDate = firstItem.data[key] as Date;
-  const firstDateString = format(firstDate, "yyyy MMM");
+  const firstDateString = format(firstDate, "MMM yyyy");
 
   const lastItem = page.data[page.data.length - 1];
   const lastDate = lastItem.data[key] as Date;
-  const lastDateString = format(lastDate, "yyyy MMM");
+  const lastDateString = format(lastDate, "MMM yyyy");
 
   if (firstDateString === lastDateString) return ` — ${firstDateString}`;
 
-  return ` — ${lastDateString} - ${firstDateString}`;
+  return ` —— ${lastDateString} - ${firstDateString}`;
 })();
 // const isSingleItem = page.data.length === 1;
 ---
