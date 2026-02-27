@@ -1,16 +1,34 @@
 ---
-import type { NotePage } from "lib/utils/types";
+import { format } from "date-fns";
+import type { Note, NotePage } from "lib/utils/types";
 
 type Props = {
   page: NotePage;
+  key?: keyof Note["data"];
 };
-const { page } = Astro.props;
+const { page, key } = Astro.props;
+
+const dateRange = (() => {
+  if (!key) return;
+  const firstItem = page.data[0];
+  const firstDate = firstItem.data[key] as Date;
+  const firstDateString = format(firstDate, "yyyy MMM");
+
+  const lastItem = page.data[page.data.length - 1];
+  const lastDate = lastItem.data[key] as Date;
+  const lastDateString = format(lastDate, "yyyy MMM");
+
+  if (firstDateString === lastDateString) return ` — ${firstDateString}`;
+
+  return ` — ${lastDateString} - ${firstDateString}`;
+})();
+// const isSingleItem = page.data.length === 1;
 ---
 
 <p class="pagination-info">
   Page <strong>{page.currentPage}</strong> of <strong>{page.lastPage}</strong> ({
     page.total
-  } total)
+  } total) {dateRange && dateRange}
 </p>
 
 <style>

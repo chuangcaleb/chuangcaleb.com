@@ -1,5 +1,5 @@
 ---
-import type { NotePage } from "lib/utils/types";
+import type { Note, NotePage } from "lib/utils/types";
 import NoteListItems from "~/components/block/note/NoteListItems.astro";
 import PaginationControls from "./PaginationControls.astro";
 import PaginationCrumb from "./PaginationCrumb.astro";
@@ -7,13 +7,14 @@ import PaginationCrumb from "./PaginationCrumb.astro";
 type Props = {
   page: NotePage;
   section: string;
+  key: keyof Note["data"];
 };
 
-const { page, section } = Astro.props;
+const { page, section, key } = Astro.props;
 ---
 
 <section class="flow-lg">
-  <PaginationCrumb page={page} />
+  <PaginationCrumb page={page} key={key} />
   <ol class="grid">
     <NoteListItems references={page.data} />
   </ol>
