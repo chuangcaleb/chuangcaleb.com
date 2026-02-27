@@ -100,7 +100,7 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
         </div>
       </slot>
       {
-        !!metadata.up && (
+        !!metadata.up?.length && (
           <div class="content text-faded flow-lg">
             <MetadataContainer
               references={metadata.up}
