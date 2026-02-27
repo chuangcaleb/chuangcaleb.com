@@ -7,8 +7,8 @@ import { getAllNotes } from "~/utils/note";
 import Featured from "./_components/Featured.astro";
 import { Content as GardenIntroContent } from "./_components/garden-intro.mdx";
 import Topics from "./_components/Topics.astro";
-import { modifiedMeta } from "./recently-modified/meta";
-import { publishedMeta } from "./recently-published/meta";
+import { modifiedMeta } from "./modified/meta";
+import { publishedMeta } from "./published/meta";
 
 const allNotes = await getAllNotes();
 
@@ -65,24 +65,24 @@ const startHereNotes = [
       <h2>📂 Top-Level Topic Notes</h2>
       <Topics topics={topLevelTopics} />
     </section>
-    <section class="flow-xl">
+    <section class="flow-xl region">
       <div class="flow-lg">
         <h2>{publishedMeta.heading}</h2>
         <p>
           {publishedMeta.subtitle}
-          <!-- <a href="/notes/recently-published">[view all]</a> -->
+          <a href={publishedMeta.link}>View all → </a>
         </p>
       </div>
       <ol class="">
         <NoteListItems references={publishedMeta.fn(allNotes).slice(0, 6)} />
       </ol>
     </section>
-    <section class="flow-xl">
+    <section class="flow-xl region">
       <div class="flow-lg">
         <h2>{modifiedMeta.heading}</h2>
         <p>
           {modifiedMeta.subtitle}
-          <!-- <a href="/notes/recently-modified">[view all]</a> -->
+          <a href={modifiedMeta.link}>View all → </a>
         </p>
       </div>
       <ol class="">

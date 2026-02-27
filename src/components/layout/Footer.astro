@@ -1,16 +1,15 @@
 ---
+import Search from "~/components/block/Search.astro";
 import { gnr } from "~/utils/note-route";
 import { formatDisplayDate } from "~/utils/time";
 import ThemeToggle from "../block/ThemeToggle.astro";
+import Button from "../styled/polym/Button.astro";
 import Contact from "./Contact.astro";
 import SiteNavStack from "./SiteNavStack.astro";
-import Search from "~/components/block/Search.astro";
-import Button from "../styled/polym/Button.astro";
 ---
 
 <footer id="footer" class="flow-lg linew-wide">
   <SiteNavStack variant="footer" />
-
   <Search />
   <div class="utils">
     <ThemeToggle />

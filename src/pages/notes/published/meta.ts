@@ -12,10 +12,13 @@ const fn = (notes: SuperNote[]) => {
 };
 
 export const publishedMeta = {
-	title,
+	head: {
+		title,
+		description: "Caleb's recently published digital garden notes.",
+	},
 	heading: `${pillVariants.new.emoji} ${title}`,
-	description: "Caleb's recently published digital garden notes.",
 	subtitle: 'Refined authored content.',
-	link: '/notes/public-digital-garden-metadata#-published-date',
+	linkMore: '/notes/public-digital-garden-metadata#-published-date',
+	link: '/notes/published',
 	fn,
 };

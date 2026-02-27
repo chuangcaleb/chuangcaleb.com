@@ -1,6 +1,8 @@
 ---
 import NoteListItems from "~/components/block/note/NoteListItems.astro";
+
 import type { formatNoteRelations } from "~/utils/note-relations";
+import GardenNav from "./GardenNav.astro";
 
 interface Props {
   formattedRelations: NonNullable<
@@ -21,86 +23,84 @@ const childrenHeader =
       : "Children note(s) under this topic";
 ---
 
-<div class="container | linew-wide prose flow-lg" data-pagefind-ignore="all">
-  <h2 class="sr-only">Note Relations</h2>
-  {/* Parents / Ups */}
-  {
-    !!parents.length && (
-      <>
-        <h3 class="text-faded">↑ Parent note(s)</h3>
-        <ul class="flow-sm">
-          <NoteListItems references={parents} />
-        </ul>
-      </>
-    )
-  }
+<h2 class="sr-only">Note Relations</h2>
+{/* Parents / Ups */}
+{
+  !!parents.length && (
+    <>
+      <h3 class="text-faded">↑ Parent note(s)</h3>
+      <ul class="flow-sm">
+        <NoteListItems references={parents} />
+      </ul>
+    </>
+  )
+}
 
-  {/* Prevs */}
-  {
-    prev && (
+{/* Prevs */}
+{
+  prev && (
+    <>
+      <h3 class="text-faded">← Previous note(s)</h3>
+      <ul class="flow-sm">
+        <NoteListItems references={[prev]} />
+      </ul>
+    </>
+  )
+}
+{/* Nexts */}
+{
+  next && (
+    <>
+      <h3 class="text-faded">→ Next note(s)</h3>
+      <ul class="flow-sm">
+        <NoteListItems references={[next]} />
+      </ul>
+    </>
+  )
+}
+{/* Downs / Children */}
+{
+  children && (
+    <>
+      <h3 class="text-faded">↓ {childrenHeader}</h3>
+      <ul class:list={["flow-sm", type === "topic/series" && "one-col"]}>
+        <NoteListItems
+          references={children.items}
+          isOrdered={type === "topic/series"}
+        />
+      </ul>
+    </>
+  )
+}
+{/* Parent's series */}
+{
+  !!serieses.length &&
+    serieses.map((series) => (
       <>
-        <h3 class="text-faded">← Previous note(s)</h3>
-        <ul class="flow-sm">
-          <NoteListItems references={[prev]} />
-        </ul>
-      </>
-    )
-  }
-  {/* Nexts */}
-  {
-    next && (
-      <>
-        <h3 class="text-faded">→ Next note(s)</h3>
-        <ul class="flow-sm">
-          <NoteListItems references={[next]} />
-        </ul>
-      </>
-    )
-  }
-  {/* Downs / Children */}
-  {
-    children && (
-      <>
-        <h3 class="text-faded">↓ {childrenHeader}</h3>
-        <ul class:list={["flow-sm", type === "topic/series" && "one-col"]}>
-          <NoteListItems
-            references={children.items}
-            isOrdered={type === "topic/series"}
-          />
-        </ul>
-      </>
-    )
-  }
-  {/* Parent's series */}
-  {
-    !!serieses.length &&
-      serieses.map((series) => (
-        <>
-          <h3 class="text-faded">
-            {`↓
+        <h3 class="text-faded">
+          {`↓
             ${series.data.emojip ? series.data.emojip + " " : ""} ${series.name}
             (topic series)`}
-          </h3>
-          {series.data.series && (
-            <ol class="flow-sm one-col">
-              <NoteListItems references={series.data.series} isOrdered />
-            </ol>
-          )}
-        </>
-      ))
-  }
-  {/* Backlinks */}
-  {
-    backlinks.length > 0 && (
-      <>
-        <h3 class="text-faded">⇄ Backlinks</h3>
-        <ul class="flow-sm">
-          <NoteListItems references={backlinks} />
-        </ul>
+        </h3>
+        {series.data.series && (
+          <ol class="flow-sm one-col">
+            <NoteListItems references={series.data.series} isOrdered />
+          </ol>
+        )}
       </>
-    )
-  }
-</div>
+    ))
+}
+{/* Backlinks */}
+{
+  backlinks.length > 0 && (
+    <>
+      <h3 class="text-faded">⇄ Backlinks</h3>
+      <ul class="flow-sm">
+        <NoteListItems references={backlinks} />
+      </ul>
+    </>
+  )
+}
 
 <style>
   h3 {
