@@ -23,7 +23,7 @@ type Props = {
 const { page } = Astro.props;
 ---
 
-<BaseMain {...meta} class="linew region flow-lg">
+<BaseMain {...meta.head} class="linew region flow-lg">
   <h2>{meta.heading}</h2>
   <p>
     {meta.subtitle}
