@@ -1,0 +1,34 @@
+---
+import BaseMain from "~/components/layout/BaseMain.astro";
+import { getAllNotes } from "~/utils/note";
+import PaginatedSection from "../_components/pagination/PaginatedSection.astro";
+import { publishedMeta } from "./meta";
+import type { NotePage } from "lib/utils/types";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const PAGE_SIZE = 12;
+
+  const notes = await getAllNotes();
+  const sortedNotes = publishedMeta.fn(notes);
+
+  return paginate(sortedNotes, { pageSize: PAGE_SIZE });
+};
+
+const meta = publishedMeta;
+
+type Props = {
+  page: NotePage;
+};
+const { page } = Astro.props;
+---
+
+<BaseMain {...meta} class="linew region flow-lg">
+  <h2>{meta.heading}</h2>
+  <p>
+    {meta.subtitle}
+    <a href={meta.linkMore} aria-label="What do you mean?">wdym?</a>
+  </p>
+  <PaginatedSection page={page} section="published" />
+</BaseMain>
+»

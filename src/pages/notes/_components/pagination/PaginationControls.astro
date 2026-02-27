@@ -1,42 +1,14 @@
 ---
 import { Icon } from "astro-icon/components";
 import PaginationCrumb from "./PaginationCrumb.astro";
-
-/**
- * InfiniteScrollPaginator - Pagination controls component
- *
- * Renders pagination buttons that use View Transitions API for smooth navigation.
- * Updates URL query params (?page=1) to track current page without full page reload.
- *
- * Props:
- * - currentPage: Current page number (1-indexed)
- * - totalPages: Total number of pages
- * - totalItems: Total count of items
- * - pageSize: Items per page
- * - section: Optional section identifier for query param (e.g., "published", "modified")
- */
+import type { NotePage } from "lib/utils/types";
 
 interface Props {
-  currentPage: number;
-  section?: string;
-  totalItems: number;
-  totalPages: number;
+  page: NotePage;
+  section: string;
 }
 
-const { currentPage, section, totalItems, totalPages } = Astro.props;
-
-const hasNext = currentPage < totalPages;
-const hasPrevious = currentPage > 1;
-
-// which query param do we use for this section? publishedPage for normal,
-// modifiedPage for the modified section.
-
-// helper to build a relative href preserving other params
-function makeHref(page: number) {
-  const params = new URLSearchParams(Astro.url.searchParams);
-  params.set("page", String(page));
-  return `?${params.toString()}`;
-}
+const { page, section } = Astro.props;
 ---
 
 <nav
@@ -46,9 +18,9 @@ function makeHref(page: number) {
 >
   {/* Previous page link */}
   {
-    hasPrevious ? (
+    page.url.prev ? (
       <a
-        href={makeHref(currentPage - 1)}
+        href={page.url.prev}
         aria-label="Previous page"
         class="pagination-button prev-button"
       >
@@ -62,17 +34,13 @@ function makeHref(page: number) {
   }
 
   {/* Page info */}
-  <PaginationCrumb
-    currentPage={currentPage}
-    totalPages={totalPages}
-    totalItems={totalItems}
-  />
+  <PaginationCrumb page={page} />
 
   {/* Next page link */}
   {
-    hasNext ? (
+    page.url.next ? (
       <a
-        href={makeHref(currentPage + 1)}
+        href={page.url.next}
         aria-label="Next page"
         class="pagination-button next-button"
       >

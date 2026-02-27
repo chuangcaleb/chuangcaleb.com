@@ -16,6 +16,7 @@ export const publishedMeta = {
 	heading: `${pillVariants.new.emoji} ${title}`,
 	description: "Caleb's recently published digital garden notes.",
 	subtitle: 'Refined authored content.',
-	link: '/notes/public-digital-garden-metadata#-published-date',
+	linkMore: '/notes/public-digital-garden-metadata#-published-date',
+	link: '/notes/published',
 	fn,
 };

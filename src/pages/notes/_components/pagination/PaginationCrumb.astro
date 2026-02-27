@@ -1,15 +1,15 @@
 ---
+import type { NotePage } from "lib/utils/types";
+
 type Props = {
-  currentPage: number;
-  totalPages: number;
-  totalItems: number;
+  page: NotePage;
 };
-const { currentPage, totalPages, totalItems } = Astro.props;
+const { page } = Astro.props;
 ---
 
 <p class="pagination-info">
-  Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong> ({
-    totalItems
+  Page <strong>{page.currentPage}</strong> of <strong>{page.lastPage}</strong> ({
+    page.total
   } total)
 </p>
 
