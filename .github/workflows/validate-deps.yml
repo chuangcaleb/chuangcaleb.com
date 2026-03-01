@@ -17,7 +17,7 @@ jobs:
   #     has_deps_changed: ${{ steps.detect.outputs.has_deps_changed }}
   #   steps:
   #     - name: Checkout
-  #       uses: actions/checkout@v4
+  #       uses: actions/checkout@v6
   #       with:
   #         fetch-depth: 0
 
@@ -40,7 +40,7 @@ jobs:
     if: github.actor == 'dependabot[bot]'
     # if: github.actor == 'dependabot[bot]' && needs.precheck.outputs.has_deps_changed == 'true'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
