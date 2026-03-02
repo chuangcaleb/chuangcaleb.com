@@ -120,6 +120,16 @@ const childrenHeader =
     <h3 class="text-faded">Digital Garden Navigation</h3>
     <ul class="flow-sm">
       <li>
+        <Card as="a" href="/notes">
+          <NoteCardContent
+            type="custom"
+            title="Notes"
+            emoji=""
+            subtitle={"Homepage dashboard for all digital notes."}
+          />
+        </Card>
+      </li>
+      <li>
         <Card as="a" href={publishedMeta.link}>
           <NoteCardContent
             type="custom"
