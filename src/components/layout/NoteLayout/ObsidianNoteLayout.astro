@@ -15,11 +15,10 @@ import MetadataValueItem from "./components/metadata/MetadataValueItem.astro";
 import MetadataContainer from "./components/MetadataContainer.astro";
 import NoteHeader from "./components/NoteHeader.astro";
 import NoteRelationsSection from "./components/NoteRelationsSection.astro";
+import TermsAlert from "./components/TermsAlert.astro";
 import TermsToggle from "./components/TermsToggle.astro";
 import Toc from "./components/toc/Toc.astro";
 import NoteLayout from "./NoteLayout.astro";
-import TermsAlert from "./components/TermsAlert.astro";
-import GardenNav from "./components/GardenNav.astro";
 
 interface Props {
   entry: SuperNote;
@@ -121,20 +120,7 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
 
   {metadata.resources && <FurtherResources resources={metadata.resources} />}
 
-  <div class="relations-cont | full region">
-    <div
-      class="container | linew-wide prose flow-xl"
-      data-pagefind-ignore="all"
-    >
-      {
-        formattedRelations && (
-          <NoteRelationsSection formattedRelations={formattedRelations} />
-        )
-      }
-      <GardenNav />
-    </div>
-  </div>
-  <div class="footer-block | full" aria-hidden></div>
+  <NoteRelationsSection formattedRelations={formattedRelations} />
 
   <Fragment slot="sheetBody">
     <h3>{title}</h3>
@@ -147,26 +133,6 @@ const pagefindWeight = !!metadata.emojip ? 10 : 8;
 <style>
   h3 {
     font-family: var(--font-heading-sans);
-  }
-
-  .relations-cont {
-    --flow-space: var(--space-3xl);
-    background-color: var(--bg2);
-    @media (width >= 800px) {
-      grid-column: wide;
-      border-radius: var(--radius-2);
-      border-width: 1px;
-    }
-  }
-  .footer-block {
-    --flow-space: 0;
-    z-index: -1;
-    margin-top: calc(10rem * -1);
-    height: 10rem;
-    background-color: var(--bg2);
-    @media (width < 800px) {
-      display: none;
-    }
   }
 
   .published {

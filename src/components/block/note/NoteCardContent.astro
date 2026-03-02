@@ -2,23 +2,46 @@
 import type { SuperNote } from "lib/utils/types";
 import NoteCardMetadata from "./NoteCardMetadata.astro";
 
-interface Props {
-  note: SuperNote;
-}
+type Props =
+  | {
+      note: SuperNote;
+      type?: "note";
+    }
+  | {
+      title: string;
+      emoji: string;
+      type: "custom";
+      subtitle: string;
+    };
 
-const { note } = Astro.props;
+const props = Astro.props;
 ---
 
 {
-  note.data?.emojip && (
-    <h3 class="flow-xs">
-      <span class="emoji">{`${note.data?.emojip} `}</span>
-      <span>{note.name}</span>
-    </h3>
+  (!props.type || props.type === "note") && (
+    <>
+      {props.note.data?.emojip && (
+        <h3 class="flow-xs">
+          <span class="emoji">{`${props.note.data?.emojip} `}</span>
+          <span>{props.note.name}</span>
+        </h3>
+      )}
+      {!props.note.data?.emojip && <h3>{props.note.name}</h3>}
+      <NoteCardMetadata data={props.note.data} />
+    </>
   )
 }
-{!note.data?.emojip && <h3>{note.name}</h3>}
-<NoteCardMetadata data={note.data} />
+{
+  props.type === "custom" && (
+    <>
+      <h3 class="flow-xs">
+        {/* <span class="emoji">{`${props.emoji} `}</span> */}
+        <span>{props.title}</span>
+      </h3>
+      <NoteCardMetadata data={{ description: props.subtitle }} />
+    </>
+  )
+}
 
 <style>
   h3 {
