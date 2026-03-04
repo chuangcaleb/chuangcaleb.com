@@ -13,7 +13,8 @@ import { publishedMeta } from "./published/meta";
 const allNotes = await getAllNotes();
 
 const topLevelTopics = allNotes
-  .filter((n) => n.data.emojip && n.data.up?.length === 0)
+  .filter((n) => n.data.down && n.data.up?.length === 0)
+  .sort((a, b) => (!!b.data.emojip && !a.data.emojip ? 1 : -1))
   .sort((a, b) => (b.data.featured ?? 0) - (a.data.featured ?? 0));
 
 const icon = NAV_LINKS.GARDEN.icon;
@@ -65,6 +66,7 @@ const startHereNotes = [
       <h2>📂 Top-Level Topic Notes</h2>
       <Topics topics={topLevelTopics} />
     </section>
+
     <section class="flow-xl region">
       <div class="flow-lg">
         <h2>{publishedMeta.heading}</h2>
