@@ -1,19 +1,28 @@
 ---
+import NoteCardContent from "~/components/block/note/NoteCardContent.astro";
 import NoteListItems from "~/components/block/note/NoteListItems.astro";
-
+import Card from "~/components/styled/monom/note/Card.astro";
+import { modifiedMeta } from "~/pages/notes/modified/meta";
+import { publishedMeta } from "~/pages/notes/published/meta";
 import type { formatNoteRelations } from "~/utils/note-relations";
-import GardenNav from "./GardenNav.astro";
 
 interface Props {
-  formattedRelations: NonNullable<
+  formattedRelations?: NonNullable<
     Awaited<ReturnType<typeof formatNoteRelations>>
   >;
 }
 
-const { children, parents, type, prev, next, backlinks } =
-  Astro.props.formattedRelations;
+const { formattedRelations } = Astro.props;
+const {
+  children,
+  parents = [],
+  type,
+  prev,
+  next,
+  backlinks = [],
+} = formattedRelations ?? {};
 // parents which are also series
-const serieses = parents.filter((note) => Boolean(note.data.series));
+const serieses = parents?.filter((note) => Boolean(note.data.series)) ?? [];
 
 const childrenHeader =
   type === "regular"
@@ -23,86 +32,148 @@ const childrenHeader =
       : "Children note(s) under this topic";
 ---
 
-<h2 class="sr-only">Note Relations</h2>
-{/* Parents / Ups */}
-{
-  !!parents.length && (
-    <>
-      <h3 class="text-faded">↑ Parent note(s)</h3>
-      <ul class="flow-sm">
-        <NoteListItems references={parents} />
-      </ul>
-    </>
-  )
-}
+<div class="relations-cont | full region">
+  <nav
+    aria-label="Digital Garden note navigation"
+    class="linew-wide prose flow-lg"
+    data-pagefind-ignore="all"
+  >
+    <h2 class="sr-only">Note Relations</h2>
+    {/* Parents / Ups */}
+    {
+      !!parents.length && (
+        <>
+          <h3 class="text-faded">↑ Parent note(s)</h3>
+          <ul class="flow-sm">
+            <NoteListItems references={parents} />
+          </ul>
+        </>
+      )
+    }
 
-{/* Prevs */}
-{
-  prev && (
-    <>
-      <h3 class="text-faded">← Previous note(s)</h3>
-      <ul class="flow-sm">
-        <NoteListItems references={[prev]} />
-      </ul>
-    </>
-  )
-}
-{/* Nexts */}
-{
-  next && (
-    <>
-      <h3 class="text-faded">→ Next note(s)</h3>
-      <ul class="flow-sm">
-        <NoteListItems references={[next]} />
-      </ul>
-    </>
-  )
-}
-{/* Downs / Children */}
-{
-  children && (
-    <>
-      <h3 class="text-faded">↓ {childrenHeader}</h3>
-      <ul class:list={["flow-sm", type === "topic/series" && "one-col"]}>
-        <NoteListItems
-          references={children.items}
-          isOrdered={type === "topic/series"}
-        />
-      </ul>
-    </>
-  )
-}
-{/* Parent's series */}
-{
-  !!serieses.length &&
-    serieses.map((series) => (
-      <>
-        <h3 class="text-faded">
-          {`↓
-            ${series.data.emojip ? series.data.emojip + " " : ""} ${series.name}
-            (topic series)`}
-        </h3>
-        {series.data.series && (
-          <ol class="flow-sm one-col">
-            <NoteListItems references={series.data.series} isOrdered />
-          </ol>
-        )}
-      </>
-    ))
-}
-{/* Backlinks */}
-{
-  backlinks.length > 0 && (
-    <>
-      <h3 class="text-faded">⇄ Backlinks</h3>
-      <ul class="flow-sm">
-        <NoteListItems references={backlinks} />
-      </ul>
-    </>
-  )
-}
+    {/* Prevs */}
+    {
+      prev && (
+        <>
+          <h3 class="text-faded">← Previous note(s)</h3>
+          <ul class="flow-sm">
+            <NoteListItems references={[prev]} />
+          </ul>
+        </>
+      )
+    }
+    {/* Nexts */}
+    {
+      next && (
+        <>
+          <h3 class="text-faded">→ Next note(s)</h3>
+          <ul class="flow-sm">
+            <NoteListItems references={[next]} />
+          </ul>
+        </>
+      )
+    }
+    {/* Downs / Children */}
+    {
+      children && (
+        <>
+          <h3 class="text-faded">↓ {childrenHeader}</h3>
+          <ul class:list={["flow-sm", type === "topic/series" && "one-col"]}>
+            <NoteListItems
+              references={children.items}
+              isOrdered={type === "topic/series"}
+            />
+          </ul>
+        </>
+      )
+    }
+    {/* Parent's series */}
+    {
+      !!serieses.length &&
+        serieses.map((series) => (
+          <>
+            <h3 class="text-faded">
+              {`↓
+              ${series.data.emojip ? series.data.emojip + " " : ""} ${series.name}
+              (topic series)`}
+            </h3>
+            {series.data.series && (
+              <ol class="flow-sm one-col">
+                <NoteListItems references={series.data.series} isOrdered />
+              </ol>
+            )}
+          </>
+        ))
+    }
+    {/* Backlinks */}
+    {
+      backlinks.length > 0 && (
+        <>
+          <h3 class="text-faded">⇄ Backlinks</h3>
+          <ul class="flow-sm">
+            <NoteListItems references={backlinks} />
+          </ul>
+        </>
+      )
+    }
+
+    <h3 class="text-faded">Digital Garden Navigation</h3>
+    <ul class="flow-sm">
+      <li>
+        <Card as="a" href="/notes">
+          <NoteCardContent
+            type="custom"
+            title="Notes"
+            emoji=""
+            subtitle={"Homepage dashboard for all digital notes."}
+          />
+        </Card>
+      </li>
+      <li>
+        <Card as="a" href={publishedMeta.link}>
+          <NoteCardContent
+            type="custom"
+            title={publishedMeta.heading}
+            emoji=""
+            subtitle={publishedMeta.subtitle}
+          />
+        </Card>
+      </li>
+      <li>
+        <Card as="a" href={modifiedMeta.link}>
+          <NoteCardContent
+            type="custom"
+            title={modifiedMeta.heading}
+            emoji=""
+            subtitle={modifiedMeta.subtitle}
+          />
+        </Card>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="footer-block | full" aria-hidden></div>
 
 <style>
+  .relations-cont {
+    --flow-space: var(--space-3xl);
+    background-color: var(--bg2);
+    @media (width >= 800px) {
+      grid-column: wide;
+      border-radius: var(--radius-2);
+      border-width: 1px;
+    }
+  }
+  .footer-block {
+    --flow-space: 0;
+    z-index: -1;
+    margin-top: calc(10rem * -1);
+    height: 10rem;
+    background-color: var(--bg2);
+    @media (width < 800px) {
+      display: none;
+    }
+  }
   h3 {
     text-transform: uppercase;
     font-size: var(--step-0);

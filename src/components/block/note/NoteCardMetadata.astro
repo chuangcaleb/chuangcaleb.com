@@ -7,7 +7,7 @@ import Duration from "../Duration.astro";
 import { getWordCountPill } from "~/utils/pill-variants";
 
 interface Props {
-  data: NoteMetadata;
+  data: Partial<NoteMetadata>;
 }
 
 const { data } = Astro.props;

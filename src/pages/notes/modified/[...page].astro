@@ -5,6 +5,7 @@ import PaginatedSection from "../_components/pagination/PaginatedSection.astro";
 import { modifiedMeta } from "./meta";
 import type { NotePage } from "lib/utils/types";
 import type { GetStaticPaths } from "astro";
+import NoteRelationsSection from "~/components/layout/NoteLayout/components/NoteRelationsSection.astro";
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const PAGE_SIZE = 10;
@@ -23,11 +24,18 @@ type Props = {
 const { page } = Astro.props;
 ---
 
-<BaseMain {...meta.head} class="linew region flow-lg">
+<BaseMain {...meta.head} class="linew flow-lg">
   <h2>{meta.heading}</h2>
   <p>
     {meta.subtitle}
     <a href={meta.linkMore} aria-label="What do you mean?">wdym?</a>
   </p>
   <PaginatedSection page={page} section="modified" key="modified" />
+  <NoteRelationsSection />
 </BaseMain>
+
+<style>
+  .linew {
+    padding-block-start: var(--space-xl);
+  }
+</style>
