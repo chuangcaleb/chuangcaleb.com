@@ -89,27 +89,26 @@ const childrenHeader =
     }
     {/* Parent's series */}
     {
-      !!serieses.length &&
-        serieses.map((series) => (
-          <>
-            <h3 class="text-faded">
-              {`↓
+      serieses?.map((series) => (
+        <>
+          <h3 class="text-faded">
+            {`↓
               ${series.data.emojip ? series.data.emojip + " " : ""} ${series.name}
               (topic series)`}
-            </h3>
-            {series.data.series && (
-              <ol class="flow-sm one-col">
-                <NoteListItems references={series.data.series} isOrdered />
-              </ol>
-            )}
-          </>
-        ))
+          </h3>
+          {series.data.series && (
+            <ol class="flow-sm one-col">
+              <NoteListItems references={series.data.series} isOrdered />
+            </ol>
+          )}
+        </>
+      ))
     }
     {/* Backlinks */}
     {
       backlinks.length > 0 && (
         <>
-          <h3 class="text-faded">⇄ Backlinks</h3>
+          <h3 class="text-faded">⇄ Linked Mentions</h3>
           <ul class="flow-sm">
             <NoteListItems references={backlinks} />
           </ul>
