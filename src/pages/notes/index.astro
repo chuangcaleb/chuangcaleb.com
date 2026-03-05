@@ -15,7 +15,7 @@ const allNotes = await getAllNotes();
 const topLevelTopics = allNotes
   .filter((n) => n.data.down && n.data.up?.length === 0)
   .sort((a, b) => (!!b.data.emojip && !a.data.emojip ? 1 : -1))
-  .sort((a, b) => (b.data.featured ?? 0) - (a.data.featured ?? 0));
+  .sort((a, b) => -(b.data.featured ?? 10) - -(a.data.featured ?? 10));
 
 const icon = NAV_LINKS.GARDEN.icon;
 
