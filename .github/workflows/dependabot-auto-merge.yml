@@ -3,6 +3,7 @@ name: Dependabot Auto-merge to Staging
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+    branches: [staging]
 
 permissions:
   contents: write
