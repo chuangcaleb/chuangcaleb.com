@@ -37,16 +37,17 @@ jobs:
         continue-on-error: true
         run: pnpm build
         env:
-          IMAGE_DOMAIN: ${{ secrets.IMAGE_DOMAIN_VAR_NAME }}
-          IMAGE_BASE_URL: ${{ secrets.IMAGE_BASE_URL_VAR_NAME }}
-          GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL_SECRET_NAME }}
-          GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY_SECRET_NAME }}
-          GUESTBOOK_GOOGLE_SHEET_ID: ${{ secrets.GUESTBOOK_GOOGLE_SHEET_ID_SECRET_NAME }}
-          GOOGLE_DRIVE_CONTENT_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_CONTENT_FOLDER_ID_SECRET_NAME }}
-          B2_KEY_ID: ${{ secrets.B2_KEY_ID_SECRET_NAME }}
-          B2_APP_KEY: ${{ secrets.B2_APP_KEY_SECRET_NAME }}
-          B2_BUCKET_NAME: ${{ secrets.B2_BUCKET_NAME_SECRET_NAME }}
-          B2_BUCKET_ID: ${{ secrets.B2_BUCKET_ID_SECRET_NAME }}
+          # Dependabot-triggered workflows can only read Dependabot secrets.
+          # Use identical secret names in Actions and Dependabot settings.
+          IMAGE_DOMAIN: ${{ secrets.IMAGE_DOMAIN }}
+          IMAGE_BASE_URL: ${{ secrets.IMAGE_BASE_URL }}
+          GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
+          GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+          GUESTBOOK_GOOGLE_SHEET_ID: ${{ secrets.GUESTBOOK_GOOGLE_SHEET_ID }}
+          B2_KEY_ID: ${{ secrets.B2_KEY_ID }}
+          B2_APP_KEY: ${{ secrets.B2_APP_KEY }}
+          B2_BUCKET_NAME: ${{ secrets.B2_BUCKET_NAME }}
+          B2_BUCKET_ID: ${{ secrets.B2_BUCKET_ID }}
 
       - name: Dependabot metadata
         id: metadata
