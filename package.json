@@ -22,7 +22,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.9",
     "@astrojs/mdx": "^4.3.14",
-    "@astrojs/react": "^4.4.2",
+    "@astrojs/react": "^5.0.4",
     "@astrojs/sitemap": "^3.7.2",
     "@iconify-json/lucide": "^1.2.105",
     "@iconify-json/mdi": "^1.2.3",
