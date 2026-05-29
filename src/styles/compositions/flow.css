@@ -1,0 +1,20 @@
+/*
+FLOW COMPOSITION
+Like the Every Layout stack: https://every-layout.dev/layouts/stack/
+Info about this implementation: https://piccalil.li/quick-tip/flow-utility/
+*/
+.flow > * + * {
+    margin-block-start: var(--flow-space, 1em);
+}
+
+/* extends flow — allows stretching to full height */
+.flow {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* TIP: You can add `auto` margin to push space between specific children, e.g. to push the last child to the bottom of the container:
+.flow > :nth-child(2) {
+    margin-block-end: auto;
+} */

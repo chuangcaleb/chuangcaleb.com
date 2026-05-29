@@ -1,0 +1,71 @@
+{
+  "step": {
+    "$type": "fluidDimension",
+    "-2": {
+      "$value": {
+        "min": { "value": 0.73, "unit": "rem" },
+        "max": { "value": 0.666, "unit": "rem" }
+      }
+    },
+    "-1": {
+      "$value": {
+        "min": { "value": 0.855, "unit": "rem" },
+        "max": { "value": 0.865, "unit": "rem" }
+      }
+    },
+    "0": {
+      "$value": {
+        "min": { "value": 1.0, "unit": "rem" },
+        "max": { "value": 1.125, "unit": "rem" }
+      }
+    },
+    "1": {
+      "$value": {
+        "min": { "value": 1.17, "unit": "rem" },
+        "max": { "value": 1.463, "unit": "rem" }
+      }
+    },
+    "2": {
+      "$value": {
+        "min": { "value": 1.369, "unit": "rem" },
+        "max": { "value": 1.901, "unit": "rem" }
+      }
+    },
+    "3": {
+      "$value": {
+        "min": { "value": 1.601, "unit": "rem" },
+        "max": { "value": 2.472, "unit": "rem" }
+      }
+    },
+    "4": {
+      "$value": {
+        "min": { "value": 1.873, "unit": "rem" },
+        "max": { "value": 3.213, "unit": "rem" }
+      }
+    },
+    "5": {
+      "$value": {
+        "min": { "value": 2.19, "unit": "rem" },
+        "max": { "value": 4.177, "unit": "rem" }
+      }
+    },
+    "6": {
+      "$value": {
+        "min": { "value": 2.562, "unit": "rem" },
+        "max": { "value": 5.43, "unit": "rem" }
+      }
+    },
+    "7": {
+      "$value": {
+        "min": { "value": 2.997, "unit": "rem" },
+        "max": { "value": 7.059, "unit": "rem" }
+      }
+    },
+    "8": {
+      "$value": {
+        "min": { "value": 3.506, "unit": "rem" },
+        "max": { "value": 9.177, "unit": "rem" }
+      }
+    }
+  }
+}

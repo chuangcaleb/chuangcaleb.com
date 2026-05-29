@@ -10,8 +10,9 @@ import FeaturedSection from "./_components/FeaturedSection.astro";
 
 <BaseMain
   title={`${SITE.title} - ${SITE.subtitle}`}
-  class="linew-wide flow-2xl"
+  class="flow"
   hasBanner={false}
+  style={{ "--flow-space": "var(--s-2xl)" }}
 >
   <Hero />
   <Overview />

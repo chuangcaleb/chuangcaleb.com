@@ -2,11 +2,12 @@ import process from 'node:process';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import sugarcube from '@sugarcube-sh/vite';
 import compressor from 'astro-compressor';
 import robotsTxt from 'astro-robots-txt';
 import {defineConfig, envField, fontProviders} from 'astro/config';
-// Import { slugify } from "lib/markdown/slugify";
-// import { remarkReadingTime } from "lib/remark/reading-time";
+// Import {slugify} from "lib/markdown/slugify";
+// import {remarkReadingTime} from "lib/remark/reading-time";
 import icon from 'astro-icon';
 import og from 'astro-og';
 import rehypeExternalLinks from 'rehype-external-links';
@@ -120,6 +121,9 @@ export default defineConfig({
 				context: 'server',
 			}),
 		},
+	},
+	vite: {
+		plugins: [sugarcube()],
 	},
 	// adapter: cloudflare({
 	// 	platformProxy: {

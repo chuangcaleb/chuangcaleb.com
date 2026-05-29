@@ -1,0 +1,80 @@
+{
+  "font": {
+    "$type": "fontFamily",
+    "heading": {
+      "serif": {
+        "$value": [
+          "Alegreya",
+          "Times New Roman",
+          "Candara",
+          "system-ui",
+          "serif"
+        ]
+      },
+      "sans": {
+        "$value": [
+          "Alegreya Sans",
+          "Times New Roman",
+          "Candara",
+          "system-ui",
+          "sans-serif"
+        ]
+      }
+    },
+    "w": {
+      "$type": "fontWeight",
+      "regular": { "$value": 400 },
+      "medium": { "$value": 500 },
+      "bold": { "$value": 700 },
+      "extrabold": { "$value": 800 }
+    }
+  },
+  "textsize": {
+    "xs": {
+      "$value": "{step.-2}"
+    },
+    "sm": {
+      "$value": "{step.-1}"
+    },
+    "base": {
+      "$value": "{step.0}"
+    },
+    "lede": {
+      "$value": "{step.1}"
+    },
+    "h6": {
+      "$value": "{step.2}"
+    },
+    "h5": {
+      "$value": "{step.2}"
+    },
+    "h4": {
+      "$value": "{step.3}"
+    },
+    "h3": {
+      "$value": "{step.4}"
+    },
+    "h2": {
+      "$value": "{step.5}"
+    },
+    "h1": {
+      "$value": "{step.6}"
+    }
+  },
+  "leading": {
+    "$type": "number",
+    "title": {
+      "$value": "{leading.tight}"
+    },
+    "none": { "$value": 1 },
+    "tight": { "$value": 1.25 },
+    "normal": { "$value": 1.5 },
+    "relaxed": { "$value": 1.75 }
+  },
+  "tracking": {
+    "$type": "dimension",
+    "tight": { "$value": { "value": -0.025, "unit": "rem" } },
+    "normal": { "$value": { "value": 0, "unit": "rem" } },
+    "wide": { "$value": { "value": 0.025, "unit": "rem" } }
+  }
+}

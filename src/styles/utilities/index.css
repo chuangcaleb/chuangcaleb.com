@@ -1,5 +1,2 @@
-@import "sr";
-@import "text";
-@import "layout";
-@import "flow";
-@import "grid";
+@import "region.css";
+@import "visually-hidden.css";
