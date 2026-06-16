@@ -59,8 +59,7 @@ The auto-merge workflow runs `pnpm build` and injects environment values from Gi
 - `IMAGE_DOMAIN` from `vars['IMAGE_DOMAIN']`
 - `GOOGLE_SERVICE_ACCOUNT_EMAIL` from `secrets['GOOGLE_SERVICE_ACCOUNT_EMAIL']`
 - `GOOGLE_PRIVATE_KEY` from `secrets['GOOGLE_PRIVATE_KEY']`
-- `GUESTBOOK_GOOGLE_SHEET_ID` from `secrets['GUESTBOOK_GOOGLE_SHEET_ID']`
-- `GOOGLE_DRIVE_CONTENT_FOLDER_ID` from `secrets['GOOGLE_DRIVE_CONTENT_FOLDER_ID']`
+- `GUESTBOOK_GOOGLE_SHEET_ID` from `secrets['GUESTBOOK_GOOGLE_SHEET_ID']``
 
 If these are missing, build can fail and auto-merge for minor/patch updates will not be enabled.
 
@@ -71,7 +70,7 @@ If these are missing, build can fail and auto-merge for minor/patch updates will
 - GitHub Actions permissions allow PR merge operations via `GITHUB_TOKEN`.
 - CI config values are set:
   - Repository variable: `IMAGE_DOMAIN`
-  - Secrets: `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_PRIVATE_KEY`, `GUESTBOOK_GOOGLE_SHEET_ID`, `GOOGLE_DRIVE_CONTENT_FOLDER_ID`
+  - Secrets: `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_PRIVATE_KEY`, `GUESTBOOK_GOOGLE_SHEET_ID`
 
 Note for Dependabot-triggered workflows: if your repository setup restricts normal Actions secrets on Dependabot PRs, set equivalent values in Dependabot secrets so this workflow can still build.
 
