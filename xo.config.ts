@@ -1,6 +1,8 @@
+import eslintPluginAstro from 'eslint-plugin-astro';
 import {type FlatXoConfig} from 'xo';
 
 export const xoConfig: FlatXoConfig = [
+	...eslintPluginAstro.configs.recommended,
 	{
 		rules: {
 			// Turn it off until i fix it
