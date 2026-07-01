@@ -1,6 +1,6 @@
-@import "fonts";
+@import "fonts.css";
 
 @import "tokens/composer.scss";
-@import "normalize";
-@import "overrides";
-@import "utilities";
+@import "normalize.css/normalize.css";
+@import "overrides/index.css";
+@import "utilities/index.css";

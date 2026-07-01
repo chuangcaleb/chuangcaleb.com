@@ -1,5 +1,6 @@
 import {file, glob} from 'astro/loaders';
-import {defineCollection, reference, z} from 'astro:content';
+import {defineCollection, reference} from 'astro:content';
+import {z} from 'zod';
 
 const redirects = defineCollection({
 	loader: file('src/data/redirects.yaml'),

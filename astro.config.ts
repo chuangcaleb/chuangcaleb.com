@@ -2,6 +2,7 @@ import process from 'node:process';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import {unified} from '@astrojs/markdown-remark';
 import compressor from 'astro-compressor';
 import robotsTxt from 'astro-robots-txt';
 import {defineConfig, envField, fontProviders} from 'astro/config';
@@ -41,6 +42,7 @@ export default defineConfig({
 	integrations,
 	markdown: {
 		shikiConfig: {theme: 'css-variables'},
+		processor: unified(),
 		remarkPlugins: [
 			// remarkGfm,
 			remarkStripH1,
@@ -66,42 +68,39 @@ export default defineConfig({
 			],
 		],
 	},
-
-	experimental: {
-		fonts: [
-			{
-				provider: fontProviders.fontsource(),
-				name: 'Courier Prime',
-				cssVariable: '--font-mono',
-				weights: [400],
-				// styles: ['normal'],
-				fallbacks: [
-					'Courier Prime',
-					'Courier New',
-					'Nimbus Mono PS',
-					'Courier',
-					'ui-monospace',
-					'monospace',
-				],
-			},
-			{
-				provider: fontProviders.google(),
-				name: 'Asap',
-				cssVariable: '--font-body',
-				weights: [400, 600],
-				fallbacks: [
-					'-apple-system',
-					'BlinkMacSystemFont',
-					'Inter',
-					'IBM Plex Sans',
-					'Segoe UI',
-					'Helvetica',
-					'Arial',
-					'sans-serif',
-				],
-			},
-		],
-	},
+	fonts: [
+		{
+			provider: fontProviders.fontsource(),
+			name: 'Courier Prime',
+			cssVariable: '--font-mono',
+			weights: [400],
+			// styles: ['normal'],
+			fallbacks: [
+				'Courier Prime',
+				'Courier New',
+				'Nimbus Mono PS',
+				'Courier',
+				'ui-monospace',
+				'monospace',
+			],
+		},
+		{
+			provider: fontProviders.google(),
+			name: 'Asap',
+			cssVariable: '--font-body',
+			weights: [400, 600],
+			fallbacks: [
+				'-apple-system',
+				'BlinkMacSystemFont',
+				'Inter',
+				'IBM Plex Sans',
+				'Segoe UI',
+				'Helvetica',
+				'Arial',
+				'sans-serif',
+			],
+		},
+	],
 	image: {
 		domains: [process.env.IMAGE_DOMAIN!],
 	},
