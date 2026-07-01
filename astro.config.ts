@@ -119,10 +119,6 @@ export default defineConfig({
 				access: 'secret',
 				context: 'server',
 			}),
-			GOOGLE_DRIVE_CONTENT_FOLDER_ID: envField.string({
-				access: 'secret',
-				context: 'server',
-			}),
 		},
 	},
 	// adapter: cloudflare({
