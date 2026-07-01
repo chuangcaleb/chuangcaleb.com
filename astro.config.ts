@@ -42,31 +42,32 @@ export default defineConfig({
 	integrations,
 	markdown: {
 		shikiConfig: {theme: 'css-variables'},
-		processor: unified(),
-		remarkPlugins: [
-			// remarkGfm,
-			remarkStripH1,
-			// remarkReadingTime,
-			remarkStripObsidianUtilities,
-			remarkSimpleStripPercentComments,
-			remarkWikilinks,
-		],
-		rehypePlugins: [
-			rehypeWrapTables,
-			[
-				rehypeExternalLinks,
-				{
-					host: ['chuangcaleb.com'],
-					content: {type: 'text', value: ' ↗'},
-					contentProperties: {
-						class: ['external-arrow'],
-						'aria-hidden': true,
-					},
-					properties: {target: '_blank'},
-					rel: ['noopener'],
-				},
+		processor: unified({
+			remarkPlugins: [
+				// remarkGfm,
+				remarkStripH1,
+				// remarkReadingTime,
+				remarkStripObsidianUtilities,
+				remarkSimpleStripPercentComments,
+				remarkWikilinks,
 			],
-		],
+			rehypePlugins: [
+				rehypeWrapTables,
+				[
+					rehypeExternalLinks,
+					{
+						host: ['chuangcaleb.com'],
+						content: {type: 'text', value: ' ↗'},
+						contentProperties: {
+							class: ['external-arrow'],
+							'aria-hidden': true,
+						},
+						properties: {target: '_blank'},
+						rel: ['noopener'],
+					},
+				],
+			],
+		}),
 	},
 	fonts: [
 		{
