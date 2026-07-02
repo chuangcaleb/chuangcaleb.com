@@ -11,133 +11,134 @@ CUSTOM PROPERTIES
 
 /* Default flow space. Change this one value to change the overall flow */
 .prose {
-  --flow-space: var(--space-lg, 2rem);
+	--flow-space: var(--space-lg, 1.5rem);
 }
 
 /* Increase legibility by limiting line lengths */
 .prose :is(p, li, dl, figcaption, blockquote) {
-  max-width: 70ch;
-  text-wrap: pretty;
+	max-width: var(--prose-max, 70ch);
+	text-wrap: pretty;
 }
 
 /* Limit the length of headings, too */
 .prose :is(h1, h2, h3, h4) {
-  max-width: 35ch;
+	max-width: 35ch;
 }
 
 .prose :is(h1, h2, h3) {
-  /* Allow words to break by default. */
-  overflow-wrap: anywhere;
+	/* Allow words to break by default. */
+	overflow-wrap: anywhere;
 }
 
 /* Heading flow for elements that follow them */
 .prose :is(h1, h2, h3, h4):not(.not-prose) + *:not(.not-prose) {
-  --flow-space: var(--space-md, 1.5rem);
+	--flow-space: var(--space-md, 1rem);
 }
 
 /* Add more space on and around figures and tables */
 .prose :is(figure, table):not(.not-prose),
 .prose :is(figure, table):not(.not-prose) + *:not(.not-prose) {
-  --flow-space: var(--space-2xl, 3rem);
+	--flow-space: var(--space-2xl, 4rem);
 }
 
 /* Add more space to headings on block start */
 .prose *:not(.not-prose) + :is(h1, h2, h3, h4):not(.not-prose) {
-  --flow-space: var(--space-xl, 2.5rem);
+	--flow-space: var(--space-xl, 3rem);
 }
 
 /* Flow for list items */
 .prose :is(ul, ol):not(.not-prose) li + li,
 .prose :is(ul, ol):not(.not-prose) li > :is(ol, ul):not(.not-prose) {
-  margin-block-start: var(--space-xs, 0.75rem);
+	margin-block-start: var(--space-xs, 0.25rem);
 }
 
 /* Flow for list items when a paragraph is inside it.*/
 .prose :is(ul, ol):not(.not-prose) li + li:has(p) {
-  margin-block-start: var(--flow-space, var(--space-lg, 2rem));
+	margin-block-start: var(--flow-space, var(--space-lg, 1.5rem));
 }
 
 /* Flow for paragraphs used inside list items */
 .prose :is(ul, ol) li:has(> p) > p {
-  margin-block-start: var(--space-xs, 0.75rem);
+	margin-block-start: var(--space-xs, 0.25rem);
 }
 
 /* Flow for dt/dd groups.*/
 .prose :is(dl):not(.not-prose) dd + dt {
-  margin-block-start: var(--flow-space, var(--space-lg, 2rem));
+	margin-block-start: var(--flow-space, var(--space-lg, 1.5rem));
 }
 
 /* Flow for dt/dd pairs */
 .prose :is(dl):not(.not-prose) dt + dd {
-  margin-block-start: var(--space-xs, 0.75rem);
+	margin-block-start: var(--space-xs, 0.25rem);
 }
 
 /* Add lots of space for horizontal rules */
 .prose :is(hr) {
-  --flow-space: var(--space-2xl, 3rem);
+	--flow-space: var(--space-2xl, 4rem);
 }
 
 /* Bump up the line height for paragraphs */
 .prose :is(p) {
-  line-height: 2;
+	line-height: var(--leading-body, 1.55);
 }
 
-/* Bump down the font weight for headings, dt, and strong */
+/* Heading and strong weight */
 .prose :is(h1, h2, h3, h4, h5, h6, dt, strong) {
-  font-weight: var(--font-w-semibold, 600);
+	font-weight: var(--weight-heading, 500);
 }
 
 .prose :is(blockquote) {
-  padding-inline-start: var(--space-sm, 1rem);
-  border-inline-start-width: 0.25rem;
-  border-inline-start-style: solid;
-  border-inline-start-color: var(
-    --prose-blockquote-border-color,
-    var(--color-surface-border, currentColor)
-  );
+	padding-inline-start: var(--space-sm, 0.5rem);
+	border-inline-start-width: 2px;
+	border-inline-start-style: solid;
+	border-inline-start-color: var(
+		--prose-blockquote-border-color,
+		var(--accent, #1B365D)
+	);
+	color: var(--text-muted, #504e49);
 }
 
 .prose :is(blockquote) p {
-  font-style: italic;
-  font-weight: var(--font-w-medium, 500);
+	font-style: italic;
+	font-weight: var(--weight-body, 400);
 }
 
 .prose :is(kbd) {
-  border-radius: var(--form-control-border-radius, 0.25rem);
+	border-radius: var(--radius-sm, 4px);
 }
 
 .prose :is(code):not(.not-prose):not(pre code) {
-  font-weight: var(--font-w-semibold, 600);
-  font-size: 0.95em;
-  background: revert;
+	font-weight: var(--weight-label, 600);
+	font-size: 0.95em;
+	background: revert;
 }
 
 .prose :is(code):not(.not-prose):not(pre code):before {
-  content: "`";
+	content: "`";
 }
 
 .prose :is(code):not(.not-prose):not(pre code):after {
-  content: "`";
+	content: "`";
 }
 
 .prose pre {
-  border-radius: var(--panel-radius, 0.5rem);
+	border-radius: var(--radius-md, 0.5rem);
 }
 
 .prose :is(ol, ul):not(.not-prose) {
-  padding-inline-start: var(--space-md, 1.5rem);
+	padding-inline-start: var(--space-md, 1rem);
 }
 
 .prose :is(ol, ul):not(.not-prose) li {
-  padding-inline-start: var(--space-2xs, 0.5rem);
+	padding-inline-start: var(--space-xs, 0.25rem);
 }
 
 .prose :is(ul > li):not(.not-prose)::marker {
-  color: var(--prose-list-marker-color, currentColor);
+	color: var(--prose-list-marker-color, var(--accent, #1B365D));
 }
 
 .prose :is(ol > li):not(.not-prose)::marker {
-  font-weight: var(--font-w-normal, 400);
-  color: var(--prose-list-marker-color, currentColor);
-  font-size: var(--prose-list-marker-size, 1em);
+	font-weight: var(--weight-body, 400);
+	color: var(--prose-list-marker-color, var(--accent, #1B365D));
+	font-size: var(--prose-list-marker-size, 1em);
 }

@@ -2,10 +2,6 @@
    Browser Consistency
    ============================================ */
 
-:root {
-  --measure: 65ch;
-}
-
 *,
 *::before,
 *::after {
@@ -19,7 +15,6 @@ html {
 }
 
 :where(
-  /* address, */
   blockquote,
   dd,
   dl,
@@ -49,11 +44,18 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  color: var(--color-text-normal);
-  background: var(--color-surface-default);
-  font-size: var(--textsize-base);
-  font-family: var(--font-body, system-ui, sans-serif);
-  line-height: var(--leading-normal);
+  color: var(--text-primary, #141413);
+  background: var(--bg-page, #f5f4ed);
+  font-size: var(--text-body, 1rem);
+  font-family: var(
+    --font-body,
+    Charter,
+    Georgia,
+    Palatino,
+    "Times New Roman",
+    serif
+  );
+  line-height: var(--leading-body, 1.55);
 }
 
 main {
@@ -70,35 +72,42 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: var(--font-w-bold);
-  font-family: var(--font-heading, inherit);
-  line-height: var(--leading-none);
+  font-weight: var(--weight-heading, 500);
+  font-family: var(
+    --font-heading,
+    Charter,
+    Georgia,
+    Palatino,
+    "Times New Roman",
+    serif
+  );
+  line-height: var(--leading-heading, 1.2);
   text-wrap: balance;
   overflow-wrap: break-word;
 }
 
 h1 {
-  font-size: var(--textsize-h1, 2.25rem);
+  font-size: var(--text-h1, 2rem);
 }
 
 h2 {
-  font-size: var(--textsize-h2, 1.875rem);
+  font-size: var(--text-h2, 1.5rem);
 }
 
 h3 {
-  font-size: var(--textsize-h3, 1.5rem);
+  font-size: var(--text-h3, 1.25rem);
 }
 
 h4 {
-  font-size: var(--textsize-h4, 1.25rem);
+  font-size: var(--text-body, 1rem);
 }
 
 h5 {
-  font-size: var(--textsize-h5, 1.125rem);
+  font-size: var(--text-body-dense, 0.875rem);
 }
 
 h6 {
-  font-size: var(--textsize-h6, 1rem);
+  font-size: var(--text-caption, 0.8125rem);
 }
 
 p {
@@ -140,7 +149,7 @@ blockquote {
 }
 
 blockquote footer {
-  margin-block-start: var(--space-sm, 1rem);
+  margin-block-start: var(--space-sm, 0.5rem);
   font-style: normal;
 }
 
@@ -158,9 +167,9 @@ q {
 
 hr {
   border: 0;
-  border-block-start: var(--border-width-thin, 1px) var(--border-style, solid)
-    var(--color-surface-border, currentColor);
-  margin-block: var(--flow-space, var(--space-xl, 2rem));
+  border-block-start: var(--border-thin, 1px) solid
+    var(--border-default, #e8e6dc);
+  margin-block: var(--flow-space, var(--space-xl, 3rem));
 }
 
 abbr {
@@ -170,10 +179,10 @@ abbr {
 
 mark,
 ::selection {
-  color: var(--color-accent-on);
-  padding: var(--s-2xs);
-  border-radius: var(--radius-xl);
-  background: var(--color-accent-fill-loud);
+  color: var(--color-ivory, #faf9f5);
+  padding: 0 0.25em;
+  border-radius: var(--radius-sm, 4px);
+  background: var(--accent, #1b365d);
 }
 
 /* ============================================
@@ -181,9 +190,7 @@ mark,
    ============================================ */
 
 a {
-  color: var(--color-text-link, revert);
-  text-decoration: var(--link-decoration-default, underline);
-  -webkit-text-decoration: var(--link-decoration-default, underline);
+  color: var(--color-link, var(--accent, #1b365d));
   text-decoration-skip-ink: auto;
   text-underline-offset: 0.25em;
 }
@@ -209,7 +216,7 @@ ol {
 
 li > ul,
 li > ol {
-  margin-inline-start: var(--s-1);
+  margin-inline-start: var(--space-sm, 0.5rem);
 }
 
 ul {
@@ -222,7 +229,7 @@ li {
 }
 
 dt {
-  font-weight: var(--font-w-bold, bold);
+  font-weight: var(--weight-heading, 500);
 }
 
 [role="list"],
@@ -233,258 +240,21 @@ dt {
 }
 
 /* ============================================
-   Forms
-   ============================================ */
-
-/* Form Structure */
-form > * + * {
-  margin-block-start: var(--space-sm, 1rem);
-}
-
-fieldset {
-  margin-inline: 0;
-  border: var(--panel-border-width, 1px) var(--border-style, solid)
-    var(--panel-border-color, currentColor);
-  padding: var(--space-sm, 1rem);
-}
-
-legend {
-  padding-inline: 2px;
-}
-
-/* Labels */
-label {
-  display: inline-block;
-  position: relative;
-  font: inherit;
-  color: var(--form-control-label-color);
-  line-height: var(--form-control-label-line-height);
-}
-
-/* Font weight for labels that aren't checkbox/radio */
-label:not(:has(input[type="checkbox"])):not(:has(input[type="radio"])) {
-  font-weight: var(--font-w-medium);
-}
-
-/* Full width for labels containing text inputs/textareas/selects */
-label:has(
-  input:not(
-    [type="button"],
-    [type="checkbox"],
-    [type="color"],
-    [type="file"],
-    [type="hidden"],
-    [type="image"],
-    [type="radio"],
-    [type="reset"],
-    [type="submit"]
-  ),
-  textarea,
-  select
-) {
-  width: 100%;
-}
-
-/* Spacing between label and input */
-label + :is(input:not([type="checkbox"], [type="radio"]), textarea, select),
-label > :is(input:not([type="checkbox"], [type="radio"]), textarea, select) {
-  margin-block-start: 0.5em;
-}
-
-/* Checkbox/Radio alignment with labels */
-input[type="checkbox"],
-label:has(input[type="checkbox"]),
-input[type="radio"],
-label:has(input[type="radio"]) {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-
-  font: inherit;
-  font-size: var(--form-control-font-size);
-  line-height: var(--form-control-line-height);
-
-  accent-color: var(--color-accent-fill-loud);
-
-  user-select: none;
-  -webkit-user-select: none;
-
-  &,
-  + label {
-    cursor: pointer;
-  }
-
-  &:disabled,
-  &:has(:disabled) {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-}
-
-/* Checkbox/Radio base - functional only */
-input[type="checkbox"],
-input[type="radio"] {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: var(--form-control-toggle-size, 1.125rem);
-  height: var(--form-control-toggle-size, 1.125rem);
-  margin: 0;
-  margin-inline-end: 0.5em;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  border-radius: 4px;
-}
-
-input[type="checkbox"] {
-  border-radius: min(
-    calc(var(--form-control-toggle-size) * 0.375),
-    var(--radius-md)
-  );
-}
-
-/* Radio-specific border-radius */
-input[type="radio"] {
-  border-radius: 50%;
-}
-
-/* Text inputs, textareas, selects */
-input:not(
-  [type="button"],
-  [type="checkbox"],
-  [type="color"],
-  [type="file"],
-  [type="hidden"],
-  [type="image"],
-  [type="radio"],
-  [type="range"],
-  [type="reset"],
-  [type="submit"]
-),
-textarea,
-select {
-  width: 100%;
-  height: var(--_form-control-height, 2.5rem);
-  padding: 0 0.75em;
-
-  color: var(--form-control-value-color);
-  font: inherit;
-  font-size: var(--form-control-font-size);
-  line-height: var(--form-control-line-height);
-  vertical-align: middle;
-
-  background-color: var(--form-control-background-color, transparent);
-  border: var(--form-control-border-width, 1px)
-    var(--form-control-border-style, solid)
-    var(--form-control-border-color, currentColor);
-  border-radius: var(--form-control-border-radius, 0.25rem);
-
-  &::placeholder {
-    color: var(--form-control-placeholder-color, currentColor);
-    opacity: 0.5;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-}
-
-/* Textarea specific */
-textarea {
-  height: auto;
-  min-height: var(--_form-control-height, 2.5rem);
-  padding: 0.65em 0.75em;
-  line-height: var(--leading-normal, 1.5);
-  resize: vertical;
-}
-
-textarea:not([rows]) {
-  min-height: 10em;
-}
-
-/* Color input */
-input[type="color"] {
-  display: block;
-  width: var(--_form-control-height, 2.5rem);
-  height: var(--_form-control-height, 2.5rem);
-  padding: calc(var(--form-control-border-width, 1px) * 2);
-
-  background: transparent;
-  border: var(--form-control-border-width, 1px) var(--border-style, solid)
-    var(--form-control-border-color, currentColor);
-  border-radius: var(--form-control-border-radius, 0.25rem);
-  cursor: pointer;
-
-  &::-webkit-color-swatch-wrapper {
-    padding: 0;
-    border-radius: inherit;
-  }
-
-  &::-webkit-color-swatch {
-    border: none;
-    border-radius: calc(
-      var(--form-control-border-radius, 0.25rem) -
-        var(--form-control-border-width, 1px) * 3
-    );
-  }
-
-  &::-moz-color-swatch {
-    border: none;
-    border-radius: calc(
-      var(--form-control-border-radius, 0.25rem) -
-        var(--form-control-border-width, 1px) * 3
-    );
-  }
-}
-
-/* Range input - minimal */
-input[type="range"] {
-  display: block;
-  width: 100%;
-  margin: 0;
-
-  border-radius: var(--radius-full, 9999px);
-  cursor: pointer;
-
-  &:disabled {
-    opacity: 0.2;
-    cursor: not-allowed;
-  }
-}
-
-/* Select */
-select {
-  appearance: none;
-  cursor: pointer;
-
-  /* CSS caret instead of SVG */
-  background-image:
-    linear-gradient(45deg, transparent 50%, currentColor 50%),
-    linear-gradient(135deg, currentColor 50%, transparent 50%);
-  background-position:
-    calc(100% - 1em) center,
-    calc(100% - 0.75em) center;
-  background-size: 0.25em 0.25em;
-  background-repeat: no-repeat;
-  padding-inline-end: 2.5em;
-}
-
-/* ============================================
    Code
    ============================================ */
 
 code,
-kbd,
 samp {
-  font-family: var(--font-mono, ui-monospace, monospace);
-  background: var(
-    --color-fill-normal,
-    color-mix(in srgb, currentColor 10%, transparent)
+  font-family: var(
+    --font-mono,
+    "JetBrains Mono",
+    "SF Mono",
+    "Fira Code",
+    Consolas,
+    Monaco,
+    monospace
   );
+  background: var(--bg-surface, #faf9f5);
   padding-inline: 0.25em;
   hyphens: none;
   tab-size: 2;
@@ -497,15 +267,14 @@ samp {
 }
 
 pre {
-  white-space: pre-wrap;
-  padding: var(--space-sm, 0.875rem);
+  padding: calc(var(--space-md, 1rem) - var(--border-thin, 1px));
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 
 pre:has(code) {
-  background: CanvasText;
-  color: Canvas;
+  background: var(--bg-surface, #faf9f5);
+  color: var(--text-primary, #141413);
 }
 
 pre code {
@@ -513,28 +282,6 @@ pre code {
   border: none;
   padding: 0;
   color: inherit;
-}
-
-kbd {
-  --_kbd-border-color: color-mix(
-    in srgb,
-    var(--color-text-normal, currentColor) 20%,
-    #0000
-  );
-  border: var(--border-width-thin, 1px) var(--border-style, solid)
-    var(--_kbd-border-color, currentColor);
-  border-bottom: calc(var(--border-width-thin, 1px) + 1px) solid
-    color-mix(in srgb, var(--color-text-normal, currentColor) 20%, transparent);
-  border-radius: min(
-    calc(var(--form-control-toggle-size, 1.125rem) * 0.375),
-    var(--radius-md, 0.25rem)
-  );
-  font-size: 0.825em;
-  display: inline-flex;
-  gap: var(--space-3xs, 0.25rem);
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
 }
 
 /* ============================================
@@ -547,21 +294,6 @@ picture {
   max-width: 100%;
   display: block;
 }
-
-/* pictures to fit viewport, instead of content width */
-/* picture {
-    width: max-content;
-} */
-
-/* figure {
-  margin: 0;
-}
-
-figcaption {
-  padding-block-start: 0.5em;
-  font-size: var(--textsize-sm, 0.875rem);
-  font-family: var(--font-mono, monospace);
-} */
 
 video,
 iframe[src*="youtube"],
@@ -587,7 +319,7 @@ svg:not([class]) {
 svg[role="img"] {
   width: revert;
   height: revert;
-  padding: var(--space-xs, 0.75rem);
+  padding: var(--space-xs, 0.25rem);
 }
 
 /* ============================================
@@ -595,51 +327,49 @@ svg[role="img"] {
    ============================================ */
 
 table {
-  border: var(--border-width-thin, 1px) var(--border-style, solid)
-    var(--color-surface-border, currentColor);
+  border: var(--border-thin, 1px) solid var(--border-default, #e8e6dc);
   border-collapse: collapse;
   width: 100%;
 }
 
 th {
   text-align: left;
-  font-weight: var(--font-w-bold, bold);
+  font-weight: var(--weight-heading, 500);
   line-height: var(--leading-tight, 1.1);
 }
 
 thead th {
-  padding-block: var(--space-sm, 1rem);
+  padding-block: var(--space-sm, 0.5rem);
 }
 
 td,
 th {
-  padding-block: var(--space-xs, 0.75rem);
-  padding-inline: var(--space-sm, 1rem);
+  padding-block: var(--space-xs, 0.25rem);
+  padding-inline: var(--space-sm, 0.5rem);
 }
 
 th:not(:only-of-type) {
-  border-block-end: var(--border-width-thin, 1px) var(--border-style, solid)
-    var(--color-surface-border, currentColor);
+  border-block-end: var(--border-thin, 1px) solid var(--border-default, #e8e6dc);
 }
 
 th:only-of-type {
-  border-inline-end: var(--border-width-thin, 1px) var(--border-style, solid)
-    var(--color-surface-border, currentColor);
+  border-inline-end: var(--border-thin, 1px) solid
+    var(--border-default, #e8e6dc);
 }
 
 :is(th, td) ~ :is(th, td) {
-  border-inline-start: var(--border-width-thin, 1px) var(--border-style, solid)
-    var(--color-surface-border, currentColor);
+  border-inline-start: var(--border-thin, 1px) solid
+    var(--border-default, #e8e6dc);
 }
 
 tr + tr :is(th, td) {
-  border-block-start: var(--border-width-thin, 1px) var(--border-style, solid)
-    var(--color-surface-border, currentColor);
+  border-block-start: var(--border-thin, 1px) solid
+    var(--border-default, #e8e6dc);
 }
 
 caption {
   caption-side: bottom;
-  margin-block-start: var(--space-sm, 1rem);
+  margin-block-start: var(--space-sm, 0.5rem);
 }
 
 /* ============================================
@@ -651,7 +381,7 @@ summary {
 }
 
 [open] > summary {
-  margin-block-end: var(--space-xs, 0.75rem);
+  margin-block-end: var(--space-xs, 0.25rem);
 }
 
 /* ============================================
@@ -659,10 +389,9 @@ summary {
    ============================================ */
 
 dialog {
-  background-color: var(--color-bg, Canvas);
-  border: var(--panel-border-width, 1px) var(--border-style, solid)
-    var(--panel-border-color, currentColor);
-  border-radius: var(--panel-radius, 0.5rem);
+  background-color: var(--color-bg, var(--bg-page, #f5f4ed));
+  border: var(--border-thin, 1px) solid var(--border-default, #e8e6dc);
+  border-radius: var(--radius-md, 0.5rem);
   max-height: calc(100% - var(--space-xl, 3rem));
   max-width: calc(100% - var(--space-xl, 3rem));
   width: 32em;
@@ -677,7 +406,7 @@ dialog:modal::backdrop {
    ============================================ */
 
 :focus {
-  outline-color: var(--focus-ring-color, currentColor);
+  outline-color: var(--focus-ring-color, var(--accent, #1b365d));
   outline-style: var(--focus-ring-style, auto);
   outline-offset: var(--focus-ring-offset, 4px);
   outline-width: var(--focus-ring-width, 2px);
@@ -689,7 +418,7 @@ dialog:modal::backdrop {
   }
 
   :focus-visible {
-    outline-color: var(--focus-ring-color, currentColor);
+    outline-color: var(--focus-ring-color, var(--accent, #1b365d));
     outline-style: var(--focus-ring-style, auto);
     outline-offset: var(--focus-ring-offset, 4px);
     outline-width: var(--focus-ring-width, 2px);
@@ -703,8 +432,8 @@ dialog:modal::backdrop {
 }
 
 ::selection {
-  background: var(--color-selection-bg, Highlight);
-  color: var(--color-selection-fg, HighlightText);
+  background: var(--accent, #1b365d);
+  color: var(--color-ivory, #faf9f5);
   text-shadow: none;
 }
 
