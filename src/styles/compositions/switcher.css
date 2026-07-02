@@ -13,19 +13,19 @@ needs to be to allow items to sit inline with each other
 Can be any acceptable flexbox alignment value.
 */
 .switcher {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--switcher-gap, 1rem);
-  align-items: var(--switcher-vertical-alignment, flex-start);
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--switcher-gap, var(--space-lg, 1.5rem));
+	align-items: var(--switcher-vertical-alignment, flex-start);
 }
 
 .switcher > * {
-  flex-grow: 1;
-  flex-basis: calc((var(--switcher-inline-at, 40rem) - 100%) * 999);
+	flex-grow: 1;
+	flex-basis: calc((var(--switcher-inline-at, 40rem) - 100%) * 999);
 }
 
 /* Max 2 items,
   so anything greater than 2 is full width */
 .switcher > :nth-child(n + 3) {
-  flex-basis: 100%;
+	flex-basis: 100%;
 }

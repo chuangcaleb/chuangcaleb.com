@@ -12,10 +12,10 @@ Can be any acceptable flexbox alignment value.
 --repel-gap: Controls the gap between repel items
 */
 .repel {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex-direction: var(--repel-direction, row);
-  align-items: var(--repel-y-alignment, center);
-  gap: var(--repel-gap, 1rem);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	flex-direction: var(--repel-direction, row);
+	align-items: var(--repel-y-alignment, center);
+	gap: var(--repel-gap, var(--space-md, 1rem));
 }

@@ -120,9 +120,6 @@ components:
     textColor: "{colors.near-black}"
     rounded: "{rounded.sm}"
     padding: 10px 14px
-  footer:
-    backgroundColor: "{colors.dark-surface}"
-    textColor: "{colors.warm-gray}"
   error-text:
     textColor: "{colors.error}"
 ---

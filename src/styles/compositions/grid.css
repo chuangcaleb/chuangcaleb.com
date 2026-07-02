@@ -15,11 +15,11 @@ ideally, as a minimum.
 their grid area. Can be any valid align-items value. */
 
 .grid-auto {
-  display: grid;
-  grid-template-columns: repeat(
-    var(--grid-placement, auto-fill),
-    minmax(var(--grid-item-min, 16rem), 1fr)
-  );
-  gap: var(--grid-gap, 1rem);
-  align-items: var(--grid-align-items, stretch);
+	display: grid;
+	grid-template-columns: repeat(
+		var(--grid-placement, auto-fill),
+		minmax(var(--grid-item-min, 16rem), 1fr)
+	);
+	gap: var(--grid-gap, var(--space-lg, 1.5rem));
+	align-items: var(--grid-align-items, stretch);
 }
