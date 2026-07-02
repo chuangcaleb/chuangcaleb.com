@@ -2,6 +2,9 @@ import eslintPluginAstro from 'eslint-plugin-astro';
 import {type FlatXoConfig} from 'xo';
 
 export const xoConfig: FlatXoConfig = [
+	{
+		ignores: ['_archived/**'],
+	},
 	...eslintPluginAstro.configs.recommended,
 	{
 		rules: {
