@@ -641,7 +641,9 @@ The editorial mode reads as "content speaks"; the structured mode reads as "stru
 
 Exceptions are allowed, but the reason should be explicit.
 
-Don't: Write custom CSS variables. Almost always prefer layout primitives and existing utility classes and variables.
+Do: Avoid media queries where possible. Almost always prefer layout primitives.
+
+Don't: Write custom CSS variables and styles. Prefer existing utility classes and variables.
 
 Don't: Set headlines to `weight-3` or heavier synthetic bold. Synthetic bold blurs strokes and degrades typographic quality.
 

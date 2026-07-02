@@ -5,17 +5,27 @@ More info: https://every-layout.dev/layouts/cluster/
 CUSTOM PROPERTIES
 --cluster-gap: Controls the gap between cluster items
 
---cluster-x-alignment: Controls horizontal alignment of items.
+--cluster-align-x: Controls horizontal alignment of items.
 Can be any acceptable flexbox alignment value.
 
---cluster-y-alignment: Controls vertical alignment of items.
+--cluster-align-y: Controls vertical alignment of items.
 Can be any acceptable flexbox alignment value.
 */
 
 .cluster {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--cluster-gap, var(--space-md, 1rem));
-	justify-content: var(--cluster-x-alignment, flex-start);
-	align-items: var(--cluster-y-alignment, center);
+
+	/* init */
+	--cluster-gap: var(--space-md, 1rem);
+	/* reset */
+	--cluster-gap-x: var(--cluster-gap);
+	--cluster-gap-y: var(--cluster-gap);
+
+	gap: var(--cluster-gap);
+	column-gap: var(--cluster-gap-x, var(--cluster-gap));
+	row-gap: var(--cluster-gap-y, var(--cluster-gap));
+
+	justify-content: var(--cluster-align-x, flex-start);
+	align-items: var(--cluster-align-y, center);
 }

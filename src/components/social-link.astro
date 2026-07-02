@@ -1,0 +1,26 @@
+---
+interface Props {
+  href: string;
+  label: string;
+}
+
+const { href, label } = Astro.props;
+---
+
+<a class="cluster" href={href} aria-label={label}>
+  <slot />
+  <span>{label}</span>
+</a>
+
+<style>
+  a {
+    --cluster-gap: var(--space-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: var(--text-body-dense);
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+</style>

@@ -1,0 +1,16 @@
+.manifesto {
+	font-family: var(--font-serif);
+	font-size: var(--text-h3);
+	line-height: var(--leading-body);
+	/* letter-spacing: var(--tracking-label); */
+	color: var(--text-muted);
+	font-weight: var(--weight-body);
+}
+
+.tagline {
+	font-family: var(--font-serif);
+	font-weight: var(--weight-heading);
+	font-size: var(--text-h3);
+	line-height: var(--leading-body);
+	color: var(--color-olive);
+}

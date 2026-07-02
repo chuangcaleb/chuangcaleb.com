@@ -1,0 +1,110 @@
+---
+import SITE from '~/data/site.ts';
+import '~/styles/index.css';
+
+export interface LayoutProps {
+  title?: string | null;
+  description?: string;
+}
+
+const { title: propsTitle, description: propsDescription } = Astro.props;
+
+const { pathname } = Astro.url;
+const isHome = pathname === '/';
+const isNotesRoute = pathname.startsWith('/notes');
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const title = propsTitle
+  ? propsTitle + (isHome ? '' : ` | ${SITE.title}`)
+  : SITE.title;
+const description =
+  propsDescription ??
+  (isNotesRoute ? SITE.siteDescriptionFallback : SITE.description);
+---
+
+<html lang={SITE.language}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={SITE.author.name} />
+    <link rel="canonical" href={canonicalUrl.href} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:url" content={canonicalUrl.href} />
+    {description && <meta property="og:description" content={description} />}
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content={title} />
+    {
+      description && (
+        <meta property="twitter:description" content={description} />
+      )
+    }
+
+    <!-- Theme color (light-only) -->
+    <meta name="theme-color" content="#f5f4ed" />
+
+    <slot name="head" />
+  </head>
+  <body>
+    <slot name="header" />
+    <main id="main">
+      <slot />
+    </main>
+    <footer>
+      <p class="fine-print">created by me</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  main {
+    padding-inline: var(--gutter);
+    padding-block-start: var(--space-xl);
+    padding-block-end: var(--space-sm);
+    max-width: var(--page-max);
+    margin: 0 auto;
+    animation: fadeIn 0.4s ease-out;
+  }
+  footer {
+    padding-block: var(--space-sm);
+    padding-inline: var(--gutter);
+    text-align: center;
+  }
+
+  .fine-print {
+    font-size: var(--text-caption);
+    color: var(--color-warm-gray);
+  }
+
+  .skip-link {
+    position: fixed;
+    padding: var(--space-sm);
+    z-index: 10;
+    color: var(--accent);
+    background: var(--bg-page);
+    border-radius: var(--radius-sm);
+    transition: transform 0.3s;
+    transform: translateY(-100%);
+  }
+
+  .skip-link:focus {
+    transform: translateY(0%);
+  }
+</style>

@@ -44,9 +44,9 @@ body {
 	margin: 0;
 	padding: 0;
 	min-height: 100vh;
-	color: var(--text-primary, #141413);
-	background: var(--bg-page, #f5f4ed);
-	font-size: var(--text-body, 1rem);
+	color: var(--text-primary);
+	background: var(--bg-page);
+	font-size: var(--text-body);
 	font-family: var(
 		--font-body,
 		Charter,
@@ -55,7 +55,7 @@ body {
 		'Times New Roman',
 		serif
 	);
-	line-height: var(--leading-body, 1.55);
+	line-height: var(--leading-body);
 }
 
 main {
@@ -72,7 +72,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: var(--weight-heading, 500);
+	font-weight: var(--weight-heading);
 	font-family: var(
 		--font-heading,
 		Charter,
@@ -81,34 +81,34 @@ h6 {
 		'Times New Roman',
 		serif
 	);
-	line-height: var(--leading-heading, 1.2);
+	line-height: var(--leading-heading);
 	text-wrap: balance;
 	overflow-wrap: break-word;
 }
 
 h1 {
-	font-size: var(--text-h1, 2rem);
+	font-size: var(--text-h1);
 }
 
 h2 {
-	font-size: var(--text-h2, 1.5rem);
+	font-size: var(--text-h2);
 }
 
 h3 {
-	font-size: var(--text-h3, 1.25rem);
+	font-size: var(--text-h3);
 }
 
-h4 {
-	font-size: var(--text-body, 1rem);
+/* h4 {
+  font-size: var(--text-body);
 }
 
 h5 {
-	font-size: var(--text-body-dense, 0.875rem);
+  font-size: var(--text-body-dense);
 }
 
 h6 {
-	font-size: var(--text-caption, 0.8125rem);
-}
+  font-size: var(--text-caption);
+} */
 
 p {
 	text-wrap: pretty;
@@ -120,36 +120,36 @@ small {
 	font-size: 80%;
 }
 
-var {
-	font-style: normal;
-	font-weight: 600;
+/* var {
+  font-style: normal;
+  font-weight: 600;
 }
 
 sub,
 sup {
-	font-size: 75%;
-	vertical-align: baseline;
-	display: inline-block;
+  font-size: 75%;
+  vertical-align: baseline;
+  display: inline-block;
 }
 
 sub {
-	transform: translateY(0.65ex);
+  transform: translateY(0.65ex);
 }
 
 sup {
-	transform: translateY(-0.7ex);
+  transform: translateY(-0.7ex);
 }
 
 address {
-	font-style: normal;
-}
+  font-style: normal;
+} */
 
 blockquote {
 	margin: 0;
 }
 
 blockquote footer {
-	margin-block-start: var(--space-sm, 0.5rem);
+	margin-block-start: var(--space-sm);
 	font-style: normal;
 }
 
@@ -167,9 +167,8 @@ q {
 
 hr {
 	border: 0;
-	border-block-start: var(--border-thin, 1px) solid
-		var(--border-default, #e8e6dc);
-	margin-block: var(--flow-space, var(--space-xl, 3rem));
+	border-block-start: var(--border-thin) solid var(--border-default);
+	/* margin-block: var(--flow-space, var(--space-xl)); */
 }
 
 abbr {
@@ -179,10 +178,10 @@ abbr {
 
 mark,
 ::selection {
-	color: var(--color-ivory, #faf9f5);
+	color: var(--color-ivory);
 	padding: 0 0.25em;
-	border-radius: var(--radius-sm, 4px);
-	background: var(--accent, #1b365d);
+	border-radius: var(--radius-sm);
+	background: var(--accent);
 }
 
 /* ============================================
@@ -190,7 +189,7 @@ mark,
    ============================================ */
 
 a {
-	color: var(--color-link, var(--accent, #1b365d));
+	color: var(--color-link, var(--accent));
 	text-decoration-skip-ink: auto;
 	text-underline-offset: 0.25em;
 }
@@ -216,7 +215,7 @@ ol {
 
 li > ul,
 li > ol {
-	margin-inline-start: var(--space-sm, 0.5rem);
+	margin-inline-start: var(--space-sm);
 }
 
 ul {
@@ -229,7 +228,7 @@ li {
 }
 
 dt {
-	font-weight: var(--weight-heading, 500);
+	font-weight: var(--weight-heading);
 }
 
 [role='list'],
@@ -245,16 +244,8 @@ dt {
 
 code,
 samp {
-	font-family: var(
-		--font-mono,
-		'JetBrains Mono',
-		'SF Mono',
-		'Fira Code',
-		Consolas,
-		Monaco,
-		monospace
-	);
-	background: var(--bg-surface, #faf9f5);
+	font-family: var(--font-mono);
+	background: var(--bg-surface);
 	padding-inline: 0.25em;
 	hyphens: none;
 	tab-size: 2;
@@ -267,14 +258,14 @@ samp {
 }
 
 pre {
-	padding: calc(var(--space-md, 1rem) - var(--border-thin, 1px));
+	padding: calc(var(--space-md) - var(--border-thin));
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
 }
 
 pre:has(code) {
-	background: var(--bg-surface, #faf9f5);
-	color: var(--text-primary, #141413);
+	background: var(--bg-surface);
+	color: var(--text-primary);
 }
 
 pre code {
@@ -319,7 +310,7 @@ svg:not([class]) {
 svg[role='img'] {
 	width: revert;
 	height: revert;
-	padding: var(--space-xs, 0.25rem);
+	padding: var(--space-xs);
 }
 
 /* ============================================
@@ -327,49 +318,46 @@ svg[role='img'] {
    ============================================ */
 
 table {
-	border: var(--border-thin, 1px) solid var(--border-default, #e8e6dc);
+	border: var(--border-thin) solid var(--border-default);
 	border-collapse: collapse;
 	width: 100%;
 }
 
 th {
 	text-align: left;
-	font-weight: var(--weight-heading, 500);
-	line-height: var(--leading-tight, 1.1);
+	font-weight: var(--weight-heading);
+	line-height: var(--leading-tight);
 }
 
 thead th {
-	padding-block: var(--space-sm, 0.5rem);
+	padding-block: var(--space-sm);
 }
 
 td,
 th {
-	padding-block: var(--space-xs, 0.25rem);
-	padding-inline: var(--space-sm, 0.5rem);
+	padding-block: var(--space-xs);
+	padding-inline: var(--space-sm);
 }
 
 th:not(:only-of-type) {
-	border-block-end: var(--border-thin, 1px) solid var(--border-default, #e8e6dc);
+	border-block-end: var(--border-thin) solid var(--border-default);
 }
 
 th:only-of-type {
-	border-inline-end: var(--border-thin, 1px) solid
-		var(--border-default, #e8e6dc);
+	border-inline-end: var(--border-thin) solid var(--border-default);
 }
 
 :is(th, td) ~ :is(th, td) {
-	border-inline-start: var(--border-thin, 1px) solid
-		var(--border-default, #e8e6dc);
+	border-inline-start: var(--border-thin) solid var(--border-default);
 }
 
 tr + tr :is(th, td) {
-	border-block-start: var(--border-thin, 1px) solid
-		var(--border-default, #e8e6dc);
+	border-block-start: var(--border-thin) solid var(--border-default);
 }
 
 caption {
 	caption-side: bottom;
-	margin-block-start: var(--space-sm, 0.5rem);
+	margin-block-start: var(--space-sm);
 }
 
 /* ============================================
@@ -381,7 +369,7 @@ summary {
 }
 
 [open] > summary {
-	margin-block-end: var(--space-xs, 0.25rem);
+	margin-block-end: var(--space-xs);
 }
 
 /* ============================================
@@ -389,11 +377,11 @@ summary {
    ============================================ */
 
 dialog {
-	background-color: var(--color-bg, var(--bg-page, #f5f4ed));
-	border: var(--border-thin, 1px) solid var(--border-default, #e8e6dc);
-	border-radius: var(--radius-md, 0.5rem);
-	max-height: calc(100% - var(--space-xl, 3rem));
-	max-width: calc(100% - var(--space-xl, 3rem));
+	background-color: var(--color-bg, var(--bg-page));
+	border: var(--border-thin) solid var(--border-default);
+	border-radius: var(--radius-md);
+	max-height: calc(100% - var(--space-xl));
+	max-width: calc(100% - var(--space-xl));
 	width: 32em;
 }
 
@@ -406,7 +394,7 @@ dialog:modal::backdrop {
    ============================================ */
 
 :focus {
-	outline-color: var(--focus-ring-color, var(--accent, #1b365d));
+	outline-color: var(--focus-ring-color, var(--accent));
 	outline-style: var(--focus-ring-style, auto);
 	outline-offset: var(--focus-ring-offset, 4px);
 	outline-width: var(--focus-ring-width, 2px);
@@ -418,7 +406,7 @@ dialog:modal::backdrop {
 	}
 
 	:focus-visible {
-		outline-color: var(--focus-ring-color, var(--accent, #1b365d));
+		outline-color: var(--focus-ring-color, var(--accent));
 		outline-style: var(--focus-ring-style, auto);
 		outline-offset: var(--focus-ring-offset, 4px);
 		outline-width: var(--focus-ring-width, 2px);
@@ -432,8 +420,8 @@ dialog:modal::backdrop {
 }
 
 ::selection {
-	background: var(--accent, #1b365d);
-	color: var(--color-ivory, #faf9f5);
+	background: var(--accent);
+	color: var(--color-ivory);
 	text-shadow: none;
 }
 
