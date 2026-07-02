@@ -5,35 +5,35 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html {
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
 }
 
 :where(
-  blockquote,
-  dd,
-  dl,
-  fieldset,
-  figure,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  hr,
-  ol,
-  p,
-  pre,
-  table,
-  ul
+	blockquote,
+	dd,
+	dl,
+	fieldset,
+	figure,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	hr,
+	ol,
+	p,
+	pre,
+	table,
+	ul
 ) {
-  margin: 0;
+	margin: 0;
 }
 
 /* ============================================
@@ -41,25 +41,25 @@ html {
    ============================================ */
 
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  color: var(--text-primary, #141413);
-  background: var(--bg-page, #f5f4ed);
-  font-size: var(--text-body, 1rem);
-  font-family: var(
-    --font-body,
-    Charter,
-    Georgia,
-    Palatino,
-    "Times New Roman",
-    serif
-  );
-  line-height: var(--leading-body, 1.55);
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+	color: var(--text-primary, #141413);
+	background: var(--bg-page, #f5f4ed);
+	font-size: var(--text-body, 1rem);
+	font-family: var(
+		--font-body,
+		Charter,
+		Georgia,
+		Palatino,
+		'Times New Roman',
+		serif
+	);
+	line-height: var(--leading-body, 1.55);
 }
 
 main {
-  flex: auto;
+	flex: auto;
 }
 
 /* ============================================
@@ -72,117 +72,117 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: var(--weight-heading, 500);
-  font-family: var(
-    --font-heading,
-    Charter,
-    Georgia,
-    Palatino,
-    "Times New Roman",
-    serif
-  );
-  line-height: var(--leading-heading, 1.2);
-  text-wrap: balance;
-  overflow-wrap: break-word;
+	font-weight: var(--weight-heading, 500);
+	font-family: var(
+		--font-heading,
+		Charter,
+		Georgia,
+		Palatino,
+		'Times New Roman',
+		serif
+	);
+	line-height: var(--leading-heading, 1.2);
+	text-wrap: balance;
+	overflow-wrap: break-word;
 }
 
 h1 {
-  font-size: var(--text-h1, 2rem);
+	font-size: var(--text-h1, 2rem);
 }
 
 h2 {
-  font-size: var(--text-h2, 1.5rem);
+	font-size: var(--text-h2, 1.5rem);
 }
 
 h3 {
-  font-size: var(--text-h3, 1.25rem);
+	font-size: var(--text-h3, 1.25rem);
 }
 
 h4 {
-  font-size: var(--text-body, 1rem);
+	font-size: var(--text-body, 1rem);
 }
 
 h5 {
-  font-size: var(--text-body-dense, 0.875rem);
+	font-size: var(--text-body-dense, 0.875rem);
 }
 
 h6 {
-  font-size: var(--text-caption, 0.8125rem);
+	font-size: var(--text-caption, 0.8125rem);
 }
 
 p {
-  text-wrap: pretty;
-  overflow-wrap: break-word;
-  margin-block: 0;
+	text-wrap: pretty;
+	overflow-wrap: break-word;
+	margin-block: 0;
 }
 
 small {
-  font-size: 80%;
+	font-size: 80%;
 }
 
 var {
-  font-style: normal;
-  font-weight: 600;
+	font-style: normal;
+	font-weight: 600;
 }
 
 sub,
 sup {
-  font-size: 75%;
-  vertical-align: baseline;
-  display: inline-block;
+	font-size: 75%;
+	vertical-align: baseline;
+	display: inline-block;
 }
 
 sub {
-  transform: translateY(0.65ex);
+	transform: translateY(0.65ex);
 }
 
 sup {
-  transform: translateY(-0.7ex);
+	transform: translateY(-0.7ex);
 }
 
 address {
-  font-style: normal;
+	font-style: normal;
 }
 
 blockquote {
-  margin: 0;
+	margin: 0;
 }
 
 blockquote footer {
-  margin-block-start: var(--space-sm, 0.5rem);
-  font-style: normal;
+	margin-block-start: var(--space-sm, 0.5rem);
+	font-style: normal;
 }
 
 blockquote p:first-of-type::before {
-  content: open-quote;
+	content: open-quote;
 }
 
 blockquote p:last-of-type::after {
-  content: close-quote;
+	content: close-quote;
 }
 
 q {
-  font-style: italic;
+	font-style: italic;
 }
 
 hr {
-  border: 0;
-  border-block-start: var(--border-thin, 1px) solid
-    var(--border-default, #e8e6dc);
-  margin-block: var(--flow-space, var(--space-xl, 3rem));
+	border: 0;
+	border-block-start: var(--border-thin, 1px) solid
+		var(--border-default, #e8e6dc);
+	margin-block: var(--flow-space, var(--space-xl, 3rem));
 }
 
 abbr {
-  cursor: help;
-  text-underline-offset: 0.125em;
+	cursor: help;
+	text-underline-offset: 0.125em;
 }
 
 mark,
 ::selection {
-  color: var(--color-ivory, #faf9f5);
-  padding: 0 0.25em;
-  border-radius: var(--radius-sm, 4px);
-  background: var(--accent, #1b365d);
+	color: var(--color-ivory, #faf9f5);
+	padding: 0 0.25em;
+	border-radius: var(--radius-sm, 4px);
+	background: var(--accent, #1b365d);
 }
 
 /* ============================================
@@ -190,19 +190,19 @@ mark,
    ============================================ */
 
 a {
-  color: var(--color-link, var(--accent, #1b365d));
-  text-decoration-skip-ink: auto;
-  text-underline-offset: 0.25em;
+	color: var(--color-link, var(--accent, #1b365d));
+	text-decoration-skip-ink: auto;
+	text-underline-offset: 0.25em;
 }
 
 a:not([class]) {
-  color: currentColor;
-  text-decoration-skip-ink: auto;
+	color: currentColor;
+	text-decoration-skip-ink: auto;
 }
 
 a code {
-  background-color: inherit;
-  color: inherit;
+	background-color: inherit;
+	color: inherit;
 }
 
 /* ============================================
@@ -211,32 +211,32 @@ a code {
 
 ul,
 ol {
-  padding: 0;
+	padding: 0;
 }
 
 li > ul,
 li > ol {
-  margin-inline-start: var(--space-sm, 0.5rem);
+	margin-inline-start: var(--space-sm, 0.5rem);
 }
 
 ul {
-  list-style: disc;
+	list-style: disc;
 }
 
 li {
-  /* margin-inline-start: 1.25em; */
-  padding: 0;
+	/* margin-inline-start: 1.25em; */
+	padding: 0;
 }
 
 dt {
-  font-weight: var(--weight-heading, 500);
+	font-weight: var(--weight-heading, 500);
 }
 
-[role="list"],
-[role="tablist"] {
-  margin-block: 0;
-  padding-inline: 0;
-  list-style: none;
+[role='list'],
+[role='tablist'] {
+	margin-block: 0;
+	padding-inline: 0;
+	list-style: none;
 }
 
 /* ============================================
@@ -245,43 +245,43 @@ dt {
 
 code,
 samp {
-  font-family: var(
-    --font-mono,
-    "JetBrains Mono",
-    "SF Mono",
-    "Fira Code",
-    Consolas,
-    Monaco,
-    monospace
-  );
-  background: var(--bg-surface, #faf9f5);
-  padding-inline: 0.25em;
-  hyphens: none;
-  tab-size: 2;
-  text-align: left;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+	font-family: var(
+		--font-mono,
+		'JetBrains Mono',
+		'SF Mono',
+		'Fira Code',
+		Consolas,
+		Monaco,
+		monospace
+	);
+	background: var(--bg-surface, #faf9f5);
+	padding-inline: 0.25em;
+	hyphens: none;
+	tab-size: 2;
+	text-align: left;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
 }
 
 pre {
-  padding: calc(var(--space-md, 1rem) - var(--border-thin, 1px));
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+	padding: calc(var(--space-md, 1rem) - var(--border-thin, 1px));
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 pre:has(code) {
-  background: var(--bg-surface, #faf9f5);
-  color: var(--text-primary, #141413);
+	background: var(--bg-surface, #faf9f5);
+	color: var(--text-primary, #141413);
 }
 
 pre code {
-  background: none;
-  border: none;
-  padding: 0;
-  color: inherit;
+	background: none;
+	border: none;
+	padding: 0;
+	color: inherit;
 }
 
 /* ============================================
@@ -290,36 +290,36 @@ pre code {
 
 img,
 picture {
-  height: auto;
-  max-width: 100%;
-  display: block;
+	height: auto;
+	max-width: 100%;
+	display: block;
 }
 
 video,
-iframe[src*="youtube"],
-iframe[src*="vimeo"] {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
+iframe[src*='youtube'],
+iframe[src*='vimeo'] {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
 }
 
 svg {
-  flex-shrink: 0;
-  vertical-align: middle;
-  height: var(--icon-size, 1em);
-  width: var(--icon-size, 1em);
+	flex-shrink: 0;
+	vertical-align: middle;
+	height: var(--icon-size, 1em);
+	width: var(--icon-size, 1em);
 }
 
 svg:not([class]) {
-  width: auto;
-  height: 1lh;
+	width: auto;
+	height: 1lh;
 }
 
-svg[role="img"] {
-  width: revert;
-  height: revert;
-  padding: var(--space-xs, 0.25rem);
+svg[role='img'] {
+	width: revert;
+	height: revert;
+	padding: var(--space-xs, 0.25rem);
 }
 
 /* ============================================
@@ -327,49 +327,49 @@ svg[role="img"] {
    ============================================ */
 
 table {
-  border: var(--border-thin, 1px) solid var(--border-default, #e8e6dc);
-  border-collapse: collapse;
-  width: 100%;
+	border: var(--border-thin, 1px) solid var(--border-default, #e8e6dc);
+	border-collapse: collapse;
+	width: 100%;
 }
 
 th {
-  text-align: left;
-  font-weight: var(--weight-heading, 500);
-  line-height: var(--leading-tight, 1.1);
+	text-align: left;
+	font-weight: var(--weight-heading, 500);
+	line-height: var(--leading-tight, 1.1);
 }
 
 thead th {
-  padding-block: var(--space-sm, 0.5rem);
+	padding-block: var(--space-sm, 0.5rem);
 }
 
 td,
 th {
-  padding-block: var(--space-xs, 0.25rem);
-  padding-inline: var(--space-sm, 0.5rem);
+	padding-block: var(--space-xs, 0.25rem);
+	padding-inline: var(--space-sm, 0.5rem);
 }
 
 th:not(:only-of-type) {
-  border-block-end: var(--border-thin, 1px) solid var(--border-default, #e8e6dc);
+	border-block-end: var(--border-thin, 1px) solid var(--border-default, #e8e6dc);
 }
 
 th:only-of-type {
-  border-inline-end: var(--border-thin, 1px) solid
-    var(--border-default, #e8e6dc);
+	border-inline-end: var(--border-thin, 1px) solid
+		var(--border-default, #e8e6dc);
 }
 
 :is(th, td) ~ :is(th, td) {
-  border-inline-start: var(--border-thin, 1px) solid
-    var(--border-default, #e8e6dc);
+	border-inline-start: var(--border-thin, 1px) solid
+		var(--border-default, #e8e6dc);
 }
 
 tr + tr :is(th, td) {
-  border-block-start: var(--border-thin, 1px) solid
-    var(--border-default, #e8e6dc);
+	border-block-start: var(--border-thin, 1px) solid
+		var(--border-default, #e8e6dc);
 }
 
 caption {
-  caption-side: bottom;
-  margin-block-start: var(--space-sm, 0.5rem);
+	caption-side: bottom;
+	margin-block-start: var(--space-sm, 0.5rem);
 }
 
 /* ============================================
@@ -377,11 +377,11 @@ caption {
    ============================================ */
 
 summary {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 [open] > summary {
-  margin-block-end: var(--space-xs, 0.25rem);
+	margin-block-end: var(--space-xs, 0.25rem);
 }
 
 /* ============================================
@@ -389,16 +389,16 @@ summary {
    ============================================ */
 
 dialog {
-  background-color: var(--color-bg, var(--bg-page, #f5f4ed));
-  border: var(--border-thin, 1px) solid var(--border-default, #e8e6dc);
-  border-radius: var(--radius-md, 0.5rem);
-  max-height: calc(100% - var(--space-xl, 3rem));
-  max-width: calc(100% - var(--space-xl, 3rem));
-  width: 32em;
+	background-color: var(--color-bg, var(--bg-page, #f5f4ed));
+	border: var(--border-thin, 1px) solid var(--border-default, #e8e6dc);
+	border-radius: var(--radius-md, 0.5rem);
+	max-height: calc(100% - var(--space-xl, 3rem));
+	max-width: calc(100% - var(--space-xl, 3rem));
+	width: 32em;
 }
 
 dialog:modal::backdrop {
-  background-color: var(--color-overlay, rgba(0, 0, 0, 0.5));
+	background-color: var(--color-overlay, rgba(0, 0, 0, 0.5));
 }
 
 /* ============================================
@@ -406,39 +406,39 @@ dialog:modal::backdrop {
    ============================================ */
 
 :focus {
-  outline-color: var(--focus-ring-color, var(--accent, #1b365d));
-  outline-style: var(--focus-ring-style, auto);
-  outline-offset: var(--focus-ring-offset, 4px);
-  outline-width: var(--focus-ring-width, 2px);
+	outline-color: var(--focus-ring-color, var(--accent, #1b365d));
+	outline-style: var(--focus-ring-style, auto);
+	outline-offset: var(--focus-ring-offset, 4px);
+	outline-width: var(--focus-ring-width, 2px);
 }
 
 @supports selector(:focus-visible) {
-  :focus {
-    outline: none;
-  }
+	:focus {
+		outline: none;
+	}
 
-  :focus-visible {
-    outline-color: var(--focus-ring-color, var(--accent, #1b365d));
-    outline-style: var(--focus-ring-style, auto);
-    outline-offset: var(--focus-ring-offset, 4px);
-    outline-width: var(--focus-ring-width, 2px);
-  }
+	:focus-visible {
+		outline-color: var(--focus-ring-color, var(--accent, #1b365d));
+		outline-style: var(--focus-ring-style, auto);
+		outline-offset: var(--focus-ring-offset, 4px);
+		outline-width: var(--focus-ring-width, 2px);
+	}
 }
 
 @supports (-moz-appearance: none) {
-  :root {
-    --focus-ring-offset: 0.2ex;
-  }
+	:root {
+		--focus-ring-offset: 0.2ex;
+	}
 }
 
 ::selection {
-  background: var(--accent, #1b365d);
-  color: var(--color-ivory, #faf9f5);
-  text-shadow: none;
+	background: var(--accent, #1b365d);
+	color: var(--color-ivory, #faf9f5);
+	text-shadow: none;
 }
 
 :target {
-  scroll-margin-block: 5ex;
+	scroll-margin-block: 5ex;
 }
 
 /* ============================================
@@ -446,16 +446,16 @@ dialog:modal::backdrop {
    ============================================ */
 
 [hidden] {
-  display: none !important;
+	display: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  :after,
-  :before {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+	*,
+	:after,
+	:before {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
 }

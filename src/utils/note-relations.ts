@@ -1,5 +1,5 @@
-import type {NoteMetadata} from 'lib/utils/types';
 import {getNoteEntries} from './note.ts';
+import type {NoteMetadata} from 'lib/utils/types';
 
 export async function formatNoteRelations(metadata: NoteMetadata) {
 	const {
@@ -22,8 +22,14 @@ export async function formatNoteRelations(metadata: NoteMetadata) {
 		: null;
 
 	const type = (() => {
-		if (metadata.series) return 'topic/series';
-		if (metadata.emojip) return 'topic';
+		if (metadata.series) {
+			return 'topic/series';
+		}
+
+		if (metadata.emojip) {
+			return 'topic';
+		}
+
 		return 'regular';
 	})();
 

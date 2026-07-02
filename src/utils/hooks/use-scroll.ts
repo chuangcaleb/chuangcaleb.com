@@ -1,8 +1,8 @@
 // https://blog.coolhead.in/navbar-hide-and-show-on-scroll-using-custom-react-hooks
 /**
- * useScroll React custom hook
- * Usage:
- *    const { scrollX, scrollY, scrollDirection } = useScroll();
+ useScroll React custom hook
+ Usage:
+ const { scrollX, scrollY, scrollDirection } = useScroll();
  */
 
 import {useState, useEffect} from 'react';

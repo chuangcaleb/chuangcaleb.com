@@ -1,10 +1,10 @@
-@import "tokens/design-tokens.css";
-@import "global/global.css";
+@import 'tokens/design-tokens.css';
+@import 'global/global.css';
 /* @import "fonts"; */
 
-@import "compositions/index.css";
-@import "utilities/index.css";
-@import "blocks/index.css";
+@import 'compositions/index.css';
+@import 'utilities/index.css';
+@import 'blocks/index.css';
 
 /* @import "../compositions/" */
 

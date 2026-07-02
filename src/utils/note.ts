@@ -4,13 +4,19 @@ import type {Note, NoteReference, SuperNote} from 'lib/utils/types';
 import {gnr} from '~/utils/note-route.ts';
 
 function getNoteName(filepath: string | undefined) {
-	if (!filepath) return 'UNKNOWN NAME';
+	if (!filepath) {
+		return 'UNKNOWN NAME';
+	}
+
 	return path.parse(filepath).name;
 }
 
 // get note meta
 function gnm(entry: Note): SuperNote | undefined {
-	if (!entry) return undefined;
+	if (!entry) {
+		return undefined;
+	}
+
 	return {
 		...entry,
 		name: getNoteName(entry.filePath),
@@ -28,7 +34,10 @@ export async function getAllNotes(): Promise<SuperNote[]> {
 export async function getNoteEntries(
 	noteChildren?: NoteReference[],
 ): Promise<SuperNote[]> {
-	if (!noteChildren) return [];
+	if (!noteChildren) {
+		return [];
+	}
+
 	const entries = await getEntries<'obsidian-note'>(noteChildren);
 
 	return entries
@@ -40,6 +49,9 @@ export async function getNoteEntry(
 	item: NoteReference,
 ): Promise<SuperNote | undefined> {
 	const entry = await getEntry(item);
-	if (!entry) return undefined;
+	if (!entry) {
+		return undefined;
+	}
+
 	return gnm(entry);
 }
