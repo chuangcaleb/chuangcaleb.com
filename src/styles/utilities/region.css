@@ -1,0 +1,11 @@
+/*
+REGION UTILITY
+Consistent block padding for page sections
+
+CUSTOM PROPERTIES
+--region-space: The vertical padding of the region
+*/
+.region {
+  padding-block: var(--region-space);
+  position: relative;
+}

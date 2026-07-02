@@ -267,8 +267,6 @@ Four levels: `near-black` (primary) > `dark-warm` (secondary) > `olive` (subtext
 
 ## Layout & Spacing
 
-Use a Fluid spacing scale.
-
 Pages have a max-width of `120ch`, but prose should have a comfortable reading width of max `70ch`.
 
 ### Base unit: 4px
@@ -285,7 +283,9 @@ Pages have a max-width of `120ch`, but prose should have a comfortable reading w
 
 **WARN**: The font sizes here are an estimation, the actual scale's values should be manually tuned from a fluid space calculator.
 
-### Prefer using layout primitives #TODO
+### Prefer layout primitives
+
+CSS layouts should reuse primitives at `design/layout-primitives.md`.
 
 ---
 
@@ -604,17 +604,15 @@ The editorial mode reads as "content speaks"; the structured mode reads as "stru
 
 Exceptions are allowed, but the reason should be explicit.
 
-Don't
-Set headlines to `weight-3` or heavier synthetic bold. Synthetic bold blurs strokes and degrades typographic quality.
+Don't: Write custom CSS variables. Almost always prefer layout primitives and existing utility classes and variables.
 
-Do
-Body `weight-1`, headings `weight-2` (real W05). For more presence, use size or a brand left bar, never synthetic bold.
+Don't: Set headlines to `weight-3` or heavier synthetic bold. Synthetic bold blurs strokes and degrades typographic quality.
 
-Don't
-Use hard drop shadow. Visually heavy.
+Do: Body `weight-1`, headings `weight-2` (real W05). For more presence, use size or a brand left bar, never synthetic bold.
 
-Do
-Ring shadow `0 0 0 1pt var(--ring-warm)` or `whisper-shadow`, or simply alternate light and dark sections.
+Don't: Use hard drop shadow. Visually heavy.
+
+Do: Ring shadow `0 0 0 1pt var(--ring-warm)` or `whisper-shadow`, or simply alternate light and dark sections.
 
 When you're not sure "what should I use":
 
