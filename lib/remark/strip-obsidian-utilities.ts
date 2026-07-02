@@ -2,8 +2,8 @@ import type {Code, Root} from 'mdast';
 import {type Plugin} from 'unified';
 import {visit} from 'unist-util-visit';
 
-export const remarkStripObsidianUtilities: Plugin<void[], Root> = () => {
-	return (tree) => {
+export const remarkStripObsidianUtilities: Plugin<void[], Root> =
+	() => (tree) => {
 		visit(tree, 'code', (node: any, index, parent: any) => {
 			if (
 				(node as Code).lang === 'meta-bind-embed' &&
@@ -15,4 +15,3 @@ export const remarkStripObsidianUtilities: Plugin<void[], Root> = () => {
 			}
 		});
 	};
-};

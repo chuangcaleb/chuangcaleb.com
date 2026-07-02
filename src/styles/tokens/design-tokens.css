@@ -20,17 +20,18 @@
 	--color-warm-gray: #b5b2a7;
 
 	/* ── Brand (sole chromatic hue) ──────── */
-	--color-ink-blue: #1B365D;
-	--color-ink-light: #2D5A8A;
-	--color-error: #B53333;
+	--color-ink-blue: #1b365d;
+	--color-ink-light: #2d5a8a;
+	--color-error: #b53333;
 
 	/* ── Borders ─────────────────────────── */
 	--color-border-primary: #e8e6dc;
 	--color-border-secondary: #e5e3d8;
 
 	/* ── Typography ──────────────────────── */
-	--font-serif: Charter, Georgia, Palatino, "Times New Roman", serif;
-	--font-mono: "JetBrains Mono", "SF Mono", "Fira Code", Consolas, Monaco, monospace;
+	--font-serif: Charter, Georgia, Palatino, 'Times New Roman', serif;
+	--font-mono:
+		'JetBrains Mono', 'SF Mono', 'Fira Code', Consolas, Monaco, monospace;
 	--font-body: var(--font-serif);
 	--font-heading: var(--font-serif);
 

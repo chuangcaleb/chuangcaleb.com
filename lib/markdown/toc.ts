@@ -13,7 +13,10 @@ function diveChildren(item: TocItem, depth: number): TocItem[] {
 
 	// E.g., 2
 	const lastItemInTocItem = item.children.at(-1);
-	if (!lastItemInTocItem) return [];
+	if (!lastItemInTocItem) {
+		return [];
+	}
+
 	return diveChildren(lastItemInTocItem, depth - 1);
 }
 
@@ -35,7 +38,9 @@ export default function generateToc(
 			});
 		} else {
 			const lastItemInToc = toc.at(-1);
-			if (!lastItemInToc) continue;
+			if (!lastItemInToc) {
+				continue;
+			}
 
 			if (heading.depth < lastItemInToc.depth) {
 				throw new Error(`Orphan heading found: ${heading.text}.`);

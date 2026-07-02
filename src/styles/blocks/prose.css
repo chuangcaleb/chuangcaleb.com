@@ -93,7 +93,7 @@ CUSTOM PROPERTIES
 	border-inline-start-style: solid;
 	border-inline-start-color: var(
 		--prose-blockquote-border-color,
-		var(--accent, #1B365D)
+		var(--accent, #1b365d)
 	);
 	color: var(--text-muted, #504e49);
 }
@@ -114,11 +114,11 @@ CUSTOM PROPERTIES
 }
 
 .prose :is(code):not(.not-prose):not(pre code):before {
-	content: "`";
+	content: '`';
 }
 
 .prose :is(code):not(.not-prose):not(pre code):after {
-	content: "`";
+	content: '`';
 }
 
 .prose pre {
@@ -134,11 +134,11 @@ CUSTOM PROPERTIES
 }
 
 .prose :is(ul > li):not(.not-prose)::marker {
-	color: var(--prose-list-marker-color, var(--accent, #1B365D));
+	color: var(--prose-list-marker-color, var(--accent, #1b365d));
 }
 
 .prose :is(ol > li):not(.not-prose)::marker {
 	font-weight: var(--weight-body, 400);
-	color: var(--prose-list-marker-color, var(--accent, #1B365D));
+	color: var(--prose-list-marker-color, var(--accent, #1b365d));
 	font-size: var(--prose-list-marker-size, 1em);
 }
