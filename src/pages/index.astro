@@ -1,0 +1,40 @@
+---
+import Hero from './_components/hero.astro';
+// import Overview from './_components/overview/index.astro';
+// import Projects from './_components/projects/index.astro';
+// import FeaturedSection from "./_components/FeaturedSection.astro";
+import Layout from '~/layouts/layout.astro';
+import SITE from '~/data/site.ts';
+---
+
+<Layout
+  title={`${SITE.title} - ${SITE.subtitle}`}
+  description={SITE.description}
+>
+  <Hero />
+  <div class="region prose flow">
+    <h2>About me</h2>
+    <p>
+      Reprehenderit do anim ea ut ad amet amet. Adipisicing aute ad cupidatat
+      deserunt cillum do do incididunt. Adipisicing elit sit aute anim fugiat
+      aliquip aute. Reprehenderit ex ea dolor. Et labore mollit do qui voluptate
+      cupidatat velit in magna sit enim ullamco minim in anim. In veniam sint
+      exercitation magna ex sit culpa cillum fugiat amet ea duis labore fugiat
+      non. Sunt voluptate elit nulla qui do Lorem exercitation et quis aliquip
+      quis commodo. Adipisicing exercitation consequat cillum ipsum Lorem et
+      amet est fugiat sit et. Nulla aute fugiat mollit dolor minim esse. Ut
+      labore aute commodo irure aliqua amet qui laboris eiusmod aute. In cillum
+      adipisicing ut elit nostrud. Aute consectetur commodo aute in cillum sit
+      quis ad proident labore minim cillum occaecat do. In deserunt veniam nulla
+      reprehenderit nostrud deserunt consequat. Officia officia ullamco laboris.
+      Consequat et ut aute tempor eu sint quis. Commodo nisi sunt dolor ut est
+      aliquip anim ipsum esse nostrud proident incididunt ut anim. In ut
+      excepteur in aliqua ex deserunt aliquip elit aliquip duis sunt. Magna
+      aliqua dolore et ad non mollit veniam veniam consequat enim esse excepteur
+      amet irure.
+    </p>
+  </div>
+  <!-- <Overview /> -->
+  <!-- <Projects /> -->
+  <!-- <FeaturedSection /> -->
+</Layout>

@@ -33,7 +33,7 @@ const SOCIALS = {
 		icon: 'mdi:github',
 	},
 	CV: {
-		label: 'CV / Résumé',
+		label: 'CV',
 		href: 'https://cv.chuangcaleb.com',
 		ariaLabel: 'CV / Résumé of Chuang Caleb',
 		icon: 'mdi:text-box-check-outline',

@@ -74,7 +74,7 @@
 	--radius-md: 8px;
 	--radius-lg: 16px;
 	--radius-full: 9999px;
-	--border-thin: 1px;
+	--border-thin: 1.2px;
 
 	/* ── Elevation ───────────────────────── */
 	--ring-warm: rgba(0, 0, 0, 0.12);
@@ -82,7 +82,8 @@
 
 	/* ── Layout ──────────────────────────── */
 	--page-max: 120ch;
-	--prose-max: 70ch;
+	--prose-max: 75ch;
+	--heading-max: 35ch;
 
 	/* ── Semantic aliases ────────────────── */
 	--bg-page: var(--color-parchment);
@@ -100,4 +101,6 @@
 
 	--border-default: var(--color-border-primary);
 	--border-subtle: var(--color-border-secondary);
+
+	--gutter: var(--space-md);
 }
