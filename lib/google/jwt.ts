@@ -1,21 +1,34 @@
 import process from 'node:process';
-import {GoogleAuth} from 'google-auth-library';
+import {
+	GoogleAuth,
+	type GoogleAuth as GoogleAuthType,
+} from 'google-auth-library';
 import dotenv from 'dotenv';
 
-dotenv.config();
+function getGoogleAuth(): GoogleAuthType {
+	dotenv.config();
 
-const {GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY} = process.env;
-if (!GOOGLE_SERVICE_ACCOUNT_EMAIL || !GOOGLE_PRIVATE_KEY) {
-	throw new Error('Missing secret for Google service');
+	const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+	const key = process.env.GOOGLE_PRIVATE_KEY;
+	if (
+		email === undefined ||
+		email === null ||
+		key === undefined ||
+		key === null
+	) {
+		throw new Error('Missing secret for Google service');
+	}
+
+	return new GoogleAuth({
+		credentials: {
+			client_email: email,
+			private_key: key.replaceAll(String.raw`\\\\n`, '\n'),
+		},
+		scopes: [
+			'https://www.googleapis.com/auth/spreadsheets',
+			'https://www.googleapis.com/auth/drive.readonly',
+		],
+	});
 }
 
-export const auth = new GoogleAuth({
-	credentials: {
-		client_email: GOOGLE_SERVICE_ACCOUNT_EMAIL,
-		private_key: GOOGLE_PRIVATE_KEY.replaceAll(String.raw`\n`, '\n'),
-	},
-	scopes: [
-		'https://www.googleapis.com/auth/spreadsheets',
-		'https://www.googleapis.com/auth/drive.readonly',
-	],
-});
+export const auth = getGoogleAuth();

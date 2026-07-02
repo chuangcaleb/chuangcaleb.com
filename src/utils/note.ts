@@ -4,7 +4,7 @@ import type {Note, NoteReference, SuperNote} from 'lib/utils/types';
 import {gnr} from '~/utils/note-route.ts';
 
 function getNoteName(filepath: string | undefined) {
-	if (!filepath) {
+	if (filepath === undefined || filepath === null) {
 		return 'UNKNOWN NAME';
 	}
 
@@ -13,7 +13,7 @@ function getNoteName(filepath: string | undefined) {
 
 // get note meta
 function gnm(entry: Note): SuperNote | undefined {
-	if (!entry) {
+	if (entry === undefined || entry === null) {
 		return undefined;
 	}
 
@@ -34,7 +34,7 @@ export async function getAllNotes(): Promise<SuperNote[]> {
 export async function getNoteEntries(
 	noteChildren?: NoteReference[],
 ): Promise<SuperNote[]> {
-	if (!noteChildren) {
+	if (noteChildren === undefined || noteChildren === null) {
 		return [];
 	}
 
@@ -49,7 +49,7 @@ export async function getNoteEntry(
 	item: NoteReference,
 ): Promise<SuperNote | undefined> {
 	const entry = await getEntry(item);
-	if (!entry) {
+	if (entry === undefined || entry === null) {
 		return undefined;
 	}
 

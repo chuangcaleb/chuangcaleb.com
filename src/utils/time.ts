@@ -1,7 +1,7 @@
 import {differenceInDays, format, parseISO} from 'date-fns';
 
 export function formatDisplayDate(datetime?: string | Date) {
-	if (!datetime) {
+	if (datetime === undefined || datetime === null) {
 		return null;
 	}
 
@@ -27,32 +27,6 @@ export function getLongDurationSince(then: Date) {
 		short: `${daysCount}d`,
 		long: `${daysCount} day${daysCount === 1 ? '' : 's'}`,
 	};
-	// const interval = intervalToDuration({start: then, end: new Date()});
-
-	// if (interval?.years) {
-	// 	const value = Number(
-	// 		(
-	// 			interval.years + (interval?.months ? interval.months / 12 : 0)
-	// 		).toPrecision(2),
-	// 	);
-	// 	return `${value} ${value === 1 ? 'year' : 'years'} ago`;
-	// }
-
-	// if (interval?.months) {
-	// 	const value = Number(
-	// 		(interval.months + (interval?.days ? interval.days / 28 : 0)).toPrecision(
-	// 			2,
-	// 		),
-	// 	);
-	// 	return `${value} ${value === 1 ? 'month' : 'months'} ago`;
-	// }
-
-	// if (interval?.days) {
-	// 	const value = interval?.days ?? 1;
-	// 	return `${value} ${value === 1 ? 'day' : 'days'} ago`;
-	// }
-
-	// return `<1 day ago`;
 }
 
 export function isWithinDuration(datetime: Date, days: number) {
