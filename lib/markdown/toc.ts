@@ -2,9 +2,9 @@
 // found at https://kld.dev/building-table-of-contents/
 import type {MarkdownHeading} from 'astro';
 
-export type TocItem = {
+export type TocItem = MarkdownHeading & {
 	children: TocItem[];
-} & MarkdownHeading;
+};
 
 function diveChildren(item: TocItem, depth: number): TocItem[] {
 	if (depth === 1) {
@@ -13,10 +13,11 @@ function diveChildren(item: TocItem, depth: number): TocItem[] {
 
 	// E.g., 2
 	const lastItemInTocItem = item.children.at(-1);
-	if (!lastItemInTocItem) {
+	if (lastItemInTocItem === undefined || lastItemInTocItem === null) {
 		return [];
 	}
 
+	// eslint-disable-next-line unicorn/no-useless-recursion
 	return diveChildren(lastItemInTocItem, depth - 1);
 }
 
@@ -38,7 +39,7 @@ export default function generateToc(
 			});
 		} else {
 			const lastItemInToc = toc.at(-1);
-			if (!lastItemInToc) {
+			if (lastItemInToc === undefined || lastItemInToc === null) {
 				continue;
 			}
 

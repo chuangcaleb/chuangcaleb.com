@@ -4,11 +4,11 @@ import {GoogleSpreadsheet} from 'google-spreadsheet';
 import {auth} from '../jwt.js';
 import type {GuestPost} from './types.js';
 
-dotenv.config();
-
 export async function getGuestbookPosts() {
+	dotenv.config();
+
 	const id = process.env.GUESTBOOK_GOOGLE_SHEET_ID;
-	if (!id) {
+	if (id === undefined || id === null) {
 		throw new Error('Missing GUESTBOOK_GOOGLE_SHEET_ID in .env');
 	}
 

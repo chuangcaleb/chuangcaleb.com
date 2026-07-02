@@ -2,9 +2,9 @@
 
 ## Visual Workflow
 
-```
+```md
 ┌─────────────────────────────────────────────────────────────────┐
-│                    DEPENDABOT UPDATE FLOW                        │
+│ DEPENDABOT UPDATE FLOW │
 └─────────────────────────────────────────────────────────────────┘
 
 1. DEPENDABOT CREATES PR
@@ -12,57 +12,57 @@
    ├─> Target: staging branch
    ├─> Update type detected: patch/minor/major
    └─> validate-deps runs automatically (install)
-       │
-       ├─> ✅ validate-deps PASSES
-       │   │
-       │   ├─> Patch/Minor: AUTO-MERGE to staging ✓
-       │   │   └─> Staging-to-main PR auto-created/updated
-       │   │
-       │   └─> Major: COMMENT posted, awaiting manual review
-       │       └─> Manual merge to staging required
-       │           └─> Staging-to-main PR auto-created/updated
-       │
-       └─> ❌ validate-deps FAILS
-           └─> Copilot Autofix runs
-               │
-               ├─> Only version bumps changed: AUTO-MERGE to staging ✓
-               │   └─> Staging-to-main PR auto-created/updated
-               └─> Substantive code changes: COMMENT posted, manual review required
-                   └─> Manual merge to staging required
-                       └─> Staging-to-main PR auto-created/updated
+   │
+   ├─> ✅ validate-deps PASSES
+   │ │
+   │ ├─> Patch/Minor: AUTO-MERGE to staging ✓
+   │ │ └─> Staging-to-main PR auto-created/updated
+   │ │
+   │ └─> Major: COMMENT posted, awaiting manual review
+   │ └─> Manual merge to staging required
+   │ └─> Staging-to-main PR auto-created/updated
+   │
+   └─> ❌ validate-deps FAILS
+   └─> Copilot Autofix runs
+   │
+   ├─> Only version bumps changed: AUTO-MERGE to staging ✓
+   │ └─> Staging-to-main PR auto-created/updated
+   └─> Substantive code changes: COMMENT posted, manual review required
+   └─> Manual merge to staging required
+   └─> Staging-to-main PR auto-created/updated
 
 2. STAGING UPDATED
    │
    └─> Staging-to-main PR workflow triggers
-       │
-       ├─> No PR exists: Creates new PR with full summary
-       │
-       └─> PR exists: Adds comment with new changes
+   │
+   ├─> No PR exists: Creates new PR with full summary
+   │
+   └─> PR exists: Adds comment with new changes
 
 3. STAGING TO MAIN PR
    │
    ├─> Manual review required
    ├─> validate-deps runs on the PR
    └─> Manual merge to deploy to production
-       └─> Main in sync with staging ✓
+   └─> Main in sync with staging ✓
 ```
 
 ## Decision Tree
 
-```
+```md
 Is update Patch/Minor?
 ├─> YES
-│   └─> Does validate-deps pass?
-│       ├─> YES → Auto-merge to staging ✓
-│       └─> NO → Copilot Autofix runs
-│           ├─> Only version bumps changed? → Auto-merge ✓
-│           └─> Substantive code changes? → Manual review required
+│ └─> Does validate-deps pass?
+│ ├─> YES → Auto-merge to staging ✓
+│ └─> NO → Copilot Autofix runs
+│ ├─> Only version bumps changed? → Auto-merge ✓
+│ └─> Substantive code changes? → Manual review required
 │
 └─> NO (Major)
-    └─> Manual review required
-        └─> Does validate-deps pass?
-            ├─> YES → Manual merge decision
-            └─> NO → Copilot Autofix runs, then manual review
+└─> Manual review required
+└─> Does validate-deps pass?
+├─> YES → Manual merge decision
+└─> NO → Copilot Autofix runs, then manual review
 ```
 
 ## Command Quick Reference

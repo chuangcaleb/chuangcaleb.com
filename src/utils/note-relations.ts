@@ -26,14 +26,13 @@ export async function formatNoteRelations(metadata: NoteMetadata) {
 			return 'topic/series';
 		}
 
-		if (metadata.emojip) {
+		if (metadata.emojip !== undefined && metadata.emojip !== '') {
 			return 'topic';
 		}
 
 		return 'regular';
 	})();
 
-	// if (!childrenNotes && parentNotes.length === 0) return null;
 	return {
 		children: childrenNotes,
 		parents: parentNotes,
