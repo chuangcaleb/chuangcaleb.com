@@ -82,7 +82,7 @@
 
 	/* ── Layout ──────────────────────────── */
 	--page-max: 120ch;
-	--prose-max: 75ch;
+	--prose-max: 70ch;
 	--heading-max: 35ch;
 
 	/* ── Semantic aliases ────────────────── */
