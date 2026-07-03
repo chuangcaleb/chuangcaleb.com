@@ -26,7 +26,7 @@ const NOTES_DIR = path.resolve('src/content/obsidian-note');
 function collectMarkdownFiles(directory: string): string[] {
 	const entries = fs.readdirSync(directory, {withFileTypes: true});
 
-	return entries.flatMap((entry) => {
+	return entries.flatMap(entry => {
 		const fullPath = path.join(directory, entry.name);
 		if (entry.isDirectory()) {
 			return collectMarkdownFiles(fullPath);
@@ -78,7 +78,7 @@ function buildNoteSlugMap(): Map<string, string> {
 
 const noteSlugMap = buildNoteSlugMap();
 
-const remarkWikilinks: Plugin<void[], Root> = () => (tree) => {
+const remarkWikilinks: Plugin<void[], Root> = () => tree => {
 	// Handle standalone image paragraphs (![[image.png]])
 	visit(tree, 'paragraph', (node, index, parent) => {
 		if (parent === undefined || parent === null || typeof index !== 'number') {

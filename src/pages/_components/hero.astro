@@ -1,70 +1,70 @@
 ---
-import { Icon } from 'astro-icon/components';
-import { Picture } from 'astro:assets';
-import { Content as HeroBodyContent } from './_hero-body.mdx';
+import {Picture} from 'astro:assets';
+import {Icon} from 'astro-icon/components';
+import {Content as HeroBodyContent} from './_hero-body.mdx';
+import profileImg from '~/assets/img/profile.jpg';
 import SocialLink from '~/components/social-link.astro';
 import Button from '~/components/button.astro';
-import { SOCIALS } from '~/data/links.ts';
-import profileImg from 'src/assets/img/profile.jpg';
+import {SOCIALS} from '~/data/links.ts';
 ---
 
-<section class="region flow">
-  <div
-    class="switcher"
-    style={{
-      '--switcher-inline-at': '100ch',
-      '--switcher-gap': 'var(--space-xl)',
-    }}
-  >
-    <div class="hero-text flow" style={{ '--flow-space': 'var(--space-lg)' }}>
-      <h1 class="hero-name">Chuang Caleb</h1>
-      <p class="hero-subtitle">
-        software dev with a different <mark>story.</mark>
-      </p>
-      <div class="prose hero-body tagline">
-        <HeroBodyContent />
-      </div>
-      <div class="hero-cta cluster">
-        <Button as="a" variant="primary" href={SOCIALS.EMAIL.href}>
-          <Icon name={SOCIALS.EMAIL.icon} height={24} /> email me
-        </Button>
-        <Button as="a" variant="secondary" href="#projects">
-          <Icon name="lucide:atom" height={24} /> see projects
-        </Button>
-      </div>
-      <hr />
-      <div
-        class="hero-socials cluster"
-        style={{
-          '--region-space': 'var(--space-xl)',
-          '--cluster-gap-y': 'var(--space-sm)',
-        }}
-      >
-        {
-          Object.values(SOCIALS).map((link, index) => (
-            <>
-              <SocialLink href={link.href} label={link.label}>
-                <Icon name={link.icon} />
-              </SocialLink>
-              {index !== Object.keys(SOCIALS).length - 1 && (
-                <span aria-hidden="true">⋅</span>
-              )}
-            </>
-          ))
-        }
-      </div>
-    </div>
-    <div class="hero-image">
-      <Picture
-        src={profileImg}
-        alt="Facial profile picture of Chuang Caleb"
-        sizes="(max-width: 700px) 50vw, 320px"
-        widths={[140, 280, 400, 560]}
-        formats={['avif', 'webp']}
-        loading="eager"
-      />
-    </div>
-  </div>
+<section class='region flow'>
+	<div
+		class='switcher'
+		style={{
+			'--switcher-inline-at': '100ch',
+			'--switcher-gap': 'var(--space-xl)',
+		}}
+	>
+		<div class='hero-text flow' style={{'--flow-space': 'var(--space-lg)'}}>
+			<h1 class='hero-name'>Chuang Caleb</h1>
+			<p class='hero-subtitle'>
+				software dev with a different <mark>story.</mark>
+			</p>
+			<div class='prose hero-body tagline'>
+				<HeroBodyContent />
+			</div>
+			<div class='hero-cta cluster'>
+				<Button as='a' variant='primary' href={SOCIALS.EMAIL.href}>
+					<Icon name={SOCIALS.EMAIL.icon} height={24} /> email me
+				</Button>
+				<Button as='a' variant='secondary' href='#projects'>
+					<Icon name='lucide:atom' height={24} /> see projects
+				</Button>
+			</div>
+			<hr />
+			<div
+				class='hero-socials cluster'
+				style={{
+					'--region-space': 'var(--space-xl)',
+					'--cluster-gap-y': 'var(--space-sm)',
+				}}
+			>
+				{
+					Object.values(SOCIALS).map((link, index) => (
+						<>
+							<SocialLink href={link.href} label={link.label}>
+								<Icon name={link.icon} />
+							</SocialLink>
+							{index !== Object.keys(SOCIALS).length - 1 && (
+								<span aria-hidden='true'>⋅</span>
+							)}
+						</>
+					))
+				}
+			</div>
+		</div>
+		<div class='hero-image'>
+			<Picture
+				src={profileImg}
+				alt='Facial profile picture of Chuang Caleb'
+				sizes='(max-width: 700px) 50vw, 320px'
+				widths={[140, 280, 400, 560]}
+				formats={['avif', 'webp']}
+				loading='eager'
+			/>
+		</div>
+	</div>
 </section>
 
 <style>

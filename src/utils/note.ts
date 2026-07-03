@@ -27,13 +27,11 @@ function gnm(entry: Note): SuperNote | undefined {
 export async function getAllNotes(): Promise<SuperNote[]> {
 	const notes = await getCollection('obsidian-note');
 	return notes
-		.map((n) => gnm(n))
+		.map(n => gnm(n))
 		.filter((n): n is SuperNote => n !== undefined);
 }
 
-export async function getNoteEntries(
-	noteChildren?: NoteReference[],
-): Promise<SuperNote[]> {
+export async function getNoteEntries(noteChildren?: NoteReference[]): Promise<SuperNote[]> {
 	if (noteChildren === undefined || noteChildren === null) {
 		return [];
 	}
@@ -41,13 +39,11 @@ export async function getNoteEntries(
 	const entries = await getEntries<'obsidian-note'>(noteChildren);
 
 	return entries
-		.map((n) => gnm(n))
+		.map(n => gnm(n))
 		.filter((n): n is SuperNote => n !== undefined);
 }
 
-export async function getNoteEntry(
-	item: NoteReference,
-): Promise<SuperNote | undefined> {
+export async function getNoteEntry(item: NoteReference): Promise<SuperNote | undefined> {
 	const entry = await getEntry(item);
 	if (entry === undefined || entry === null) {
 		return undefined;

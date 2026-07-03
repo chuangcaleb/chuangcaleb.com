@@ -42,7 +42,7 @@ Consult these guides before working on related tasks:
 
 ## Build and Test
 
-- `pnpm install` | `pnpm dev:nosetup` | `pnpm format:check` / `pnpm format:fix`
+- `pnpm install` | `pnpm dev:nosetup` | `pnpm lint` / `pnpm format`
 - `pnpm build:nosetup` — currently broken (archived pages removed)
 - `pnpm test` (XO)
 

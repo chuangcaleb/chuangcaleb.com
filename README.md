@@ -20,8 +20,8 @@ Check [package.json](./package.json) for specific implementation.
 | `pnpm preview`         | Run full build, then preview locally                                                        |
 | `pnpm preview:nosetup` | Same as `preview`, but with `build:nosetup`                                                 |
 | `pnpm preview:nobuild` | Same as `preview`, but without build step at all, so directly re-using existing local build |
-| `pnpm format:check`    | Print code-format results with Prettier                                                     |
-| `pnpm format:fix`      | Format all code with Prettier (will write)                                                  |
+| `pnpm lint`    | Print code-format results with Prettier                                                     |
+| `pnpm format`      | Format all code with Prettier (will write)                                                  |
 | `pnpm b2:download`     | Download b2 bucket to local `src/content` directory                                         |
 | `pnpm pagefind`        | Index HTML notes with pagefind (from build `dist` directory)                                |
 | `pnpm pagefind:dev`    | Run pagefind, but copy to public directory (for local dev)                                  |

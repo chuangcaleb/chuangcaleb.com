@@ -1,13 +1,14 @@
 {
-	"extends": "astro/tsconfigs/strict",
-	"compilerOptions": {
-		"baseUrl": ".",
-		"jsx": "preserve",
-		"jsxImportSource": "react",
-		"paths": {
-			"~/*": ["src/*"]
-		}
-	},
-	"include": [".astro/types.d.ts", "**/*"],
-	"exclude": ["dist", "public/_pagefind", "node_modules"]
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strictNullChecks": true,
+    "jsx": "preserve",
+    "jsxImportSource": "react",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist", "public/_pagefind", "node_modules"]
 }

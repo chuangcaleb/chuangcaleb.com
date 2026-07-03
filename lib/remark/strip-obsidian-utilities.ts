@@ -4,13 +4,13 @@ import {type Plugin} from 'unified';
 import {visit} from 'unist-util-visit';
 
 export const remarkStripObsidianUtilities: Plugin<void[], Root> =
-	() => (tree) => {
+	() => tree => {
 		visit(tree, 'code', (node: any, index, parent: any) => {
 			const isMetaBindEmbed =
-				(node as Code).lang === 'meta-bind-embed' &&
-				parent !== undefined &&
-				typeof index === 'number' &&
-				Array.isArray(parent.children);
+				(node as Code).lang === 'meta-bind-embed'
+				&& parent !== undefined
+				&& typeof index === 'number'
+				&& Array.isArray(parent.children);
 			if (!isMetaBindEmbed) {
 				return;
 			}

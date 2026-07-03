@@ -12,9 +12,7 @@ export function useScroll(initialDirection: 'up' | 'down') {
 	// Storing this to get the scroll direction
 	const [lastScrollTop, setLastScrollTop] = useState(0);
 	// The offset of the document.body
-	const [bodyOffset, setBodyOffset] = useState(
-		document.body.getBoundingClientRect(),
-	);
+	const [bodyOffset, setBodyOffset] = useState(document.body.getBoundingClientRect());
 	// The vertical direction
 	// const [scrollY, setScrollY] = useState(bodyOffset.top);
 	// the horizontal direction
