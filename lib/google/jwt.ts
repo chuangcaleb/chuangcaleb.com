@@ -11,10 +11,10 @@ function getGoogleAuth(): GoogleAuthType {
 	const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
 	const key = process.env.GOOGLE_PRIVATE_KEY;
 	if (
-		email === undefined ||
-		email === null ||
-		key === undefined ||
-		key === null
+		email === undefined
+		|| email === null
+		|| key === undefined
+		|| key === null
 	) {
 		throw new Error('Missing secret for Google service');
 	}

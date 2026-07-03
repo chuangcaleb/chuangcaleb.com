@@ -1,11 +1,9 @@
-import eslintPluginAstro from 'eslint-plugin-astro';
+import astroPlugin from 'eslint-plugin-astro';
 import {type FlatXoConfig} from 'xo';
 
-export const xoConfig: FlatXoConfig = [
-	{
-		ignores: ['_archived/**'],
-	},
-	...eslintPluginAstro.configs.recommended,
+const xoConfig: FlatXoConfig = [
+	{ignores: ['_archived/**']},
+	...astroPlugin.configs.recommended,
 	{
 		rules: {
 			// Turn it off until i fix it
@@ -26,7 +24,6 @@ export const xoConfig: FlatXoConfig = [
 			// 	{png: 'always'},
 			// ],
 		},
-		prettier: true,
 	},
 ];
 

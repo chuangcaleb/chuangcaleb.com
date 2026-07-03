@@ -16,9 +16,9 @@ export async function formatNoteRelations(metadata: NoteMetadata) {
 	const isParent = Boolean(children?.length);
 	const childrenNotes = isParent
 		? {
-				isOrdered: Boolean(series),
-				items: series ?? children,
-			}
+			isOrdered: Boolean(series),
+			items: series ?? children,
+		}
 		: null;
 
 	const type = (() => {

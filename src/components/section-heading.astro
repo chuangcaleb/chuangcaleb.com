@@ -8,35 +8,27 @@ const {as: Tag = 'h2', href} = Astro.props;
 ---
 
 <Tag class='section-heading'>
-	{
-		href
-			? (
-				<a {href}>
-					<slot />
-				</a>
-			)
-			: (
+	{href
+		? (
+			<a {href}>
 				<slot />
-			)
+			</a>
+		)
+		: (
+			<slot />
+		)
 	}
 </Tag>
 
 <style>
   .section-heading {
-    font-family: var(
-      --font-heading,
-      Charter,
-      Georgia,
-      Palatino,
-      "Times New Roman",
-      serif
-    );
-    font-size: var(--text-h3, 1.25rem);
-    font-weight: var(--weight-heading, 500);
-    color: var(--text-primary, #141413);
-    border-left: 2.5px solid var(--accent, #1b365d);
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    font-weight: var(--weight-heading);
+    color: var(--text-primary, );
+    border-left: 2.5px solid var(--accent);
     border-radius: 1.5px;
-    padding-left: var(--space-sm, 0.5rem);
+    padding-left: var(--space-sm);
     margin: 0;
   }
 
@@ -46,6 +38,6 @@ const {as: Tag = 'h2', href} = Astro.props;
   }
 
   .section-heading a:hover {
-    color: var(--accent, #1b365d);
+    color: var(--accent);
   }
 </style>
