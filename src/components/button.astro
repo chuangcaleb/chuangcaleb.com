@@ -1,15 +1,15 @@
 ---
 interface Props {
-  as: 'a' | 'button';
-  variant?: 'primary' | 'secondary' | 'ghost';
-  href?: string;
+	as: 'a' | 'button';
+	variant?: 'primary' | 'secondary' | 'ghost';
+	href?: string;
 }
 
-const { as: Tag = 'button', variant = 'primary', href, ...rest } = Astro.props;
+const {as: Tag = 'button', variant = 'primary', href, ...rest} = Astro.props;
 ---
 
 <Tag class={`btn btn-${variant} repel`} href={href} {...rest}>
-  <slot />
+	<slot />
 </Tag>
 
 <style>

@@ -1,15 +1,15 @@
 ---
 interface Props {
-  href: string;
-  label: string;
+	href: string;
+	label: string;
 }
 
-const { href, label } = Astro.props;
+const {href, label} = Astro.props;
 ---
 
-<a class="cluster" href={href} aria-label={label}>
-  <slot />
-  <span>{label}</span>
+<a class='cluster' href={href} aria-label={label}>
+	<slot />
+	<span>{label}</span>
 </a>
 
 <style>
