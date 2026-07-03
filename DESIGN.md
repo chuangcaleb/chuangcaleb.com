@@ -120,8 +120,6 @@ components:
     textColor: '{colors.near-black}'
     rounded: '{rounded.sm}'
     padding: 10px 14px
-  error-text:
-    textColor: '{colors.error}'
 ---
 
 ## Overview
@@ -262,25 +260,33 @@ Four levels: `near-black` (primary) > `dark-warm` (secondary) > `olive` (subtext
 
 ## Layout & Spacing
 
-Pages have a max-width of `120ch`, but prose should have a comfortable reading width of max `70ch`.
-
 ### Base unit: 4px
 
-| Tier | Value    | Use                               |
-| ---- | -------- | --------------------------------- |
-| xs   | 2–3px    | Inline adjacent elements          |
-| sm   | 4–5px    | Tag padding, dense layout         |
-| md   | 8–10px   | Component interior                |
-| lg   | 16–20px  | Between components / card padding |
-| xl   | 24–32px  | Section-title margins             |
-| 2xl  | 40–60px  | Between major sections            |
-| 3xl  | 80–120px | Between chapters                  |
+| Tier | Value | Use                               |
+| ---- | ----- | --------------------------------- |
+| xs   | 4px   | Inline adjacent elements          |
+| sm   | 8px   | Tag padding, dense layout         |
+| md   | 16px  | Component internals               |
+| lg   | 24px  | Between components / card padding |
+| xl   | 48px  | Section-title margins             |
+| 2xl  | 64px  | Between major sections            |
+| 3xl  | 96px  | Between chapters / page padding   |
 
 **WARN**: The font sizes here are an estimation, the actual scale's values should be manually tuned from a fluid space calculator.
 
+Additional layout tokens: `--gutter` (container inline padding, defaults to `space-md`).
+
+### Max widths
+
+Enforced limits for sensible and readable content/line lengths.
+
+- `page-max`: 120ch
+- `prose-max`: 75ch
+- `heading-max`: 35ch
+
 ### Prefer layout primitives
 
-CSS layouts should reuse primitives at `design/layout-primitives.md`.
+Instead of media queries and custom layouts, should reuse primitives at `docs/design/layout-primitives.md`.
 
 ---
 
@@ -394,7 +400,7 @@ Use native list markers, brand-colored: ordered lists carry numbers, unordered l
 ```css
 ul,
 ol {
-	padding-left: var(--spacing-md);
+	padding-left: var(--space-md);
 	line-height: 1.55;
 }
 ul li::marker {
@@ -440,202 +446,16 @@ ol li::marker {
 	font-size: 1.25rem;
 	font-weight: var(--weight-2);
 	color: var(--near-black);
-	margin: var(--spacing-lg) 0 10px 0;
+	margin: var(--space-lg) 0 10px 0;
 	border-left: 2.5px solid var(--brand);
 	border-radius: 1.5px;
-	padding-left: var(--spacing-sm);
+	padding-left: var(--space-sm);
 }
 ```
 
-### Table
+### Decoration density for long-form layouts
 
-Unified table component. Base class applies to bare `<table>` or `.table`.
-
-```css
-table,
-.table {
-	width: 100%;
-	border-collapse: collapse;
-	font-size: 0.875rem;
-	margin: 12px 0;
-}
-table th,
-.table th {
-	text-align: left;
-	font-weight: var(--weight-2);
-	color: var(--dark-warm);
-	padding: 6px 8px;
-	border-bottom: 1px solid var(--border-primary);
-}
-table td,
-.table td {
-	padding: 5px 8px;
-	border-bottom: 0.5px solid var(--border-secondary);
-	vertical-align: top;
-}
-```
-
-**Variants** (combine freely on the same element):
-
-| Class        | Purpose                                                     |
-| ------------ | ----------------------------------------------------------- |
-| `.compact`   | Tighter padding for data-dense tables                       |
-| `.financial` | Right-align all columns except first, enable `tabular-nums` |
-| `.striped`   | Alternating `ivory` background on even rows                 |
-
-**Total row**: add `.total` to the final `<tr>` for a bold summary row with a `1px` brand top border.
-
-```html
-<table class="table financial striped">
-	<thead>
-		<tr>
-			<th>Category</th>
-			<th>Q1</th>
-			<th>Q2</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Revenue</td>
-			<td>$12.4M</td>
-			<td>$14.1M</td>
-		</tr>
-		<tr class="total">
-			<td>Total</td>
-			<td>$12.4M</td>
-			<td>$14.1M</td>
-		</tr>
-	</tbody>
-</table>
-```
-
-### Metric
-
-Key numbers side-by-side (page header, portfolio cover):
-
-```css
-.metrics {
-	display: flex;
-	gap: var(--spacing-lg);
-}
-.metric {
-	flex: 1;
-	display: flex;
-	align-items: baseline;
-	gap: 6px;
-}
-.metric-value {
-	font-family: var(--serif);
-	font-size: 1.25rem;
-	font-weight: var(--weight-2);
-	color: var(--brand);
-	font-variant-numeric: tabular-nums;
-}
-.metric-label {
-	font-size: 0.75rem;
-	color: var(--olive);
-	white-space: nowrap;
-}
-```
-
-Metric labels never wrap. Keep every label short enough for one line and set `white-space: nowrap`, so an over-long label is caught as overflow during QA instead of silently wrapping.
-
-### Code Block
-
-- `pre.code`: `ivory` background, 1px border, `radius-sm`, 18px 22px padding
-- Font: `mono` 13.5px, tabular-nums, line-height 1.55; reduce to 11.5px at phone breakpoint
-- Inline `code`: brand-tint background, `brand` text, 1px hairline, `0.9em`
-
-Code blocks may use a dark surface (`shot-bg`) instead of `ivory`. Highlight at build time with zero runtime JS. Keep the token palette restrained on the dark surface:
-
-| Token            | Hex       | Role         |
-| ---------------- | --------- | ------------ |
-| Comment          | `#79756a` | faint        |
-| Keyword          | `#84aad6` | soft blue    |
-| String           | `#8cbb91` | muted green  |
-| Number           | `#cbab86` | sand         |
-| Function/Class   | `#d6c78c` | sand-gold    |
-| Builtin/Constant | `#b59ccd` | muted violet |
-
-Code blocks with `class="language-*"` on the `<code>` element get syntax highlighting. The palette uses existing tokens only:
-
-| Token          | Token var    |
-| -------------- | ------------ |
-| Keyword        | `brand`      |
-| Comment        | `stone`      |
-| String         | `olive`      |
-| Number         | `dark-warm`  |
-| Function/Class | `near-black` |
-
-```html
-<pre><code class="language-python">def analyze(data):
-    """Transform raw data."""
-    return transform(data)</code></pre>
-```
-
-Blocks without `class="language-*"` stay monochrome.
-
-### Glance Grid
-
-Four key-number cells, placed after the hero or on a chapter-opening page.
-
-```html
-<div class="glance-grid">
-	<div class="glance-cell">
-		<div class="glance-label">REPORTING PERIOD</div>
-		<div class="glance-value">Q1 2026</div>
-		<div class="glance-note">Three core themes</div>
-	</div>
-	<!-- 4 cells total -->
-</div>
-```
-
-```css
-.glance-grid {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 14px;
-	margin: 18px 0;
-}
-.glance-cell {
-	padding: 12px 0 10px 14px;
-	border-left: 2px solid var(--brand);
-	border-radius: 1.5px;
-}
-.glance-label {
-	font-family: var(--mono);
-	font-size: 0.75rem;
-	color: var(--brand);
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	font-weight: var(--weight-2);
-}
-.glance-value {
-	font-size: 1.5rem;
-	font-weight: var(--weight-2);
-	color: var(--near-black);
-	font-variant-numeric: tabular-nums;
-	letter-spacing: 0.5px;
-}
-.glance-note {
-	font-size: 0.75rem;
-	color: var(--olive);
-	line-height: 1.4;
-}
-```
-
-### Decoration density: editorial vs structured
-
-Long-form layouts have two acceptable decoration densities. Pick one and stay consistent.
-
-| Context                             | Mode                    | Pattern                                                                                    |
-| ----------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------ |
-| Data report, technical brief        | **Structured**          | Top hairlines on callouts, glance cells. Roughly 5-8 brand lines per page.                 |
-| Editorial, narrative, personal site | **Editorial** (default) | No decorative lines. Brand color appears only in text. Containers use ivory fill + radius. |
-
-The editorial mode reads as "content speaks"; the structured mode reads as "structure helps". When unsure, default to editorial.
-
----
+No decorative lines. Brand color appears only in text. Containers use `ivory` fill + radius.
 
 ## Do's and Don'ts
 
@@ -659,7 +479,7 @@ When you're not sure "what should I use":
 | ---------------------------- | ---------------------------------------------------------------------------- |
 | Big headline                 | serif `weight-2`, size by level, line-height 1.10–1.30                       |
 | Reading body                 | serif `weight-1`, 1rem, line-height 1.55                                     |
-| Emphasize a number           | `color: var(--brand`, no bold                                                |
+| Emphasize a number           | `color: var(--brand)`, no bold                                               |
 | Divide two sections          | 2.5px brand left bar, or 0.5px warm-gray dotted                              |
 | Quote someone                | 2px brand left border + `olive`                                              |
 | Show code                    | `ivory` background + 1px border + `radius-sm` + `mono`                       |
@@ -669,3 +489,5 @@ When you're not sure "what should I use":
 | Data card                    | `ivory` background + `radius-md` + serif big number + sans small label       |
 
 Not on this table → return to first principles: **serif carries authority, sans carries utility, warm gray carries rhythm, ink-blue carries focus**.
+
+---
