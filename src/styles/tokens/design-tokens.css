@@ -39,7 +39,7 @@
   --weight-heading: 500;
   --weight-label: 600;
 
-  --text-display: 3rem;
+  --text-display: 4rem;
   --text-h1: 2rem;
   --text-h2: 1.5rem;
   --text-h3: 1.25rem;
@@ -81,8 +81,8 @@
   --whisper-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
 
   /* ── Layout ──────────────────────────── */
-  --page-max: 120ch;
-  --prose-max: 62ch;
+  --page-max: 125ch;
+  --prose-max: 65ch;
   --heading-max: 35ch;
 
   /* ── Semantic aliases ────────────────── */
