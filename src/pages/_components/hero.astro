@@ -17,20 +17,22 @@ import {SOCIALS} from '~/data/links.ts';
 		}}
 	>
 		<div class='hero-text flow' style={{'--flow-space': 'var(--space-lg)'}}>
+			<span class='eyebrow'>
+				software engineer ⋅ narrative writer
+			</span>
 			<h1 class='hero-name'>Chuang Caleb</h1>
-			<p class='hero-subtitle'>
-				software dev with a different <mark>story.</mark>
-			</p>
-			<div class='prose hero-body tagline'>
-				<HeroBodyContent />
-			</div>
-			<div class='hero-cta cluster'>
-				<Button as='a' variant='primary' href={SOCIALS.EMAIL.href}>
-					<Icon name={SOCIALS.EMAIL.icon} height={24} /> email me
-				</Button>
-				<Button as='a' variant='secondary' href='#projects'>
-					<Icon name='lucide:atom' height={24} /> see projects
-				</Button>
+			<div class='flow' >
+				<div class='prose hero-body tagline'>
+					<HeroBodyContent />
+				</div>
+				<div class='hero-cta cluster'>
+					<Button as='a' variant='primary' href={SOCIALS.EMAIL.href}>
+						<Icon name={SOCIALS.EMAIL.icon} height={24} /> email me
+					</Button>
+					<Button as='a' variant='secondary' href='#projects'>
+						<Icon name='lucide:atom' height={24} /> see projects
+					</Button>
+				</div>
 			</div>
 			<hr />
 			<div
@@ -83,18 +85,9 @@ import {SOCIALS} from '~/data/links.ts';
     margin: 0;
   }
 
-  .hero-subtitle {
-    font-family: var(--font-heading,);
-    font-size: var(--text-h1);
-    font-weight: var(--weight-heading);
-    line-height: var(--leading-heading);
-    color: var(--text-primary);
-    margin: 0;
-  }
-
   .hero-image {
     position: relative;
-    max-width: 40ch;
+    max-width: 41ch;
   }
 
   .hero-image img,
