@@ -1,20 +1,20 @@
 ---
 interface Props {
-	as: 'a' | 'button';
-	variant?: 'primary' | 'secondary' | 'ghost';
-	href?: string;
+  as: 'a' | 'button';
+  variant?: 'primary' | 'secondary' | 'ghost';
+  href?: string;
 }
 
-const {as: Tag = 'button', variant = 'primary', href, ...rest} = Astro.props;
+const { as: Tag = 'button', variant = 'primary', href, ...rest } = Astro.props;
 ---
 
-<Tag class={`btn btn-${variant} repel`} href={href} {...rest}>
-	<slot />
+<Tag class:list={['btn', 'repel', variant]} href={href} {...rest}>
+  <slot />
 </Tag>
 
 <style>
   .btn {
-    --repel-gap: var(--space-xs);
+    --repel-gap: var(--space-sm);
     padding: var(--space-sm) var(--space-md);
     border-radius: var(--radius-md);
     border: none;
@@ -31,17 +31,17 @@ const {as: Tag = 'button', variant = 'primary', href, ...rest} = Astro.props;
     transform: translateY(-1px);
   }
 
-  .btn-primary {
+  .primary {
     background: var(--accent);
     color: var(--color-ivory);
   }
 
-  .btn-secondary {
+  .secondary {
     background: var(--bg-interactive);
     color: var(--text-secondary);
   }
 
-  .btn-ghost {
+  .ghost {
     background: transparent;
     color: var(--accent);
     box-shadow: 0 0 0 var(--border-thin) var(--accent);
