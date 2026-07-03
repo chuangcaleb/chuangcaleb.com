@@ -21,10 +21,7 @@ function diveChildren(item: TocItem, depth: number): TocItem[] {
 	return diveChildren(lastItemInTocItem, depth - 1);
 }
 
-export default function generateToc(
-	headings: MarkdownHeading[],
-	// Title = "Overview",
-) {
+export default function generateToc(headings: MarkdownHeading[]) {
 	// Const overview = { depth: 2, slug: "overview", text: title };
 	headings =
 		// Overview,

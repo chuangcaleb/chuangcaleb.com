@@ -1,22 +1,24 @@
 ---
 interface Props {
-  as?: 'h2' | 'h3';
-  href?: string;
+	as?: 'h2' | 'h3';
+	href?: string;
 }
 
-const { as: Tag = 'h2', href } = Astro.props;
+const {as: Tag = 'h2', href} = Astro.props;
 ---
 
-<Tag class="section-heading">
-  {
-    href ? (
-      <a {href}>
-        <slot />
-      </a>
-    ) : (
-      <slot />
-    )
-  }
+<Tag class='section-heading'>
+	{
+		href
+			? (
+				<a {href}>
+					<slot />
+				</a>
+			)
+			: (
+				<slot />
+			)
+	}
 </Tag>
 
 <style>
