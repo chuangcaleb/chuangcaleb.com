@@ -225,7 +225,7 @@ li {
 }
 
 dt {
-  font-weight: var(--weight-heading);
+  font-weight: var(--weight-bold);
 }
 
 [role="list"],
@@ -325,7 +325,7 @@ table {
 
 th {
   text-align: left;
-  font-weight: var(--weight-heading);
+  font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
 }
 

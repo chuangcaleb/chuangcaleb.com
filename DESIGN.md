@@ -24,23 +24,23 @@ typography:
   display:
     fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
     fontSize: 3rem
-    fontWeight: 500
+    fontWeight: 400
     lineHeight: 1.1
     letterSpacing: '-0.01em'
   h1:
     fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
     fontSize: 2rem
-    fontWeight: 500
+    fontWeight: 400
     lineHeight: 1.2
   h2:
     fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
     fontSize: 1.5rem
-    fontWeight: 500
+    fontWeight: 400
     lineHeight: 1.25
   h3:
     fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
     fontSize: 1.25rem
-    fontWeight: 500
+    fontWeight: 400
     lineHeight: 1.3
   body-md:
     fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
@@ -60,7 +60,7 @@ typography:
   label-caps:
     fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
     fontSize: 0.75rem
-    fontWeight: 600
+    fontWeight: 400
     lineHeight: 1.35
     letterSpacing: '0.04em'
     textTransform: uppercase
@@ -222,8 +222,8 @@ Four levels: `near-black` (primary) > `dark-warm` (secondary) > `olive` (subtext
 
 ```css
 --weight-1: 400; /* Body / serif body weight */
---weight-2: 500; /* Headings / serif heading weight */
---weight-3: 600; /* Labels / caps weight */
+--weight-2: 500; /* Headings weight */
+--weight-3: 600; /* strong / bold weight */
 ```
 
 - **Serif body**: `weight-1`
