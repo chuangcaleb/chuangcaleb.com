@@ -83,8 +83,14 @@ CUSTOM PROPERTIES
 }
 
 /* Heading and strong weight */
-.prose :is(h1, h2, h3, h4, h5, h6, dt, strong) {
+/* .prose :is(h1, h2, h3, h4, h5, h6, dt, strong) {
   font-weight: var(--weight-heading);
+} */
+.prose :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: var(--weight-heading);
+}
+.prose :is(dt, strong) {
+  font-weight: var(--weight-bold);
 }
 
 .prose :is(blockquote) {
@@ -108,7 +114,7 @@ CUSTOM PROPERTIES
 }
 
 .prose :is(code):not(.not-prose):not(pre code) {
-  font-weight: var(--weight-label);
+  /* font-weight: var(--weight-label); */
   font-size: 0.95em;
   background: revert;
 }
