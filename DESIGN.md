@@ -441,17 +441,26 @@ ol li::marker {
 ### Section Title
 
 ```css
-.section-title {
- font-family: var(--serif);
- font-size: 1.25rem;
- font-weight: var(--weight-2);
- color: var(--near-black);
- margin: var(--space-lg) 0 10px 0;
- border-left: 2.5px solid var(--brand);
- border-radius: 1.5px;
- padding-left: var(--space-sm);
+.section-heading {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  color: var(--text-strong);
+  margin: 0;
 }
 ```
+
+The new `emphasis/section-heading.astro` component replaces the old border-left variant. It accepts a `prelabel` prop (rendered as `.section-num` above the heading in accent color, caption size) and separates into:
+
+```html
+<div class="flow">
+  <p class="section-num">00 ⋅ About</p>
+  <h2 class="section-heading">Title text</h2>
+</div>
+```
+
+- `.section-num` uses accent color, caption font size, letter-spacing tracking.
+- The heading itself uses serif heading font, `--weight-heading`, `--text-strong` color, no border/padding/margin.
+- Optional `href` renders a linked heading (link inherits text color, accent on hover).
 
 ### Decoration density for long-form layouts
 
@@ -485,7 +494,6 @@ When you're not sure "what should I use":
 | Show code                    | `ivory` background + 1px border + `radius-sm` + `mono`                       |
 | Primary vs secondary button  | Primary = `brand` fill + `ivory` text; Secondary = `warm-sand` + `dark-warm` |
 | Highlight one card in a list | `border: 1px solid var(--brand)` or `border-left: 3px solid var(--brand)`    |
-| Start a section              | serif heading + 2.5px brand left bar                                         |
 | Data card                    | `ivory` background + `radius-md` + serif big number + sans small label       |
 
 Not on this table → return to first principles: **serif carries authority, sans carries utility, warm gray carries rhythm, ink-blue carries focus**.
