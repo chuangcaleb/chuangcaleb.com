@@ -1,0 +1,29 @@
+---
+interface Props {
+	variant?: 'default' | 'featured';
+}
+
+const {variant = 'default'} = Astro.props;
+---
+
+<div class={`card card-${variant}`}>
+	<slot />
+</div>
+
+<style>
+	.card {
+		background: var(--bg-surface);
+		border: var(--border-thin) solid var(--border-subtle);
+		border-radius: var(--radius-md);
+		padding: var(--space-md) var(--space-lg);
+		transition: box-shadow 0.2s;
+	}
+
+	.card:hover {
+		box-shadow: var(--whisper-shadow);
+	}
+
+	.card-featured {
+		border-radius: var(--radius-lg);
+	}
+</style>

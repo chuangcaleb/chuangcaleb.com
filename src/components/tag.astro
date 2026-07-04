@@ -1,0 +1,29 @@
+---
+interface Props {
+	as?: 'span' | 'a';
+	href?: string;
+}
+
+const {as: Tag = 'span', href, ...rest} = Astro.props;
+---
+
+<Tag class='tag' {href} {...rest}>
+	<slot />
+</Tag>
+
+<style>
+	.tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+		background: var(--bg-interactive);
+		color: var(--text-secondary);
+		padding: 2px 8px;
+		border-radius: var(--radius-sm);
+		font-family: var(--font-body);
+		font-size: var(--text-label);
+		font-weight: var(--weight-label);
+		line-height: var(--leading-label);
+		text-decoration: none;
+	}
+</style>

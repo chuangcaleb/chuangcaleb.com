@@ -9,24 +9,24 @@ Unified table component. Base class applies to bare `<table>` or `.table`.
 ```css
 table,
 .table {
-	width: 100%;
-	border-collapse: collapse;
-	font-size: 0.875rem;
-	margin: 12px 0;
+ width: 100%;
+ border-collapse: collapse;
+ font-size: 0.875rem;
+ margin: 12px 0;
 }
 table th,
 .table th {
-	text-align: left;
-	font-weight: var(--weight-2);
-	color: var(--dark-warm);
-	padding: 6px 8px;
-	border-bottom: 1px solid var(--border-primary);
+ text-align: left;
+ font-weight: var(--weight-2);
+ color: var(--dark-warm);
+ padding: 6px 8px;
+ border-bottom: 1px solid var(--border-primary);
 }
 table td,
 .table td {
-	padding: 5px 8px;
-	border-bottom: 0.5px solid var(--border-secondary);
-	vertical-align: top;
+ padding: 5px 8px;
+ border-bottom: 0.5px solid var(--border-secondary);
+ vertical-align: top;
 }
 ```
 
@@ -42,25 +42,25 @@ table td,
 
 ```html
 <table class="table financial striped">
-	<thead>
-		<tr>
-			<th>Category</th>
-			<th>Q1</th>
-			<th>Q2</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Revenue</td>
-			<td>$12.4M</td>
-			<td>$14.1M</td>
-		</tr>
-		<tr class="total">
-			<td>Total</td>
-			<td>$12.4M</td>
-			<td>$14.1M</td>
-		</tr>
-	</tbody>
+ <thead>
+  <tr>
+   <th>Category</th>
+   <th>Q1</th>
+   <th>Q2</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>Revenue</td>
+   <td>$12.4M</td>
+   <td>$14.1M</td>
+  </tr>
+  <tr class="total">
+   <td>Total</td>
+   <td>$12.4M</td>
+   <td>$14.1M</td>
+  </tr>
+ </tbody>
 </table>
 ```
 
@@ -70,26 +70,26 @@ Key numbers side-by-side (page header, portfolio cover):
 
 ```css
 .metrics {
-	display: flex;
-	gap: var(--space-lg);
+ display: flex;
+ gap: var(--space-lg);
 }
 .metric {
-	flex: 1;
-	display: flex;
-	align-items: baseline;
-	gap: 6px;
+ flex: 1;
+ display: flex;
+ align-items: baseline;
+ gap: 6px;
 }
 .metric-value {
-	font-family: var(--serif);
-	font-size: 1.25rem;
-	font-weight: var(--weight-2);
-	color: var(--brand);
-	font-variant-numeric: tabular-nums;
+ font-family: var(--serif);
+ font-size: 1.25rem;
+ font-weight: var(--weight-2);
+ color: var(--brand);
+ font-variant-numeric: tabular-nums;
 }
 .metric-label {
-	font-size: 0.75rem;
-	color: var(--olive);
-	white-space: nowrap;
+ font-size: 0.75rem;
+ color: var(--olive);
+ white-space: nowrap;
 }
 ```
 
@@ -136,46 +136,46 @@ Four key-number cells, placed after the hero or on a chapter-opening page.
 
 ```html
 <div class="glance-grid">
-	<div class="glance-cell">
-		<div class="glance-label">REPORTING PERIOD</div>
-		<div class="glance-value">Q1 2026</div>
-		<div class="glance-note">Three core themes</div>
-	</div>
-	<!-- 4 cells total -->
+ <div class="glance-cell">
+  <div class="glance-label">REPORTING PERIOD</div>
+  <div class="glance-value">Q1 2026</div>
+  <div class="glance-note">Three core themes</div>
+ </div>
+ <!-- 4 cells total -->
 </div>
 ```
 
 ```css
 .glance-grid {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 14px;
-	margin: 18px 0;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 14px;
+ margin: 18px 0;
 }
 .glance-cell {
-	padding: 12px 0 10px 14px;
-	border-left: 2px solid var(--brand);
-	border-radius: 1.5px;
+ padding: 12px 0 10px 14px;
+ border-left: 2px solid var(--brand);
+ border-radius: 1.5px;
 }
 .glance-label {
-	font-family: var(--mono);
-	font-size: 0.75rem;
-	color: var(--brand);
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	font-weight: var(--weight-2);
+ font-family: var(--mono);
+ font-size: 0.75rem;
+ color: var(--brand);
+ letter-spacing: 1px;
+ text-transform: uppercase;
+ font-weight: var(--weight-2);
 }
 .glance-value {
-	font-size: 1.5rem;
-	font-weight: var(--weight-2);
-	color: var(--near-black);
-	font-variant-numeric: tabular-nums;
-	letter-spacing: 0.5px;
+ font-size: 1.5rem;
+ font-weight: var(--weight-2);
+ color: var(--near-black);
+ font-variant-numeric: tabular-nums;
+ letter-spacing: 0.5px;
 }
 .glance-note {
-	font-size: 0.75rem;
-	color: var(--olive);
-	line-height: 1.4;
+ font-size: 0.75rem;
+ color: var(--olive);
+ line-height: 1.4;
 }
 ```
 
@@ -229,9 +229,3 @@ Four key-number cells, placed after the hero or on a chapter-opening page.
 - `<dd>` answer: 14px `olive`
 - Code spans: `mono` 12px on brand-tint background, `radius-sm`
 - Tail paragraph: `.faq-tail` after `</dl>`, 13px `stone`
-
-## Eyebrow
-
-- Flex row: `space-between`, left side = product category + version link, right side = hero-links (social icons)
-- Version link: `brand`, weight `weight-3`
-- `latin-ui` 12px, weight `weight-2`, letter-spacing 0.4px, uppercase, `stone` color
