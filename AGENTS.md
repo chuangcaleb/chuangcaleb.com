@@ -39,6 +39,7 @@ Consult these guides before working on related tasks:
 - Avoid media queries where possible. Prefer layout primitives (`docs/design/layout-primitives.md`).
 - Use or override existing DESIGN.md tokens from `design-tokens.css`.
 - Don't set `var(--foo, fallback)` fallbacks — PostCSS handles this.
+- Use Fluid scale for spacing and type.
 
 ## Build and Test
 

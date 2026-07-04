@@ -224,7 +224,7 @@ Four key-number cells, placed after the hero or on a chapter-opening page.
 
 ## FAQ
 
-- Wrap each dt/dd pair in `<div class="faq-pair">` for spacing (`space-lg` margin-bottom)
+- Wrap each dt/dd pair in `<div class="faq-pair">` for spacing (`space-l` margin-bottom)
 - `<dt>` question: 16px, weight `weight-2`
 - `<dd>` answer: 14px `olive`
 - Code spans: `mono` 12px on brand-tint background, `radius-sm`
