@@ -10,7 +10,7 @@ import Eyebrow from '~/components/emphasis/eyebrow.astro';
 import Tagline from '~/components/emphasis/tagline.astro';
 ---
 
-<section class='region flow'>
+<section class='region flow wrapper'>
 	<div
 		class='switcher'
 		style={{
@@ -23,7 +23,7 @@ import Tagline from '~/components/emphasis/tagline.astro';
 				software engineer ⋅ narrative writer
 			</Eyebrow>
 			<h1 class='hero-name'>Chuang Caleb</h1>
-			<div class='flow'>
+			<div class='flow prose'>
 				<Tagline>
 					<HeroBodyContent />
 				</Tagline>
@@ -83,8 +83,8 @@ import Tagline from '~/components/emphasis/tagline.astro';
     font-size: var(--text-display,);
     font-weight: var(--weight-heading);
     line-height: var(--leading-tight);
-    color: var(--text-primary);
-    margin: 0;
+    color: var(--text-strong);
+		margin: 0;
   }
 
   .hero-image {
