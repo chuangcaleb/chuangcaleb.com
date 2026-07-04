@@ -1,0 +1,65 @@
+---
+import {Picture} from 'astro:assets';
+import {render, type CollectionEntry} from 'astro:content';
+import Caps from '~/components/emphasis/caps.astro';
+import IconLink from '~/components/icon-link.astro';
+
+interface Props {
+	project: CollectionEntry<'project'>;
+}
+
+const {project} = Astro.props;
+const {Content} = await render(project);
+const {links} = project.data;
+---
+
+<article class='project switcher'>
+	<div class='project-body flow' >
+		<header class='flow' style={{'--flow-space': 'var(--space-xs)'}}>
+			<Caps>{project.data.kind}</Caps>
+			<h3>{project.data.title}</h3>
+		</header>
+		<div class='prose flow'>
+			<Content />
+		</div>
+		{
+			links && links.length > 0 && (
+				<div class='cluster' style={{'--cluster-gap': 'var(--space-sm)'}}>
+					{links.map((link, index) => (
+						<>
+							<IconLink {...link} ariaLabel={link.label} />
+							{index !== links.length - 1 && (
+								<span aria-hidden='true'>⋅</span>
+							)}
+						</>
+					))}
+				</div>
+			)
+		}
+	</div>
+	{project.data.image
+		? (
+			<Picture
+				src={project.data.image}
+				alt={`Image showcasing ${project.data.title}`}
+				height={450}
+				sizes='(max-width: 637px) 93vw, 623px'
+				widths={[343, 480, 560, 623]}
+				class='project-image border'
+				formats={['avif', 'webp']}
+			/>
+		)
+		: (
+			<div />
+		)}
+</article>
+
+<style>
+	.project-body {
+		height: 100%;
+		justify-content: center;
+	}
+	article :global(p) {
+		color: var(--text-muted);
+	}
+</style>

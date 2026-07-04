@@ -296,8 +296,8 @@ iframe[src*="vimeo"] {
 svg {
   flex-shrink: 0;
   vertical-align: middle;
-  height: var(--icon-size, 1em);
-  width: var(--icon-size, 1em);
+  height: var(--icon-size, 1.25em);
+  width: var(--icon-size, 1.25em);
 }
 
 /* svg:not([class]) {

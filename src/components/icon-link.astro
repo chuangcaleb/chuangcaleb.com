@@ -1,0 +1,23 @@
+---
+import {Icon} from 'astro-icon/components';
+import {SOCIALS} from '~/data/links.ts';
+
+type Props = Omit<typeof SOCIALS['string'], 'userId'>;
+
+const {href, label, icon} = Astro.props;
+---
+
+<a class='social-link' href={href} aria-label={label}>
+	<Icon name={icon} />
+	<span>{label}</span>
+</a>
+
+<style>
+  span {
+    margin-inline-start: calc(var(--icon-size, var(--space-lg)) * 0.33);
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+</style>

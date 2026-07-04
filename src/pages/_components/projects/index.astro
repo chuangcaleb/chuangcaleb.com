@@ -1,0 +1,30 @@
+---
+import {getCollection} from 'astro:content';
+import ProjectCard from './project-card.astro';
+import SectionHeading from '~/components/emphasis/section-heading.astro';
+import SocialLink from '~/components/icon-link.astro';
+import {SOCIALS} from '~/data/links.ts';
+
+const allProjects = await getCollection('project');
+const projects = allProjects
+	.toSorted((a, b) => a.data.sequence.valueOf() - b.data.sequence.valueOf())
+	.filter(p => !p.data.hidden);
+---
+
+<section class='region wrapper flow' id='projects'>
+	<SectionHeading as='h2' prelabel='01 ⋅ Projects'>My large-scale side projects</SectionHeading>
+	<p>There's a lot more one-off mini-projects you can find at my <SocialLink {...SOCIALS.GITHUB} />!</p>
+	<div class='projects flow region'>
+		{projects.map(p => <ProjectCard project={p} />)}
+	</div>
+</section>
+
+<style>
+	section {
+		--icon-size: 1em;
+	}
+	.projects {
+		display: grid;
+		gap: var(--space-lg);
+	}
+</style>
