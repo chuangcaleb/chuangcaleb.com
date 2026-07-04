@@ -12,6 +12,7 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  scroll-behavior: smooth;
 }
 
 :where(
@@ -240,8 +241,8 @@ dt {
 code,
 samp {
   font-family: var(--font-mono);
-  background: var(--bg-surface);
-  padding-inline: 0.25em;
+  /* background: var(--bg-surface); */
+  /* padding-inline: 0.25em; */
   hyphens: none;
   tab-size: 2;
   text-align: left;

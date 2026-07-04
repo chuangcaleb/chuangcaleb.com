@@ -114,17 +114,7 @@ CUSTOM PROPERTIES
 }
 
 .prose :is(code):not(.not-prose):not(pre code) {
-  /* font-weight: var(--weight-label); */
-  font-size: 0.95em;
-  background: revert;
-}
-
-.prose :is(code):not(.not-prose):not(pre code):before {
-  content: "`";
-}
-
-.prose :is(code):not(.not-prose):not(pre code):after {
-  content: "`";
+  font-size: 0.85em;
 }
 
 .prose pre {
