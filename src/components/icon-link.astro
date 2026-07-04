@@ -16,4 +16,8 @@ const {href, label, icon} = Astro.props;
   span {
     margin-inline-start: calc(var(--icon-size, var(--space-lg)) * 0.33);
   }
+  /* if in a <p>, then icon is same size as font */
+  :global(p) span {
+    --icon-size: 1em;
+  }
 </style>

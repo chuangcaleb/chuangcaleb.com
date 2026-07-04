@@ -44,7 +44,6 @@ Consult these guides before working on related tasks:
 
 - `pnpm install` | `pnpm dev:nosetup` | `pnpm lint` / `pnpm format`
 - `pnpm build:nosetup` — currently broken (archived pages removed)
-- `pnpm test` (XO)
 
 ## Integration Points
 

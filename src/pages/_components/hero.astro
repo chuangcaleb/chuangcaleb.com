@@ -23,7 +23,7 @@ import Caps from '~/components/emphasis/caps.astro';
 			'--switcher-gap': 'var(--space-xl)',
 		}}
 	>
-		<div class='hero-text flow' style={{'--flow-space': 'var(--space-lg)'}}>
+		<div class='hero-text flow max-prose' style={{'--flow-space': 'var(--space-lg)'}}>
 			<h1 class='hero-name'>Chuang Caleb</h1>
 			<div class='flow prose'>
 				<Tagline>
@@ -62,8 +62,8 @@ import Caps from '~/components/emphasis/caps.astro';
 			<Picture
 				src={profileImg}
 				alt='Facial profile picture of Chuang Caleb'
-				sizes='(max-width: 700px) 50vw, 320px'
-				widths={[140, 280, 400, 560]}
+				sizes='(max-width: 600px) 80vw, 310px'
+				widths={[140, 280, 400, 620]}
 				formats={['avif', 'webp']}
 				loading='eager'
 			/>
@@ -72,8 +72,13 @@ import Caps from '~/components/emphasis/caps.astro';
 </section>
 
 <style>
+	.max-prose {
+		max-width: 60ch;
+	}
   section {
     padding-top: 0;
+		/* set width for max-prose to consume */
+		font-size: var(--text-h3);
   }
 
   .hero-name {
@@ -87,7 +92,7 @@ import Caps from '~/components/emphasis/caps.astro';
 
   .hero-image {
     position: relative;
-    max-width: 38ch;
+    max-width: fit-content;
   }
 
   .hero-image img,
@@ -108,10 +113,14 @@ import Caps from '~/components/emphasis/caps.astro';
     pointer-events: none;
   }
 	.eyebrow {
+		--icon-size: 1.25em;
 		width: 100%;
 	}
+	.hero-socials {
+    font-size: var(--text-body)
+	}
 
-  mark {
+  /* mark {
     animation: 3s highlight 0.5s 1 ease-out forwards;
     background: linear-gradient(90deg, var(--accent) 50%, var(--bg-page) 50%);
     background-size: 205% 100%;
@@ -121,5 +130,5 @@ import Caps from '~/components/emphasis/caps.astro';
     to {
       background-position: 0 0;
     }
-  }
+  } */
 </style>

@@ -66,6 +66,7 @@ h3,
 h4,
 h5,
 h6 {
+  color: var(--text-strong);
   font-weight: var(--weight-heading);
   font-family: var(--font-heading);
   line-height: var(--leading-heading);
@@ -297,8 +298,8 @@ iframe[src*="vimeo"] {
 svg {
   flex-shrink: 0;
   vertical-align: middle;
-  height: var(--icon-size, 1.25em);
-  width: var(--icon-size, 1.25em);
+  height: var(--icon-size, 1em);
+  width: var(--icon-size, 1em);
 }
 
 /* svg:not([class]) {

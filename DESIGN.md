@@ -279,7 +279,7 @@ Additional layout tokens: `--gutter` (container inline padding, defaults to `spa
 Enforced limits for sensible and readable content/line lengths.
 
 - `--max-page`: 125ch
-- `--max-prose`: 65ch
+- `--max-prose`: 70ch
 - `--max-heading`: 35ch
 
 ### Prefer layout primitives
