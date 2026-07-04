@@ -183,7 +183,7 @@ a {
   text-decoration-thickness: 0.04em;
   transition-duration: 0.2s;
 }
-a:hover {
+a:not([class]):hover {
   --color: var(--accent-light);
   background-color: var(--bg-interactive);
 
