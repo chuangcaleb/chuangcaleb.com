@@ -5,35 +5,35 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-	-moz-text-size-adjust: none;
-	-webkit-text-size-adjust: none;
-	text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 :where(
-	blockquote,
-	dd,
-	dl,
-	fieldset,
-	figure,
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	hr,
-	ol,
-	p,
-	pre,
-	table,
-	ul
+  blockquote,
+  dd,
+  dl,
+  fieldset,
+  figure,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  hr,
+  ol,
+  p,
+  pre,
+  table,
+  ul
 ) {
-	margin: 0;
+  margin: 0;
 }
 
 /* ============================================
@@ -41,25 +41,25 @@ html {
    ============================================ */
 
 body {
-	margin: 0;
-	padding: 0;
-	min-height: 100vh;
-	color: var(--text-primary);
-	background: var(--bg-page);
-	font-size: var(--text-body);
-	font-family: var(
-		--font-body,
-		Charter,
-		Georgia,
-		Palatino,
-		'Times New Roman',
-		serif
-	);
-	line-height: var(--leading-body);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: var(--text-primary);
+  background: var(--bg-page);
+  font-size: var(--text-body);
+  font-family: var(
+    --font-body,
+    Charter,
+    Georgia,
+    Palatino,
+    "Times New Roman",
+    serif
+  );
+  line-height: var(--leading-body);
 }
 
 main {
-	flex: auto;
+  flex: auto;
 }
 
 /* ============================================
@@ -72,30 +72,30 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: var(--weight-heading);
-	font-family: var(
-		--font-heading,
-		Charter,
-		Georgia,
-		Palatino,
-		'Times New Roman',
-		serif
-	);
-	line-height: var(--leading-heading);
-	text-wrap: balance;
-	overflow-wrap: break-word;
+  font-weight: var(--weight-heading);
+  font-family: var(
+    --font-heading,
+    Charter,
+    Georgia,
+    Palatino,
+    "Times New Roman",
+    serif
+  );
+  line-height: var(--leading-heading);
+  text-wrap: balance;
+  overflow-wrap: break-word;
 }
 
 h1 {
-	font-size: var(--text-h1);
+  font-size: var(--text-h1);
 }
 
 h2 {
-	font-size: var(--text-h2);
+  font-size: var(--text-h2);
 }
 
 h3 {
-	font-size: var(--text-h3);
+  font-size: var(--text-h3);
 }
 
 /* h4 {
@@ -111,13 +111,13 @@ h6 {
 } */
 
 p {
-	text-wrap: pretty;
-	overflow-wrap: break-word;
-	margin-block: 0;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+  margin-block: 0;
 }
 
 small {
-	font-size: 80%;
+  font-size: 80%;
 }
 
 /* var {
@@ -145,43 +145,43 @@ address {
 } */
 
 blockquote {
-	margin: 0;
+  margin: 0;
 }
 
 blockquote footer {
-	margin-block-start: var(--space-sm);
-	font-style: normal;
+  margin-block-start: var(--space-sm);
+  font-style: normal;
 }
 
 blockquote p:first-of-type::before {
-	content: open-quote;
+  content: open-quote;
 }
 
 blockquote p:last-of-type::after {
-	content: close-quote;
+  content: close-quote;
 }
 
 q {
-	font-style: italic;
+  font-style: italic;
 }
 
 hr {
-	border: 0;
-	border-block-start: var(--border-thin) solid var(--border-default);
-	/* margin-block: var(--flow-space, var(--space-xl)); */
+  border: 0;
+  border-block-start: var(--border-thin) solid var(--border-default);
+  /* margin-block: var(--flow-space, var(--space-xl)); */
 }
 
 abbr {
-	cursor: help;
-	text-underline-offset: 0.125em;
+  cursor: help;
+  text-underline-offset: 0.125em;
 }
 
 mark,
 ::selection {
-	color: var(--color-ivory);
-	padding: 0 0.25em;
-	border-radius: var(--radius-sm);
-	background: var(--accent);
+  color: var(--color-ivory);
+  padding: 0 0.25em;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
 }
 
 /* ============================================
@@ -189,19 +189,19 @@ mark,
    ============================================ */
 
 a {
-	color: var(--color-link, var(--accent));
-	text-decoration-skip-ink: auto;
-	text-underline-offset: 0.25em;
+  color: var(--color-link, var(--accent));
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 0.25em;
 }
 
 a:not([class]) {
-	color: currentColor;
-	text-decoration-skip-ink: auto;
+  color: currentColor;
+  text-decoration-skip-ink: auto;
 }
 
 a code {
-	background-color: inherit;
-	color: inherit;
+  background-color: inherit;
+  color: inherit;
 }
 
 /* ============================================
@@ -210,32 +210,32 @@ a code {
 
 ul,
 ol {
-	padding: 0;
+  padding: 0;
 }
 
 li > ul,
 li > ol {
-	margin-inline-start: var(--space-sm);
+  margin-inline-start: var(--space-sm);
 }
 
 ul {
-	list-style: disc;
+  list-style: disc;
 }
 
 li {
-	/* margin-inline-start: 1.25em; */
-	padding: 0;
+  /* margin-inline-start: 1.25em; */
+  padding: 0;
 }
 
 dt {
-	font-weight: var(--weight-heading);
+  font-weight: var(--weight-heading);
 }
 
-[role='list'],
-[role='tablist'] {
-	margin-block: 0;
-	padding-inline: 0;
-	list-style: none;
+[role="list"],
+[role="tablist"] {
+  margin-block: 0;
+  padding-inline: 0;
+  list-style: none;
 }
 
 /* ============================================
@@ -244,35 +244,35 @@ dt {
 
 code,
 samp {
-	font-family: var(--font-mono);
-	background: var(--bg-surface);
-	padding-inline: 0.25em;
-	hyphens: none;
-	tab-size: 2;
-	text-align: left;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	box-decoration-break: clone;
-	-webkit-box-decoration-break: clone;
+  font-family: var(--font-mono);
+  background: var(--bg-surface);
+  padding-inline: 0.25em;
+  hyphens: none;
+  tab-size: 2;
+  text-align: left;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 pre {
-	padding: calc(var(--space-md) - var(--border-thin));
-	overflow-x: auto;
-	-webkit-overflow-scrolling: touch;
+  padding: calc(var(--space-md) - var(--border-thin));
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 pre:has(code) {
-	background: var(--bg-surface);
-	color: var(--text-primary);
+  background: var(--bg-surface);
+  color: var(--text-primary);
 }
 
 pre code {
-	background: none;
-	border: none;
-	padding: 0;
-	color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
 }
 
 /* ============================================
@@ -281,36 +281,36 @@ pre code {
 
 img,
 picture {
-	height: auto;
-	max-width: 100%;
-	display: block;
+  height: auto;
+  max-width: 100%;
+  display: block;
 }
 
 video,
-iframe[src*='youtube'],
-iframe[src*='vimeo'] {
-	display: block;
-	width: 100%;
-	height: auto;
-	aspect-ratio: 16 / 9;
+iframe[src*="youtube"],
+iframe[src*="vimeo"] {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
 }
 
 svg {
-	flex-shrink: 0;
-	vertical-align: middle;
-	height: var(--icon-size, 1em);
-	width: var(--icon-size, 1em);
+  flex-shrink: 0;
+  vertical-align: middle;
+  height: var(--icon-size, 1em);
+  width: var(--icon-size, 1em);
 }
 
 svg:not([class]) {
-	width: auto;
-	height: 1lh;
+  width: auto;
+  height: 1lh;
 }
 
-svg[role='img'] {
-	width: revert;
-	height: revert;
-	padding: var(--space-xs);
+svg[role="img"] {
+  width: revert;
+  height: revert;
+  padding: var(--space-xs);
 }
 
 /* ============================================
@@ -318,46 +318,46 @@ svg[role='img'] {
    ============================================ */
 
 table {
-	border: var(--border-thin) solid var(--border-default);
-	border-collapse: collapse;
-	width: 100%;
+  border: var(--border-thin) solid var(--border-default);
+  border-collapse: collapse;
+  width: 100%;
 }
 
 th {
-	text-align: left;
-	font-weight: var(--weight-heading);
-	line-height: var(--leading-tight);
+  text-align: left;
+  font-weight: var(--weight-heading);
+  line-height: var(--leading-tight);
 }
 
 thead th {
-	padding-block: var(--space-sm);
+  padding-block: var(--space-sm);
 }
 
 td,
 th {
-	padding-block: var(--space-xs);
-	padding-inline: var(--space-sm);
+  padding-block: var(--space-xs);
+  padding-inline: var(--space-sm);
 }
 
 th:not(:only-of-type) {
-	border-block-end: var(--border-thin) solid var(--border-default);
+  border-block-end: var(--border-thin) solid var(--border-default);
 }
 
 th:only-of-type {
-	border-inline-end: var(--border-thin) solid var(--border-default);
+  border-inline-end: var(--border-thin) solid var(--border-default);
 }
 
 :is(th, td) ~ :is(th, td) {
-	border-inline-start: var(--border-thin) solid var(--border-default);
+  border-inline-start: var(--border-thin) solid var(--border-default);
 }
 
 tr + tr :is(th, td) {
-	border-block-start: var(--border-thin) solid var(--border-default);
+  border-block-start: var(--border-thin) solid var(--border-default);
 }
 
 caption {
-	caption-side: bottom;
-	margin-block-start: var(--space-sm);
+  caption-side: bottom;
+  margin-block-start: var(--space-sm);
 }
 
 /* ============================================
@@ -365,11 +365,11 @@ caption {
    ============================================ */
 
 summary {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 [open] > summary {
-	margin-block-end: var(--space-xs);
+  margin-block-end: var(--space-xs);
 }
 
 /* ============================================
@@ -377,16 +377,16 @@ summary {
    ============================================ */
 
 dialog {
-	background-color: var(--color-bg, var(--bg-page));
-	border: var(--border-thin) solid var(--border-default);
-	border-radius: var(--radius-md);
-	max-height: calc(100% - var(--space-xl));
-	max-width: calc(100% - var(--space-xl));
-	width: 32em;
+  background-color: var(--color-bg, var(--bg-page));
+  border: var(--border-thin) solid var(--border-default);
+  border-radius: var(--radius-md);
+  max-height: calc(100% - var(--space-xl));
+  max-width: calc(100% - var(--space-xl));
+  width: 32em;
 }
 
 dialog:modal::backdrop {
-	background-color: var(--color-overlay, rgba(0, 0, 0, 0.5));
+  background-color: var(--color-overlay, rgba(0, 0, 0, 0.5));
 }
 
 /* ============================================
@@ -394,39 +394,39 @@ dialog:modal::backdrop {
    ============================================ */
 
 :focus {
-	outline-color: var(--focus-ring-color, var(--accent));
-	outline-style: var(--focus-ring-style, auto);
-	outline-offset: var(--focus-ring-offset, 4px);
-	outline-width: var(--focus-ring-width, 2px);
+  outline-color: var(--focus-ring-color, var(--accent));
+  outline-style: var(--focus-ring-style, auto);
+  outline-offset: var(--focus-ring-offset, 4px);
+  outline-width: var(--focus-ring-width, 2px);
 }
 
 @supports selector(:focus-visible) {
-	:focus {
-		outline: none;
-	}
+  :focus {
+    outline: none;
+  }
 
-	:focus-visible {
-		outline-color: var(--focus-ring-color, var(--accent));
-		outline-style: var(--focus-ring-style, auto);
-		outline-offset: var(--focus-ring-offset, 4px);
-		outline-width: var(--focus-ring-width, 2px);
-	}
+  :focus-visible {
+    outline-color: var(--focus-ring-color, var(--accent));
+    outline-style: var(--focus-ring-style, auto);
+    outline-offset: var(--focus-ring-offset, 4px);
+    outline-width: var(--focus-ring-width, 2px);
+  }
 }
 
 @supports (-moz-appearance: none) {
-	:root {
-		--focus-ring-offset: 0.2ex;
-	}
+  :root {
+    --focus-ring-offset: 0.2ex;
+  }
 }
 
 ::selection {
-	background: var(--accent);
-	color: var(--color-ivory);
-	text-shadow: none;
+  background: var(--accent);
+  color: var(--color-ivory);
+  text-shadow: none;
 }
 
 :target {
-	scroll-margin-block: 5ex;
+  scroll-margin-block: 5ex;
 }
 
 /* ============================================
@@ -434,16 +434,16 @@ dialog:modal::backdrop {
    ============================================ */
 
 [hidden] {
-	display: none !important;
+  display: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
-	*,
-	:after,
-	:before {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
-	}
+  *,
+  :after,
+  :before {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

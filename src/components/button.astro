@@ -13,37 +13,37 @@ const {as: Tag = 'button', variant = 'primary', href, ...rest} = Astro.props;
 </Tag>
 
 <style>
-  .btn {
-    --repel-gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-md);
-    border-radius: var(--radius-md);
-    border: none;
-    cursor: pointer;
-    font-family: var(--font-body);
-    font-size: var(--text-body);
-    font-weight: var(--weight-body);
-    line-height: var(--leading-body);
-    text-decoration: none;
-    transition: transform 0.15s;
-  }
+	.btn {
+		--repel-gap: var(--space-sm);
+		padding: var(--space-sm) var(--space-md);
+		border-radius: var(--radius-md);
+		border: none;
+		cursor: pointer;
+		font-family: var(--font-body);
+		font-size: var(--text-body);
+		font-weight: var(--weight-body);
+		line-height: var(--leading-body);
+		text-decoration: none;
+		transition: transform 0.15s;
+	}
 
-  .btn:hover {
-    transform: translateY(-1px);
-  }
+	.btn:hover {
+		transform: translateY(-1px);
+	}
 
-  .primary {
-    background: var(--accent);
-    color: var(--color-ivory);
-  }
+	.primary {
+		background: var(--accent);
+		color: var(--color-ivory);
+	}
 
-  .secondary {
-    background: var(--bg-interactive);
-    color: var(--text-secondary);
-  }
+	.secondary {
+		background: var(--bg-interactive,);
+		color: var(--text-secondary);
+	}
 
-  .ghost {
-    background: transparent;
-    color: var(--accent);
-    box-shadow: 0 0 0 var(--border-thin) var(--accent);
-  }
+	.ghost {
+		background: transparent;
+		color: var(--accent);
+		box-shadow: 0 0 0 var(--border-thin) var(--accent);
+	}
 </style>

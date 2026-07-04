@@ -69,42 +69,42 @@ const description
 </html>
 
 <style>
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  main {
-    padding-inline: var(--gutter);
-    padding-block-start: var(--space-xl);
-    padding-block-end: var(--space-sm);
-    max-width: var(--page-max);
-    margin: 0 auto;
-    animation: fadeIn 0.4s ease-out;
-  }
-  footer {
-    padding-block: var(--space-sm);
-    padding-inline: var(--gutter);
-    text-align: center;
-  }
+	body {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+	main {
+		padding-inline: var(--gutter);
+		padding-block-start: var(--space-xl);
+		padding-block-end: var(--space-sm);
+		max-width: var(--page-max);
+		margin: 0 auto;
+		animation: fadeIn 0.4s ease-out;
+	}
+	footer {
+		padding-block: var(--space-sm);
+		padding-inline: var(--gutter);
+		text-align: center;
+	}
 
-  .fine-print {
-    font-size: var(--text-caption);
-    color: var(--color-warm-gray);
-  }
+	.fine-print {
+		font-size: var(--text-caption);
+		color: var(--color-warm-gray);
+	}
 
-  .skip-link {
-    position: fixed;
-    padding: var(--space-sm);
-    z-index: 10;
-    color: var(--accent);
-    background: var(--bg-page);
-    border-radius: var(--radius-sm);
-    transition: transform 0.3s;
-    transform: translateY(-100%);
-  }
+	.skip-link {
+		position: fixed;
+		padding: var(--space-sm);
+		z-index: 10;
+		color: var(--accent);
+		background: var(--bg-page);
+		border-radius: var(--radius-sm);
+		transition: transform 0.3s;
+		transform: translateY(-100%);
+	}
 
-  .skip-link:focus {
-    transform: translateY(0%);
-  }
+	.skip-link:focus {
+		transform: translateY(0%);
+	}
 </style>
