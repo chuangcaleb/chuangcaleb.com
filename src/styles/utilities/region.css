@@ -9,3 +9,7 @@ CUSTOM PROPERTIES
   padding-block: var(--region-space, var(--space-2xl));
   position: relative;
 }
+/* first region has no top padding */
+/* .region:nth-child(-n + 1) {
+  padding-block-start: 0;
+} */

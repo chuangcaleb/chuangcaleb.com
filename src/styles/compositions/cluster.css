@@ -17,7 +17,7 @@ Can be any acceptable flexbox alignment value.
   flex-wrap: wrap;
 
   /* init */
-  --cluster-gap: var(--space-md, 1rem);
+  --cluster-gap: var(--space-md);
   /* reset */
   --cluster-gap-x: var(--cluster-gap);
   --cluster-gap-y: var(--cluster-gap);
