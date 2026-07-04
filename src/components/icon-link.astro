@@ -2,22 +2,24 @@
 import {Icon} from 'astro-icon/components';
 import {SOCIALS} from '~/data/links.ts';
 
-type Props = Omit<typeof SOCIALS['string'], 'userId'>;
+type Props = Omit<(typeof SOCIALS)['string'], 'userId'>;
 
 const {href, label, icon} = Astro.props;
 ---
 
 <a href={href} aria-label={label}>
 	<Icon name={icon} />
-	<span>{label}</span>
+	<span class='label'>{label}</span>
 </a>
 
 <style>
-  span {
-    margin-inline-start: calc(var(--icon-size, var(--space-l)) * 0.33);
+  a {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
   }
-  /* if in a <p>, then icon is same size as font */
-  :global(p) span {
-    --icon-size: 1em;
+
+  .label {
+    margin-inline-start: calc(var(--icon-size, var(--space-l)) * 0.33);
   }
 </style>
