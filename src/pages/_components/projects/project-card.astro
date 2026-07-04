@@ -43,9 +43,9 @@ const {links} = project.data;
 			<Picture
 				src={project.data.image}
 				alt={`Image showcasing ${project.data.title}`}
-				height={450}
-				sizes='(max-width: 637px) 93vw, 623px'
-				widths={[343, 480, 560, 623]}
+				height={400}
+				// sizes='(max-width: 637px) 93vw, 623px'
+				// widths={[343, 480, 560, 623]}
 				class='project-image border'
 				formats={['avif', 'webp']}
 			/>
@@ -56,10 +56,6 @@ const {links} = project.data;
 </article>
 
 <style>
-	.project-body {
-		/* height: 100%;
-		justify-content: center; */
-	}
 	& :global(p) {
 		color: var(--text-muted);
 	}
