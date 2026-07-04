@@ -13,19 +13,19 @@ Can be any acceptable flexbox alignment value.
 */
 
 .cluster {
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 
-	/* init */
-	--cluster-gap: var(--space-md, 1rem);
-	/* reset */
-	--cluster-gap-x: var(--cluster-gap);
-	--cluster-gap-y: var(--cluster-gap);
+  /* init */
+  --cluster-gap: var(--space-md, 1rem);
+  /* reset */
+  --cluster-gap-x: var(--cluster-gap);
+  --cluster-gap-y: var(--cluster-gap);
 
-	gap: var(--cluster-gap);
-	column-gap: var(--cluster-gap-x, var(--cluster-gap));
-	row-gap: var(--cluster-gap-y, var(--cluster-gap));
+  gap: var(--cluster-gap);
+  column-gap: var(--cluster-gap-x, var(--cluster-gap));
+  row-gap: var(--cluster-gap-y, var(--cluster-gap));
 
-	justify-content: var(--cluster-align-x, flex-start);
-	align-items: var(--cluster-align-y, center);
+  justify-content: var(--cluster-align-x, flex-start);
+  align-items: var(--cluster-align-y, center);
 }
