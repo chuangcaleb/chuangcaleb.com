@@ -178,14 +178,22 @@ mark,
 a {
   color: var(--color-link, var(--accent));
   text-decoration-skip-ink: auto;
-  text-underline-offset: 0.15em;
-  text-decoration-color: var(--text-muted);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 0.04em;
+  transition-duration: 0.2s;
+}
+a:hover {
+  --color: var(--accent-light);
+  background-color: var(--bg-interactive);
+
+  border-radius: var(--radius-sm);
+  margin: 0 calc(var(--space-xs) * -1);
+  padding: 0 var(--space-xs);
 }
 
-a:not([class]) {
+/* a:not([class]) {
   color: currentColor;
-  text-decoration-skip-ink: auto;
-}
+} */
 
 a code {
   background-color: inherit;

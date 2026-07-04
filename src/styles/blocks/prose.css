@@ -95,7 +95,7 @@ CUSTOM PROPERTIES
     --prose-blockquote-border-color,
     var(--accent)
   );
-  color: var(--text-muted,);
+  color: var(--text-muted);
 }
 
 .prose :is(blockquote) p {
