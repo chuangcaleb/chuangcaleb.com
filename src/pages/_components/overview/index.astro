@@ -1,0 +1,20 @@
+---
+import {Content} from './overview.mdx';
+import Eyebrow from '~/components/emphasis/eyebrow.astro';
+import SectionHeading from '~/components/emphasis/section-heading.astro';
+---
+
+<section class='overview region wrapper flow' style={{'--flow-space': 'var(--space-xl)'}}>
+	<SectionHeading as='h2' prelabel='00 ⋅ About'>TL;DR of Caleb, in less than 140 words</SectionHeading>
+	<div class='prose-max'>
+		<article class='prose flow'>
+			<Content components={{h2: Eyebrow}} />
+		</article>
+	</div>
+</section>
+
+<style>
+  .prose :global(p) {
+    --flow-space: 0;
+  }
+</style>

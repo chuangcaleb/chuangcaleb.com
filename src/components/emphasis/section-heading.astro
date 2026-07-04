@@ -1,0 +1,52 @@
+---
+interface Props {
+	as?: 'h2' | 'h3';
+	href?: string;
+	prelabel: string;
+}
+
+const {as: Tag = 'h2', href, prelabel} = Astro.props;
+---
+
+<div class='flow'>
+	<p class='section-num'>{prelabel}</p>
+	<Tag class='section-heading'>
+		{
+			href
+				? (
+					<a {href}>
+						<slot />
+					</a>
+				)
+				: (
+					<slot />
+				)
+		}
+	</Tag>
+</div>
+
+<style>
+  .section-num {
+    font-family: var(--font-serif);
+    font-weight: var(--font-heading);
+    font-size: var(--text-caption);
+    color: var(--accent);
+    letter-spacing: var(--tracking-label);
+    margin: 0 0 var(--space-sm);
+  }
+  .section-heading {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-heading);
+    color: var(--text-strong);
+    margin: 0;
+  }
+
+  .section-heading a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .section-heading a:hover {
+    color: var(--accent);
+  }
+</style>

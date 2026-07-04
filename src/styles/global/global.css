@@ -44,17 +44,11 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  color: var(--text-primary);
+  color: var(--text-normal);
   background: var(--bg-page);
   font-size: var(--text-body);
-  font-family: var(
-    --font-body,
-    Charter,
-    Georgia,
-    Palatino,
-    "Times New Roman",
-    serif
-  );
+  font-family: var(--font-body);
+  font-weight: var(--weight-body);
   line-height: var(--leading-body);
 }
 
@@ -191,7 +185,8 @@ mark,
 a {
   color: var(--color-link, var(--accent));
   text-decoration-skip-ink: auto;
-  text-underline-offset: 0.25em;
+  text-underline-offset: 0.15em;
+  text-decoration-color: var(--text-muted);
 }
 
 a:not([class]) {
@@ -265,7 +260,7 @@ pre {
 
 pre:has(code) {
   background: var(--bg-surface);
-  color: var(--text-primary);
+  color: var(--text-normal);
 }
 
 pre code {

@@ -1,8 +1,8 @@
 import process from 'node:process';
+import {unified} from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import {unified} from '@astrojs/markdown-remark';
 import compressor from 'astro-compressor';
 import robotsTxt from 'astro-robots-txt';
 import {defineConfig, envField, fontProviders} from 'astro/config';
@@ -10,7 +10,7 @@ import {defineConfig, envField, fontProviders} from 'astro/config';
 // import { remarkReadingTime } from "lib/remark/reading-time";
 import icon from 'astro-icon';
 import og from 'astro-og';
-import rehypeExternalLinks from 'rehype-external-links';
+// import rehypeExternalLinks from 'rehype-external-links';
 // import cloudflare from '@astrojs/cloudflare';
 import rehypeWrapTables from './lib/rehype/wrap-tables.js';
 import remarkWikilinks from './lib/remark/remark-wikilinks.js';
@@ -53,19 +53,19 @@ export default defineConfig({
 			],
 			rehypePlugins: [
 				rehypeWrapTables,
-				[
-					rehypeExternalLinks,
-					{
-						host: ['chuangcaleb.com'],
-						content: {type: 'text', value: ' ↗'},
-						contentProperties: {
-							class: ['external-arrow'],
-							'aria-hidden': true,
-						},
-						properties: {target: '_blank'},
-						rel: ['noopener'],
-					},
-				],
+				// [
+				// 	rehypeExternalLinks,
+				// 	{
+				// 		host: ['chuangcaleb.com'],
+				// 		content: {type: 'text', value: ' ↗'},
+				// 		contentProperties: {
+				// 			class: ['external-arrow'],
+				// 			'aria-hidden': true,
+				// 		},
+				// 		properties: {target: '_blank'},
+				// 		rel: ['noopener'],
+				// 	},
+				// ],
 			],
 		}),
 	},

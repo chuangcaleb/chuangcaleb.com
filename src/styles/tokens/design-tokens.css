@@ -91,8 +91,8 @@
   --bg-interactive: var(--color-warm-sand);
   --bg-dark: var(--color-dark-surface);
 
-  --text-primary: var(--color-near-black);
-  --text-secondary: var(--color-dark-warm);
+  --text-strong: var(--color-near-black);
+  --text-normal: var(--color-dark-warm);
   --text-muted: var(--color-olive);
   --text-tertiary: var(--color-stone);
 
