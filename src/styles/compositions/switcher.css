@@ -15,8 +15,9 @@ Can be any acceptable flexbox alignment value.
 .switcher {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--switcher-gap, var(--space-lg, 1.5rem));
+  gap: var(--switcher-gap, var(--space-l));
   align-items: var(--switcher-vertical-alignment, flex-start);
+  justify-content: space-between;
 }
 
 .switcher > * {

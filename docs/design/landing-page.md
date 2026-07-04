@@ -47,7 +47,7 @@ The hero photo receives editorial warmth treatment to align with the parchment p
 
 The `caps` component (in `src/components/emphasis/caps.astro`) is used as pre-section label.
 
-Styles: uppercase, `--tracking-caps` letter-spacing, `--text-body-dense` size, `--color-stone` muted color, inline `.cluster` layout with `--cluster-gap: var(--space-sm)`.
+Styles: uppercase, `--tracking-caps` letter-spacing, `--text-body-dense` size, `--color-stone` muted color, inline `.cluster` layout with `--cluster-gap: var(--space-s)`.
 
 ## Section Headings
 

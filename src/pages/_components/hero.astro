@@ -10,8 +10,8 @@ import {SOCIALS} from '~/data/links.ts';
 import Caps from '~/components/emphasis/caps.astro';
 ---
 
-<section class='region flow wrapper' style={{'--flow-space': 'var(--space-sm)'}}>
-	<span class='eyebrow cluster' style={{'--cluster-gap': 'var(--space-sm)'}}>
+<section class='region flow wrapper' style={{'--flow-space': 'var(--space-s)'}}>
+	<span class='eyebrow cluster' style={{'--cluster-gap-x': 'var(--space-s)', '--cluster-gap-y': '0'}}>
 		<Caps><Icon name='lucide:code' />software engineer</Caps>
 		<span>⋅</span>
 		<Caps><Icon name='lucide:drama' />narrative author</Caps>
@@ -23,9 +23,9 @@ import Caps from '~/components/emphasis/caps.astro';
 			'--switcher-gap': 'var(--space-xl)',
 		}}
 	>
-		<div class='hero-text flow max-prose' style={{'--flow-space': 'var(--space-lg)'}}>
+		<div class='hero-text flow max-prose' style={{'--flow-space': 'var(--space-l)'}}>
 			<h1 class='hero-name'>Chuang Caleb</h1>
-			<div class='flow prose'>
+			<div class='flow prose' style={{'--flow-space': 'var(--space-l)'}}>
 				<Tagline>
 					<HeroBodyContent />
 				</Tagline>
@@ -43,7 +43,7 @@ import Caps from '~/components/emphasis/caps.astro';
 				class='hero-socials cluster'
 				style={{
 					'--region-space': 'var(--space-xl)',
-					'--cluster-gap-y': 'var(--space-sm)',
+					'--cluster-gap-y': 'var(--space-s)',
 				}}
 			>
 				{
@@ -62,8 +62,8 @@ import Caps from '~/components/emphasis/caps.astro';
 			<Picture
 				src={profileImg}
 				alt='Facial profile picture of Chuang Caleb'
-				sizes='(max-width: 600px) 80vw, 310px'
-				widths={[140, 280, 400, 620]}
+				sizes='(max-width: 600px) 80vw, 330px'
+				widths={[140, 280, 400, 660]}
 				formats={['avif', 'webp']}
 				loading='eager'
 			/>
@@ -73,6 +73,7 @@ import Caps from '~/components/emphasis/caps.astro';
 
 <style>
 	.max-prose {
+		/* override max-prose */
 		max-width: 60ch;
 	}
   section {

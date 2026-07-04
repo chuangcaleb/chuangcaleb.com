@@ -398,7 +398,7 @@ Use native list markers, brand-colored: ordered lists carry numbers, unordered l
 ```css
 ul,
 ol {
- padding-left: var(--space-md);
+ padding-left: var(--space-m);
  line-height: 1.55;
 }
 ul li::marker {

@@ -23,7 +23,7 @@ const duration = formatRelativeDuration(startDate, endDate);
 	'--sidebar-gap': 'var(--space-xl)',
 }}>
 	<header class='sidebar'>
-		<div class='flow' style={{'--flow-space': 'var(--space-md)'}}>
+		<div class='flow' style={{'--flow-space': 'var(--space-m)'}}>
 			{
 				logo && (
 					<div class='logo'>
@@ -32,7 +32,7 @@ const duration = formatRelativeDuration(startDate, endDate);
 				)
 			}
 			<div class='flow'>
-				<div class='meta flow' style={{'--flow-space': 'var(--space-xs)'}}>
+				<div class='meta flow' style={{'--flow-space': 'var(--space-2xs)'}}>
 					<h3 class='company'>{experience.data.company}</h3>
 					<Caps color='muted'>
 						{experience.data.role}
@@ -49,7 +49,7 @@ const duration = formatRelativeDuration(startDate, endDate);
 				<div class='tech-cluster'>
 					{
 						technologies && technologies.length > 0 && (
-							<div class='cluster' style='--cluster-gap: var(--space-xs)'>
+							<div class='cluster' style='--cluster-gap: var(--space-2xs)'>
 								{technologies.map(tech => <Tag>{tech}</Tag>)}
 							</div>
 						)
