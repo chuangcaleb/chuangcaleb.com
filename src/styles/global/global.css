@@ -300,10 +300,10 @@ svg {
   width: var(--icon-size, 1em);
 }
 
-svg:not([class]) {
+/* svg:not([class]) {
   width: auto;
   height: 1lh;
-}
+} */
 
 svg[role="img"] {
   width: revert;

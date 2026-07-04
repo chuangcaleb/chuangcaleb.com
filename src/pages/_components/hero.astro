@@ -11,8 +11,10 @@ import Caps from '~/components/emphasis/caps.astro';
 ---
 
 <section class='region flow wrapper' style={{'--flow-space': 'var(--space-sm)'}}>
-	<span class='eyebrow cluster' style={{'--cluster-gap': 'var(--space-sm)'}}>
-		<Caps>software engineer ⋅ narrative writer</Caps>
+	<span class='eyebrow cluster' style={{'--cluster-gap': 'var(--space-md)'}}>
+		<Caps><Icon name='lucide:code' />software engineer</Caps>
+		<span>⋅</span>
+		<Caps><Icon name='lucide:drama' />narrative author</Caps>
 	</span>
 	<div
 		class='switcher'
