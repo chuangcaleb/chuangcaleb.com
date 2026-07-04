@@ -6,7 +6,6 @@ description: >-
   Intimate, editorial, intellectual. A notebook for narrative
   storywriting and software notes.
 colors:
-  primary: '{colors.near-black}'
   ivory: '#faf9f5'
   warm-sand: '#e8e6dc'
   ink-blue: '#1B365D'
@@ -279,9 +278,9 @@ Additional layout tokens: `--gutter` (container inline padding, defaults to `spa
 
 Enforced limits for sensible and readable content/line lengths.
 
-- `page-max`: 125ch
-- `prose-max`: 65ch
-- `heading-max`: 35ch
+- `--max-page`: 125ch
+- `--max-prose`: 65ch
+- `--max-heading`: 35ch
 
 ### Prefer layout primitives
 
