@@ -7,7 +7,7 @@ type Props = Omit<typeof SOCIALS['string'], 'userId'>;
 const {href, label, icon} = Astro.props;
 ---
 
-<a class='social-link' href={href} aria-label={label}>
+<a href={href} aria-label={label}>
 	<Icon name={icon} />
 	<span>{label}</span>
 </a>
