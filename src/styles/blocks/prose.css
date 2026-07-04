@@ -11,7 +11,7 @@ CUSTOM PROPERTIES
 
 /* Default flow space. Change this one value to change the overall flow */
 .prose {
-  --flow-space: var(--space-lg);
+  --flow-space: var(--space-l);
 }
 
 /* Increase legibility by limiting line lengths */
@@ -32,7 +32,7 @@ CUSTOM PROPERTIES
 
 /* Heading flow for elements that follow them */
 .prose :is(h1, h2, h3, h4):not(.not-prose) + *:not(.not-prose) {
-  --flow-space: var(--space-md);
+  --flow-space: var(--space-m);
 }
 
 /* Add more space on and around figures and tables */
@@ -54,7 +54,7 @@ CUSTOM PROPERTIES
 
 /* Flow for list items when a paragraph is inside it.*/
 .prose :is(ul, ol):not(.not-prose) li + li:has(p) {
-  margin-block-start: var(--flow-space, var(--space-lg));
+  margin-block-start: var(--flow-space, var(--space-l));
 }
 
 /* Flow for paragraphs used inside list items */
@@ -64,7 +64,7 @@ CUSTOM PROPERTIES
 
 /* Flow for dt/dd groups.*/
 .prose :is(dl):not(.not-prose) dd + dt {
-  margin-block-start: var(--flow-space, var(--space-lg));
+  margin-block-start: var(--flow-space, var(--space-l));
 }
 
 /* Flow for dt/dd pairs */
@@ -94,7 +94,7 @@ CUSTOM PROPERTIES
 }
 
 .prose :is(blockquote) {
-  padding-inline-start: var(--space-sm);
+  padding-inline-start: var(--space-s);
   border-inline-start-width: 2px;
   border-inline-start-style: solid;
   border-inline-start-color: var(
@@ -132,7 +132,7 @@ CUSTOM PROPERTIES
 }
 
 .prose :is(ol, ul):not(.not-prose) {
-  padding-inline-start: var(--space-md);
+  padding-inline-start: var(--space-m);
 }
 
 .prose :is(ol, ul):not(.not-prose) li {

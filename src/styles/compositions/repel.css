@@ -17,5 +17,5 @@ Can be any acceptable flexbox alignment value.
   justify-content: space-between;
   flex-direction: var(--repel-direction, row);
   align-items: var(--repel-y-alignment, center);
-  gap: var(--repel-gap, var(--space-md, 1rem));
+  gap: var(--repel-gap, var(--space-m, 1rem));
 }

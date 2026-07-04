@@ -20,7 +20,8 @@ import SITE from '~/data/site.ts';
 </Layout>
 
 <style>
-	& :global(img) {
+	& :global(img):not(:hover) {
 		filter: sepia(0.12) saturate(0.85);
+		opacity: 0.9;
 	}
 </style>

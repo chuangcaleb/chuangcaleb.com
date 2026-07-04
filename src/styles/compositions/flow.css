@@ -4,7 +4,7 @@ Like the Every Layout stack: https://every-layout.dev/layouts/stack/
 Info about this implementation: https://piccalil.li/quick-tip/flow-utility/
 */
 .flow > * + * {
-  margin-block-start: var(--flow-space, var(--space-lg));
+  margin-block-start: var(--flow-space, var(--space-l));
 }
 
 /* extends flow — allows stretching to full height */

@@ -14,17 +14,18 @@ const {links} = project.data;
 ---
 
 <article class='project switcher' style={{'--switcher-vertical-alignment': 'center'}}>
-	<div class='project-body flow'>
-		<header class='flow' style={{'--flow-space': 'var(--space-xs)'}}>
+	<div class='project-body flow' style={{'--flow-space': 'var(--space-l)'}}>
+		<header class='flow' style={{'--flow-space': 'var(--space-2xs)'}}>
 			<Caps>{project.data.kind}</Caps>
-			<h3>{project.data.title}</h3>
+			<h3 class='not-prose'>{project.data.title}</h3>
 		</header>
-		<div class='prose flow'>
+
+		<div class='flow'>
 			<Content />
 		</div>
 		{
 			links && links.length > 0 && (
-				<div class='cluster' style={{'--cluster-gap': 'var(--space-sm)'}}>
+				<div class='cluster' style={{'--cluster-gap': 'var(--space-s)'}}>
 					{links.map((link, index) => (
 						<>
 							<IconLink {...link} ariaLabel={link.label} />
@@ -59,7 +60,7 @@ const {links} = project.data;
 		/* height: 100%;
 		justify-content: center; */
 	}
-	article :global(p) {
+	& :global(p) {
 		color: var(--text-muted);
 	}
 </style>

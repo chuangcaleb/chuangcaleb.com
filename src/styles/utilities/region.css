@@ -6,7 +6,7 @@ CUSTOM PROPERTIES
 --region-space: The vertical padding of the region
 */
 .region {
-  padding-block: var(--region-space, var(--space-2xl));
+  padding-block: var(--region-space, var(--space-3xl));
   position: relative;
 }
 /* first region has no top padding */

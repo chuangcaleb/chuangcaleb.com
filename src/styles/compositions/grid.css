@@ -20,6 +20,6 @@ their grid area. Can be any valid align-items value. */
     var(--grid-placement, auto-fill),
     minmax(var(--grid-item-min, 16rem), 1fr)
   );
-  gap: var(--grid-gap, var(--space-lg, 1.5rem));
+  gap: var(--grid-gap, var(--space-l, 1.5rem));
   align-items: var(--grid-align-items, stretch);
 }

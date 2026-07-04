@@ -5,7 +5,7 @@ interface Props {
 const {color = 'tertiary'} = Astro.props;
 ---
 
-<span class:list={['cluster', color === 'muted' && 'muted']} style={{'--cluster-gap': 'var(--space-sm)'}}>
+<span class:list={['cluster', color === 'muted' && 'muted']} style={{'--cluster-gap': 'var(--space-s)'}}>
 	<slot />
 </span>
 

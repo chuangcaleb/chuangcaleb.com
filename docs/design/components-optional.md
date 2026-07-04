@@ -71,7 +71,7 @@ Key numbers side-by-side (page header, portfolio cover):
 ```css
 .metrics {
  display: flex;
- gap: var(--space-lg);
+ gap: var(--space-l);
 }
 .metric {
  flex: 1;
