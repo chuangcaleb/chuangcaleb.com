@@ -17,7 +17,6 @@
   --color-dark-warm: #3d3d3a;
   --color-olive: #504e49;
   --color-stone: #6b6a64;
-  --color-warm-gray: #b5b2a7;
 
   /* ── Brand (sole chromatic hue) ──────── */
   --color-ink-blue: #1b365d;
@@ -81,9 +80,9 @@
   --whisper-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
 
   /* ── Layout ──────────────────────────── */
-  --page-max: 125ch;
-  --prose-max: 65ch;
-  --heading-max: 35ch;
+  --max-page: 125ch;
+  --max-prose: 65ch;
+  --max-heading: 35ch;
 
   /* ── Semantic aliases ────────────────── */
   --bg-page: var(--color-parchment);

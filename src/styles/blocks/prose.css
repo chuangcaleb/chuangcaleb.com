@@ -16,13 +16,13 @@ CUSTOM PROPERTIES
 
 /* Increase legibility by limiting line lengths */
 .prose :is(p, li, dl, figcaption, blockquote) {
-  max-width: var(--prose-max);
+  max-width: var(--max-prose);
   text-wrap: pretty;
 }
 
 /* Limit the length of headings, too */
 .prose :is(h1, h2, h3, h4) {
-  max-width: var(--heading-max);
+  max-width: var(--max-heading);
 }
 
 .prose :is(h1, h2, h3) {
