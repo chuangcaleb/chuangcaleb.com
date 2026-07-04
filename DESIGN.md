@@ -6,6 +6,7 @@ description: >-
   Intimate, editorial, intellectual. A notebook for narrative
   storywriting and software notes.
 colors:
+  parchment: '#f5f4ed'
   ivory: '#faf9f5'
   warm-sand: '#e8e6dc'
   ink-blue: '#1B365D'
@@ -16,9 +17,8 @@ colors:
   dark-warm: '#3d3d3a'
   olive: '#504e49'
   stone: '#6b6a64'
-  warm-gray: '#B5B2A7'
-  border-primary: '#e8e6dc'
-  border-secondary: '#e5e3d8'
+  border-default: '#e8e6dc'
+  border-subtle: '#e5e3d8'
   error: '#B53333'
 typography:
   display:
@@ -30,34 +30,29 @@ typography:
   h1:
     fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
     fontSize: 2rem
-    fontWeight: 400
+    fontWeight: 500
     lineHeight: 1.2
   h2:
     fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
     fontSize: 1.5rem
-    fontWeight: 400
+    fontWeight: 500
     lineHeight: 1.25
   h3:
     fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
     fontSize: 1.25rem
-    fontWeight: 400
+    fontWeight: 500
     lineHeight: 1.3
-  body-md:
+  body:
     fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
     fontSize: 1rem
     fontWeight: 400
     lineHeight: 1.55
-  body-dense:
-    fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
-    fontSize: 0.875rem
-    fontWeight: 400
-    lineHeight: 1.42
   caption:
     fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
     fontSize: 0.8125rem
     fontWeight: 400
     lineHeight: 1.45
-  label-caps:
+  label:
     fontFamily: Charter, Georgia, Palatino, "Times New Roman", serif
     fontSize: 0.75rem
     fontWeight: 400
@@ -70,11 +65,14 @@ rounded:
   lg: 16px
   full: 9999px
 spacing:
-  xs: 4px
-  sm: 8px
-  md: 16px
-  lg: 24px
+  2xs: 4px
+  xs: 6px
+  s: 8px
+  m: 16px
+  l: 24px
   xl: 48px
+  2xl: 64px
+  3xl: 96px
 components:
   button:
     rounded: '{rounded.md}'
@@ -131,10 +129,10 @@ This is not a UI framework. It is designed to keep pages stable, clear, and read
 **The invariants** (each has a real cost, think before overriding):
 
 1. Page background `parchment`, never pure white
-2. Single accent: `brand`, no second chromatic color
+2. Single accent: `accent`, no second chromatic color
 3. All grays warm-toned (yellow-brown undertone), no cool blue-grays
 4. Serif for everything (headlines and body). Sans only for UI elements (labels, eyebrows, meta)
-5. Serif weight locked at `weight-2`, no synthetic bold
+5. Serif weight locked at `weight-heading`, no synthetic bold
 6. Line-heights: tight headlines 1.1-1.3, dense body 1.4-1.45, reading body 1.5-1.55
 7. Letter-spacing: body text 0; tracking only for short labels and overlines
 8. Tag backgrounds must be solid hex, never rgba
@@ -150,9 +148,9 @@ This is not a UI framework. It is designed to keep pages stable, clear, and read
 ### Brand
 
 ```css
---brand: #1b365d; /* Ink Blue — the only chromatic color. CTAs, accents, section-title left bar. */
---brand-light: #2d5a8a; /* Ink Light — brighter variant, for links on dark surfaces. */
---error: #b53333; /* Error state, deep warm red, rarely used */
+--accent: #1b365d; /* Ink Blue — the only chromatic color. CTAs, accents, section-title left bar. */
+--accent-light: #2d5a8a; /* Ink Light — brighter variant, for links on dark surfaces. */
+--color-error: #b53333; /* Error state, deep warm red, rarely used */
 ```
 
 **Rule**: ink-blue covers ≤ **5% of page surface area**. More than that is ornament, not restraint.
@@ -160,20 +158,20 @@ This is not a UI framework. It is designed to keep pages stable, clear, and read
 ### Surface
 
 ```css
---parchment: #f5f4ed; /* Page background — warm cream, the emotional foundation */
---ivory: #faf9f5; /* Card / lifted container — brighter than parchment */
---warm-sand: #e8e6dc; /* Button default / interactive surface */
---dark-surface: #30302e; /* Dark-theme container — warm charcoal */
---deep-dark: #141413; /* Dark theme page base, not pure black */
+--color-parchment: #f5f4ed; /* Page background — warm cream, the emotional foundation */
+--color-ivory: #faf9f5; /* Card / lifted container — brighter than parchment */
+--color-warm-sand: #e8e6dc; /* Button default / interactive surface */
+--color-dark-surface: #30302e; /* Dark-theme container — warm charcoal */
+--color-deep-dark: #141413; /* Dark theme page base, not pure black */
 ```
 
 ### Text
 
 ```css
---near-black: #141413; /* Primary text — warm olive undertone */
---dark-warm: #3d3d3a; /* Secondary text, table headers, links */
---olive: #504e49; /* Subtext — descriptions, captions */
---stone: #6b6a64; /* Tertiary — dates, metadata */
+--color-near-black: #141413; /* Primary text — warm olive undertone */
+--color-dark-warm: #3d3d3a; /* Secondary text, table headers, links */
+--color-olive: #504e49; /* Subtext — descriptions, captions */
+--color-stone: #6b6a64; /* Tertiary — dates, metadata */
 ```
 
 Four levels: `near-black` (primary) > `dark-warm` (secondary) > `olive` (subtext) > `stone` (tertiary). No fifth level needed.
@@ -183,8 +181,8 @@ Four levels: `near-black` (primary) > `dark-warm` (secondary) > `olive` (subtext
 ### Border
 
 ```css
---border-primary: #e8e6dc; /* Primary border — section dividers, table headers, card borders */
---border-secondary: #e5e3d8; /* Secondary border — row separators, subtle dividers */
+--border-default: #e8e6dc; /* Primary border — section dividers, table headers, card borders */
+--border-subtle: #e5e3d8; /* Secondary border — row separators, subtle dividers */
 ```
 
 ---
@@ -194,53 +192,54 @@ Four levels: `near-black` (primary) > `dark-warm` (secondary) > `olive` (subtext
 ### Stacks
 
 ```css
-/* Single serif per page. --sans always equals var(--serif). */
---serif: Charter, Georgia, Palatino, 'Times New Roman', serif;
+/* Single serif per page. */
+--font-serif: Charter, Georgia, Palatino, 'Times New Roman', serif;
+--font-body: var(--font-serif);
+--font-heading: var(--font-serif);
 
 /* Mono stack */
---mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', Consolas, Monaco, monospace;
+--font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', Consolas, Monaco, monospace;
 ```
 
 ### Size scale
 
-| Role       | Size      | Weight     | Line-height | Use                       |
-| ---------- | --------- | ---------- | ----------- | ------------------------- |
-| Display    | 3rem      | `weight-2` | 1.10        | Page hero, cover title    |
-| H1         | 2rem      | `weight-2` | 1.20        | Section titles            |
-| H2         | 1.5rem    | `weight-2` | 1.25        | Subsection headings       |
-| H3         | 1.25rem   | `weight-2` | 1.30        | Item titles               |
-| Body       | 1rem      | `weight-1` | 1.55        | Reading body              |
-| Body Dense | 0.875rem  | `weight-1` | 1.42        | Dense body, metadata      |
-| Caption    | 0.8125rem | `weight-1` | 1.45        | Notes, figure captions    |
-| Label      | 0.75rem   | `weight-3` | 1.35        | Small labels, corner tags |
+Size values are fluid via Utopia type scale. Static values below are approximate midpoints.
 
-**WARN**: The font sizes here are an estimation, the actual scale's values should be manually tunedfrom a fluid type scale calculator.
+| Role    | Size (midpoint) | CSS token         | Weight                               | Line-height | Use                       |
+| ------- | --------------- | ----------------- | ------------------------------------ | ----------- | ------------------------- |
+| Display | 3rem            | `--text-display`  | `weight-heading`         | 1.10        | Page hero, cover title    |
+| H1      | 2rem            | `--text-h1`       | `weight-heading`         | 1.20        | Section titles            |
+| H2      | 1.5rem          | `--text-h2`       | `weight-heading`         | 1.25        | Subsection headings       |
+| H3      | 1.25rem         | `--text-h3`       | `weight-heading`         | 1.30        | Item titles               |
+| Body    | 1rem            | `--text-body`     | `weight-body`       | 1.55        | Reading body              |
+| Caption | 0.8125rem       | `--text-caption`  | `weight-body`    | 1.45        | Notes, figure captions    |
+| Label   | 0.75rem         | `--text-label`    | `weight-body`      | 1.35        | Small labels, corner tags |
 
 **Minimum floor**: web text ≥ 12px (0.75rem).
 
 ### Weight
 
 ```css
---weight-1: 400; /* Body / serif body weight */
---weight-2: 500; /* Headings weight */
---weight-3: 600; /* strong / bold weight */
+--weight-body: 400;    /* Body / serif body weight */
+--weight-heading: 500; /* Headings weight */
+--weight-bold: 600;    /* strong / bold weight */
 ```
 
-- **Serif body**: `weight-1`
-- **Serif headings**: `weight-2` (real bold, not synthetic)
-- **Sans body**: `weight-1` default
-- **Sans labels / small titles**: `weight-2` or `weight-3`
+- **Serif body**: `weight-body`
+- **Serif headings**: `weight-heading` (real bold, not synthetic)
+- **Sans body**: `weight-body` default
+- **Sans labels / small titles**: `weight-heading` or `weight-bold`
 
-**Design principle**: Serif uses only two weights (`weight-1` / `weight-2`), no synthetic bold.
+**Design principle**: Serif uses only two weights (`weight-body` / `weight-heading`), no synthetic bold.
 
 ### Line-height
 
-| Tier            | Value     | Use                 |
-| --------------- | --------- | ------------------- |
-| Tight headline  | 1.10–1.30 | Display, H1, H2     |
-| Dense body      | 1.40–1.45 | Compact text        |
-| Reading body    | 1.50–1.55 | Body copy, articles |
-| Label / caption | 1.30–1.40 | Small labels        |
+| Tier            | Value     | CSS token           | Use                 |
+| --------------- | --------- | ------------------- | ------------------- |
+| Tight headline  | 1.10–1.30 | `--leading-tight`   | Display, H1, H2     |
+| Dense body      | 1.40–1.45 | `--leading-dense`   | Compact text        |
+| Reading body    | 1.50–1.55 | `--leading-body`    | Body copy, articles |
+| Label / caption | 1.30–1.40 | `--leading-label`   | Small labels        |
 
 **Forbidden**:
 
@@ -251,40 +250,39 @@ Four levels: `near-black` (primary) > `dark-warm` (secondary) > `olive` (subtext
 
 - Body text: **0**
 - Headings may use subtle optical tightening when needed; keep it localized, never inherited by body copy
-- Small labels: +0.02 to +0.05em for readability
-- All-caps eyebrow: +0.04 to +0.08em mandatory
+- Small labels: `--tracking-label` (0.04em) for readability
+- All-caps eyebrow: `--tracking-caps` (0.06em) mandatory
 
 ---
 
 ## Layout & Spacing
 
-### Base unit: 4px
+Spacing values are fluid via Utopia space calculator. Static values below are approximate midpoints.
 
-| Tier | Value | Use                               |
-| ---- | ----- | --------------------------------- |
-| xs   | 4px   | Inline adjacent elements          |
-| sm   | 8px   | Tag padding, dense layout         |
-| md   | 16px  | Component internals               |
-| lg   | 24px  | Between components / card padding |
-| xl   | 48px  | Section-title margins             |
-| 2xl  | 64px  | Between major sections            |
-| 3xl  | 96px  | Between chapters / page padding   |
+### Space scale
 
-**WARN**: The font sizes here are an estimation, the actual scale's values should be manually tuned from a fluid space calculator.
-
-Additional layout tokens: `--gutter` (container inline padding, defaults to `space-md`).
+| Tier | CSS token        | Use                               |
+| ---- | ---------------- | --------------------------------- |
+| 2xs  | `--space-2xs`    | Tightest inline spacing           |
+| xs   | `--space-xs`     | Inline adjacent elements          |
+| s    | `--space-s`      | Tag padding, dense layout         |
+| m    | `--space-m`      | Component internals               |
+| l    | `--space-l`      | Between components / card padding |
+| xl   | `--space-xl`     | Section-title margins             |
+| 2xl  | `--space-2xl`    | Between major sections            |
+| 3xl  | `--space-3xl`    | Between chapters / page padding   |
 
 ### Max widths
 
 Enforced limits for sensible and readable content/line lengths.
 
-- `--max-page`: 125ch
-- `--max-prose`: 70ch
-- `--max-heading`: 35ch
+- `max-page`: 125ch
+- `max-prose`: 70ch
+- `max-heading`: 35ch
 
 ### Prefer layout primitives
 
-Instead of media queries and custom layouts, should reuse primitives at `docs/design/layout-primitives.md`.
+Instead of media queries and custom layouts, reuse primitives at `docs/design/layout-primitives.md`.
 
 ---
 
@@ -339,55 +337,66 @@ Sections alternate `parchment` and `deep-dark` backgrounds. This section-level c
 
 ```css
 .card {
- background: var(--ivory);
- border: var(--border-thin) solid var(--border-secondary);
+ background: var(--bg-surface);
+ border: var(--border-thin) solid var(--border-subtle);
  border-radius: var(--radius-md);
- padding: var(--card-padding);
+ padding: var(--space-m) var(--space-l);
 }
 
 .card-featured {
  border-radius: var(--radius-lg);
  box-shadow: var(--whisper-shadow);
 }
+.card-featured:hover {
+ box-shadow: var(--whisper-shadow);
+}
 ```
 
-Radius scale: `radius-sm` → 4px → `radius-md` (default) → 8px → `radius-lg` → 16px → `radius-full` → 9999px.
+Radius scale: `rounded.sm` → 4px → `rounded.md` (default) → 8px → `rounded.lg` → 16px → `rounded.full` → 9999px.
 
 ### Buttons
 
 ```css
 .btn {
- padding: var(--button-padding);
- border-radius: var(--button-rounded);
+ padding: var(--space-s) var(--space-m);
+ border-radius: var(--radius-md);
+ font-family: var(--font-body);
+ font-weight: var(--weight-body);
+ line-height: var(--leading-body);
+ font-size: var(--text-body);
 }
 
 .btn.primary {
- background: var(--brand);
- color: var(--ivory);
+ background: var(--accent);
+ color: var(--color-ivory);
 }
 
 .btn.secondary {
- background: var(--warm-sand);
- color: var(--dark-warm);
+ background: var(--bg-interactive);
+ color: var(--text-normal);
 }
 
 .btn.ghost {
  background: transparent;
- color: var(--brand);
- box-shadow: 0 0 0 1px var(--brand);
+ color: var(--accent);
+ box-shadow: 0 0 0 1px var(--accent);
 }
 ```
 
-All buttons have `button-rounded` and `button-padding`, and hover with `translateY(-1px)`.
+All buttons hover with `translateY(-1px)`.
 
 ### Tags
 
 ```css
 .tag {
-  background: var(--warm-sand)
-  color: var(--dark-warm);
-  padding: var(--tag-padding);
-  border-radius: var(--radius-sm);
+ background: var(--bg-interactive);
+ color: var(--text-normal);
+ padding: 2px 8px;
+ border-radius: var(--radius-sm);
+ font-family: var(--font-body);
+ font-size: var(--text-caption);
+ font-weight: var(--weight-heading);
+ line-height: var(--leading-caption);
 }
 ```
 
@@ -398,16 +407,16 @@ Use native list markers, brand-colored: ordered lists carry numbers, unordered l
 ```css
 ul,
 ol {
- padding-left: var(--space-m);
- line-height: 1.55;
+ padding-inline-start: var(--space-m);
+ line-height: var(--leading-body);
 }
 ul li::marker {
- color: var(--brand);
- font-weight: var(--weight-2);
+ color: var(--accent);
+ font-weight: var(--weight-heading);
 }
 ol li::marker {
- color: var(--brand);
- font-weight: var(--weight-2);
+ color: var(--accent);
+ font-weight: var(--weight-heading);
 }
 ```
 
@@ -415,10 +424,10 @@ ol li::marker {
 
 ```css
 .quote {
- border-left: 2px solid var(--brand);
- padding: var(--quote-padding);
- color: var(--olive);
- line-height: 1.55;
+ border-inline-start: 2px solid var(--accent);
+ padding: 4px 0 4px 14px;
+ color: var(--text-muted);
+ line-height: var(--leading-body);
 }
 ```
 
@@ -426,11 +435,11 @@ ol li::marker {
 
 ```css
 .code-block {
- background: var(--ivory);
- border: var(--border-thin) solid var(--border-secondary);
- border-radius: var(--code-block-rounded);
+ background: var(--bg-surface);
+ border: var(--border-thin) solid var(--border-subtle);
+ border-radius: var(--radius-sm);
  padding: var(--code-block-padding);
- font-family: var(--mono);
+ font-family: var(--font-mono);
  font-size: 0.8125rem;
  line-height: 1.5;
 }
@@ -440,14 +449,14 @@ ol li::marker {
 
 ```css
 .section-heading {
-  font-family: var(--font-heading);
-  font-weight: var(--weight-heading);
-  color: var(--text-strong);
-  margin: 0;
+ font-family: var(--font-heading);
+ font-weight: var(--weight-heading);
+ color: var(--text-strong);
+ margin: 0;
 }
 ```
 
-The new `emphasis/section-heading.astro` component replaces the old border-left variant. It accepts a `prelabel` prop (rendered as `.section-num` above the heading in accent color, caption size) and separates into:
+The `emphasis/section-heading.astro` component accepts a `prelabel` prop (rendered as `.section-num` above the heading in accent color, caption size) and separates into:
 
 ```html
 <div class="flow">
@@ -456,7 +465,7 @@ The new `emphasis/section-heading.astro` component replaces the old border-left 
 </div>
 ```
 
-- `.section-num` uses accent color, caption font size, letter-spacing tracking.
+- `.section-num` uses accent color, `--text-caption` size, `--tracking-label` letter-spacing.
 - The heading itself uses serif heading font, `--weight-heading`, `--text-strong` color, no border/padding/margin.
 - Optional `href` renders a linked heading (link inherits text color, accent on hover).
 
@@ -472,27 +481,27 @@ Do: Avoid media queries where possible. Almost always prefer layout primitives.
 
 Don't: Write custom CSS variables and styles. Prefer existing utility classes and variables.
 
-Don't: Set headlines to `weight-3` or heavier synthetic bold. Synthetic bold blurs strokes and degrades typographic quality.
+Don't: Set headlines to `weight-bold` or heavier synthetic bold. Synthetic bold blurs strokes and degrades typographic quality.
 
-Do: Body `weight-1`, headings `weight-2` (real W05). For more presence, use size or a brand left bar, never synthetic bold.
+Do: Body `weight-body`, headings `weight-heading` (real W05). For more presence, use size or a brand left bar, never synthetic bold.
 
 Don't: Use hard drop shadow. Visually heavy.
 
-Do: Ring shadow `0 0 0 1pt var(--ring-warm)` or `whisper-shadow`, or simply alternate light and dark sections.
+Do: Ring shadow `0 0 0 1px var(--ring-warm)` or `whisper-shadow`, or simply alternate light and dark sections.
 
 When you're not sure "what should I use":
 
 | Need                         | Use                                                                          |
 | ---------------------------- | ---------------------------------------------------------------------------- |
-| Big headline                 | serif `weight-2`, size by level, line-height 1.10–1.30                       |
-| Reading body                 | serif `weight-1`, 1rem, line-height 1.55                                     |
-| Emphasize a number           | `color: var(--brand)`, no bold                                               |
+| Big headline                 | serif `weight-heading`, size by level, line-height 1.10–1.30                 |
+| Reading body                 | serif `weight-body`, `--text-body`, line-height 1.55                         |
+| Emphasize a number           | `color: var(--accent)`, no bold                                              |
 | Divide two sections          | 2.5px brand left bar, or 0.5px warm-gray dotted                              |
-| Quote someone                | 2px brand left border + `olive`                                              |
-| Show code                    | `ivory` background + `var(--border-thin)` border + `radius-sm` + `mono`                       |
-| Primary vs secondary button  | Primary = `brand` fill + `ivory` text; Secondary = `warm-sand` + `dark-warm` |
-| Highlight one card in a list | `border: var(--border-thin) solid var(--brand)` or `border-left: 3px solid var(--brand)`    |
-| Data card                    | `ivory` background + `radius-md` + serif big number + sans small label       |
+| Quote someone                | 2px brand left border + `--text-muted`                                       |
+| Show code                    | `--bg-surface` background + `var(--border-thin)` border + `rounded-sm` + `--font-mono` |
+| Primary vs secondary button  | Primary = `accent` fill + `--color-ivory` text; Secondary = `--bg-interactive` + `text-normal` |
+| Highlight one card in a list | `border: var(--border-thin) solid var(--accent)` or `border-left: 3px solid var(--accent)` |
+| Data card                    | `--bg-surface` background + `rounded-md` + serif big number + sans small label       |
 
 Not on this table → return to first principles: **serif carries authority, sans carries utility, warm gray carries rhythm, ink-blue carries focus**.
 
