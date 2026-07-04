@@ -8,6 +8,8 @@ import Tagline from '~/components/emphasis/tagline.astro';
 import IconLink from '~/components/icon-link.astro';
 import {SOCIALS} from '~/data/links.ts';
 import Caps from '~/components/emphasis/caps.astro';
+
+const linkSocials = [SOCIALS.LINKEDIN, SOCIALS.GITHUB];
 ---
 
 <section class='region flow wrapper' style={{'--flow-space': 'var(--space-s)'}}>
@@ -31,10 +33,10 @@ import Caps from '~/components/emphasis/caps.astro';
 				</Tagline>
 				<div class='hero-cta cluster'>
 					<Button as='a' variant='primary' href={SOCIALS.EMAIL.href}>
-						<Icon name={SOCIALS.EMAIL.icon} height={24} /> email me
+						<Icon name={SOCIALS.EMAIL.icon} height={24} />email me
 					</Button>
-					<Button as='a' variant='secondary' href='#projects'>
-						<Icon name='lucide:atom' height={24} /> see projects
+					<Button as='a' variant='secondary' href={SOCIALS.CV.href}>
+						<Icon name={SOCIALS.CV.icon} height={24} />my resume
 					</Button>
 				</div>
 			</div>
@@ -47,15 +49,17 @@ import Caps from '~/components/emphasis/caps.astro';
 				}}
 			>
 				{
-					Object.values(SOCIALS).map((link, index) => (
+					linkSocials.map((link, index) => (
 						<>
 							<IconLink {...link} />
-							{index !== Object.keys(SOCIALS).length - 1 && (
+							{index !== Object.keys(linkSocials).length - 1 && (
 								<span aria-hidden='true'>⋅</span>
 							)}
 						</>
 					))
 				}
+				<span aria-hidden='true'>⋅</span>
+				<code class='email'>{SOCIALS.EMAIL.userId}</code>
 			</div>
 		</div>
 		<div class='hero-image'>
@@ -72,14 +76,8 @@ import Caps from '~/components/emphasis/caps.astro';
 </section>
 
 <style>
-	.max-prose {
-		/* override max-prose */
-		max-width: 60ch;
-	}
   section {
     padding-top: 0;
-		/* set width for max-prose to consume */
-		font-size: var(--text-h3);
   }
 
   .hero-name {
@@ -118,9 +116,13 @@ import Caps from '~/components/emphasis/caps.astro';
 		width: 100%;
 	}
 	.hero-socials {
-    font-size: var(--text-body)
+    font-size: var(--text-body);
 	}
 
+	.email {
+		color: var(--text-muted);
+		font-size: var(--text-caption);
+	}
   /* mark {
     animation: 3s highlight 0.5s 1 ease-out forwards;
     background: linear-gradient(90deg, var(--accent) 50%, var(--bg-page) 50%);
