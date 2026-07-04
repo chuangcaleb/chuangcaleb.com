@@ -13,7 +13,7 @@ const {Content} = await render(project);
 const {links} = project.data;
 ---
 
-<article class='project switcher'>
+<article class='project switcher' style={{'--switcher-vertical-alignment': 'center'}}>
 	<div class='project-body flow' >
 		<header class='flow' style={{'--flow-space': 'var(--space-xs)'}}>
 			<Caps>{project.data.kind}</Caps>
@@ -56,8 +56,8 @@ const {links} = project.data;
 
 <style>
 	.project-body {
-		height: 100%;
-		justify-content: center;
+		/* height: 100%;
+		justify-content: center; */
 	}
 	article :global(p) {
 		color: var(--text-muted);
