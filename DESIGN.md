@@ -254,7 +254,7 @@ Four levels: `near-black` (primary) > `dark-warm` (secondary) > `olive` (subtext
 - Body text: **0**
 - Headings may use subtle optical tightening when needed; keep it localized, never inherited by body copy
 - Small labels: +0.02 to +0.05em for readability
-- All-caps overlines: +0.04 to +0.08em mandatory
+- All-caps eyebrow: +0.04 to +0.08em mandatory
 
 ---
 
@@ -315,13 +315,13 @@ For **card hover** and **featured card** elevation.
 
 /* Card hover - mimics paper lifting slightly */
 .card {
-	transition: box-shadow 0.2s;
+ transition: box-shadow 0.2s;
 }
 .card:hover {
-	box-shadow: var(--whisper-shadow);
+ box-shadow: var(--whisper-shadow);
 }
 .featured-card {
-	box-shadow: var(--whisper-shadow);
+ box-shadow: var(--whisper-shadow);
 }
 ```
 
@@ -341,15 +341,15 @@ Sections alternate `parchment` and `deep-dark` backgrounds. This section-level c
 
 ```css
 .card {
-	background: var(--ivory);
-	border: 1px solid var(--border-secondary);
-	border-radius: var(--radius-md);
-	padding: var(--card-padding);
+ background: var(--ivory);
+ border: 1px solid var(--border-secondary);
+ border-radius: var(--radius-md);
+ padding: var(--card-padding);
 }
 
 .card-featured {
-	border-radius: var(--radius-lg);
-	box-shadow: var(--whisper-shadow);
+ border-radius: var(--radius-lg);
+ box-shadow: var(--whisper-shadow);
 }
 ```
 
@@ -359,24 +359,24 @@ Radius scale: `radius-sm` → 6px → `radius-md` (default) → 12px → `radius
 
 ```css
 .btn {
-	padding: var(--button-padding);
-	border-radius: var(--button-rounded);
+ padding: var(--button-padding);
+ border-radius: var(--button-rounded);
 }
 
 .btn.primary {
-	background: var(--brand);
-	color: var(--ivory);
+ background: var(--brand);
+ color: var(--ivory);
 }
 
 .btn.secondary {
-	background: var(--warm-sand);
-	color: var(--dark-warm);
+ background: var(--warm-sand);
+ color: var(--dark-warm);
 }
 
 .btn.ghost {
-	background: transparent;
-	color: var(--brand);
-	box-shadow: 0 0 0 1px var(--brand);
+ background: transparent;
+ color: var(--brand);
+ box-shadow: 0 0 0 1px var(--brand);
 }
 ```
 
@@ -400,16 +400,16 @@ Use native list markers, brand-colored: ordered lists carry numbers, unordered l
 ```css
 ul,
 ol {
-	padding-left: var(--space-md);
-	line-height: 1.55;
+ padding-left: var(--space-md);
+ line-height: 1.55;
 }
 ul li::marker {
-	color: var(--brand);
-	font-weight: var(--weight-2);
+ color: var(--brand);
+ font-weight: var(--weight-2);
 }
 ol li::marker {
-	color: var(--brand);
-	font-weight: var(--weight-2);
+ color: var(--brand);
+ font-weight: var(--weight-2);
 }
 ```
 
@@ -417,10 +417,10 @@ ol li::marker {
 
 ```css
 .quote {
-	border-left: 2px solid var(--brand);
-	padding: var(--quote-padding);
-	color: var(--olive);
-	line-height: 1.55;
+ border-left: 2px solid var(--brand);
+ padding: var(--quote-padding);
+ color: var(--olive);
+ line-height: 1.55;
 }
 ```
 
@@ -428,13 +428,13 @@ ol li::marker {
 
 ```css
 .code-block {
-	background: var(--ivory);
-	border: 1px solid var(--border-secondary);
-	border-radius: var(--code-block-rounded);
-	padding: var(--code-block-padding);
-	font-family: var(--mono);
-	font-size: 0.8125rem;
-	line-height: 1.5;
+ background: var(--ivory);
+ border: 1px solid var(--border-secondary);
+ border-radius: var(--code-block-rounded);
+ padding: var(--code-block-padding);
+ font-family: var(--mono);
+ font-size: 0.8125rem;
+ line-height: 1.5;
 }
 ```
 
@@ -442,14 +442,14 @@ ol li::marker {
 
 ```css
 .section-title {
-	font-family: var(--serif);
-	font-size: 1.25rem;
-	font-weight: var(--weight-2);
-	color: var(--near-black);
-	margin: var(--space-lg) 0 10px 0;
-	border-left: 2.5px solid var(--brand);
-	border-radius: 1.5px;
-	padding-left: var(--space-sm);
+ font-family: var(--serif);
+ font-size: 1.25rem;
+ font-weight: var(--weight-2);
+ color: var(--near-black);
+ margin: var(--space-lg) 0 10px 0;
+ border-left: 2.5px solid var(--brand);
+ border-radius: 1.5px;
+ padding-left: var(--space-sm);
 }
 ```
 
