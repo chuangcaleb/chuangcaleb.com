@@ -29,6 +29,25 @@ const projectCollection = defineCollection({
 		}),
 });
 
+const experienceCollection = defineCollection({
+	loader: glob({pattern: '**/[^_]*.mdx', base: './src/content/experience'}),
+	schema: ({image}) =>
+		z.object({
+			sequence: z.number(),
+			hidden: z.boolean().optional(),
+			role: z.string(),
+			company: z.string(),
+			startDate: z.string(),
+			endDate: z.string().optional(),
+			link: z.object({
+				href: z.string(),
+				label: z.string(),
+			}),
+			logo: image().optional(),
+			technologies: z.array(z.string()).optional(),
+		}),
+});
+
 /* ------------------------------------ - ----------------------------------- */
 
 const baseObsidianNoteSchema = z.object({
@@ -63,6 +82,7 @@ const obsidianNoteCollection = defineCollection({
 
 export const collections = {
 	project: projectCollection,
+	experience: experienceCollection,
 	'obsidian-note': obsidianNoteCollection,
 	redirects,
 };

@@ -1,0 +1,96 @@
+---
+import {render, type CollectionEntry} from 'astro:content';
+import {Image} from 'astro:assets';
+import IconLink from '~/components/icon-link.astro';
+import Tag from '~/components/tag.astro';
+import {formatDateRange, formatRelativeDuration} from '~/utils/time.ts';
+import Caps from '~/components/emphasis/caps.astro';
+
+interface Props {
+	experience: CollectionEntry<'experience'>;
+}
+
+const {experience} = Astro.props;
+const {Content} = await render(experience);
+const {link, logo, technologies, startDate, endDate} = experience.data;
+const dateRange = formatDateRange(startDate, endDate);
+const duration = formatRelativeDuration(startDate, endDate);
+---
+
+<div style={{
+	'--sidebar-size': '15rem',
+	'--sidebar-min-width': '2.5rem',
+	'--sidebar-gap': 'var(--space-xl)',
+}}>
+	<header class='sidebar'>
+		<div class='flow' style={{'--flow-space': 'var(--space-md)'}}>
+			{
+				logo && (
+					<div class='logo'>
+						<Image src={logo} alt='' widths={[56]} />
+					</div>
+				)
+			}
+			<div class='flow'>
+				<div class='meta flow' style={{'--flow-space': 'var(--space-xs)'}}>
+					<h3 class='company'>{experience.data.company}</h3>
+					<Caps color='muted'>
+						{experience.data.role}
+					</Caps>
+					<p class='tenure'>
+						<time class='dates'>{dateRange}</time> {' '}
+						<span class='duration'>({duration})</span>
+					</p>
+				</div>
+				<p>
+					<IconLink icon='lucide:globe' href={link.href} label={link.label} ariaLabel={link.label} />
+				</p>
+				<hr style={{visibility: 'hidden'}}/>
+				<div class='tech-cluster'>
+					{
+						technologies && technologies.length > 0 && (
+							<div class='cluster' style='--cluster-gap: var(--space-xs)'>
+								{technologies.map(tech => <Tag>{tech}</Tag>)}
+							</div>
+						)
+					}
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class='prose body flow'>
+		<Content />
+	</div>
+
+</div>
+
+<style>
+	.logo {
+		height: 2rem;
+		border-radius: var(--radius-sm);
+		overflow: hidden;
+		flex-shrink: 0;
+	}
+
+	.logo :global(img) {
+		width: min-content;
+		height: 100%;
+		object-fit: contain;
+		border: none;
+	}
+
+	.prose {
+		color: var(--text-muted)
+	}
+
+	.tenure {
+		color: var(--text-tertiary);
+		font-size: var(--text-caption);
+	}
+	.duration {
+		font-size: var(--text-label);
+
+	}
+
+</style>

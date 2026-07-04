@@ -1,0 +1,21 @@
+---
+import {getCollection} from 'astro:content';
+import ExperienceCard from './experience-card.astro';
+import SectionHeading from '~/components/emphasis/section-heading.astro';
+
+const allExperience = await getCollection('experience');
+const experiences = allExperience
+	.toSorted((a, b) => a.data.sequence.valueOf() - b.data.sequence.valueOf())
+	.filter(entry => !entry.data.hidden);
+---
+
+<section class='region wrapper flow' id='experience'>
+	<SectionHeading as='h2' prelabel='01 ⋅ Experience'>The (professional) career journey, thus far</SectionHeading>
+	<div class='experience-list flow' style={{'--flow-space': 'var(--space-2xl)'}}>
+		{experiences.map((exp, index) => <>
+			<ExperienceCard experience={exp} />
+			{index !== experiences.length - 1 && <hr/>}
+		</>)}
+	</div>
+</section>
+

@@ -1,6 +1,7 @@
 ---
 import Hero from './_components/hero.astro';
 import Overview from './_components/overview/index.astro';
+import Experience from './_components/experience/index.astro';
 import Projects from './_components/projects/index.astro';
 // import FeaturedSection from './_components/FeaturedSection.astro';
 import Layout from '~/layouts/layout.astro';
@@ -13,6 +14,13 @@ import SITE from '~/data/site.ts';
 >
 	<Hero />
 	<Overview />
+	<Experience />
 	<Projects />
 	<!-- <FeaturedSection /> -->
 </Layout>
+
+<style>
+	& :global(img) {
+		filter: sepia(0.12) saturate(0.85);
+	}
+</style>

@@ -81,7 +81,7 @@
 
   /* ── Layout ──────────────────────────── */
   --max-page: 125ch;
-  --max-prose: 65ch;
+  --max-prose: 70ch;
   --max-heading: 35ch;
 
   /* ── Semantic aliases ────────────────── */
@@ -101,5 +101,5 @@
   --border-default: var(--color-border-primary);
   --border-subtle: var(--color-border-secondary);
 
-  --gutter: var(--space-md);
+  --gutter: var(--space-lg);
 }
