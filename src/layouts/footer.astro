@@ -1,0 +1,39 @@
+---
+import IconLink from '~/components/icon-link.astro';
+import {SOCIALS} from '~/data/links.ts';
+import {formatDisplayDate} from '~/utils/time.ts';
+
+---
+
+<hr/>
+<footer class='wrapper flow' style={{'--flow-space': 'var(--space-xs)'}}>
+	<ul
+		class='hero-socials cluster'
+		style={{
+			'--region-space': 'var(--space-xl)',
+			'--cluster-gap-y': 'var(--space-s)',
+		}}
+	>
+		{
+			Object.values(SOCIALS).map((link, index) => (
+				<>
+					<IconLink {...link} label={link.userId ?? link.label} />
+					{index !== Object.keys(SOCIALS).length - 1 && (
+						<span aria-hidden='true'>⋅</span>
+					)}
+				</>
+			))
+		}
+	</ul>
+	<p class='rebuilt'>site rebuilt on  {formatDisplayDate(new Date())}</p>
+</footer>
+
+<style>
+  footer {
+    padding-block: var(--space-l);
+    color: var(--text-muted);
+	}
+  .rebuilt{
+    font-size: var(--text-caption);
+  }
+</style>
