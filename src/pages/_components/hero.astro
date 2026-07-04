@@ -6,6 +6,8 @@ import profileImg from '~/assets/img/profile.jpg';
 import Button from '~/components/button.astro';
 import SocialLink from '~/components/social-link.astro';
 import {SOCIALS} from '~/data/links.ts';
+import Eyebrow from '~/components/emphasis/eyebrow.astro';
+import Tagline from '~/components/emphasis/tagline.astro';
 ---
 
 <section class='region flow'>
@@ -17,14 +19,14 @@ import {SOCIALS} from '~/data/links.ts';
 		}}
 	>
 		<div class='hero-text flow' style={{'--flow-space': 'var(--space-lg)'}}>
-			<span class='eyebrow'>
+			<Eyebrow>
 				software engineer ⋅ narrative writer
-			</span>
+			</Eyebrow>
 			<h1 class='hero-name'>Chuang Caleb</h1>
-			<div class='flow' >
-				<div class='prose hero-body tagline'>
+			<div class='flow'>
+				<Tagline>
 					<HeroBodyContent />
-				</div>
+				</Tagline>
 				<div class='hero-cta cluster'>
 					<Button as='a' variant='primary' href={SOCIALS.EMAIL.href}>
 						<Icon name={SOCIALS.EMAIL.icon} height={24} /> email me
