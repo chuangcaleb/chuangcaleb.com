@@ -4,15 +4,19 @@ import presetEnv from 'postcss-preset-env';
 
 const config = {
 	plugins: [
-		presetEnv({
-			stage: 1,
-			// minimumVendorImplementations: 2, // default
-			features: {
-				'nesting-rules': true,
-			},
-		}),
 		// cssnano — astro minimises css by default
-		...(process.env.NODE_ENV === 'production' ? [autoprefixer] : []),
+		...(process.env.NODE_ENV === 'production'
+			? [
+				autoprefixer,
+				presetEnv({
+					stage: 1,
+					// minimumVendorImplementations: 2, // default
+					features: {
+						'nesting-rules': true,
+					},
+				}),
+			]
+			: []),
 	],
 };
 
