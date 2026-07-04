@@ -1,4 +1,5 @@
 ---
+import Footer from './footer.astro';
 import SITE from '~/data/site.ts';
 import '~/styles/index.css';
 
@@ -62,9 +63,7 @@ const description
 		<main id='main'>
 			<slot />
 		</main>
-		<footer>
-			<p class='fine-print'>created by me</p>
-		</footer>
+		<Footer/>
 	</body>
 </html>
 
@@ -75,20 +74,10 @@ const description
 		min-height: 100vh;
 	}
 	main {
-		padding-block-start: var(--space-3xl);
-		padding-block-end: var(--space-s);
+		padding-block: var(--space-3xl);
 		max-width: var(--max-page);
 		margin: 0 auto;
 		animation: fadeIn 0.4s ease-out;
-	}
-	footer {
-		padding-block: var(--space-s);
-		padding-inline: var(--gutter);
-		text-align: center;
-	}
-
-	.fine-print {
-		font-size: var(--text-caption);
 	}
 
 	.skip-link {
