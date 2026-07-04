@@ -9,7 +9,7 @@ CUSTOM PROPERTIES
 */
 .wrapper {
   margin-inline: auto;
-  max-width: var(--wrapper-max-width, var(--page-max));
+  max-width: var(--wrapper-max-width, var(--max-page));
   padding-inline: var(--gutter, var(--space-md));
   position: relative;
 }

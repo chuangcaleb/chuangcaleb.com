@@ -67,14 +67,7 @@ h4,
 h5,
 h6 {
   font-weight: var(--weight-heading);
-  font-family: var(
-    --font-heading,
-    Charter,
-    Georgia,
-    Palatino,
-    "Times New Roman",
-    serif
-  );
+  font-family: var(--font-heading);
   line-height: var(--leading-heading);
   text-wrap: balance;
   overflow-wrap: break-word;
@@ -172,7 +165,7 @@ abbr {
 
 mark,
 ::selection {
-  color: var(--color-ivory);
+  color: var(--bg-surface);
   padding: 0 0.25em;
   border-radius: var(--radius-sm);
   background: var(--accent);
@@ -419,7 +412,7 @@ dialog:modal::backdrop {
 
 ::selection {
   background: var(--accent);
-  color: var(--color-ivory);
+  color: var(--bg-surface);
   text-shadow: none;
 }
 
