@@ -280,8 +280,8 @@ picture {
   height: auto;
   max-width: 100%;
   display: block;
-  border-radius: 8px;
-  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  border: var(--border-thin) solid var(--border-default);
   transition: box-shadow 0.2s;
 }
 

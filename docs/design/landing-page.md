@@ -5,7 +5,7 @@
 - Hero: two-column grid (`1fr auto`), text left + profile photo right. Stacks to single column below `700px`.
 - Sections below hero (overview, projects, featured, footer) use `.region` with `--space-2xl` block padding.
 - Sections alternate background: parchment (`--bg-page`) for hero and featured, ivory (`--bg-surface`) for overview and projects. Footer uses dark-surface (`--bg-dark`).
-- Max page width: `120ch` via `.wrapper`. Prose width: `65ch` via `.prose-max` utility class.
+- Max page width: `125ch` via `.wrapper`. Prose width: `65ch` via `.prose-max` utility class.
 - No responsive breakpoints other than the hero's 700px collapse.
 - `<main>` no longer uses `padding-inline` — sections handle their own inline padding via `.wrapper`.
 
@@ -75,7 +75,7 @@ Both heading components live in `src/components/emphasis/`.
 
 `src/pages/_components/overview/index.astro` — restyled overview section using `overview.mdx` content with rich MDX:
 
-```
+```astro
 <section class='overview region wrapper flow' style={{'--flow-space': 'var(--space-xl)'}}>
   <SectionHeading as='h2' prelabel='00 ⋅ About'>TL;DR of Caleb, in less than 140 words</SectionHeading>
   <div class='prose-max'>

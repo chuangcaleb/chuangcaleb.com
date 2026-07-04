@@ -138,7 +138,7 @@ CUSTOM PROPERTIES
 }
 
 .prose :is(ol > li):not(.not-prose)::marker {
-  font-weight: var(--weight-body);
+  font-weight: var(--weight-heading);
   color: var(--prose-list-marker-color, var(--accent));
   font-size: var(--prose-list-marker-size, 1em);
 }
