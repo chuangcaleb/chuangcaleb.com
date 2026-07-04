@@ -11,7 +11,6 @@ colors:
   warm-sand: '#e8e6dc'
   ink-blue: '#1B365D'
   ink-light: '#2D5A8A'
-  shot-bg: '#141318'
   dark-surface: '#30302E'
   near-black: '#141413'
   deep-dark: '#141413'
@@ -280,8 +279,8 @@ Additional layout tokens: `--gutter` (container inline padding, defaults to `spa
 
 Enforced limits for sensible and readable content/line lengths.
 
-- `page-max`: 120ch
-- `prose-max`: 75ch
+- `page-max`: 125ch
+- `prose-max`: 65ch
 - `heading-max`: 35ch
 
 ### Prefer layout primitives
@@ -342,7 +341,7 @@ Sections alternate `parchment` and `deep-dark` backgrounds. This section-level c
 ```css
 .card {
  background: var(--ivory);
- border: 1px solid var(--border-secondary);
+ border: var(--border-thin) solid var(--border-secondary);
  border-radius: var(--radius-md);
  padding: var(--card-padding);
 }
@@ -353,7 +352,7 @@ Sections alternate `parchment` and `deep-dark` backgrounds. This section-level c
 }
 ```
 
-Radius scale: `radius-sm` → 6px → `radius-md` (default) → 12px → `radius-lg` → 24px → 32px (hero containers).
+Radius scale: `radius-sm` → 4px → `radius-md` (default) → 8px → `radius-lg` → 16px → `radius-full` → 9999px.
 
 ### Buttons
 
@@ -429,7 +428,7 @@ ol li::marker {
 ```css
 .code-block {
  background: var(--ivory);
- border: 1px solid var(--border-secondary);
+ border: var(--border-thin) solid var(--border-secondary);
  border-radius: var(--code-block-rounded);
  padding: var(--code-block-padding);
  font-family: var(--mono);
@@ -491,9 +490,9 @@ When you're not sure "what should I use":
 | Emphasize a number           | `color: var(--brand)`, no bold                                               |
 | Divide two sections          | 2.5px brand left bar, or 0.5px warm-gray dotted                              |
 | Quote someone                | 2px brand left border + `olive`                                              |
-| Show code                    | `ivory` background + 1px border + `radius-sm` + `mono`                       |
+| Show code                    | `ivory` background + `var(--border-thin)` border + `radius-sm` + `mono`                       |
 | Primary vs secondary button  | Primary = `brand` fill + `ivory` text; Secondary = `warm-sand` + `dark-warm` |
-| Highlight one card in a list | `border: 1px solid var(--brand)` or `border-left: 3px solid var(--brand)`    |
+| Highlight one card in a list | `border: var(--border-thin) solid var(--brand)` or `border-left: 3px solid var(--brand)`    |
 | Data card                    | `ivory` background + `radius-md` + serif big number + sans small label       |
 
 Not on this table → return to first principles: **serif carries authority, sans carries utility, warm gray carries rhythm, ink-blue carries focus**.
