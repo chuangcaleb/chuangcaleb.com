@@ -4,16 +4,20 @@ import Caps from '~/components/emphasis/caps.astro';
 import SectionHeading from '~/components/emphasis/section-heading.astro';
 ---
 
-<section class='overview region wrapper flow' style={{'--flow-space': 'var(--space-xl)'}}>
+<section class='region wrapper flow' style={{'--flow-space': 'var(--space-xl)'}}>
 	<SectionHeading as='h2' prelabel='00 ⋅ About'>TL;DR — in less than 140 words</SectionHeading>
 	<div class='prose-max'>
-		<article class='prose flow'>
+		<article class='prose flow' style={{'--flow-space': 'var(--space-xl)'}}>
 			<Content components={{h2: Caps}} />
 		</article>
 	</div>
 </section>
 
 <style>
+	section {
+		min-height: 90vh;
+		justify-content: center;
+	}
   .prose :global(p) {
     --flow-space: var(--space-xs);
   }
