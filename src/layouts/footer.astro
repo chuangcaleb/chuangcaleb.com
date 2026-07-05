@@ -6,8 +6,9 @@ import {formatDisplayDate} from '~/utils/time.ts';
 ---
 
 <hr/>
-<footer class='wrapper flow' style={{'--flow-space': 'var(--space-xs)'}}>
-	<ul
+<footer class='wrapper flow'>
+	<h2>Chuang Caleb</h2>
+	<div
 		class='hero-socials cluster'
 		style={{
 			'--region-space': 'var(--space-xl)',
@@ -24,7 +25,7 @@ import {formatDisplayDate} from '~/utils/time.ts';
 				</>
 			))
 		}
-	</ul>
+	</div>
 	<p class='rebuilt'>site rebuilt on  {formatDisplayDate(new Date())}</p>
 </footer>
 
@@ -33,7 +34,8 @@ import {formatDisplayDate} from '~/utils/time.ts';
     padding-block: var(--space-l);
     color: var(--text-muted);
 	}
-  .rebuilt{
+  .rebuilt {
     font-size: var(--text-caption);
   }
+
 </style>
