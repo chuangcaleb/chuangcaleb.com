@@ -276,7 +276,7 @@ Spacing values are fluid via Utopia space calculator. Static values below are ap
 
 Enforced limits for sensible and readable content/line lengths.
 
-- `max-page`: 125ch
+- `max-page`: 115ch
 - `max-prose`: 70ch
 - `max-heading`: 35ch
 
