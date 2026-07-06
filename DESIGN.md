@@ -393,8 +393,8 @@ All buttons hover with `translateY(-1px)`.
  color: var(--text-normal);
  padding: 2px 8px;
  border-radius: var(--radius-sm);
- font-family: var(--font-body);
- font-size: var(--text-caption);
+ font-family: var(--font-mono);
+ font-size:c calc(var(--text-caption) * 0.85);
  font-weight: var(--weight-heading);
  line-height: var(--leading-caption);
 }

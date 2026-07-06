@@ -21,8 +21,8 @@ const {as: Tag = 'span', href, ...rest} = Astro.props;
 		padding: 2px 8px;
 		border-radius: var(--radius-sm);
 
-		font-family: var(--font-body);
-		font-size: var(--text-caption);
+		font-family: var(--font-mono);
+		font-size: calc(var(--text-caption) * var(--font-mono-scale));
 		font-weight: var(--weight-heading);
 		line-height: var(--leading-caption);
 		text-decoration: none;

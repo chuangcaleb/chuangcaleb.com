@@ -114,7 +114,7 @@ CUSTOM PROPERTIES
 }
 
 .prose :is(code):not(.not-prose):not(pre code) {
-  font-size: 0.85em;
+  font-size: calc(1em * var(--font-mono-scale));
 }
 
 .prose pre {
