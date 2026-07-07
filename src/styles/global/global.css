@@ -209,10 +209,10 @@ ol {
   padding: 0;
 }
 
-li > ul,
+/* li > ul,
 li > ol {
-  margin-inline-start: var(--space-s);
-}
+  margin-inline-start: var(--space-xs);
+} */
 
 ul {
   list-style: disc;
