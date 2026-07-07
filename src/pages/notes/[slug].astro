@@ -3,10 +3,12 @@ import {render} from 'astro:content';
 import Caps from '~/components/emphasis/caps.astro';
 import NoteCallout from '~/components/note/note-callout.astro';
 import NoteHeader from '~/components/note/note-header.astro';
+import NoteHierarchy from '~/components/note/note-hierarchy.astro';
 import NoteTag from '~/components/note/note-tag.astro';
 import Layout from '~/layouts/layout.astro';
 import '~/styles/index.css';
 import {noteToTags} from '~/utils/note-metadata.ts';
+import {formatNoteRelations} from '~/utils/note-relations.ts';
 import {getAllNotes, getNoteEntry} from '~/utils/note.ts';
 
 interface Resource {
@@ -51,6 +53,8 @@ const resources = data.resources ? parseResources(data.resources ?? []) : [];
 const {Content} = await render(entry);
 
 const hasUps = data.up && data.up.length > 0;
+
+const relations = await formatNoteRelations(data);
 ---
 
 <Layout title={entry.title}>
@@ -99,6 +103,8 @@ const hasUps = data.up && data.up.length > 0;
 		<div class='prose note-body flow'>
 			<Content />
 		</div>
+
+		<NoteHierarchy relations={relations} currentSlug={entry.id} />
 
 		{
 			resources.length > 0 && (

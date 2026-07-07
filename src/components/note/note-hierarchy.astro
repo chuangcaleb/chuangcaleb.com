@@ -1,0 +1,114 @@
+---
+import type {NoteRelations} from '~/utils/note-relations.ts';
+import Caps from '~/components/emphasis/caps.astro';
+
+interface Props {
+	relations: NoteRelations;
+	currentSlug: string;
+}
+
+const {relations, currentSlug} = Astro.props;
+
+const hasPreviousOrNext = relations.previousNote || relations.nextNote;
+---
+<h2 class='visually-hidden'>Note Relations</h2>
+
+{
+	relations.parents.length > 0 && (
+		<section class='note-hierarchy flow-xs prose'>
+			<h3 class='not-prose'><Caps>Up</Caps></h3>
+			<ul class='hierarchy-list'>
+				{relations.parents.map(p => (
+					<li><a href={p.route}>{p.title}</a></li>
+				))}
+			</ul>
+		</section>
+	)
+}
+
+{
+	relations.children && (
+		<section class='note-hierarchy flow-xs prose'>
+			<h3 class='not-prose'><Caps>Down</Caps></h3>
+			{
+				relations.children.isOrdered
+					? (
+						<ol class='hierarchy-list'>
+							{relations.children.items.map(c => (
+								<li><a href={c.route}>{c.title}</a></li>
+							))}
+						</ol>
+					)
+					: (
+						<ul class='hierarchy-list'>
+							{relations.children.items.map(c => (
+								<li><a href={c.route}>{c.title}</a></li>
+							))}
+						</ul>
+					)
+			}
+		</section>
+	)
+}
+
+{
+	hasPreviousOrNext && (
+		<section class='note-hierarchy flow-xs prose'>
+			<h3 class='not-prose'><Caps>Prev / Next</Caps></h3>
+			<div class='cluster' style={{'--cluster-gap': 'var(--space-s)'}}>
+				{relations.previousNote && (
+					<a href={relations.previousNote.route}>
+						{relations.previousNote.title}
+					</a>
+				)}
+				{relations.nextNote && (
+					<a href={relations.nextNote.route}>
+						{relations.nextNote.title}
+					</a>
+				)}
+			</div>
+		</section>
+	)
+}
+
+{
+	relations.parentSeriesContexts.map(ctx => (
+		<section class='note-hierarchy flow-xs prose'>
+			<h3 class='not-prose'><Caps>{ctx.parent.title}</Caps></h3>
+			<ol class='hierarchy-list'>
+				{ctx.siblings.map(s => (
+					<li>
+						{s.id === currentSlug
+							? <span class='active'>{s.title}</span>
+							: <a href={s.route}>{s.title}</a>
+						}
+					</li>
+				))}
+			</ol>
+		</section>
+	))
+}
+
+{
+	relations.backlinks.length > 0 && (
+		<section class='note-hierarchy flow-xs prose'>
+			<h3 class='not-prose'><Caps>Backlinks</Caps></h3>
+			<ul class='hierarchy-list'>
+				{relations.backlinks.map(b => (
+					<li><a href={b.route}>{b.title}</a></li>
+				))}
+			</ul>
+		</section>
+	)
+}
+
+<style>
+	.note-hierarchy {
+		margin-block-start: var(--space-2xl);
+	}
+
+	.active {
+		color: var(--text-muted);
+		font-style: italic;
+	}
+</style>
