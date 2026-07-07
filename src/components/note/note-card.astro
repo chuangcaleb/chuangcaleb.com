@@ -12,8 +12,8 @@ const {route, title} = note;
 const tags = noteToTags(note.data);
 ---
 
-<article class='note flow' style={{'--flow-space': 'var(--space-2xs)'}}>
-	<a href={route} class='note-anchor'>
+<article class='note'>
+	<a href={route}>
 		<h3 class='note-title'>{title}</h3>
 	</a>
 	<ul class='note-tags cluster' aria-label='metadata' role='list'>
@@ -33,6 +33,7 @@ const tags = noteToTags(note.data);
 	}
 
 	.note-tags {
+		/* margin-block-start: var(--space-2xs); */
 		--cluster-gap: var(--space-xs);
 	}
 </style>
