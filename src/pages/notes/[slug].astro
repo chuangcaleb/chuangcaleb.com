@@ -54,7 +54,7 @@ const {Content} = await render(entry);
 
 const hasUps = data.up && data.up.length > 0;
 
-const relations = await formatNoteRelations(data);
+const relations = await formatNoteRelations(entry);
 ---
 
 <Layout title={entry.title}>

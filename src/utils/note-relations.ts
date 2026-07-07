@@ -7,6 +7,7 @@ export type ParentSeriesContext = {
 };
 
 export type NoteRelations = {
+	title: string;
 	children: {
 		isOrdered: boolean;
 		items: SuperNote[];
@@ -23,7 +24,7 @@ function alphabetize(notes: SuperNote[]): SuperNote[] {
 	return notes.toSorted((a, b) => a.title.localeCompare(b.title));
 }
 
-export async function formatNoteRelations(metadata: NoteMetadata): Promise<NoteRelations> {
+export async function formatNoteRelations({data, title}: SuperNote): Promise<NoteRelations> {
 	const {
 		down: children = [],
 		up: parents = [],
@@ -31,7 +32,7 @@ export async function formatNoteRelations(metadata: NoteMetadata): Promise<NoteR
 		next,
 		series,
 		backlinks = [],
-	} = metadata;
+	} = data;
 
 	const [parentNotes, childrenNotes, backlinkNotes] = await Promise.all([
 		getNoteEntries(parents),
@@ -64,6 +65,7 @@ export async function formatNoteRelations(metadata: NoteMetadata): Promise<NoteR
 	}
 
 	return {
+		title,
 		children: childrenNotes.length > 0
 			? {
 				isOrdered: isSeries,

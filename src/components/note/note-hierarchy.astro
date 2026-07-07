@@ -29,13 +29,24 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 {
 	relations.children && (
 		<section class='note-hierarchy flow-s prose'>
-			<h3 class='not-prose'><Caps>Down</Caps></h3>
-			<ul class='hierarchy-list'>
-				{relations.children.items.map(c => (
-					<li><a href={c.route}>{c.title}</a></li>
-				))}
-			</ul>
-
+			<h3 class='not-prose'><Caps>{relations.isSeries ? relations.title : 'Down'}</Caps></h3>
+			{
+				relations.isSeries
+					? (
+						<ol class='hierarchy-list'>
+							{relations.children.items.map(c => (
+								<li><a href={c.route}>{c.title}</a></li>
+							))}
+						</ol>
+					)
+					: (
+						<ul class='hierarchy-list'>
+							{relations.children.items.map(c => (
+								<li><a href={c.route}>{c.title}</a></li>
+							))}
+						</ul>
+					)
+			}
 		</section>
 	)
 }
