@@ -14,7 +14,7 @@ const projects = allProjects
 <section class='region wrapper flow' id='projects'>
 	<SectionHeading as='h2' prelabel='02 ⋅ Projects'>Large-scale stuff that's actually worth showing off</SectionHeading>
 	<p>There's a lot more one-off mini-projects you can find at my <SocialLink {...SOCIALS.GITHUB} />!</p>
-	<div class='projects flow prose' style={{'--flow-space': 'var(--space-2xl)'}}>
+	<div class='projects flow-l prose' style={{'--flow-space': 'var(--space-2xl)'}}>
 		{projects.map(p => <ProjectCard project={p} />)}
 	</div>
 </section>

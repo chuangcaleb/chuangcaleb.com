@@ -4,7 +4,7 @@ Every Layout-inspired compositional classes from `src/styles/compositions/`. Eac
 
 ## Flow
 
-`.flow` — vertical rhythm between stacked children. Use for articles, card bodies, form fields — any list of blocks that need consistent spacing between them.
+`.flow` — vertical rhythm between stacked children. Use for articles, card bodies, form fields — any list of blocks that need consistent spacing between them. Prefer `flow-[size]` utilities.
 
 ## Cluster
 

@@ -11,7 +11,7 @@ const experiences = allExperience
 
 <section class='region wrapper flow' id='experience'>
 	<SectionHeading as='h2' prelabel='01 ⋅ Experience'>The (professional) career journey, thus far</SectionHeading>
-	<div class='experience-list flow' style={{'--flow-space': 'var(--space-2xl)'}}>
+	<div class='experience-list flow-2xl'>
 		{experiences.map((exp, index) => <>
 			<ExperienceCard experience={exp} />
 			{index !== experiences.length - 1 && <hr/>}

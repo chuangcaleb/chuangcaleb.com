@@ -14,8 +14,8 @@ const {links} = project.data;
 ---
 
 <article class='project switcher' style={{'--switcher-vertical-alignment': 'center'}}>
-	<div class='project-body flow' style={{'--flow-space': 'var(--space-l)'}}>
-		<header class='flow' style={{'--flow-space': 'var(--space-2xs)'}}>
+	<div class='project-body flow-m' >
+		<header class='flow-2xs'>
 			<Caps>{project.data.kind}</Caps>
 			<h3 class='not-prose'>{project.data.title}</h3>
 		</header>
@@ -55,8 +55,3 @@ const {links} = project.data;
 		)}
 </article>
 
-<style>
-	& :global(p) {
-		color: var(--text-muted);
-	}
-</style>
