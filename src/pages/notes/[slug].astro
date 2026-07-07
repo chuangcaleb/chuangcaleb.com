@@ -1,38 +1,14 @@
 ---
 import {render} from 'astro:content';
-import Caps from '~/components/emphasis/caps.astro';
 import NoteCallout from '~/components/note/note-callout.astro';
+import NoteFooter from '~/components/note/note-footer.astro';
 import NoteHeader from '~/components/note/note-header.astro';
-import NoteHierarchy from '~/components/note/note-hierarchy.astro';
 import NoteTag from '~/components/note/note-tag.astro';
 import Layout from '~/layouts/layout.astro';
 import '~/styles/index.css';
 import {noteToTags} from '~/utils/note-metadata.ts';
 import {formatNoteRelations} from '~/utils/note-relations.ts';
 import {getAllNotes, getNoteEntry} from '~/utils/note.ts';
-
-interface Resource {
-	label: string;
-	href: string;
-	domain: string;
-}
-
-function parseResources(raw: string[]): Resource[] {
-	return (raw ?? []).map(r => {
-		const match = r.match(/^\[(?<label>.+?)\]\((?<href>.+?)\)$/v);
-		if (!match || !match.groups) {
-			return {label: r, href: r, domain: ''};
-		}
-
-		const {label, href} = match.groups;
-		try {
-			const domain = new URL(href).hostname.replace(/^www\./v, '');
-			return {label, href, domain};
-		} catch {
-			return {label, href, domain: ''};
-		}
-	});
-}
 
 export async function getStaticPaths() {
 	const notes = await getAllNotes();
@@ -48,7 +24,6 @@ const {entry} = Astro.props;
 const {data} = entry;
 
 const tags = noteToTags(data);
-const resources = data.resources ? parseResources(data.resources ?? []) : [];
 
 const {Content} = await render(entry);
 
@@ -104,27 +79,8 @@ const relations = await formatNoteRelations(entry);
 			<Content />
 		</div>
 
-		<NoteHierarchy relations={relations} currentSlug={entry.id} />
+		<NoteFooter relations={relations} currentSlug={entry.id} resources={data.resources}/>
 
-		{
-			resources.length > 0 && (
-				<section class='note-resources flow'>
-					<h2>
-						<Caps>resources</Caps>
-					</h2>
-					<ul class='flow' role='list'>
-						{
-							resources.map(r => (
-								<li>
-									<a href={r.href} class='resource-link'>{r.label}</a>
-									{r.domain && <span class='resource-domain'>{r.domain}</span>}
-								</li>
-							))
-						}
-					</ul>
-				</section>
-			)
-		}
 	</article>
 </Layout>
 
@@ -138,21 +94,11 @@ const relations = await formatNoteRelations(entry);
 		--cluster-gap: var(--space-xs)
 	}
 
-	.note-resources {
-		margin-block-start: var(--space-2xl);
+	.note-body:empty {
+		margin: 0;
 	}
 
-	.note-resources ul {
-		margin-block-start: var(--space-s);
-	}
-
-	.note-resources li {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.resource-domain {
-		color: var(--text-tertiary);
-		font-size: var(--text-caption);
+		:global(.note-body) ~ .note-resources {
+		--flow-space: var(--space-2xl);
 	}
 </style>

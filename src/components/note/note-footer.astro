@@ -1,24 +1,47 @@
 ---
 import {Icon} from 'astro-icon/components';
+import {parseResources} from 'lib/utils/parse-resources';
 import Caps from '~/components/emphasis/caps.astro';
 import type {NoteRelations} from '~/utils/note-relations.ts';
 
 interface Props {
 	relations: NoteRelations;
 	currentSlug: string;
+	resources: string[] | undefined;
 }
 
-const {relations, currentSlug} = Astro.props;
+const {relations, currentSlug, resources} = Astro.props;
 
+const parsedResources = resources ? parseResources(resources ?? []) : [];
 const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 ---
+{
+	parsedResources.length > 0 && (
+		<section class='flow-s prose'>
+			<h2 class='not-prose'>
+				<Caps>resources</Caps>
+			</h2>
+			<ul>
+				{
+					parsedResources.map(r => (
+						<li>
+							<p><a href={r.href} class='resource-link'>{r.label}</a></p>
+							{r.domain && <span class='resource-domain'>{r.domain}</span>}
+						</li>
+					))
+				}
+			</ul>
+		</section>
+	)
+}
+
 <h2 class='visually-hidden'>Note Relations</h2>
 
 {
 	relations.parents.length > 0 && (
-		<section class='note-hierarchy flow-s prose'>
+		<section class='flow-s prose'>
 			<h3 class='not-prose'><Caps>Up</Caps></h3>
-			<ul class='hierarchy-list'>
+			<ul>
 				{relations.parents.map(p => (
 					<li><a href={p.route}>{p.title}</a></li>
 				))}
@@ -29,19 +52,19 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 
 {
 	relations.children && (
-		<section class='note-hierarchy flow-s prose'>
+		<section class='flow-s prose'>
 			<h3 class='not-prose'><Caps>{relations.isSeries ? relations.title : 'Down'}</Caps></h3>
 			{
 				relations.isSeries
 					? (
-						<ol class='hierarchy-list'>
+						<ol>
 							{relations.children.items.map(c => (
 								<li><a href={c.route}>{c.title}</a></li>
 							))}
 						</ol>
 					)
 					: (
-						<ul class='hierarchy-list'>
+						<ul>
 							{relations.children.items.map(c => (
 								<li><a href={c.route}>{c.title}</a></li>
 							))}
@@ -54,7 +77,7 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 
 {
 	hasPreviousOrNext && (
-		<section class='note-hierarchy flow-s prose'>
+		<section class='flow-s prose'>
 			<h3 class='not-prose'><Caps>Prev / Next</Caps></h3>
 			<div class='flow-2xs'>
 				{relations.previousNote && (
@@ -78,9 +101,9 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 
 {
 	relations.parentSeriesContexts.map(ctx => (
-		<section class='note-hierarchy flow-s prose'>
+		<section class='flow-s prose'>
 			<h3 class='not-prose'><Caps>{ctx.parent.title}</Caps></h3>
-			<ol class='hierarchy-list'>
+			<ol>
 				{ctx.siblings.map(s => (
 					<li>
 						{s.id === currentSlug
@@ -96,9 +119,9 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 
 {
 	relations.backlinks.length > 0 && (
-		<section class='note-hierarchy flow-s prose'>
+		<section class='flow-s prose'>
 			<h3 class='not-prose'><Caps>Backlinks</Caps></h3>
-			<ul class='hierarchy-list'>
+			<ul>
 				{relations.backlinks.map(b => (
 					<li><a href={b.route}>{b.title}</a></li>
 				))}
@@ -108,12 +131,16 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 }
 
 <style>
-	.note-hierarchy {
-		margin-block-start: var(--space-2xl);
-	}
-
 	.active {
 		color: var(--text-muted);
 		font-style: italic;
+	}
+	.resource-domain {
+		color: var(--text-tertiary);
+		font-size: var(--text-caption);
+	}
+
+	:global(.note-body) ~ section {
+		--flow-space: var(--space-2xl);
 	}
 </style>
