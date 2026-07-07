@@ -121,20 +121,40 @@ CUSTOM PROPERTIES
   border: var(--border-thin) solid var(--border-default);
 } */
 
-.prose :is(ol, ul):not(.not-prose) {
+.prose :is(ol):not(.not-prose) {
   padding-inline-start: var(--space-m);
+}
+.prose :is(ul):not(.not-prose, [role="list"]) {
+  padding-inline-start: var(--space-xs);
+  list-style-type: none;
 }
 
 /* .prose :is(ol, ul):not(.not-prose) li {
   padding-inline-start: var(--space-xs);
 } */
 
-.prose :is(ul > li):not(.not-prose)::marker {
+.prose :is(ul:not(.not-prose, [role="list"]) > li)::marker {
   color: var(--prose-list-marker-color, var(--accent));
 }
 
-.prose :is(ol > li):not(.not-prose)::marker {
+.prose :is(ol:not(.not-prose) > li)::marker {
   font-weight: var(--weight-heading);
   color: var(--prose-list-marker-color, var(--accent));
   font-size: var(--prose-list-marker-size, 1em);
+}
+
+.prose :is(ul:not(.not-prose, [role="list"]) > li)::marker {
+  content: "\2013";
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+.prose :is(ul:not(.not-prose, [role="list"]) > li) {
+  position: relative;
+  padding-inline-start: var(--space-s);
+}
+
+.prose :is(ol:not(.not-prose) > li) {
+  padding-inline-start: var(--space-2xs);
 }

@@ -214,9 +214,9 @@ li > ol {
   margin-inline-start: var(--space-xs);
 } */
 
-ul {
+/* ul {
   list-style: disc;
-}
+} */
 
 li {
   /* margin-inline-start: 1.25em; */
