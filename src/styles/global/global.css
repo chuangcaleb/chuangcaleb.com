@@ -253,13 +253,15 @@ samp {
 }
 
 pre {
-  padding: var(--space-s);
+  padding-block: var(--space-s);
+  padding-inline: calc(var(--gutter) * 0.75);
+  margin-inline: calc(var(--gutter) * -0.75);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   /* border: var(--border-thin) solid var(--border-default); */
   border-radius: var(--radius-md);
   border: var(--border-thin) solid var(--border-default);
-  /* background: var(--bg-surface); */
+  background: var(--bg-surface);
   --astro-code-background: var(--bg-surface);
   /* color: var(--text-normal); */
   --astro-code-foreground: var(--text-normal);
