@@ -32,7 +32,7 @@ CUSTOM PROPERTIES
 
 /* Heading flow for elements that follow them */
 .prose :is(h1, h2, h3, h4):not(.not-prose) + *:not(.not-prose) {
-  --flow-space: var(--space-m);
+  --flow-space: var(--space-l);
 }
 
 /* Add more space on and around figures and tables */
@@ -73,7 +73,8 @@ CUSTOM PROPERTIES
 }
 
 /* Add lots of space for horizontal rules */
-.prose :is(hr) {
+.prose :is(hr, p:has(img)),
+.prose :is(hr, p:has(img)) + * {
   --flow-space: var(--space-2xl);
 }
 

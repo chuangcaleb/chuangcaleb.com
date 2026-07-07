@@ -1,0 +1,36 @@
+---
+
+interface Props {
+	title: string;
+	body: string;
+}
+
+const {title, body} = Astro.props;
+---
+
+<div class='callout'>
+	<div class='callout-title'>{title}</div>
+	<p class='callout-body'>{body}</p>
+</div>
+
+<style>
+	.callout {
+		background: var(--bg-surface);
+		padding: var(--space-s) var(--space-m);
+		--flow-space: var(--space-s);
+	}
+
+	.callout-title {
+		font-weight: var(--weight-bold);
+		font-size: var(--text-caption);
+		text-transform: uppercase;
+		letter-spacing: var(--tracking-caps);
+		color: var(--text-muted);
+		margin-block-end: var(--space-xs);
+	}
+
+	.callout-body {
+		color: var(--text-normal);
+		line-height: var(--leading-body);
+	}
+</style>

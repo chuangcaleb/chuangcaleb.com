@@ -6,9 +6,10 @@ import '~/styles/index.css';
 interface Props {
 	title?: string | null;
 	description?: string;
+	forehead?: boolean;
 }
 
-const {title: propsTitle, description: propsDescription} = Astro.props;
+const {title: propsTitle, description: propsDescription, forehead = false} = Astro.props;
 
 const {pathname} = Astro.url;
 const isHome = pathname === '/';
@@ -60,7 +61,7 @@ const description
 	</head>
 	<body>
 		<slot name='header' />
-		<main id='main'>
+		<main id='main' class:list={[forehead ? '' : 'no-forehead']}>
 			<slot />
 		</main>
 		<Footer/>
@@ -79,6 +80,9 @@ const description
 		width: 100%;
 		margin: 0 auto;
 		animation: fadeIn 0.4s ease-out;
+	}
+	.no-forehead {
+		padding-block-start: 0;
 	}
 
 	.skip-link {

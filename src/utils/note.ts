@@ -19,7 +19,7 @@ function gnm(entry: Note): SuperNote | undefined {
 
 	return {
 		...entry,
-		name: getNoteName(entry.filePath),
+		title: getNoteName(entry.filePath),
 		route: gnr(entry.id),
 	};
 }

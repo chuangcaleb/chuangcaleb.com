@@ -1,6 +1,7 @@
 ---
 import IconLink from '~/components/icon-link.astro';
 import {SOCIALS} from '~/data/links.ts';
+import {NOTE_NAV_LINKS} from '~/data/note-nav.ts';
 import {formatDisplayDate} from '~/utils/time.ts';
 
 ---
@@ -8,6 +9,10 @@ import {formatDisplayDate} from '~/utils/time.ts';
 <hr/>
 <footer class='wrapper flow'>
 	<h2>Chuang Caleb</h2>
+	<nav class='cluster'>
+		{Object.values(NOTE_NAV_LINKS).map(link =>
+			<a href={link.href}>{link.shortLabel}</a>)}
+	</nav>
 	<div
 		class='hero-socials cluster'
 		style={{
@@ -30,6 +35,9 @@ import {formatDisplayDate} from '~/utils/time.ts';
 </footer>
 
 <style>
+	ul {
+		list-style: none;
+	}
   footer {
     padding-block: var(--space-l);
     color: var(--text-muted);

@@ -1,0 +1,153 @@
+---
+import {render} from 'astro:content';
+import Caps from '~/components/emphasis/caps.astro';
+import NoteCallout from '~/components/note/note-callout.astro';
+import NoteHeader from '~/components/note/note-header.astro';
+import NoteTag from '~/components/note/note-tag.astro';
+import Layout from '~/layouts/layout.astro';
+import '~/styles/index.css';
+import {noteToTags} from '~/utils/note-metadata.ts';
+import {getAllNotes, getNoteEntry} from '~/utils/note.ts';
+
+interface Resource {
+	label: string;
+	href: string;
+	domain: string;
+}
+
+function parseResources(raw: string[]): Resource[] {
+	return (raw ?? []).map(r => {
+		const match = r.match(/^\[(.+?)\]\((.+?)\)$/);
+		if (!match) {
+			return {label: r, href: r, domain: ''};
+		}
+
+		const [, label, href] = match;
+		try {
+			const domain = new URL(href).hostname.replace(/^www\./, '');
+			return {label, href, domain};
+		} catch {
+			return {label, href, domain: ''};
+		}
+	});
+}
+
+export async function getStaticPaths() {
+	const notes = await getAllNotes();
+
+	return notes.map(entry => ({
+		params: {slug: entry.id},
+		props: {entry},
+	}));
+}
+
+const {entry} = Astro.props;
+
+const {data} = entry;
+
+const tags = noteToTags(data);
+const resources = data.resources ? parseResources(data.resources ?? []) : [];
+
+const {Content} = await render(entry);
+
+const hasUps = data.up && data.up.length > 0;
+---
+
+<Layout title={entry.title}>
+	<NoteHeader />
+	<article class='wrapper flow' >
+		<header class='flow region' style={{'--region-space': 'var(--space-m)', '--flow-space': 'var(--space-s)'}}>
+			<!-- up links -->
+			<nav class='note-up cluster' style={{'--cluster-gap': 'var(--space-s)'}}>
+				<a href='/notes'>notes</a>
+				{hasUps && <>
+					<span aria-hidden='true'>/</span>
+					<div class='cluster' style={{'--cluster-gap': 'var(--space-xs)'}}>
+						{
+							data.up?.map(async (parent, index) => {
+								const a = await getNoteEntry(parent);
+								if (!a) {
+									return null;
+								}
+
+								return <>
+									<a href={a.route}>{a.title}</a>
+									{index + 1 !== data.up?.length && <span aria-hidden='true'>⋅</span>}
+								</>;
+							})
+						}
+					</div>
+				</>
+				}
+			</nav>
+			<h1 class='note-title'>{entry.title}</h1>
+			{
+				data.fyi && (
+					<NoteCallout title='FYI' body={data.fyi} />
+				)
+			}
+			<ul class='note-tags cluster' aria-label='metadata'>
+				{
+					tags.map(tag => (
+						<li><NoteTag {...tag}/></li>
+					))
+				}
+			</ul>
+		</header>
+
+		<div class='prose note-body flow'>
+			<Content />
+		</div>
+
+		{
+			resources.length > 0 && (
+				<section class='note-resources flow'>
+					<h2>
+						<Caps>resources</Caps>
+					</h2>
+					<ul class='flow'>
+						{
+							resources.map(r => (
+								<li>
+									<a href={r.href} class='resource-link'>{r.label}</a>
+									{r.domain && <span class='resource-domain'>{r.domain}</span>}
+								</li>
+							))
+						}
+					</ul>
+				</section>
+			)
+		}
+	</article>
+</Layout>
+
+<style>
+
+	nav {
+		font-size: var(--text-caption);
+	}
+
+	.note-tags {
+		list-style: none;
+		--cluster-gap: var(--space-xs)
+	}
+
+	.note-resources {
+		margin-block-start: var(--space-2xl);
+	}
+
+	.note-resources ul {
+		list-style: none;
+		margin-block-start: var(--space-s);
+	}
+
+	.note-resources li {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.resource-domain {
+		color: var(--text-tertiary);
+		font-size: var(--text-caption);
+	}
+</style>

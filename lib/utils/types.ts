@@ -6,7 +6,7 @@ export type Note = CollectionEntry<'obsidian-note'>;
 export type NoteMetadata = Note['data'];
 
 export type SuperNote = CollectionEntry<'obsidian-note'> & {
-	name: string;
+	title: string;
 	route: string;
 };
 export type SuperNotes = SuperNote[];
