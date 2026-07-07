@@ -16,7 +16,7 @@ const tags = noteToTags(note.data);
 	<a href={route} class='note-anchor'>
 		<h3 class='note-title'>{title}</h3>
 	</a>
-	<ul class='note-tags cluster' aria-label='metadata'>
+	<ul class='note-tags cluster' aria-label='metadata' role='list'>
 		{
 			tags.map(tag => (
 				<li>
@@ -33,8 +33,6 @@ const tags = noteToTags(note.data);
 	}
 
 	.note-tags {
-		list-style: none;
-		padding: 0;
 		--cluster-gap: var(--space-xs);
 	}
 </style>

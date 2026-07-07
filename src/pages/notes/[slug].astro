@@ -86,7 +86,7 @@ const hasUps = data.up && data.up.length > 0;
 					<NoteCallout title='FYI' body={data.fyi} />
 				)
 			}
-			<ul class='note-tags cluster' aria-label='metadata'>
+			<ul class='note-tags cluster' aria-label='metadata' role='list'>
 				{
 					tags.map(tag => (
 						<li><NoteTag {...tag}/></li>
@@ -105,7 +105,7 @@ const hasUps = data.up && data.up.length > 0;
 					<h2>
 						<Caps>resources</Caps>
 					</h2>
-					<ul class='flow'>
+					<ul class='flow' role='list'>
 						{
 							resources.map(r => (
 								<li>
@@ -128,7 +128,6 @@ const hasUps = data.up && data.up.length > 0;
 	}
 
 	.note-tags {
-		list-style: none;
 		--cluster-gap: var(--space-xs)
 	}
 
@@ -137,7 +136,6 @@ const hasUps = data.up && data.up.length > 0;
 	}
 
 	.note-resources ul {
-		list-style: none;
 		margin-block-start: var(--space-s);
 	}
 

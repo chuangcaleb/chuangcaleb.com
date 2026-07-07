@@ -31,7 +31,7 @@ const sorted = notes.toSorted((a, b) => {
 	<main id='main'>
 		<section class='wrapper flow'>
 			<h1>notes</h1>
-			<ul class='notes-list flow max-prose'>
+			<ul class='notes-list flow max-prose' role='list'>
 				{
 					sorted.map(note => (
 						<li>
@@ -44,8 +44,3 @@ const sorted = notes.toSorted((a, b) => {
 	</main>
 </Layout>
 
-<style>
-  ul {
-    list-style: none;
-  }
-</style>
