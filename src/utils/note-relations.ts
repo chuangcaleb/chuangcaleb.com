@@ -55,7 +55,7 @@ export async function formatNoteRelations({data, title}: SuperNote): Promise<Not
 		.filter(p => Array.isArray(p.data.series))
 		.map(async p => {
 			const siblings = await getNoteEntries(p.data.down ?? []);
-			return {parent: p, siblings: alphabetize(siblings)};
+			return {parent: p, siblings};
 		});
 
 	for (const promise of parentSeriesSettled) {
@@ -72,10 +72,10 @@ export async function formatNoteRelations({data, title}: SuperNote): Promise<Not
 				items: alphabetize(childrenNotes),
 			}
 			: undefined,
-		parents: alphabetize(parentNotes),
+		parents: parentNotes,
 		previousNote,
 		nextNote,
-		backlinks: alphabetize(backlinkNotes),
+		backlinks: backlinkNotes,
 		isSeries,
 		parentSeriesContexts,
 	};
