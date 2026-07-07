@@ -35,7 +35,7 @@ CUSTOM PROPERTIES
 /* Add more space on and around figures and tables */
 .prose :is(figure, table):not(.not-prose),
 .prose :is(figure, table):not(.not-prose) + *:not(.not-prose) {
-  --flow-space: var(--space-2xl);
+  --flow-space: var(--space-xl);
 }
 
 /* Add more space to headings on block start */
@@ -93,10 +93,11 @@ CUSTOM PROPERTIES
 
 .prose :is(blockquote) {
   padding-inline-start: calc(var(--gutter) * 0.5);
+  padding-block: var(--space-xs);
   margin-inline-start: calc(var(--gutter) * -0.5);
   border-inline-start-width: 3px;
   border-inline-start-style: solid;
-  border-inline-start-color: var(var(--accent));
+  border-inline-start-color: var(--color-tertiary);
   color: var(--text-muted);
 }
 
@@ -110,13 +111,15 @@ CUSTOM PROPERTIES
   border-radius: var(--radius-sm);
 }
 
-.prose :is(code):not(.not-prose):not(pre code) {
+/* .prose :is(code):not(.not-prose):not(pre code) { */
+.prose :is(code):not(.not-prose) {
   font-size: calc(1em * var(--font-mono-scale));
 }
 
-.prose pre {
-  border-radius: var(--radius-md);
-}
+/* .prose pre {
+  border-radius: var(--radius-sm);
+  border: var(--border-thin) solid var(--border-default);
+} */
 
 .prose :is(ol, ul):not(.not-prose) {
   padding-inline-start: var(--space-m);

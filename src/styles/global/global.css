@@ -241,8 +241,7 @@ dt {
 code,
 samp {
   font-family: var(--font-mono);
-  /* background: var(--bg-surface); */
-  /* padding-inline: 0.25em; */
+  font-size: calc(1em * var(--font-mono-scale));
   hyphens: none;
   tab-size: 2;
   text-align: left;
@@ -254,14 +253,17 @@ samp {
 }
 
 pre {
-  padding: calc(var(--space-m) - var(--border-thin));
+  padding: var(--space-s);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-}
-
-pre:has(code) {
-  background: var(--bg-surface);
-  color: var(--text-normal);
+  /* border: var(--border-thin) solid var(--border-default); */
+  border-radius: var(--radius-md);
+  border: var(--border-thin) solid var(--border-default);
+  /* background: var(--bg-surface); */
+  --astro-code-background: var(--bg-surface);
+  /* color: var(--text-normal); */
+  --astro-code-foreground: var(--text-normal);
+  white-space: pre;
 }
 
 pre code {
@@ -269,6 +271,7 @@ pre code {
   border: none;
   padding: 0;
   color: inherit;
+  font-size: inherit;
 }
 
 /* ============================================
@@ -317,19 +320,26 @@ svg[role="img"] {
    ============================================ */
 
 table {
-  border: var(--border-thin) solid var(--border-default);
   border-collapse: collapse;
   width: 100%;
+  font-size: var(--text-caption);
 }
 
 th {
-  text-align: left;
-  font-weight: var(--weight-bold);
+  border-bottom: var(--border-thin) solid var(--border-default);
+  color: var(--text-tertiary);
+  font-family: var(--font-heading);
+  font-size: var(--text-caption);
+  font-weight: var(--weight-body);
   line-height: var(--leading-tight);
+  text-align: left;
+  vertical-align: bottom;
 }
 
-thead th {
-  padding-block: var(--space-s);
+td {
+  border-bottom: var(--border-thin) solid var(--border-subtle);
+  text-align: left;
+  vertical-align: top;
 }
 
 td,
@@ -338,25 +348,19 @@ th {
   padding-inline: var(--space-s);
 }
 
-th:not(:only-of-type) {
-  border-block-end: var(--border-thin) solid var(--border-default);
+tr:last-child td {
+  border-bottom: 0;
 }
 
-th:only-of-type {
-  border-inline-end: var(--border-thin) solid var(--border-default);
-}
-
-:is(th, td) ~ :is(th, td) {
-  border-inline-start: var(--border-thin) solid var(--border-default);
-}
-
-tr + tr :is(th, td) {
-  border-block-start: var(--border-thin) solid var(--border-default);
+.table-wrapper {
+  overflow-x: auto;
 }
 
 caption {
   caption-side: bottom;
   margin-block-start: var(--space-s);
+  font-size: var(--text-caption);
+  color: var(--text-tertiary);
 }
 
 /* ============================================
