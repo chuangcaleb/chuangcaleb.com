@@ -22,12 +22,12 @@ const linkSocials = [SOCIALS.LINKEDIN, SOCIALS.GITHUB];
 		class='switcher'
 		style={{
 			'--switcher-inline-at': '100ch',
-			'--switcher-gap': 'var(--space-xl)',
+			'--switcher-gap': 'var(--space-l)',
 		}}
 	>
 		<div class='hero-text flow max-prose' style={{'--flow-space': 'var(--space-l)'}}>
 			<h1 class='hero-name'>Chuang Caleb</h1>
-			<div class='flow prose' style={{'--flow-space': 'var(--space-l)'}}>
+			<div class='flow prose' style={{'--flow-space': 'var(--space-m)'}}>
 				<Tagline>
 					<HeroBodyContent />
 				</Tagline>
@@ -40,12 +40,13 @@ const linkSocials = [SOCIALS.LINKEDIN, SOCIALS.GITHUB];
 					</Button>
 				</div>
 			</div>
-			<hr />
+			<hr style={{'--flow-space': 'var(--space-m)'}} />
 			<div
 				class='hero-socials cluster'
 				style={{
 					'--region-space': 'var(--space-xl)',
 					'--cluster-gap-x': 'var(--space-s)',
+					'--flow-space': 'var(--space-m)',
 				}}
 			>
 				{
