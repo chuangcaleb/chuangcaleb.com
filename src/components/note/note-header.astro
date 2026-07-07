@@ -1,0 +1,34 @@
+---
+import {Icon} from 'astro-icon/components';
+
+---
+
+<header class='note-header max-page'>
+	<a href='#main' class='skip-link'>Skip to content <Icon name='lucide:arrow-right'/></a>
+	<!-- <nav class='note-nav cluster'>
+		{showHome && <a href='/'>index</a>}
+		<a href='/notes'>notes</a> -->
+</header>
+
+<style>
+	.note-header {
+		padding: var(--space-s) var(--gutter);
+	}
+
+	.skip-link {
+		position: fixed;
+		left: var(--gutter);
+		padding: var(--space-s);
+		z-index: 10;
+		color: var(--accent);
+		background: var(--bg-page);
+		border-radius: var(--radius-sm);
+		transition: transform 0.3s;
+		transform: translateY(-100%);
+	}
+
+	.skip-link:focus {
+		transform: translateY(0%);
+	}
+
+</style>

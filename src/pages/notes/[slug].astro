@@ -1,0 +1,109 @@
+---
+import {render} from 'astro:content';
+import NoteCallout from '~/components/note/note-callout.astro';
+import NoteFooter from '~/components/note/note-footer.astro';
+import NoteHeader from '~/components/note/note-header.astro';
+import NoteTag from '~/components/note/note-tag.astro';
+import Layout from '~/layouts/layout.astro';
+import '~/styles/index.css';
+import {noteToTags} from '~/utils/note-metadata.ts';
+import {getAllNotes, getNoteEntry} from '~/utils/note.ts';
+
+export async function getStaticPaths() {
+	const notes = await getAllNotes();
+
+	return notes.map(entry => ({
+		params: {slug: entry.id},
+		props: {entry},
+	}));
+}
+
+const {entry} = Astro.props;
+
+const {data} = entry;
+
+const tags = noteToTags(data);
+
+const filteredTags = tags.filter(t => t.key !== 'fyi');
+const fyiTag = tags.find(t => t.key === 'fyi');
+
+const {Content} = await render(entry);
+
+const hasUps = data.up && data.up.length > 0;
+
+---
+
+<Layout title={entry.title}>
+	<NoteHeader />
+	<article class='wrapper flow' >
+		<header class='flow-xs region max-prose' style={{'--region-space': 'var(--space-m)'}}>
+			<!-- up links -->
+			<nav class='note-up cluster' style={{'--cluster-gap': 'var(--space-s)'}}>
+				<a href='/notes'>notes</a>
+				{hasUps && <>
+					<span aria-hidden='true'>/</span>
+					<div class='cluster' style={{'--cluster-gap': 'var(--space-xs)'}}>
+						{
+							data.up?.map(async (parent, index) => {
+								const a = await getNoteEntry(parent);
+								if (!a) {
+									return null;
+								}
+
+								return <>
+									<a href={a.route}>{a.title}</a>
+									{index + 1 !== data.up?.length && <span aria-hidden='true'>⋅</span>}
+								</>;
+							})
+						}
+					</div>
+				</>
+				}
+			</nav>
+			<h1 class='note-title'>{entry.title}</h1>
+			{entry.data.description && <p>{entry.data.description}</p>}
+			{filteredTags.length > 0 && (
+				<ul class='note-tags cluster' aria-label='metadata' role='list'>
+					{
+						filteredTags.map(tag => (
+							<li><NoteTag {...tag}/></li>
+						))
+					}
+				</ul>
+			)}
+			{
+				fyiTag && data.fyi && (
+					<NoteCallout title='For Your Information' body={data.fyi}>
+						<NoteTag {...fyiTag} />
+					</NoteCallout>
+				)
+			}
+		</header>
+
+		<div class='prose note-body flow'>
+			<Content />
+		</div>
+
+		<NoteFooter entry={entry}/>
+
+	</article>
+</Layout>
+
+<style>
+
+	nav {
+		font-size: var(--text-caption);
+	}
+
+	.note-tags {
+		--cluster-gap: var(--space-xs)
+	}
+
+	.note-body:empty {
+		margin: 0;
+	}
+
+		:global(.note-body) ~ .note-resources {
+		--flow-space: var(--space-2xl);
+	}
+</style>

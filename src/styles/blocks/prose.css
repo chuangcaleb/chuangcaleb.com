@@ -2,10 +2,7 @@
 A block that styles prose content
 
 CUSTOM PROPERTIES
---prose-blockquote-border-color: The color of the blockquote border
-
 --prose-list-marker-color: The color of the list marker
-
 --prose-list-marker-size: The size of the list marker
 */
 
@@ -32,13 +29,13 @@ CUSTOM PROPERTIES
 
 /* Heading flow for elements that follow them */
 .prose :is(h1, h2, h3, h4):not(.not-prose) + *:not(.not-prose) {
-  --flow-space: var(--space-m);
+  --flow-space: var(--space-l);
 }
 
 /* Add more space on and around figures and tables */
 .prose :is(figure, table):not(.not-prose),
 .prose :is(figure, table):not(.not-prose) + *:not(.not-prose) {
-  --flow-space: var(--space-2xl);
+  --flow-space: var(--space-xl);
 }
 
 /* Add more space to headings on block start */
@@ -73,7 +70,8 @@ CUSTOM PROPERTIES
 }
 
 /* Add lots of space for horizontal rules */
-.prose :is(hr) {
+.prose :is(hr, p:has(img)),
+.prose :is(hr, p:has(img)) + * {
   --flow-space: var(--space-2xl);
 }
 
@@ -94,47 +92,72 @@ CUSTOM PROPERTIES
 }
 
 .prose :is(blockquote) {
-  padding-inline-start: var(--space-s);
-  border-inline-start-width: 2px;
+  padding-inline-start: calc(var(--gutter) * 0.5);
+  padding-block: var(--space-xs);
+  margin-inline-start: calc(var(--gutter) * -0.5);
+  border-inline-start-width: 3px;
   border-inline-start-style: solid;
-  border-inline-start-color: var(
-    --prose-blockquote-border-color,
-    var(--accent)
-  );
+  border-inline-start-color: var(--color-tertiary);
   color: var(--text-muted);
 }
 
 .prose :is(blockquote) p {
+  /* TODO: maybe not italics */
   font-style: italic;
   font-weight: var(--weight-body);
+}
+.prose :is(blockquote) * + * {
+  margin-block-start: calc(var(--flow-space) * 0.66);
 }
 
 .prose :is(kbd) {
   border-radius: var(--radius-sm);
 }
 
-.prose :is(code):not(.not-prose):not(pre code) {
+/* .prose :is(code):not(.not-prose):not(pre code) { */
+.prose :is(code):not(.not-prose) {
   font-size: calc(1em * var(--font-mono-scale));
 }
 
-.prose pre {
-  border-radius: var(--radius-md);
-}
+/* .prose pre {
+  border-radius: var(--radius-sm);
+  border: var(--border-thin) solid var(--border-default);
+} */
 
-.prose :is(ol, ul):not(.not-prose) {
+.prose :is(ol):not(.not-prose) {
   padding-inline-start: var(--space-m);
 }
-
-.prose :is(ol, ul):not(.not-prose) li {
+.prose :is(ul):not(.not-prose, [role="list"]) {
   padding-inline-start: var(--space-xs);
+  list-style-type: none;
 }
 
-.prose :is(ul > li):not(.not-prose)::marker {
+/* .prose :is(ol, ul):not(.not-prose) li {
+  padding-inline-start: var(--space-xs);
+} */
+
+.prose :is(ul:not(.not-prose, [role="list"]) > li)::marker {
   color: var(--prose-list-marker-color, var(--accent));
 }
 
-.prose :is(ol > li):not(.not-prose)::marker {
+.prose :is(ol:not(.not-prose) > li)::marker {
   font-weight: var(--weight-heading);
   color: var(--prose-list-marker-color, var(--accent));
   font-size: var(--prose-list-marker-size, 1em);
+}
+
+.prose :is(ul:not(.not-prose, [role="list"]) > li)::marker {
+  content: "\2013";
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+.prose :is(ul:not(.not-prose, [role="list"]) > li) {
+  position: relative;
+  padding-inline-start: var(--space-s);
+}
+
+.prose :is(ol:not(.not-prose) > li) {
+  padding-inline-start: var(--space-2xs);
 }

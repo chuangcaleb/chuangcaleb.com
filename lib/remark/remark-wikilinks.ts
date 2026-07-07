@@ -194,7 +194,7 @@ const remarkWikilinks: Plugin<void[], Root> = () => tree => {
 					// fallback: keep as plain text
 					newNodes.push({
 						type: 'html',
-						value: `<span class="note-not-found underline">${fullMatch}<span class="sr-only"> (broken link, note not found)</span></span>`,
+						value: `<span class="note-not-found underline">${fullMatch}<span class="visually-hidden"> (broken link, note not found)</span></span>`,
 					});
 				}
 			}

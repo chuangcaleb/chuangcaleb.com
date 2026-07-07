@@ -1,0 +1,30 @@
+---
+import Caps from '../emphasis/caps.astro';
+
+interface Props {
+	title: string;
+	body: string;
+}
+
+const {title, body} = Astro.props;
+---
+
+<div class='callout flow-xs'>
+	<Caps><slot/>{title}</Caps>
+	<p class='callout-body'>{body}</p>
+</div>
+
+<style>
+	.callout {
+		background: var(--bg-surface);
+		padding: var(--space-s);
+		border: var(--border-thin) solid var(--border-subtle);
+		--flow-space: var(--space-s);
+	}
+
+	.callout-body {
+		color: var(--text-normal);
+		font-size: var(--text-caption);
+		/* line-height: var(--leading-body); */
+	}
+</style>

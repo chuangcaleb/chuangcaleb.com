@@ -12,22 +12,22 @@ import Caps from '~/components/emphasis/caps.astro';
 const linkSocials = [SOCIALS.LINKEDIN, SOCIALS.GITHUB];
 ---
 
-<section class='region flow wrapper' style={{'--flow-space': 'var(--space-s)'}}>
+<section class='region flow-s wrapper'>
 	<span class='eyebrow cluster' style={{'--cluster-gap-x': 'var(--space-s)', '--cluster-gap-y': '0'}}>
 		<Caps><Icon name='lucide:code' />software engineer</Caps>
-		<span>⋅</span>
+		<span aria-hidden='true'>⋅</span>
 		<Caps><Icon name='lucide:drama' />narrative author</Caps>
 	</span>
 	<div
 		class='switcher'
 		style={{
 			'--switcher-inline-at': '100ch',
-			'--switcher-gap': 'var(--space-xl)',
+			'--switcher-gap': 'var(--space-l)',
 		}}
 	>
-		<div class='hero-text flow max-prose' style={{'--flow-space': 'var(--space-l)'}}>
+		<div class='hero-text flow-l max-prose'>
 			<h1 class='hero-name'>Chuang Caleb</h1>
-			<div class='flow prose' style={{'--flow-space': 'var(--space-l)'}}>
+			<div class='flow prose' >
 				<Tagline>
 					<HeroBodyContent />
 				</Tagline>
@@ -46,6 +46,7 @@ const linkSocials = [SOCIALS.LINKEDIN, SOCIALS.GITHUB];
 				style={{
 					'--region-space': 'var(--space-xl)',
 					'--cluster-gap-x': 'var(--space-s)',
+					'--flow-space': 'var(--space-s)',
 				}}
 			>
 				{

@@ -79,7 +79,7 @@
   /* ── Layout ──────────────────────────── */
   --max-page: 115ch;
   --max-prose: 70ch;
-  --max-heading: 35ch;
+  --max-heading: 45ch;
 
   /* ── Semantic aliases ────────────────── */
   --bg-page: var(--color-parchment);
@@ -99,4 +99,16 @@
   --border-subtle: var(--color-border-secondary);
 
   --gutter: var(--space-l);
+
+  /* --------------------------- syntax highlighter --------------------------- */
+
+  --astro-code-token-constant: #d20f39;
+  --astro-code-token-string: #40a02b;
+  --astro-code-token-comment: var(--text-tertiary);
+  --astro-code-token-keyword: #8839ef;
+  --astro-code-token-parameter: #4c4f69;
+  --astro-code-token-function: #1e66f5;
+  --astro-code-token-string-expression: #40a02b;
+  --astro-code-token-punctuation: #4c4f69;
+  --astro-code-token-link: #8839ef;
 }

@@ -23,7 +23,7 @@ const duration = formatRelativeDuration(startDate, endDate);
 	'--sidebar-gap': 'var(--space-xl)',
 }}>
 	<header class='sidebar'>
-		<div class='flow' style={{'--flow-space': 'var(--space-m)'}}>
+		<div class='flow-s'>
 			{
 				logo && (
 					<div class='logo'>
@@ -32,7 +32,7 @@ const duration = formatRelativeDuration(startDate, endDate);
 				)
 			}
 			<div class='flow'>
-				<div class='meta flow' style={{'--flow-space': 'var(--space-2xs)'}}>
+				<div class='meta flow-2xs'>
 					<h3 class='company'>{experience.data.company}</h3>
 					<Caps color='muted'>
 						{experience.data.role}
@@ -59,7 +59,7 @@ const duration = formatRelativeDuration(startDate, endDate);
 		</div>
 	</header>
 
-	<div class='prose body flow'>
+	<div class='prose flow'>
 		<Content />
 	</div>
 
@@ -78,10 +78,6 @@ const duration = formatRelativeDuration(startDate, endDate);
 		height: 100%;
 		object-fit: contain;
 		border: none;
-	}
-
-	.prose {
-		color: var(--text-muted)
 	}
 
 	.tenure {

@@ -13,25 +13,18 @@ export function formatDisplayDate(datetime?: string | Date) {
 	return format(datetime, 'dd MMM yyyy');
 }
 
-export function getLongDurationSince(then: Date) {
-	const daysCount = differenceInDays(new Date(), then);
-	// rounding
-	if (daysCount >= 350) {
-		const years = Number((daysCount / 365).toPrecision(2));
-		return {
-			short: `${years}y`,
-			long: `about ${years} year${years === 1 ? '' : 's'}`,
-		};
+export function getRelativeSince(then: Date) {
+	const days = differenceInDays(new Date(), then);
+
+	if (days < 1) {
+		return '<1d';
 	}
 
-	if (daysCount === 0) {
-		return {short: '<1d', long: 'some hours'};
+	if (days <= 91) {
+		return `${days}d`;
 	}
 
-	return {
-		short: `${daysCount}d`,
-		long: `${daysCount} day${daysCount === 1 ? '' : 's'}`,
-	};
+	return `${Number((days / 365).toFixed(1))}y`;
 }
 
 export function isWithinDuration(datetime: Date, days: number) {

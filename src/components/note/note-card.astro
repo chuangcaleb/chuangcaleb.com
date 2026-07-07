@@ -1,0 +1,42 @@
+---
+import type {SuperNote} from 'lib/utils/types';
+import NoteTag from '~/components/note/note-tag.astro';
+import {noteToTags} from '~/utils/note-metadata.ts';
+
+interface Props {
+	note: SuperNote
+}
+
+const {note} = Astro.props;
+const {route, title} = note;
+const tags = noteToTags(note.data);
+---
+
+<article class='note'>
+	<a href={route}>
+		{title}
+	</a>
+	<ul class='note-tags cluster' aria-label='metadata' role='list'>
+		{
+			tags.map(tag => (
+				<li>
+					<NoteTag {...tag} />
+				</li>
+			))
+		}
+	</ul>
+</article>
+
+<style>
+	.note {
+		padding-block: var(--space-xs);
+	}
+
+	.note-tags {
+		/* margin-block-start: var(--space-2xs); */
+		--cluster-gap: var(--space-xs);
+	}
+	a {
+		font-size: var(--text-h3);
+	}
+</style>

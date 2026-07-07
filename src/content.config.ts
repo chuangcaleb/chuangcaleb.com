@@ -52,6 +52,7 @@ const experienceCollection = defineCollection({
 
 const baseObsidianNoteSchema = z.object({
 	// meta - content
+	slug: z.string(),
 	tags: z.array(z.string()).nullable().optional(),
 	description: z.string().optional(),
 	// meta - time
@@ -64,7 +65,7 @@ const baseObsidianNoteSchema = z.object({
 	featured: z.number().optional(),
 	words: z.number(),
 	// epistemic
-	status: z.enum(['wip', 'stub', 'mvp']).optional(),
+	status: z.enum(['wip', 'stub', 'mvp', 'clip', 'aged']).optional(),
 	fyi: z.string().optional(),
 	// hierarchy
 	up: z.array(reference('obsidian-note')).optional(),

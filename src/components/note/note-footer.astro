@@ -1,0 +1,149 @@
+---
+import {Icon} from 'astro-icon/components';
+import {parseResources} from 'lib/utils/parse-resources';
+import type {SuperNote} from 'lib/utils/types';
+import Caps from '~/components/emphasis/caps.astro';
+import {formatNoteRelations} from '~/utils/note-relations.ts';
+
+interface Props {
+	entry: SuperNote
+}
+
+const {entry} = Astro.props;
+
+const relations = await formatNoteRelations(entry);
+const {resources} = entry.data;
+const currentSlug = entry.id;
+
+const parsedResources = resources ? parseResources(resources ?? []) : [];
+const hasPreviousOrNext = relations.previousNote || relations.nextNote;
+---
+{
+	parsedResources.length > 0 && (
+		<section class='flow-s prose'>
+			<h2 class='not-prose'>
+				<Caps>resources</Caps>
+			</h2>
+			<ul>
+				{
+					parsedResources.map(r => (
+						<li>
+							<p><a href={r.href} class='resource-link'>{r.label}</a></p>
+							{r.domain && <span class='resource-domain'>{r.domain}</span>}
+						</li>
+					))
+				}
+			</ul>
+		</section>
+	)
+}
+
+<h2 class='visually-hidden'>Note Relations</h2>
+
+{
+	relations.parents.length > 0 && (
+		<section class='flow-s prose'>
+			<h3 class='not-prose'><Caps>Up</Caps></h3>
+			<ul>
+				{relations.parents.map(p => (
+					<li><a href={p.route}>{p.title}</a></li>
+				))}
+			</ul>
+		</section>
+	)
+}
+
+{
+	relations.children && (
+		<section class='flow-s prose'>
+			<h3 class='not-prose'><Caps>{relations.isSeries ? relations.title : 'Down'}</Caps></h3>
+			{
+				relations.isSeries
+					? (
+						<ol>
+							{relations.children.items.map(c => (
+								<li><a href={c.route}>{c.title}</a></li>
+							))}
+						</ol>
+					)
+					: (
+						<ul>
+							{relations.children.items.map(c => (
+								<li><a href={c.route}>{c.title}</a></li>
+							))}
+						</ul>
+					)
+			}
+		</section>
+	)
+}
+
+{
+	hasPreviousOrNext && (
+		<section class='flow-s prose'>
+			<h3 class='not-prose'><Caps>Prev / Next</Caps></h3>
+			<div class='flow-2xs'>
+				{relations.previousNote && (
+					<p>
+						<a href={relations.previousNote.route}>
+							<Icon name='lucide:arrow-left'/> {relations.previousNote.title}
+						</a>
+					</p>
+				)}
+				{relations.nextNote && (
+					<p>
+						<a href={relations.nextNote.route}>
+							<Icon name='lucide:arrow-right'/> {relations.nextNote.title}
+						</a>
+					</p>
+				)}
+			</div>
+		</section>
+	)
+}
+
+{
+	relations.parentSeriesContexts.map(ctx => (
+		<section class='flow-s prose'>
+			<h3 class='not-prose'><Caps>{ctx.parent.title}</Caps></h3>
+			<ol>
+				{ctx.siblings.map(s => (
+					<li>
+						{s.id === currentSlug
+							? <span class='active'>{s.title}</span>
+							: <a href={s.route}>{s.title}</a>
+						}
+					</li>
+				))}
+			</ol>
+		</section>
+	))
+}
+
+{
+	relations.backlinks.length > 0 && (
+		<section class='flow-s prose'>
+			<h3 class='not-prose'><Caps>Backlinks</Caps></h3>
+			<ul>
+				{relations.backlinks.map(b => (
+					<li><a href={b.route}>{b.title}</a></li>
+				))}
+			</ul>
+		</section>
+	)
+}
+
+<style>
+	.active {
+		color: var(--text-muted);
+		font-style: italic;
+	}
+	.resource-domain {
+		color: var(--text-tertiary);
+		font-size: var(--text-caption);
+	}
+
+	:global(.note-body:not(:empty)) ~ section {
+		--flow-space: var(--space-2xl);
+	}
+</style>
