@@ -17,14 +17,14 @@ interface Resource {
 
 function parseResources(raw: string[]): Resource[] {
 	return (raw ?? []).map(r => {
-		const match = r.match(/^\[(.+?)\]\((.+?)\)$/);
-		if (!match) {
+		const match = r.match(/^\[(?<label>.+?)\]\((?<href>.+?)\)$/v);
+		if (!match || !match.groups) {
 			return {label: r, href: r, domain: ''};
 		}
 
-		const [, label, href] = match;
+		const {label, href} = match.groups;
 		try {
-			const domain = new URL(href).hostname.replace(/^www\./, '');
+			const domain = new URL(href).hostname.replace(/^www\./v, '');
 			return {label, href, domain};
 		} catch {
 			return {label, href, domain: ''};
