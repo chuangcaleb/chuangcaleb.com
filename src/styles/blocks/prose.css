@@ -2,10 +2,7 @@
 A block that styles prose content
 
 CUSTOM PROPERTIES
---prose-blockquote-border-color: The color of the blockquote border
-
 --prose-list-marker-color: The color of the list marker
-
 --prose-list-marker-size: The size of the list marker
 */
 
@@ -95,17 +92,16 @@ CUSTOM PROPERTIES
 }
 
 .prose :is(blockquote) {
-  padding-inline-start: var(--space-s);
-  border-inline-start-width: 2px;
+  padding-inline-start: calc(var(--gutter) * 0.5);
+  margin-inline-start: calc(var(--gutter) * -0.5);
+  border-inline-start-width: 3px;
   border-inline-start-style: solid;
-  border-inline-start-color: var(
-    --prose-blockquote-border-color,
-    var(--accent)
-  );
+  border-inline-start-color: var(var(--accent));
   color: var(--text-muted);
 }
 
 .prose :is(blockquote) p {
+  /* TODO: maybe not italics */
   font-style: italic;
   font-weight: var(--weight-body);
 }
