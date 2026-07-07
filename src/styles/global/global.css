@@ -142,14 +142,6 @@ blockquote footer {
   font-style: normal;
 }
 
-blockquote p:first-of-type::before {
-  content: open-quote;
-}
-
-blockquote p:last-of-type::after {
-  content: close-quote;
-}
-
 q {
   font-style: italic;
 }
