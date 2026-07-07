@@ -1,6 +1,5 @@
 ---
 import Note from '~/components/note/note-card.astro';
-import NoteHeader from '~/components/note/note-header.astro';
 import Layout from '~/layouts/layout.astro';
 import '~/styles/index.css';
 import {getAllNotes} from '~/utils/note.ts';
@@ -27,7 +26,6 @@ const sorted = notes.toSorted((a, b) => {
 ---
 
 <Layout title='Notes' description=''>
-	<NoteHeader showHome />
 	<main id='main'>
 		<section class='wrapper flow'>
 			<h1>notes</h1>

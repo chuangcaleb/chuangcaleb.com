@@ -1,5 +1,6 @@
 ---
 import Footer from './footer.astro';
+import Header from '~/components/note/header.astro';
 import SITE from '~/data/site.ts';
 import '~/styles/index.css';
 
@@ -60,7 +61,7 @@ const description
 		<slot name='head' />
 	</head>
 	<body>
-		<slot name='header' />
+		<Header />
 		<main id='main' class:list={[forehead ? '' : 'no-forehead']}>
 			<slot />
 		</main>

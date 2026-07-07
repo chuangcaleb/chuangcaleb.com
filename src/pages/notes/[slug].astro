@@ -2,7 +2,6 @@
 import {render} from 'astro:content';
 import NoteCallout from '~/components/note/note-callout.astro';
 import NoteFooter from '~/components/note/note-footer.astro';
-import NoteHeader from '~/components/note/note-header.astro';
 import NoteTag from '~/components/note/note-tag.astro';
 import Layout from '~/layouts/layout.astro';
 import '~/styles/index.css';
@@ -34,7 +33,6 @@ const hasUps = data.up && data.up.length > 0;
 ---
 
 <Layout title={entry.title}>
-	<NoteHeader />
 	<article class='wrapper flow' >
 		<header class='flow-xs region max-prose' style={{'--region-space': 'var(--space-m)'}}>
 			<!-- up links -->
