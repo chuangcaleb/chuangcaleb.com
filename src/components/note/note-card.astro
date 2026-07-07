@@ -14,7 +14,7 @@ const tags = noteToTags(note.data);
 
 <article class='note'>
 	<a href={route}>
-		<h3 class='note-title'>{title}</h3>
+		{title}
 	</a>
 	<ul class='note-tags cluster' aria-label='metadata' role='list'>
 		{
@@ -35,5 +35,8 @@ const tags = noteToTags(note.data);
 	.note-tags {
 		/* margin-block-start: var(--space-2xs); */
 		--cluster-gap: var(--space-xs);
+	}
+	a {
+		font-size: var(--text-h3);
 	}
 </style>
