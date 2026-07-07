@@ -17,7 +17,9 @@ const {title, body} = Astro.props;
 <style>
 	.callout {
 		background: var(--bg-surface);
-		padding: var(--space-s);
+		padding-block: var(--space-s);
+		padding-inline: calc(var(--gutter) * 0.5);
+		margin-inline: calc(var(--gutter) * -0.5);
 		border: var(--border-thin) solid var(--border-subtle);
 		--flow-space: var(--space-s);
 	}
