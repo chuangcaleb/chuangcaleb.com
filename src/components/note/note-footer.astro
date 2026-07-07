@@ -140,7 +140,7 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 		font-size: var(--text-caption);
 	}
 
-	:global(.note-body) ~ section {
+	:global(.note-body:not(:empty)) ~ section {
 		--flow-space: var(--space-2xl);
 	}
 </style>
