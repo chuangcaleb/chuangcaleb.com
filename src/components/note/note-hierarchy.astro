@@ -1,4 +1,5 @@
 ---
+import {Icon} from 'astro-icon/components';
 import Caps from '~/components/emphasis/caps.astro';
 import type {NoteRelations} from '~/utils/note-relations.ts';
 
@@ -55,16 +56,20 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 	hasPreviousOrNext && (
 		<section class='note-hierarchy flow-s prose'>
 			<h3 class='not-prose'><Caps>Prev / Next</Caps></h3>
-			<div class='cluster' style={{'--cluster-gap': 'var(--space-s)'}}>
+			<div class='flow-2xs'>
 				{relations.previousNote && (
-					<a href={relations.previousNote.route}>
-						{relations.previousNote.title}
-					</a>
+					<p>
+						<a href={relations.previousNote.route}>
+							<Icon name='lucide:arrow-left'/> {relations.previousNote.title}
+						</a>
+					</p>
 				)}
 				{relations.nextNote && (
-					<a href={relations.nextNote.route}>
-						{relations.nextNote.title}
-					</a>
+					<p>
+						<a href={relations.nextNote.route}>
+							<Icon name='lucide:arrow-right'/> {relations.nextNote.title}
+						</a>
+					</p>
 				)}
 			</div>
 		</section>
