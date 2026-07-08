@@ -71,7 +71,7 @@ h6 {
   font-weight: var(--weight-heading);
   font-family: var(--font-heading);
   line-height: var(--leading-heading);
-  text-wrap: balance;
+  text-wrap: pretty;
   overflow-wrap: break-word;
 }
 
