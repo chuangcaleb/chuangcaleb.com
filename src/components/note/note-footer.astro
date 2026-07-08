@@ -20,7 +20,7 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 ---
 {
 	parsedResources.length > 0 && (
-		<section class='flow-s prose'>
+		<section class='resources | flow-s prose'>
 			<h2 class='not-prose'>
 				<Caps>resources</Caps>
 			</h2>
@@ -137,6 +137,10 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 	.active {
 		color: var(--text-muted);
 		font-style: italic;
+	}
+
+	.resources {
+		line-height: var(--leading-tight);
 	}
 	.resource-domain {
 		color: var(--text-tertiary);

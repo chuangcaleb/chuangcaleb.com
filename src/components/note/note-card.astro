@@ -12,10 +12,12 @@ const {route, title} = note;
 const tags = noteToTags(note.data);
 ---
 
-<article class='note'>
-	<a href={route}>
-		{title}
-	</a>
+<article class='flow-2xs'>
+	<p>
+		<a href={route}>
+			{title}
+		</a>
+	</p>
 	<ul class='note-tags cluster' aria-label='metadata' role='list'>
 		{
 			tags.map(tag => (
@@ -28,15 +30,11 @@ const tags = noteToTags(note.data);
 </article>
 
 <style>
-	.note {
-		padding-block: var(--space-xs);
-	}
-
 	.note-tags {
-		/* margin-block-start: var(--space-2xs); */
 		--cluster-gap: var(--space-xs);
 	}
-	a {
-		font-size: var(--text-h3);
+	p {
+		/* font-size: var(--text-h3); */
+		line-height: var(--leading-item);
 	}
 </style>

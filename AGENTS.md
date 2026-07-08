@@ -32,7 +32,7 @@ Consult these guides before working on related tasks:
 - **Design system**: `DESIGN.md` defines core visual identity. Modularized design specs live in `docs/design/`. CSS tokens in `src/styles/tokens/design-tokens.css` — the single source of truth for implementation values.
 - **Light-only**: `data-theme` removed. Dark mode deferred.
 - **Fonts deferred**: Asap (body) / Courier Prime (mono) from Astro `fonts` config. Charter + JetBrains Mono deferred.
-- Layouts in `src/layouts/`, components in `src/components/`, page sections in `src/pages/_components/`.
+- Components in `src/components/`, page sections in `src/pages/_components/`.
 
 ## Implementation Conventions
 

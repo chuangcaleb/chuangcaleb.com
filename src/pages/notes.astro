@@ -1,6 +1,6 @@
 ---
 import Note from '~/components/note/note-card.astro';
-import Layout from '~/layouts/layout.astro';
+import Layout from '~/components/layout/layout.astro';
 import '~/styles/index.css';
 import {getAllNotes} from '~/utils/note.ts';
 
@@ -42,3 +42,8 @@ const sorted = notes.toSorted((a, b) => {
 	</main>
 </Layout>
 
+<style>
+	li {
+		max-width: var(--max-heading);
+	}
+</style>
