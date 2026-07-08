@@ -7,8 +7,8 @@
 
 :root {
   /* ── Surface ─────────────────────────── */
-  --color-parchment: #f5f4ed;
   --color-ivory: #faf9f5;
+  --color-parchment: #f5f4ed;
   --color-warm-sand: #e8e6dc;
   --color-dark-surface: #30302e;
   --color-deep-dark: #141413;
@@ -53,8 +53,8 @@
   --leading-heading: 1.2;
   --leading-subhead: 1.25;
   --leading-item: 1.3;
-  --leading-body: 1.55;
   --leading-dense: 1.42;
+  --leading-body: 1.55;
   --leading-caption: 1.45;
   --leading-label: 1.35;
 
@@ -85,7 +85,6 @@
   --bg-page: var(--color-parchment);
   --bg-surface: var(--color-ivory);
   --bg-interactive: var(--color-warm-sand);
-  --bg-dark: var(--color-dark-surface);
 
   --text-strong: var(--color-near-black);
   --text-normal: var(--color-dark-warm);
@@ -111,4 +110,19 @@
   --astro-code-token-string-expression: #40a02b;
   --astro-code-token-punctuation: #4c4f69;
   --astro-code-token-link: #8839ef;
+
+  // --bg-page: var(--color-deep-dark);
+  // --bg-surface: var(--color-dark-warm);
+  // --bg-interactive: var(--color-olive);
+
+  // --text-strong: var(--color-ivory);
+  // --text-normal: var(--color-parchment);
+  // --text-muted: var(--color-warm-sand);
+  // --text-tertiary: var(--color-stone);
+
+  // --accent: #6e94b5;
+  // --accent-light: #000000;
+
+  // --border-default: var(--color-stone);
+  // --border-subtle: var(--color-olive);
 }
