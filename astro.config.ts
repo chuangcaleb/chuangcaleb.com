@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import compressor from 'astro-compressor';
 import robotsTxt from 'astro-robots-txt';
 import {defineConfig, envField, fontProviders} from 'astro/config';
+import remarkBreaks from 'remark-breaks';
 // Import { slugify } from "lib/markdown/slugify";
 // import { remarkReadingTime } from "lib/remark/reading-time";
 import icon from 'astro-icon';
@@ -50,6 +51,7 @@ export default defineConfig({
 				remarkStripObsidianUtilities,
 				remarkSimpleStripPercentComments,
 				remarkWikilinks,
+				remarkBreaks,
 			],
 			rehypePlugins: [
 				rehypeWrapTables,
