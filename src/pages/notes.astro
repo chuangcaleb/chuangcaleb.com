@@ -26,20 +26,18 @@ const sorted = notes.toSorted((a, b) => {
 ---
 
 <Layout title='Notes' description=''>
-	<main id='main'>
-		<section class='wrapper flow'>
-			<h1>notes</h1>
-			<ul class='notes-list flow max-prose' role='list'>
-				{
-					sorted.map(note => (
-						<li>
-							<Note note={note} />
-						</li>
-					))
-				}
-			</ul>
-		</section>
-	</main>
+	<section class='wrapper flow'>
+		<h1>notes</h1>
+		<ul class='notes-list flow max-prose' role='list'>
+			{
+				sorted.map(note => (
+					<li>
+						<Note note={note} />
+					</li>
+				))
+			}
+		</ul>
+	</section>
 </Layout>
 
 <style>
