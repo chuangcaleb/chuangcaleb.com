@@ -146,4 +146,9 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 	:global(.note-body:not(:empty)) ~ section {
 		--flow-space: var(--space-2xl);
 	}
+
+	section:first-of-type {
+		padding-block-start: var(--space-2xl);
+		/* border-block-start: var(--border-thin) solid var(--border-default); */
+	}
 </style>
