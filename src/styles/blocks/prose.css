@@ -57,7 +57,7 @@ CUSTOM PROPERTIES
 }
 
 /* Flow for paragraphs used inside list items */
-.prose :is(ul, ol) li:has(> p) > p {
+.prose :is(ul, ol):not(.not-prose) li:has(> p) > p {
   margin-block-start: var(--space-xs);
 }
 
@@ -132,7 +132,7 @@ CUSTOM PROPERTIES
   padding-inline-start: var(--space-m);
 }
 .prose :is(ul):not(.not-prose, [role="list"]) {
-  padding-inline-start: var(--space-xs);
+  /* padding-inline-start: var(--space-xs); */
   list-style-type: none;
 }
 
@@ -140,17 +140,17 @@ CUSTOM PROPERTIES
   padding-inline-start: var(--space-xs);
 } */
 
-.prose :is(ul:not(.not-prose, [role="list"]) > li)::marker {
+.prose :is(ul:not(.not-prose, [role="list"]) > li)::before {
   color: var(--prose-list-marker-color, var(--accent));
 }
 
-.prose :is(ol:not(.not-prose) > li)::marker {
+.prose :is(ol:not(.not-prose) > li)::before {
   font-weight: var(--weight-heading);
   color: var(--prose-list-marker-color, var(--accent));
   font-size: var(--prose-list-marker-size, 1em);
 }
 
-.prose :is(ul:not(.not-prose, [role="list"]) > li)::marker {
+.prose :is(ul:not(.not-prose, [role="list"]) > li)::before {
   content: "\2013";
   position: absolute;
   left: 0;
@@ -159,7 +159,7 @@ CUSTOM PROPERTIES
 
 .prose :is(ul:not(.not-prose, [role="list"]) > li) {
   position: relative;
-  padding-inline-start: var(--space-s);
+  padding-inline-start: var(--space-m);
 }
 
 .prose :is(ol:not(.not-prose) > li) {
