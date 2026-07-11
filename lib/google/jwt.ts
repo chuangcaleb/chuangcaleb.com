@@ -22,7 +22,7 @@ function getGoogleAuth(): GoogleAuthType {
 	return new GoogleAuth({
 		credentials: {
 			client_email: email,
-			private_key: key.replaceAll(String.raw`\\\\n`, '\n'),
+			private_key: key.replaceAll(String.raw`\n`, '\n'),
 		},
 		scopes: [
 			'https://www.googleapis.com/auth/spreadsheets',

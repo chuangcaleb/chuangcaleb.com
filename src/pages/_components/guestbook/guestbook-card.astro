@@ -1,0 +1,106 @@
+---
+import {parse} from 'date-fns';
+import type {GuestPost} from 'lib/google/sheets/types.js';
+import Caps from '~/components/emphasis/caps.astro';
+import Tag from '~/components/tag.astro';
+import {formatIso} from '~/utils/time.ts';
+
+interface Props {
+	post: GuestPost;
+}
+
+const {post} = Astro.props;
+
+const hasLink = Boolean(post['🔗 Social Link']);
+
+const formattedDate = formatIso(
+	parse(post.Timestamp, 'dd/MM/yyyy HH:mm:ss', new Date()).toISOString(),
+	'MMMM yyyy',
+);
+---
+
+<div class='flow-s'>
+	<div class='cluster' style='gap: var(--space-s)'>
+		{
+			post['📸 Avatar Image Link'] && (
+				<img
+					class='avatar'
+					src={post['📸 Avatar Image Link']}
+					alt={`Avatar of ${post['📇 Display Name']}`}
+					height={40}
+					width={40}
+					fetchpriority='low'
+					loading='lazy'
+				/>
+			)
+		}
+		<header>
+			{
+				hasLink
+					? (
+						<a href={post['🔗 Social Link']} rel='noopener noreferrer'>
+							{post['📇 Display Name']}
+						</a>
+					)
+					: (
+						<p>{post['📇 Display Name']}</p>
+					)
+			}
+			<span class='meta cluster' style='column-gap: var(--space-s)'>
+				<span>{post['👥 Relation to me']}</span>
+				{post['🏷️ Tag'] !== 'Other' && <Tag>#{post['🏷️ Tag']}</Tag>}
+			</span>
+		</header>
+	</div>
+	<p class='body'>
+		{post['📃 Content Body']}
+		<Caps>
+			<time class='date' datetime={parse(post.Timestamp, 'dd/MM/yyyy HH:mm:ss', new Date()).toISOString()}>
+				{formattedDate}
+			</time>
+		</Caps>
+	</p>
+</div>
+
+<style>
+	/* .display-name {
+		font-weight: var(--weight-bold);
+		color: var(--text-strong);
+		text-decoration: none;
+	}
+
+	a.display-name:hover {
+		color: var(--accent);
+	} */
+
+	.avatar {
+		height: 2.5em;
+		width: 2.5em;
+		aspect-ratio: 1;
+		border-radius: var(--radius-full);
+		border: var(--border-thin-default);
+	}
+
+	.meta {
+		font-size: var(--text-caption);
+		color: var(--text-muted);
+		text-transform: lowercase;
+		white-space: nowrap;
+	}
+	.body :last-child {
+		padding-inline-start: var(--space-s);
+	}
+
+	/* .body {
+		color: var(--text-normal);
+		line-height: var(--leading-body);
+		word-wrap: break-word;
+	} */
+
+	/* .date {
+		padding-inline-start: var(--space-s);
+		font-style: italic;
+		color: var(--text-tertiary);
+		font-size: var(--text-caption);
+	} */
+</style>

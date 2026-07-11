@@ -1,0 +1,29 @@
+---
+import {getGuestbookPosts} from 'lib/google/sheets/get-guestbook-posts';
+import Card from '~/components/card.astro';
+import Layout from '~/components/layout/layout.astro';
+import GuestbookCard from '~/pages/_components/guestbook/guestbook-card.astro';
+import '~/styles/index.css';
+
+const posts = await getGuestbookPosts();
+---
+
+<Layout title='Guestbook' description='Kind words from friends and colleagues.' forehead>
+	<section class='wrapper flow prose'>
+		<h1>Guestbook</h1>
+		<p>A collection of post-it notes, signed by people who know me! I explain the technical behind-the-scenes at <a
+			href='/notes/making-my-website-guestbook'>Making My Website Guestbook</a
+		>!</p>
+		<ul class='flow-m not-prose' role='list'>
+			{
+				posts.map(post => (
+					<li>
+						<Card>
+							<GuestbookCard {post} />
+						</Card>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+</Layout>
