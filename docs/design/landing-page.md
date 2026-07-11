@@ -11,8 +11,8 @@
 
 ## Hero
 
-- Name heading: `--text-display` (4rem), `--weight-heading` (500), `--leading-tight` (1.1), `--text-strong` color
-- Subtitle: `--text-h1` (2rem), `--weight-heading` (500), `--leading-heading` (1.2)
+- Name heading: `--text-display` (≈3rem), `--weight-heading` (500), `--leading-tight` (1.1), `--text-strong` color
+- Subtitle: `--text-h1` (≈2rem), `--weight-heading` (500), `--leading-heading` (1.2)
 - `<mark>` on "story.": animated highlight sweep from left (`linear-gradient` with accent color), not editorial-mode brand-only
 - Tagline/MDX body: wrapped in `.prose` class (see below), `--text-normal` color
 - CTAs: two buttons in a `.cluster`. Primary (email) = ink-blue bg, ivory text. Secondary (projects) = warm-sand bg, `--text-normal` text.
@@ -47,7 +47,7 @@ The hero photo receives editorial warmth treatment to align with the parchment p
 
 The `caps` component (in `src/components/emphasis/caps.astro`) is used as pre-section label.
 
-Styles: uppercase, `--tracking-caps` letter-spacing, `--text-body-dense` size, `--color-stone` muted color, inline `.cluster` layout with `--cluster-gap: var(--space-s)`.
+Styles: uppercase, `--tracking-caps` letter-spacing, `--text-body` size, `--color-stone` muted color, inline `.cluster` layout with `--cluster-gap: var(--space-s)`.
 
 ## Section Headings
 

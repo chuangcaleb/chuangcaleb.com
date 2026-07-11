@@ -14,12 +14,12 @@ The skip-link is positioned fixed, hidden off-screen via `translateY(-100%)`, an
 
 ## Footer
 
-Footer not implemented or design spec'ed yet. Here is AI-generated suggestions:
+Footer implemented with nav links, social icons, and rebuild date line. See `src/components/layout/footer.astro`.
 
-Content (inline, no grid):
+Content:
+- Site title (h2)
+- Navigation links from `NOTE_NAV_LINKS`
+- Social icon links separated by middots
+- Rebuild date line
 
-- colophon link
-- source code link
-- "handcrafted by me" credit line
-
-No theme toggle, no search, no nav stack — those belong on inner pages.
+No theme toggle, no search — those belong on inner pages.

@@ -92,7 +92,7 @@ h3 {
 }
 
 h5 {
-  font-size: var(--text-body-dense);
+  font-size: var(--text-body);
 }
 
 h6 {
@@ -252,7 +252,7 @@ pre {
   -webkit-overflow-scrolling: touch;
   /* border: var(--border-thin) solid var(--border-default); */
   border-radius: var(--radius-md);
-  border: var(--border-thin) solid var(--border-default);
+  border: var(--border-thin-default);
   background: var(--bg-surface);
   --astro-code-background: var(--bg-surface);
   /* color: var(--text-normal); */
@@ -375,7 +375,7 @@ summary {
 
 dialog {
   background-color: var(--color-bg, var(--bg-page));
-  border: var(--border-thin) solid var(--border-default);
+  border: var(--border-thin-default);
   border-radius: var(--radius-md);
   max-height: calc(100% - var(--space-xl));
   max-width: calc(100% - var(--space-xl));

@@ -29,15 +29,15 @@ Consult these guides before working on related tasks:
 ## Architecture
 
 - **Clean break**: All old components/pages archived to `_archived/`. New components built from scratch.
-- **Design system**: `DESIGN.md` defines core visual identity. Modularized design specs live in `docs/design/`. CSS tokens in `src/styles/tokens/design-tokens.css` — the single source of truth for implementation values.
+- **Design system**: `DESIGN.md` defines core visual identity. Modularized design specs live in `docs/design/`. CSS tokens in `src/styles/tokens/design-tokens.scss` — the single source of truth for implementation values.
 - **Light-only**: `data-theme` removed. Dark mode deferred.
-- **Fonts deferred**: Asap (body) / Courier Prime (mono) from Astro `fonts` config. Charter + JetBrains Mono deferred.
+- **Fonts deferred**: Charter (serif), Courier Prime (mono) loaded via Astro `fonts` config. JetBrains Mono deferred.
 - Components in `src/components/`, page sections in `src/pages/_components/`.
 
 ## Implementation Conventions
 
 - Avoid media queries where possible. Prefer layout primitives (`docs/design/layout-primitives.md`).
-- Use or override existing DESIGN.md tokens from `design-tokens.css`.
+- Use or override existing DESIGN.md tokens from `design-tokens.scss`.
 - Don't set `var(--foo, fallback)` fallbacks — PostCSS handles this.
 - Use Fluid scale for spacing and type.
 

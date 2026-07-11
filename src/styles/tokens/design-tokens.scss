@@ -11,7 +11,6 @@
   --color-parchment: #f5f4ed;
   --color-warm-sand: #e8e6dc;
   --color-dark-surface: #30302e;
-  --color-deep-dark: #141413;
 
   /* ── Text ────────────────────────────── */
   --color-near-black: #141413;
@@ -30,8 +29,7 @@
 
   /* ── Typography ──────────────────────── */
   --font-serif: Charter, Georgia, Palatino, "Times New Roman", serif;
-  --font-mono:
-    "JetBrains Mono", "SF Mono", "Fira Code", Consolas, Monaco, monospace;
+  // --font-mono: // custom on astro.config.ts
   --font-body: var(--font-serif);
   --font-heading: var(--font-serif);
   --font-mono-scale: 0.8;
@@ -61,7 +59,7 @@
   --tracking-label: 0.04em;
   --tracking-caps: 0.06em;
 
-  /* ---------------------------------- space --------------------------------- */
+  /* ── Space ───────────────────────────── */
 
   @include fluid.space;
 
@@ -71,6 +69,12 @@
   --radius-lg: 16px;
   --radius-full: 9999px;
   --border-thin: 1.2px;
+
+  /* ── Borders (combined shorthands) ───── */
+  --border-default: var(--color-border-primary);
+  --border-subtle: var(--color-border-secondary);
+  --border-thin-default: var(--border-thin) solid var(--border-default);
+  --border-thin-subtle: var(--border-thin) solid var(--border-subtle);
 
   /* ── Elevation ───────────────────────── */
   --ring-warm: rgba(0, 0, 0, 0.12);
@@ -94,12 +98,9 @@
   --accent: var(--color-ink-blue);
   --accent-light: var(--color-ink-light);
 
-  --border-default: var(--color-border-primary);
-  --border-subtle: var(--color-border-secondary);
-
   --gutter: var(--space-m);
 
-  /* --------------------------- syntax highlighter --------------------------- */
+  /* ── Syntax highlighter ──────────────── */
 
   --astro-code-token-constant: #d20f39;
   --astro-code-token-string: #40a02b;
@@ -111,18 +112,16 @@
   --astro-code-token-punctuation: #4c4f69;
   --astro-code-token-link: #8839ef;
 
-  // --bg-page: var(--color-deep-dark);
-  // --bg-surface: var(--color-dark-warm);
-  // --bg-interactive: var(--color-olive);
-
-  // --text-strong: var(--color-ivory);
-  // --text-normal: var(--color-parchment);
-  // --text-muted: var(--color-warm-sand);
-  // --text-tertiary: var(--color-stone);
-
-  // --accent: #6e94b5;
-  // --accent-light: #000000;
-
-  // --border-default: var(--color-stone);
-  // --border-subtle: var(--color-olive);
+  /* Dark surface palette (comment-only, for future dark mode) */
+  /* --bg-page: var(--color-dark-surface); */
+  /* --bg-surface: var(--color-dark-warm); */
+  /* --bg-interactive: var(--color-olive); */
+  /* --text-strong: var(--color-ivory); */
+  /* --text-normal: var(--color-parchment); */
+  /* --text-muted: var(--color-warm-sand); */
+  /* --text-tertiary: var(--color-stone); */
+  /* --accent: #6e94b5; */
+  /* --accent-light: #000000; */
+  /* --border-default: var(--color-stone); */
+  /* --border-subtle: var(--color-olive); */
 }

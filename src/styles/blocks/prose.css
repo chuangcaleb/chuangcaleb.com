@@ -99,9 +99,7 @@ CUSTOM PROPERTIES
   padding-inline-start: calc(var(--gutter) * 0.5);
   padding-block: var(--space-xs);
   margin-inline-start: calc(var(--gutter) * -0.5);
-  border-inline-start-width: 3px;
-  border-inline-start-style: solid;
-  border-inline-start-color: var(--color-tertiary);
+  border-inline-start: 2px solid var(--accent);
   color: var(--text-muted);
 }
 
@@ -128,40 +126,17 @@ CUSTOM PROPERTIES
   border: var(--border-thin) solid var(--border-default);
 } */
 
-.prose :is(ol):not(.not-prose) {
+.prose :is(ol, ul):not(.not-prose) {
   padding-inline-start: var(--space-m);
 }
-.prose :is(ul):not(.not-prose, [role="list"]) {
-  /* padding-inline-start: var(--space-xs); */
-  list-style-type: none;
-}
 
-/* .prose :is(ol, ul):not(.not-prose) li {
-  padding-inline-start: var(--space-xs);
-} */
-
-.prose :is(ul:not(.not-prose, [role="list"]) > li)::before {
-  color: var(--prose-list-marker-color, var(--accent));
-}
-
-.prose :is(ol:not(.not-prose) > li)::before {
+/* Native list markers — brand-colored disc (ul) / numbered (ol) */
+.prose :is(ul, ol):not(.not-prose) li::marker {
+  color: var(--accent);
   font-weight: var(--weight-heading);
-  color: var(--prose-list-marker-color, var(--accent));
-  font-size: var(--prose-list-marker-size, 1em);
+  font-size: 0.9em;
 }
 
-.prose :is(ul:not(.not-prose, [role="list"]) > li)::before {
-  content: "\2013";
-  position: absolute;
-  left: 0;
-  color: var(--text-muted);
-}
-
-.prose :is(ul:not(.not-prose, [role="list"]) > li) {
-  position: relative;
-  padding-inline-start: var(--space-m);
-}
-
-.prose :is(ol:not(.not-prose) > li) {
-  padding-inline-start: var(--space-2xs);
+.prose :is(ul, ol):not(.not-prose) > li {
+  padding-inline-start: 0.25em;
 }

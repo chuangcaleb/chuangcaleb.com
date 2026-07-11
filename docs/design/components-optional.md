@@ -17,15 +17,15 @@ table,
 table th,
 .table th {
  text-align: left;
- font-weight: var(--weight-2);
- color: var(--dark-warm);
+ font-weight: var(--weight-heading);
+ color: var(--color-dark-warm);
  padding: 6px 8px;
- border-bottom: 1px solid var(--border-primary);
+ border-bottom: 1px solid var(--border-default);
 }
 table td,
 .table td {
  padding: 5px 8px;
- border-bottom: 0.5px solid var(--border-secondary);
+ border-bottom: 0.5px solid var(--border-subtle);
  vertical-align: top;
 }
 ```
@@ -80,15 +80,15 @@ Key numbers side-by-side (page header, portfolio cover):
  gap: 6px;
 }
 .metric-value {
- font-family: var(--serif);
+ font-family: var(--font-serif);
  font-size: 1.25rem;
- font-weight: var(--weight-2);
- color: var(--brand);
+ font-weight: var(--weight-heading);
+ color: var(--accent);
  font-variant-numeric: tabular-nums;
 }
 .metric-label {
  font-size: 0.75rem;
- color: var(--olive);
+ color: var(--color-olive);
  white-space: nowrap;
 }
 ```
@@ -101,7 +101,7 @@ Metric labels never wrap. Keep every label short enough for one line and set `wh
 - Font: `mono` 13.5px, tabular-nums, line-height 1.55; reduce to 11.5px at phone breakpoint
 - Inline `code`: brand-tint background, `brand` text, 1px hairline, `0.9em`
 
-Code blocks may use a dark surface (`shot-bg`) instead of `ivory`. Highlight at build time with zero runtime JS. Keep the token palette restrained on the dark surface:
+Token palette restrained on the dark surface:
 
 | Token            | Hex       | Role         |
 | ---------------- | --------- | ------------ |
@@ -158,23 +158,23 @@ Four key-number cells, placed after the hero or on a chapter-opening page.
  border-radius: 1.5px;
 }
 .glance-label {
- font-family: var(--mono);
+ font-family: var(--font-mono);
  font-size: 0.75rem;
- color: var(--brand);
+ color: var(--accent);
  letter-spacing: 1px;
  text-transform: uppercase;
- font-weight: var(--weight-2);
+ font-weight: var(--weight-heading);
 }
 .glance-value {
  font-size: 1.5rem;
- font-weight: var(--weight-2);
- color: var(--near-black);
+ font-weight: var(--weight-heading);
+ color: var(--color-near-black);
  font-variant-numeric: tabular-nums;
  letter-spacing: 0.5px;
 }
 .glance-note {
  font-size: 0.75rem;
- color: var(--olive);
+ color: var(--color-olive);
  line-height: 1.4;
 }
 ```
@@ -182,50 +182,50 @@ Four key-number cells, placed after the hero or on a chapter-opening page.
 ## Gallery
 
 - Grid: `minmax(0, 1fr) auto`, frame spans full width, caption and tabs on row 2
-- Frame: dark background `shot-bg`, `radius-md`, 1px border
+- Gallery: dark background `--color-dark-surface`, `--radius-md`, 1px border
 - Transition: direction-aware slide + scale(0.985), 620–880ms cubic-bezier(0.22, 1, 0.36, 1)
 - Sweep overlay: diagonal light gradient that slides across on switch (540–920ms)
 - Auto-rotate: 4500ms interval, pauses on hover/focus, respects prefers-reduced-motion
 - Empty gallery: script exits cleanly
 - Tabs: pill buttons 12px `latin-ui`, active state uses brand-tint background
 - Click navigation: left half = previous, right half = next
-- Caption `.line`: italic serif, 14px `olive`
+- Caption `.line`: italic serif, 14px, `var(--color-olive)`
 
 ## Numerical Figures
 
 - Amount: 112px serif, letter-spacing 0
-- Comparison: 18px, use `<s>` for deemphasized figures (`stone`)
-- Highlight: `.hl` class for `brand` emphasis
-- Terms: 13.5px `olive`, centered, max-width 640px, line-height 1.5
+- Comparison: 18px, use `<s>` for deemphasized figures (`var(--color-stone)`)
+- Highlight: `.hl` class for `--accent` emphasis
+- Terms: 13.5px `var(--color-olive)`, centered, max-width 640px, line-height 1.5
 
 ## Manifesto
 
-- Brand philosophy paragraph: 20px, weight `weight-1`, line-height 1.55, letter-spacing 0.05em
-- `<em>` renders in `brand` with `font-style: normal` (brand emphasis, not italic)
+- Brand philosophy paragraph: 20px, weight `--weight-body`, line-height 1.55, letter-spacing 0.05em
+- `<em>` renders in `--accent` with `font-style: normal` (brand emphasis, not italic)
 
 ## Metrics
 
-- Flex row with 32px gap, each metric is value (36px serif `weight-2`) + label (13px `stone`, `latin-ui`)
+- Flex row with 32px gap, each metric is value (36px serif `--weight-heading`) + label (13px `--color-stone`, `latin-ui`)
 - `font-variant-numeric: tabular-nums` on values
 
 ## Demo Card Grid
 
 - `auto-fill, minmax(240px, 1fr)` grid, 18px gap
 - Cards: `ivory` bg, 1px border, `radius-md`, `whisper-shadow` on hover
-- Image fills top, title 15px weight `weight-2` + desc 12px `olive` below
+- Image fills top, title 15px weight `--weight-heading` + desc 12px `var(--color-olive)` below
 
 ## Features
 
-- Two-column grid: 200px name + 1fr description, 36px gap, separated by `border-secondary` hairlines
-- Feature name: 22px `brand`, weight `weight-2`
-- Poetic subtitle: `<small>` below name, 13px `olive`, italic
-- Description: 15px `dark-warm`, line-height 1.55
+- Two-column grid: 200px name + 1fr description, 36px gap, separated by `--border-subtle` hairlines
+- Feature name: 22px `--accent`, weight `--weight-heading`
+- Poetic subtitle: `<small>` below name, 13px `var(--color-olive)`, italic
+- Description: 15px `var(--color-dark-warm)`, line-height 1.55
 - Tables stay editorial: no framed box, no tinted header bar, no vertical rules
 
 ## FAQ
 
 - Wrap each dt/dd pair in `<div class="faq-pair">` for spacing (`space-l` margin-bottom)
-- `<dt>` question: 16px, weight `weight-2`
-- `<dd>` answer: 14px `olive`
-- Code spans: `mono` 12px on brand-tint background, `radius-sm`
-- Tail paragraph: `.faq-tail` after `</dl>`, 13px `stone`
+- `<dt>` question: 16px, weight `--weight-heading`
+- `<dd>` answer: 14px `var(--color-olive)`
+- Code spans: `var(--font-mono)` 12px on brand-tint background, `--radius-sm`
+- Tail paragraph: `.faq-tail` after `</dl>`, 13px `var(--color-stone)`

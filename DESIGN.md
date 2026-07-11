@@ -13,7 +13,6 @@ colors:
   ink-light: '#2D5A8A'
   dark-surface: '#30302E'
   near-black: '#141413'
-  deep-dark: '#141413'
   dark-warm: '#3d3d3a'
   olive: '#504e49'
   stone: '#6b6a64'
@@ -162,7 +161,6 @@ This is not a UI framework. It is designed to keep pages stable, clear, and read
 --color-ivory: #faf9f5; /* Card / lifted container — brighter than parchment */
 --color-warm-sand: #e8e6dc; /* Button default / interactive surface */
 --color-dark-surface: #30302e; /* Dark-theme container — warm charcoal */
---color-deep-dark: #141413; /* Dark theme page base, not pure black */
 ```
 
 ### Text
@@ -183,7 +181,13 @@ Four levels: `near-black` (primary) > `dark-warm` (secondary) > `olive` (subtext
 ```css
 --border-default: #e8e6dc; /* Primary border — section dividers, table headers, card borders */
 --border-subtle: #e5e3d8; /* Secondary border — row separators, subtle dividers */
+
+/* Combined shorthand tokens — prefer these for full-border usage */
+--border-thin: 1.2px solid var(--border-default);
+--border-thin-subtle: 1.2px solid var(--border-subtle);
 ```
+
+For partial borders (`border-block-start`, `border-bottom`), use `var(--border-thin)` as width + style/color inline.
 
 ---
 
@@ -192,13 +196,13 @@ Four levels: `near-black` (primary) > `dark-warm` (secondary) > `olive` (subtext
 ### Stacks
 
 ```css
-/* Single serif per page. */
+/* Single serif per page. Charter is design intent; Georgia renders as fallback until Charter is loaded. */
 --font-serif: Charter, Georgia, Palatino, 'Times New Roman', serif;
 --font-body: var(--font-serif);
 --font-heading: var(--font-serif);
 
-/* Mono stack */
---font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', Consolas, Monaco, monospace;
+/* Mono stack — Courier Prime loaded via Astro fonts, JetBrains Mono deferred */
+--font-mono: 'Courier Prime', 'JetBrains Mono', 'SF Mono', 'Fira Code', Consolas, Monaco, monospace;
 ```
 
 ### Size scale
@@ -278,7 +282,7 @@ Enforced limits for sensible and readable content/line lengths.
 
 - `max-page`: 115ch
 - `max-prose`: 70ch
-- `max-heading`: 35ch
+- `max-heading`: 45ch
 
 ### Prefer layout primitives
 
@@ -325,7 +329,7 @@ For **card hover** and **featured card** elevation.
 
 ### 3. Section-level light/dark alternation
 
-Sections alternate `parchment` and `deep-dark` backgrounds. This section-level change creates the strongest contrast.
+Sections alternate `parchment` and `ivory` backgrounds. This section-level change creates gentle visual rhythm.
 
 **Forbidden**: `box-shadow: 0 2px 8px rgba(0,0,0,0.3)` and relatives.
 
@@ -337,10 +341,10 @@ Sections alternate `parchment` and `deep-dark` backgrounds. This section-level c
 
 ```css
 .card {
- background: var(--bg-surface);
- border: var(--border-thin) solid var(--border-subtle);
- border-radius: var(--radius-md);
- padding: var(--space-m) var(--space-l);
+  background: var(--bg-surface);
+  border: var(--border-thin-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-s) var(--space-m);
 }
 
 .card-featured {
@@ -358,12 +362,12 @@ Radius scale: `rounded.sm` → 4px → `rounded.md` (default) → 8px → `round
 
 ```css
 .btn {
- padding: var(--space-s) var(--space-m);
- border-radius: var(--radius-md);
- font-family: var(--font-body);
- font-weight: var(--weight-body);
- line-height: var(--leading-body);
- font-size: var(--text-body);
+  padding: var(--space-2xs) var(--space-xs);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+  font-size: var(--text-body);
 }
 
 .btn.primary {
@@ -383,7 +387,7 @@ Radius scale: `rounded.sm` → 4px → `rounded.md` (default) → 8px → `round
 }
 ```
 
-All buttons hover with `translateY(-1px)`.
+All buttons hover with `translateY(-2px)`.
 
 ### Tags
 
@@ -394,7 +398,7 @@ All buttons hover with `translateY(-1px)`.
  padding: 2px 8px;
  border-radius: var(--radius-sm);
  font-family: var(--font-mono);
- font-size:c calc(var(--text-caption) * 0.85);
+ font-size: calc(var(--text-caption) * var(--font-mono-scale));
  font-weight: var(--weight-heading);
  line-height: var(--leading-caption);
 }
@@ -402,21 +406,26 @@ All buttons hover with `translateY(-1px)`.
 
 ### Lists
 
-Use native list markers, brand-colored: ordered lists carry numbers, unordered lists carry a disc. Do not fake a bullet with a `::before` en-dash; a dash marker reads like AI default output, not editorial typesetting.
+Use native list markers, brand-colored: ordered lists carry numbers, unordered lists carry a disc. Do not fake a bullet with a `::before` en-dash; a dash marker reads like AI default output, not editorial typesetting. The `ul.dash` class is an alias for the same native rendering, kept only so existing markup keeps working.
 
 ```css
 ul,
 ol {
- padding-inline-start: var(--space-m);
- line-height: var(--leading-body);
+  padding-inline-start: var(--space-m);
+  line-height: var(--leading-body);
 }
-ul li::marker {
- color: var(--accent);
- font-weight: var(--weight-heading);
+ul :where(li)::marker,
+ol :where(li)::marker {
+  color: var(--accent);
 }
-ol li::marker {
- color: var(--accent);
- font-weight: var(--weight-heading);
+ol :where(li)::marker {
+  font-weight: var(--weight-heading);
+}
+ul.dash {
+  padding-inline-start: var(--space-m);
+}
+ul.dash li::marker {
+  color: var(--accent);
 }
 ```
 
@@ -424,21 +433,20 @@ ol li::marker {
 
 ```css
 .quote {
- border-inline-start: 2px solid var(--accent);
- padding: 4px 0 4px 14px;
- color: var(--text-muted);
- line-height: var(--leading-body);
+  border-inline-start: 2px solid var(--accent);
+  padding: 4px 0 4px 14px;
+  color: var(--text-muted);
+  line-height: var(--leading-body);
 }
-```
 
 ### Code
 
 ```css
 .code-block {
  background: var(--bg-surface);
- border: var(--border-thin) solid var(--border-subtle);
- border-radius: var(--radius-sm);
- padding: var(--code-block-padding);
+   border: var(--border-thin-subtle);
+   border-radius: var(--radius-sm);
+ padding: 10px 14px;
  font-family: var(--font-mono);
  font-size: 0.8125rem;
  line-height: 1.5;
