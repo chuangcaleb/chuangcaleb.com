@@ -1,10 +1,12 @@
 ---
 import type {SuperNote} from 'lib/utils/types';
+import SectionHeading from '../emphasis/section-heading.astro';
 import NoteCard from '~/components/note/note-card.astro';
 import NoteProseItem from '~/components/note/note-prose-item.astro';
 
 interface Props {
 	heading: string;
+	description: string;
 	notes: SuperNote[];
 	variant?: 'card' | 'prose';
 	max?: number;
@@ -13,6 +15,7 @@ interface Props {
 
 const {
 	heading,
+	description,
 	notes,
 	variant = 'card',
 	max,
@@ -26,9 +29,11 @@ const isProse = variant === 'prose';
 
 {displayNotes.length > 0 && (
 	<section class:list={['notes-section wrapper region flow', isProse && 'prose']}>
-		<h2>
+		{/* <h2>
 			{heading}
 		</h2>
+		<p>{description}</p> */}
+		<SectionHeading as='h2' prelabel={heading}>{description}</SectionHeading>
 		<ul class:list={[!isProse && 'flow-m']} {...(!isProse && {role: 'list'})}>
 			{
 				displayNotes.map(note => (
@@ -48,6 +53,6 @@ const isProse = variant === 'prose';
 <style>
 	.notes-section {
 		--flow-space: var(--space-xl);
-		--region-space: var(--space-m);
+		--region-space: var(--space-xl);
 	}
 </style>

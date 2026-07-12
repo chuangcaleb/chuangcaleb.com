@@ -22,14 +22,18 @@ const notes = page.data;
 
 <Layout title={`${title} Notes`} description={description}>
 	<section class='wrapper flow'>
-		<header class='flow-xs region' style={{'--region-space': 'var(--space-m)'}}>
-			<nav><a href='/notes'>notes</a></nav>
+		<header class='flow-xs region max-prose' style={{'--region-space': 'var(--space-m)'}}>
+			<div class='eyebrow cluster'>
+				<nav><a href='/notes'>notes</a></nav>
+				<span aria-hidden='true'>⋅</span>
+				page {page.currentPage} of {page.lastPage}
+			</div>
 			<h1>{title}</h1>
 			{description && <p>{description}</p>}
 		</header>
 	</section>
 
-	<section class='wrapper'>
+	<section class='wrapper flow-xs'>
 		<ul class='archive-list flow-m' role='list'>
 			{notes.map(n => (
 				<li><NoteCard note={n} /></li>
@@ -41,7 +45,8 @@ const notes = page.data;
 </Layout>
 
 <style>
-	nav {
+	.eyebrow {
 		font-size: var(--text-caption);
+		--cluster-gap: var(--space-xs);
 	}
 </style>

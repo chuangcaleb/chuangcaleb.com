@@ -1,6 +1,6 @@
 ---
 interface Props {
-	as?: 'h2' | 'h3';
+	as?: 'h1' | 'h2' | 'h3';
 	href?: string;
 	prelabel: string;
 }
@@ -8,7 +8,7 @@ interface Props {
 const {as: Tag = 'h2', href, prelabel} = Astro.props;
 ---
 
-<div class='flow'>
+<div>
 	<p class='section-num'>{prelabel}</p>
 	<Tag class='section-heading'>
 		{
@@ -32,7 +32,7 @@ const {as: Tag = 'h2', href, prelabel} = Astro.props;
     font-size: var(--text-caption);
     color: var(--accent);
     letter-spacing: var(--tracking-label);
-    margin: 0 0 var(--space-s);
+    margin: 0 0 var(--space-xs);
   }
   .section-heading {
     font-family: var(--font-heading);

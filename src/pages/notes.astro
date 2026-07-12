@@ -7,6 +7,7 @@ import {
 	getTopLevelNotes,
 } from 'lib/utils/note-filters.ts';
 import Button from '~/components/button.astro';
+import SectionHeading from '~/components/emphasis/section-heading.astro';
 import Layout from '~/components/layout/layout.astro';
 import NotesSection from '~/components/note/notes-section.astro';
 import '~/styles/index.css';
@@ -28,27 +29,30 @@ const recentPublished = await getPublishedNotes({
 ---
 
 <Layout title='Notes' description="Index for Caleb's digital garden notes">
-	<section class='wrapper prose flow-s'>
-		<h1>Notes</h1>
+	<header class='wrapper prose flow-s region'>
+		<SectionHeading as='h1' prelabel='00 ⋅ 👋 Introduction'>Notes</SectionHeading>
 		<p>Welcome! This "garden" is like a blog, but more fluid!</p>
 
 		<p>I write notes in Obsidian for daily journals and personal knowledge management (PKM) — but I also like to yap about narrative storytelling and sometimes tech stuff, and perhaps you like to listen to yapping...</p>
 
 		<p>So I've exposed some of my notes on this site, especially self-authored content! I'm coming to a MVP, as I refine the exporting script to grab more notes.</p>
-	</section>
+	</header>
 
 	<NotesSection
-		heading='Featured'
+		heading='01 ⋅ ⭐ Featured'
+		description='Some of my favourite notes to showcase:'
 		notes={featured}
 	/>
 
 	<NotesSection
-		heading='Top-Level Notes'
+		heading='02 ⋅ 🪾 Top-Level Notes'
+		description='Good entry points for top-down discovery!'
 		notes={topLevel}
 	/>
 
 	<NotesSection
-		heading='Recently Published'
+		heading='03 ⋅ 📤 Recently Published'
+		description='Polished longform self-authored content.'
 		notes={recentPublished}
 	>
 		<div style={{display: 'inline-flex'}}>
@@ -59,7 +63,8 @@ const recentPublished = await getPublishedNotes({
 	</NotesSection>
 
 	<NotesSection
-		heading='Recently Modified'
+		heading='04 ⋅ 🥬 Recently Modified'
+		description='All notes, sorted by last file edit.'
 		notes={recentModified}
 		variant='prose'
 		showDate='modified'
@@ -72,3 +77,9 @@ const recentPublished = await getPublishedNotes({
 	</NotesSection>
 
 </Layout>
+
+<style>
+	header {
+		--region-space: var(--space-m);
+	}
+</style>
