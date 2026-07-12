@@ -1,0 +1,37 @@
+---
+import type {SuperNote} from 'lib/utils/types';
+import {formatDisplayDate} from '~/utils/time.ts';
+
+interface Props {
+	note: SuperNote;
+	showDate?: 'published' | 'modified';
+}
+
+const {note, showDate} = Astro.props;
+const dateValue = showDate ? note.data[showDate] : undefined;
+const dateLabel = dateValue ? formatDisplayDate(dateValue) : undefined;
+---
+
+<div class='prose-item'>
+	<a href={note.route}>{note.title}</a>
+	{dateLabel && (
+		<time class='prose-date' datetime={dateValue?.toISOString()}>
+			{dateLabel}
+		</time>
+	)}
+</div>
+
+<style>
+	.prose-item {
+		display: flex;
+		align-items: baseline;
+		gap: var(--space-xs);
+		font-size: var(--text-body);
+		line-height: var(--leading-item);
+	}
+	.prose-date {
+		color: var(--text-tertiary);
+		font-size: var(--text-caption);
+		white-space: nowrap;
+	}
+</style>

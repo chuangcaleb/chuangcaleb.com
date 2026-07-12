@@ -1,47 +1,64 @@
 ---
-import Note from '~/components/note/note-card.astro';
+import {
+	getFeaturedNotes,
+	getRecentlyModified,
+	getRecentlyPublished,
+	getTopLevelNotes,
+} from 'lib/utils/note-filters.ts';
 import Layout from '~/components/layout/layout.astro';
+import NotesSection from '~/components/note/notes-section.astro';
 import '~/styles/index.css';
 import {getAllNotes} from '~/utils/note.ts';
 
-const notes = await getAllNotes();
+const allNotes = await getAllNotes();
 
-const sorted = notes.toSorted((a, b) => {
-	const aDate = a.data.published ?? a.data.modified;
-	const bDate = b.data.published ?? b.data.modified;
-	if (!aDate && !bDate) {
-		return 0;
-	}
+const featured = getFeaturedNotes(allNotes);
+const topLevel = getTopLevelNotes(allNotes);
 
-	if (!aDate) {
-		return 1;
-	}
+const seen = new Set([
+	...featured.map(n => n.id),
+	...topLevel.map(n => n.id),
+]);
 
-	if (!bDate) {
-		return -1;
-	}
+const recentModified = getRecentlyModified(allNotes, seen, 10);
 
-	return bDate.getTime() - aDate.getTime();
-});
+const recentPublished = getRecentlyPublished(
+	allNotes,
+	new Set([...seen, ...recentModified.map(n => n.id)]),
+	6,
+);
 ---
 
 <Layout title='Notes' description=''>
-	<section class='wrapper flow'>
-		<h1>notes</h1>
-		<ul class='notes-list flow max-prose' role='list'>
-			{
-				sorted.map(note => (
-					<li>
-						<Note note={note} />
-					</li>
-				))
-			}
-		</ul>
-	</section>
-</Layout>
+	<section class='wrapper prose flow-s'>
+		<h1>Notes</h1>
+		<p>Welcome! This "garden" is like a blog, but more fluid!</p>
 
-<style>
-	li {
-		max-width: var(--max-heading);
-	}
-</style>
+		<p>I write notes in Obsidian for daily journals and personal knowledge management (PKM) — but I also like to yap about narrative storytelling and sometimes tech stuff, and perhaps you like to listen to yapping...</p>
+
+		<p>So I've exposed some of my notes on this site, especially self-authored content! I'm coming to a MVP, as I refine the exporting script to grab more notes.</p>
+	</section>
+
+	<NotesSection
+		heading='Featured'
+		notes={featured}
+	/>
+
+	<NotesSection
+		heading='Top-Level Notes'
+		notes={topLevel}
+	/>
+
+	<NotesSection
+		heading='Recently Published'
+		notes={recentPublished}
+	/>
+
+	<NotesSection
+		heading='Recently Modified'
+		notes={recentModified}
+		variant='prose'
+		showDate='modified'
+	/>
+
+</Layout>

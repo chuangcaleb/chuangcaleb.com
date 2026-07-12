@@ -1,0 +1,51 @@
+---
+import type {SuperNote} from 'lib/utils/types';
+import NoteCard from '~/components/note/note-card.astro';
+import NoteProseItem from '~/components/note/note-prose-item.astro';
+
+interface Props {
+	heading: string;
+	notes: SuperNote[];
+	variant?: 'card' | 'prose';
+	max?: number;
+	showDate?: 'published' | 'modified';
+}
+
+const {
+	heading,
+	notes,
+	variant = 'card',
+	max,
+	showDate,
+} = Astro.props;
+
+const displayNotes = max ? notes.slice(0, max) : notes;
+
+const isProse = variant === 'prose';
+---
+
+{displayNotes.length > 0 && (
+	<section class:list={['notes-section wrapper region flow', isProse && 'prose']}>
+		<h2>
+			{heading}
+		</h2>
+		<ul class:list={[!isProse && 'flow-m']} {...(!isProse && {role: 'list'})}>
+			{
+				displayNotes.map(note => (
+					<li>
+						{isProse
+							? <NoteProseItem {note} {showDate} />
+							: <NoteCard {note} />
+						}
+					</li>
+				))
+			}
+		</ul>
+	</section>
+)}
+
+<style>
+	.notes-section {
+		--flow-space: var(--space-xl);
+	}
+</style>

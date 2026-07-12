@@ -4,3 +4,6 @@
 .max-page {
   max-width: var(--max-page);
 }
+.max-heading {
+  max-width: var(--max-heading);
+}
