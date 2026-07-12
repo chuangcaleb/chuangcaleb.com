@@ -12,26 +12,20 @@ const dateValue = showDate ? note.data[showDate] : undefined;
 const dateLabel = dateValue ? formatDisplayDate(dateValue) : undefined;
 ---
 
-<div class='prose-item'>
+<>
 	<a href={note.route}>{note.title}</a>
 	{dateLabel && (
 		<time class='prose-date' datetime={dateValue?.toISOString()}>
 			{dateLabel}
 		</time>
 	)}
-</div>
+</>
 
 <style>
-	.prose-item {
-		display: flex;
-		align-items: baseline;
-		gap: var(--space-xs);
-		font-size: var(--text-body);
-		line-height: var(--leading-item);
-	}
 	.prose-date {
 		color: var(--text-tertiary);
 		font-size: var(--text-caption);
 		white-space: nowrap;
+		padding-inline-start: var(--space-xs);
 	}
 </style>
