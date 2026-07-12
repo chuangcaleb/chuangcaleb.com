@@ -70,7 +70,7 @@ const baseObsidianNoteSchema = z.object({
 	// hierarchy
 	up: z.array(reference('obsidian-note')).optional(),
 	down: z.array(reference('obsidian-note')).optional(),
-	series: z.array(reference('obsidian-note')).optional(),
+	series: z.boolean().optional(),
 	prev: reference('obsidian-note').optional(),
 	next: reference('obsidian-note').optional(),
 	backlinks: z.array(reference('obsidian-note')).optional(),

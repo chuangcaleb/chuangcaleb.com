@@ -46,7 +46,7 @@ export async function formatNoteRelations({data, title}: SuperNote): Promise<Not
 	const previousNote = previousEntries[0];
 	const nextNote = nextEntries[0];
 
-	const isSeries = Array.isArray(series);
+	const isSeries = Boolean(series);
 
 	// Compute parent series contexts:
 	// For each parent that has `series`, resolve parent's `down` and alphabetize.
