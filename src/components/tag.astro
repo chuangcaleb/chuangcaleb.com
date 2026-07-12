@@ -15,7 +15,7 @@ const {as: Tag = 'span', href, ...rest} = Astro.props;
 	.tag {
 		display: inline-flex;
 		align-items: center;
-		gap: 4px;
+		gap: var(--space-2xs);
 		background: var(--bg-interactive);
 		color: var(--text-normal);
 		padding: 2px 8px;
