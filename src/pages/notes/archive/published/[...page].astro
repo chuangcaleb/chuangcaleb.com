@@ -1,0 +1,18 @@
+---
+import {getPublishedNotes} from 'lib/utils/note-filters.ts';
+import ArchivePage from '~/components/note/archive-page.astro';
+
+export async function getStaticPaths({paginate}: {paginate: Function}) {
+	const allPublished = await getPublishedNotes();
+	return paginate(allPublished, {pageSize: 20});
+}
+
+const {page} = Astro.props;
+---
+
+<ArchivePage
+	title='Recently Published'
+	description='Published notes, ordered by publication date. Polished longform self-authored content.'
+	{page}
+	basePath='/notes/archive/published'
+/>

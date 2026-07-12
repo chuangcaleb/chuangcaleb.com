@@ -1,0 +1,47 @@
+---
+import type {SuperNote} from 'lib/utils/types';
+import NoteCard from '~/components/note/note-card.astro';
+import Pagination from '~/components/note/pagination.astro';
+import Layout from '~/components/layout/layout.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+	page: {
+		data: SuperNote[];
+		currentPage: number;
+		lastPage: number;
+		url: {prev?: string; next?: string};
+	};
+	basePath: string;
+}
+
+const {title, description, page, basePath} = Astro.props;
+const notes = page.data;
+---
+
+<Layout title={`${title} Notes`} description={description}>
+	<section class='wrapper flow'>
+		<header class='flow-xs region' style={{'--region-space': 'var(--space-m)'}}>
+			<nav><a href='/notes'>notes</a></nav>
+			<h1>{title}</h1>
+			{description && <p>{description}</p>}
+		</header>
+	</section>
+
+	<section class='wrapper'>
+		<ul class='archive-list flow-m' role='list'>
+			{notes.map(n => (
+				<li><NoteCard note={n} /></li>
+			))}
+		</ul>
+
+		<Pagination {page} {basePath} />
+	</section>
+</Layout>
+
+<style>
+	nav {
+		font-size: var(--text-caption);
+	}
+</style>

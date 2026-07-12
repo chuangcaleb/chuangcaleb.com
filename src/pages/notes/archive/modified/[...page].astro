@@ -1,0 +1,18 @@
+---
+import {getModifiedNotes} from 'lib/utils/note-filters.ts';
+import ArchivePage from '~/components/note/archive-page.astro';
+
+export async function getStaticPaths({paginate}: {paginate: Function}) {
+	const allModified = await getModifiedNotes();
+	return paginate(allModified, {pageSize: 20});
+}
+
+const {page} = Astro.props;
+---
+
+<ArchivePage
+	title='Recently Modified'
+	description='All notes, ordered by most recently modified.'
+	{page}
+	basePath='/notes/archive/modified'
+/>

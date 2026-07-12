@@ -1,0 +1,76 @@
+---
+import {Icon} from 'astro-icon/components';
+
+interface Props {
+	page: {
+		currentPage: number;
+		lastPage: number;
+		url: {prev?: string; next?: string};
+	};
+	basePath: string;
+}
+
+const {page, basePath} = Astro.props;
+const {currentPage, lastPage: totalPages, url: pageUrl} = page;
+
+function pageUrlFor(p: number): string {
+	return p === 1 ? basePath : `${basePath}/${p}`;
+}
+---
+
+{totalPages > 1 && (
+	<nav class='pagination cluster region' aria-label='pagination'>
+		{
+			pageUrl.prev
+				? <a href={pageUrl.prev} class='page-link'>
+					<Icon name='lucide:arrow-left' /> prev</a>
+				: <span class='page-link disabled'>
+					<Icon name='lucide:arrow-left' /> prev</span>
+		}
+
+		<span class='page-numbers cluster' role='list'>
+			{
+				Array.from({length: totalPages}, (_, i) => i + 1).map(p => (
+					<a
+						href={pageUrlFor(p)}
+						class:list={['page-num', p === currentPage && 'active']}
+						aria-current={p === currentPage ? 'page' : undefined}
+					>
+						{p}
+					</a>
+				))
+			}
+		</span>
+
+		{
+			pageUrl.next
+				? <a href={pageUrl.next} class='page-link'>next <Icon name='lucide:arrow-right' /></a>
+				: <span class='page-link disabled'>next <Icon name='lucide:arrow-right' /></span>
+		}
+	</nav>
+)}
+
+<style>
+	.pagination {
+		--cluster-align-x: start;
+		--region-space: var(--space-l);
+	}
+	.page-link.disabled {
+		color: var(--text-tertiary);
+		pointer-events: none;
+	}
+	.page-numbers {
+		--cluster-gap: var(--space-xs);
+	}
+	.page-num {
+		color: var(--accent);
+		padding: var(--space-3xs) var(--space-2xs);
+		border-radius: var(--radius-sm);
+		font-size: var(--text-body);
+	}
+	.page-num.active {
+		color: var(--text-muted);
+		font-weight: var(--weight-bold);
+		text-decoration: none;
+	}
+</style>

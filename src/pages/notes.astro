@@ -1,35 +1,33 @@
 ---
+import {Icon} from 'astro-icon/components';
 import {
 	getFeaturedNotes,
-	getRecentlyModified,
-	getRecentlyPublished,
+	getModifiedNotes,
+	getPublishedNotes,
 	getTopLevelNotes,
 } from 'lib/utils/note-filters.ts';
+import Button from '~/components/button.astro';
 import Layout from '~/components/layout/layout.astro';
 import NotesSection from '~/components/note/notes-section.astro';
 import '~/styles/index.css';
-import {getAllNotes} from '~/utils/note.ts';
 
-const allNotes = await getAllNotes();
-
-const featured = getFeaturedNotes(allNotes);
-const topLevel = getTopLevelNotes(allNotes);
+const featured = await getFeaturedNotes();
+const topLevel = await getTopLevelNotes();
 
 const seen = new Set([
 	...featured.map(n => n.id),
 	...topLevel.map(n => n.id),
 ]);
 
-const recentModified = getRecentlyModified(allNotes, seen, 10);
+const recentModified = await getModifiedNotes({exclude: seen, limit: 10});
 
-const recentPublished = getRecentlyPublished(
-	allNotes,
-	new Set([...seen, ...recentModified.map(n => n.id)]),
-	6,
-);
+const recentPublished = await getPublishedNotes({
+	exclude: new Set([...seen, ...recentModified.map(n => n.id)]),
+	limit: 6,
+});
 ---
 
-<Layout title='Notes' description=''>
+<Layout title='Notes' description="Index for Caleb's digital garden notes">
 	<section class='wrapper prose flow-s'>
 		<h1>Notes</h1>
 		<p>Welcome! This "garden" is like a blog, but more fluid!</p>
@@ -52,13 +50,25 @@ const recentPublished = getRecentlyPublished(
 	<NotesSection
 		heading='Recently Published'
 		notes={recentPublished}
-	/>
+	>
+		<div style={{display: 'inline-flex'}}>
+			<Button variant='secondary' as='a' href='/notes/archive/published'>
+				View all published notes <Icon name='lucide:arrow-right' />
+			</Button>
+		</div>
+	</NotesSection>
 
 	<NotesSection
 		heading='Recently Modified'
 		notes={recentModified}
 		variant='prose'
 		showDate='modified'
-	/>
+	>
+		<div style={{display: 'inline-flex'}}>
+			<Button variant='secondary' as='a' href='/notes/archive/modified'>
+				View all notes <Icon name='lucide:arrow-right' />
+			</Button>
+		</div>
+	</NotesSection>
 
 </Layout>

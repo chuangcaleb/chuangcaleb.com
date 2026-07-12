@@ -41,11 +41,13 @@ const isProse = variant === 'prose';
 				))
 			}
 		</ul>
+		<slot />
 	</section>
 )}
 
 <style>
 	.notes-section {
 		--flow-space: var(--space-xl);
+		--region-space: var(--space-m);
 	}
 </style>
