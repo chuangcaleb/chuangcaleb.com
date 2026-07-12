@@ -54,6 +54,8 @@ const formattedDate = formatIso(
 	</div>
 	<p class='body'>
 		{post['📃 Content Body']}
+	</p>
+	<p>
 		<Caps>
 			<time class='date' datetime={parse(post.Timestamp, 'dd/MM/yyyy HH:mm:ss', new Date()).toISOString()}>
 				{formattedDate}
@@ -86,9 +88,6 @@ const formattedDate = formatIso(
 		color: var(--text-muted);
 		text-transform: lowercase;
 		white-space: nowrap;
-	}
-	.body :last-child {
-		padding-inline-start: var(--space-s);
 	}
 
 	/* .body {
