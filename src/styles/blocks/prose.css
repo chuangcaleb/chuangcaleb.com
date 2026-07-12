@@ -57,9 +57,9 @@ CUSTOM PROPERTIES
 }
 
 /* Flow for paragraphs used inside list items */
-.prose :is(ul, ol):not(.not-prose) li:has(> p) > p {
+/* .prose :is(ul, ol):not(.not-prose) li:has(> p) > p {
   margin-block-start: var(--space-xs);
-}
+} */
 
 /* Flow for dt/dd groups.*/
 .prose :is(dl):not(.not-prose) dd + dt {

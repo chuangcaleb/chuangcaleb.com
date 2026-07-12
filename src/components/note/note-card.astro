@@ -1,6 +1,7 @@
 ---
 import type {SuperNote} from 'lib/utils/types';
 import NoteTag from '~/components/note/note-tag.astro';
+import {getNoteEntry} from '~/utils/note.ts';
 import {noteToTags} from '~/utils/note-metadata.ts';
 
 interface Props {
@@ -12,7 +13,22 @@ const {route, title} = note;
 const tags = noteToTags(note.data);
 ---
 
-<article class='flow-2xs'>
+<article>
+	<ul class='parents cluster' role='list'>
+		{
+			note.data.up?.map(async (parent, index) => {
+				const a = await getNoteEntry(parent);
+				if (!a) {
+					return null;
+				}
+
+				return <>
+					<li>{a.title}</li>
+					{index + 1 !== note.data.up?.length && <span aria-hidden='true'>⋅</span>}
+				</>;
+			})
+		}
+	</ul>
 	<p>
 		<a href={route}>
 			{title}
@@ -30,11 +46,23 @@ const tags = noteToTags(note.data);
 </article>
 
 <style>
+	article {
+		padding-inline-start: var(--space-xs);
+		border-inline-start: 2px solid var(--accent);
+		color: var(--text-muted);
+	}
 	.note-tags {
 		--cluster-gap: var(--space-xs);
 	}
+	.parents {
+		--cluster-gap: var(--space-2xs);
+		font-size: var(--text-caption);
+		color: var(--color-tertiary);
+	}
 	p {
-		/* font-size: var(--text-h3); */
 		line-height: var(--leading-item);
+	}
+	a {
+		font-size: var(--text-h3);
 	}
 </style>
