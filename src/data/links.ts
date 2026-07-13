@@ -34,7 +34,7 @@ const SOCIALS = {
 	},
 	CV: {
 		label: 'resume',
-		href: 'https://cv.chuangcaleb.com',
+		href: 'https://assets.chuangcaleb.com/public/cv.pdf',
 		ariaLabel: 'CV / Résumé of Chuang Caleb',
 		icon: 'mdi:text-box-check-outline',
 	},
