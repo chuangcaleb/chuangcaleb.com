@@ -1,5 +1,6 @@
 ---
 import {Font} from 'astro:assets';
+import {ClientRouter} from 'astro:transitions';
 import Footer from './footer.astro';
 import Header from './header.astro';
 import SITE from '~/data/site.ts';
@@ -60,6 +61,8 @@ const description
 		<meta name='theme-color' content='#f5f4ed' />
 
 		<Font cssVariable='--font-mono' />
+
+		<ClientRouter />
 
 		<slot name='head' />
 	</head>
