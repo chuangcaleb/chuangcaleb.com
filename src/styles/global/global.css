@@ -342,6 +342,11 @@ th {
   padding-inline: var(--space-s);
 }
 
+td:first-child,
+th:first-child {
+  padding-inline-start: 0;
+}
+
 tr:last-child td {
   border-bottom: 0;
 }
