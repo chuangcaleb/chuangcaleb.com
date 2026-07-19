@@ -24,7 +24,7 @@ import {formatDisplayDate} from '~/utils/time.ts';
 		{
 			Object.values(SOCIALS).map((link, index) => (
 				<>
-					<IconLink {...link} label={link.userId ?? link.label} />
+					<IconLink {...link} label={link.userId ?? link.label} isMono={Boolean(link.userId)}/>
 					{index !== Object.keys(SOCIALS).length - 1 && (
 						<span aria-hidden='true'>⋅</span>
 					)}

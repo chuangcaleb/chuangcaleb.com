@@ -17,7 +17,7 @@ export type NavigationLink = BaseLink & {
 
 type LinkGeneric<T> = Record<string, T>;
 
-const SOCIALS = {
+const SOCIALS: LinkGeneric<SocialLink> = {
 	LINKEDIN: {
 		label: 'LinkedIn',
 		href: 'https://linkedin.com/in/chuangcaleb/',
@@ -33,7 +33,7 @@ const SOCIALS = {
 		icon: 'mdi:github',
 	},
 	CV: {
-		label: 'resume',
+		label: 'my resume',
 		href: 'https://assets.chuangcaleb.com/public/cv.pdf',
 		ariaLabel: 'CV / Résumé of Chuang Caleb',
 		icon: 'mdi:text-box-check-outline',
@@ -45,7 +45,14 @@ const SOCIALS = {
 		ariaLabel: 'Email address of Chuang Caleb',
 		icon: 'mdi:email-outline',
 	},
-} as const satisfies LinkGeneric<SocialLink> as LinkGeneric<SocialLink>;
+	INSTAGRAM: {
+		label: 'Instagram',
+		href: 'https://www.instagram.com/caleb_dumps_/',
+		userId: '@caleb_dumps_',
+		ariaLabel: 'Instagram account of my random posts',
+		icon: 'mdi:instagram',
+	},
+} as const satisfies LinkGeneric<SocialLink>;
 
 export type LinkKey = keyof typeof SOCIALS;
 
