@@ -1,0 +1,39 @@
+---
+import {Icon} from 'astro-icon/components';
+import {getFeaturedNotes, getModifiedNotes} from 'lib/utils/note-filters';
+import Button from '~/components/button.astro';
+import SectionHeading from '~/components/emphasis/section-heading.astro';
+import NotesSection from '~/components/note/notes-section.astro';
+
+const featured = await getFeaturedNotes();
+const topFeatured = featured.slice(0, 5);
+const seen = new Set(topFeatured.map(n => n.id));
+const recentModified = await getModifiedNotes({limit: 5, exclude: seen});
+---
+
+<section class='region wrapper flow' id='notes'>
+	<SectionHeading prelabel='04 ⋅ Notes'>Digital notes, straight from my Obsidian vault</SectionHeading>
+	<p>Like blog posts, but very fluid—while being densely interlinked, and mostly bite-sized.</p>
+	<div class='grid-auto region' style={{'--grid-item-min': '25rem', '--region-space': 'var(--space-m)'}}>
+		<NotesSection
+			description='Featured'
+			notes={topFeatured}
+			headingAs='h3'
+			isSubSection
+			variant='prose'
+		/>
+		<NotesSection
+			description='Recently Modified'
+			headingAs='h3'
+			notes={recentModified}
+			variant='prose'
+			isSubSection
+			showDate='modified'
+		/>
+		<div style={{display: 'inline-flex'}}>
+			<Button as='a' href='/notes'>
+				/notes <Icon name='lucide:arrow-right' />
+			</Button>
+		</div>
+	</div>
+</section>

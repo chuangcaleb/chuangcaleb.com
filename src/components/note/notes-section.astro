@@ -5,21 +5,25 @@ import NoteCard from '~/components/note/note-card.astro';
 import NoteProseItem from '~/components/note/note-prose-item.astro';
 
 interface Props {
-	heading: string;
+	prelabel?: string;
+	headingAs?: 'h2' | 'h3';
 	description: string;
 	notes: SuperNote[];
 	variant?: 'card' | 'prose';
 	max?: number;
 	showDate?: 'published' | 'modified';
+	isSubSection?: boolean;
 }
 
 const {
-	heading,
+	prelabel,
+	headingAs = 'h2',
 	description,
 	notes,
 	variant = 'card',
 	max,
 	showDate,
+	isSubSection = false,
 } = Astro.props;
 
 const displayNotes = max ? notes.slice(0, max) : notes;
@@ -28,12 +32,8 @@ const isProse = variant === 'prose';
 ---
 
 {displayNotes.length > 0 && (
-	<section class:list={['notes-section wrapper region flow', isProse && 'prose']}>
-		{/* <h2>
-			{heading}
-		</h2>
-		<p>{description}</p> */}
-		<SectionHeading as='h2' prelabel={heading}>{description}</SectionHeading>
+	<section class:list={['notes-section flow', isProse && 'prose', !isSubSection && 'wrapper region']}>
+		<SectionHeading as={headingAs} {prelabel}>{description}</SectionHeading>
 		<ul class:list={[!isProse && 'flow-m']} {...(!isProse && {role: 'list'})}>
 			{
 				displayNotes.map(note => (

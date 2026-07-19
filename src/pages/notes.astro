@@ -39,19 +39,19 @@ const recentPublished = await getPublishedNotes({
 	</header>
 
 	<NotesSection
-		heading='01 ⋅ ⭐ Featured'
+		prelabel='01 ⋅ ⭐ Featured'
 		description='Some of my favourite notes to showcase:'
 		notes={featured}
 	/>
 
 	<NotesSection
-		heading='02 ⋅ 🪾 Top-Level Notes'
+		prelabel='02 ⋅ 🪾 Top-Level Notes'
 		description='Good entry points for top-down discovery!'
 		notes={topLevel}
 	/>
 
 	<NotesSection
-		heading='03 ⋅ 📤 Recently Published'
+		prelabel='03 ⋅ 📤 Recently Published'
 		description='Polished longform self-authored content.'
 		notes={recentPublished}
 	>
@@ -63,7 +63,7 @@ const recentPublished = await getPublishedNotes({
 	</NotesSection>
 
 	<NotesSection
-		heading='04 ⋅ 🥬 Recently Modified'
+		prelabel='04 ⋅ 🥬 Recently Modified'
 		description='All notes, sorted by last file edit.'
 		notes={recentModified}
 		variant='prose'

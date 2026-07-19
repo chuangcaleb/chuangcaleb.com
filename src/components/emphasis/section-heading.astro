@@ -2,14 +2,14 @@
 interface Props {
 	as?: 'h1' | 'h2' | 'h3';
 	href?: string;
-	prelabel: string;
+	prelabel?: string;
 }
 
 const {as: Tag = 'h2', href, prelabel} = Astro.props;
 ---
 
 <div>
-	<p class='section-num'>{prelabel}</p>
+	{prelabel && <p class='section-num'>{prelabel}</p>}
 	<Tag class='section-heading'>
 		{
 			href
