@@ -1,8 +1,8 @@
 ---
 import {getGuestbookPosts} from 'lib/google/sheets/get-guestbook-posts';
+import GuestbookCard from './_guestbook-card.astro';
 import Card from '~/components/card.astro';
 import Layout from '~/components/layout/layout.astro';
-import GuestbookCard from '~/pages/_components/guestbook/guestbook-card.astro';
 import '~/styles/index.css';
 
 const posts = await getGuestbookPosts();
