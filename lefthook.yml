@@ -1,0 +1,21 @@
+# Local quality gate (no CI). See AGENTS.md "Build and Test" for the verify loop.
+pre-commit:
+  parallel: false
+  commands:
+    # 1. Auto-fix + lint staged JS/TS/Astro files, then restage the fixes.
+    #    XO also ignores _archived/** via xo.config.ts; the glob exclude keeps
+    #    lefthook from passing those paths in the first place.
+    lint:
+      glob: "*.{js,jsx,ts,tsx,mjs,cjs,astro}"
+      exclude:
+        - "_archived/**"
+      run: pnpm xo --fix {staged_files}
+      stage_fixed: true
+    # 2. Typecheck the whole project (astro check has no per-file mode).
+    typecheck:
+      run: pnpm typecheck
+
+pre-push:
+  commands:
+    test:
+      run: pnpm test
