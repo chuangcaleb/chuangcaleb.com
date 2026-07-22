@@ -148,7 +148,6 @@ This is not a UI framework. It is designed to keep pages stable, clear, and read
 
 ```css
 --accent: #1b365d; /* Ink Blue — the only chromatic color. CTAs, accents, section-title left bar. */
---accent-light: #2d5a8a; /* Ink Light — brighter variant, for links on dark surfaces. */
 --color-error: #b53333; /* Error state, deep warm red, rarely used */
 ```
 

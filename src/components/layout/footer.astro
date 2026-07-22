@@ -4,6 +4,11 @@ import {SOCIALS} from '~/data/links.ts';
 import {NOTE_NAV_LINKS} from '~/data/note-nav.ts';
 import {formatDisplayDate} from '~/utils/time.ts';
 
+const THEME_OPTIONS = [
+	{value: 'light', label: 'Light'},
+	{value: 'dark', label: 'Dark'},
+	{value: 'system', label: 'System'},
+] as const;
 ---
 
 <hr/>
@@ -32,7 +37,27 @@ import {formatDisplayDate} from '~/utils/time.ts';
 			))
 		}
 	</div>
-	<p class='rebuilt'>site rebuilt on  {formatDisplayDate(new Date())}</p>
+	<div class='cluster'>
+		<fieldset class='theme-toggle cluster'>
+			<legend class='visually-hidden'>Theme</legend>
+			{
+				THEME_OPTIONS.map(option => (
+					<span>
+						<input
+							type='radio'
+							name='theme'
+							value={option.value}
+							id={`theme-${option.value}`}
+							class='visually-hidden'
+						/>
+						<label for={`theme-${option.value}`}>{option.label}</label>
+					</span>
+				))
+			}
+		</fieldset>
+		<span aria-hidden='true'>⋅</span>
+		<p class='rebuilt'>site rebuilt on  {formatDisplayDate(new Date())}</p>
+	</div>
 </footer>
 
 <style>
@@ -45,4 +70,98 @@ import {formatDisplayDate} from '~/utils/time.ts';
     font-size: var(--text-caption);
   }
 
+  .theme-toggle {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-label);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+  }
+
+  .theme-toggle label {
+    cursor: pointer;
+    transition-duration: 0.2s;
+		padding-inline: 0.2em;
+  }
+
+  .theme-toggle label:hover {
+    background-color: var(--bg-interactive);
+		border-radius: var(--radius-sm);
+  }
+
+  .theme-toggle input:checked + label {
+    color: var(--accent);
+  }
+
+  /* .theme-toggle input:focus-visible + label {
+    outline: var(--focus-ring-width, 2px) var(--focus-ring-style, auto) var(--focus-ring-color, var(--accent));
+    outline-offset: var(--focus-ring-offset, 4px);
+  } */
+
 </style>
+
+<script>
+	import {
+		getSystemTheme,
+		isThemePreference,
+		resolveTheme,
+		THEME_STORAGE_KEY,
+		type ThemePreference,
+	} from '~/utils/theme.ts';
+
+	function getStoredPreference(): ThemePreference {
+		const stored = localStorage.getItem(THEME_STORAGE_KEY);
+		return isThemePreference(stored) ? stored : 'system';
+	}
+
+	function applyTheme(preference: ThemePreference) {
+		const resolved = resolveTheme(preference, getSystemTheme());
+		document.documentElement.dataset.theme = resolved;
+
+		const meta = document.querySelector<HTMLMetaElement>('#theme-color-meta');
+		if (meta) {
+			meta.content = resolved === 'dark' ? '#141413' : '#f5f4ed';
+		}
+
+		for (const input of document.querySelectorAll<HTMLInputElement>('input[name="theme"]')) {
+			input.checked = input.value === preference;
+		}
+	}
+
+	function setPreference(preference: ThemePreference) {
+		localStorage.setItem(THEME_STORAGE_KEY, preference);
+		applyTheme(preference);
+	}
+
+	// Delegated on `document` (registered once): survives Astro ClientRouter
+	// body swaps, which replace the footer's radio inputs on every navigation.
+	document.addEventListener('change', event => {
+		const target = event.target;
+		if (target instanceof HTMLInputElement && target.name === 'theme' && isThemePreference(target.value)) {
+			setPreference(target.value);
+		}
+	});
+
+	// Live-follow the OS preference only while the user hasn't forced a mode.
+	matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+		const preference = getStoredPreference();
+		if (preference === 'system') {
+			applyTheme(preference);
+		}
+	});
+
+	// Keep other open tabs in sync.
+	globalThis.addEventListener('storage', event => {
+		if (event.key === THEME_STORAGE_KEY) {
+			applyTheme(getStoredPreference());
+		}
+	});
+
+	// Full re-apply (not just UI sync) on first load and every SPA navigation:
+	// the <meta theme-color> tag lives in <head>, which Astro's ClientRouter
+	// diffs/merges, so it must be re-asserted after every swap.
+	document.addEventListener('astro:page-load', () => {
+		applyTheme(getStoredPreference());
+	});
+</script>

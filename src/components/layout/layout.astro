@@ -4,6 +4,7 @@ import {ClientRouter} from 'astro:transitions';
 import Footer from './footer.astro';
 import Header from './header.astro';
 import SITE from '~/data/site.ts';
+import {THEME_STORAGE_KEY} from '~/utils/theme.ts';
 import '~/styles/index.css';
 
 interface Props {
@@ -30,6 +31,14 @@ const description
 <html lang={SITE.language}>
 	<head>
 		<meta charset='utf-8' />
+
+		<script is:inline define:vars={{storageKey: THEME_STORAGE_KEY}}>
+			/* global storageKey */
+			var pref = localStorage.getItem(storageKey);
+			var systemDark = matchMedia('(prefers-color-scheme: dark)').matches;
+			document.documentElement.dataset.theme = pref === 'dark' || (pref !== 'light' && systemDark) ? 'dark' : 'light';
+		</script>
+
 		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 		<meta name='generator' content={Astro.generator} />
 
@@ -57,8 +66,8 @@ const description
 			)
 		}
 
-		<!-- Theme color (light-only) -->
-		<meta name='theme-color' content='#f5f4ed' />
+		<!-- Theme color (updated by footer theme toggle script; #f5f4ed is the light-mode/no-JS fallback) -->
+		<meta id='theme-color-meta' name='theme-color' content='#f5f4ed' />
 
 		<Font cssVariable='--font-mono' />
 

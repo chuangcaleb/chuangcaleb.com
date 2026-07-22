@@ -173,12 +173,11 @@ a {
   color: var(--color-link, var(--accent));
   text-decoration-skip-ink: auto;
   text-underline-offset: 0.2em;
-  text-decoration-thickness: 0.04em;
+  text-decoration-thickness: 0.05em;
   transition-duration: 0.2s;
 }
 
 a:not([class]):hover {
-  --color: var(--accent-light);
   background-color: var(--bg-interactive);
   border-radius: var(--radius-sm);
 }

@@ -47,7 +47,6 @@ Consult these guides before working on related tasks:
 
 - **Clean break**: All old components/pages archived to `_archived/`. New components built from scratch.
 - **Design system**: `DESIGN.md` defines core visual identity. Modularized design specs live in `docs/design/`. CSS tokens in `src/styles/tokens/design-tokens.scss` — the single source of truth for implementation values.
-- **Light-only**: `data-theme` removed. Dark mode deferred.
 - **Fonts deferred**: Charter (serif), Courier Prime (mono) loaded via Astro `fonts` config. JetBrains Mono deferred.
 - Components in `src/components/`, page sections in `src/pages/_components/`.
 

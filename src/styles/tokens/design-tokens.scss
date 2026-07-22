@@ -13,14 +13,13 @@
   --color-dark-surface: #30302e;
 
   /* ── Text ────────────────────────────── */
-  --color-near-black: #141413;
+  --color-near-black: #1c1b18;
   --color-dark-warm: #3d3d3a;
   --color-olive: #504e49;
   --color-stone: #6b6a64;
 
   /* ── Brand (sole chromatic hue) ──────── */
-  --color-ink-blue: #1b365d;
-  --color-ink-light: #2d5a8a;
+  --color-ink: #1b365d;
   --color-error: #b53333;
 
   /* ── Borders ─────────────────────────── */
@@ -84,20 +83,6 @@
   --max-page: 115ch;
   --max-prose: 70ch;
   --max-heading: 45ch;
-
-  /* ── Semantic aliases ────────────────── */
-  --bg-page: var(--color-parchment);
-  --bg-surface: var(--color-ivory);
-  --bg-interactive: var(--color-warm-sand);
-
-  --text-strong: var(--color-near-black);
-  --text-normal: var(--color-dark-warm);
-  --text-muted: var(--color-olive);
-  --text-tertiary: var(--color-stone);
-
-  --accent: var(--color-ink-blue);
-  --accent-light: var(--color-ink-light);
-
   --gutter: var(--space-m);
 
   /* ── Syntax highlighter ──────────────── */
@@ -112,16 +97,67 @@
   --astro-code-token-punctuation: #4c4f69;
   --astro-code-token-link: #8839ef;
 
-  /* Dark surface palette (comment-only, for future dark mode) */
-  /* --bg-page: var(--color-dark-surface); */
-  /* --bg-surface: var(--color-dark-warm); */
-  /* --bg-interactive: var(--color-olive); */
-  /* --text-strong: var(--color-ivory); */
-  /* --text-normal: var(--color-parchment); */
-  /* --text-muted: var(--color-warm-sand); */
-  /* --text-tertiary: var(--color-stone); */
-  /* --accent: #6e94b5; */
-  /* --accent-light: #000000; */
-  /* --border-default: var(--color-stone); */
-  /* --border-subtle: var(--color-olive); */
+  /* -------------------- Semantic aliases - light mode ----------------------*/
+
+  --bg-page: var(--color-parchment);
+  --bg-surface: var(--color-ivory);
+  --bg-interactive: var(--color-warm-sand);
+
+  --text-strong: var(--color-near-black);
+  --text-normal: var(--color-dark-warm);
+  --text-muted: var(--color-olive);
+  --text-tertiary: var(--color-stone);
+
+  --accent: var(--color-ink);
+  --on-accent: var(--color-ivory);
+}
+
+/* ── Dark mode ─────────────────────────
+   Remaps semantic aliases only; raw --color-* palette tokens stay constant.
+   Text-tertiary and accent are lightened via color-mix() from their existing
+   light-mode token because the raw values fail WCAG AA against dark surfaces. */
+@mixin dark-theme-tokens {
+  --bg-page: var(--color-near-black);
+  --bg-surface: var(--color-dark-surface);
+  --bg-interactive: var(--color-dark-warm);
+
+  --text-strong: color-mix(in srgb, var(--color-ivory), var(--bg-page) 2%);
+  --text-normal: color-mix(in srgb, var(--color-parchment), var(--bg-page) 25%);
+  --text-muted: color-mix(in srgb, var(--color-warm-sand), var(--bg-page) 35%);
+  --text-tertiary: color-mix(
+    in srgb,
+    var(--color-warm-sand),
+    var(--color-stone) 50%
+  );
+
+  --color-ink: #8499b4;
+  // --accent: color-mix(in srgb, var(--color-ink), var(--text-strong) 40%);
+  --on-accent: var(--color-near-black);
+
+  --border-default: var(--color-olive);
+  --border-subtle: var(--color-dark-warm);
+
+  --astro-code-token-constant: #ce835b;
+  --astro-code-token-string: #a6da95;
+  // --astro-code-token-comment: var(--text-tertiary);
+  --astro-code-token-keyword: #c6a0f6;
+  --astro-code-token-parameter: #a5adcb;
+  --astro-code-token-function: #8aadf4;
+  --astro-code-token-string-expression: #a6da95;
+  --astro-code-token-punctuation: #cad3f5;
+  --astro-code-token-link: #c6a0f6;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="dark"] {
+  @include dark-theme-tokens;
+}
+
+/* No-JS / pre-hydration fallback: honor the OS preference unless the user
+   explicitly forced light mode. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark-theme-tokens;
+  }
 }
