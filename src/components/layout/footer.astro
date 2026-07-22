@@ -112,7 +112,7 @@ const THEME_OPTIONS = [
 
 	function getStoredPreference(): ThemePreference {
 		const stored = localStorage.getItem(THEME_STORAGE_KEY);
-		return isThemePreference(stored) ? stored : 'system';
+		return isThemePreference(stored) ? stored : 'light';
 	}
 
 	function applyTheme(preference: ThemePreference) {

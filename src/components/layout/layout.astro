@@ -35,8 +35,7 @@ const description
 		<script is:inline define:vars={{storageKey: THEME_STORAGE_KEY}}>
 			/* global storageKey */
 			var pref = localStorage.getItem(storageKey);
-			var systemDark = matchMedia('(prefers-color-scheme: dark)').matches;
-			document.documentElement.dataset.theme = pref === 'dark' || (pref !== 'light' && systemDark) ? 'dark' : 'light';
+			document.documentElement.dataset.theme = pref === 'dark' ? 'dark' : 'light';
 		</script>
 
 		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
