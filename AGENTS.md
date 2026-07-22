@@ -1,5 +1,17 @@
 # Project Guidelines
 
+## Working agreement
+
+- **Plan then execute**: propose a plan for non-trivial work before changing
+  code; execute small, obvious changes directly.
+- **Branches + conventional commits**: work on a feature branch, never on
+  `main`/`staging`. Commit with conventional-commit messages (`feat:`, `fix:`,
+  `chore:`, `test:`, ... matching the git log).
+- **Push scope**: the agent may commit and push its own **feature branch**, but
+  must **never push to `main` or `staging`**. The owner opens and merges PRs.
+- **Verify before committing**: run the verify loop (see Build and Test) before
+  each commit.
+
 ## Development
 
 When starting the dev server, use background mode `astro dev --background`
@@ -43,8 +55,28 @@ Consult these guides before working on related tasks:
 
 ## Build and Test
 
-- `pnpm install` | `pnpm dev:nosetup` | `pnpm lint` / `pnpm format`
-- `pnpm build:nosetup` — currently broken (archived pages removed)
+Requires Node `>=22` (see `.nvmrc`).
+
+**Verify loop** — run before committing:
+
+1. `pnpm lint` — XO report (`pnpm format` auto-fixes).
+2. `pnpm typecheck` — `astro check`.
+3. `pnpm test` — Vitest unit suite (`vitest run`). This is no longer a lint
+   alias. Use `pnpm test:watch` while iterating.
+4. `pnpm dev:nosetup` smoke — offline Astro dev server (`astro dev`); load `/`,
+   `/notes`, a note detail, `/guestbook`.
+
+Add a unit test for any new pure function in `src/utils/*` or `lib/*`.
+
+Other scripts:
+
+- `pnpm dev` also runs B2 content sync first (`setup-external`), which needs
+  network + secrets. Use `pnpm dev:nosetup` for offline work.
+- `pnpm build:nosetup` (`astro check && astro build`) works when the synced
+  `src/content/obsidian-note` folder is present locally; it skips the B2 sync
+  and pagefind steps that `pnpm build` runs. The previously-broken archived-page
+  references have been resolved. A full `pnpm build` still needs network/secrets
+  for B2 + pagefind.
 
 ## Integration Points
 

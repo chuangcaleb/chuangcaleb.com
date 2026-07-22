@@ -4,9 +4,12 @@
   "version": "2.0.0",
   "scripts": {
     "astro": "astro",
+    "prepare": "lefthook install",
     "lint": "pnpm xo -- --list-different .",
     "format": "pnpm xo --fix .",
-    "test": "xo",
+    "typecheck": "astro check",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "b2:download": "node lib/b2/index.mjs && tsx lib/chuangcaleb/generate-redirects.ts",
     "setup-external": "pnpm b2:download",
     "dev": "pnpm setup-external && astro dev",
@@ -76,14 +79,16 @@
     "astro-og": "^0.3.2",
     "autoprefixer": "^10.5.2",
     "eslint-plugin-astro": "^2.1.1",
+    "lefthook": "^2.1.10",
     "postcss": "^8.5.16",
     "prettier-plugin-astro": "^0.14.1",
     "sass": "^1.101.0",
     "tsx": "^4.22.4",
     "unist-util-visit": "^5.1.0",
+    "vitest": "^4.1.10",
     "xo": "^3.0.2"
   },
   "engines": {
-    "node": ">=18.20.8"
+    "node": ">=22"
   }
 }
