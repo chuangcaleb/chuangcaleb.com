@@ -43,7 +43,7 @@ Notes written in Obsidian, synced via Backblaze B2 at build time. Custom remark 
 
 ## Project Structure
 
-```
+```text
 .
 ├── lib/
 │   ├── b2/               # B2 download

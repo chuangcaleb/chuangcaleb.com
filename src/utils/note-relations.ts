@@ -1,5 +1,5 @@
-import type {SuperNote} from 'lib/utils/types';
 import {getNoteEntries} from './note.ts';
+import type {SuperNote} from 'lib/utils/types';
 
 export type ParentSeriesContext = {
 	parent: SuperNote;

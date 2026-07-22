@@ -1,5 +1,5 @@
-import type {NoteMetadata} from 'lib/utils/types';
 import {formatDisplayDate, getRelativeSince} from './time.ts';
+import type {NoteMetadata} from 'lib/utils/types';
 
 // const metaMinDays = {
 // 	freshModified: 7,

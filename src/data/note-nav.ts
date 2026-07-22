@@ -13,7 +13,7 @@ export const NOTE_NAV_LINKS: Record<string, NavigationLink> = {
 		href: '/notes',
 		enabled: ['header', 'footer'],
 	},
-GUESTBOOK: {
+	GUESTBOOK: {
 		label: '/guestbook',
 		shortLabel: 'guestbook',
 		href: '/guestbook',
