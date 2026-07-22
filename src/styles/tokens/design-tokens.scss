@@ -102,6 +102,7 @@
   --bg-page: var(--color-parchment);
   --bg-surface: var(--color-ivory);
   --bg-interactive: var(--color-warm-sand);
+  --bg-svg: var(--bg-page);
 
   --text-strong: var(--color-near-black);
   --text-normal: var(--color-dark-warm);
@@ -120,6 +121,7 @@
   --bg-page: var(--color-near-black);
   --bg-surface: var(--color-dark-surface);
   --bg-interactive: var(--color-dark-warm);
+  --bg-svg: var(--color-warm-sand);
 
   --text-strong: color-mix(in srgb, var(--color-ivory), var(--bg-page) 2%);
   --text-normal: color-mix(in srgb, var(--color-parchment), var(--bg-page) 25%);

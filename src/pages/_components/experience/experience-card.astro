@@ -25,7 +25,7 @@ const duration = formatRelativeDuration(startDate, endDate);
 		<div class='flow-s'>
 			{
 				logo && (
-					<div class='logo'>
+					<div class:list={['logo', experience.data.isLogoAlpha && 'alpha']}>
 						<Image src={logo} alt='' widths={[56]} />
 					</div>
 				)
@@ -70,6 +70,11 @@ const duration = formatRelativeDuration(startDate, endDate);
 		border-radius: var(--radius-sm);
 		overflow: hidden;
 		flex-shrink: 0;
+		width: fit-content;
+	}
+
+	.logo.alpha {
+		background: var(--bg-svg);
 	}
 
 	.logo :global(img) {

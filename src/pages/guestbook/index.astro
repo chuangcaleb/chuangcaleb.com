@@ -2,6 +2,7 @@
 import GuestbookCard from './_guestbook-card.astro';
 import {getGuestbookPosts} from 'lib/google/sheets/get-guestbook-posts.ts';
 import Card from '~/components/card.astro';
+import SectionHeading from '~/components/emphasis/section-heading.astro';
 import Layout from '~/components/layout/layout.astro';
 import '~/styles/index.css';
 
@@ -10,8 +11,8 @@ const posts = await getGuestbookPosts();
 
 <Layout title='Guestbook' description='Kind words from friends and colleagues.' forehead>
 	<section class='wrapper flow prose'>
-		<h1>Guestbook</h1>
-		<p>A collection of post-it notes, signed by people who know me! I explain the technical behind-the-scenes at <a
+		<SectionHeading prelabel='Guestbook' as='h1'>My public grafitti space!</SectionHeading>
+		<p>A collection of post-it notes, but signed by people who actually know me! I explain the technical behind-the-scenes at <a
 			href='/notes/making-my-website-guestbook'>Making My Website Guestbook</a
 		>!</p>
 		<ul class='flow-m not-prose' role='list'>

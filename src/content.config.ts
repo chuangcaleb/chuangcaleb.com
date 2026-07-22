@@ -44,6 +44,7 @@ const experienceCollection = defineCollection({
 				label: z.string(),
 			}),
 			logo: image().optional(),
+			isLogoAlpha: z.boolean().optional(),
 			technologies: z.array(z.string()).optional(),
 		}),
 });
