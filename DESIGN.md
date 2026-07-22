@@ -2,17 +2,16 @@
 version: alpha
 name: chuangcaleb
 description: >-
-  Warm parchment, ink-blue accent, single serif-led hierarchy.
+  Warm parchment, ink accent, single serif-led hierarchy.
   Intimate, editorial, intellectual. A notebook for narrative
   storywriting and software notes.
 colors:
   parchment: '#f5f4ed'
   ivory: '#faf9f5'
   warm-sand: '#e8e6dc'
-  ink-blue: '#1B365D'
-  ink-light: '#2D5A8A'
+  ink: '#1B365D'
   dark-surface: '#30302E'
-  near-black: '#141413'
+  near-black: '#1c1b18'
   dark-warm: '#3d3d3a'
   olive: '#504e49'
   stone: '#6b6a64'
@@ -77,10 +76,7 @@ components:
     rounded: '{rounded.md}'
     padding: 8px 16px
   button-primary:
-    backgroundColor: '{colors.ink-blue}'
-    textColor: '{colors.ivory}'
-  button-primary-hover:
-    backgroundColor: '{colors.ink-light}'
+    backgroundColor: '{colors.ink}'
     textColor: '{colors.ivory}'
   button-secondary:
     backgroundColor: '{colors.warm-sand}'
@@ -97,14 +93,12 @@ components:
   nav-link:
     textColor: '{colors.dark-warm}'
   nav-link-active:
-    textColor: '{colors.ink-blue}'
+    textColor: '{colors.ink}'
   prose-link:
-    textColor: '{colors.ink-blue}'
-  prose-link-hover:
-    textColor: '{colors.ink-light}'
+    textColor: '{colors.ink}'
   tag:
     backgroundColor: '{colors.warm-sand}'
-    textColor: '{colors.ink-blue}'
+    textColor: '{colors.ink}'
     rounded: '{rounded.sm}'
     padding: 2px 8px
   quote-block:
@@ -121,7 +115,7 @@ components:
 
 This design is a customised extension of kami.
 
-kami's aesthetic compresses into one sentence: **warm parchment canvas, ink-blue accent, serif carries hierarchy, avoid cool grays and hard shadows**.
+kami's aesthetic compresses into one sentence: **warm parchment canvas, ink accent, serif carries hierarchy, avoid cool grays and hard shadows**.
 
 This is not a UI framework. It is designed to keep pages stable, clear, and readable.
 
@@ -147,11 +141,11 @@ This is not a UI framework. It is designed to keep pages stable, clear, and read
 ### Brand
 
 ```css
---accent: #1b365d; /* Ink Blue — the only chromatic color. CTAs, accents, section-title left bar. */
+--accent: #1b365d; /* Ink — the only chromatic color. CTAs, accents, section-title left bar. */
 --color-error: #b53333; /* Error state, deep warm red, rarely used */
 ```
 
-**Rule**: ink-blue covers ≤ **5% of page surface area**. More than that is ornament, not restraint.
+**Rule**: ink covers ≤ **5% of page surface area**. More than that is ornament, not restraint.
 
 ### Surface
 
@@ -165,7 +159,7 @@ This is not a UI framework. It is designed to keep pages stable, clear, and read
 ### Text
 
 ```css
---color-near-black: #141413; /* Primary text — warm olive undertone */
+--color-near-black: #1c1b18; /* Primary text — warm olive undertone */
 --color-dark-warm: #3d3d3a; /* Secondary text, table headers, links */
 --color-olive: #504e49; /* Subtext — descriptions, captions */
 --color-stone: #6b6a64; /* Tertiary — dates, metadata */
@@ -187,6 +181,31 @@ Four levels: `near-black` (primary) > `dark-warm` (secondary) > `olive` (subtext
 ```
 
 For partial borders (`border-block-start`, `border-bottom`), use `var(--border-thin)` as width + style/color inline.
+
+---
+
+## Dark Mode
+
+**Invariant**: dark mode remaps semantic aliases only; raw `--color-*` palette tokens stay constant. A component built from semantic tokens (`--bg-surface`, `--text-normal`, `--accent`) needs no dark-mode-specific styles.
+
+Defaults to system preference (`prefers-color-scheme`); an explicit user choice (`light`/`dark`) overrides it via `data-theme` on `<html>` and persists across visits.
+
+| Token | Light | Dark |
+| --- | --- | --- |
+| `--bg-page` | `parchment` | `near-black` |
+| `--bg-surface` | `ivory` | `dark-surface` |
+| `--bg-interactive` | `warm-sand` | `dark-warm` |
+| `--text-strong` | `near-black` | `ivory` (color-mixed 2% toward `bg-page`) |
+| `--text-normal` | `dark-warm` | `parchment` (color-mixed 25% toward `bg-page`) |
+| `--text-muted` | `olive` | `warm-sand` (color-mixed 35% toward `bg-page`) |
+| `--text-tertiary` | `stone` | `warm-sand`/`stone` 50/50 mix |
+| `--accent` | `#1b365d` | `#8499b4` — lightened for WCAG AA on dark surfaces |
+| `--on-accent` | `ivory` | `near-black` |
+| `--bg-svg` | `bg-page` | `warm-sand` |
+| `--border-default` | `warm-sand` | `olive` |
+| `--border-subtle` | `#e5e3d8` | `dark-warm` |
+
+Text tokens use `color-mix()` rather than fixed hex values so contrast holds without hand-tuning a second palette. Syntax-highlighter tokens are remapped separately for dark-surface legibility.
 
 ---
 
@@ -510,6 +529,6 @@ When you're not sure "what should I use":
 | Highlight one card in a list | `border: var(--border-thin) solid var(--accent)` or `border-left: 3px solid var(--accent)` |
 | Data card                    | `--bg-surface` background + `rounded-md` + serif big number + sans small label       |
 
-Not on this table → return to first principles: **serif carries authority, sans carries utility, warm gray carries rhythm, ink-blue carries focus**.
+Not on this table → return to first principles: **serif carries authority, sans carries utility, warm gray carries rhythm, ink carries focus**.
 
 ---

@@ -9,10 +9,13 @@ pnpm install          # Install deps
 pnpm dev              # Sync content + start dev server
 pnpm dev:nosetup      # Dev server only
 pnpm build            # Sync, check, build + pagefind
-pnpm build:nosetup    # Build only (currently broken — archived page refs)
+pnpm build:nosetup    # Check + build only (no B2 sync/pagefind)
 pnpm preview          # Full build + wrangler preview
 pnpm lint             # Lint with XO (report)
 pnpm format           # Auto-fix with XO
+pnpm typecheck        # astro check
+pnpm test             # Vitest unit suite
+pnpm test:watch       # Vitest in watch mode
 pnpm b2:download      # Download Obsidian md notes from B2
 ```
 
@@ -28,6 +31,8 @@ pnpm b2:download      # Download Obsidian md notes from B2
 | Search | [Pagefind](https://pagefind.app) |
 | Deployment | [Cloudflare Pages](https://pages.cloudflare.com) |
 | Lint/Format | [XO](https://github.com/xojs/xo) |
+| Unit Tests | [Vitest](https://vitest.dev) |
+| Git Hooks | [Lefthook](https://github.com/evilmartians/lefthook) |
 
 ## Design
 
