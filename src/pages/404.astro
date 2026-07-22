@@ -1,0 +1,19 @@
+---
+import {Icon} from 'astro-icon/components';
+import Button from '~/components/button.astro';
+import SectionHeading from '~/components/emphasis/section-heading.astro';
+import Layout from '~/components/layout/layout.astro';
+import SITE from '~/data/site.ts';
+---
+
+<Layout
+	title={'Page Not Found'}
+	description={SITE.description}
+	forehead
+>
+	<SectionHeading as='h1' prelabel='404 ⋅ Page Not Found'>If the page existed, perhaps it had moved?</SectionHeading>
+	<div class='cluster'>
+		<Button as='a' href='/'>Go to index <Icon name='lucide:arrow-right' /></Button>
+		<Button as='a' href='/notes' variant='secondary'>Go to /notes <Icon name='lucide:arrow-right' /></Button>
+	</div>
+</Layout>
