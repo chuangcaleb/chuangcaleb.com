@@ -5,8 +5,9 @@
 - **Plan then execute**: propose a plan for non-trivial work before changing
   code; execute small, obvious changes directly.
 - **Branches + conventional commits**: work on a feature branch, never on
-  `main`/`staging`. Commit with conventional-commit messages (`feat:`, `fix:`,
-  `chore:`, `test:`, ... matching the git log).
+  `main`/`staging`. Branch names are descriptive (e.g. `fix/notes-scroll`,
+  `dark-mode-palette`). Commit messages use conventional commits (`feat:`,
+  `fix:`, `chore:`, `test:`, ... matching the git log).
 - **Push scope**: the agent may commit and push its own **feature branch**, but
   must **never push to `main` or `staging`**. The owner opens and merges PRs.
 - **Verify before committing**: run the verify loop (see Build and Test) before
@@ -17,6 +18,10 @@
 When starting the dev server, use background mode `astro dev --background`
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+
+### Worktrees
+
+When creating git worktrees, ensure `.env` is copied over from the main workspace. Agents must copy the `.env` file but **never read or access it**.
 
 ## Documentation
 
