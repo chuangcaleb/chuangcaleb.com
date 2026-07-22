@@ -3,6 +3,7 @@ import {parse} from 'date-fns';
 import type {GuestPost} from 'lib/google/sheets/types.js';
 import Caps from '~/components/emphasis/caps.astro';
 import Tag from '~/components/tag.astro';
+import {getGeneratedAvatarUrl} from '~/utils/avatar.ts';
 import {formatIso} from '~/utils/time.ts';
 
 interface Props {
@@ -13,6 +14,9 @@ const {post} = Astro.props;
 
 const hasLink = Boolean(post['🔗 Social Link']);
 
+const avatarSrc = post['📸 Avatar Image Link']
+	|| getGeneratedAvatarUrl(post['📇 Display Name']);
+
 const formattedDate = formatIso(
 	parse(post.Timestamp, 'dd/MM/yyyy HH:mm:ss', new Date()).toISOString(),
 	'MMMM yyyy',
@@ -21,19 +25,15 @@ const formattedDate = formatIso(
 
 <div class='flow-s'>
 	<div class='cluster' style='gap: var(--space-s)'>
-		{
-			post['📸 Avatar Image Link'] && (
-				<img
-					class='avatar'
-					src={post['📸 Avatar Image Link']}
-					alt={`Avatar of ${post['📇 Display Name']}`}
-					height={40}
-					width={40}
-					fetchpriority='low'
-					loading='lazy'
-				/>
-			)
-		}
+		<img
+			class='avatar'
+			src={avatarSrc}
+			alt={`Avatar of ${post['📇 Display Name']}`}
+			height={40}
+			width={40}
+			fetchpriority='low'
+			loading='lazy'
+		/>
 		<header>
 			{
 				hasLink
@@ -65,16 +65,6 @@ const formattedDate = formatIso(
 </div>
 
 <style>
-	/* .display-name {
-		font-weight: var(--weight-bold);
-		color: var(--text-strong);
-		text-decoration: none;
-	}
-
-	a.display-name:hover {
-		color: var(--accent);
-	} */
-
 	.avatar {
 		height: 2.5em;
 		width: 2.5em;
@@ -89,17 +79,4 @@ const formattedDate = formatIso(
 		text-transform: lowercase;
 		white-space: nowrap;
 	}
-
-	/* .body {
-		color: var(--text-normal);
-		line-height: var(--leading-body);
-		word-wrap: break-word;
-	} */
-
-	/* .date {
-		padding-inline-start: var(--space-s);
-		font-style: italic;
-		color: var(--text-tertiary);
-		font-size: var(--text-caption);
-	} */
 </style>
