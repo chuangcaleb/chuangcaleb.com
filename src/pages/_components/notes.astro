@@ -14,7 +14,7 @@ const recentModified = await getModifiedNotes({limit: 5, exclude: seen});
 <section class='region wrapper flow' id='notes'>
 	<SectionHeading prelabel='04 ⋅ Notes'>Digital notes, straight from my Obsidian vault</SectionHeading>
 	<p>Like blog posts, but very fluid—while being densely interlinked, and mostly bite-sized.</p>
-	<div class='grid-auto region' style={{'--grid-item-min': '25rem', '--region-space': 'var(--space-m)'}}>
+	<div class='grid-auto region' style={{'--region-space': 'var(--space-m)', '--grid-item-min': 'min(25rem, 100%)'}}>
 		<NotesSection
 			description='Featured'
 			notes={topFeatured}
@@ -37,3 +37,4 @@ const recentModified = await getModifiedNotes({limit: 5, exclude: seen});
 		</div>
 	</div>
 </section>
+
