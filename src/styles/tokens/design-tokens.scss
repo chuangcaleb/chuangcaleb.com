@@ -10,7 +10,7 @@
   --color-ivory: #faf9f5;
   --color-parchment: #f5f4ed;
   --color-warm-sand: #e8e6dc;
-  --color-dark-surface: #30302e;
+  --color-dark-surface: #2c2c2b;
 
   /* ── Text ────────────────────────────── */
   --color-near-black: #1c1b18;
@@ -121,7 +121,11 @@
 @mixin dark-theme-tokens {
   --bg-page: var(--color-near-black);
   --bg-surface: var(--color-dark-surface);
-  --bg-interactive: var(--color-dark-warm);
+  --bg-interactive: color-mix(
+    in srgb,
+    var(--color-dark-warm),
+    var(--bg-page) 45%
+  );
   --bg-svg: var(--color-warm-sand);
 
   --text-strong: color-mix(in srgb, var(--color-ivory), var(--bg-page) 2%);
@@ -133,7 +137,7 @@
     var(--color-stone) 50%
   );
 
-  --color-ink: #8499b4;
+  --color-ink: #a1b2c8;
   // --accent: color-mix(in srgb, var(--color-ink), var(--text-strong) 40%);
   --on-accent: var(--color-near-black);
 
