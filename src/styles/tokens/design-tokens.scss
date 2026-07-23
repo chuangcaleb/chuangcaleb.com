@@ -141,8 +141,16 @@
   // --accent: color-mix(in srgb, var(--color-ink), var(--text-strong) 40%);
   --on-accent: var(--color-near-black);
 
-  --border-default: var(--color-olive);
-  --border-subtle: var(--color-dark-warm);
+  --border-default: color-mix(
+    in srgb,
+    var(--color-border-primary),
+    var(--bg-page) 90%
+  );
+  --border-subtle: color-mix(
+    in srgb,
+    var(--color-border-secondary),
+    var(--bg-page) 90%
+  );
 
   --astro-code-token-constant: #ce835b;
   --astro-code-token-string: #a6da95;
