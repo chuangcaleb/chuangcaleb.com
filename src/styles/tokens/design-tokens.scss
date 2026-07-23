@@ -13,7 +13,7 @@
   --color-dark-surface: #2c2c2b;
 
   /* ── Text ────────────────────────────── */
-  --color-near-black: #1c1b18;
+  --color-near-black: #1a1918;
   --color-dark-warm: #3d3d3a;
   --color-olive: #504e49;
   --color-stone: #6b6a64;
@@ -144,12 +144,12 @@
   --border-default: color-mix(
     in srgb,
     var(--color-border-primary),
-    var(--bg-page) 90%
+    var(--bg-page) 80%
   );
   --border-subtle: color-mix(
     in srgb,
     var(--color-border-secondary),
-    var(--bg-page) 90%
+    var(--bg-page) 80%
   );
 
   --astro-code-token-constant: #ce835b;

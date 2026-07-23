@@ -11,7 +11,7 @@ colors:
   warm-sand: '#e8e6dc'
   ink: '#1B365D'
   dark-surface: '#30302E'
-  near-black: '#1c1b18'
+  near-black: '#1a1918'
   dark-warm: '#3d3d3a'
   olive: '#504e49'
   stone: '#6b6a64'
@@ -159,7 +159,7 @@ This is not a UI framework. It is designed to keep pages stable, clear, and read
 ### Text
 
 ```css
---color-near-black: #1c1b18; /* Primary text — warm olive undertone */
+--color-near-black: #1a1918; /* Primary text — warm olive undertone */
 --color-dark-warm: #3d3d3a; /* Secondary text, table headers, links */
 --color-olive: #504e49; /* Subtext — descriptions, captions */
 --color-stone: #6b6a64; /* Tertiary — dates, metadata */
