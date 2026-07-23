@@ -1,6 +1,6 @@
 @import "tokens/design-tokens.scss";
+@import "fonts/index.css";
 @import "global/global.css";
-/* @import "fonts"; */
 
 @import "compositions/index.css";
 @import "utilities/index.css";

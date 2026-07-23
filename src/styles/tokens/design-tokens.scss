@@ -27,6 +27,7 @@
   --color-border-secondary: #e5e3d8;
 
   /* ── Typography ──────────────────────── */
+  // Charter: local() on Apple devices, self-hosted webfont elsewhere — see src/styles/fonts/index.css
   --font-serif: Charter, Georgia, Palatino, "Times New Roman", serif;
   // --font-mono: // custom on astro.config.ts
   --font-body: var(--font-serif);

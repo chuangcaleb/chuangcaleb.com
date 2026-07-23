@@ -1,0 +1,52 @@
+/*
+ * Charter is a system font on Apple platforms only. `local()` sources let
+ * those devices skip the download entirely; everyone else (Windows, most
+ * Linux, Android) gets the self-hosted Bitstream Charter webfont below.
+ * Font files vendored from https://github.com/chawyehsu/charter-webfont
+ * (MIT + Bitstream Charter license, see src/assets/fonts/charter/LICENSE.txt).
+ */
+
+@font-face {
+	font-family: 'Charter';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src:
+		local('Charter'),
+		local('Bitstream Charter'),
+		url('../../assets/fonts/charter/charter_regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Charter';
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src:
+		local('Charter Italic'),
+		local('Bitstream Charter Italic'),
+		url('../../assets/fonts/charter/charter_italic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Charter';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src:
+		local('Charter Bold'),
+		local('Bitstream Charter Bold'),
+		url('../../assets/fonts/charter/charter_bold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Charter';
+	font-style: italic;
+	font-weight: 700;
+	font-display: swap;
+	src:
+		local('Charter Bold Italic'),
+		local('Bitstream Charter Bold Italic'),
+		url('../../assets/fonts/charter/charter_bold_italic.woff2')
+			format('woff2');
+}
