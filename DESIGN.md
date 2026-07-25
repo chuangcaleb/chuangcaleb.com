@@ -113,7 +113,7 @@ components:
 
 ## Overview
 
-This design is a customised extension of kami.
+This design is a personalised extension of kami.
 
 kami's aesthetic compresses into one sentence: **warm parchment canvas, ink accent, serif carries hierarchy, avoid cool grays and hard shadows**.
 
