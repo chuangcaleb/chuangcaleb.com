@@ -22,10 +22,8 @@ function pageUrlFor(p: number): string {
 	<nav class='pagination cluster region' aria-label='pagination'>
 		{
 			pageUrl.prev
-				? <a href={pageUrl.prev} class='page-link'>
-					<Icon name='lucide:arrow-left' /> prev</a>
-				: <span class='page-link disabled'>
-					<Icon name='lucide:arrow-left' /> prev</span>
+				? <a href={pageUrl.prev}><Icon name='lucide:arrow-left'/> prev</a>
+				: <span class='disabled'><Icon name='lucide:arrow-left'/> prev</span>
 		}
 
 		<span class='page-numbers cluster' role='list'>
@@ -44,8 +42,8 @@ function pageUrlFor(p: number): string {
 
 		{
 			pageUrl.next
-				? <a href={pageUrl.next} class='page-link'>next <Icon name='lucide:arrow-right' /></a>
-				: <span class='page-link disabled'>next <Icon name='lucide:arrow-right' /></span>
+				? <a href={pageUrl.next}>next <Icon name='lucide:arrow-right'/></a>
+				: <span class='disabled'>next <Icon name='lucide:arrow-right'/></span>
 		}
 	</nav>
 )}
@@ -55,7 +53,7 @@ function pageUrlFor(p: number): string {
 		--cluster-align-x: start;
 		--region-space: var(--space-l);
 	}
-	.page-link.disabled {
+	a.disabled {
 		color: var(--text-tertiary);
 		pointer-events: none;
 	}
