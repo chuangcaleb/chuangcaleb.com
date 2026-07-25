@@ -6,6 +6,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  transition-duration: 0.2s;
 }
 
 html {
@@ -174,7 +175,7 @@ a {
   text-decoration-skip-ink: auto;
   text-underline-offset: 0.2em;
   text-decoration-thickness: 0.05em;
-  transition-duration: 0.2s;
+  /* transition-duration: 0.2s; */
 }
 
 a:not([class]):hover {
