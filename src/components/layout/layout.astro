@@ -1,10 +1,8 @@
 ---
-import {Font} from 'astro:assets';
-import {ClientRouter} from 'astro:transitions';
 import Footer from './footer.astro';
+import Head from './head.astro';
 import Header from './header.astro';
 import SITE from '~/data/site.ts';
-import {THEME_STORAGE_KEY} from '~/utils/theme.ts';
 import '~/styles/index.css';
 
 interface Props {
@@ -13,66 +11,12 @@ interface Props {
 	forehead?: boolean;
 }
 
-const {title: propsTitle, description: propsDescription, forehead = false} = Astro.props;
-
-const {pathname} = Astro.url;
-const isHome = pathname === '/';
-const isNotesRoute = pathname.startsWith('/notes');
-
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-const title = propsTitle
-	? propsTitle + (isHome ? '' : ` | ${SITE.title}`)
-	: SITE.title;
-const description
-	= propsDescription
-		?? (isNotesRoute ? SITE.siteDescriptionFallback : SITE.description);
+const {title, description, forehead = false} = Astro.props;
 ---
 
 <html lang={SITE.language}>
 	<head>
-		<meta charset='utf-8' />
-
-		<script is:inline define:vars={{storageKey: THEME_STORAGE_KEY}}>
-			/* global storageKey */
-			var pref = localStorage.getItem(storageKey);
-			var systemDark = pref === 'system' && matchMedia('(prefers-color-scheme: dark)').matches;
-			document.documentElement.dataset.theme = pref === 'dark' || systemDark ? 'dark' : 'light';
-		</script>
-
-		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
-		<meta name='generator' content={Astro.generator} />
-
-		<!-- SEO -->
-		<title>{title}</title>
-		<meta name='title' content={title} />
-		<meta name='description' content={description} />
-		<meta name='author' content={SITE.author.name} />
-		<link rel='canonical' href={canonicalUrl.href} />
-		<link rel='sitemap' href='/sitemap-index.xml' />
-
-		<!-- Open Graph -->
-		<meta property='og:type' content='website' />
-		<meta property='og:title' content={title} />
-		<meta property='og:site_name' content={SITE.title} />
-		<meta property='og:url' content={canonicalUrl.href} />
-		{description && <meta property='og:description' content={description} />}
-
-		<!-- Twitter -->
-		<meta property='twitter:card' content='summary' />
-		<meta property='twitter:title' content={title} />
-		{
-			description && (
-				<meta property='twitter:description' content={description} />
-			)
-		}
-
-		<!-- Theme color (updated by footer theme toggle script; #f5f4ed is the light-mode/no-JS fallback) -->
-		<meta id='theme-color-meta' name='theme-color' content='#f5f4ed' />
-
-		<Font cssVariable='--font-mono' />
-
-		<ClientRouter />
-
+		<Head title={title} description={description} />
 		<slot name='head' />
 	</head>
 	<body>
