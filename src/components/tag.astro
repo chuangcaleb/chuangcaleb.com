@@ -1,13 +1,14 @@
 ---
-interface Props {
+export interface TagProps {
 	as?: 'span' | 'a';
+	variant?: 'normal' | 'faint'
 	href?: string;
 }
 
-const {as: Tag = 'span', href, ...rest} = Astro.props;
+const {as: Tag = 'span', href, variant = 'normal', ...rest} = Astro.props;
 ---
 
-<Tag class='tag' {href} {...rest}>
+<Tag class:list={['tag', variant]} {href} {...rest}>
 	<slot />
 </Tag>
 
@@ -26,5 +27,11 @@ const {as: Tag = 'span', href, ...rest} = Astro.props;
 		font-weight: var(--weight-heading);
 		line-height: var(--leading-caption);
 		text-decoration: none;
+	}
+
+	.faint {
+		background: none;
+		color: var(--text-tertiary);
+		border: var(--border-thin) solid var(--border-subtle);
 	}
 </style>

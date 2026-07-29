@@ -1,5 +1,6 @@
 import {formatDisplayDate, getRelativeSince} from './time.ts';
 import type {NoteMetadata} from 'lib/utils/types';
+import type {TagProps} from '~/components/tag.astro';
 
 // const metaMinDays = {
 // 	freshModified: 7,
@@ -12,7 +13,9 @@ type NoteTagKey = (typeof ALL_TAG_KEYS)[number];
 type NoteTagBase = {
 	icon: string;
 	label: string;
+	variant?: TagProps['variant'];
 };
+
 export type NoteTag = NoteTagBase & {key: string};
 
 function wordsLabel(count: NoteMetadata['words']): NoteTagBase | undefined {
@@ -66,13 +69,13 @@ export const NOTE_TAG_BUILDERS: Record<string, TagBuilder> = {
 
 	published(meta: NoteMetadata) {
 		return meta.published
-			? {label: formatDisplayDate(meta.published) ?? '', icon: 'lucide:book-open-check'}
+			? {label: formatDisplayDate(meta.published) ?? '', icon: 'lucide:book-open-check', variant: 'faint'}
 			: undefined;
 	},
 
 	modified(meta: NoteMetadata) {
 		return meta.modified
-			? {label: `${getRelativeSince(meta.modified)} ago`, icon: 'lucide:file-pen-line'}
+			? {label: `${getRelativeSince(meta.modified)} ago`, icon: 'lucide:file-pen-line', variant: 'faint'}
 			: undefined;
 	},
 } as const;

@@ -134,7 +134,7 @@
   --text-tertiary: color-mix(
     in srgb,
     var(--color-warm-sand),
-    var(--color-stone) 50%
+    var(--color-stone) 65%
   );
 
   --color-ink: #a1b2c8;
@@ -149,7 +149,7 @@
   --border-subtle: color-mix(
     in srgb,
     var(--color-border-secondary),
-    var(--bg-page) 80%
+    var(--bg-page) 85%
   );
 
   --astro-code-token-constant: #ce835b;
