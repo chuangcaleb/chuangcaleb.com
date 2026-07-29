@@ -1,5 +1,5 @@
-import {getNoteEntries} from './note.ts';
 import type {SuperNote} from 'lib/utils/types.ts';
+import {getNoteEntries} from './note.ts';
 
 export type ParentSeriesContext = {
 	parent: SuperNote;
@@ -52,7 +52,7 @@ export async function formatNoteRelations({data, title}: SuperNote): Promise<Not
 	// For each parent that has `series`, resolve parent's `down` and alphabetize.
 	const parentSeriesContexts: ParentSeriesContext[] = [];
 	const parentSeriesSettled = parentNotes
-		.filter(p => Array.isArray(p.data.series))
+		.filter(p => p.data.series)
 		.map(async p => {
 			const siblings = await getNoteEntries(p.data.down ?? []);
 			return {parent: p, siblings};
