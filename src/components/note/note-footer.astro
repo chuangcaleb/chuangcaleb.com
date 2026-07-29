@@ -151,9 +151,10 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 		&:first-of-type {
 			margin-block-start: calc(var(--space-2xl) * 2);
 		}
-		&:last-of-type {
-			margin-block-end: calc(var(--space-2xl) * 2);
-		}
+	}
+
+	section:last-of-type {
+		margin-block-end: calc(var(--space-2xl));
 	}
 
 </style>
