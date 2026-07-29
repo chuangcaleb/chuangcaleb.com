@@ -1,8 +1,8 @@
 ---
-import type {SuperNote} from 'lib/utils/types';
+import type {SuperNote} from 'lib/utils/types.ts';
 import NoteTag from '~/components/note/note-tag.astro';
-import {getNoteEntry} from '~/utils/note.ts';
 import {noteToTags} from '~/utils/note-metadata.ts';
+import {getNoteEntry} from '~/utils/note.ts';
 
 interface Props {
 	note: SuperNote
