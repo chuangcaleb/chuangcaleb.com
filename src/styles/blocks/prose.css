@@ -96,9 +96,9 @@ CUSTOM PROPERTIES
 }
 
 .prose :is(blockquote) {
-  padding-inline-start: calc(var(--gutter) * 0.5);
-  padding-block: var(--space-xs);
-  margin-inline-start: calc(var(--gutter) * -0.5);
+  padding-inline-start: calc(var(--gutter) * 0.75);
+  padding-block: var(--space-2xs);
+  margin-inline-start: calc(var(--gutter) * -0.75);
   border-inline-start: 2px solid var(--accent);
   color: var(--text-muted);
 }
