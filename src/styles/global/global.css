@@ -353,6 +353,7 @@ tr:last-child td {
 
 .table-wrapper {
   overflow-x: auto;
+  padding-block: var(--space-s);
 }
 
 caption {

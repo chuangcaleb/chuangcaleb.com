@@ -148,6 +148,9 @@ const hasPreviousOrNext = relations.previousNote || relations.nextNote;
 
 	:global(.note-body:not(:empty)) ~ section {
 		--flow-space: var(--space-2xl);
+		&:first-of-type {
+			margin-block-start: calc(var(--space-2xl) * 2);
+		}
 	}
 
 </style>
