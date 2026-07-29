@@ -23,7 +23,8 @@ const seen = new Set([
 const recentModified = await getModifiedNotes({exclude: seen, limit: 10});
 
 const recentPublished = await getPublishedNotes({
-	exclude: new Set([...seen, ...recentModified.map(n => n.id)]),
+	// exclude: new Set([...seen, ...recentModified.map(n => n.id)]),
+	exclude: new Set(seen),
 	limit: 6,
 });
 ---
