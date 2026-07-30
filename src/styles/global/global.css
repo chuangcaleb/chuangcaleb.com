@@ -181,6 +181,7 @@ a {
 a:not([class]):hover {
   background-color: var(--bg-interactive);
   border-radius: var(--radius-sm);
+  text-underline-offset: 0.3em;
 }
 
 /* a:not([class]) {

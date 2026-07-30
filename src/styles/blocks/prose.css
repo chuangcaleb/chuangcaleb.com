@@ -92,7 +92,10 @@ CUSTOM PROPERTIES
   font-weight: var(--weight-heading);
 }
 .prose :is(dt, strong) {
+  color: var(--text-strong);
   font-weight: var(--weight-bold);
+  /* background: var(--bg-interactive);
+  padding-inline: 0.2em; */
 }
 
 .prose :is(blockquote) {

@@ -10,7 +10,7 @@
   --color-ivory: #faf9f5;
   --color-parchment: #f5f4ed;
   --color-warm-sand: #e8e6dc;
-  --color-dark-surface: #2c2c2b;
+  --color-dark-surface: #222220;
 
   /* ── Text ────────────────────────────── */
   --color-near-black: #1a1918;
@@ -124,11 +124,11 @@
   --bg-interactive: color-mix(
     in srgb,
     var(--color-dark-warm),
-    var(--bg-page) 45%
+    var(--bg-page) 35%
   );
   --bg-svg: var(--color-warm-sand);
 
-  --text-strong: color-mix(in srgb, var(--color-ivory), var(--bg-page) 2%);
+  --text-strong: color-mix(in srgb, var(--color-ivory), var(--bg-page) 8%);
   --text-normal: color-mix(in srgb, var(--color-parchment), var(--bg-page) 25%);
   --text-muted: color-mix(in srgb, var(--color-warm-sand), var(--bg-page) 35%);
   --text-tertiary: color-mix(
