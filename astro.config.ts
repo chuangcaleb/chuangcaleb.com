@@ -40,6 +40,9 @@ export default defineConfig({
 	site: 'https://chuangcaleb.com',
 	trailingSlash: 'never',
 	prefetch: true,
+	redirects: {
+		'/index': '/',
+	},
 	integrations,
 	markdown: {
 		shikiConfig: {theme: 'css-variables'},
