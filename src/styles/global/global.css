@@ -42,6 +42,17 @@ html {
    Body Styles
    ============================================ */
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(1em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -52,6 +63,7 @@ body {
   font-family: var(--font-body);
   font-weight: var(--weight-body);
   line-height: var(--leading-body);
+  animation: fadeIn 0.3s ease-out;
 }
 
 main {
