@@ -7,6 +7,7 @@ import favicon32Url from '~/assets/favicon/favicon-32x32.png';
 import faviconUrl from '~/assets/favicon/favicon.ico';
 import SITE from '~/data/site.ts';
 import {THEME_STORAGE_KEY} from '~/utils/theme.ts';
+import profileImg from '~/assets/img/profile.jpg';
 
 interface Props {
 	title?: string | null;
@@ -45,11 +46,13 @@ const description
 <meta property='og:title' content={title} />
 <meta property='og:site_name' content={SITE.title} />
 <meta property='og:url' content={canonicalUrl.href} />
+<meta property='og:image' content={profileImg.src} />
 {description && <meta property='og:description' content={description} />}
 
 {/* Twitter */}
 <meta property='twitter:card' content='summary' />
 <meta property='twitter:title' content={title} />
+<meta property='twitter:image' content={profileImg.src} />
 {description && <meta property='twitter:description' content={description} />}
 
 {/* Favicon */}
