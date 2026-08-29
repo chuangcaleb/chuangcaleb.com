@@ -6,8 +6,7 @@
   code; execute small, obvious changes directly.
 - **Branches + conventional commits**: work on a feature branch, never on
   `main`/`staging`. Branch names are descriptive (e.g. `fix/notes-scroll`,
-  `dark-mode-palette`). Commit messages use conventional commits (`feat:`,
-  `fix:`, `chore:`, `test:`, ... matching the git log).
+  `dark-mode-palette`). Commit messages use conventional commits.
 - **Push scope**: the agent may commit and push its own **feature branch**, but
   must **never push to `main` or `staging`**. The owner opens and merges PRs.
 - **Verify before committing**: run the verify loop (see Build and Test) before
@@ -27,25 +26,15 @@ When creating git worktrees, ensure `.env` is copied over from the main workspac
 
 Full documentation: <https://docs.astro.build>
 
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles](https://docs.astro.build/en/guides/styling/)
-
 ## Code Style
 
 - XO + Prettier via `xo.config.ts` (flat config, `prettier: true`). `prettier-plugin-astro` in devDependencies.
-- XO ignores `_archived/**`.
 - kebab-case filenames (`unicorn/filename-case`).
 - File extensions in relative imports (`import-x/extensions`).
 - Prefer named exports.
 
 ## Architecture
 
-- **Clean break**: All old components/pages archived to `_archived/`. New components built from scratch.
 - **Design system**: `DESIGN.md` defines core visual identity. Modularized design specs live in `docs/design/`. CSS tokens in `src/styles/tokens/design-tokens.scss` — the single source of truth for implementation values.
 - **Fonts**: Charter (serif) is self-hosted with `local()` sources. JetBrains Mono (mono) loaded via Astro `fonts` config.
 - Components in `src/components/`, page sections in `src/pages/_components/`.
@@ -55,11 +44,8 @@ Consult these guides before working on related tasks:
 - Avoid media queries where possible. Prefer layout primitives (`docs/design/layout-primitives.md`).
 - Use or override existing DESIGN.md tokens from `design-tokens.scss`.
 - Don't set `var(--foo, fallback)` fallbacks — PostCSS handles this.
-- Use Fluid scale for spacing and type.
 
 ## Build and Test
-
-Requires Node `>=22` (see `.nvmrc`).
 
 **Verify loop** — run before committing:
 
