@@ -51,6 +51,7 @@ function pageUrlFor(p: number): string {
 <style>
 	.pagination {
 		--cluster-align-x: start;
+		--cluster-gap: var(--space-xl);
 		--region-space: var(--space-l);
 	}
 	a.disabled {
@@ -58,13 +59,14 @@ function pageUrlFor(p: number): string {
 		pointer-events: none;
 	}
 	.page-numbers {
-		--cluster-gap: var(--space-xs);
+		--cluster-gap: var(--space-m);
 	}
 	.page-num {
 		color: var(--accent);
 		padding: var(--space-3xs) var(--space-2xs);
 		border-radius: var(--radius-sm);
-		font-size: var(--text-body);
+		font-size: var(--text-caption);
+		font-family: var(--font-mono);
 	}
 	.page-num.active {
 		color: var(--text-muted);
