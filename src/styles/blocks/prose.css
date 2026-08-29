@@ -99,8 +99,8 @@ CUSTOM PROPERTIES
 }
 
 .prose :is(blockquote) {
-  padding-inline-start: calc(var(--gutter) * 0.75);
   padding-block: var(--space-2xs);
+  padding-inline-start: calc(var(--gutter) * 0.75);
   margin-inline-start: calc(var(--gutter) * -0.75);
   border-inline-start: 2px solid var(--accent);
   color: var(--text-muted);
@@ -115,9 +115,9 @@ CUSTOM PROPERTIES
   margin-block-start: calc(var(--flow-space) * 0.66);
 }
 
-.prose :is(kbd) {
+/* .prose :is(kbd) {
   border-radius: var(--radius-sm);
-}
+} */
 
 /* .prose :is(code):not(.not-prose):not(pre code) { */
 .prose :is(code):not(.not-prose) {
@@ -142,4 +142,8 @@ CUSTOM PROPERTIES
 
 .prose :is(ul, ol):not(.not-prose) > li {
   padding-inline-start: 0.25em;
+}
+
+.prose :is(p:has(img), hr) {
+  margin-inline: calc(var(--gutter) * -0.5);
 }
