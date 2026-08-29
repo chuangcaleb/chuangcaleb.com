@@ -80,8 +80,8 @@ export const NOTE_TAG_BUILDERS: Record<string, TagBuilder> = {
 	},
 } as const;
 
-export function noteToTags(meta: NoteMetadata, omit?: NoteTagKey[]): NoteTag[] {
-	const keys = omit ? ALL_TAG_KEYS.filter(k => !omit.includes(k)) : ALL_TAG_KEYS;
+export function noteToTags(meta: NoteMetadata, include?: NoteTagKey[]): NoteTag[] {
+	const keys = include ? ALL_TAG_KEYS.filter(k => include.includes(k)) : ALL_TAG_KEYS;
 
 	return keys
 		.map(key => {

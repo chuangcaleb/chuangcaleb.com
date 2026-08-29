@@ -1,5 +1,7 @@
 ---
 import type {SuperNote} from 'lib/utils/types.ts';
+import NoteTag from './note-tag.astro';
+import {noteToTags} from '~/utils/note-metadata.ts';
 import {formatDisplayDate} from '~/utils/time.ts';
 
 interface Props {
@@ -10,25 +12,39 @@ interface Props {
 const {note, showDate} = Astro.props;
 const dateValue = showDate ? note.data[showDate] : undefined;
 const dateLabel = dateValue ? formatDisplayDate(dateValue) : undefined;
+const tags = noteToTags(note.data, ['status']);
 ---
 
-<>
+<div class='root cluster'>
 	{dateLabel && (
 		<time class='prose-date' datetime={dateValue?.toISOString()}>
 			{dateLabel}
 		</time>
 	)}
-	<a href={note.route}>{note.title}</a>
-</>
+	<div class='child cluster'>
+		<a href={note.route}>{note.title}</a>
+		{tags.map(tag => <NoteTag {...tag} />)}
+	</div>
+</div>
 
 <style>
-	.prose-date {
-		width: 10.5ch;
-		display: inline-block;
+	.cluster {
+		--cluster-gap-y: var(--space-2xs);
+	}
+	.root {
+		--cluster-gap-y: var(--space-2xs);
+		--cluster-align-y: baseline;
+		flex-wrap: nowrap;
+	}
+	.child {
+		display: inline-flex;
+		--cluster-gap-x: var(--space-xs);
+	}
 
+	.prose-date {
 		color: var(--text-tertiary);
 		font-size: var(--text-caption);
+		font-family: var(--font-mono);
 		white-space: nowrap;
-		margin-inline-end: var(--space-xs);
 	}
 </style>
