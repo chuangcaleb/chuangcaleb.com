@@ -46,9 +46,9 @@ describe('noteToTags', () => {
 		expect(keys).not.toContain('fyi');
 	});
 
-	it('honours the omit list', () => {
+	it('honours the include list', () => {
 		const tags = noteToTags(meta({words: 300, status: 'wip'}), ['status']);
-		expect(tags.map(t => t.key)).not.toContain('status');
-		expect(tags.map(t => t.key)).toContain('words');
+		expect(tags.map(t => t.key)).toContain('status');
+		expect(tags.map(t => t.key)).not.toContain('words');
 	});
 });
