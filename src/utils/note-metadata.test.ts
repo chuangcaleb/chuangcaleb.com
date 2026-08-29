@@ -1,6 +1,6 @@
 import {describe, expect, it} from 'vitest';
-import {NOTE_TAG_BUILDERS, noteToTags} from './note-metadata.ts';
 import type {NoteMetadata} from 'lib/utils/types';
+import {NOTE_TAG_BUILDERS, noteToTags} from './note-metadata.ts';
 
 // Build a NoteMetadata-shaped object for the fields the tag builders read.
 function meta(partial: Partial<NoteMetadata>): NoteMetadata {
