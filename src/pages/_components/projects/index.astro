@@ -2,7 +2,7 @@
 import {getCollection} from 'astro:content';
 import ProjectCard from './project-card.astro';
 import SectionHeading from '~/components/emphasis/section-heading.astro';
-import SocialLink from '~/components/icon-link.astro';
+import SocialLink from '~/components/base/icon-link.astro';
 import {SOCIALS} from '~/data/links.ts';
 
 const allProjects = await getCollection('project');

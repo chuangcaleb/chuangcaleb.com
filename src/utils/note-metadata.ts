@@ -1,6 +1,6 @@
 import {formatDisplayDate, getRelativeSince} from './time.ts';
 import type {NoteMetadata} from 'lib/utils/types';
-import type {TagProps} from '~/components/tag.astro';
+import type {TagProps} from '~/components/base/tag.astro';
 
 // const metaMinDays = {
 // 	freshModified: 7,

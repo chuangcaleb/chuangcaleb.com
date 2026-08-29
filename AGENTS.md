@@ -1,5 +1,7 @@
 # Project Guidelines
 
+Astro Docs: <https://docs.astro.build>
+
 ## Working agreement
 
 - **Plan then execute**: propose a plan for non-trivial work before changing
@@ -22,10 +24,6 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 
 When creating git worktrees, ensure `.env` is copied over from the main workspace. Agents must copy the `.env` file but **never read or access it**.
 
-## Documentation
-
-Full documentation: <https://docs.astro.build>
-
 ## Code Style
 
 - XO + Prettier via `xo.config.ts` (flat config, `prettier: true`). `prettier-plugin-astro` in devDependencies.
@@ -36,7 +34,6 @@ Full documentation: <https://docs.astro.build>
 ## Architecture
 
 - **Design system**: `DESIGN.md` defines core visual identity. Modularized design specs live in `docs/design/`. CSS tokens in `src/styles/tokens/design-tokens.scss` — the single source of truth for implementation values.
-- **Fonts**: Charter (serif) is self-hosted with `local()` sources. JetBrains Mono (mono) loaded via Astro `fonts` config.
 - Components in `src/components/`, page sections in `src/pages/_components/`.
 
 ## Implementation Conventions

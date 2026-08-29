@@ -6,7 +6,7 @@ Minimal — skip-link only. No navigation, banner, or sheet on the landing page.
 
 ```html
 <header>
-	<a href="#main" class="skip-link">Skip to content →</a>
+  <a href="#main" class="skip-link">Skip to content →</a>
 </header>
 ```
 
@@ -14,9 +14,10 @@ The skip-link is positioned fixed, hidden off-screen via `translateY(-100%)`, an
 
 ## Footer
 
-Footer implemented with nav links, social icons, and rebuild date line. See `src/components/layout/footer.astro`.
+Footer implemented with nav links, social icons, and rebuild date line. See `src/components/page/footer.astro`.
 
 Content:
+
 - Site title (h2)
 - Navigation links from `NOTE_NAV_LINKS`
 - Social icon links separated by middots

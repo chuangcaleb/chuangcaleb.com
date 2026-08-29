@@ -1,9 +1,9 @@
 ---
 import GuestbookCard from './_guestbook-card.astro';
 import {getGuestbookPosts} from 'lib/google/sheets/get-guestbook-posts.ts';
-import Card from '~/components/card.astro';
+import Card from '~/components/base/card.astro';
 import SectionHeading from '~/components/emphasis/section-heading.astro';
-import Layout from '~/components/layout/layout.astro';
+import Layout from '~/components/page/layout.astro';
 import '~/styles/index.css';
 
 const posts = await getGuestbookPosts();
