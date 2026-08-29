@@ -13,10 +13,16 @@
   --color-dark-surface: #222220;
 
   /* ── Text ────────────────────────────── */
-  --color-near-black: #1a1918;
+  --color-near-black: #100f0f;
   --color-dark-warm: #3d3d3a;
   --color-olive: #504e49;
   --color-stone: #6b6a64;
+
+  /* ── Text (dark) ──────────────────────── */
+  --color-flexoki-150: #dad8ce;
+  --color-flexoki-300: #b7b5ac;
+  --color-flexoki-400: #9f9d96;
+  --color-flexoki-500: #878580;
 
   /* ── Brand (sole chromatic hue) ──────── */
   --color-ink: #1b365d;
@@ -119,6 +125,21 @@
    Text-tertiary and accent are lightened via color-mix() from their existing
    light-mode token because the raw values fail WCAG AA against dark surfaces. */
 @mixin dark-theme-tokens {
+  /* ── Raw token overrides - dark mode ──── */
+  --color-ink: #9eabb7;
+
+  --astro-code-token-constant: #ce835b;
+  --astro-code-token-string: #a6da95;
+  // retain text-tertiary from light mode
+  // --astro-code-token-comment: var(--text-tertiary);
+  --astro-code-token-keyword: #c6a0f6;
+  --astro-code-token-parameter: #a5adcb;
+  --astro-code-token-function: #8aadf4;
+  --astro-code-token-string-expression: #a6da95;
+  --astro-code-token-punctuation: #cad3f5;
+  --astro-code-token-link: #c6a0f6;
+
+  /* ── Semantic aliases - dark mode ──────── */
   --bg-page: var(--color-near-black);
   --bg-surface: var(--color-dark-surface);
   --bg-interactive: color-mix(
@@ -128,16 +149,11 @@
   );
   --bg-svg: var(--color-warm-sand);
 
-  --text-strong: color-mix(in srgb, var(--color-ivory), var(--bg-page) 8%);
-  --text-normal: color-mix(in srgb, var(--color-parchment), var(--bg-page) 25%);
-  --text-muted: color-mix(in srgb, var(--color-warm-sand), var(--bg-page) 35%);
-  --text-tertiary: color-mix(
-    in srgb,
-    var(--color-warm-sand),
-    var(--color-stone) 65%
-  );
+  --text-strong: var(--color-flexoki-150);
+  --text-normal: var(--color-flexoki-300);
+  --text-muted: var(--color-flexoki-400);
+  --text-tertiary: var(--color-flexoki-500);
 
-  --color-ink: #a1b2c8;
   // --accent: color-mix(in srgb, var(--color-ink), var(--text-strong) 40%);
   --on-accent: var(--color-near-black);
 
@@ -151,17 +167,6 @@
     var(--color-border-secondary),
     var(--bg-page) 85%
   );
-
-  --astro-code-token-constant: #ce835b;
-  --astro-code-token-string: #a6da95;
-  // retain text-tertiary from light mode
-  // --astro-code-token-comment: var(--text-tertiary);
-  --astro-code-token-keyword: #c6a0f6;
-  --astro-code-token-parameter: #a5adcb;
-  --astro-code-token-function: #8aadf4;
-  --astro-code-token-string-expression: #a6da95;
-  --astro-code-token-punctuation: #cad3f5;
-  --astro-code-token-link: #c6a0f6;
 
   color-scheme: dark;
 }
