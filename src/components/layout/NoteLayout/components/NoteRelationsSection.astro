@@ -21,8 +21,6 @@ const {
   next,
   backlinks = [],
 } = formattedRelations ?? {};
-// parents which are also series
-const serieses = parents?.filter((note) => Boolean(note.data.series)) ?? [];
 
 const childrenHeader =
   type === "regular"
@@ -86,23 +84,6 @@ const childrenHeader =
           </ul>
         </>
       )
-    }
-    {/* Parent's series */}
-    {
-      serieses?.map((series) => (
-        <>
-          <h3 class="text-faded">
-            {`↓
-              ${series.data.emojip ? series.data.emojip + " " : ""} ${series.name}
-              (topic series)`}
-          </h3>
-          {series.data.series && (
-            <ol class="flow-sm one-col">
-              <NoteListItems references={series.data.series} isOrdered />
-            </ol>
-          )}
-        </>
-      ))
     }
     {/* Backlinks */}
     {
