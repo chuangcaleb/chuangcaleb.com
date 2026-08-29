@@ -16,6 +16,9 @@ const { hasBanner = true } = Astro.props;
     <a href="#main" aria-label="Skip to content">Skip to content →</a>
     <a href="#footer" aria-label="Skip to footer">Skip to footer →</a>
   </div>
+  <div class="banner">
+    You are on outdated v2, some ui here is broken. Go to latest at <a href="https://chuangcaleb.com">chuangcaleb.com</a>!
+  </div>
   {
     hasBanner && (
       <Banner>
@@ -29,6 +32,12 @@ const { hasBanner = true } = Astro.props;
 </header>
 
 <style>
+  .banner {
+    margin-inline: auto;
+    padding: 0.5em;
+    background-color: var(--bg2);
+    border-bottom: 1px solid var(--ui1);
+  }
   .skip-container {
     position: fixed;
     padding: var(--space-s);
