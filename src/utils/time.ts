@@ -13,6 +13,14 @@ export function formatDisplayDate(datetime?: string | Date) {
 	return format(datetime, 'dd MMM yyyy');
 }
 
+export function formatYearMonth(datetime?: string | Date) {
+	if (datetime === undefined || datetime === null) {
+		return null;
+	}
+
+	return format(datetime, 'yyyy-MM');
+}
+
 export function getRelativeSince(then: Date) {
 	const days = differenceInDays(new Date(), then);
 

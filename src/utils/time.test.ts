@@ -10,6 +10,7 @@ import {
 	formatDisplayDate,
 	formatIso,
 	formatRelativeDuration,
+	formatYearMonth,
 	getRelativeSince,
 	isWithinDuration,
 } from './time.ts';
@@ -21,6 +22,16 @@ describe('formatDisplayDate', () => {
 
 	it('formats a Date as "dd MMM yyyy"', () => {
 		expect(formatDisplayDate(new Date('2024-07-05T00:00:00'))).toBe('05 Jul 2024');
+	});
+});
+
+describe('formatYearMonth', () => {
+	it('returns null for undefined', () => {
+		expect(formatYearMonth(undefined)).toBeNull();
+	});
+
+	it('formats a Date as "yyyy-MM"', () => {
+		expect(formatYearMonth(new Date('2024-07-05T00:00:00'))).toBe('2024-07');
 	});
 });
 
