@@ -46,6 +46,7 @@ const tags = noteToTags(note.data, ['status']);
 
 	.root {
 		container-type: inline-size;
+		white-space: nowrap;
 	}
 
 	.date {
@@ -53,54 +54,61 @@ const tags = noteToTags(note.data, ['status']);
 		color: var(--text-tertiary);
 		font-size: var(--text-caption);
 		font-family: var(--font-mono);
-		white-space: nowrap;
 	}
 
 	.main {
 		grid-area: main;
+		min-width: 0;
+	}
+
+	.title {
+		white-space: normal;
 	}
 
 	/* Inline after title text; follows last wrapped line */
 	.tags {
 		grid-area: tags;
 		display: inline-flex;
+		flex-wrap: wrap;
 		gap: var(--space-2xs);
 		margin-inline-start: var(--space-xs);
-		white-space: nowrap;
+		min-width: 0;
 	}
 
-	/* Wide: `date main`, tags flow inline inside main */
 	.item {
 		display: grid;
-		grid-template-columns: auto 1fr;
-		grid-template-areas: 'date main';
+		grid-template-columns: 1fr;
+		grid-template-areas: 'main';
 		align-items: first baseline;
 		column-gap: var(--space-s);
 	}
 
+	/* Wide: `date main`, tags flow inline inside main */
+	.has-date .item {
+		grid-template-columns: auto 1fr;
+		grid-template-areas: 'date main';
+	}
+
 	@container (inline-size < 30rem) {
 		/* Narrow: unwrap main so title + tags become grid items; `date tags` / `title` */
-		.item {
+		.has-date .item {
 			grid-template-areas:
 				'date tags'
 				'title title';
+			/* Group stacked rows: pad items apart, keep own rows tight */
+			padding-block: var(--space-2xs);
 		}
 
-		.main {
+		.has-date .main {
 			display: contents;
 		}
 
-		.title {
+		.has-date .title {
 			grid-area: title;
 		}
 
-		.tags {
+		.has-date .tags {
 			margin-inline-start: 0;
-		}
-
-		/* Group stacked rows: pad items apart, keep own rows tight */
-		.item:has(.date) {
-			padding-block: var(--space-2xs);
 		}
 	}
 </style>

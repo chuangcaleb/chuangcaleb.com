@@ -14,7 +14,7 @@ export function formatDisplayDate(datetime?: string | Date) {
 }
 
 export function formatYearMonth(datetime?: string | Date) {
-	if (datetime === undefined || datetime === null) {
+	if (datetime === undefined) {
 		return null;
 	}
 
