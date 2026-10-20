@@ -1,10 +1,17 @@
+/*
+ * Cascade order: global < compositions < blocks < utilities < components.
+ * Astro component styles stay unlayered, so they beat every layer
+ * regardless of specificity. See docs/adr/0001-css-cascade-layers.md.
+ */
+@layer global, compositions, blocks, utilities;
+
 @import "tokens/design-tokens.scss";
 @import "fonts/index.css";
-@import "global/global.css";
+@import "global/global.css" layer(global);
 
-@import "compositions/index.css";
-@import "utilities/index.css";
-@import "blocks/index.css";
+@import "compositions/index.css" layer(compositions);
+@import "blocks/index.css" layer(blocks);
+@import "utilities/index.css" layer(utilities);
 
 /* @import "../compositions/" */
 

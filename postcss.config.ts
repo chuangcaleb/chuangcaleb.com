@@ -13,6 +13,10 @@ const config = {
 					// minimumVendorImplementations: 2, // default
 					features: {
 						'nesting-rules': true,
+						// Polyfill boosts layered selectors per file; Astro component
+						// CSS lives in other files, so unlayered styles lose. Native
+						// @layer is Baseline since 2022.
+						'cascade-layers': false,
 					},
 				}),
 			]

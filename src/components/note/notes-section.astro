@@ -1,6 +1,6 @@
 ---
-import type {SuperNote} from 'lib/utils/types.ts';
 import SectionHeading from '../emphasis/section-heading.astro';
+import type {SuperNote} from 'lib/utils/types.ts';
 import NoteCard from '~/components/note/note-card.astro';
 import NoteProseItem from '~/components/note/note-prose-item.astro';
 
@@ -29,12 +29,13 @@ const {
 const displayNotes = max ? notes.slice(0, max) : notes;
 
 const isProse = variant === 'prose';
+const isDatedList = isProse && showDate !== undefined;
 ---
 
 {displayNotes.length > 0 && (
 	<section class:list={['notes-section flow', isProse && 'prose', !isSubSection && 'wrapper region']}>
 		<SectionHeading as={headingAs} {prelabel}>{description}</SectionHeading>
-		<ul class:list={[!isProse && 'flow-m']} {...(!isProse && {role: 'list'})}>
+		<ul class:list={[!isProse && 'flow-m', isDatedList && 'dated-list']} {...(!isProse && {role: 'list'})}>
 			{
 				displayNotes.map(note => (
 					<li>
@@ -54,5 +55,15 @@ const isProse = variant === 'prose';
 	.notes-section {
 		--flow-space: var(--space-xl);
 		--region-space: var(--space-xl);
+	}
+
+	/* Date column replaces list marker */
+	.dated-list,
+	.dated-list > li {
+		padding-inline-start: 0;
+	}
+
+	.dated-list > li {
+		list-style: none;
 	}
 </style>

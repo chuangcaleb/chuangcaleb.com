@@ -41,6 +41,12 @@ When creating git worktrees, ensure `.env` is copied over from the main workspac
 - Avoid media queries where possible. Prefer layout primitives (`docs/design/layout-primitives.md`).
 - Use or override existing DESIGN.md tokens from `design-tokens.scss`.
 - Don't set `var(--foo, fallback)` fallbacks — PostCSS handles this.
+- Cascade layers: `global < compositions < blocks < utilities`; component
+  styles unlayered and win. New shared CSS goes in a layer. See
+  `docs/adr/0001-css-cascade-layers.md`; tier terms in `GLOSSARY.md`.
+- Components override utilities/compositions via their custom properties
+  (`--region-space`), never by redeclaring the raw property.
+- No `!important` except global a11y overrides (`[hidden]`, reduced motion).
 
 ## Build and Test
 
