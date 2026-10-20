@@ -75,3 +75,17 @@ Other scripts:
 
 - Secrets in Astro `env.schema` in `astro.config.ts`.
 - B2 credentials from env vars in `lib/b2/index.mjs`.
+
+## Agent skills
+
+### Issue tracker
+
+Issues tracked in GitHub Issues via `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default five-label vocabulary (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: root `GLOSSARY.md` + `docs/adr/`. See `docs/agents/domain.md`.
